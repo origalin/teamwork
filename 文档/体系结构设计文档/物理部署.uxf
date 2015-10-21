@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.3">
+  <zoom_level>10</zoom_level>
+  <element>
+    <type>com.baselet.element.old.element.Package</type>
+    <coordinates>
+      <x>1180</x>
+      <y>420</y>
+      <w>140</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Package 1
+--
+-Content 1
++Content 2
+bg=gray
+fg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Note</type>
+    <coordinates>
+      <x>130</x>
+      <y>90</y>
+      <w>140</w>
+      <h>390</h>
+    </coordinates>
+    <panel_attributes>ClientNode
+
+{OS=Windows或mac}
+{JDK=JDK6.0以上}</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Note</type>
+    <coordinates>
+      <x>440</x>
+      <y>80</y>
+      <w>140</w>
+      <h>400</h>
+    </coordinates>
+    <panel_attributes>ServerNode
+{OS=Windows或mac}
+{JDK=JDK6.0以上}</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Note</type>
+    <coordinates>
+      <x>150</x>
+      <y>190</y>
+      <w>90</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>client</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Note</type>
+    <coordinates>
+      <x>150</x>
+      <y>310</y>
+      <w>90</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>RMIStub</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Note</type>
+    <coordinates>
+      <x>480</x>
+      <y>230</y>
+      <w>80</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Server</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>240</x>
+      <y>250</y>
+      <w>220</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Java RMI</panel_attributes>
+    <additional_attributes>30;50;200;50</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Note</type>
+    <coordinates>
+      <x>290</x>
+      <y>120</y>
+      <w>110</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;artifact&gt;&gt;
+client.jar</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Note</type>
+    <coordinates>
+      <x>290</x>
+      <y>350</y>
+      <w>140</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;artifact&gt;&gt;
+IDataRemoteService
+Client_Stub.class</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>210</x>
+      <y>140</y>
+      <w>160</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>30;80;140;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>210</x>
+      <y>320</y>
+      <w>100</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>30;30;80;60</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>370</x>
+      <y>120</y>
+      <w>140</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>30;30;120;140</additional_attributes>
+  </element>
+</diagram>
