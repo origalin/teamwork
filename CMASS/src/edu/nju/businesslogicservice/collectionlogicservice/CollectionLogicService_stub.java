@@ -1,5 +1,9 @@
 package edu.nju.businesslogicservice.collectionlogicservice;
 
-public interface CollectionLogicService_stub {
+import edu.nju.po.SendDocPO;
 
+public class CollectionLogicService_stub {
+	public void saveSendDocPO(SendDocPO po) {
+		
+	};
 }
