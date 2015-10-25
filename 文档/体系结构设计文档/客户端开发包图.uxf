@@ -1354,18 +1354,6 @@ initial</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>182</x>
-      <y>329</y>
-      <w>476</w>
-      <h>35</h>
-    </coordinates>
-    <panel_attributes>lt=.&gt;
-</panel_attributes>
-    <additional_attributes>660.0;20.0;10.0;30.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
       <x>378</x>
       <y>322</y>
       <w>77</w>
