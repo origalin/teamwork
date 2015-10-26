@@ -16,9 +16,9 @@ public class CollectionDataService_stub implements CollectionDataService {
 	}
 
 	@Override
-	public int getDistance(String city) {
+	public Double getDistance(String city) {
 		// TODO 自动生成的方法存根
-		return 33;
+		return 33.0;
 	}
 
 	@Override
