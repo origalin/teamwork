@@ -1,5 +1,5 @@
 package edu.nju.businesslogicservice.logispicsquerylogicservice;
 
-public class LogispicsQueryLogicService_stub implements LogispicsQueryLogicService{
+public class LogispicsQueryLogicService_Stub implements LogispicsQueryLogicService{
 
 }
