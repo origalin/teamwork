@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.3">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>630</x>
+      <y>160</y>
+      <w>230</w>
+      <h>280</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+CollectionDataService
+--
+--
++saveSendDocPO
+(po:SendDocPO):void
++getDistance(city:String):int
++getSequence():int
++changeSequence
+(sequence:int):void
++saveHistory(po:HistoryPO):void
++QueryGoodsInfo
+(SendDocID:int):List&lt;PositionPO&gt;
++ getAllSendDoc():list&lt;SendDocPO&gt;
++getCourierMoney
+（courier:string）:Int
++getSendDocIDList
+(courier:string):int[]</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>620</x>
+      <y>620</y>
+      <w>260</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>CollectionDataServiceSerializableImpl
+--
+--
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>740</x>
+      <y>430</y>
+      <w>30</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;190.0</additional_attributes>
+  </element>
+</diagram>
