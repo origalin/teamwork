@@ -43,10 +43,10 @@ public class StorageDataService_stub implements StorageDataService{
 	public double getPercent(String district){return 0.35;}
 	
 	
-	public ArrayList<OutWareHouseDocPO> getOutWarehouseDoc(){
-		ArrayList<OutWareHouseDocPO> t=new ArrayList<OutWareHouseDocPO>();
-		t.add(new OutWareHouseDocPO());//这边可以提供一些参数用来构造PO
-		t.add(new OutWareHouseDocPO());
+	public ArrayList<RecordPO> getOutWarehouseDoc(){
+		ArrayList<RecordPO> t=new ArrayList<RecordPO>();
+		t.add(new RecordPO());//这边可以提供一些参数用来构造PO
+		t.add(new RecordPO());
 		return t;}//??
 	
 	

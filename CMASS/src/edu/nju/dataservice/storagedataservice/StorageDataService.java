@@ -27,7 +27,7 @@ public interface StorageDataService{
 	public double getPercent(String district);
 	
 	
-	public ArrayList<OutWareHouseDocPO> getOutWarehouseDoc();
+	public ArrayList<RecordPO> getOutWarehouseDoc();
 	
 	public ArrayList<InWareHouseDocPO> getInWarehouseDoc();
 
