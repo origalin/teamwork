@@ -1,5 +1,5 @@
 package edu.nju.presentation.mainui;
 
-public class Test {
+public class MainFrame {
 
 }
