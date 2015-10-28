@@ -10,122 +10,51 @@ import java.awt.event.MouseListener;
 
 import javax.swing.*;
 
+import edu.nju.presentation.logispicqueryui.QueryFrame;
+import edu.nju.presentation.mainui.MainFrame;
+
 @SuppressWarnings("serial")
 public class LoginFrame extends JFrame{
 	JPanel pn1,pn2,pn3;
-	JTextField account,password;
+	JTextField account;
+	JPasswordField password;
 	JButton confirm,query;
+	MainFrame mainFrame;
+	QueryFrame queryFrame;
 	 public LoginFrame() {
 		this.setTitle("登陆");
 		pn1 = new JPanel();
 		pn2 = new JPanel();
 		pn3 = new JPanel();
 		account = new JTextField(20);
-		account.setText("账号");
-		account.addFocusListener(new FocusListener() {
-			
-			@Override
-			public void focusLost(FocusEvent e) {
-				// TODO 自动生成的方法存根
-				if(account.getText().equals(""))
-					account.setText("账号");
-			}
-			
-			@Override
-			public void focusGained(FocusEvent e) {
-				// TODO 自动生成的方法存根
-			}
-		});
-		account.addMouseListener(new MouseListener() {
-			
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO 自动生成的方法存根
-				
-			}
-			
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO 自动生成的方法存根
-				
-			}
-			
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO 自动生成的方法存根
-				
-			}
-			
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO 自动生成的方法存根
-				
-			}
-			
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// TODO 自动生成的方法存根
-				if(account.getText().equals("账号"))
-					account.setText("");
-			}
-		});
-		password = new JTextField(20);
-		password.addFocusListener(new FocusListener() {
-			
-			@Override
-			public void focusLost(FocusEvent e) {
-				// TODO 自动生成的方法存根
-				if(password.getText().equals(""))
-					password.setText("密码");
-			}
-			
-			@Override
-			public void focusGained(FocusEvent e) {
-				// TODO 自动生成的方法存根
-				
-			}
-		});
-		password.addMouseListener(new MouseListener() {
-			
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO 自动生成的方法存根
-				
-			}
-			
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO 自动生成的方法存根
-				
-			}
-			
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO 自动生成的方法存根
-				
-			}
-			
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO 自动生成的方法存根
-				
-			}
-			
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// TODO 自动生成的方法存根
-				if(password.getText().equals("密码"))
-					password.setText("");
-			}
-		});
-		password.setText("密码");
+		password = new JPasswordField(20);
 		confirm = new JButton("确认");
+		confirm.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO 自动生成的方法存根
+				loginAction(account.getText(),new String(password.getPassword()));
+			}
+		});
 		query = new JButton("快递查询");
+		query.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO 自动生成的方法存根
+				queryFrame = new QueryFrame();
+				setVisible(false);
+				queryFrame.comeout();
+			}
+		});
 		this.setSize(350, 200);
 		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		this.setLayout(new GridLayout(3,1));
+		pn1.add(new JLabel("帐号"));
 		pn1.add(account);
+		pn2.add(new JLabel("密码"));
 		pn2.add(password);
 		pn3.add(confirm);
 		pn3.add(query);
@@ -135,4 +64,9 @@ public class LoginFrame extends JFrame{
 		this.setResizable(false);
 		this.setVisible(true);
 	}
+	 private void loginAction(String account, String password){//还要完善
+		 mainFrame = new MainFrame();
+		 mainFrame.comeout();
+		 this.setVisible(false);
+	 }
 }
