@@ -2,7 +2,7 @@ package edu.nju.dataservice.infodataservice;
 
 import java.util.ArrayList;
 
-import edu.nju.po.BusinessManPO;
+
 import edu.nju.po.CarPO;
 import edu.nju.po.DriverPO;
 import edu.nju.po.InstitutionPO;
@@ -47,8 +47,8 @@ public class InfoDataService_stub {
 	}
 	public ArrayList<InstitutionPO> findInstitution(){
 		ArrayList<InstitutionPO> t=new ArrayList<InstitutionPO>();
-		t.add(new InstitutionPO());//这边可以提供一些参数用来构造PO
-		t.add(new InstitutionPO());
+//		t.add(new InstitutionPO());//这边可以提供一些参数用来构造PO
+//		t.add(new InstitutionPO());
 		return t;
 	}
 	public double  getDistance(String city1,String city2){
