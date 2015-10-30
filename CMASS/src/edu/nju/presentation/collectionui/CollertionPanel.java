@@ -21,20 +21,28 @@ public class CollertionPanel extends JPanel{
 	private JTextField textField_12;
 	private JTextField textField_13;
 	public CollertionPanel() {
-		setLayout(new GridLayout(11, 0, 0, 0));
+		
+		ButtonGroup buttonGroup = new ButtonGroup();
+		
+		ButtonGroup buttonGroup2 = new ButtonGroup();
+		setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
+		
+		JPanel panel_11 = new JPanel();
+		add(panel_11);
+		panel_11.setLayout(new GridLayout(11, 0, 0, 0));
 		
 		JPanel panel = new JPanel();
+		panel_11.add(panel);
 		FlowLayout flowLayout = (FlowLayout) panel.getLayout();
 		flowLayout.setAlignment(FlowLayout.LEFT);
-		add(panel);
 		
 		JLabel label = new JLabel("\u5BC4\u4EF6\u4EBA");
 		panel.add(label);
 		
 		JPanel panel_1 = new JPanel();
+		panel_11.add(panel_1);
 		FlowLayout flowLayout_1 = (FlowLayout) panel_1.getLayout();
 		flowLayout_1.setAlignment(FlowLayout.LEFT);
-		add(panel_1);
 		
 		JLabel label_1 = new JLabel("\u59D3\u540D");
 		panel_1.add(label_1);
@@ -58,9 +66,9 @@ public class CollertionPanel extends JPanel{
 		textField_2.setColumns(20);
 		
 		JPanel panel_2 = new JPanel();
+		panel_11.add(panel_2);
 		FlowLayout flowLayout_2 = (FlowLayout) panel_2.getLayout();
 		flowLayout_2.setAlignment(FlowLayout.LEFT);
-		add(panel_2);
 		
 		JLabel label_4 = new JLabel("\u5730\u5740");
 		panel_2.add(label_4);
@@ -70,17 +78,17 @@ public class CollertionPanel extends JPanel{
 		textField_3.setColumns(40);
 		
 		JPanel panel_3 = new JPanel();
+		panel_11.add(panel_3);
 		FlowLayout flowLayout_3 = (FlowLayout) panel_3.getLayout();
 		flowLayout_3.setAlignment(FlowLayout.LEFT);
-		add(panel_3);
 		
 		JLabel label_8 = new JLabel("\u5BC4\u4EF6\u4EBA");
 		panel_3.add(label_8);
 		
 		JPanel panel_4 = new JPanel();
+		panel_11.add(panel_4);
 		FlowLayout flowLayout_4 = (FlowLayout) panel_4.getLayout();
 		flowLayout_4.setAlignment(FlowLayout.LEFT);
-		add(panel_4);
 		
 		JLabel label_5 = new JLabel("\u59D3\u540D");
 		panel_4.add(label_5);
@@ -104,9 +112,9 @@ public class CollertionPanel extends JPanel{
 		panel_4.add(textField_6);
 		
 		JPanel panel_5 = new JPanel();
+		panel_11.add(panel_5);
 		FlowLayout flowLayout_5 = (FlowLayout) panel_5.getLayout();
 		flowLayout_5.setAlignment(FlowLayout.LEFT);
-		add(panel_5);
 		
 		JLabel label_9 = new JLabel("\u5730\u5740");
 		panel_5.add(label_9);
@@ -116,17 +124,17 @@ public class CollertionPanel extends JPanel{
 		panel_5.add(textField_7);
 		
 		JPanel panel_6 = new JPanel();
+		panel_11.add(panel_6);
 		FlowLayout flowLayout_6 = (FlowLayout) panel_6.getLayout();
 		flowLayout_6.setAlignment(FlowLayout.LEFT);
-		add(panel_6);
 		
 		JLabel label_10 = new JLabel("\u6258\u8FD0\u8D27\u7269\u4FE1\u606F");
 		panel_6.add(label_10);
 		
 		JPanel panel_8 = new JPanel();
+		panel_11.add(panel_8);
 		FlowLayout flowLayout_7 = (FlowLayout) panel_8.getLayout();
 		flowLayout_7.setAlignment(FlowLayout.LEFT);
-		add(panel_8);
 		
 		JLabel label_11 = new JLabel("\u539F\u4EF6\u6570");
 		panel_8.add(label_11);
@@ -164,9 +172,9 @@ public class CollertionPanel extends JPanel{
 		textField_12.setColumns(5);
 		
 		JPanel panel_9 = new JPanel();
+		panel_11.add(panel_9);
 		FlowLayout flowLayout_8 = (FlowLayout) panel_9.getLayout();
 		flowLayout_8.setAlignment(FlowLayout.LEFT);
-		add(panel_9);
 		
 		JLabel label_15 = new JLabel("\u5305\u88C5\u7C7B\u578B");
 		panel_9.add(label_15);
@@ -182,17 +190,15 @@ public class CollertionPanel extends JPanel{
 		
 		JRadioButton radioButton_3 = new JRadioButton("\u5176\u4ED6");
 		panel_9.add(radioButton_3);
-		
-		ButtonGroup buttonGroup = new ButtonGroup();
 		buttonGroup.add(radioButton_1);
 		buttonGroup.add(radioButton_2);
 		buttonGroup.add(radioButton_3);
 		buttonGroup.add(radioButton);
 		
 		JPanel panel_10 = new JPanel();
+		panel_11.add(panel_10);
 		FlowLayout flowLayout_9 = (FlowLayout) panel_10.getLayout();
 		flowLayout_9.setAlignment(FlowLayout.LEFT);
-		add(panel_10);
 		
 		JLabel label_16 = new JLabel("\u5FEB\u9012\u7C7B\u578B");
 		panel_10.add(label_16);
@@ -205,16 +211,14 @@ public class CollertionPanel extends JPanel{
 		
 		JRadioButton radioButton_6 = new JRadioButton("\u7ECF\u6D4E\u5FEB\u9012");
 		panel_10.add(radioButton_6);
-		
-		ButtonGroup buttonGroup2 = new ButtonGroup();
 		buttonGroup2.add(radioButton_4);
 		buttonGroup2.add(radioButton_5);
 		buttonGroup2.add(radioButton_6);
 		
 		JPanel panel_7 = new JPanel();
+		panel_11.add(panel_7);
 		FlowLayout flowLayout_10 = (FlowLayout) panel_7.getLayout();
 		flowLayout_10.setAlignment(FlowLayout.LEFT);
-		add(panel_7);
 		
 		JLabel label_17 = new JLabel("\u79CD\u7C7B");
 		panel_7.add(label_17);
