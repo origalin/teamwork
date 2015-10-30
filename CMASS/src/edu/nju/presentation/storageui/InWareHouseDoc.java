@@ -7,6 +7,7 @@ import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
+import javax.swing.JButton;
 
 public class InWareHouseDoc extends JPanel {
 	private JTextField textField;
@@ -52,8 +53,10 @@ public class InWareHouseDoc extends JPanel {
 	private JTextField textField_40;
 	private JTextField textField_41;
 	public InWareHouseDoc() {
+		setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(0, 0, 552, 215);
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		add(scrollPane);
@@ -61,12 +64,12 @@ public class InWareHouseDoc extends JPanel {
 		JPanel panel_6 = new JPanel();
 		panel_6.setBorder(new TitledBorder(null, "\u5165\u5E93\u5355", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		scrollPane.setViewportView(panel_6);
-		panel_6.setLayout(new GridLayout(0, 2, 0, 0));
+		panel_6.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		JPanel panel = new JPanel();
 		panel_6.add(panel);
 		panel.setBorder(new TitledBorder(null, "\u5165\u5E93\u8BB0\u5F55", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel.setLayout(new GridLayout(0, 2, 0, 0));
+		panel.setLayout(new GridLayout(0, 2, 0, 5));
 		
 		JLabel label = new JLabel("\u5FEB\u9012\u7F16\u53F7");
 		panel.add(label);
@@ -120,7 +123,7 @@ public class InWareHouseDoc extends JPanel {
 		JPanel panel_1 = new JPanel();
 		panel_6.add(panel_1);
 		panel_1.setBorder(new TitledBorder(null, "\u5165\u5E93\u8BB0\u5F55", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_1.setLayout(new GridLayout(0, 2, 0, 0));
+		panel_1.setLayout(new GridLayout(0, 2, 0, 5));
 		
 		JLabel label_1 = new JLabel("\u5FEB\u9012\u7F16\u53F7");
 		panel_1.add(label_1);
@@ -174,7 +177,7 @@ public class InWareHouseDoc extends JPanel {
 		JPanel panel_2 = new JPanel();
 		panel_6.add(panel_2);
 		panel_2.setBorder(new TitledBorder(null, "\u5165\u5E93\u8BB0\u5F55", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_2.setLayout(new GridLayout(0, 2, 0, 0));
+		panel_2.setLayout(new GridLayout(0, 2, 0, 5));
 		
 		JLabel label_8 = new JLabel("\u5FEB\u9012\u7F16\u53F7");
 		panel_2.add(label_8);
@@ -228,7 +231,7 @@ public class InWareHouseDoc extends JPanel {
 		JPanel panel_3 = new JPanel();
 		panel_6.add(panel_3);
 		panel_3.setBorder(new TitledBorder(null, "\u5165\u5E93\u8BB0\u5F55", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_3.setLayout(new GridLayout(0, 2, 0, 0));
+		panel_3.setLayout(new GridLayout(0, 2, 0, 5));
 		
 		JLabel label_15 = new JLabel("\u5FEB\u9012\u7F16\u53F7");
 		panel_3.add(label_15);
@@ -386,6 +389,19 @@ public class InWareHouseDoc extends JPanel {
 		textField_41 = new JTextField();
 		textField_41.setColumns(10);
 		panel_5.add(textField_41);
+		
+		JPanel panel_7 = new JPanel();
+		panel_7.setBounds(0, 225, 552, 115);
+		add(panel_7);
+		panel_7.setLayout(null);
+		
+		JButton button = new JButton("\u65B0\u5EFA\u5165\u5E93\u8BB0\u5F55");
+		button.setBounds(418, 33, 124, 23);
+		panel_7.add(button);
+		
+		JButton btnNewButton = new JButton("\u4FDD\u5B58");
+		btnNewButton.setBounds(418, 74, 124, 23);
+		panel_7.add(btnNewButton);
 	}
 	
 
