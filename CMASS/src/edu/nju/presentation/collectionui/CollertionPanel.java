@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.GridLayout;
 import javax.swing.table.DefaultTableModel;
 import java.awt.FlowLayout;
+import java.awt.BorderLayout;
+import javax.swing.border.BevelBorder;
 
 public class CollertionPanel extends JPanel{
 	private JTextField textField;
@@ -20,16 +22,19 @@ public class CollertionPanel extends JPanel{
 	private JTextField textField_11;
 	private JTextField textField_12;
 	private JTextField textField_13;
+	private JTextField textField_14;
+	private JTextField textField_15;
 	public CollertionPanel() {
 		
 		ButtonGroup buttonGroup = new ButtonGroup();
 		
 		ButtonGroup buttonGroup2 = new ButtonGroup();
-		setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
+		setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel_11 = new JPanel();
-		add(panel_11);
-		panel_11.setLayout(new GridLayout(11, 0, 0, 0));
+		panel_11.setBorder(null);
+		add(panel_11, BorderLayout.NORTH);
+		panel_11.setLayout(new GridLayout(13, 0, 0, 0));
 		
 		JPanel panel = new JPanel();
 		panel_11.add(panel);
@@ -226,6 +231,36 @@ public class CollertionPanel extends JPanel{
 		textField_13 = new JTextField();
 		panel_7.add(textField_13);
 		textField_13.setColumns(10);
+		
+		JPanel panel_13 = new JPanel();
+		FlowLayout flowLayout_13 = (FlowLayout) panel_13.getLayout();
+		flowLayout_13.setAlignment(FlowLayout.LEFT);
+		panel_11.add(panel_13);
+		
+		JLabel label_18 = new JLabel("\u4EF7\u683C");
+		panel_13.add(label_18);
+		
+		textField_14 = new JTextField();
+		textField_14.setColumns(5);
+		panel_13.add(textField_14);
+		
+		JLabel label_19 = new JLabel("\u65F6\u95F4\u9884\u4F30");
+		panel_13.add(label_19);
+		
+		textField_15 = new JTextField();
+		textField_15.setColumns(5);
+		panel_13.add(textField_15);
+		
+		JPanel panel_12 = new JPanel();
+		FlowLayout flowLayout_12 = (FlowLayout) panel_12.getLayout();
+		flowLayout_12.setAlignment(FlowLayout.RIGHT);
+		panel_11.add(panel_12);
+		
+		JButton button = new JButton("\u62A5\u4EF7\u4E0E\u65F6\u95F4\u9884\u4F30");
+		panel_12.add(button);
+		
+		JButton button_1 = new JButton("\u8BA2\u5355\u751F\u6210");
+		panel_12.add(button_1);
 	}
 	
 }
