@@ -1,37 +1,25 @@
 package edu.nju.presentation.transformui;
 
-import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.JTextField;
 import javax.swing.JScrollPane;
-import javax.swing.SwingConstants;
-
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.BoxLayout;
-
-import java.awt.Component;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.ScrollPaneConstants;
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
+import javax.swing.ScrollPaneConstants;
+import javax.swing.table.DefaultTableModel;
 
-public class YLoadDocPanel extends JPanel{
+public class ZLoadDocPanel extends JPanel{
 	private JTextField textField_3;
 	private JTextField textField_7;
 	private JTextField textField_8;
@@ -40,14 +28,7 @@ public class YLoadDocPanel extends JPanel{
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTable table;
-	public static void main(String args[]) {
-		JFrame frame = new JFrame();
-		frame.getContentPane().add(new YLoadDocPanel());
-		frame.setVisible(true);
-		frame.setSize(800, 600);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	}
-	public YLoadDocPanel() {
+	public ZLoadDocPanel() {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{418, 168, 0};
 		gridBagLayout.rowHeights = new int[]{248, 0};
@@ -70,7 +51,7 @@ public class YLoadDocPanel extends JPanel{
 		FlowLayout flowLayout = (FlowLayout) panel.getLayout();
 		flowLayout.setAlignment(FlowLayout.LEFT);
 		
-		JLabel label = new JLabel("\u8425\u4E1A\u5385\u88C5\u8F66\u5355");
+		JLabel label = new JLabel("\u4E2D\u8F6C\u4E2D\u5FC3\u88C5\u8F66\u5355");
 		panel.add(label);
 		
 		JPanel panel_2 = new JPanel();
@@ -78,12 +59,12 @@ public class YLoadDocPanel extends JPanel{
 		FlowLayout flowLayout_2 = (FlowLayout) panel_2.getLayout();
 		flowLayout_2.setAlignment(FlowLayout.LEFT);
 		
-		JLabel label_4 = new JLabel("\u8425\u4E1A\u5385\u7F16\u53F7");
+		JLabel label_4 = new JLabel("\u4E2D\u8F6C\u4E2D\u5FC3\u7F16\u53F7");
 		panel_2.add(label_4);
 		
 		textField_3 = new JTextField();
 		panel_2.add(textField_3);
-		textField_3.setColumns(40);
+		textField_3.setColumns(38);
 		
 		JPanel panel_5 = new JPanel();
 		panel_11.add(panel_5);
@@ -140,7 +121,7 @@ public class YLoadDocPanel extends JPanel{
 		flowLayout_12.setAlignment(FlowLayout.RIGHT);
 		panel_11.add(panel_12);
 		
-		JButton button_1 = new JButton("\u751F\u6210\u8425\u4E1A\u5385\u88C5\u8F66\u5355");
+		JButton button_1 = new JButton("\u751F\u6210\u4E2D\u8F6C\u4E2D\u5FC3\u88C5\u8F66\u5355");
 		panel_12.add(button_1);
 		
 		JPanel panel_1 = new JPanel();
