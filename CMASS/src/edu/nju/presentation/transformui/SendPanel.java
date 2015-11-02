@@ -24,9 +24,9 @@ public class SendPanel extends JPanel{
 	public SendPanel() {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{119, 1, 107, 93, 0, 0};
-		gridBagLayout.rowHeights = new int[]{41, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0};
+		gridBagLayout.rowHeights = new int[]{41, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.columnWeights = new double[]{1.0, 1.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 1.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
 		JButton btnNewButton = new JButton("\u786E\u8BA4\u6536\u4EF6");
@@ -51,7 +51,6 @@ public class SendPanel extends JPanel{
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
-		gbc_scrollPane.gridheight = 5;
 		gbc_scrollPane.gridwidth = 5;
 		gbc_scrollPane.insets = new Insets(0, 0, 5, 0);
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
@@ -79,14 +78,14 @@ public class SendPanel extends JPanel{
 		GridBagConstraints gbc_button = new GridBagConstraints();
 		gbc_button.insets = new Insets(0, 0, 5, 0);
 		gbc_button.gridx = 4;
-		gbc_button.gridy = 6;
+		gbc_button.gridy = 2;
 		add(button, gbc_button);
 		
 		JLabel label_1 = new JLabel("\u6536\u4EF6\u7F16\u53F7");
 		GridBagConstraints gbc_label_1 = new GridBagConstraints();
 		gbc_label_1.insets = new Insets(0, 0, 5, 5);
 		gbc_label_1.gridx = 0;
-		gbc_label_1.gridy = 7;
+		gbc_label_1.gridy = 3;
 		add(label_1, gbc_label_1);
 		
 		textField = new JTextField();
@@ -95,7 +94,7 @@ public class SendPanel extends JPanel{
 		gbc_textField.insets = new Insets(0, 0, 5, 5);
 		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField.gridx = 1;
-		gbc_textField.gridy = 7;
+		gbc_textField.gridy = 3;
 		add(textField, gbc_textField);
 		textField.setColumns(10);
 		
@@ -103,7 +102,7 @@ public class SendPanel extends JPanel{
 		GridBagConstraints gbc_label_2 = new GridBagConstraints();
 		gbc_label_2.insets = new Insets(0, 0, 5, 5);
 		gbc_label_2.gridx = 3;
-		gbc_label_2.gridy = 7;
+		gbc_label_2.gridy = 3;
 		add(label_2, gbc_label_2);
 		
 		textField_1 = new JTextField();
@@ -111,21 +110,21 @@ public class SendPanel extends JPanel{
 		gbc_textField_1.insets = new Insets(0, 0, 5, 0);
 		gbc_textField_1.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField_1.gridx = 4;
-		gbc_textField_1.gridy = 7;
+		gbc_textField_1.gridy = 3;
 		add(textField_1, gbc_textField_1);
 		textField_1.setColumns(10);
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
 		gbc_btnNewButton.insets = new Insets(0, 0, 5, 0);
 		gbc_btnNewButton.anchor = GridBagConstraints.NORTH;
 		gbc_btnNewButton.gridx = 4;
-		gbc_btnNewButton.gridy = 8;
+		gbc_btnNewButton.gridy = 4;
 		add(btnNewButton, gbc_btnNewButton);
 		
 		JButton button_1 = new JButton("\u751F\u6210\u5230\u8FBE\u5355");
 		GridBagConstraints gbc_button_1 = new GridBagConstraints();
 		gbc_button_1.anchor = GridBagConstraints.NORTHWEST;
 		gbc_button_1.gridx = 4;
-		gbc_button_1.gridy = 9;
+		gbc_button_1.gridy = 5;
 		add(button_1, gbc_button_1);
 		
 
