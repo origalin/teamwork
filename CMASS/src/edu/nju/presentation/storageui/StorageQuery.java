@@ -13,6 +13,8 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JButton;
+import javax.swing.UIManager;
+import java.awt.Color;
 
 public class StorageQuery extends JPanel{
 	String[] columnNames={"快递编号","入库日期","目的地","区","排号","架号","位号"};
@@ -29,11 +31,12 @@ public class StorageQuery extends JPanel{
 	private JTable table_1;
 	private JTable table_2;
 	public StorageQuery() {
+		setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "\u5E93\u5B58\u76D8\u70B9", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{584, 0};
 		gridBagLayout.rowHeights = new int[]{104, 106, 106, 47, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{1.0, 1.0, 1.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
 		JPanel panel = new JPanel();
