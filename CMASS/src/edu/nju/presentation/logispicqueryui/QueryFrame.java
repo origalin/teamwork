@@ -34,4 +34,7 @@ public class QueryFrame extends JFrame{
 	public void comeout() {
 		setVisible(true);
 	}
+	public static void main(String args[]){
+		QueryFrame frame=new QueryFrame();
+	}
 }
