@@ -18,22 +18,15 @@ import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
 public class SendPanel extends JPanel{
-	private JTextField itemIDField;
-	private JTextField receiverField;
 	private JTable table;
+	private JTable table_1;
 	public SendPanel() {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{104, 1, 107, 93, 0, 0};
-		gridBagLayout.rowHeights = new int[]{41, 0, 0, 0, 0, 0, 0};
+		gridBagLayout.rowHeights = new int[]{35, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.columnWeights = new double[]{1.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 1.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 1.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
-		
-		JButton confirmButton = new JButton("\u786E\u8BA4\u6536\u4EF6");
-		confirmButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
 		
 		JPanel panel_1 = new JPanel();
 		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
@@ -58,12 +51,6 @@ public class SendPanel extends JPanel{
 		gbc_scrollPane.gridy = 1;
 		add(scrollPane, gbc_scrollPane);
 		
-		JPanel panel = new JPanel();
-		scrollPane.setColumnHeaderView(panel);
-		
-		JLabel label = new JLabel("\u6D3E\u4EF6\u5355");
-		panel.add(label);
-		
 		table = new JTable();
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
@@ -81,44 +68,36 @@ public class SendPanel extends JPanel{
 		gbc_receiveButton.gridy = 2;
 		add(receiveButton, gbc_receiveButton);
 		
-		JLabel label_1 = new JLabel("\u6536\u4EF6\u7F16\u53F7");
-		GridBagConstraints gbc_label_1 = new GridBagConstraints();
-		gbc_label_1.insets = new Insets(0, 0, 5, 5);
-		gbc_label_1.gridx = 0;
-		gbc_label_1.gridy = 3;
-		add(label_1, gbc_label_1);
+		JPanel panel = new JPanel();
+		GridBagConstraints gbc_panel = new GridBagConstraints();
+		gbc_panel.gridwidth = 5;
+		gbc_panel.insets = new Insets(0, 0, 5, 0);
+		gbc_panel.fill = GridBagConstraints.BOTH;
+		gbc_panel.gridx = 0;
+		gbc_panel.gridy = 3;
+		add(panel, gbc_panel);
 		
-		itemIDField = new JTextField();
-		GridBagConstraints gbc_itemIDField = new GridBagConstraints();
-		gbc_itemIDField.gridwidth = 2;
-		gbc_itemIDField.insets = new Insets(0, 0, 5, 5);
-		gbc_itemIDField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_itemIDField.gridx = 1;
-		gbc_itemIDField.gridy = 3;
-		add(itemIDField, gbc_itemIDField);
-		itemIDField.setColumns(10);
+		JLabel label = new JLabel("\u6536\u4EF6\u5355");
+		panel.add(label);
 		
-		JLabel label_2 = new JLabel("\u6536\u4EF6\u4EBA");
-		GridBagConstraints gbc_label_2 = new GridBagConstraints();
-		gbc_label_2.insets = new Insets(0, 0, 5, 5);
-		gbc_label_2.gridx = 3;
-		gbc_label_2.gridy = 3;
-		add(label_2, gbc_label_2);
+		JScrollPane scrollPane_1 = new JScrollPane();
+		GridBagConstraints gbc_scrollPane_1 = new GridBagConstraints();
+		gbc_scrollPane_1.gridwidth = 5;
+		gbc_scrollPane_1.insets = new Insets(0, 0, 5, 0);
+		gbc_scrollPane_1.fill = GridBagConstraints.BOTH;
+		gbc_scrollPane_1.gridx = 0;
+		gbc_scrollPane_1.gridy = 4;
+		add(scrollPane_1, gbc_scrollPane_1);
 		
-		receiverField = new JTextField();
-		GridBagConstraints gbc_receiverField = new GridBagConstraints();
-		gbc_receiverField.insets = new Insets(0, 0, 5, 0);
-		gbc_receiverField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_receiverField.gridx = 4;
-		gbc_receiverField.gridy = 3;
-		add(receiverField, gbc_receiverField);
-		receiverField.setColumns(10);
-		GridBagConstraints gbc_confirmButton = new GridBagConstraints();
-		gbc_confirmButton.insets = new Insets(0, 0, 5, 0);
-		gbc_confirmButton.anchor = GridBagConstraints.NORTH;
-		gbc_confirmButton.gridx = 4;
-		gbc_confirmButton.gridy = 4;
-		add(confirmButton, gbc_confirmButton);
+		table_1 = new JTable();
+		table_1.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"\u6536\u4EF6\u5355", "\u6536\u4EF6\u4EBA"
+			}
+		));
+		scrollPane_1.setViewportView(table_1);
 		
 		JButton createButtom = new JButton("\u751F\u6210\u6536\u4EF6\u5355");
 		GridBagConstraints gbc_createButtom = new GridBagConstraints();
