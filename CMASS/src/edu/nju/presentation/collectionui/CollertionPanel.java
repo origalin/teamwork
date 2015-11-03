@@ -8,22 +8,22 @@ import java.awt.BorderLayout;
 import javax.swing.border.BevelBorder;
 
 public class CollertionPanel extends JPanel{
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_7;
-	private JTextField textField_8;
-	private JTextField textField_9;
-	private JTextField textField_10;
-	private JTextField textField_11;
-	private JTextField textField_12;
-	private JTextField textField_13;
-	private JTextField textField_14;
-	private JTextField textField_15;
+	private JTextField sNameField;
+	private JTextField sMobilePhoneField;
+	private JTextField sTelePhoneField;
+	private JTextField sAddressField;
+	private JTextField rNameField;
+	private JTextField rMobilePhoneField;
+	private JTextField rTelePhoneField;
+	private JTextField rAddressField;
+	private JTextField numField;
+	private JTextField weightField;
+	private JTextField lengthField;
+	private JTextField widethField;
+	private JTextField heightField;
+	private JTextField kindField;
+	private JTextField priceField;
+	private JTextField timeField;
 	public CollertionPanel() {
 		
 		ButtonGroup buttonGroup = new ButtonGroup();
@@ -52,23 +52,23 @@ public class CollertionPanel extends JPanel{
 		JLabel label_1 = new JLabel("\u59D3\u540D");
 		panel_1.add(label_1);
 		
-		textField = new JTextField();
-		panel_1.add(textField);
-		textField.setColumns(10);
+		sNameField = new JTextField();
+		panel_1.add(sNameField);
+		sNameField.setColumns(10);
 		
 		JLabel label_3 = new JLabel("\u624B\u673A");
 		panel_1.add(label_3);
 		
-		textField_1 = new JTextField();
-		panel_1.add(textField_1);
-		textField_1.setColumns(20);
+		sMobilePhoneField = new JTextField();
+		panel_1.add(sMobilePhoneField);
+		sMobilePhoneField.setColumns(20);
 		
 		JLabel label_2 = new JLabel("\u7535\u8BDD");
 		panel_1.add(label_2);
 		
-		textField_2 = new JTextField();
-		panel_1.add(textField_2);
-		textField_2.setColumns(20);
+		sTelePhoneField = new JTextField();
+		panel_1.add(sTelePhoneField);
+		sTelePhoneField.setColumns(20);
 		
 		JPanel panel_2 = new JPanel();
 		panel_11.add(panel_2);
@@ -78,16 +78,16 @@ public class CollertionPanel extends JPanel{
 		JLabel label_4 = new JLabel("\u5730\u5740");
 		panel_2.add(label_4);
 		
-		textField_3 = new JTextField();
-		panel_2.add(textField_3);
-		textField_3.setColumns(40);
+		sAddressField = new JTextField();
+		panel_2.add(sAddressField);
+		sAddressField.setColumns(40);
 		
 		JPanel panel_3 = new JPanel();
 		panel_11.add(panel_3);
 		FlowLayout flowLayout_3 = (FlowLayout) panel_3.getLayout();
 		flowLayout_3.setAlignment(FlowLayout.LEFT);
 		
-		JLabel label_8 = new JLabel("\u5BC4\u4EF6\u4EBA");
+		JLabel label_8 = new JLabel("\u6536\u4EF6\u4EBA");
 		panel_3.add(label_8);
 		
 		JPanel panel_4 = new JPanel();
@@ -98,23 +98,23 @@ public class CollertionPanel extends JPanel{
 		JLabel label_5 = new JLabel("\u59D3\u540D");
 		panel_4.add(label_5);
 		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		panel_4.add(textField_4);
+		rNameField = new JTextField();
+		rNameField.setColumns(10);
+		panel_4.add(rNameField);
 		
 		JLabel label_6 = new JLabel("\u624B\u673A");
 		panel_4.add(label_6);
 		
-		textField_5 = new JTextField();
-		textField_5.setColumns(20);
-		panel_4.add(textField_5);
+		rMobilePhoneField = new JTextField();
+		rMobilePhoneField.setColumns(20);
+		panel_4.add(rMobilePhoneField);
 		
 		JLabel label_7 = new JLabel("\u7535\u8BDD");
 		panel_4.add(label_7);
 		
-		textField_6 = new JTextField();
-		textField_6.setColumns(20);
-		panel_4.add(textField_6);
+		rTelePhoneField = new JTextField();
+		rTelePhoneField.setColumns(20);
+		panel_4.add(rTelePhoneField);
 		
 		JPanel panel_5 = new JPanel();
 		panel_11.add(panel_5);
@@ -124,9 +124,9 @@ public class CollertionPanel extends JPanel{
 		JLabel label_9 = new JLabel("\u5730\u5740");
 		panel_5.add(label_9);
 		
-		textField_7 = new JTextField();
-		textField_7.setColumns(40);
-		panel_5.add(textField_7);
+		rAddressField = new JTextField();
+		rAddressField.setColumns(40);
+		panel_5.add(rAddressField);
 		
 		JPanel panel_6 = new JPanel();
 		panel_11.add(panel_6);
@@ -144,37 +144,37 @@ public class CollertionPanel extends JPanel{
 		JLabel label_11 = new JLabel("\u539F\u4EF6\u6570");
 		panel_8.add(label_11);
 		
-		textField_8 = new JTextField();
-		panel_8.add(textField_8);
-		textField_8.setColumns(5);
+		numField = new JTextField();
+		panel_8.add(numField);
+		numField.setColumns(5);
 		
 		JLabel lblNewLabel = new JLabel("\u91CD\u91CF");
 		panel_8.add(lblNewLabel);
 		
-		textField_9 = new JTextField();
-		panel_8.add(textField_9);
-		textField_9.setColumns(5);
+		weightField = new JTextField();
+		panel_8.add(weightField);
+		weightField.setColumns(5);
 		
 		JLabel label_12 = new JLabel("\u4F53\u79EF");
 		panel_8.add(label_12);
 		
-		textField_10 = new JTextField();
-		panel_8.add(textField_10);
-		textField_10.setColumns(5);
+		lengthField = new JTextField();
+		panel_8.add(lengthField);
+		lengthField.setColumns(5);
 		
 		JLabel label_13 = new JLabel("*");
 		panel_8.add(label_13);
 		
-		textField_11 = new JTextField();
-		panel_8.add(textField_11);
-		textField_11.setColumns(5);
+		widethField = new JTextField();
+		panel_8.add(widethField);
+		widethField.setColumns(5);
 		
 		JLabel label_14 = new JLabel("*");
 		panel_8.add(label_14);
 		
-		textField_12 = new JTextField();
-		panel_8.add(textField_12);
-		textField_12.setColumns(5);
+		heightField = new JTextField();
+		panel_8.add(heightField);
+		heightField.setColumns(5);
 		
 		JPanel panel_9 = new JPanel();
 		panel_11.add(panel_9);
@@ -184,21 +184,21 @@ public class CollertionPanel extends JPanel{
 		JLabel label_15 = new JLabel("\u5305\u88C5\u7C7B\u578B");
 		panel_9.add(label_15);
 		
-		JRadioButton radioButton = new JRadioButton("\u6728\u7BB1");
-		panel_9.add(radioButton);
+		JRadioButton woodradio = new JRadioButton("\u6728\u7BB1");
+		panel_9.add(woodradio);
 		
-		JRadioButton radioButton_1 = new JRadioButton("\u7EB8\u7BB1");
-		panel_9.add(radioButton_1);
+		JRadioButton paperradio = new JRadioButton("\u7EB8\u7BB1");
+		panel_9.add(paperradio);
 		
-		JRadioButton radioButton_2 = new JRadioButton("\u5FEB\u9012\u888B");
-		panel_9.add(radioButton_2);
+		JRadioButton bagradio = new JRadioButton("\u5FEB\u9012\u888B");
+		panel_9.add(bagradio);
 		
-		JRadioButton radioButton_3 = new JRadioButton("\u5176\u4ED6");
-		panel_9.add(radioButton_3);
-		buttonGroup.add(radioButton_1);
-		buttonGroup.add(radioButton_2);
-		buttonGroup.add(radioButton_3);
-		buttonGroup.add(radioButton);
+		JRadioButton otherradio = new JRadioButton("\u5176\u4ED6");
+		panel_9.add(otherradio);
+		buttonGroup.add(paperradio);
+		buttonGroup.add(bagradio);
+		buttonGroup.add(otherradio);
+		buttonGroup.add(woodradio);
 		
 		JPanel panel_10 = new JPanel();
 		panel_11.add(panel_10);
@@ -208,17 +208,17 @@ public class CollertionPanel extends JPanel{
 		JLabel label_16 = new JLabel("\u5FEB\u9012\u7C7B\u578B");
 		panel_10.add(label_16);
 		
-		JRadioButton radioButton_4 = new JRadioButton("\u7279\u5FEB\u5FEB\u9012");
-		panel_10.add(radioButton_4);
+		JRadioButton superradio = new JRadioButton("\u7279\u5FEB\u5FEB\u9012");
+		panel_10.add(superradio);
 		
-		JRadioButton radioButton_5 = new JRadioButton("\u6807\u51C6\u5FEB\u9012");
-		panel_10.add(radioButton_5);
+		JRadioButton stantardradio = new JRadioButton("\u6807\u51C6\u5FEB\u9012");
+		panel_10.add(stantardradio);
 		
-		JRadioButton radioButton_6 = new JRadioButton("\u7ECF\u6D4E\u5FEB\u9012");
-		panel_10.add(radioButton_6);
-		buttonGroup2.add(radioButton_4);
-		buttonGroup2.add(radioButton_5);
-		buttonGroup2.add(radioButton_6);
+		JRadioButton cheapradio = new JRadioButton("\u7ECF\u6D4E\u5FEB\u9012");
+		panel_10.add(cheapradio);
+		buttonGroup2.add(superradio);
+		buttonGroup2.add(stantardradio);
+		buttonGroup2.add(cheapradio);
 		
 		JPanel panel_7 = new JPanel();
 		panel_11.add(panel_7);
@@ -228,9 +228,9 @@ public class CollertionPanel extends JPanel{
 		JLabel label_17 = new JLabel("\u79CD\u7C7B");
 		panel_7.add(label_17);
 		
-		textField_13 = new JTextField();
-		panel_7.add(textField_13);
-		textField_13.setColumns(10);
+		kindField = new JTextField();
+		panel_7.add(kindField);
+		kindField.setColumns(10);
 		
 		JPanel panel_13 = new JPanel();
 		FlowLayout flowLayout_13 = (FlowLayout) panel_13.getLayout();
@@ -240,27 +240,27 @@ public class CollertionPanel extends JPanel{
 		JLabel label_18 = new JLabel("\u4EF7\u683C");
 		panel_13.add(label_18);
 		
-		textField_14 = new JTextField();
-		textField_14.setColumns(5);
-		panel_13.add(textField_14);
+		priceField = new JTextField();
+		priceField.setColumns(5);
+		panel_13.add(priceField);
 		
 		JLabel label_19 = new JLabel("\u65F6\u95F4\u9884\u4F30");
 		panel_13.add(label_19);
 		
-		textField_15 = new JTextField();
-		textField_15.setColumns(5);
-		panel_13.add(textField_15);
+		timeField = new JTextField();
+		timeField.setColumns(5);
+		panel_13.add(timeField);
 		
 		JPanel panel_12 = new JPanel();
 		FlowLayout flowLayout_12 = (FlowLayout) panel_12.getLayout();
 		flowLayout_12.setAlignment(FlowLayout.RIGHT);
 		panel_11.add(panel_12);
 		
-		JButton button = new JButton("\u62A5\u4EF7\u4E0E\u65F6\u95F4\u9884\u4F30");
-		panel_12.add(button);
+		JButton estimateButton = new JButton("\u62A5\u4EF7\u4E0E\u65F6\u95F4\u9884\u4F30");
+		panel_12.add(estimateButton);
 		
-		JButton button_1 = new JButton("\u8BA2\u5355\u751F\u6210");
-		panel_12.add(button_1);
+		JButton createButton = new JButton("\u8BA2\u5355\u751F\u6210");
+		panel_12.add(createButton);
 	}
 	
 }

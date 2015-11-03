@@ -18,19 +18,19 @@ import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
 public class SendPanel extends JPanel{
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField itemIDField;
+	private JTextField receiverField;
 	private JTable table;
 	public SendPanel() {
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{119, 1, 107, 93, 0, 0};
+		gridBagLayout.columnWidths = new int[]{104, 1, 107, 93, 0, 0};
 		gridBagLayout.rowHeights = new int[]{41, 0, 0, 0, 0, 0, 0};
-		gridBagLayout.columnWeights = new double[]{1.0, 1.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.columnWeights = new double[]{1.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 1.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
-		JButton btnNewButton = new JButton("\u786E\u8BA4\u6536\u4EF6");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton confirmButton = new JButton("\u786E\u8BA4\u6536\u4EF6");
+		confirmButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
@@ -74,12 +74,12 @@ public class SendPanel extends JPanel{
 		));
 		scrollPane.setViewportView(table);
 		
-		JButton button = new JButton("\u586B\u5199\u6536\u4EF6\u5355");
-		GridBagConstraints gbc_button = new GridBagConstraints();
-		gbc_button.insets = new Insets(0, 0, 5, 0);
-		gbc_button.gridx = 4;
-		gbc_button.gridy = 2;
-		add(button, gbc_button);
+		JButton receiveButton = new JButton("\u586B\u5199\u6536\u4EF6\u5355");
+		GridBagConstraints gbc_receiveButton = new GridBagConstraints();
+		gbc_receiveButton.insets = new Insets(0, 0, 5, 0);
+		gbc_receiveButton.gridx = 4;
+		gbc_receiveButton.gridy = 2;
+		add(receiveButton, gbc_receiveButton);
 		
 		JLabel label_1 = new JLabel("\u6536\u4EF6\u7F16\u53F7");
 		GridBagConstraints gbc_label_1 = new GridBagConstraints();
@@ -88,15 +88,15 @@ public class SendPanel extends JPanel{
 		gbc_label_1.gridy = 3;
 		add(label_1, gbc_label_1);
 		
-		textField = new JTextField();
-		GridBagConstraints gbc_textField = new GridBagConstraints();
-		gbc_textField.gridwidth = 2;
-		gbc_textField.insets = new Insets(0, 0, 5, 5);
-		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField.gridx = 1;
-		gbc_textField.gridy = 3;
-		add(textField, gbc_textField);
-		textField.setColumns(10);
+		itemIDField = new JTextField();
+		GridBagConstraints gbc_itemIDField = new GridBagConstraints();
+		gbc_itemIDField.gridwidth = 2;
+		gbc_itemIDField.insets = new Insets(0, 0, 5, 5);
+		gbc_itemIDField.fill = GridBagConstraints.HORIZONTAL;
+		gbc_itemIDField.gridx = 1;
+		gbc_itemIDField.gridy = 3;
+		add(itemIDField, gbc_itemIDField);
+		itemIDField.setColumns(10);
 		
 		JLabel label_2 = new JLabel("\u6536\u4EF6\u4EBA");
 		GridBagConstraints gbc_label_2 = new GridBagConstraints();
@@ -105,27 +105,27 @@ public class SendPanel extends JPanel{
 		gbc_label_2.gridy = 3;
 		add(label_2, gbc_label_2);
 		
-		textField_1 = new JTextField();
-		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
-		gbc_textField_1.insets = new Insets(0, 0, 5, 0);
-		gbc_textField_1.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_1.gridx = 4;
-		gbc_textField_1.gridy = 3;
-		add(textField_1, gbc_textField_1);
-		textField_1.setColumns(10);
-		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
-		gbc_btnNewButton.insets = new Insets(0, 0, 5, 0);
-		gbc_btnNewButton.anchor = GridBagConstraints.NORTH;
-		gbc_btnNewButton.gridx = 4;
-		gbc_btnNewButton.gridy = 4;
-		add(btnNewButton, gbc_btnNewButton);
+		receiverField = new JTextField();
+		GridBagConstraints gbc_receiverField = new GridBagConstraints();
+		gbc_receiverField.insets = new Insets(0, 0, 5, 0);
+		gbc_receiverField.fill = GridBagConstraints.HORIZONTAL;
+		gbc_receiverField.gridx = 4;
+		gbc_receiverField.gridy = 3;
+		add(receiverField, gbc_receiverField);
+		receiverField.setColumns(10);
+		GridBagConstraints gbc_confirmButton = new GridBagConstraints();
+		gbc_confirmButton.insets = new Insets(0, 0, 5, 0);
+		gbc_confirmButton.anchor = GridBagConstraints.NORTH;
+		gbc_confirmButton.gridx = 4;
+		gbc_confirmButton.gridy = 4;
+		add(confirmButton, gbc_confirmButton);
 		
-		JButton button_1 = new JButton("\u751F\u6210\u5230\u8FBE\u5355");
-		GridBagConstraints gbc_button_1 = new GridBagConstraints();
-		gbc_button_1.anchor = GridBagConstraints.NORTHWEST;
-		gbc_button_1.gridx = 4;
-		gbc_button_1.gridy = 5;
-		add(button_1, gbc_button_1);
+		JButton createButtom = new JButton("\u751F\u6210\u6536\u4EF6\u5355");
+		GridBagConstraints gbc_createButtom = new GridBagConstraints();
+		gbc_createButtom.anchor = GridBagConstraints.NORTH;
+		gbc_createButtom.gridx = 4;
+		gbc_createButtom.gridy = 5;
+		add(createButtom, gbc_createButtom);
 		
 
 	}
