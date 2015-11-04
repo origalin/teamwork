@@ -32,7 +32,6 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.ListSelectionModel;
 
 public class YLoadDocPanel extends JPanel{
-	private JTextField businessHallIDField;
 	private JTextField carIDField;
 	private JTextField watcherField;
 	private JTextField deliverField;
@@ -82,29 +81,12 @@ public class YLoadDocPanel extends JPanel{
 		JLabel label = new JLabel("\u8425\u4E1A\u5385\u88C5\u8F66\u5355");
 		panel.add(label);
 		
-		JPanel panel_2 = new JPanel();
-		GridBagConstraints gbc_panel_2 = new GridBagConstraints();
-		gbc_panel_2.fill = GridBagConstraints.BOTH;
-		gbc_panel_2.insets = new Insets(0, 0, 5, 0);
-		gbc_panel_2.gridx = 0;
-		gbc_panel_2.gridy = 1;
-		panel_11.add(panel_2, gbc_panel_2);
-		FlowLayout flowLayout_2 = (FlowLayout) panel_2.getLayout();
-		flowLayout_2.setAlignment(FlowLayout.LEFT);
-		
-		JLabel label_4 = new JLabel("\u8425\u4E1A\u5385\u7F16\u53F7");
-		panel_2.add(label_4);
-		
-		businessHallIDField = new JTextField();
-		panel_2.add(businessHallIDField);
-		businessHallIDField.setColumns(40);
-		
 		JPanel panel_6 = new JPanel();
 		GridBagConstraints gbc_panel_6 = new GridBagConstraints();
 		gbc_panel_6.fill = GridBagConstraints.BOTH;
 		gbc_panel_6.insets = new Insets(0, 0, 5, 0);
 		gbc_panel_6.gridx = 0;
-		gbc_panel_6.gridy = 2;
+		gbc_panel_6.gridy = 1;
 		panel_11.add(panel_6, gbc_panel_6);
 		FlowLayout flowLayout_6 = (FlowLayout) panel_6.getLayout();
 		flowLayout_6.setAlignment(FlowLayout.LEFT);
@@ -121,7 +103,7 @@ public class YLoadDocPanel extends JPanel{
 		gbc_panel_8.insets = new Insets(0, 0, 5, 0);
 		gbc_panel_8.fill = GridBagConstraints.BOTH;
 		gbc_panel_8.gridx = 0;
-		gbc_panel_8.gridy = 3;
+		gbc_panel_8.gridy = 2;
 		panel_11.add(panel_8, gbc_panel_8);
 		FlowLayout flowLayout_7 = (FlowLayout) panel_8.getLayout();
 		flowLayout_7.setAlignment(FlowLayout.LEFT);

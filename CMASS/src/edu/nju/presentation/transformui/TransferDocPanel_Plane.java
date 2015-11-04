@@ -20,11 +20,12 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.table.DefaultTableModel;
 
 public class TransferDocPanel_Plane extends JPanel{
-	private JTextField carIDField;
+	private JTextField planeSequenceField;
 	private JTextField watcherField;
 	private JTextField targetField;
 	private JTextField itemIDField;
 	private JTable table;
+	private JTextField boxField;
 	public TransferDocPanel_Plane() {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{418, 168, 0};
@@ -72,7 +73,7 @@ public class TransferDocPanel_Plane extends JPanel{
 				FlowLayout flowLayout_6 = (FlowLayout) panel_6.getLayout();
 				flowLayout_6.setAlignment(FlowLayout.LEFT);
 				
-				JLabel label_10 = new JLabel("\u5230\u8FBE\u5730    ");
+				JLabel label_10 = new JLabel("\u5230\u8FBE\u5730  ");
 				panel_6.add(label_10);
 				
 				targetField = new JTextField();
@@ -89,12 +90,19 @@ public class TransferDocPanel_Plane extends JPanel{
 		FlowLayout flowLayout_7 = (FlowLayout) panel_8.getLayout();
 		flowLayout_7.setAlignment(FlowLayout.LEFT);
 		
-		JLabel label_11 = new JLabel("\u8F66\u8F86\u4EE3\u53F7  ");
+		JLabel label_11 = new JLabel("\u822A\u73ED\u53F7  ");
 		panel_8.add(label_11);
 		
-		carIDField = new JTextField();
-		panel_8.add(carIDField);
-		carIDField.setColumns(5);
+		planeSequenceField = new JTextField();
+		panel_8.add(planeSequenceField);
+		planeSequenceField.setColumns(5);
+		
+		JLabel lblNewLabel_1 = new JLabel("\u8D27\u67DC\u53F7");
+		panel_8.add(lblNewLabel_1);
+		
+		boxField = new JTextField();
+		panel_8.add(boxField);
+		boxField.setColumns(5);
 		
 		JLabel lblNewLabel = new JLabel("\u76D1\u88C5\u5458");
 		panel_8.add(lblNewLabel);

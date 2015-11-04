@@ -20,7 +20,7 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.table.DefaultTableModel;
 
 public class TransferDocPanel_Car extends JPanel{
-	private JTextField carIDField;
+	private JTextField carSequenceField;
 	private JTextField watcherField;
 	private JTextField targetField;
 	private JTextField itemIDField;
@@ -72,7 +72,7 @@ public class TransferDocPanel_Car extends JPanel{
 				FlowLayout flowLayout_6 = (FlowLayout) panel_6.getLayout();
 				flowLayout_6.setAlignment(FlowLayout.LEFT);
 				
-				JLabel label_10 = new JLabel("\u5230\u8FBE\u5730    ");
+				JLabel label_10 = new JLabel("\u5230\u8FBE\u5730  ");
 				panel_6.add(label_10);
 				
 				targetField = new JTextField();
@@ -89,12 +89,12 @@ public class TransferDocPanel_Car extends JPanel{
 		FlowLayout flowLayout_7 = (FlowLayout) panel_8.getLayout();
 		flowLayout_7.setAlignment(FlowLayout.LEFT);
 		
-		JLabel label_11 = new JLabel("\u8F66\u8F86\u4EE3\u53F7  ");
+		JLabel label_11 = new JLabel("\u8F66\u6B21\u53F7  ");
 		panel_8.add(label_11);
 		
-		carIDField = new JTextField();
-		panel_8.add(carIDField);
-		carIDField.setColumns(5);
+		carSequenceField = new JTextField();
+		panel_8.add(carSequenceField);
+		carSequenceField.setColumns(5);
 		
 		JLabel lblNewLabel = new JLabel("\u76D1\u88C5\u5458");
 		panel_8.add(lblNewLabel);
