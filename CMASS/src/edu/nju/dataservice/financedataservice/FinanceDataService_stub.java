@@ -7,10 +7,10 @@ import edu.nju.po.GatheringDocPO;
 import edu.nju.po.PayDocPO;
 import edu.nju.tools.Time;
 
-public class FinanceDataService_Stub implements FinanceDataService{
+public class FinanceDataService_stub implements FinanceDataService{
 	
 
-	public FinanceDataService_Stub(int rent,
+	public FinanceDataService_stub(int rent,
 			ArrayList<AccountPO> accountPOList,
 			ArrayList<PayDocPO> payDocPOList,
 			ArrayList<GatheringDocPO> gatheringDocPOList) {
