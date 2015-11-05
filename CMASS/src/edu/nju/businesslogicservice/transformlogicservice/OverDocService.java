@@ -1,9 +1,7 @@
 package edu.nju.businesslogicservice.transformlogicservice;
 
 import edu.nju.po.OverDocPO;
-import edu.nju.po.YDeliverDocPO;
 import edu.nju.vo.OverDocVO;
-import edu.nju.vo.YDeliverDocVO;
 
 public interface OverDocService {
 	public void saveOverDocPO(OverDocPO po);//保存收件单持久化对象
