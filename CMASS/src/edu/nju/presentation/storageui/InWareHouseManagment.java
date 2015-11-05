@@ -22,7 +22,6 @@ public class InWareHouseManagment extends JPanel{
 	private JTable table;
 	private JScrollPane scrollPane;
 	private JButton btnNewButton;
-	private JButton button;
 	private JPanel panel;
 	private JList list;
 	private JScrollPane scrollPane_1;
@@ -92,13 +91,6 @@ public class InWareHouseManagment extends JPanel{
 		gbc_btnNewButton.gridx = 4;
 		gbc_btnNewButton.gridy = 2;
 		add(btnNewButton, gbc_btnNewButton);
-		
-		button = new JButton("\u4FDD\u5B58");
-		GridBagConstraints gbc_button = new GridBagConstraints();
-		gbc_button.insets = new Insets(0, 0, 0, 5);
-		gbc_button.gridx = 4;
-		gbc_button.gridy = 3;
-		add(button, gbc_button);
 		
 	}
 }

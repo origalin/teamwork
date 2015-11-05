@@ -39,7 +39,7 @@ public class OutWareHouseManagment extends JPanel{
 		setBorder(new TitledBorder(null, "\u51FA\u5E93\u7BA1\u7406", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{114, 223, 0, 0};
-		gridBagLayout.rowHeights = new int[]{20, 0, 0, 0, 0};
+		gridBagLayout.rowHeights = new int[]{20, 171, 0, 0, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 1.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
@@ -87,11 +87,5 @@ public class OutWareHouseManagment extends JPanel{
 		gbc_btnNewButton.gridx = 2;
 		gbc_btnNewButton.gridy = 2;
 		add(btnNewButton, gbc_btnNewButton);
-		
-		JButton button = new JButton("\u786E\u8BA4");
-		GridBagConstraints gbc_button = new GridBagConstraints();
-		gbc_button.gridx = 2;
-		gbc_button.gridy = 3;
-		add(button, gbc_button);
 	}
 }
