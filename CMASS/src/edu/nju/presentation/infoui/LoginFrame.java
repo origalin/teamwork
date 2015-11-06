@@ -10,8 +10,10 @@ import java.awt.event.MouseListener;
 
 import javax.swing.*;
 
+import edu.nju.presentation.collectionui.CollertionPanel;
 import edu.nju.presentation.logispicqueryui.QueryFrame;
 import edu.nju.presentation.mainui.MainFrame;
+import edu.nju.presentation.transformui.SendPanel;
 
 @SuppressWarnings("serial")
 public class LoginFrame extends JFrame{
@@ -67,6 +69,7 @@ public class LoginFrame extends JFrame{
 	 private void loginAction(String account, String password){//»¹ÒªÍêÉÆ
 		 mainFrame = new MainFrame();
 		 mainFrame.comeout();
+		 mainFrame.changeFunctionPanel(new CollertionPanel());
 		 this.setVisible(false);
 	 }
 }
