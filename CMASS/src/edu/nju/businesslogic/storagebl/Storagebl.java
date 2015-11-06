@@ -8,25 +8,25 @@ public class Storagebl implements StorageLogicService{
 
 	@Override
 	public InWareHouseDocVO getInWareHouseDocVO_Transfer(int TransferDocID) {
-		// TODO Auto-generated method stub
+		// 对运输模块有依赖，ArrayList<Integer> getSendDocIDList(int TransferID)
 		return null;
 	}
 
 	@Override
 	public InWareHouseDocVO getInWareHouseDocVO_YloadDoc(int YloadDocID) {
-		// TODO Auto-generated method stub
+		// 对运输模块有依赖，ArrayList<Integer> getSendDocIDList(int YloadDocID)
 		return null;
 	}
 
 	@Override
 	public OutWareHouseDocVO getOutWareHouseDocVO_Transfer(int TransferDocID) {
-		// TODO Auto-generated method stub
+		// 对运输模块有依赖，ArrayList<Integer> getSendDocIDList(int TransferID)
 		return null;
 	}
 
 	@Override
 	public OutWareHouseDocVO getOutWareHouseDocVO_ZloadDoc(int ZloadDocID) {
-		// TODO Auto-generated method stub
+		// 对运输模块有依赖，ArrayList<Integer> getSendDocIDList(int ZloadDocID)
 		return null;
 	}
 

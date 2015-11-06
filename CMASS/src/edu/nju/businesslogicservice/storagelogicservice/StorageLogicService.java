@@ -18,6 +18,7 @@ public interface StorageLogicService {
 	//入库管理：
 	//根据中转单编号去查找每个快递的具体信息，返回入库单VO,在调用这个方法的过程中，返回VO前已经实现了对单据文件的更新
 	public InWareHouseDocVO getInWareHouseDocVO_Transfer(int TransferDocID);
+	
 	//根据营业厅装车单编号，返回入库单VO；在调用这个方法的过程中，返回VO前已经实现了对单据文件的更新
 	public InWareHouseDocVO getInWareHouseDocVO_YloadDoc(int YloadDocID);	
 	

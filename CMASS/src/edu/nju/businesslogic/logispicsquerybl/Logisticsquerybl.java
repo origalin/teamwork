@@ -8,7 +8,7 @@ public class Logisticsquerybl implements LogispicsQueryLogicService{
 
 	@Override
 	public HistoryVO historyQuery(int SendDocID) {
-		// TODO Auto-generated method stub
+		// 对运输模块有依赖，HistoryPO getHistoryPO(int SendDocID)
 		return null;
 	}
 	
