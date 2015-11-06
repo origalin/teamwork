@@ -14,7 +14,7 @@ public interface CollectionLogicService {
 	public List<PositionPO> QueryGoodsInfo(int SendDocID);//获取快件历史轨迹
 	public List<SendDocPO> getAllSendDoc();//获取所有未审批单据
 	public int getCourierMoney(String courier);//获取快递员收取运费
-	public List<Integer> getSendDocIDList(String courier);//获取快递员创建的寄件单编号
+	public int[] getSendDocIDList(String courier);//获取快递员创建的寄件单编号
 	public SendDocVO createSendDocVO(String sName,String sAddress,String sUnit,String sPhone,
 			String rName,String rAddress,String rUnit,String rPhone
 			,int number,double weight,double[] volume
@@ -22,4 +22,5 @@ public interface CollectionLogicService {
 	public int timeEstimate(String sCity,String rCity);//时间预估
 	public double priceCalc(String sCity,String rCity,int packing,double[] volume,double weight);//运费计算
 	public SendDocVO findSendDocVO(int ID);//获取寄件单VO
+	public HistoryPO getHistoryPO(int ID);
 }

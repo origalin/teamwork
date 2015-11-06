@@ -59,7 +59,7 @@ public class CollectionLogicServiceImpl implements CollectionLogicService{
 	}
 
 	@Override
-	public List<Integer> getSendDocIDList(String courier) {
+	public int[] getSendDocIDList(String courier) {
 		// TODO 自动生成的方法存根
 		return null;
 	}
@@ -88,6 +88,12 @@ public class CollectionLogicServiceImpl implements CollectionLogicService{
 
 	@Override
 	public SendDocVO findSendDocVO(int ID) {
+		// TODO 自动生成的方法存根
+		return null;
+	}
+
+	@Override
+	public HistoryPO getHistoryPO(int ID) {
 		// TODO 自动生成的方法存根
 		return null;
 	}
