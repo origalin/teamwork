@@ -1,5 +1,8 @@
 package edu.nju.businesslogicservice.transformlogicservice;
 
+import java.util.ArrayList;
+
+import edu.nju.po.DeliverDocPO;
 import edu.nju.po.ZArrivalDocPO;
 import edu.nju.vo.ZArrivalDocVO;
 
@@ -9,4 +12,6 @@ public interface ZArrivalDocService {
 	public void changeZArrivalSequence(int ZArrivalSequence);//改变基准序列号
 	public ZArrivalDocVO createZArrivalDocVO(int TransferDocID);//创建到达单VO
 	public ZArrivalDocVO findZArrivalDocVO(int ID);//获取到达单VO
+	public ArrayList<ZArrivalDocPO> getUncheckedZArrivalDocPOs();
+
 }

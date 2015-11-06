@@ -1,5 +1,8 @@
 package edu.nju.businesslogicservice.transformlogicservice;
 
+import java.util.ArrayList;
+
+import edu.nju.po.DeliverDocPO;
 import edu.nju.po.TransferDocPO;
 import edu.nju.vo.TransferDocVO;
 
@@ -12,5 +15,6 @@ public interface TransferDocService {
 	public TransferDocVO createTransferDocVO_Plane(int transferCenterID,int carNum/*航运编号*/,int tranceID/*航班号*/,int container);//创建航运中转单VO
 	public TransferDocVO createTransferDocVO_Train(int transferCenterID,int carNum/*货运编号*/,int tranceID/*车次号*/,int carriage);//创建陆运中转单VO
 	public TransferDocVO findTransferDocVO (int ID);//获取中转单VO
-	
+	public ArrayList<TransferDocPO> getUncheckedTransferDocPOs();
+	public double[] getPriceToday();
 }

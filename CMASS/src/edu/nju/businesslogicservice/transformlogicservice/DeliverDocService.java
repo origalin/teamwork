@@ -1,5 +1,9 @@
 package edu.nju.businesslogicservice.transformlogicservice;
 
+import java.util.ArrayList;
+
+import edu.nju.po.DeliverDocPO;
+import edu.nju.po.SendDocPO;
 import edu.nju.po.YDeliverDocPO;
 import edu.nju.vo.YDeliverDocVO;
 
@@ -9,4 +13,5 @@ public interface DeliverDocService {
 	public void changeYDeliverDocSequence(int sequence);//改变派件单基准序列号
 	public YDeliverDocVO createYDeliverDocVO(String courier);//创建派件单VO
 	public YDeliverDocVO findYDeliverDocVO(int courierID);//获取派件单VO
+	public ArrayList<DeliverDocPO> getUncheckedDeliverDocPOs();
 }

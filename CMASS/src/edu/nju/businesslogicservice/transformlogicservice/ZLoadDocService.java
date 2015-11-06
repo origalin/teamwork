@@ -1,5 +1,8 @@
 package edu.nju.businesslogicservice.transformlogicservice;
 
+import java.util.ArrayList;
+
+import edu.nju.po.DeliverDocPO;
 import edu.nju.po.ZLoadDocPO;
 import edu.nju.vo.ZLoadDocVO;
 
@@ -10,4 +13,6 @@ public interface ZLoadDocService {
 	public void changeZloadSequence(int ZloadSequence);//改变基准序列号
 	public ZLoadDocVO createZLoadDocVO(int carID,String target,String watcher,String deliver);//创建装车单VO
 	public ZLoadDocVO findZLoadDocVO(int ID);//获取装车单VO/
+	public ArrayList<ZLoadDocPO> getUncheckedZLoadDocPOs();
+	public double[] getPriceToday();
 }

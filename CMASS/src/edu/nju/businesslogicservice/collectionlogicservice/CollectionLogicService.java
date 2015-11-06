@@ -1,5 +1,6 @@
 package edu.nju.businesslogicservice.collectionlogicservice;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import edu.nju.po.*;
@@ -23,4 +24,5 @@ public interface CollectionLogicService {
 	public double priceCalc(String sCity,String rCity,int packing,double[] volume,double weight);//运费计算
 	public SendDocVO findSendDocVO(int ID);//获取寄件单VO
 	public HistoryPO getHistoryPO(int ID);
+	public ArrayList<SendDocPO> getUncheckedSendDocPOs();
 }
