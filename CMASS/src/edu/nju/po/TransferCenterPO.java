@@ -1,7 +1,7 @@
 package edu.nju.po;
 
 public class TransferCenterPO extends InstitutionPO{
-	TransferCenterPO(String name,String type,String city){
+	TransferCenterPO(String name,Institutation type,String city){
 		this.city = city;
 		this.type = type;
 		this.name = name;
@@ -12,5 +12,6 @@ public class TransferCenterPO extends InstitutionPO{
 		// TODO 自动生成的方法存根
 		
 	}
+
 
 }

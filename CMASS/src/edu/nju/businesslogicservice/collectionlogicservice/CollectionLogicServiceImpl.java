@@ -101,7 +101,7 @@ public class CollectionLogicServiceImpl implements CollectionLogicService{
 
 	@Override
 	public ArrayList<SendDocPO> getUncheckedSendDocPOs() {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
