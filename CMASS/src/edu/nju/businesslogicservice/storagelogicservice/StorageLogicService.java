@@ -9,11 +9,11 @@ import edu.nju.vo.OutWareHouseDocVO;
 public interface StorageLogicService {
 	//库存盘点：
 	//获取仓库的航运区的库存记录列表
-	public ArrayList<RecordPO> getInWareHouseDocVO_Fly=new ArrayList<RecordPO>();
+	public ArrayList<RecordPO> getInWareHouseDocVO_Fly();
 	//获取仓库的货运区的库存记录列表
-	public ArrayList<RecordPO> getInWareHouseDocVO_Train=new ArrayList<RecordPO>();
+	public ArrayList<RecordPO> getInWareHouseDocVO_Train();
 	//获取仓库的汽运区的库存记录列表
-	public ArrayList<RecordPO> getInWareHouseDocVO_Car=new ArrayList<RecordPO>();	
+	public ArrayList<RecordPO> getInWareHouseDocVO_Car();	
 	
 	//入库管理：
 	//根据中转单编号去查找每个快递的具体信息，返回入库单VO,在调用这个方法的过程中，返回VO前已经实现了对单据文件的更新

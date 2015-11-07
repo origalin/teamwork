@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.3">
+  <zoom_level>10</zoom_level>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>20</x>
+      <y>50</y>
+      <w>460</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+edu.nju.businesslogicservice.storagelogicservice.InWareHouseManagementService
+--
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>480</x>
+      <y>10</y>
+      <w>460</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+edu.nju.businesslogicservice.storagelogicservice.OutWareHouseManagementService
+--
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>210</x>
+      <y>120</y>
+      <w>390</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+edu.nju.businesslogicservice.storagelogicservice.StorageInitializeService
+--
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>660</x>
+      <y>160</y>
+      <w>390</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+edu.nju.businesslogicservice.storagelogicservice.StorageModifyService
+--
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>760</x>
+      <y>80</y>
+      <w>390</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+edu.nju.businesslogicservice.storagelogicservice.StorageQueryService
+--
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>140</x>
+      <y>340</y>
+      <w>170</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>InWareHouseManagementbl
+--
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>560</x>
+      <y>330</y>
+      <w>170</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>OutWareHouseManagementbl
+--
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>390</x>
+      <y>340</y>
+      <w>120</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>StorageInitializebl
+--
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>750</x>
+      <y>330</y>
+      <w>120</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>StorageModifybl
+--
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>880</x>
+      <y>330</y>
+      <w>110</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>StorageQuerybl
+--
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>900</x>
+      <y>530</y>
+      <w>110</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>StorageTools
+--
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>150</x>
+      <y>70</y>
+      <w>120</w>
+      <h>290</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>30;30;100;270</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>920</x>
+      <y>100</y>
+      <w>50</w>
+      <h>250</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>30;30;30;230</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>400</x>
+      <y>140</y>
+      <w>50</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>30;30;30;200</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>780</x>
+      <y>180</y>
+      <w>50</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>30;30;30;150</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>600</x>
+      <y>30</y>
+      <w>50</w>
+      <h>320</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>30;30;30;300</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>720</x>
+      <y>660</y>
+      <w>110</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>WareHousePO
+--
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>240</x>
+      <y>360</y>
+      <w>500</w>
+      <h>330</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-&gt;&gt;&gt;
+m1=1
+m2=1..*</panel_attributes>
+    <additional_attributes>480;310;30;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>420</x>
+      <y>360</y>
+      <w>360</w>
+      <h>320</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-&gt;&gt;&gt;
+m1=1
+m2=1..*</panel_attributes>
+    <additional_attributes>340;300;30;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>630</x>
+      <y>350</y>
+      <w>170</w>
+      <h>330</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-&gt;&gt;&gt;
+m1=1
+m2=1..*</panel_attributes>
+    <additional_attributes>150;310;30;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>740</x>
+      <y>350</y>
+      <w>90</w>
+      <h>330</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-&gt;&gt;&gt;
+m1=1
+m2=1..*</panel_attributes>
+    <additional_attributes>70;310;30;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>800</x>
+      <y>350</y>
+      <w>140</w>
+      <h>340</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-&gt;&gt;&gt;
+m1=1
+m2=1..*</panel_attributes>
+    <additional_attributes>30;320;120;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>90</x>
+      <y>280</y>
+      <w>1010</w>
+      <h>320</h>
+    </coordinates>
+    <panel_attributes>edu.nju.bussinesslogic.Storagebl包
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>0</x>
+      <y>0</y>
+      <w>1150</w>
+      <h>620</h>
+    </coordinates>
+    <panel_attributes>pkg</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>410</x>
+      <y>660</y>
+      <w>150</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>StorageDataService
+--
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>230</x>
+      <y>360</y>
+      <w>240</w>
+      <h>320</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>220;300;30;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>370</x>
+      <y>360</y>
+      <w>110</w>
+      <h>320</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>90;300;30;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>450</x>
+      <y>350</y>
+      <w>150</w>
+      <h>330</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>30;310;130;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>470</x>
+      <y>350</y>
+      <w>310</w>
+      <h>330</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>30;310;290;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>500</x>
+      <y>350</y>
+      <w>420</w>
+      <h>330</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>30;310;400;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>530</x>
+      <y>520</y>
+      <w>390</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>30;140;370;30</additional_attributes>
+  </element>
+</diagram>

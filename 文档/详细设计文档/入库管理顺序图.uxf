@@ -87,7 +87,7 @@ bg=red</panel_attributes>
       <x>410</x>
       <y>170</y>
       <w>20</w>
-      <h>330</h>
+      <h>370</h>
     </coordinates>
     <panel_attributes>
 bg=red</panel_attributes>
@@ -97,12 +97,12 @@ bg=red</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>410</x>
-      <y>490</y>
+      <y>530</y>
       <w>30</w>
-      <h>130</h>
+      <h>90</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -112,7 +112,7 @@ bg=red</panel_attributes>
       <w>340</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-
+    <panel_attributes>lt=&lt;&lt;&lt;-
 InWareHouseDocVO getInWareHouseDocVO_Transfer(int TransferDocID)</panel_attributes>
     <additional_attributes>260.0;20.0;70.0;20.0</additional_attributes>
   </element>
@@ -171,7 +171,7 @@ bg=red</panel_attributes>
       <w>230</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-
+    <panel_attributes>lt=&lt;&lt;&lt;-
 TransferDocPO  getTransferPO(int TransferID)</panel_attributes>
     <additional_attributes>190.0;20.0;30.0;20.0</additional_attributes>
   </element>
@@ -241,7 +241,7 @@ bg=red</panel_attributes>
       <w>190</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-
+    <panel_attributes>lt=&lt;&lt;&lt;-
 long getInWareHouseDocID()</panel_attributes>
     <additional_attributes>170.0;20.0;10.0;20.0</additional_attributes>
   </element>
@@ -249,7 +249,7 @@ long getInWareHouseDocID()</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>420</x>
-      <y>440</y>
+      <y>420</y>
       <w>190</w>
       <h>40</h>
     </coordinates>
@@ -268,5 +268,40 @@ long getInWareHouseDocID()</panel_attributes>
     <panel_attributes>lt=.&gt;
 </panel_attributes>
     <additional_attributes>200.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>420</x>
+      <y>460</y>
+      <w>190</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+</panel_attributes>
+    <additional_attributes>170.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>590</x>
+      <y>490</y>
+      <w>30</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>420</x>
+      <y>440</y>
+      <w>190</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+WareHouse getWareHouse()</panel_attributes>
+    <additional_attributes>170.0;20.0;10.0;20.0</additional_attributes>
   </element>
 </diagram>

@@ -5,10 +5,19 @@ import java.util.ArrayList;
 import edu.nju.po.InWareHouseDocPO;
 import edu.nju.po.OutWareHouseDocPO;
 import edu.nju.po.RecordPO;
+import edu.nju.po.WareHousePO;
 
 public interface StorageDataService{
 	public void update(ArrayList<RecordPO> recordPO);
+	public void update(RecordPO recordPO);
 	
+	public ArrayList<RecordPO> getInWareHouseDocVO_Fly();
+
+
+	public ArrayList<RecordPO> getInWareHouseDocVO_Train();
+
+
+	public ArrayList<RecordPO> getInWareHouseDocVO_Car();
 	public long getInWareHouseDocID();//得到这次生成入库单的id应为多少
 	
 	ArrayList<RecordPO> getStorageItemList(int[] SendDocIDList);//出库时生成出库单用
@@ -18,6 +27,8 @@ public interface StorageDataService{
 	void updateOutWareHouseDoc(OutWareHouseDocPO out);
 	
 	void updateInWareHouseDoc(InWareHouseDocPO in);
+	
+	WareHousePO getWareHouse();
 	
 	public void clear();
 	

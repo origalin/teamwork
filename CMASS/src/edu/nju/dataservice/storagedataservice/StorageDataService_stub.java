@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import edu.nju.po.InWareHouseDocPO;
 import edu.nju.po.OutWareHouseDocPO;
 import edu.nju.po.RecordPO;
+import edu.nju.po.WareHousePO;
 
 public class StorageDataService_stub implements StorageDataService{
 	public void update(ArrayList<RecordPO> l){
@@ -103,6 +104,41 @@ public class StorageDataService_stub implements StorageDataService{
 	public void setAlarm(double p) {
 		// TODO Auto-generated method stub
 		
+	}
+
+
+	@Override
+	public WareHousePO getWareHouse() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public void update(RecordPO recordPO) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public ArrayList<RecordPO> getInWareHouseDocVO_Fly() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public ArrayList<RecordPO> getInWareHouseDocVO_Train() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public ArrayList<RecordPO> getInWareHouseDocVO_Car() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 
