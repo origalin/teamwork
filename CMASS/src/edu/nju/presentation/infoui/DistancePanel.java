@@ -103,27 +103,27 @@ public class DistancePanel extends JPanel {
 		
 		JPanel panel_2 = new JPanel();
 		GridBagConstraints gbc_panel_2 = new GridBagConstraints();
-		gbc_panel_2.fill = GridBagConstraints.BOTH;
+		gbc_panel_2.fill = GridBagConstraints.VERTICAL;
 		gbc_panel_2.gridx = 0;
 		gbc_panel_2.gridy = 2;
 		add(panel_2, gbc_panel_2);
 		GridBagLayout gbl_panel_2 = new GridBagLayout();
-		gbl_panel_2.columnWidths = new int[]{129, 0, 0, 0, 0};
+		gbl_panel_2.columnWidths = new int[]{97, 108, 0};
 		gbl_panel_2.rowHeights = new int[]{0, 0, 0};
-		gbl_panel_2.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_2.columnWeights = new double[]{1.0, 1.0, Double.MIN_VALUE};
 		gbl_panel_2.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
 		panel_2.setLayout(gbl_panel_2);
 		
 		JButton button = new JButton("\u786E\u8BA4\u4FEE\u6539");
 		GridBagConstraints gbc_button = new GridBagConstraints();
 		gbc_button.insets = new Insets(0, 0, 0, 5);
-		gbc_button.gridx = 1;
+		gbc_button.gridx = 0;
 		gbc_button.gridy = 1;
 		panel_2.add(button, gbc_button);
 		
 		JButton button_1 = new JButton("\u53D6\u6D88\u4FDD\u5B58");
 		GridBagConstraints gbc_button_1 = new GridBagConstraints();
-		gbc_button_1.gridx = 3;
+		gbc_button_1.gridx = 1;
 		gbc_button_1.gridy = 1;
 		panel_2.add(button_1, gbc_button_1);
 

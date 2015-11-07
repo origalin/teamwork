@@ -122,37 +122,37 @@ public class OperationPanel extends JPanel {
 		table.setSurrendersFocusOnKeystroke(true);
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
 			},
 			new String[] {
-				"\u65F6\u95F4", "\u64CD\u4F5C\u540D\u79F0", "\u64CD\u4F5C\u63CF\u8FF0"
+				"\u65F6\u95F4", "\u64CD\u4F5C\u4EBA", "\u5DE5\u53F7", "\u64CD\u4F5C\u63CF\u8FF0"
 			}
 		));
-		table.getColumnModel().getColumn(2).setPreferredWidth(359);
+		table.getColumnModel().getColumn(3).setPreferredWidth(359);
 
 	}
 

@@ -29,10 +29,10 @@ public class InstitutionPanel extends JPanel {
 	 */
 	public InstitutionPanel() {
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{155, 31, 0};
-		gridBagLayout.rowHeights = new int[]{78, 501, 0};
-		gridBagLayout.columnWeights = new double[]{1.0, 0.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{1.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.columnWidths = new int[]{137, 31, 0};
+		gridBagLayout.rowHeights = new int[]{56, 501, 0};
+		gridBagLayout.columnWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
 		JPanel panel_3 = new JPanel();
@@ -90,21 +90,20 @@ public class InstitutionPanel extends JPanel {
 		
 		JPanel panel_1 = new JPanel();
 		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
-		gbc_panel_1.fill = GridBagConstraints.VERTICAL;
+		gbc_panel_1.fill = GridBagConstraints.BOTH;
 		gbc_panel_1.gridx = 1;
 		gbc_panel_1.gridy = 1;
 		add(panel_1, gbc_panel_1);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
 		gbl_panel_1.columnWidths = new int[]{81, 81, 81, 81, 0};
 		gbl_panel_1.rowHeights = new int[]{23, 23, 418, 0};
-		gbl_panel_1.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_1.columnWeights = new double[]{1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
 		gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 1.0, Double.MIN_VALUE};
 		panel_1.setLayout(gbl_panel_1);
 		
 		JButton btnNewButton = new JButton("\u589E\u52A0\u673A\u6784");
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
 		gbc_btnNewButton.anchor = GridBagConstraints.NORTH;
-		gbc_btnNewButton.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnNewButton.insets = new Insets(0, 0, 5, 5);
 		gbc_btnNewButton.gridx = 0;
 		gbc_btnNewButton.gridy = 0;
@@ -112,7 +111,7 @@ public class InstitutionPanel extends JPanel {
 		
 		JButton button = new JButton("\u5220\u9664\u673A\u6784");
 		GridBagConstraints gbc_button = new GridBagConstraints();
-		gbc_button.anchor = GridBagConstraints.NORTHWEST;
+		gbc_button.anchor = GridBagConstraints.NORTH;
 		gbc_button.insets = new Insets(0, 0, 5, 5);
 		gbc_button.gridx = 1;
 		gbc_button.gridy = 0;
@@ -120,7 +119,7 @@ public class InstitutionPanel extends JPanel {
 		
 		JButton button_1 = new JButton("\u4FEE\u6539\u673A\u6784");
 		GridBagConstraints gbc_button_1 = new GridBagConstraints();
-		gbc_button_1.anchor = GridBagConstraints.NORTHWEST;
+		gbc_button_1.anchor = GridBagConstraints.NORTH;
 		gbc_button_1.insets = new Insets(0, 0, 5, 5);
 		gbc_button_1.gridx = 2;
 		gbc_button_1.gridy = 0;
@@ -128,7 +127,7 @@ public class InstitutionPanel extends JPanel {
 		
 		JButton button_2 = new JButton("\u67E5\u8BE2\u4FE1\u606F");
 		GridBagConstraints gbc_button_2 = new GridBagConstraints();
-		gbc_button_2.anchor = GridBagConstraints.NORTHWEST;
+		gbc_button_2.anchor = GridBagConstraints.NORTH;
 		gbc_button_2.insets = new Insets(0, 0, 5, 0);
 		gbc_button_2.gridx = 3;
 		gbc_button_2.gridy = 0;
