@@ -11,8 +11,8 @@ public interface CollectionLogicService {
 	public int getDistance(String city);//获取城市间距离
 	public int getSequence();//获取寄件单序列基准号
 	public void changeSequence(int sequence);//改变寄件单序列基准号
-	public void saveHistory(HistoryPO po);//保存寄件时间历史记录
-	public List<PositionPO> QueryGoodsInfo(int SendDocID);//获取快件历史轨迹
+	public void saveHistory(HistoryTimePO po);//保存寄件时间历史记录
+	public PositionPO QueryGoodsInfo(int SendDocID);//获取快件历史轨迹
 	public List<SendDocPO> getAllSendDoc();//获取所有未审批单据
 	public int getCourierMoney(String courier);//获取快递员收取运费
 	public int[] getSendDocIDList(String courier);//获取快递员创建的寄件单编号
@@ -23,6 +23,6 @@ public interface CollectionLogicService {
 	public int timeEstimate(String sCity,String rCity);//时间预估
 	public double priceCalc(String sCity,String rCity,int packing,double[] volume,double weight);//运费计算
 	public SendDocVO findSendDocVO(int ID);//获取寄件单VO
-	public HistoryPO getHistoryPO(int ID);
+	public HistoryTimePO getHistoryPO(int ID);
 	public ArrayList<SendDocPO> getUncheckedSendDocPOs();
 }

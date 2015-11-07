@@ -1,10 +1,10 @@
 package edu.nju.po;
 //´ý¶¨
-public class HistoryPO {
+public class HistoryTimePO {
 	String start;
 	String end;
 	int days;
-	public HistoryPO(String start, String end, int days) {
+	public HistoryTimePO(String start, String end, int days) {
 		super();
 		this.start = start;
 		this.end = end;

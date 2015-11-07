@@ -1,5 +1,5 @@
 package edu.nju.businesslogic.collectionbl;
 
-public class Test {
+public class Collectionbl {
 
 }

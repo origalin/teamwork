@@ -3,7 +3,7 @@ package edu.nju.dataservice.collectiondataservice;
 import java.util.ArrayList;
 
 
-import edu.nju.po.HistoryPO;
+import edu.nju.po.HistoryTimePO;
 import edu.nju.po.PositionPO;
 import edu.nju.po.SendDocPO;
 
@@ -34,7 +34,7 @@ public class CollectionDataService_stub implements CollectionDataService {
 	}
 
 	@Override
-	public void saveHistory(HistoryPO po) {
+	public void saveHistory(HistoryTimePO po) {
 		// TODO 自动生成的方法存根
 		
 	}
