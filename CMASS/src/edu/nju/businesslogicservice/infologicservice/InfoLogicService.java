@@ -27,4 +27,7 @@ public interface InfoLogicService {
 	public void saveDistance(String city,String city2,double distance);//保存距离信息
 	//collection依赖我
 	public double getDistance(String city);//构造时调用两个参数的方法
+	//financedata依赖我
+	public ArrayList<String> getInstitutionList();//返回所有机构的名称
+	public ArrayList<StaffVO> getStaffList();//返回所有员工的链表，用于进行工资的计算
 }

@@ -92,6 +92,18 @@ public class InfoBl implements InfoLogicService{
 		return 0;
 	}
 
+	@Override
+	public ArrayList<String> getInstitutionList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<StaffVO> getStaffList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 
 }
