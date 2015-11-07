@@ -101,7 +101,7 @@ public class CollectionLogicServiceImpl implements CollectionLogicService{
 
 	@Override
 	public ArrayList<SendDocPO> getUncheckedSendDocPOs() {
-		// TODO 自动生成的方法存根
+
 		return null;
 	}
 

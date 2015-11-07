@@ -21,6 +21,7 @@ public class StorageInitialize extends JPanel{
 	private JButton btnNewButton;
 	private JLabel lblNewLabel_6;
 	private JTextField textField_6;
+	private JButton button;
 	public StorageInitialize() {
 		setBorder(new TitledBorder(null, "\u5E93\u5B58\u4FE1\u606F\u521D\u59CB\u5316", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -142,6 +143,13 @@ public class StorageInitialize extends JPanel{
 		gbc_textField_5.gridy = 7;
 		add(textField_5, gbc_textField_5);
 		textField_5.setColumns(10);
+		
+		button = new JButton("\u6E05\u96F6");
+		GridBagConstraints gbc_button = new GridBagConstraints();
+		gbc_button.insets = new Insets(0, 0, 0, 5);
+		gbc_button.gridx = 1;
+		gbc_button.gridy = 9;
+		add(button, gbc_button);
 		
 		btnNewButton = new JButton("\u65B0\u5EFA\u5E93\u5B58\u8BB0\u5F55");
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();

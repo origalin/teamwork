@@ -12,6 +12,7 @@ import javax.swing.border.TitledBorder;
 
 public class StorageModify extends JPanel{
 	private JTextField textField;
+	private JTextField textField_1;
 	public StorageModify() {
 		setBorder(new TitledBorder(null, "\u5E93\u533A\u8C03\u6574", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		setLayout(new GridLayout(0, 1, 0, 0));
@@ -21,9 +22,25 @@ public class StorageModify extends JPanel{
 		GridBagLayout gbl_panel = new GridBagLayout();
 		gbl_panel.columnWidths = new int[]{0, 0, 0, 0, 0, 119, 0};
 		gbl_panel.rowHeights = new int[]{32, 35, 28, 0};
-		gbl_panel.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		gbl_panel.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel.setLayout(gbl_panel);
+		
+		JLabel lblNewLabel = new JLabel("\u9884\u8B66\u9600\u503C");
+		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
+		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel.gridx = 3;
+		gbc_lblNewLabel.gridy = 1;
+		panel.add(lblNewLabel, gbc_lblNewLabel);
+		
+		textField_1 = new JTextField();
+		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
+		gbc_textField_1.insets = new Insets(0, 0, 5, 0);
+		gbc_textField_1.fill = GridBagConstraints.BOTH;
+		gbc_textField_1.gridx = 5;
+		gbc_textField_1.gridy = 1;
+		panel.add(textField_1, gbc_textField_1);
+		textField_1.setColumns(10);
 		
 		JLabel label = new JLabel("\u5212\u5206\u673A\u52A8\u533A\u767E\u5206\u6BD4");
 		GridBagConstraints gbc_label = new GridBagConstraints();
