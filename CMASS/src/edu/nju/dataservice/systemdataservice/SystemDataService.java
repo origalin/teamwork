@@ -7,7 +7,7 @@ import edu.nju.po.OperationPO;
 import edu.nju.tools.Time;
 
 public interface SystemDataService {
-	public ArrayList<OperationPO>  findOperationLog();
+	public ArrayList<OperationPO>  findOperationLog(long beginTime,long endTime);
 	public ArrayList<AccountPO> findAccount(int number);
 	public void saveOperationLog(OperationPO po);
 	public void  saveAccount(AccountPO po);
