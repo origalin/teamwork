@@ -46,20 +46,6 @@ m2=*</panel_attributes>
   <element>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>620</x>
-      <y>340</y>
-      <w>210</w>
-      <h>50</h>
-    </coordinates>
-    <panel_attributes>Collection
---
---
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <type>com.baselet.element.old.element.Class</type>
-    <coordinates>
       <x>120</x>
       <y>310</y>
       <w>380</w>
@@ -69,20 +55,6 @@ m2=*</panel_attributes>
 edu.nju.businesslogic.logispicsquerybl包
 </panel_attributes>
     <additional_attributes/>
-  </element>
-  <element>
-    <type>com.baselet.element.old.element.Relation</type>
-    <coordinates>
-      <x>380</x>
-      <y>330</y>
-      <w>260</w>
-      <h>50</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-
-m1=1
-m2=1..*
-</panel_attributes>
-    <additional_attributes>240;30;30;30</additional_attributes>
   </element>
   <element>
     <id>UMLFrame</id>
@@ -98,7 +70,7 @@ m2=1..*
   <element>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>190</x>
+      <x>80</x>
       <y>550</y>
       <w>210</w>
       <h>50</h>
@@ -112,7 +84,7 @@ m2=1..*
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>320</x>
+      <x>210</x>
       <y>380</y>
       <w>40</w>
       <h>190</h>
@@ -121,5 +93,30 @@ m2=1..*
 m1=1..*
 m2=1</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;170.0</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>350</x>
+      <y>550</y>
+      <w>210</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>LogisticsDataService
+--
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>360</x>
+      <y>380</y>
+      <w>30</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;170.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>

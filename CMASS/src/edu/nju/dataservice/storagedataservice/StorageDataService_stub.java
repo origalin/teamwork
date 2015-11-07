@@ -142,4 +142,11 @@ public class StorageDataService_stub implements StorageDataService{
 	}
 
 
+	@Override
+	public void addNewStorageItem(RecordPO recordPO) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
 }
