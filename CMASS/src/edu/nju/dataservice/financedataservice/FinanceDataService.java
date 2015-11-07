@@ -1,23 +1,14 @@
 package edu.nju.dataservice.financedataservice;
 import edu.nju.po.*;
 import edu.nju.tools.*;
+import edu.nju.vo.GatheringDocVO;
+import edu.nju.vo.PayDocVO;
+
 import java.util.ArrayList;
 public interface FinanceDataService{
-	//得到财务人员填写的总租金
-	public int getRent();
-	//更新付款单文件
-	public void updatePayDoc(PayDocPO PO);	
-	//修改账户名称
-	public void updateAccountInfo(String name,AccountPO account);
-	//删除该账户
-	public void deleteAccount(String name);
-	//增加一个账户，其金额设为0
-	public void addAccount(String name);
-	//得到公司的银行账户列表
-	public ArrayList<AccountPO> getAccount();
-	//得到期间付款单列表（PO）
-	public ArrayList<PayDocPO>getPayDOc(Time startTime,Time endTime);
-	//得到期间收款单列表（PO）
-	public ArrayList<GatheringDocPO>getGatheringDoc(Time startTime,Time endTime);
-		
+	public ArrayList<AccountPO> getAccountPO();//得到PO的原因是为了可以对账户增删改查
+	public ArrayList<PayDocVO> getPayDoc(String startTime, String endTime);
+	public ArrayList<GatheringDocVO> getGatheringDoc(String startTime,String endTime); 
+	public ArrayList<PayDocVO> getPayDoc();//无参的是为了生成总支出，需要截至当前的所有付款单来计算
+	public ArrayList<GatheringDocVO> getGatheringDoc();//无参的是为了生成总收入
 }

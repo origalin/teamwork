@@ -17,6 +17,8 @@ public class checkZArrivalDoc extends JPanel{
 	private JTable table;
 	private JScrollPane scrollPane;
 	private JTextField textField_4;
+	private JLabel label_4;
+	private JTextField textField_5;
 	public checkZArrivalDoc() {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 71, 0, 0, 0};
@@ -32,20 +34,38 @@ public class checkZArrivalDoc extends JPanel{
 		gbc_label_3.gridy = 0;
 		add(label_3, gbc_label_3);
 		
+		label_4 = new JLabel("\u4E2D\u8F6C\u4E2D\u5FC3\u5230\u8FBE\u5355\u7F16\u53F7");
+		label_4.setFont(new Font("ºÚÌå", Font.BOLD, 12));
+		GridBagConstraints gbc_label_4 = new GridBagConstraints();
+		gbc_label_4.insets = new Insets(0, 0, 5, 5);
+		gbc_label_4.gridx = 0;
+		gbc_label_4.gridy = 1;
+		add(label_4, gbc_label_4);
+		
+		textField_5 = new JTextField();
+		textField_5.setEditable(false);
+		GridBagConstraints gbc_textField_5 = new GridBagConstraints();
+		gbc_textField_5.insets = new Insets(0, 0, 5, 5);
+		gbc_textField_5.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textField_5.gridx = 2;
+		gbc_textField_5.gridy = 1;
+		add(textField_5, gbc_textField_5);
+		textField_5.setColumns(10);
+		
 		lblNewLabel_1 = new JLabel("\u8D27\u7269\u5230\u8FBE\u72B6\u6001");
 		lblNewLabel_1.setFont(new Font("ºÚÌå", Font.BOLD, 12));
 		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
 		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel_1.gridx = 0;
+		gbc_lblNewLabel_1.gridx = 3;
 		gbc_lblNewLabel_1.gridy = 1;
 		add(lblNewLabel_1, gbc_lblNewLabel_1);
 		
 		textField_4 = new JTextField();
 		textField_4.setEditable(false);
 		GridBagConstraints gbc_textField_4 = new GridBagConstraints();
-		gbc_textField_4.insets = new Insets(0, 0, 5, 5);
+		gbc_textField_4.insets = new Insets(0, 0, 5, 0);
 		gbc_textField_4.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_4.gridx = 2;
+		gbc_textField_4.gridx = 4;
 		gbc_textField_4.gridy = 1;
 		add(textField_4, gbc_textField_4);
 		textField_4.setColumns(10);

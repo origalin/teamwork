@@ -6,10 +6,43 @@ import edu.nju.po.AccountPO;
 import edu.nju.po.GatheringDocPO;
 import edu.nju.po.PayDocPO;
 import edu.nju.tools.Time;
+import edu.nju.vo.GatheringDocVO;
+import edu.nju.vo.PayDocVO;
 
 public class FinanceDataService_stub implements FinanceDataService{
-	
 
+	@Override
+	public ArrayList<AccountPO> getAccountPO() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<PayDocVO> getPayDoc(String startTime, String endTime) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<GatheringDocVO> getGatheringDoc(String startTime,
+			String endTime) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<PayDocVO> getPayDoc() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<GatheringDocVO> getGatheringDoc() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+/*
 	public FinanceDataService_stub(int rent,
 			ArrayList<AccountPO> accountPOList,
 			ArrayList<PayDocPO> payDocPOList,
@@ -71,5 +104,5 @@ public class FinanceDataService_stub implements FinanceDataService{
 			Time endTime) {
 		//得到期间收款单列表（PO）
 		return GatheringDocPOList;	}
-
+*/
 }
