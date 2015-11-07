@@ -1,7 +1,7 @@
 package edu.nju.po;
 //（收款日期、收款金额、收款快递员、对应的所有快递订单条形码号。）
 
-public class GatheringDocPO {
+public class GatheringDocPO extends Doc {
 	Long date;
 	Double money;
 	String courier_name;

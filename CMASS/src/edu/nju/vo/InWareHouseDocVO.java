@@ -2,9 +2,12 @@ package edu.nju.vo;
 
 import java.util.ArrayList;
 
-public class InWareHouseDocVO {
-	ArrayList<InWareHouseDocLineItem> list;
+import edu.nju.po.Doc;
+
+public class InWareHouseDocVO extends Doc{
 	int ID;
+	ArrayList<InWareHouseDocLineItem> list;
+	
 
 	
 	public InWareHouseDocVO() {

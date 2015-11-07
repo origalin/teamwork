@@ -1,7 +1,7 @@
 package edu.nju.po;
 
-public class PayDocPO {
-	int PayDocID;
+public class PayDocPO extends Doc{
+//	int ID;
 	long date;
 	double money;
 	String payer;
@@ -11,7 +11,7 @@ public class PayDocPO {
 	public PayDocPO(int payDocID, long date, double money, String payer,
 			int account, PayType type, String back) {
 		super();
-		PayDocID = payDocID;
+		ID = payDocID;
 		this.date = date;
 		this.money = money;
 		this.payer = payer;
@@ -20,10 +20,10 @@ public class PayDocPO {
 		this.back = back;
 	}
 	public int getPayDocID() {
-		return PayDocID;
+		return ID;
 	}
 	public void setPayDocID(int payDocID) {
-		PayDocID = payDocID;
+		ID = payDocID;
 	}
 	public long getDate() {
 		return date;

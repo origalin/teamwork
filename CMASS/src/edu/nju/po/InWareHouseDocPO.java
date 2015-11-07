@@ -3,7 +3,7 @@ package edu.nju.po;
 import java.util.ArrayList;
 
 
-public class InWareHouseDocPO {
+public class InWareHouseDocPO extends Doc{
 	int InWareHouseDocID;
 	ArrayList<RecordPO> recordPOs;
 	public int getInWareHouseDocID() {

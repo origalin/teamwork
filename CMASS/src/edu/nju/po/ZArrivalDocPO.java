@@ -1,5 +1,5 @@
 package edu.nju.po;
 
-public class ZArrivalDocPO {
+public class ZArrivalDocPO extends Doc{
 
 }

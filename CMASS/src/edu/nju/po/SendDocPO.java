@@ -1,6 +1,6 @@
 package edu.nju.po;
 
-public class SendDocPO {
+public class SendDocPO extends Doc{
 	String sName,aAddress,sTelePhone,sMobilePhone;
 	String rName,rAddress,rTelePhone,rMobilePhone;
 	int itemName;
@@ -9,7 +9,7 @@ public class SendDocPO {
 	String item_type;
 	String cpackage;
 	Double sumPrice;
-	int itemID;
+//	int itemID;
 	String courier_Type;
 	long date;
 	public SendDocPO(String sName, String aAddress, String sTelePhone,
@@ -32,7 +32,7 @@ public class SendDocPO {
 		this.item_type = item_type;
 		this.cpackage = cpackage;
 		this.sumPrice = sumPrice;
-		this.itemID = itemID;
+		this.ID = itemID;
 		this.courier_Type = courier_Type;
 		this.date = date;
 	}
@@ -121,10 +121,10 @@ public class SendDocPO {
 		this.sumPrice = sumPrice;
 	}
 	public int getItemID() {
-		return itemID;
+		return ID;
 	}
 	public void setItemID(int itemID) {
-		this.itemID = itemID;
+		this.ID = itemID;
 	}
 	public String getCourier_Type() {
 		return courier_Type;

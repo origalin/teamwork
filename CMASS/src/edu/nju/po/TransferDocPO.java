@@ -1,5 +1,5 @@
 package edu.nju.po;
 
-public class TransferDocPO {
+public class TransferDocPO extends Doc{
 
 }

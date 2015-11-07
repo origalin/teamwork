@@ -19,6 +19,8 @@ public interface StorageLogicService {
 	//根据中转单编号去查找每个快递的具体信息，返回入库单VO,在调用这个方法的过程中，返回VO前已经实现了对单据文件的更新
 	public InWareHouseDocVO getInWareHouseDocVO_Transfer(int TransferDocID);
 	
+	
+	public void updateInWareHouseDoc(InWareHouseDocVO in);
 	//根据营业厅装车单编号，返回入库单VO；在调用这个方法的过程中，返回VO前已经实现了对单据文件的更新
 	public InWareHouseDocVO getInWareHouseDocVO_YloadDoc(int YloadDocID);	
 	
@@ -29,13 +31,13 @@ public interface StorageLogicService {
 	//根据中转中心装车单编号去遍历它上面的所有快递编号对应的库存记录，生成中转单VO，在调用这个方法的过程中，返回VO前已经实现了对单据文件的更新
 	public OutWareHouseDocVO getOutWareHouseDocVO_ZloadDoc(int ZloadDocID);
 	//根据出库单编号，更新出库单文件
-	public void updateOutWareHouseDoc(int OutWareHouseDocID);
+	public void updateOutWareHouseDoc(OutWareHouseDocVO out);
 	
 	//库存初始化：
 	//清空仓库的库存记录
 	public void clear();	
 	//新增库存记录
-	public void addNewStorageItem();
+	public void addNewStorageItem(RecordPO recordPO);
 	
 	//库存预警
 	//设置报警阀值
@@ -43,4 +45,6 @@ public interface StorageLogicService {
 	//设置划分出多少百分比的机动区给报警区
 	public void setPercent(double p);
 
+	
+	public void updateStorage(ArrayList<RecordPO> aList);
 }

@@ -1,22 +1,22 @@
 package edu.nju.po;
 
-public class OverDocPO {
-	int OverDocID;
-	int itemID;
+public class OverDocPO extends Doc{
+	
+	int itemID;//¿ìµÝid
 	String receiver;
 	Long date;
 	public OverDocPO(int overDocID, int itemID, String receiver, Long date) {
 		super();
-		OverDocID = overDocID;
+		ID = overDocID;
 		this.itemID = itemID;
 		this.receiver = receiver;
 		this.date = date;
 	}
 	public int getOverDocID() {
-		return OverDocID;
+		return ID;
 	}
 	public void setOverDocID(int overDocID) {
-		OverDocID = overDocID;
+		ID = overDocID;
 	}
 	public int getItemID() {
 		return itemID;
