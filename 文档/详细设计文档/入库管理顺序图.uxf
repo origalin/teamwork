@@ -5,19 +5,19 @@
     <id>UMLFrame</id>
     <coordinates>
       <x>120</x>
-      <y>40</y>
+      <y>0</y>
       <w>730</w>
-      <h>590</h>
+      <h>790</h>
     </coordinates>
-    <panel_attributes>interaction frame</panel_attributes>
+    <panel_attributes>入库管理顺序图</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
       <x>160</x>
-      <y>90</y>
-      <w>100</w>
+      <y>50</y>
+      <w>160</w>
       <h>30</h>
     </coordinates>
     <panel_attributes>InWareHouseManagement
@@ -28,7 +28,7 @@ bg=orange</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>200</x>
-      <y>110</y>
+      <y>70</y>
       <w>30</w>
       <h>60</h>
     </coordinates>
@@ -39,9 +39,9 @@ bg=orange</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>200</x>
-      <y>150</y>
+      <y>110</y>
       <w>20</w>
-      <h>400</h>
+      <h>620</h>
     </coordinates>
     <panel_attributes>
 bg=yellow</panel_attributes>
@@ -51,18 +51,18 @@ bg=yellow</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>200</x>
-      <y>540</y>
+      <y>720</y>
       <w>30</w>
-      <h>100</h>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
       <x>370</x>
-      <y>90</y>
+      <y>50</y>
       <w>100</w>
       <h>30</h>
     </coordinates>
@@ -74,7 +74,7 @@ bg=red</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>410</x>
-      <y>110</y>
+      <y>70</y>
       <w>30</w>
       <h>80</h>
     </coordinates>
@@ -85,9 +85,9 @@ bg=red</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>410</x>
-      <y>170</y>
+      <y>130</y>
       <w>20</w>
-      <h>370</h>
+      <h>580</h>
     </coordinates>
     <panel_attributes>
 bg=red</panel_attributes>
@@ -97,7 +97,7 @@ bg=red</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>410</x>
-      <y>530</y>
+      <y>700</y>
       <w>30</w>
       <h>90</h>
     </coordinates>
@@ -107,21 +107,21 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>150</x>
-      <y>150</y>
-      <w>340</w>
+      <x>110</x>
+      <y>110</y>
+      <w>420</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 InWareHouseDocVO getInWareHouseDocVO_Transfer(int TransferDocID)</panel_attributes>
-    <additional_attributes>260.0;20.0;70.0;20.0</additional_attributes>
+    <additional_attributes>300.0;20.0;110.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
       <x>550</x>
-      <y>90</y>
-      <w>100</w>
+      <y>50</y>
+      <w>140</w>
       <h>30</h>
     </coordinates>
     <panel_attributes>TransferDocService
@@ -132,7 +132,7 @@ bg=red</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>590</x>
-      <y>170</y>
+      <y>130</y>
       <w>20</w>
       <h>100</h>
     </coordinates>
@@ -144,7 +144,7 @@ bg=red</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>590</x>
-      <y>260</y>
+      <y>220</y>
       <w>30</w>
       <h>90</h>
     </coordinates>
@@ -155,7 +155,7 @@ bg=red</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>210</x>
-      <y>320</y>
+      <y>280</y>
       <w>220</w>
       <h>40</h>
     </coordinates>
@@ -166,20 +166,20 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>400</x>
-      <y>180</y>
-      <w>230</w>
+      <x>380</x>
+      <y>140</y>
+      <w>270</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 TransferDocPO  getTransferPO(int TransferID)</panel_attributes>
-    <additional_attributes>190.0;20.0;30.0;20.0</additional_attributes>
+    <additional_attributes>210.0;20.0;50.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>420</x>
-      <y>240</y>
+      <y>170</y>
       <w>190</w>
       <h>40</h>
     </coordinates>
@@ -191,8 +191,8 @@ TransferDocPO  getTransferPO(int TransferID)</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>550</x>
-      <y>350</y>
-      <w>100</w>
+      <y>310</y>
+      <w>120</w>
       <h>30</h>
     </coordinates>
     <panel_attributes>StorageDataService
@@ -203,7 +203,7 @@ bg=red</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>590</x>
-      <y>400</y>
+      <y>360</y>
       <w>20</w>
       <h>100</h>
     </coordinates>
@@ -215,7 +215,7 @@ bg=red</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>590</x>
-      <y>110</y>
+      <y>70</y>
       <w>30</w>
       <h>80</h>
     </coordinates>
@@ -226,7 +226,7 @@ bg=red</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>590</x>
-      <y>370</y>
+      <y>330</y>
       <w>30</w>
       <h>50</h>
     </coordinates>
@@ -237,13 +237,37 @@ bg=red</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>420</x>
-      <y>400</y>
+      <y>360</y>
       <w>190</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 long getInWareHouseDocID()</panel_attributes>
     <additional_attributes>170.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>420</x>
+      <y>380</y>
+      <w>190</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+</panel_attributes>
+    <additional_attributes>170.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>210</x>
+      <y>430</y>
+      <w>220</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+</panel_attributes>
+    <additional_attributes>200.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -260,32 +284,8 @@ long getInWareHouseDocID()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>210</x>
-      <y>470</y>
-      <w>220</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>lt=.&gt;
-</panel_attributes>
-    <additional_attributes>200.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>420</x>
-      <y>460</y>
-      <w>190</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>lt=.&gt;
-</panel_attributes>
-    <additional_attributes>170.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
       <x>590</x>
-      <y>490</y>
+      <y>450</y>
       <w>30</w>
       <h>90</h>
     </coordinates>
@@ -296,12 +296,153 @@ long getInWareHouseDocID()</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>420</x>
-      <y>440</y>
+      <y>400</y>
       <w>190</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 WareHouse getWareHouse()</panel_attributes>
     <additional_attributes>170.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>530</x>
+      <y>540</y>
+      <w>130</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>InWareHouseDocPO
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>590</x>
+      <y>590</y>
+      <w>20</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>730</x>
+      <y>600</y>
+      <w>30</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>590</x>
+      <y>680</y>
+      <w>30</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>690</x>
+      <y>580</y>
+      <w>110</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>RecordPO
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>730</x>
+      <y>620</y>
+      <w>20</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>590</x>
+      <y>560</y>
+      <w>30</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>620</y>
+      <w>150</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+CreateMessage()</panel_attributes>
+    <additional_attributes>130.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>650</y>
+      <w>150</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+</panel_attributes>
+    <additional_attributes>130.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>420</x>
+      <y>660</y>
+      <w>190</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+</panel_attributes>
+    <additional_attributes>170.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>420</x>
+      <y>600</y>
+      <w>190</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+</panel_attributes>
+    <additional_attributes>170.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>210</x>
+      <y>670</y>
+      <w>220</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+</panel_attributes>
+    <additional_attributes>200.0;20.0;10.0;20.0</additional_attributes>
   </element>
 </diagram>

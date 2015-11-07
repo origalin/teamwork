@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.3">
+  <zoom_level>10</zoom_level>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>40</x>
+      <y>160</y>
+      <w>470</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+edu.nju.businesslogicservice.logispicsquerylogicservice.LogispicsQueryLogicService
+--
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>200</x>
+      <y>340</y>
+      <w>210</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>Logisticsquerybl
+--
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>270</x>
+      <y>200</y>
+      <w>50</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+m1=1
+m2=*</panel_attributes>
+    <additional_attributes>30;30;30;140</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>620</x>
+      <y>340</y>
+      <w>210</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>Collection
+--
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>120</x>
+      <y>310</y>
+      <w>380</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>bt=.
+edu.nju.businesslogic.logispicsquerybl包
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>380</x>
+      <y>330</y>
+      <w>260</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1
+m2=1..*
+</panel_attributes>
+    <additional_attributes>240;30;30;30</additional_attributes>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>10</x>
+      <y>70</y>
+      <w>880</w>
+      <h>560</h>
+    </coordinates>
+    <panel_attributes>pkg</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>190</x>
+      <y>550</y>
+      <w>210</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>Position
+--
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>320</x>
+      <y>380</y>
+      <w>40</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-&gt;
+m1=1..*
+m2=1</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;170.0</additional_attributes>
+  </element>
+</diagram>

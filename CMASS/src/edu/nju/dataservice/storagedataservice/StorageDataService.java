@@ -32,6 +32,8 @@ public interface StorageDataService{
 	
 	public void clear();
 	
+	public void addNewStorageItem(RecordPO recordPO) ;
+	
 	public void setPercent(double p);
 	
 	public void setAlarm(double p);

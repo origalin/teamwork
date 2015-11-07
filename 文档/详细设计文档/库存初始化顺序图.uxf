@@ -87,7 +87,7 @@ bg=red</panel_attributes>
     <coordinates>
       <x>490</x>
       <y>70</y>
-      <w>100</w>
+      <w>130</w>
       <h>30</h>
     </coordinates>
     <panel_attributes>StorageDataService
@@ -192,14 +192,14 @@ update(RecordPO recordPO);</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>150</x>
+      <x>130</x>
       <y>250</y>
-      <w>200</w>
+      <w>240</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 addNewStorageItem(RecordPO recordPO)</panel_attributes>
-    <additional_attributes>180.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>200.0;20.0;30.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -231,7 +231,7 @@ addNewStorageItem(RecordPO recordPO)</panel_attributes>
       <w>760</w>
       <h>520</h>
     </coordinates>
-    <panel_attributes>interaction frame</panel_attributes>
+    <panel_attributes>库存初始化顺序图</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>

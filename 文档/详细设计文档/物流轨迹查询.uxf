@@ -28,9 +28,9 @@ bg=yellow</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>310</x>
+      <x>280</x>
       <y>90</y>
-      <w>140</w>
+      <w>170</w>
       <h>30</h>
     </coordinates>
     <panel_attributes>LogispicsQueryLogicService
@@ -74,14 +74,14 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>170</x>
+      <x>150</x>
       <y>170</y>
-      <w>200</w>
+      <w>240</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 PositionVO historyQuery(int SendDocID)</panel_attributes>
-    <additional_attributes>180.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>200.0;20.0;30.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
@@ -110,14 +110,14 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>360</x>
+      <x>350</x>
       <y>180</y>
-      <w>220</w>
+      <w>240</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 PositionPO getHistoryPO(int SendDocID)</panel_attributes>
-    <additional_attributes>200.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>210.0;20.0;20.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -195,7 +195,7 @@ PositionPO getHistoryPO(int SendDocID)</panel_attributes>
       <w>740</w>
       <h>480</h>
     </coordinates>
-    <panel_attributes>interaction frame</panel_attributes>
+    <panel_attributes>物流轨迹查询顺序图</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>
