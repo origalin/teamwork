@@ -7,7 +7,7 @@ public abstract class InstitutionPO {
 	ArrayList<InstitutionPO> subInstitution;
 	String city;
 	String name;
-	String type;
+	Institutation type;
 	public ArrayList<StaffPO> getStaffPOs() {
 		return staffPOs;
 	}
@@ -32,10 +32,10 @@ public abstract class InstitutionPO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getType() {
+	public Institutation getType() {
 		return type;
 	}
-	public void setType(String type) {
+	public void setType(Institutation type) {
 		this.type = type;
 	}
 	//缺少职务判断，待修改

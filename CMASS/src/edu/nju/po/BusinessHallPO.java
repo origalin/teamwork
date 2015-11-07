@@ -1,7 +1,7 @@
 package edu.nju.po;
 
 public class BusinessHallPO extends InstitutionPO{
-	BusinessHallPO(String name,String type,String city){
+	BusinessHallPO(String name,Institutation type,String city){
 		this.city = city;
 		this.type = type;
 		this.name = name;

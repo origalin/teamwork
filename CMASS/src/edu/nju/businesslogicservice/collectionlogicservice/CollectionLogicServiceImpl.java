@@ -1,5 +1,6 @@
 package edu.nju.businesslogicservice.collectionlogicservice;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import edu.nju.po.HistoryPO;
@@ -94,6 +95,12 @@ public class CollectionLogicServiceImpl implements CollectionLogicService{
 
 	@Override
 	public HistoryPO getHistoryPO(int ID) {
+		// TODO 自动生成的方法存根
+		return null;
+	}
+
+	@Override
+	public ArrayList<SendDocPO> getUncheckedSendDocPOs() {
 		// TODO 自动生成的方法存根
 		return null;
 	}
