@@ -1,5 +1,6 @@
 package edu.nju.po;
 
+
 public class YLoadDocPO {
 	int YLoadDocID;
 	long date;
@@ -79,4 +80,5 @@ public class YLoadDocPO {
 		this.price = price;
 	}
 	
+
 }

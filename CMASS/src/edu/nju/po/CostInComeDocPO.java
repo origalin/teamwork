@@ -1,6 +1,6 @@
 package edu.nju.po;
 
-public class CostInComeDocPO {
+public class CostInComeDocPO extends Doc{
 	double income,cost,profit;
 
 	public CostInComeDocPO(double income, double cost) {

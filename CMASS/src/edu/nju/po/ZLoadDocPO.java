@@ -1,5 +1,6 @@
 package edu.nju.po;
 
+
 public class ZLoadDocPO {
 	int zLoadDocID;
 	long date;
@@ -78,5 +79,5 @@ public class ZLoadDocPO {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	
+
 }

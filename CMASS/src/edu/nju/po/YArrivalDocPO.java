@@ -46,4 +46,5 @@ public class YArrivalDocPO {
 		this.itemAndState = itemAndState;
 	}
 	
+
 }

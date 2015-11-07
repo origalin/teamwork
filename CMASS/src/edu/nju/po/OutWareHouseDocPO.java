@@ -2,20 +2,20 @@ package edu.nju.po;
 
 import java.util.ArrayList;
 
-public class OutWareHouseDocPO {
-	int OutWareHouseDocID;
+public class OutWareHouseDocPO extends Doc{
+//	int OutWareHouseDocID;
 	ArrayList<OutRecord> outRecords;
 	public OutWareHouseDocPO(int outWareHouseDocID,
 			ArrayList<OutRecord> outRecords) {
 		super();
-		OutWareHouseDocID = outWareHouseDocID;
+		ID = outWareHouseDocID;
 		this.outRecords = outRecords;
 	}
 	public int getOutWareHouseDocID() {
-		return OutWareHouseDocID;
+		return ID;
 	}
 	public void setOutWareHouseDocID(int outWareHouseDocID) {
-		OutWareHouseDocID = outWareHouseDocID;
+		ID = outWareHouseDocID;
 	}
 	public ArrayList<OutRecord> getOutRecords() {
 		return outRecords;

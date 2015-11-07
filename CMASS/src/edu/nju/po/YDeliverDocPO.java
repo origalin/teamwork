@@ -1,5 +1,5 @@
 package edu.nju.po;
 
-public class YDeliverDocPO {
+public class YDeliverDocPO extends Doc{
 
 }

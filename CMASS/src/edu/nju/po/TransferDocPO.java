@@ -1,5 +1,6 @@
 package edu.nju.po;
 
+
 public class TransferDocPO {
 	long TransferDocID;
 	long date;
@@ -86,4 +87,5 @@ public class TransferDocPO {
 		this.price = price;
 	}
 	
+
 }

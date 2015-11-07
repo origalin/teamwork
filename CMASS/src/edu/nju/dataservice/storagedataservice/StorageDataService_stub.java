@@ -57,4 +57,53 @@ public class StorageDataService_stub implements StorageDataService{
 		return t;}
 
 
+	@Override
+	public long getInWareHouseDocID() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+	@Override
+	public ArrayList<RecordPO> getStorageItemList(int[] SendDocIDList) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public long getOutWareHouseDocID() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+	@Override
+	public void updateOutWareHouseDoc(OutWareHouseDocPO out) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void updateInWareHouseDoc(InWareHouseDocPO in) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void setPercent(double p) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void setAlarm(double p) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
 }
