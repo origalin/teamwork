@@ -11,7 +11,7 @@ public class Storagebl implements StorageLogicService{
 
 	@Override
 	public InWareHouseDocVO getInWareHouseDocVO_Transfer(int TransferDocID) {
-		// 对运输模块有依赖，TransferPO  getTransferPO(int TransferID)
+		// 对运输模块有依赖，TransferDocPO  getTransferPO(int TransferID)
 //根据单号确定特快还是经济		
 		//对数据层依赖：获取该次入库单的编号
 		
