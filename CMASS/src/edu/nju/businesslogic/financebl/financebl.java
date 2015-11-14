@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import edu.nju.businesslogicservice.financelogicservice.FinanceLogicService;
 import edu.nju.po.AccountPO;
+import edu.nju.po.PayType;
 import edu.nju.vo.AccountVO;
 import edu.nju.vo.GatheringDocVO;
 import edu.nju.vo.InstitutionVO;
@@ -121,6 +122,13 @@ public class financebl implements FinanceLogicService{
 	public ArrayList<AccountVO> getAccount() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void createPayDoc(int payDocID, long date, double money, String payer,
+			int account, PayType type, String back) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

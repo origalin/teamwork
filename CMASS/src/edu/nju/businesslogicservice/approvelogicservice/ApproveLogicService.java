@@ -28,16 +28,16 @@ import edu.nju.vo.ZLoadDocVO;
 public interface ApproveLogicService {
 	
 	//获取各类单据
-	public ArrayList<SendDocPO> getuncheckedSendDocList();
-	public ArrayList<GatheringDocPO> getunchekedGatheringDocList();
-	public ArrayList<InWareHouseDocPO> getunchekedInWareHouseDocList();
-	public ArrayList<OutWareHouseDocPO> getunchekedOutWareHouseDocList();
-	public ArrayList<TransferDocPO> getunchekedTransferDocList();
-	public ArrayList<ZLoadDocPO> getunchekedZLoadDocList();
-	public ArrayList<OverDocPO> getunchekedOverDocList();
-	public ArrayList<PayDocPO> getunchekedPayDocList();
-	public ArrayList<YArrivalDocPO> getunchekedYArrivalDocList();
-	public ArrayList<YDeliverDocPO> getunchekedYDeliverDocList();
+	public ArrayList<SendDocVO> getuncheckedSendDocList();
+	public ArrayList<GatheringDocVO> getunchekedGatheringDocList();
+	public ArrayList<InWareHouseDocVO> getunchekedInWareHouseDocList();
+	public ArrayList<OutWareHouseDocVO> getunchekedOutWareHouseDocList();
+	public ArrayList<TransferDocVO> getunchekedTransferDocList();
+	public ArrayList<ZLoadDocVO> getunchekedZLoadDocList();
+	public ArrayList<OverDocVO> getunchekedOverDocList();
+	public ArrayList<PayDocVO> getunchekedPayDocList();
+	public ArrayList<YArrivalDocVO> getunchekedYArrivalDocList();
+	public ArrayList<YDeliverDocVO> getunchekedYDeliverDocList();
 	/*
 	//寄件单部分
 	public SendDocVO getSendDoc(Integer SendDocNumber);
@@ -64,6 +64,8 @@ public interface ApproveLogicService {
 	//中转中心接收单部分
 	public ZArrivalDocVO getZArrivalDoc(Integer ZArrivalDoc);
 	*/
+	ArrayList<YLoadDocVO> getunchekedYLoadDocList();
+	ArrayList<ZArrivalDocVO> getunchekedZArrivalDocList();
 	
 	
 }

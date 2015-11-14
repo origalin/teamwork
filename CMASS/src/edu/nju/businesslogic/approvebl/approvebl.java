@@ -43,64 +43,78 @@ public class approvebl implements ApproveLogicService{
 	 utilitybl
 	 */
 	@Override
-	public ArrayList<SendDocPO> getuncheckedSendDocList() {
+	public ArrayList<SendDocVO> getuncheckedSendDocList() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<GatheringDocPO> getunchekedGatheringDocList() {
+	public ArrayList<GatheringDocVO> getunchekedGatheringDocList() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<InWareHouseDocPO> getunchekedInWareHouseDocList() {
+	public ArrayList<InWareHouseDocVO> getunchekedInWareHouseDocList() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<OutWareHouseDocPO> getunchekedOutWareHouseDocList() {
+	public ArrayList<OutWareHouseDocVO> getunchekedOutWareHouseDocList() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<TransferDocPO> getunchekedTransferDocList() {
+	public ArrayList<TransferDocVO> getunchekedTransferDocList() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<ZLoadDocPO> getunchekedZLoadDocList() {
+	public ArrayList<ZLoadDocVO> getunchekedZLoadDocList() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<OverDocPO> getunchekedOverDocList() {
+	public ArrayList<OverDocVO> getunchekedOverDocList() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<PayDocPO> getunchekedPayDocList() {
+	public ArrayList<PayDocVO> getunchekedPayDocList() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<YArrivalDocPO> getunchekedYArrivalDocList() {
+	public ArrayList<YArrivalDocVO> getunchekedYArrivalDocList() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<YDeliverDocPO> getunchekedYDeliverDocList() {
+	public ArrayList<YDeliverDocVO> getunchekedYDeliverDocList() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	@Override
+	public ArrayList<YLoadDocVO> getunchekedYLoadDocList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+	@Override
+	public ArrayList<ZArrivalDocVO> getunchekedZArrivalDocList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 /*
 	@Override
 	public SendDocVO getSendDoc(Integer SendDocNumber) {

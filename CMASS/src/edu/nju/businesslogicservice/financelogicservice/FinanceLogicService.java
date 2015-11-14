@@ -3,6 +3,7 @@ package edu.nju.businesslogicservice.financelogicservice;
 import java.util.ArrayList;
 
 import edu.nju.po.AccountPO;
+import edu.nju.po.PayType;
 import edu.nju.vo.AccountVO;
 import edu.nju.vo.GatheringDocVO;
 import edu.nju.vo.InstitutionVO;
@@ -34,5 +35,9 @@ public interface FinanceLogicService {
 	//工资部分
 	public ArrayList<showStaffSalaryVO> getShowStaffSalaryList();
 	public ArrayList<AccountVO> getAccount();
+	
+	
+	public void createPayDoc(int payDocID, long date, double money, String payer,
+			int account, PayType type, String back);
 	
 }

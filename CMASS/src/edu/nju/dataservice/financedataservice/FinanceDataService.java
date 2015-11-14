@@ -11,4 +11,5 @@ public interface FinanceDataService{
 	public ArrayList<GatheringDocVO> getGatheringDoc(String startTime,String endTime); 
 	public ArrayList<PayDocVO> getPayDoc();//无参的是为了生成总支出，需要截至当前的所有付款单来计算
 	public ArrayList<GatheringDocVO> getGatheringDoc();//无参的是为了生成总收入
+	
 }
