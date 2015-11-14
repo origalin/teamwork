@@ -1,9 +1,9 @@
 package edu.nju.po;
 
-public class TranceferDoc_CarPO extends TransferDocPO{
+public class TranceferDoc_CarPO extends TransferDocPO {
 
-	public TranceferDoc_CarPO(long TransferDocID,long date,int carNum,int tranceID,String from,String targetCity,Double price,int[] itemIDs) {
-		this.TransferDocID = TransferDocID;
+	public TranceferDoc_CarPO(int TransferDocID,long date,int carNum,int tranceID,String from,String targetCity,Double price,int[] itemIDs) {
+		this.ID = TransferDocID;
 		this.targetCity = targetCity;
 		this.tranceID = tranceID;
 		this.date = date;

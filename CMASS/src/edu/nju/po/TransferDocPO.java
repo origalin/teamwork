@@ -1,8 +1,8 @@
 package edu.nju.po;
 
 
-public class TransferDocPO {
-	long TransferDocID;
+public class TransferDocPO extends Doc{
+	//long TransferDocID;
 	long date;
 	int planeNum;
 	int TrainNum;
@@ -15,10 +15,10 @@ public class TransferDocPO {
 	int[] itemIDs;
 	double price;
 	public long getTransferDocID() {
-		return TransferDocID;
+		return ID;
 	}
-	public void setTransferDocID(long transferDocID) {
-		TransferDocID = transferDocID;
+	public void setTransferDocID(int transferDocID) {
+		this.ID = transferDocID;
 	}
 	public long getDate() {
 		return date;

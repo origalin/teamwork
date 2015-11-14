@@ -1,13 +1,21 @@
 package edu.nju.presentation.collectionui;
 
 import javax.swing.*;
+
 import java.awt.GridLayout;
+
 import javax.swing.table.DefaultTableModel;
+
 import java.awt.FlowLayout;
 import java.awt.BorderLayout;
+
 import javax.swing.border.BevelBorder;
 
+import edu.nju.businesslogic.collectionbl.Collectionbl;
+
 public class CollertionPanel extends JPanel{
+	int institutionID;
+	int stuffID;
 	private JTextField sNameField;
 	private JTextField sMobilePhoneField;
 	private JTextField sTelePhoneField;
@@ -24,7 +32,8 @@ public class CollertionPanel extends JPanel{
 	private JTextField kindField;
 	private JTextField priceField;
 	private JTextField timeField;
-	public CollertionPanel() {
+	public CollertionPanel(int institutionID,int staffID) {
+		Collectionbl collection = new Collectionbl();
 		
 		ButtonGroup buttonGroup = new ButtonGroup();
 		
@@ -136,8 +145,32 @@ public class CollertionPanel extends JPanel{
 		JLabel label_10 = new JLabel("\u6258\u8FD0\u8D27\u7269\u4FE1\u606F");
 		panel_6.add(label_10);
 		
+		JPanel panel_9 = new JPanel();
+		panel_11.add(panel_9);
+		FlowLayout flowLayout_8 = (FlowLayout) panel_9.getLayout();
+		flowLayout_8.setAlignment(FlowLayout.LEFT);
+		
+		JLabel label_15 = new JLabel("\u5305\u88C5\u7C7B\u578B");
+		panel_9.add(label_15);
+		
+		JRadioButton woodradio = new JRadioButton("\u6728\u7BB1");
+		panel_9.add(woodradio);
+		
+		JRadioButton paperradio = new JRadioButton("\u7EB8\u7BB1");
+		panel_9.add(paperradio);
+		
+		JRadioButton bagradio = new JRadioButton("\u5FEB\u9012\u888B");
+		panel_9.add(bagradio);
+		
+		JRadioButton otherradio = new JRadioButton("\u5176\u4ED6");
+		panel_9.add(otherradio);
+		buttonGroup.add(paperradio);
+		buttonGroup.add(bagradio);
+		buttonGroup.add(otherradio);
+		buttonGroup.add(woodradio);
+		
 		JPanel panel_8 = new JPanel();
-		panel_11.add(panel_8);
+		panel_9.add(panel_8);
 		FlowLayout flowLayout_7 = (FlowLayout) panel_8.getLayout();
 		flowLayout_7.setAlignment(FlowLayout.LEFT);
 		
@@ -175,30 +208,6 @@ public class CollertionPanel extends JPanel{
 		heightField = new JTextField();
 		panel_8.add(heightField);
 		heightField.setColumns(5);
-		
-		JPanel panel_9 = new JPanel();
-		panel_11.add(panel_9);
-		FlowLayout flowLayout_8 = (FlowLayout) panel_9.getLayout();
-		flowLayout_8.setAlignment(FlowLayout.LEFT);
-		
-		JLabel label_15 = new JLabel("\u5305\u88C5\u7C7B\u578B");
-		panel_9.add(label_15);
-		
-		JRadioButton woodradio = new JRadioButton("\u6728\u7BB1");
-		panel_9.add(woodradio);
-		
-		JRadioButton paperradio = new JRadioButton("\u7EB8\u7BB1");
-		panel_9.add(paperradio);
-		
-		JRadioButton bagradio = new JRadioButton("\u5FEB\u9012\u888B");
-		panel_9.add(bagradio);
-		
-		JRadioButton otherradio = new JRadioButton("\u5176\u4ED6");
-		panel_9.add(otherradio);
-		buttonGroup.add(paperradio);
-		buttonGroup.add(bagradio);
-		buttonGroup.add(otherradio);
-		buttonGroup.add(woodradio);
 		
 		JPanel panel_10 = new JPanel();
 		panel_11.add(panel_10);
