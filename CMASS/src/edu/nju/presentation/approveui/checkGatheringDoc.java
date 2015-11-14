@@ -13,6 +13,7 @@ public class checkGatheringDoc extends JPanel{
 	private JTextField textField_4;
 	private JTable table;
 	private JTextField textField;
+	 
 	public checkGatheringDoc() {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 69, 164, 0, 62, 0, 48, 0};
