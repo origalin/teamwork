@@ -5,7 +5,7 @@
     <id>UMLGeneric</id>
     <coordinates>
       <x>120</x>
-      <y>90</y>
+      <y>80</y>
       <w>100</w>
       <h>30</h>
     </coordinates>
@@ -17,7 +17,7 @@ bg=orange</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>160</x>
-      <y>150</y>
+      <y>140</y>
       <w>20</w>
       <h>250</h>
     </coordinates>
@@ -29,7 +29,7 @@ bg=yellow</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>280</x>
-      <y>90</y>
+      <y>80</y>
       <w>170</w>
       <h>30</h>
     </coordinates>
@@ -41,7 +41,7 @@ bg=red</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>350</x>
-      <y>170</y>
+      <y>160</y>
       <w>20</w>
       <h>220</h>
     </coordinates>
@@ -53,7 +53,7 @@ bg=red</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>160</x>
-      <y>110</y>
+      <y>100</y>
       <w>30</w>
       <h>60</h>
     </coordinates>
@@ -64,7 +64,7 @@ bg=red</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>350</x>
-      <y>110</y>
+      <y>100</y>
       <w>30</w>
       <h>80</h>
     </coordinates>
@@ -75,7 +75,7 @@ bg=red</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>150</x>
-      <y>170</y>
+      <y>160</y>
       <w>240</w>
       <h>40</h>
     </coordinates>
@@ -87,11 +87,11 @@ PositionVO historyQuery(int SendDocID)</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>520</x>
-      <y>90</y>
-      <w>100</w>
+      <y>80</y>
+      <w>130</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>Collection
+    <panel_attributes>LogisticsDataService
 bg=red</panel_attributes>
     <additional_attributes/>
   </element>
@@ -99,7 +99,7 @@ bg=red</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>560</x>
-      <y>190</y>
+      <y>180</y>
       <w>20</w>
       <h>180</h>
     </coordinates>
@@ -111,19 +111,19 @@ bg=red</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>350</x>
-      <y>180</y>
+      <y>170</y>
       <w>240</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-PositionPO getHistoryPO(int SendDocID)</panel_attributes>
+PositionPO positionQuery(String ItemID)</panel_attributes>
     <additional_attributes>210.0;20.0;20.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>560</x>
-      <y>110</y>
+      <y>100</y>
       <w>30</w>
       <h>100</h>
     </coordinates>
@@ -134,7 +134,7 @@ PositionPO getHistoryPO(int SendDocID)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>360</x>
-      <y>280</y>
+      <y>270</y>
       <w>220</w>
       <h>40</h>
     </coordinates>
@@ -146,7 +146,7 @@ PositionPO getHistoryPO(int SendDocID)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>170</x>
-      <y>320</y>
+      <y>310</y>
       <w>200</w>
       <h>40</h>
     </coordinates>
@@ -158,7 +158,7 @@ PositionPO getHistoryPO(int SendDocID)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>160</x>
-      <y>390</y>
+      <y>380</y>
       <w>30</w>
       <h>100</h>
     </coordinates>
@@ -169,7 +169,7 @@ PositionPO getHistoryPO(int SendDocID)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>350</x>
-      <y>380</y>
+      <y>370</y>
       <w>30</w>
       <h>80</h>
     </coordinates>
@@ -180,7 +180,7 @@ PositionPO getHistoryPO(int SendDocID)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>560</x>
-      <y>360</y>
+      <y>350</y>
       <w>30</w>
       <h>60</h>
     </coordinates>
@@ -191,7 +191,7 @@ PositionPO getHistoryPO(int SendDocID)</panel_attributes>
     <id>UMLFrame</id>
     <coordinates>
       <x>50</x>
-      <y>30</y>
+      <y>20</y>
       <w>740</w>
       <h>480</h>
     </coordinates>
