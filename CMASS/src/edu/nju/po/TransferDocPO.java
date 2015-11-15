@@ -14,10 +14,10 @@ public class TransferDocPO extends Doc{
 	String targetCity;
 	int[] itemIDs;
 	double price;
-	public long getTransferDocID() {
+	public String getTransferDocID() {
 		return ID;
 	}
-	public void setTransferDocID(int transferDocID) {
+	public void setTransferDocID(String transferDocID) {
 		this.ID = transferDocID;
 	}
 	public long getDate() {

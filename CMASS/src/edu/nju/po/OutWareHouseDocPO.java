@@ -5,16 +5,16 @@ import java.util.ArrayList;
 public class OutWareHouseDocPO extends Doc{
 //	int OutWareHouseDocID;
 	ArrayList<OutRecord> outRecords;
-	public OutWareHouseDocPO(int outWareHouseDocID,
+	public OutWareHouseDocPO(String outWareHouseDocID,
 			ArrayList<OutRecord> outRecords) {
 		super();
 		ID = outWareHouseDocID;
 		this.outRecords = outRecords;
 	}
-	public int getOutWareHouseDocID() {
+	public String getOutWareHouseDocID() {
 		return ID;
 	}
-	public void setOutWareHouseDocID(int outWareHouseDocID) {
+	public void setOutWareHouseDocID(String outWareHouseDocID) {
 		ID = outWareHouseDocID;
 	}
 	public ArrayList<OutRecord> getOutRecords() {

@@ -11,13 +11,13 @@ import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
 
-public class CheckOutWareHouseDoc extends JPanel{
+public class CheckWareHouseDoc extends JPanel{
 	private JTextField textField;
 	private JTable table;
 	private JScrollPane scrollPane;
 	private JButton btnNewButton;
 	private JButton button;
-	public CheckOutWareHouseDoc() {
+	public CheckWareHouseDoc() {
 		String[] columnNames={"快递编号","出库日期","目的地","装运形式","中转单编号/装车单号"};
 		String[][] data={
 				{"100031","20151031","北京","飞机","01202310"},

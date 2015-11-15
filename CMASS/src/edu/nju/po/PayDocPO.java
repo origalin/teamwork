@@ -8,7 +8,7 @@ public class PayDocPO extends Doc{
 	int account;
 	PayType type;
 	String back;
-	public PayDocPO(int payDocID, long date, double money, String payer,
+	public PayDocPO(String payDocID, long date, double money, String payer,
 			int account, PayType type, String back) {
 		super();
 		ID = payDocID;
@@ -19,10 +19,10 @@ public class PayDocPO extends Doc{
 		this.type = type;
 		this.back = back;
 	}
-	public int getPayDocID() {
+	public String getPayDocID() {
 		return ID;
 	}
-	public void setPayDocID(int payDocID) {
+	public void setPayDocID(String payDocID) {
 		ID = payDocID;
 	}
 	public long getDate() {

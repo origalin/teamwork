@@ -15,6 +15,8 @@ import javax.swing.border.BevelBorder;
 
 import edu.nju.businesslogic.collectionbl.Collectionbl;
 import edu.nju.businesslogicservice.collectionlogicservice.CollectionLogicService;
+import edu.nju.presentation.approveui.CheckSendDoc;
+import edu.nju.presentation.mainui.CheckDialog;
 import edu.nju.vo.SendDocVO;
 
 import java.awt.Color;
@@ -443,6 +445,16 @@ public class CollertionPanel extends JPanel{
 		if(creatable()) {
 			SendDocVO sendDoc = collection.createSendDocVO(sName, sAddress, sUnit, sTelePhone, sMobilePhone,
 					rName, rAddress, rUnit, rTelePhone, rMobilePhone, itemNum, weight, volume, itemKind, packageType,sendType);
+			CheckDialog cDialog = new CheckDialog();
+			cDialog.getDocPanel().add(new CheckSendDoc(sendDoc));
+			cDialog.getConfirmButton().addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO 自动生成的方法存根
+					saveDoc();
+				}
+			});
 			
 		}else {
 			warnning();
@@ -486,8 +498,10 @@ public class CollertionPanel extends JPanel{
 		this.volume[2] = Double.parseDouble(HeighthField.getText());
 	}
 	public void warnning() {
-		JDialog dialog = new JDialog();
-		dialog.setVisible(true);
+		
+	}
+	public void  saveDoc() {
+		
 	}
 	
 }

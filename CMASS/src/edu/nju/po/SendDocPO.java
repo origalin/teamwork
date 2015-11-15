@@ -12,11 +12,14 @@ public class SendDocPO extends Doc{
 //	int itemID;
 	int courier_Type;
 	long date;
+	int time;
+	
 	public SendDocPO(String sName, String aAddress, String sCity, String sUnit,
 			String sTelePhone, String sMobilePhone, String rName,
 			String rAddress, String rCity, String rUnit, String rTelePhone,
 			String rMobilePhone, int itemNum, Double weight, Double[] volume,
-			String item_type, int packageType, int courier_Type) {
+			String item_type, int packageType, Double sumPrice,
+			int courier_Type, long date, int time) {
 		super();
 		this.sName = sName;
 		this.aAddress = aAddress;
@@ -35,7 +38,10 @@ public class SendDocPO extends Doc{
 		this.volume = volume;
 		this.item_type = item_type;
 		this.packageType = packageType;
+		this.sumPrice = sumPrice;
 		this.courier_Type = courier_Type;
+		this.date = date;
+		this.time = time;
 	}
 	public String getsName() {
 		return sName;

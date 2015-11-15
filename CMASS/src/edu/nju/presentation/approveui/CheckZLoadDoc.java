@@ -20,7 +20,7 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.table.DefaultTableModel;
 import java.awt.Font;
 
-public class CheckoutZLoadDoc extends JPanel{
+public class CheckZLoadDoc extends JPanel{
 	private JTextField transferCenterField;
 	private JTextField carIDField;
 	private JTextField watcherField;
@@ -31,7 +31,7 @@ public class CheckoutZLoadDoc extends JPanel{
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
-	public CheckoutZLoadDoc() {
+	public CheckZLoadDoc() {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{439, 0};
 		gridBagLayout.rowHeights = new int[]{248, 0};

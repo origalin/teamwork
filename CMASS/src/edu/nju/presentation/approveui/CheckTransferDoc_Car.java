@@ -18,7 +18,7 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 
 @SuppressWarnings("serial")
-public class CheckoutTransferDoc_Train extends JPanel{
+public class CheckTransferDoc_Car extends JPanel{
 	private JTextField carIDField;
 	private JTextField watcherField;
 	private JTextField targetField;
@@ -28,8 +28,7 @@ public class CheckoutTransferDoc_Train extends JPanel{
 	private JTextField textField_2;
 	private JTextField textField_3;
 	private JTextField textField_4;
-	private JTextField textField_5;
-	public CheckoutTransferDoc_Train() {
+	public CheckTransferDoc_Car() {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{418, 0};
 		gridBagLayout.rowHeights = new int[]{248, 0};
@@ -45,7 +44,7 @@ public class CheckoutTransferDoc_Train extends JPanel{
 		add(panel_11, gbc_panel_11);
 		panel_11.setBorder(null);
 		GridBagLayout gbl_panel_11 = new GridBagLayout();
-		gbl_panel_11.columnWidths = new int[]{0, 245, 0, 0, 0};
+		gbl_panel_11.columnWidths = new int[]{0, 250, 0, 0, 0};
 		gbl_panel_11.rowHeights = new int[]{42, 0, 42, 42, 42, 0};
 		gbl_panel_11.columnWeights = new double[]{0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		gbl_panel_11.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
@@ -61,7 +60,7 @@ public class CheckoutTransferDoc_Train extends JPanel{
 				panel_11.add(panel, gbc_panel);
 				FlowLayout flowLayout = (FlowLayout) panel.getLayout();
 				
-				JLabel label = new JLabel("\u94C1\u8DEF\u4E2D\u8F6C\u5355");
+				JLabel label = new JLabel("\u9646\u8FD0\u4E2D\u8F6C\u5355");
 				label.setFont(new Font("黑体", Font.BOLD, 15));
 				label.setHorizontalAlignment(SwingConstants.CENTER);
 				panel.add(label);
@@ -144,14 +143,14 @@ public class CheckoutTransferDoc_Train extends JPanel{
 				panel_6.add(targetField);
 				targetField.setColumns(10);
 		
-		JLabel lblNewLabel_1 = new JLabel("\u8D27\u8FD0\u7F16\u53F7");
-		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
-		gbc_lblNewLabel_1.anchor = GridBagConstraints.WEST;
-		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel_1.gridx = 2;
-		gbc_lblNewLabel_1.gridy = 2;
-		panel_11.add(lblNewLabel_1, gbc_lblNewLabel_1);
-		lblNewLabel_1.setFont(new Font("黑体", Font.BOLD, 15));
+		JLabel label_6 = new JLabel("\u6C7D\u8FD0\u7F16\u53F7");
+		GridBagConstraints gbc_label_6 = new GridBagConstraints();
+		gbc_label_6.anchor = GridBagConstraints.WEST;
+		gbc_label_6.insets = new Insets(0, 0, 5, 5);
+		gbc_label_6.gridx = 2;
+		gbc_label_6.gridy = 2;
+		panel_11.add(label_6, gbc_label_6);
+		label_6.setFont(new Font("黑体", Font.BOLD, 15));
 		
 		JPanel panel_4 = new JPanel();
 		GridBagConstraints gbc_panel_4 = new GridBagConstraints();
@@ -162,12 +161,12 @@ public class CheckoutTransferDoc_Train extends JPanel{
 		gbc_panel_4.gridy = 2;
 		panel_11.add(panel_4, gbc_panel_4);
 		
-		textField_5 = new JTextField();
-		textField_5.setEditable(false);
-		panel_4.add(textField_5);
-		textField_5.setColumns(10);
+		textField_4 = new JTextField();
+		textField_4.setEditable(false);
+		panel_4.add(textField_4);
+		textField_4.setColumns(10);
 		
-		JLabel label_11 = new JLabel("\u822A\u73ED\u53F7  ");
+		JLabel label_11 = new JLabel("\u8F66\u6B21\u53F7  ");
 		label_11.setFont(new Font("黑体", Font.BOLD, 15));
 		GridBagConstraints gbc_label_11 = new GridBagConstraints();
 		gbc_label_11.anchor = GridBagConstraints.WEST;
@@ -200,14 +199,14 @@ public class CheckoutTransferDoc_Train extends JPanel{
 		panel_8.add(watcherField);
 		watcherField.setColumns(10);
 		
-		JLabel label_6 = new JLabel("\u8F66\u53A2\u53F7");
-		GridBagConstraints gbc_label_6 = new GridBagConstraints();
-		gbc_label_6.anchor = GridBagConstraints.WEST;
-		gbc_label_6.insets = new Insets(0, 0, 5, 5);
-		gbc_label_6.gridx = 2;
-		gbc_label_6.gridy = 3;
-		panel_11.add(label_6, gbc_label_6);
-		label_6.setFont(new Font("黑体", Font.BOLD, 15));
+		JLabel label_5 = new JLabel("\u8FD0\u8D39");
+		GridBagConstraints gbc_label_5 = new GridBagConstraints();
+		gbc_label_5.anchor = GridBagConstraints.WEST;
+		gbc_label_5.insets = new Insets(0, 0, 5, 5);
+		gbc_label_5.gridx = 2;
+		gbc_label_5.gridy = 3;
+		panel_11.add(label_5, gbc_label_5);
+		label_5.setFont(new Font("黑体", Font.BOLD, 15));
 		
 		JPanel panel_3 = new JPanel();
 		GridBagConstraints gbc_panel_3 = new GridBagConstraints();
@@ -217,15 +216,6 @@ public class CheckoutTransferDoc_Train extends JPanel{
 		gbc_panel_3.gridx = 3;
 		gbc_panel_3.gridy = 3;
 		panel_11.add(panel_3, gbc_panel_3);
-		
-		textField_4 = new JTextField();
-		textField_4.setEditable(false);
-		panel_3.add(textField_4);
-		textField_4.setColumns(10);
-		
-		JLabel label_5 = new JLabel("\u8FD0\u8D39");
-		label_5.setFont(new Font("黑体", Font.BOLD, 15));
-		panel_3.add(label_5);
 		
 		textField_3 = new JTextField();
 		textField_3.setEditable(false);
