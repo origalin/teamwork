@@ -69,7 +69,7 @@ public class LoginFrame extends JFrame{
 	 private void loginAction(String account, String password){//»¹ÒªÍêÉÆ
 		 mainFrame = new MainFrame();
 		 mainFrame.comeout();
-		 mainFrame.changeFunctionPanel(new CollertionPanel(0,0));
+		 mainFrame.changeFunctionPanel(new CollertionPanel(" "," "));
 		 this.setVisible(false);
 	 }
 }
