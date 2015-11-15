@@ -16,10 +16,10 @@ public interface CollectionLogicService {
 	public List<SendDocPO> getAllSendDoc();//获取所有未审批单据
 	public int getCourierMoney(String courier);//获取快递员收取运费
 	public int[] getSendDocIDList(String courier);//获取快递员创建的寄件单编号
-	public SendDocVO createSendDocVO(String sName,String sAddress,String sUnit,String sPhone,
-			String rName,String rAddress,String rUnit,String rPhone
-			,int number,double weight,double[] volume
-			,String kind,int packing,int type);//创建寄件单VO
+	public SendDocVO createSendDocVO(String sName,String sAddress,String sUnit,String sTelePhone,String sMobilePhone,
+			String rName,String rAddress,String rUnit,String rTelePhone
+			,String rMobilePhone,int itemNum,double weight,double[] volume
+			,String itemKind,int packageType,int sendType);//创建寄件单VO
 	public int timeEstimate(String sCity,String rCity);//时间预估
 	public double priceCalc(String sCity,String rCity,int packing,double[] volume,double weight);//运费计算
 	public SendDocVO findSendDocVO(int ID);//获取寄件单VO

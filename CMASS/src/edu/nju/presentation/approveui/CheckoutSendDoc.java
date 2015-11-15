@@ -1,4 +1,4 @@
-package edu.nju.presentation.tables;
+package edu.nju.presentation.approveui;
 
 import javax.swing.*;
 import java.awt.GridLayout;
@@ -13,7 +13,7 @@ import javax.swing.border.LineBorder;
 import java.awt.Color;
 import java.awt.Font;
 
-public class SendDocTable extends JPanel{
+public class CheckoutSendDoc extends JPanel{
 	private JTextField textField_7;
 	private JTextField textField_8;
 	private JTextField textField_9;
@@ -49,7 +49,7 @@ public class SendDocTable extends JPanel{
 	private JTextField textField_28;
 	private JTextField textField_33;
 	private JTextField textField_34;
-	public SendDocTable() {
+	public CheckoutSendDoc() {
 		setBorder(null);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] {281, 224, 0};

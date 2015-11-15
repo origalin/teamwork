@@ -1,40 +1,41 @@
 package edu.nju.po;
 
 public class SendDocPO extends Doc{
-	String sName,aAddress,sTelePhone,sMobilePhone;
-	String rName,rAddress,rTelePhone,rMobilePhone;
-	int itemName;
+	String sName,aAddress,sCity,sUnit,sTelePhone,sMobilePhone;
+	String rName,rAddress,rCity,rUnit,rTelePhone,rMobilePhone;
+	int itemNum;
 	Double weight;
 	Double[] volume;//Με»ύ
 	String item_type;
-	String cpackage;
+	int packageType;
 	Double sumPrice;
 //	int itemID;
-	String courier_Type;
+	int courier_Type;
 	long date;
-	public SendDocPO(String sName, String aAddress, String sTelePhone,
-			String sMobilePhone, String rName, String rAddress,
-			String rTelePhone, String rMobilePhone, int itemName,
-			Double weight, Double[] volume, String item_type, String cpackage,
-			Double sumPrice, int itemID, String courier_Type, long date) {
+	public SendDocPO(String sName, String aAddress, String sCity, String sUnit,
+			String sTelePhone, String sMobilePhone, String rName,
+			String rAddress, String rCity, String rUnit, String rTelePhone,
+			String rMobilePhone, int itemNum, Double weight, Double[] volume,
+			String item_type, int packageType, int courier_Type) {
 		super();
 		this.sName = sName;
 		this.aAddress = aAddress;
+		this.sCity = sCity;
+		this.sUnit = sUnit;
 		this.sTelePhone = sTelePhone;
 		this.sMobilePhone = sMobilePhone;
 		this.rName = rName;
 		this.rAddress = rAddress;
+		this.rCity = rCity;
+		this.rUnit = rUnit;
 		this.rTelePhone = rTelePhone;
 		this.rMobilePhone = rMobilePhone;
-		this.itemName = itemName;
+		this.itemNum = itemNum;
 		this.weight = weight;
 		this.volume = volume;
 		this.item_type = item_type;
-		this.cpackage = cpackage;
-		this.sumPrice = sumPrice;
-		this.ID = itemID;
+		this.packageType = packageType;
 		this.courier_Type = courier_Type;
-		this.date = date;
 	}
 	public String getsName() {
 		return sName;
@@ -47,6 +48,18 @@ public class SendDocPO extends Doc{
 	}
 	public void setaAddress(String aAddress) {
 		this.aAddress = aAddress;
+	}
+	public String getsCity() {
+		return sCity;
+	}
+	public void setsCity(String sCity) {
+		this.sCity = sCity;
+	}
+	public String getsUnit() {
+		return sUnit;
+	}
+	public void setsUnit(String sUnit) {
+		this.sUnit = sUnit;
 	}
 	public String getsTelePhone() {
 		return sTelePhone;
@@ -72,6 +85,18 @@ public class SendDocPO extends Doc{
 	public void setrAddress(String rAddress) {
 		this.rAddress = rAddress;
 	}
+	public String getrCity() {
+		return rCity;
+	}
+	public void setrCity(String rCity) {
+		this.rCity = rCity;
+	}
+	public String getrUnit() {
+		return rUnit;
+	}
+	public void setrUnit(String rUnit) {
+		this.rUnit = rUnit;
+	}
 	public String getrTelePhone() {
 		return rTelePhone;
 	}
@@ -84,11 +109,11 @@ public class SendDocPO extends Doc{
 	public void setrMobilePhone(String rMobilePhone) {
 		this.rMobilePhone = rMobilePhone;
 	}
-	public int getItemName() {
-		return itemName;
+	public int getItemNum() {
+		return itemNum;
 	}
-	public void setItemName(int itemName) {
-		this.itemName = itemName;
+	public void setItemNum(int itemNum) {
+		this.itemNum = itemNum;
 	}
 	public Double getWeight() {
 		return weight;
@@ -108,11 +133,11 @@ public class SendDocPO extends Doc{
 	public void setItem_type(String item_type) {
 		this.item_type = item_type;
 	}
-	public String getCpackage() {
-		return cpackage;
+	public int getPackageType() {
+		return packageType;
 	}
-	public void setCpackage(String cpackage) {
-		this.cpackage = cpackage;
+	public void setPackageType(int packageType) {
+		this.packageType = packageType;
 	}
 	public Double getSumPrice() {
 		return sumPrice;
@@ -120,16 +145,10 @@ public class SendDocPO extends Doc{
 	public void setSumPrice(Double sumPrice) {
 		this.sumPrice = sumPrice;
 	}
-	public int getItemID() {
-		return ID;
-	}
-	public void setItemID(int itemID) {
-		this.ID = itemID;
-	}
-	public String getCourier_Type() {
+	public int getCourier_Type() {
 		return courier_Type;
 	}
-	public void setCourier_Type(String courier_Type) {
+	public void setCourier_Type(int courier_Type) {
 		this.courier_Type = courier_Type;
 	}
 	public long getDate() {
@@ -138,5 +157,7 @@ public class SendDocPO extends Doc{
 	public void setDate(long date) {
 		this.date = date;
 	}
+
+	
 	
 }

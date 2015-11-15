@@ -65,14 +65,6 @@ public class Collectionbl implements CollectionLogicService{
 		return null;
 	}
 
-	@Override
-	public SendDocVO createSendDocVO(String sName, String sAddress,
-			String sUnit, String sPhone, String rName, String rAddress,
-			String rUnit, String rPhone, int number, double weight,
-			double[] volume, String kind, int packing, int type) {
-		// TODO 自动生成的方法存根
-		return null;
-	}
 
 	@Override
 	public int timeEstimate(String sCity, String rCity) {
@@ -101,6 +93,16 @@ public class Collectionbl implements CollectionLogicService{
 
 	@Override
 	public ArrayList<SendDocPO> getUncheckedSendDocPOs() {
+		// TODO 自动生成的方法存根
+		return null;
+	}
+
+	@Override
+	public SendDocVO createSendDocVO(String sName, String sAddress,
+			String sUnit, String sTelePhone, String sMobilePhone, String rName,
+			String rAddress, String rUnit, String rTelePhone,
+			String rMobilePhone, int itemNum, double weight, double[] volume,
+			String itemKind, int packageType, int sendType) {
 		// TODO 自动生成的方法存根
 		return null;
 	}

@@ -15,6 +15,8 @@ import javax.swing.border.BevelBorder;
 
 import edu.nju.businesslogic.collectionbl.Collectionbl;
 import edu.nju.businesslogicservice.collectionlogicservice.CollectionLogicService;
+import edu.nju.vo.SendDocVO;
+
 import java.awt.Color;
 
 public class CollertionPanel extends JPanel{
@@ -430,7 +432,8 @@ public class CollertionPanel extends JPanel{
 	public void estimate() {
 		intialize();
 		if(estimatable()) {
-			collection.createSendDocVO(sName, sAddress, sUnit, sPhone, rName, rAddress, rUnit, rPhone, number, weight, volume, kind, packing, type)
+			timeField.setText(String.valueOf(collection.timeEstimate(scity, rcity)));
+			priceField.setText(String.valueOf(collection.priceCalc(scity, rcity, packageType, volume, weight)));
 		}else {
 			warnning();
 		}
@@ -438,6 +441,8 @@ public class CollertionPanel extends JPanel{
 	public void create() {
 		intialize();
 		if(creatable()) {
+			SendDocVO sendDoc = collection.createSendDocVO(sName, sAddress, sUnit, sTelePhone, sMobilePhone,
+					rName, rAddress, rUnit, rTelePhone, rMobilePhone, itemNum, weight, volume, itemKind, packageType,sendType);
 			
 		}else {
 			warnning();
@@ -451,7 +456,9 @@ public class CollertionPanel extends JPanel{
 		}
 	}
 	public boolean creatable() {
-		if(scity!=null&&sAddress!=null&&sName!=null&&sUnit!=null&&sTelePhone!=null&&sMobilePhone!=null&&rName!=null&&rUnit!=null&&rAddress!=null&&rTelePhone!=null&&rMobilePhone!=null&&rcity!=null&&itemNum!=0&&volume!=null&&weight!=0&&packageType!=0&&sendType!=-1) {
+		if(scity!=null&&sAddress!=null&&sName!=null&&sUnit!=null&&sTelePhone!=null&&sMobilePhone!=null&&rName!=null&&
+				rUnit!=null&&rAddress!=null&&rTelePhone!=null&&rMobilePhone!=null&&rcity!=null&&itemNum!=0&&volume!=null&&
+				weight!=0&&packageType!=0&&sendType!=-1) {
 			return true;
 		}else {
 			return false;
