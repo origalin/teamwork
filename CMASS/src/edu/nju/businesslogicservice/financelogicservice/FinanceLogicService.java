@@ -3,11 +3,20 @@ package edu.nju.businesslogicservice.financelogicservice;
 import java.util.ArrayList;
 
 import edu.nju.po.AccountPO;
+import edu.nju.po.GatheringDocPO;
+import edu.nju.po.InWareHouseDocPO;
+import edu.nju.po.InstitutionPO;
+import edu.nju.po.PayDocPO;
 import edu.nju.po.PayType;
+import edu.nju.po.StaffPO;
+import edu.nju.po.TransferDocPO;
+import edu.nju.po.YLoadDocPO;
+import edu.nju.po.ZLoadDocPO;
 import edu.nju.vo.AccountVO;
 import edu.nju.vo.GatheringDocVO;
 import edu.nju.vo.InstitutionVO;
 import edu.nju.vo.PayDocVO;
+import edu.nju.vo.TransferDocVO;
 import edu.nju.vo.TransferDoc_CarVO;
 import edu.nju.vo.TransferDoc_PlaneVO;
 import edu.nju.vo.TransferDoc_TrainVO;
@@ -16,8 +25,16 @@ import edu.nju.vo.ZLoadDocVO;
 import edu.nju.vo.showStaffSalaryVO;
 
 public interface FinanceLogicService {
+	//提供给审批单据的供接口
+	public ArrayList<PayDocPO> getunchekedPayDocList();
+	public void saveOverDocPO(PayDocPO po);
+	public ArrayList<GatheringDocPO> getunchekedGatheringDocList();
+	public void saveGatheringDocPO(GatheringDocPO po);
 	//账户管理部分
-	public ArrayList<AccountPO> getAccountPO();//就是要得到accountPO数据层的引用
+	public void addAccountPO(String accountName);
+	public void deleteAccountPO(String accountName);
+	public void modifyAccountPO(String oldAccountName,String newAccountName);
+	public AccountVO checkAccountPO(String accountName);
 	//查看成本收益表部分
 	public double getTotalIncome();//得到总收入
 	public double getTotalPayment();//得到总支出
@@ -25,19 +42,29 @@ public interface FinanceLogicService {
 	public ArrayList<PayDocVO> getPayDoc(String startTime,String endTime);
 	public ArrayList<GatheringDocVO> getGatheringDoc(String startTime,String endTime);
 	//成本管理部分
-	public ArrayList<InstitutionVO> getInstitutionList();//得到所有机构列表，财务人员手动填写各个机构的租金并生成付款单
+	public ArrayList<InstitutionPO> getUnpaidInstitutionList();
+	public void setInstitutionList(ArrayList<InstitutionPO> InstitutionList);
 	//得到每个中转单与装车单的列表，在条目选择运费时依次显示它们，并根据它们的运费属性显示运费，最后生成付款单
+	/*
 	public ArrayList<TransferDoc_CarVO> getCarTransferList();
+	public void deleteTransferDoc_CarVO(int TransferDoc_CarID);
 	public ArrayList<TransferDoc_TrainVO> getTrainTransferList();
+	public void deleteTransferDoc_TrainVO(int TransferDoc_TrainID);
 	public ArrayList<TransferDoc_PlaneVO> getPlaneTransferList();
-	public ArrayList<YLoadDocVO> getYLoadDocList();
-	public ArrayList<ZLoadDocVO> getZLoadDocList();
+	public void deleteTransferDoc_PlaneVO(int TransferDoc_PlaneID);
+	*/
+	public ArrayList<TransferDocPO> getUnpaidCarTransferList();
+	public void setTransferDocList(ArrayList<TransferDocPO> TransferDocList);
+	public ArrayList<YLoadDocPO> getUnpaidYLoadDocList();
+	public void setYLoadDocList(ArrayList<YLoadDocPO>YLoadDocList);
+	public ArrayList<ZLoadDocPO> getUnpaidZLoadDocList();
+	public void setZLoadDocList(ArrayList<ZLoadDocPO>ZLoadDocList);
 	//工资部分
-	public ArrayList<showStaffSalaryVO> getShowStaffSalaryList();
+	public ArrayList<StaffPO> getUnpaidStaffList();
 	public ArrayList<AccountVO> getAccount();
-	
-	
+	public void setStaffList(ArrayList<StaffPO> staffList);//原理同deleteInstitution
 	public void createPayDoc(int payDocID, long date, double money, String payer,
 			int account, PayType type, String back);
 	
 }
+

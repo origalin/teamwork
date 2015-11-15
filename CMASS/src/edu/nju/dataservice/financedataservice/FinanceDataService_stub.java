@@ -6,6 +6,7 @@ import edu.nju.po.AccountPO;
 import edu.nju.po.GatheringDocPO;
 import edu.nju.po.PayDocPO;
 import edu.nju.tools.Time;
+import edu.nju.vo.AccountVO;
 import edu.nju.vo.GatheringDocVO;
 import edu.nju.vo.PayDocVO;
 
@@ -18,28 +19,77 @@ public class FinanceDataService_stub implements FinanceDataService{
 	}
 
 	@Override
-	public ArrayList<PayDocVO> getPayDoc(String startTime, String endTime) {
+	public ArrayList<PayDocPO> getPayDoc(String startTime, String endTime) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<GatheringDocVO> getGatheringDoc(String startTime,
+	public ArrayList<GatheringDocPO> getGatheringDoc(String startTime,
 			String endTime) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<PayDocVO> getPayDoc() {
+	public ArrayList<PayDocPO> getPayDoc() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<GatheringDocVO> getGatheringDoc() {
+	public ArrayList<GatheringDocPO> getGatheringDoc() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void addAccountPO(String accountName) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteAccountPO(String accountName) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void modifyAccountPO(String oldAccountName, String newAccountName) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public AccountPO checkAccountPO(String accountName) {
+		return null;
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public ArrayList<PayDocPO> getunchekedPayDocList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<GatheringDocPO> getunchekedGatheringDocList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void saveOverDocPO(PayDocPO po) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void saveGatheringDocPO(GatheringDocPO po) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 /*

@@ -2,6 +2,8 @@ package edu.nju.businesslogic.approvebl;
 
 import java.util.ArrayList;
 
+import edu.nju.businesslogic.financebl.financebl;
+import edu.nju.businesslogic.transformbl.ZLoadDoc;
 import edu.nju.businesslogicservice.approvelogicservice.ApproveLogicService;
 import edu.nju.po.GatheringDocPO;
 import edu.nju.po.InWareHouseDocPO;
@@ -12,6 +14,8 @@ import edu.nju.po.SendDocPO;
 import edu.nju.po.TransferDocPO;
 import edu.nju.po.YArrivalDocPO;
 import edu.nju.po.YDeliverDocPO;
+import edu.nju.po.YLoadDocPO;
+import edu.nju.po.ZArrivalDocPO;
 import edu.nju.po.ZLoadDocPO;
 import edu.nju.vo.GatheringDocVO;
 import edu.nju.vo.InWareHouseDocVO;
@@ -33,6 +37,8 @@ public class approvebl implements ApproveLogicService{
 	 ArrayList<...PO> getunchecked...List();显示所有未审批的...类型单据PO对象的列表，
 	 需要PO对象的原因是我需要修改单据是否被审批的状态
 	 
+	 public void save...PO(... PO);//提供保存所有单据的功能，我要修改单据的审批状态需要用到该方法
+	 public void saveOverDocPO(OverDocPO po);//保存收件单持久化对象
 	 collectionbl：
 	 financebl
 	 infobl
@@ -42,77 +48,167 @@ public class approvebl implements ApproveLogicService{
 	 transformbl
 	 utilitybl
 	 */
+	financebl fnc;
+	
+	ArrayList<SendDocPO> uncheckedSendDocList;
+	ArrayList<GatheringDocPO> unchekedGatheringDocList;
+	ArrayList<InWareHouseDocPO> unchekedInWareHouseDocList;
+	ArrayList<OutWareHouseDocPO> unchekedOutWareHouseDocList;
+	ArrayList<TransferDocPO> unchekedTransferDocList;
+	ArrayList<ZLoadDocPO> unchekedZLoadDocList;
+	ArrayList<OverDocPO> unchekedOverDocList;
+	ArrayList<PayDocPO> unchekedPayDocList;
+	ArrayList<YArrivalDocPO> unchekedYArrivalDocList;
+	ArrayList<YDeliverDocPO> unchekedYDeliverDocList;
+	ArrayList<YLoadDocPO> unchekedYLoadDocList;
+	ArrayList<ZArrivalDocPO> unchekedZArrivalDocList;
 	@Override
-	public ArrayList<SendDocVO> getuncheckedSendDocList() {
+	public ArrayList<SendDocPO> getuncheckedSendDocList() {
+		
+		return null;
+	}
+
+	@Override
+	public ArrayList<GatheringDocPO> getunchekedGatheringDocList() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<GatheringDocVO> getunchekedGatheringDocList() {
+	public ArrayList<InWareHouseDocPO> getunchekedInWareHouseDocList() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<InWareHouseDocVO> getunchekedInWareHouseDocList() {
+	public ArrayList<OutWareHouseDocPO> getunchekedOutWareHouseDocList() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<OutWareHouseDocVO> getunchekedOutWareHouseDocList() {
+	public ArrayList<TransferDocPO> getunchekedTransferDocList() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<TransferDocVO> getunchekedTransferDocList() {
+	public ArrayList<ZLoadDocPO> getunchekedZLoadDocList() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<ZLoadDocVO> getunchekedZLoadDocList() {
+	public ArrayList<OverDocPO> getunchekedOverDocList() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<OverDocVO> getunchekedOverDocList() {
+	public ArrayList<PayDocPO> getunchekedPayDocList() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<PayDocVO> getunchekedPayDocList() {
+	public ArrayList<YArrivalDocPO> getunchekedYArrivalDocList() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<YArrivalDocVO> getunchekedYArrivalDocList() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ArrayList<YDeliverDocVO> getunchekedYDeliverDocList() {
+	public ArrayList<YDeliverDocPO> getunchekedYDeliverDocList() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	
 	@Override
-	public ArrayList<YLoadDocVO> getunchekedYLoadDocList() {
+	public ArrayList<YLoadDocPO> getunchekedYLoadDocList() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	
 	@Override
-	public ArrayList<ZArrivalDocVO> getunchekedZArrivalDocList() {
+	public ArrayList<ZArrivalDocPO> getunchekedZArrivalDocList() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void setSendDocList(ArrayList<SendDocPO> sendDocList) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setGatheringDocList(ArrayList<GatheringDocPO> GatheringDocList) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setInWareHouseDocList(
+			ArrayList<InWareHouseDocPO> InWareHouseDocList) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setOutWareHouseDocList(
+			ArrayList<OutWareHouseDocPO> OutWareHouseDocList) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setTransferDocList(ArrayList<TransferDocPO> TransferDocList) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+	@Override
+	public void setOverDocList(ArrayList<OverDocPO> OverDocList) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setPayDocList(ArrayList<PayDocPO> PayDocList) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setYArrivalDocList(ArrayList<YArrivalDocPO> YArrivalDocList) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setYDeliverDocList(ArrayList<YDeliverDocPO> YDeliverDocList) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void setZArrivalDocList(ArrayList<ZArrivalDocPO> ZArrivalDocList) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setYLoadDocList(ArrayList<YLoadDocPO> YLoadDocList) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setZLoadDocList(ArrayList<ZLoadDocPO> ZLoadDocList) {
+		// TODO Auto-generated method stub
+		
 	}
 
 /*

@@ -6,12 +6,11 @@ import java.awt.Insets;
 import java.awt.Font;
 public class costManagement extends JPanel{
 	private JTextField textField_2;
-	private JTable table;
 	public costManagement() {
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 73, 44, 0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
@@ -22,11 +21,18 @@ public class costManagement extends JPanel{
 		gbc_label_3.gridy = 0;
 		add(label_3, gbc_label_3);
 		
+		JButton button = new JButton("\u65B0\u5EFA\u4ED8\u6B3E\u5355");
+		GridBagConstraints gbc_button = new GridBagConstraints();
+		gbc_button.insets = new Insets(0, 0, 5, 5);
+		gbc_button.gridx = 4;
+		gbc_button.gridy = 1;
+		add(button, gbc_button);
+		
 		JLabel label = new JLabel("\u6761\u76EE");
 		label.setFont(new Font("ºÚÌå", Font.BOLD, 12));
 		GridBagConstraints gbc_label = new GridBagConstraints();
 		gbc_label.insets = new Insets(0, 0, 5, 5);
-		gbc_label.gridx = 2;
+		gbc_label.gridx = 1;
 		gbc_label.gridy = 2;
 		add(label, gbc_label);
 		
@@ -37,7 +43,7 @@ public class costManagement extends JPanel{
 		GridBagConstraints gbc_comboBox = new GridBagConstraints();
 		gbc_comboBox.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBox.gridx = 4;
+		gbc_comboBox.gridx = 3;
 		gbc_comboBox.gridy = 2;
 		add(comboBox, gbc_comboBox);
 		
@@ -45,26 +51,18 @@ public class costManagement extends JPanel{
 		label_2.setFont(new Font("ºÚÌå", Font.BOLD, 12));
 		GridBagConstraints gbc_label_2 = new GridBagConstraints();
 		gbc_label_2.insets = new Insets(0, 0, 5, 5);
-		gbc_label_2.gridx = 8;
+		gbc_label_2.gridx = 6;
 		gbc_label_2.gridy = 2;
 		add(label_2, gbc_label_2);
 		
 		textField_2 = new JTextField();
 		GridBagConstraints gbc_textField_2 = new GridBagConstraints();
-		gbc_textField_2.insets = new Insets(0, 0, 5, 0);
+		gbc_textField_2.insets = new Insets(0, 0, 5, 5);
 		gbc_textField_2.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_2.gridx = 10;
+		gbc_textField_2.gridx = 8;
 		gbc_textField_2.gridy = 2;
 		add(textField_2, gbc_textField_2);
 		textField_2.setColumns(10);
-		
-		table = new JTable();
-		GridBagConstraints gbc_table = new GridBagConstraints();
-		gbc_table.insets = new Insets(0, 0, 0, 5);
-		gbc_table.fill = GridBagConstraints.BOTH;
-		gbc_table.gridx = 4;
-		gbc_table.gridy = 4;
-		add(table, gbc_table);
 	}
 
 }

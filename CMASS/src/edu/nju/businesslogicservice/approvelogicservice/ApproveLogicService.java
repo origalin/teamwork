@@ -2,6 +2,7 @@ package edu.nju.businesslogicservice.approvelogicservice;
 
 import java.util.ArrayList;
 
+import edu.nju.businesslogic.transformbl.ZLoadDoc;
 import edu.nju.po.GatheringDocPO;
 import edu.nju.po.InWareHouseDocPO;
 import edu.nju.po.OutWareHouseDocPO;
@@ -11,6 +12,8 @@ import edu.nju.po.SendDocPO;
 import edu.nju.po.TransferDocPO;
 import edu.nju.po.YArrivalDocPO;
 import edu.nju.po.YDeliverDocPO;
+import edu.nju.po.YLoadDocPO;
+import edu.nju.po.ZArrivalDocPO;
 import edu.nju.po.ZLoadDocPO;
 import edu.nju.vo.GatheringDocVO;
 import edu.nju.vo.InWareHouseDocVO;
@@ -28,16 +31,31 @@ import edu.nju.vo.ZLoadDocVO;
 public interface ApproveLogicService {
 	
 	//获取各类单据
-	public ArrayList<SendDocVO> getuncheckedSendDocList();
-	public ArrayList<GatheringDocVO> getunchekedGatheringDocList();
-	public ArrayList<InWareHouseDocVO> getunchekedInWareHouseDocList();
-	public ArrayList<OutWareHouseDocVO> getunchekedOutWareHouseDocList();
-	public ArrayList<TransferDocVO> getunchekedTransferDocList();
-	public ArrayList<ZLoadDocVO> getunchekedZLoadDocList();
-	public ArrayList<OverDocVO> getunchekedOverDocList();
-	public ArrayList<PayDocVO> getunchekedPayDocList();
-	public ArrayList<YArrivalDocVO> getunchekedYArrivalDocList();
-	public ArrayList<YDeliverDocVO> getunchekedYDeliverDocList();
+	public ArrayList<SendDocPO> getuncheckedSendDocList();
+	public ArrayList<GatheringDocPO> getunchekedGatheringDocList();
+	public ArrayList<InWareHouseDocPO> getunchekedInWareHouseDocList();
+	public ArrayList<OutWareHouseDocPO> getunchekedOutWareHouseDocList();
+	public ArrayList<TransferDocPO> getunchekedTransferDocList();
+	public ArrayList<ZLoadDocPO> getunchekedZLoadDocList();
+	public ArrayList<OverDocPO> getunchekedOverDocList();
+	public ArrayList<PayDocPO> getunchekedPayDocList();
+	public ArrayList<YArrivalDocPO> getunchekedYArrivalDocList();
+	public ArrayList<YDeliverDocPO> getunchekedYDeliverDocList();
+	ArrayList<YLoadDocPO> getunchekedYLoadDocList();
+	ArrayList<ZArrivalDocPO> getunchekedZArrivalDocList();
+	//每次审批完一部分后要修改单据的是否被审批的属性
+	public void setSendDocList(ArrayList<SendDocPO> sendDocList);
+	public void setGatheringDocList(ArrayList<GatheringDocPO> GatheringDocList);
+	public void setInWareHouseDocList(ArrayList<InWareHouseDocPO> InWareHouseDocList);
+	public void setOutWareHouseDocList(ArrayList<OutWareHouseDocPO> OutWareHouseDocList);
+	public void setTransferDocList(ArrayList<TransferDocPO> TransferDocList);
+	public void setZLoadDocList(ArrayList<ZLoadDocPO>ZLoadDocList);
+	public void setOverDocList(ArrayList<OverDocPO> OverDocList);
+	public void setPayDocList(ArrayList<PayDocPO> PayDocList);
+	public void setYArrivalDocList(ArrayList<YArrivalDocPO> YArrivalDocList);
+	public void setYDeliverDocList(ArrayList<YDeliverDocPO> YDeliverDocList);
+	public void setZArrivalDocList(ArrayList<ZArrivalDocPO> ZArrivalDocList);
+	public void setYLoadDocList(ArrayList<YLoadDocPO>YLoadDocList);
 	/*
 	//寄件单部分
 	public SendDocVO getSendDoc(Integer SendDocNumber);
@@ -64,8 +82,7 @@ public interface ApproveLogicService {
 	//中转中心接收单部分
 	public ZArrivalDocVO getZArrivalDoc(Integer ZArrivalDoc);
 	*/
-	ArrayList<YLoadDocVO> getunchekedYLoadDocList();
-	ArrayList<ZArrivalDocVO> getunchekedZArrivalDocList();
+	
 	
 	
 }
