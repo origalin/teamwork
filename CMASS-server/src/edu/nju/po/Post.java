@@ -1,5 +1,0 @@
-package edu.nju.po;
-
-public enum Post {
-	BUSSINESS_MAN,MANAGER,TRANSFER_MAN,COURIER,WAREHOUSE_MAN,HALL_MAN
-}

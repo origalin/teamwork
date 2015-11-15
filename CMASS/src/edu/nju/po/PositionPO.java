@@ -27,6 +27,7 @@ public class PositionPO {
 		string+=itemID+" ";
 		for(String temp:history)
 			string+=temp+",";
+		string=string.substring(0,string.length()-1);
 		return string;
 	}
 	
