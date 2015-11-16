@@ -2,29 +2,13 @@ package edu.nju.businesslogic.infobl;
 
 import java.util.ArrayList;
 
-import edu.nju.businesslogicservice.infologicservice.InfoLogicService;
-import edu.nju.po.CarPO;
-import edu.nju.po.DriverPO;
+import edu.nju.businesslogicservice.infologicservice.InstitutionLogicService;
 import edu.nju.po.InstitutionPO;
 import edu.nju.po.StaffPO;
-import edu.nju.vo.CarVO;
-import edu.nju.vo.DriverVO;
 import edu.nju.vo.InstitutionVO;
 import edu.nju.vo.StaffVO;
 
-public class InfoBl implements InfoLogicService{
-
-	@Override
-	public ArrayList<DriverVO> getDriveVOList() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ArrayList<CarVO> getCarList() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+public class Institution implements InstitutionLogicService{
 
 	@Override
 	public int getSalary(int id) {
@@ -48,18 +32,6 @@ public class InfoBl implements InfoLogicService{
 	public double getDistance(String city1, String city2) {
 		// TODO Auto-generated method stub
 		return 0;
-	}
-
-	@Override
-	public void saveDriver(DriverPO po) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void saveCar(CarPO po) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
@@ -93,17 +65,15 @@ public class InfoBl implements InfoLogicService{
 	}
 
 	@Override
-	public ArrayList<String> getInstitutionList() {
+	public ArrayList<InstitutionPO> getUnpaidInstitutionList() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<StaffVO> getStaffList() {
+	public ArrayList<StaffPO> getUnpaidStaffList() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	
 
 }
