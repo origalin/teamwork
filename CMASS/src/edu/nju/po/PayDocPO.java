@@ -5,11 +5,11 @@ public class PayDocPO extends Doc{
 	long date;
 	double money;
 	String payer;
-	int account;
+	String account;
 	PayType type;
 	String back;
 	public PayDocPO(String payDocID, long date, double money, String payer,
-			int account, PayType type, String back) {
+			String account, PayType type, String back) {
 		super();
 		ID = payDocID;
 		this.date = date;
@@ -17,7 +17,7 @@ public class PayDocPO extends Doc{
 		this.payer = payer;
 		this.account = account;
 		this.type = type;
-		this.back = back;
+		this.back=back;
 	}
 	public String getPayDocID() {
 		return ID;
@@ -43,10 +43,10 @@ public class PayDocPO extends Doc{
 	public void setPayer(String payer) {
 		this.payer = payer;
 	}
-	public int getAccount() {
+	public String getAccount() {
 		return account;
 	}
-	public void setAccount(int account) {
+	public void setAccount(String account) {
 		this.account = account;
 	}
 	public PayType getType() {
@@ -54,12 +54,6 @@ public class PayDocPO extends Doc{
 	}
 	public void setType(PayType type) {
 		this.type = type;
-	}
-	public String getBack() {
-		return back;
-	}
-	public void setBack(String back) {
-		this.back = back;
 	}
 	
 

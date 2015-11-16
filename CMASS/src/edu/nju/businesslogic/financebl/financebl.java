@@ -8,6 +8,7 @@ import edu.nju.po.GatheringDocPO;
 import edu.nju.po.InstitutionPO;
 import edu.nju.po.PayDocPO;
 import edu.nju.po.PayType;
+import edu.nju.po.SendDocPO;
 import edu.nju.po.StaffPO;
 import edu.nju.po.TransferDocPO;
 import edu.nju.po.YLoadDocPO;
@@ -26,6 +27,7 @@ import edu.nju.vo.showStaffSalaryVO;
 
 public class financebl implements FinanceLogicService{
 	/*financedataService
+	
 	public void saveOverDocPO(PayDocPO po);
 	public void saveGatheringDocPO(GatheringDocPO po);
 	public ArrayList<AccountPO> addAccountPO(String accountName)
@@ -51,6 +53,7 @@ public class financebl implements FinanceLogicService{
 	public void saveTransferDocPO(TransferDocPO po)
 	public void saveYloadDocPO(YLoadDocPO po);
 	public void saveZloadDocPO(ZLoadDocPO po);
+	public ArrayList<SendDocPO> getSendDocPOsByID(String courier_ID);//生成付款单需要获得该快递员的寄件单列表，并且可以修改其状态
 	infologicservice
 	public ArrayList<InstitutionPO> getUnpaidInstitutionList();
 	public void saveInstitution(InstitutionPO po);
@@ -61,8 +64,13 @@ public class financebl implements FinanceLogicService{
 	
 	//注意，数据层每次生成GatheringDoc的时候都要记得修改快递员的工资，快递员是可以提成的
 	
+	
+
 	//账户管理使用的属性
 	ArrayList<AccountVO> companyAccountPOList;
+	//审批单据需要用到的付款单和收款单的list
+	ArrayList<PayDocPO> PayDocList;
+	ArrayList<GatheringDocPO> GatheringDocList;
 	
 	@Override
 	public double getTotalIncome() {
@@ -140,12 +148,7 @@ public class financebl implements FinanceLogicService{
 		return null;
 	}
 
-	@Override
-	public void createPayDoc(int payDocID, long date, double money, String payer,
-			int account, PayType type, String back) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 //账户管理方法
 	@Override
 	public void addAccountPO(String accountName) {
@@ -254,6 +257,53 @@ public class financebl implements FinanceLogicService{
 	public void setStaffList(ArrayList<StaffPO> staffList) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public void createGatheringDoc(String GatheringDocID, String courier_name) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public GatheringDocVO getGatheringDocVO(String GatheringDocID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setSendDocList(ArrayList<SendDocPO> SendDocPOList) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void createPayDoc(String payDocID, double money, String account,
+			PayType type,String back) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public PayDocVO getPayDocVO(String PayDocID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public ArrayList<PayDocPO> getPayDocList() {
+		return PayDocList;
+	}
+
+	public void setPayDocList(ArrayList<PayDocPO> payDocList) {
+		PayDocList = payDocList;
+	}
+
+	public ArrayList<GatheringDocPO> getGatheringDocList() {
+		return GatheringDocList;
+	}
+
+	public void setGatheringDocList(ArrayList<GatheringDocPO> gatheringDocList) {
+		GatheringDocList = gatheringDocList;
 	}
 
 }

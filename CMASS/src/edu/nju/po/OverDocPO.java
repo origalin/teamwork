@@ -5,6 +5,7 @@ public class OverDocPO extends Doc{
 	String itemID;//¿ìµÝid
 	String receiver;
 	Long date;
+
 	public OverDocPO(String overDocID, String itemID, String receiver, Long date) {
 		super();
 		ID = overDocID;

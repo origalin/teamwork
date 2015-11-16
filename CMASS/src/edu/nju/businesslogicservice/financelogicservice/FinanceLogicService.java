@@ -8,6 +8,7 @@ import edu.nju.po.InWareHouseDocPO;
 import edu.nju.po.InstitutionPO;
 import edu.nju.po.PayDocPO;
 import edu.nju.po.PayType;
+import edu.nju.po.SendDocPO;
 import edu.nju.po.StaffPO;
 import edu.nju.po.TransferDocPO;
 import edu.nju.po.YLoadDocPO;
@@ -63,8 +64,12 @@ public interface FinanceLogicService {
 	public ArrayList<StaffPO> getUnpaidStaffList();
 	public ArrayList<AccountVO> getAccount();
 	public void setStaffList(ArrayList<StaffPO> staffList);//原理同deleteInstitution
-	public void createPayDoc(int payDocID, long date, double money, String payer,
-			int account, PayType type, String back);
+	public void createPayDoc(String payDocID, double money,	String account, PayType type,String back);
+	public PayDocVO getPayDocVO(String PayDocID);//支持预览收款单
+	//生成收款单部分
+		public void createGatheringDoc(String GatheringDocID,String courier_name);//实现的时候需要先得到SendDocPOList
+		public GatheringDocVO getGatheringDocVO(String GatheringDocID);//支持预览收款单
+		public void setSendDocList(ArrayList<SendDocPO> SendDocPOList);//设为已经收款
 	
 }
 

@@ -1,7 +1,8 @@
 package edu.nju.po;
 
 public class TranceferDoc_TrainPO extends TransferDocPO{
-	public TranceferDoc_TrainPO(String TransferDocID,long date,int trainNum,int corriage,int tranceID,String from,String targetCity,Double price,String[] itemIDs) {
+	public TranceferDoc_TrainPO(String TransferDocID,long date,int trainNum,int corriage,String tranceID,String from,String targetCity,Double price,String[] itemIDs) {
+
 		this.ID = TransferDocID;
 		this.targetCity = targetCity;
 		this.tranceID = tranceID;
