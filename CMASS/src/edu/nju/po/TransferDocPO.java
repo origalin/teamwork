@@ -12,7 +12,7 @@ public class TransferDocPO extends Doc{
 	int container;
 	String from;
 	String targetCity;
-	int[] itemIDs;
+	String[] itemIDs;
 	double price;
 	public String getTransferDocID() {
 		return ID;
@@ -74,10 +74,10 @@ public class TransferDocPO extends Doc{
 	public void setTargetCity(String targetCity) {
 		this.targetCity = targetCity;
 	}
-	public int[] getItemIDs() {
+	public String[] getItemIDs() {
 		return itemIDs;
 	}
-	public void setItemIDs(int[] itemIDs) {
+	public void setItemIDs(String[] itemIDs) {
 		this.itemIDs = itemIDs;
 	}
 	public double getPrice() {
