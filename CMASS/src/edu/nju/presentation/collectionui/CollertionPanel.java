@@ -53,7 +53,7 @@ public class CollertionPanel extends JPanel{
 		this.institutionID = institutionID;
 		this.staffID = staffID;
 		sendType = -1;
-		collection = new Collectionbl();
+		collection = new Collectionbl(institutionID,staffID);
 		
 		ButtonGroup buttonGroup = new ButtonGroup();
 		
@@ -443,8 +443,8 @@ public class CollertionPanel extends JPanel{
 	public void create() {
 		intialize();
 		if(creatable()) {
-			SendDocVO sendDoc = collection.createSendDocVO(sName, sAddress, sUnit, sTelePhone, sMobilePhone,
-					rName, rAddress, rUnit, rTelePhone, rMobilePhone, itemNum, weight, volume, itemKind, packageType,sendType);
+			SendDocVO sendDoc = collection.createSendDocVO(sName,scity, sAddress, sUnit, sTelePhone, sMobilePhone,
+					rName,rcity, rAddress, rUnit, rTelePhone, rMobilePhone, itemNum, weight, volume, itemKind, packageType,sendType);
 			CheckDialog cDialog = new CheckDialog();
 			cDialog.getDocPanel().add(new CheckSendDoc(sendDoc));
 			cDialog.getConfirmButton().addActionListener(new ActionListener() {

@@ -3,6 +3,7 @@ package edu.nju.businesslogic.collectionbl;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.nju.businesslogic.infobl.Institution;
 import edu.nju.businesslogicservice.collectionlogicservice.CollectionLogicService;
 import edu.nju.po.HistoryTimePO;
 import edu.nju.po.PositionPO;
@@ -10,6 +11,15 @@ import edu.nju.po.SendDocPO;
 import edu.nju.vo.SendDocVO;
 
 public class Collectionbl implements CollectionLogicService{
+	SendDocPO po ;
+	String institutionID;
+	String staffID;
+
+	public Collectionbl(String institutionID, String staffID) {
+		super();
+		this.institutionID = institutionID;
+		this.staffID = staffID;
+	}
 
 	@Override
 	public void saveSendDocPO(SendDocPO po) {
@@ -98,13 +108,19 @@ public class Collectionbl implements CollectionLogicService{
 	}
 
 	@Override
-	public SendDocVO createSendDocVO(String sName, String sAddress,
-			String sUnit, String sTelePhone, String sMobilePhone, String rName,
+	public SendDocVO createSendDocVO(String sName,String sCity, String sAddress,
+			String sUnit, String sTelePhone, String sMobilePhone, String rName,String rCity,
 			String rAddress, String rUnit, String rTelePhone,
 			String rMobilePhone, int itemNum, double weight, double[] volume,
 			String itemKind, int packageType, int sendType) {
 		// TODO 自动生成的方法存根
-		return null;
+		int time = timeEstimate(sCity, rCity);
+		double price = priceCalc(sCity, rCity, packageType, volume, weight);
+		long date = System.currentTimeMillis();
+		po = new SendDocPO(sName, sAddress, sCity, sUnit, sTelePhone, sMobilePhone, rName, rAddress, rCity, rUnit, rTelePhone, rMobilePhone, itemNum, weight, volume, itemKind, packageType, price, packageType, date, time);
+		po.setID(sendType+institutionID.substring(0, 4)+getSequence());
+		return po.toVo();
+
 	}
 	
 }

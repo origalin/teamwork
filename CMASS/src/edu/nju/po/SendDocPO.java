@@ -1,11 +1,13 @@
 package edu.nju.po;
 
+import edu.nju.vo.SendDocVO;
+
 public class SendDocPO extends Doc{
 	String sName,aAddress,sCity,sUnit,sTelePhone,sMobilePhone;
 	String rName,rAddress,rCity,rUnit,rTelePhone,rMobilePhone;
 	int itemNum;
 	Double weight;
-	Double[] volume;//体积
+	double[] volume;//体积
 	String item_type;
 	int packageType;
 	Double sumPrice;
@@ -17,7 +19,7 @@ public class SendDocPO extends Doc{
 	public SendDocPO(String sName, String aAddress, String sCity, String sUnit,
 			String sTelePhone, String sMobilePhone, String rName,
 			String rAddress, String rCity, String rUnit, String rTelePhone,
-			String rMobilePhone, int itemNum, Double weight, Double[] volume,
+			String rMobilePhone, int itemNum, Double weight, double[] volume2,
 			String item_type, int packageType, Double sumPrice,
 			int courier_Type, long date, int time) {
 		super();
@@ -35,7 +37,7 @@ public class SendDocPO extends Doc{
 		this.rMobilePhone = rMobilePhone;
 		this.itemNum = itemNum;
 		this.weight = weight;
-		this.volume = volume;
+		this.volume = volume2;
 		this.item_type = item_type;
 		this.packageType = packageType;
 		this.sumPrice = sumPrice;
@@ -127,10 +129,10 @@ public class SendDocPO extends Doc{
 	public void setWeight(Double weight) {
 		this.weight = weight;
 	}
-	public Double[] getVolume() {
+	public double[] getVolume() {
 		return volume;
 	}
-	public void setVolume(Double[] volume) {
+	public void setVolume(double[] volume) {
 		this.volume = volume;
 	}
 	public String getItem_type() {
@@ -164,6 +166,8 @@ public class SendDocPO extends Doc{
 		this.date = date;
 	}
 
-	
+	public SendDocVO toVo() {
+		return null;
+	}
 	
 }

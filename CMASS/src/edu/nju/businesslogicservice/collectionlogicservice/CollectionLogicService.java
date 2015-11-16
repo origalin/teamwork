@@ -16,8 +16,8 @@ public interface CollectionLogicService {
 	public List<SendDocPO> getAllSendDoc();//获取所有未审批单据
 	public int getCourierMoney(String courier);//获取快递员收取运费
 	public int[] getSendDocIDList(String courier);//获取快递员创建的寄件单编号
-	public SendDocVO createSendDocVO(String sName,String sAddress,String sUnit,String sTelePhone,String sMobilePhone,
-			String rName,String rAddress,String rUnit,String rTelePhone
+	public SendDocVO createSendDocVO(String sName,String sCity,String sAddress, String sUnit,String sTelePhone,String sMobilePhone,
+			String rName,String rCity,String rAddress,String rUnit,String rTelePhone
 			,String rMobilePhone,int itemNum,double weight,double[] volume
 			,String itemKind,int packageType,int sendType);//创建寄件单VO
 	public int timeEstimate(String sCity,String rCity);//时间预估
