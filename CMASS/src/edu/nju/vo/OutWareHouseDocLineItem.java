@@ -6,6 +6,17 @@ public class OutWareHouseDocLineItem {
 	String transformPattern;//装运形式
 	String destination;
 	
+	public OutWareHouseDocLineItem(String sendDocID,  String transformPattern, String destination) {
+		super();
+		SendDocID = sendDocID;
+		
+		this.transformPattern = transformPattern;
+		this.destination = destination;
+	}
+	public String toString2(){
+		return SendDocID+","+transformPattern+","+destination;
+	}
+	
 	public String toString(){
 		return SendDocID+","+outDate+","+transformPattern+","+destination;
 	}
