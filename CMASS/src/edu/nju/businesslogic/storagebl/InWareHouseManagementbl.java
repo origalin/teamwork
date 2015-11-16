@@ -28,5 +28,10 @@ public class InWareHouseManagementbl implements InWareHouseManagementService{
 		// 对数据层依赖：void updateInWareHouseDoc(InWareHouseDocPO out)
 		
 	}
+	
+	public String getAddressDatail(int ItemID){
+		//依赖运输层
+		return null;
+	}
 
 }

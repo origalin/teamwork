@@ -29,6 +29,7 @@ public class InWareHouseManagment extends JPanel{
 	private JScrollPane scrollPane_1;
 	private JLabel lblNewLabel;
 	private JTextField textField;
+	private JButton btnNewButton_1;
 	public InWareHouseManagment() {
 		String[] columnNames={"快递编号","入库日期","目的地","区号","排号","架号","位号"};
 		String[][] data={
@@ -106,7 +107,7 @@ public class InWareHouseManagment extends JPanel{
 		scrollPane.setViewportView(table);
 		
 		
-		btnNewButton = new JButton("\u751F\u6210\u5165\u5E93\u5355");
+		btnNewButton = new JButton("\u81EA\u52A8\u751F\u6210\u4E00\u90E8\u5206");
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -119,6 +120,13 @@ public class InWareHouseManagment extends JPanel{
 		gbc_btnNewButton.gridx = 4;
 		gbc_btnNewButton.gridy = 2;
 		add(btnNewButton, gbc_btnNewButton);
+		
+		btnNewButton_1 = new JButton("\u786E\u8BA4");
+		GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();
+		gbc_btnNewButton_1.insets = new Insets(0, 0, 0, 5);
+		gbc_btnNewButton_1.gridx = 4;
+		gbc_btnNewButton_1.gridy = 3;
+		add(btnNewButton_1, gbc_btnNewButton_1);
 		
 	}
 }
