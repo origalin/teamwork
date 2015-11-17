@@ -6,6 +6,8 @@ import java.awt.GridBagLayout;
 
 import javax.swing.JPanel;
 
+import java.awt.Component;
+import java.awt.Frame;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
@@ -18,6 +20,7 @@ public class CheckDialog extends JDialog{
 	JButton confirmButton;
 	JPanel docPanel;
 	public CheckDialog() {
+		setLocationRelativeTo(null);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0};

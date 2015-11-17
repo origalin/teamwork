@@ -70,7 +70,7 @@ public class LoginFrame extends JFrame{
 		 mainFrame = new MainFrame();
 		 
 		 mainFrame.comeout();
-		 mainFrame.changeFunctionPanel(new CollertionPanel(" "," "));
+		 mainFrame.changeFunctionPanel(new CollertionPanel("1010101010","10010101010"));
 		 this.setVisible(false);
 	 }
 }

@@ -53,6 +53,7 @@ public class CollertionPanel extends JPanel{
 		this.institutionID = institutionID;
 		this.staffID = staffID;
 		sendType = -1;
+		weight = -1.0;
 		collection = new Collectionbl(institutionID,staffID);
 		
 		ButtonGroup buttonGroup = new ButtonGroup();
@@ -461,16 +462,16 @@ public class CollertionPanel extends JPanel{
 		}
 	}
 	public boolean estimatable() {
-		if(scity!=null&&rcity!=null&&volume!=null&&weight!=0&&packageType!=0&&sendType!=-1) {
+		if(!scity.equals("")&&!rcity.equals("")&&volume!=null&&weight!=-1.0&&packageType!=0&&sendType!=-1) {
 			return true;
 		}else {
 			return false;
 		}
 	}
 	public boolean creatable() {
-		if(scity!=null&&sAddress!=null&&sName!=null&&sUnit!=null&&sTelePhone!=null&&sMobilePhone!=null&&rName!=null&&
-				rUnit!=null&&rAddress!=null&&rTelePhone!=null&&rMobilePhone!=null&&rcity!=null&&itemNum!=0&&volume!=null&&
-				weight!=0&&packageType!=0&&sendType!=-1) {
+		if(!scity.equals("")&&!sAddress.equals("")&&!sName.equals("")&&!sUnit.equals("")&&!sTelePhone.equals("")&&!sMobilePhone.equals("")&&!rName.equals("")&&
+				!rUnit.equals("")&&!rAddress.equals("")&&!rTelePhone.equals("")&&!rMobilePhone.equals("")&&!rcity.equals("")&&itemNum!=0&&volume!=null&&
+				weight!=-1.0&&packageType!=0&&sendType!=-1) {
 			return true;
 		}else {
 			return false;
@@ -490,15 +491,30 @@ public class CollertionPanel extends JPanel{
 		this.rMobilePhone = rMobilePhoneField.getText();
 		this.rUnit = rUnitField_1.getText();
 		this.itemKind = ItemkindField.getText();
-		this.itemNum = Integer.parseInt(ItemNumField.getText());
-		this.weight = Double.parseDouble(WeightField.getText());
-		this.volume = new double[3];
-		this.volume[0] = Double.parseDouble(LengthField.getText());
-		this.volume[1] = Double.parseDouble(WidethField.getText());
-		this.volume[2] = Double.parseDouble(HeighthField.getText());
+		if(!ItemNumField.getText().equals("")&&!WeightField.getText().equals("")&&!LengthField.getText().equals("")&&!WidethField.getText().equals("")&&!HeighthField.getText().equals("")) {
+			this.itemNum = Integer.parseInt(ItemNumField.getText());
+			this.weight = Double.parseDouble(WeightField.getText());
+			this.volume = new double[3];
+			this.volume[0] = Double.parseDouble(LengthField.getText());
+			this.volume[1] = Double.parseDouble(WidethField.getText());
+			this.volume[2] = Double.parseDouble(HeighthField.getText());
+		}
+		
 	}
 	public void warnning() {
-		
+		CheckDialog warningDialog = new CheckDialog();
+		warningDialog.setTitle("提示！");
+		warningDialog.getDocPanel().add(new JLabel("请检查输入信息完整性"));
+		warningDialog.setSize(300, 150);
+		warningDialog.setVisible(true);
+		warningDialog.getConfirmButton().addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO 自动生成的方法存根
+				warningDialog.dispose();
+			}
+		});
 	}
 	public void  saveDoc() {
 		
