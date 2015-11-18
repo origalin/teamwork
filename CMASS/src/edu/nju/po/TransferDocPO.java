@@ -7,7 +7,7 @@ public class TransferDocPO extends Doc{
 	int planeNum;
 	int TrainNum;
 	int CarNum;
-	int tranceID;
+	String tranceID;
 	int corriage;
 	int container;
 	String from;
@@ -44,10 +44,10 @@ public class TransferDocPO extends Doc{
 	public void setCarNum(int carNum) {
 		CarNum = carNum;
 	}
-	public int getTranceID() {
+	public String getTranceID() {
 		return tranceID;
 	}
-	public void setTranceID(int tranceID) {
+	public void setTranceID(String tranceID) {
 		this.tranceID = tranceID;
 	}
 	public int getCorriage() {

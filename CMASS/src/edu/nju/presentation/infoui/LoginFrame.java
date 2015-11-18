@@ -12,6 +12,7 @@ import javax.swing.*;
 
 import edu.nju.presentation.collectionui.CollertionPanel;
 import edu.nju.presentation.logispicqueryui.QueryFrame;
+import edu.nju.presentation.mainui.GuidePanel_Courier;
 import edu.nju.presentation.mainui.MainFrame;
 import edu.nju.presentation.transformui.SendPanel;
 
@@ -70,7 +71,9 @@ public class LoginFrame extends JFrame{
 		 mainFrame = new MainFrame();
 		 
 		 mainFrame.comeout();
-		 mainFrame.changeFunctionPanel(new CollertionPanel("1010101010","10010101010"));
+		 mainFrame.setFunctionPanel(new CollertionPanel("1010101010","10010101010"));
+		 mainFrame.setGuidePanel(new GuidePanel_Courier(mainFrame, "1010101010", "1010101010"));
+		 
 		 this.setVisible(false);
 	 }
 }

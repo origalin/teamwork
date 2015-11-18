@@ -2,7 +2,6 @@ package edu.nju.businesslogicservice.transformlogicservice;
 
 import java.util.ArrayList;
 
-import edu.nju.po.DeliverDocPO;
 import edu.nju.po.YLoadDocPO;
 import edu.nju.vo.YLoadDocVO;
 

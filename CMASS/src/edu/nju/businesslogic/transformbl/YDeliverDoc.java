@@ -3,11 +3,17 @@ package edu.nju.businesslogic.transformbl;
 import java.util.ArrayList;
 
 import edu.nju.businesslogicservice.transformlogicservice.YDeliverDocService;
-import edu.nju.po.DeliverDocPO;
 import edu.nju.po.YDeliverDocPO;
 import edu.nju.vo.YDeliverDocVO;
 
 public class YDeliverDoc implements YDeliverDocService{
+	String institutionID,  staffID;
+
+	public YDeliverDoc(String institutionID, String staffID) {
+		// TODO 自动生成的构造函数存根
+		this.institutionID = institutionID;
+		this.staffID = staffID;
+	}
 
 	@Override
 	public void saveYDeliverDocPO(YDeliverDocPO po) {
@@ -40,7 +46,13 @@ public class YDeliverDoc implements YDeliverDocService{
 	}
 
 	@Override
-	public ArrayList<DeliverDocPO> getUncheckedDeliverDocPOs() {
+	public ArrayList<YDeliverDocPO> getUncheckedDeliverDocPOs() {
+		// TODO 自动生成的方法存根
+		return null;
+	}
+
+	@Override
+	public ArrayList<YDeliverDocPO> getDeliverDocPOsByID(String staffID) {
 		// TODO 自动生成的方法存根
 		return null;
 	}

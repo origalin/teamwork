@@ -7,6 +7,14 @@ import edu.nju.po.OverDocPO;
 import edu.nju.vo.OverDocVO;
 
 public class OverDoc implements OverDocService{
+	String institutionID;
+	String staffID;
+
+	public OverDoc(String institutionID, String staffID) {
+		// TODO 自动生成的构造函数存根
+		this.institutionID = institutionID;
+		this.staffID = staffID;
+	}
 
 	@Override
 	public void saveOverDocPO(OverDocPO po) {
