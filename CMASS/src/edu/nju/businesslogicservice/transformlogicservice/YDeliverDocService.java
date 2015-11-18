@@ -14,4 +14,5 @@ public interface YDeliverDocService {
 	public YDeliverDocVO findYDeliverDocVO(int courierID);//获取派件单VO
 	public ArrayList<YDeliverDocPO> getUncheckedDeliverDocPOs();
 	public ArrayList<YDeliverDocPO> getDeliverDocPOsByID(String staffID);
+	public ArrayList<YDeliverDocVO> getDeliverDocVOsByID(String staffID);
 }

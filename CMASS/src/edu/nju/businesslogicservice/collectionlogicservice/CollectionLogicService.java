@@ -25,4 +25,6 @@ public interface CollectionLogicService {
 	public SendDocVO findSendDocVO(int ID);//获取寄件单VO
 	public HistoryTimePO getHistoryPO(int ID);
 	public ArrayList<SendDocPO> getUncheckedSendDocPOs();
+	public SendDocVO getSendDocVOByID(String itemID);
+	public SendDocPO getSendDocPOByID(String itemID);
 }

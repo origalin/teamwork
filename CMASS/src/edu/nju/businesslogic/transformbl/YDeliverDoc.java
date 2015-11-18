@@ -57,4 +57,9 @@ public class YDeliverDoc implements YDeliverDocService{
 		return null;
 	}
 
+	public ArrayList<YDeliverDocVO> getDeliverDocVOsByID(String staffID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

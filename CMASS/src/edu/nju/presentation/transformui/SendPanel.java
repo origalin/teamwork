@@ -14,9 +14,13 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.SwingConstants;
 
+import edu.nju.businesslogic.collectionbl.Collectionbl;
 import edu.nju.businesslogic.transformbl.OverDoc;
 import edu.nju.businesslogic.transformbl.YDeliverDoc;
+import edu.nju.po.SendDocPO;
 import edu.nju.po.YDeliverDocPO;
+import edu.nju.vo.SendDocVO;
+import edu.nju.vo.YDeliverDocVO;
 
 @SuppressWarnings("serial")
 public class SendPanel extends JPanel{
@@ -27,6 +31,7 @@ public class SendPanel extends JPanel{
 	DefaultTableModel toSendModel;
 	DefaultTableModel toOverModel;
 	YDeliverDoc yDeliverDoc;
+	Collectionbl collectionbl;
 	OverDoc overDoc;
 	public SendPanel(String institutionID,String staffID) {
 		this.institutionID = institutionID;
@@ -68,7 +73,7 @@ public class SendPanel extends JPanel{
 			new Object[][] {
 			},
 			new String[] {
-				"单号", "收件人", "地址", "时间"
+				"\u5FEB\u9012\u5355\u53F7", "\u6536\u4EF6\u4EBA", "\u5730\u5740"
 			}
 		));
 		toSendModel = (DefaultTableModel) toSendTable.getModel();
@@ -108,7 +113,7 @@ public class SendPanel extends JPanel{
 			new Object[][] {
 			},
 			new String[] {
-				"\u6536\u4EF6\u5355", "\u6536\u4EF6\u4EBA"
+				"\u5FEB\u9012\u5355\u53F7", "\u6536\u4EF6\u4EBA"
 			}
 		));
 		toOverModel = (DefaultTableModel) toOverTable.getModel();
@@ -128,7 +133,16 @@ public class SendPanel extends JPanel{
 		for(int i = toOverModel.getRowCount();i>0;i--) {
 			toOverModel.removeRow(i);
 		}
-		ArrayList<YDeliverDocPO> yDeliverDocPOs = yDeliverDoc.getDeliverDocPOsByID(staffID);
+		collectionbl = new Collectionbl(institutionID, staffID);
+		ArrayList<YDeliverDocVO> yDeliverDocVOs = yDeliverDoc.getDeliverDocVOsByID(staffID);
+		SendDocVO sendDocVO ;
+		for(YDeliverDocVO vo:yDeliverDocVOs) {
+			String[] itemIDs = vo.getItemIDs();
+			for(String itemID : itemIDs) {
+				sendDocVO = collectionbl.getSendDocVOByID(itemID);
+				toSendModel.addRow(new Object[] {itemID,sendDocVO.getrName(),sendDocVO.getrAddress()});		
+			}
+		}
 		
 	}
 }

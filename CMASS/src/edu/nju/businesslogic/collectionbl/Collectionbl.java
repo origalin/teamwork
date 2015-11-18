@@ -122,5 +122,17 @@ public class Collectionbl implements CollectionLogicService{
 		return po.toVo();
 
 	}
+
+	@Override
+	public SendDocVO getSendDocVOByID(String itemID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public SendDocPO getSendDocPOByID(String itemID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }
