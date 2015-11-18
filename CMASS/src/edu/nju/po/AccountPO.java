@@ -2,13 +2,6 @@ package edu.nju.po;
 
 public class AccountPO {
 	String name;
-	int id;
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
 	Double balance;
 	public AccountPO(String name, Double balance) {
 		super();
