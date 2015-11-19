@@ -14,4 +14,5 @@ public interface YLoadDocService {
 	public YLoadDocVO findYLoadDocVO(int ID);//获取装车单VO
 	public ArrayList<YLoadDocPO> getUncheckedyLoadDocPOs();
 	public double[] getPriceToday();
+	public YLoadDocPO getYloadPOByID(String ID);
 }

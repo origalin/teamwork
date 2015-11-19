@@ -1,8 +1,7 @@
 package edu.nju.po;
 
 
-public class YLoadDocPO {
-	int YLoadDocID;
+public class YLoadDocPO extends Doc{
 	long date;
 	int tranceID;
 	String target;
@@ -11,11 +10,10 @@ public class YLoadDocPO {
 	String driver;
 	int[] itemIDs;
 	double price;
-	public YLoadDocPO(int yLoadDocID, long date, int tranceID,
+	public YLoadDocPO(long date, int tranceID,
 			String targetBusinessHall, int carID, String watcher,
 			String driver, int[] itemIDs, double price) {
 		super();
-		YLoadDocID = yLoadDocID;
 		this.date = date;
 		this.tranceID = tranceID;
 		this.target = targetBusinessHall;
@@ -24,12 +22,6 @@ public class YLoadDocPO {
 		this.driver = driver;
 		this.itemIDs = itemIDs;
 		this.price = price;
-	}
-	public int getYLoadDocID() {
-		return YLoadDocID;
-	}
-	public void setYLoadDocID(int yLoadDocID) {
-		YLoadDocID = yLoadDocID;
 	}
 	public long getDate() {
 		return date;

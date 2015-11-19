@@ -17,6 +17,12 @@ import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.table.DefaultTableModel;
+
+import edu.nju.businesslogic.transformbl.YArrivalDoc;
+import edu.nju.businesslogic.transformbl.ZArrivalDoc;
+import edu.nju.vo.YArrivalDocVO;
+import edu.nju.vo.ZArrivalDocVO;
+
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 
@@ -26,7 +32,15 @@ public class YArrivalDocPanel extends JPanel{
 	private JTextField itemIDField;
 	private JTable table;
 	private JTable table_1;
-	public YArrivalDocPanel() {
+	DefaultTableModel tableModel;
+	String institutionID, staffID;
+	YArrivalDoc yArrivalDoc;
+	YArrivalDocVO vo;
+	String[][] str;
+	public YArrivalDocPanel(String institutionID, String staffID) {
+		this.institutionID = institutionID;
+		this.staffID = staffID;
+		yArrivalDoc = new YArrivalDoc(institutionID, staffID);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{202, 295, 0};
 		gridBagLayout.rowHeights = new int[]{248, 0, 0, 0, 0, 0};
@@ -63,7 +77,6 @@ public class YArrivalDocPanel extends JPanel{
 		
 		JPanel panel_2 = new JPanel();
 		FlowLayout flowLayout_1 = (FlowLayout) panel_2.getLayout();
-		flowLayout_1.setAlignment(FlowLayout.LEFT);
 		panel_11.add(panel_2);
 		
 		zLoadDocIDField = new JTextField();
@@ -73,7 +86,18 @@ public class YArrivalDocPanel extends JPanel{
 		JPanel panel_8 = new JPanel();
 		panel_11.add(panel_8);
 		FlowLayout flowLayout_7 = (FlowLayout) panel_8.getLayout();
-		flowLayout_7.setAlignment(FlowLayout.LEFT);
+		flowLayout_7.setAlignment(FlowLayout.RIGHT);
+		
+		JButton confirmbutton = new JButton("\u786E\u8BA4");
+		confirmbutton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				intializeWithFromDoc();
+			}
+		});
+		panel_8.add(confirmbutton);
 		
 		JPanel panel_3 = new JPanel();
 		panel_11.add(panel_3);
@@ -126,11 +150,11 @@ public class YArrivalDocPanel extends JPanel{
 			new Object[][] {
 			},
 			new String[] {
-				"\u8FD0\u5355\u53F7"
+				"\u8FD0\u5355\u53F7", "\u72B6\u6001"
 			}
 		));
-		DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
-		table.getColumnModel().getColumn(0).setPreferredWidth(130);
+		table.getColumnModel().getColumn(1).setPreferredWidth(130);
+		tableModel = (DefaultTableModel) table.getModel();
 		panel_14.add(table);
 		
 		JLabel label_2 = new JLabel("\u8FD0\u5355\u53F7");
@@ -158,8 +182,8 @@ public class YArrivalDocPanel extends JPanel{
 		gbc_label_3.gridy = 1;
 		panel_1.add(label_3, gbc_label_3);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"\u635F\u574F", "\u4E22\u5931"}));
+		JComboBox<String> comboBox = new JComboBox<String>();
+		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"\u635F\u574F", "\u4E22\u5931"}));
 		GridBagConstraints gbc_comboBox = new GridBagConstraints();
 		gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBox.anchor = GridBagConstraints.NORTH;
@@ -174,7 +198,7 @@ public class YArrivalDocPanel extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
-				tableModel.addRow(new Object[] {itemIDField.getText()});
+				tableModel.addRow(new Object[] {itemIDField.getText(),comboBox.getSelectedItem()});
 			}
 		});
 		GridBagConstraints gbc_addButton = new GridBagConstraints();
@@ -186,6 +210,14 @@ public class YArrivalDocPanel extends JPanel{
 		panel_1.add(addButton, gbc_addButton);
 		
 		JButton creatButton = new JButton("\u751F\u6210\u5230\u8FBE\u5355");
+		creatButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				createZArrivalDoc();
+			}
+		});
 		GridBagConstraints gbc_creatButton = new GridBagConstraints();
 		gbc_creatButton.gridwidth = 2;
 		gbc_creatButton.insets = new Insets(0, 0, 5, 0);
@@ -234,5 +266,46 @@ public class YArrivalDocPanel extends JPanel{
 		add(confirmButton, gbc_confirmButton);
 		
 
+	}
+	private void intializeWithFromDoc() {
+		if (intializable()) {
+				
+		} else {
+			warnning("NULL");
+		}
+
+	}
+
+	private void warnning(String msg) {
+
+	}
+
+	private boolean intializable() {
+		if (zLoadDocIDField.getText().equals("")) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	private boolean creatable() {
+		if (tableModel.getRowCount() == 0) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	private void createZArrivalDoc() {
+		if (creatable()) {
+
+			str = new String[tableModel.getRowCount()][2];
+			for (int i = 0; i < tableModel.getRowCount(); i++) {
+				str[i][0] = (String) tableModel.getValueAt(i, 0);
+				str[i][0] = (String) tableModel.getValueAt(i, 1);
+				vo = yArrivalDoc.createYArrivalDocVO(zLoadDocIDField.getText(), str);
+				
+			}
+		}
 	}
 }

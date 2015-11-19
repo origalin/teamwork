@@ -29,6 +29,7 @@ public class checkZArrivalDoc extends JPanel{
 		
 		label_3 = new JLabel("\u4E2D\u8F6C\u4E2D\u5FC3\u5230\u8FBE\u5355");
 		GridBagConstraints gbc_label_3 = new GridBagConstraints();
+		gbc_label_3.gridwidth = 5;
 		gbc_label_3.insets = new Insets(0, 0, 5, 5);
 		gbc_label_3.gridx = 0;
 		gbc_label_3.gridy = 0;
@@ -155,7 +156,6 @@ public class checkZArrivalDoc extends JPanel{
 		scrollPane.setViewportView(table);
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null},
 			},
 			new String[] {
 				"\u5BC4\u4EF6\u5355\u53F7"

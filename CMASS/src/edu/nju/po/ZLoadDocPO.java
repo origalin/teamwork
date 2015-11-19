@@ -1,8 +1,7 @@
 package edu.nju.po;
 
 
-public class ZLoadDocPO {
-	int zLoadDocID;
+public class ZLoadDocPO extends Doc{
 	long date;
 	int tranceID;
 	String targetBusinessHall;
@@ -11,11 +10,10 @@ public class ZLoadDocPO {
 	String driver;
 	int[] itemIDs;
 	double price;
-	public ZLoadDocPO(int zLoadDocID, long date, int tranceID,
+	public ZLoadDocPO( long date, int tranceID,
 			String targetBusinessHall, int carID, String watcher,
 			String driver, int[] itemIDs, double price) {
 		super();
-		this.zLoadDocID = zLoadDocID;
 		this.date = date;
 		this.tranceID = tranceID;
 		this.targetBusinessHall = targetBusinessHall;
@@ -24,12 +22,6 @@ public class ZLoadDocPO {
 		this.driver = driver;
 		this.itemIDs = itemIDs;
 		this.price = price;
-	}
-	public int getzLoadDocID() {
-		return zLoadDocID;
-	}
-	public void setZLoadDocID(int zLoadDocID) {
-		this.zLoadDocID = zLoadDocID;
 	}
 	public long getDate() {
 		return date;

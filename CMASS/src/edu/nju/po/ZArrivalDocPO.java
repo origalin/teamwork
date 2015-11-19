@@ -1,50 +1,49 @@
 package edu.nju.po;
 
-public class ZArrivalDocPO {
-	int zArrivalDocID;
+public class ZArrivalDocPO extends Doc{
 	long date;
-	int YLoadDocID;
+	String fromID;
 	String from;
-	int[][] itemAndState;//-1==lost 0==fine 1==broken
-	public ZArrivalDocPO(int zArrivalDocID, long date, int YLoadDocID,
-			String from, int[][] itemAndState) {
+	String[][] itemAndState;// -1==lost 0==fine 1==broken
+
+	public ZArrivalDocPO( long date, String fromID, String from, String[][] itemAndState) {
 		super();
-		this.zArrivalDocID = zArrivalDocID;
 		this.date = date;
-		this.YLoadDocID = YLoadDocID;
+		this.fromID = fromID;
 		this.from = from;
 		this.itemAndState = itemAndState;
 	}
-	public int getZArrivalDocID() {
-		return zArrivalDocID;
-	}
-	public void setyArrivalDocID(int zArrivalDocID) {
-		this.zArrivalDocID = zArrivalDocID;
-	}
+
 	public long getDate() {
 		return date;
 	}
+
 	public void setDate(long date) {
 		this.date = date;
 	}
-	public int getYLoadDocID() {
-		return YLoadDocID;
+
+	public String getfromID() {
+		return fromID;
 	}
-	public void setYLoadDocID(int YLoadDocID) {
-		this.YLoadDocID = YLoadDocID;
+
+	public void setfromID(String fromID) {
+		this.fromID = fromID;
 	}
+
 	public String getFrom() {
 		return from;
 	}
+
 	public void setFrom(String from) {
 		this.from = from;
 	}
-	public int[][] getItemAndState() {
+
+	public String[][] getItemAndState() {
 		return itemAndState;
 	}
-	public void setItemAndState(int[][] itemAndState) {
+
+	public void setItemAndState(String[][] itemAndState) {
 		this.itemAndState = itemAndState;
 	}
-	
 
 }

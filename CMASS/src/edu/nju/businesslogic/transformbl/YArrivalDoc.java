@@ -6,12 +6,19 @@ import edu.nju.businesslogicservice.transformlogicservice.YArrivalDocService;
 import edu.nju.po.YArrivalDocPO;
 import edu.nju.vo.YArrivalDocVO;
 
-public class YArrivalDoc implements YArrivalDocService{
+public class YArrivalDoc implements YArrivalDocService {
+	String institutionID, staffID;
+
+	public YArrivalDoc(String institutionID, String staffID) {
+		super();
+		this.institutionID = institutionID;
+		this.staffID = staffID;
+	}
 
 	@Override
 	public void saveYArrivalDocPO(YArrivalDocPO po) {
 		// TODO 自动生成的方法存根
-		
+
 	}
 
 	@Override
@@ -23,13 +30,7 @@ public class YArrivalDoc implements YArrivalDocService{
 	@Override
 	public void changeYArrivalSequence(int YArrivalSequence) {
 		// TODO 自动生成的方法存根
-		
-	}
 
-	@Override
-	public YArrivalDocVO createYArrivalDocVO(int ZLoadDocID) {
-		// TODO 自动生成的方法存根
-		return null;
 	}
 
 	@Override
@@ -41,6 +42,12 @@ public class YArrivalDoc implements YArrivalDocService{
 	@Override
 	public ArrayList<YArrivalDocPO> getUncheckedYaArrivalDocPOs() {
 		// TODO 自动生成的方法存根
+		return null;
+	}
+
+	@Override
+	public YArrivalDocVO createYArrivalDocVO(String fromDocID, String[][] changeStates) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 

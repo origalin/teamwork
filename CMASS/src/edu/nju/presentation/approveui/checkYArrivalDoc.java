@@ -65,7 +65,7 @@ public class checkYArrivalDoc extends JPanel{
 		textField.setColumns(10);
 		
 		JLabel label_1 = new JLabel("\u4E2D\u8F6C\u5355\u7F16\u53F7");
-		label_1.setFont(new Font("ºÚÌå", Font.BOLD, 12));
+		label_1.setFont(new Font("ºÚÌå", Font.BOLD, 15));
 		GridBagConstraints gbc_label_1 = new GridBagConstraints();
 		gbc_label_1.insets = new Insets(0, 0, 5, 5);
 		gbc_label_1.gridx = 2;
@@ -128,6 +128,7 @@ public class checkYArrivalDoc extends JPanel{
 		add(scrollPane, gbc_scrollPane);
 		
 		table = new JTable();
+		table.setFont(new Font("SimSun", Font.PLAIN, 12));
 		scrollPane.setViewportView(table);
 		table.setModel(new DefaultTableModel(
 			new Object[][] {

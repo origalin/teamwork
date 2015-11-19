@@ -57,4 +57,10 @@ public class YLoadDoc implements YLoadDocService{
 		return null;
 	}
 
+	@Override
+	public YLoadDocPO getYloadPOByID(String ID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
