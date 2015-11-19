@@ -17,15 +17,30 @@ import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.table.DefaultTableModel;
 
+import edu.nju.businesslogic.transformbl.TransferDoc;
+import edu.nju.presentation.approveui.CheckTransferDoc_Car;
+import edu.nju.presentation.mainui.CheckDialog;
+import edu.nju.vo.TransferDoc_CarVO;
+
 @SuppressWarnings("serial")
 public class TransferDocPanel_Train extends JPanel{
-	private JTextField trainSequenceField;
+	private JTextField carNumField;
 	private JTextField watcherField;
 	private JTextField targetField;
 	private JTextField itemIDField;
 	private JTable table;
 	private JTextField carrriageField;
-	public TransferDocPanel_Train() {
+	private TransferDoc transferDoc;
+	private String city,carNum,watcher,carrriage;
+	private String[] itemIDs;
+	private int itemIDNum;
+	private TransferDoc_CarVO vo;
+	DefaultTableModel tableModel;
+	private String institutionID, staffID;
+	public TransferDocPanel_Train(String institutionID, String staffID) {
+		this.institutionID = institutionID;
+		this.staffID = staffID;
+		transferDoc = new TransferDoc(institutionID, staffID);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{418, 168, 0};
 		gridBagLayout.rowHeights = new int[]{248, 0};
@@ -92,9 +107,9 @@ public class TransferDocPanel_Train extends JPanel{
 		JLabel label_11 = new JLabel("\u8F66\u6B21\u53F7  ");
 		panel_8.add(label_11);
 		
-		trainSequenceField = new JTextField();
-		panel_8.add(trainSequenceField);
-		trainSequenceField.setColumns(5);
+		carNumField = new JTextField();
+		panel_8.add(carNumField);
+		carNumField.setColumns(5);
 		
 		JLabel label_2 = new JLabel("\u8F66\u53A2\u53F7");
 		panel_8.add(label_2);
@@ -122,6 +137,14 @@ public class TransferDocPanel_Train extends JPanel{
 		panel_11.add(panel_12, gbc_panel_12);
 		
 		JButton createButton = new JButton("\u751F\u6210\u94C1\u8DEF\u4E2D\u8F6C\u5355");
+		createButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				createTransferDoc();
+			}
+		});
 		panel_12.add(createButton);
 		
 		JPanel panel_1 = new JPanel();
@@ -195,5 +218,42 @@ public class TransferDocPanel_Train extends JPanel{
 		panel_1.add(addButton, gbc_addButton);
 		
 
+	}
+	private void createTransferDoc() {
+		intialize();
+		if (creatable()) {
+			vo = transferDoc.createTransferDocVO_Car(city,carNum, transferDoc.getTransferID(),watcher, itemIDs);
+			CheckDialog dialog = new CheckDialog();
+			dialog.getDocPanel().add(new CheckTransferDoc_Car(vo));
+			dialog.getConfirmButton().addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+			});
+		}
+
+	}
+
+	private boolean creatable() {
+		if(city.equals("")||carNum.equals("")||watcher.equals("")||carrriage.equals("")||itemIDNum<1){
+			return false;
+		}else {
+			return true;
+		}
+	}
+	private void intialize() {
+		this.city = targetField.getText();
+		this.carNum = carNumField.getText();
+		this.watcher = watcherField.getText();
+		this.carrriage = carrriageField.getText();
+		this.itemIDs = new String[tableModel.getRowCount()];
+		itemIDNum = 0;
+		for(int i = 0;i<tableModel.getRowCount();i++) {
+			this.itemIDs[i] = (String) tableModel.getValueAt(i,0);
+			itemIDNum++;
+		}
 	}
 }

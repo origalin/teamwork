@@ -3,6 +3,8 @@ package edu.nju.presentation.transformui;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -19,6 +21,7 @@ import edu.nju.businesslogic.transformbl.OverDoc;
 import edu.nju.businesslogic.transformbl.YDeliverDoc;
 import edu.nju.po.SendDocPO;
 import edu.nju.po.YDeliverDocPO;
+import edu.nju.presentation.financeui.accountManagement;
 import edu.nju.vo.SendDocVO;
 import edu.nju.vo.YDeliverDocVO;
 
@@ -80,6 +83,14 @@ public class SendPanel extends JPanel{
 		scrollPane.setViewportView(toSendTable);
 		
 		JButton receiveButton = new JButton("\u586B\u5199\u6536\u4EF6\u5355");
+		receiveButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				createOverTable();
+			}
+		});
 		GridBagConstraints gbc_receiveButton = new GridBagConstraints();
 		gbc_receiveButton.insets = new Insets(0, 0, 5, 0);
 		gbc_receiveButton.gridx = 4;
@@ -144,5 +155,20 @@ public class SendPanel extends JPanel{
 			}
 		}
 		
+	}
+	private void createOverTable() {
+		for(int i = 0;i<toSendModel.getRowCount();i++) {
+			toOverModel.addRow(new Object[] {toSendModel.getValueAt(i, 0),toSendModel.getValueAt(i, 1)});
+		}
+	}
+	private void createOverDoc() {
+		String[] itemIDs = new String[toOverModel.getRowCount()];
+		String[] receivers = new String[toOverModel.getRowCount()];
+		for(int i = 0;i<toSendModel.getRowCount();i++) {
+			itemIDs[i] = (String) toOverModel.getValueAt(i, 0);
+			receivers[i] = (String) toOverModel.getValueAt(i, 1);
+		}
+		
+		overDoc.createOverDocVO(itemIDs, receivers);
 	}
 }

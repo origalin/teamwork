@@ -13,6 +13,9 @@ import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.table.DefaultTableModel;
+
+import edu.nju.vo.TransferDoc_CarVO;
+
 import javax.swing.SwingConstants;
 
 import java.awt.Font;
@@ -28,7 +31,7 @@ public class CheckTransferDoc_Car extends JPanel{
 	private JTextField textField_2;
 	private JTextField textField_3;
 	private JTextField textField_4;
-	public CheckTransferDoc_Car() {
+	public CheckTransferDoc_Car(TransferDoc_CarVO vo) {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{418, 0};
 		gridBagLayout.rowHeights = new int[]{248, 0};

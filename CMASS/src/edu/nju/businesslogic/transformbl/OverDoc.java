@@ -9,6 +9,7 @@ import edu.nju.vo.OverDocVO;
 public class OverDoc implements OverDocService{
 	String institutionID;
 	String staffID;
+	OverDocPO po;
 
 	public OverDoc(String institutionID, String staffID) {
 		// TODO 自动生成的构造函数存根
@@ -23,9 +24,9 @@ public class OverDoc implements OverDocService{
 	}
 
 	@Override
-	public int getOverDocSequence() {
+	public String getOverDocSequence() {
 		// TODO 自动生成的方法存根
-		return 0;
+		return null;
 	}
 
 	@Override
@@ -34,11 +35,7 @@ public class OverDoc implements OverDocService{
 		
 	}
 
-	@Override
-	public OverDocVO createOverDocDocVO() {
-		// TODO 自动生成的方法存根
-		return null;
-	}
+
 
 	@Override
 	public OverDocVO findOverDocVO(int ID) {
@@ -50,6 +47,14 @@ public class OverDoc implements OverDocService{
 	public ArrayList<OverDocPO> getUncheckedOverDocPOs() {
 		// TODO 自动生成的方法存根
 		return null;
+	}
+
+	@Override
+	public OverDocVO createOverDocVO(String[] itemIDs, String[] receivers) {
+		// TODO Auto-generated method stub
+		po = new OverDocPO(itemIDs, receivers, System.currentTimeMillis(), staffID);
+		po.setID("13"+getOverDocSequence());
+		return po.toVO();
 	}
 
 }
