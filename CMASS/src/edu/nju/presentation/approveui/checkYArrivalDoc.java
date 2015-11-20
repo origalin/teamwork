@@ -5,6 +5,8 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.Font;
 import javax.swing.table.DefaultTableModel;
+
+import edu.nju.vo.YArrivalDocVO;
 public class checkYArrivalDoc extends JPanel{
 	private JTextField textField;
 	private JTextField textField_1;
@@ -12,7 +14,7 @@ public class checkYArrivalDoc extends JPanel{
 	private JTextField textField_3;
 	private JTable table;
 	private JTextField textField_4;
-	public checkYArrivalDoc() {
+	public checkYArrivalDoc(YArrivalDocVO vo) {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 120, 0, 0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 85, 0, 0};

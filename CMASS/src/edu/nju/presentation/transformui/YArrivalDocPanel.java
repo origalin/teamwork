@@ -17,13 +17,19 @@ import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 
+import edu.nju.businesslogic.collectionbl.Collectionbl;
 import edu.nju.businesslogic.transformbl.YArrivalDoc;
+import edu.nju.businesslogic.transformbl.YDeliverDoc;
 import edu.nju.businesslogic.transformbl.ZArrivalDoc;
+import edu.nju.presentation.approveui.checkYArrivalDoc;
+import edu.nju.presentation.mainui.CheckDialog;
 import edu.nju.vo.YArrivalDocVO;
 import edu.nju.vo.ZArrivalDocVO;
 
 import javax.swing.JComboBox;
+import javax.swing.DefaultCellEditor;
 import javax.swing.DefaultComboBoxModel;
 
 @SuppressWarnings("serial")
@@ -32,11 +38,12 @@ public class YArrivalDocPanel extends JPanel{
 	private JTextField itemIDField;
 	private JTable table;
 	private JTable table_1;
-	DefaultTableModel tableModel;
+	DefaultTableModel tableModel,DeliverModel;
 	String institutionID, staffID;
 	YArrivalDoc yArrivalDoc;
 	YArrivalDocVO vo;
-	String[][] str;
+	String[][] IDAndState;
+	String[] courier;
 	public YArrivalDocPanel(String institutionID, String staffID) {
 		this.institutionID = institutionID;
 		this.staffID = staffID;
@@ -249,14 +256,21 @@ public class YArrivalDocPanel extends JPanel{
 			new Object[][] {
 			},
 			new String[] {
-				"New column", "New column", "New column"
+				"\u5FEB\u9012\u5355\u53F7", "\u5730\u5740", "\u5FEB\u9012\u5458"
 			}
 		));
+		courier = yArrivalDoc.getCouriers();
+		JComboBox<String> courierBox = new JComboBox<String>();
+		courierBox.setModel(new DefaultComboBoxModel<String>(courier));//´ý¸ü¸Ä
+		TableColumnModel tcm = table_1.getColumnModel();
+		tcm.getColumn(2).setCellEditor(new DefaultCellEditor(courierBox));
+		DeliverModel = (DefaultTableModel) table_1.getModel();
 		panel_5.add(table_1);
 		
 		JButton confirmButton = new JButton("\u786E\u8BA4\u5206\u914D");
 		confirmButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				createYDeliverDoc();
 			}
 		});
 		GridBagConstraints gbc_confirmButton = new GridBagConstraints();
@@ -299,13 +313,45 @@ public class YArrivalDocPanel extends JPanel{
 	private void createZArrivalDoc() {
 		if (creatable()) {
 
-			str = new String[tableModel.getRowCount()][2];
+			IDAndState = new String[tableModel.getRowCount()][2];
 			for (int i = 0; i < tableModel.getRowCount(); i++) {
-				str[i][0] = (String) tableModel.getValueAt(i, 0);
-				str[i][0] = (String) tableModel.getValueAt(i, 1);
-				vo = yArrivalDoc.createYArrivalDocVO(zLoadDocIDField.getText(), str);
-				
+				IDAndState[i][0] = (String) tableModel.getValueAt(i, 0);
+				IDAndState[i][0] = (String) tableModel.getValueAt(i, 1);
+				vo = yArrivalDoc.createYArrivalDocVO(zLoadDocIDField.getText(), IDAndState);
+				CheckDialog cDialog = new CheckDialog();
+				cDialog.getDocPanel().add(new checkYArrivalDoc(vo));
+				cDialog.getConfirmButton().addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						// TODO Auto-generated method stub
+						saveYArrivalDoc();
+						intializeYDeliver();
+					}
+				});
 			}
 		}
+	}
+	private void  saveYArrivalDoc() {
+		
+	}
+	private void intializeYDeliver() {
+		String[][] itStrings = vo.getItemAndState();
+		String[] docs  = new String[itStrings.length];
+		for(int i = 0;i<itStrings.length;i++) {
+			docs[i] = itStrings[i][0];
+		}
+		for(String str : docs) {
+			DeliverModel.addRow(new Object[]{str,yArrivalDoc.getAddressByID(str),""});
+		}
+	}
+	private void createYDeliverDoc() {
+		String[][] table = new String[DeliverModel.getRowCount()][3];
+		for(int i = 0;i<DeliverModel.getRowCount();i++) {
+			table[i][0] = (String) DeliverModel.getValueAt(i, 0);
+			table[i][1] = (String) DeliverModel.getValueAt(i, 1);
+			table[i][2] = (String) DeliverModel.getValueAt(i, 2);
+		}
+		yArrivalDoc.createYDeliverDoc(table);
 	}
 }

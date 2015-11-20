@@ -18,6 +18,9 @@ import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.table.DefaultTableModel;
+
+import edu.nju.vo.ZLoadDocVO;
+
 import java.awt.Font;
 
 public class CheckZLoadDoc extends JPanel{
@@ -31,7 +34,7 @@ public class CheckZLoadDoc extends JPanel{
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
-	public CheckZLoadDoc() {
+	public CheckZLoadDoc(ZLoadDocVO vo) {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{439, 0};
 		gridBagLayout.rowHeights = new int[]{248, 0};

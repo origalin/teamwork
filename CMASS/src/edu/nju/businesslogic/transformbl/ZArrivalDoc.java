@@ -33,11 +33,6 @@ public class ZArrivalDoc implements ZArrivalDocService{
 		
 	}
 
-	@Override
-	public ZArrivalDocVO createZArrivalDocVO(int TransferDocID) {
-		// TODO 自动生成的方法存根
-		return null;
-	}
 
 	@Override
 	public ZArrivalDocVO findZArrivalDocVO(int ID) {

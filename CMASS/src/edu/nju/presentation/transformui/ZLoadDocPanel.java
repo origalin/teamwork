@@ -17,114 +17,104 @@ import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.table.DefaultTableModel;
 
+import edu.nju.businesslogic.transformbl.YLoadDoc;
+import edu.nju.businesslogic.transformbl.ZLoadDoc;
+import edu.nju.presentation.approveui.CheckZLoadDoc;
+import edu.nju.presentation.approveui.checkYLoadDoc;
+import edu.nju.presentation.mainui.CheckDialog;
+import edu.nju.vo.YLoadDocVO;
+import edu.nju.vo.ZLoadDocVO;
+
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+
 @SuppressWarnings("serial")
 public class ZLoadDocPanel extends JPanel{
 	private JTextField carIDField;
 	private JTextField watcherField;
-	private JTextField daliverField;
-	private JTextField targetField;
 	private JTextField itemIDField;
 	private JTable table;
-	public ZLoadDocPanel() {
+	String institutionID,staffID;
+	ZLoadDoc zLoadDoc;
+	String[] subBusinessHall;
+	String[] drivers;
+	private DefaultTableModel tableModel;
+	String carID,watcher,driver,target;
+	String[] itemIDs;
+	ZLoadDocVO vo;
+	private JComboBox targetBox;
+	private JComboBox driverBox;
+	public ZLoadDocPanel(String institutionID,String staffID) {
+		this.institutionID = institutionID;
+		this.staffID = staffID;
+		zLoadDoc = new ZLoadDoc( institutionID, staffID);
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{418, 168, 0};
-		gridBagLayout.rowHeights = new int[]{248, 0, 0};
+		gridBagLayout.columnWidths = new int[]{290, 168, 0};
+		gridBagLayout.rowHeights = new int[]{0, 17, 248, 0, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{1.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
-		
-		JPanel panel_11 = new JPanel();
-		GridBagConstraints gbc_panel_11 = new GridBagConstraints();
-		gbc_panel_11.fill = GridBagConstraints.BOTH;
-		gbc_panel_11.insets = new Insets(0, 0, 5, 5);
-		gbc_panel_11.gridx = 0;
-		gbc_panel_11.gridy = 0;
-		add(panel_11, gbc_panel_11);
-		panel_11.setBorder(null);
-		GridBagLayout gbl_panel_11 = new GridBagLayout();
-		gbl_panel_11.columnWidths = new int[]{415, 0};
-		gbl_panel_11.rowHeights = new int[]{41, 41, 41, 41, 41, 0, 0};
-		gbl_panel_11.columnWeights = new double[]{0.0, Double.MIN_VALUE};
-		gbl_panel_11.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
-		panel_11.setLayout(gbl_panel_11);
 		
 		JPanel panel = new JPanel();
 		GridBagConstraints gbc_panel = new GridBagConstraints();
-		gbc_panel.fill = GridBagConstraints.BOTH;
+		gbc_panel.gridwidth = 2;
 		gbc_panel.insets = new Insets(0, 0, 5, 0);
 		gbc_panel.gridx = 0;
 		gbc_panel.gridy = 0;
-		panel_11.add(panel, gbc_panel);
+		add(panel, gbc_panel);
 		FlowLayout flowLayout = (FlowLayout) panel.getLayout();
 		flowLayout.setAlignment(FlowLayout.LEFT);
 		
 		JLabel label = new JLabel("\u4E2D\u8F6C\u4E2D\u5FC3\u88C5\u8F66\u5355");
 		panel.add(label);
 		
-		JPanel panel_6 = new JPanel();
-		GridBagConstraints gbc_panel_6 = new GridBagConstraints();
-		gbc_panel_6.fill = GridBagConstraints.BOTH;
-		gbc_panel_6.insets = new Insets(0, 0, 5, 0);
-		gbc_panel_6.gridx = 0;
-		gbc_panel_6.gridy = 1;
-		panel_11.add(panel_6, gbc_panel_6);
-		FlowLayout flowLayout_6 = (FlowLayout) panel_6.getLayout();
-		flowLayout_6.setAlignment(FlowLayout.LEFT);
-		
-		JLabel label_10 = new JLabel("\u5230\u8FBE\u5730      ");
-		panel_6.add(label_10);
-		
-		targetField = new JTextField();
-		panel_6.add(targetField);
-		targetField.setColumns(20);
-		
 		JPanel panel_8 = new JPanel();
 		GridBagConstraints gbc_panel_8 = new GridBagConstraints();
-		gbc_panel_8.fill = GridBagConstraints.BOTH;
-		gbc_panel_8.insets = new Insets(0, 0, 5, 0);
+		gbc_panel_8.gridwidth = 2;
+		gbc_panel_8.insets = new Insets(0, 0, 5, 5);
 		gbc_panel_8.gridx = 0;
-		gbc_panel_8.gridy = 2;
-		panel_11.add(panel_8, gbc_panel_8);
+		gbc_panel_8.gridy = 1;
+		add(panel_8, gbc_panel_8);
 		FlowLayout flowLayout_7 = (FlowLayout) panel_8.getLayout();
 		flowLayout_7.setAlignment(FlowLayout.LEFT);
 		
-		JLabel label_11 = new JLabel("\u8F66\u8F86\u4EE3\u53F7    ");
+		JLabel label_11 = new JLabel("\u8F66\u8F86\u4EE3\u53F7");
 		panel_8.add(label_11);
 		
 		carIDField = new JTextField();
 		panel_8.add(carIDField);
-		carIDField.setColumns(5);
+		carIDField.setColumns(10);
+		
+		JLabel label_2 = new JLabel("\u5230\u8FBE\u5730");
+		panel_8.add(label_2);
+		
+		subBusinessHall = zLoadDoc.getSubBusinessHall();
+		targetBox = new JComboBox();
+		targetBox.setModel(new DefaultComboBoxModel<>(subBusinessHall));
+		panel_8.add(targetBox);
 		
 		JLabel lblNewLabel = new JLabel("\u76D1\u88C5\u5458");
 		panel_8.add(lblNewLabel);
 		
 		watcherField = new JTextField();
 		panel_8.add(watcherField);
-		watcherField.setColumns(5);
+		watcherField.setColumns(10);
 		
-		JLabel label_12 = new JLabel("\u62BC\u8FD0\u5458");
+		JLabel label_12 = new JLabel("\u53F8\u673A");
 		panel_8.add(label_12);
 		
-		daliverField = new JTextField();
-		panel_8.add(daliverField);
-		daliverField.setColumns(5);
-		
-		JPanel panel_12 = new JPanel();
-		FlowLayout flowLayout_12 = (FlowLayout) panel_12.getLayout();
-		flowLayout_12.setAlignment(FlowLayout.RIGHT);
-		GridBagConstraints gbc_panel_12 = new GridBagConstraints();
-		gbc_panel_12.insets = new Insets(0, 0, 5, 0);
-		gbc_panel_12.fill = GridBagConstraints.BOTH;
-		gbc_panel_12.gridx = 0;
-		gbc_panel_12.gridy = 4;
-		panel_11.add(panel_12, gbc_panel_12);
+		drivers = zLoadDoc.getDrivers();
+		driverBox = new JComboBox();
+		driverBox.setModel(new DefaultComboBoxModel<String>(drivers));
+		panel_8.add(driverBox);
 		
 		JPanel panel_1 = new JPanel();
 		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
+		gbc_panel_1.gridwidth = 2;
 		gbc_panel_1.insets = new Insets(0, 0, 5, 0);
 		gbc_panel_1.fill = GridBagConstraints.BOTH;
-		gbc_panel_1.gridx = 1;
-		gbc_panel_1.gridy = 0;
+		gbc_panel_1.gridx = 0;
+		gbc_panel_1.gridy = 2;
 		add(panel_1, gbc_panel_1);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
 		gbl_panel_1.columnWidths = new int[]{168, 0};
@@ -162,7 +152,7 @@ public class ZLoadDocPanel extends JPanel{
 				"\u8FD0\u5355\u53F7"
 			}
 		));
-		DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
+		tableModel = (DefaultTableModel) table.getModel();
 		table.getColumnModel().getColumn(0).setPreferredWidth(130);
 		panel_14.add(table);
 		
@@ -191,11 +181,59 @@ public class ZLoadDocPanel extends JPanel{
 		panel_1.add(addButton, gbc_addButton);
 		
 		JButton createButton = new JButton("\u751F\u6210\u4E2D\u8F6C\u4E2D\u5FC3\u88C5\u8F66\u5355");
+		createButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				createZLoadDoc();
+			}
+		});
 		GridBagConstraints gbc_createButton = new GridBagConstraints();
 		gbc_createButton.gridx = 1;
-		gbc_createButton.gridy = 1;
+		gbc_createButton.gridy = 3;
 		add(createButton, gbc_createButton);
 		
 
+	}
+	private void createZLoadDoc() {
+		if(creatable()) {
+			vo = zLoadDoc.createZLoadDocVO(carID,target ,watcher, driver,itemIDs);
+			CheckDialog cDialog = new CheckDialog();
+			cDialog.getDocPanel().add(new CheckZLoadDoc(vo));
+			cDialog.getConfirmButton().addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+			});
+		}else {
+			warnning();
+		}
+	}
+	private boolean creatable() {
+		intialize();
+		if(driver.equals("")||target.equals("")||carID.equals("")||watcher.equals("")||itemIDs==null) {
+			return false;
+		}else {
+			return true;
+		}
+	}
+	private void  intialize() {
+		carID = carIDField.getText();
+		watcher = watcherField.getText();
+		target = (String) targetBox.getSelectedItem();
+		driver = (String) driverBox.getSelectedItem();
+		if(tableModel.getRowCount()>0) {
+			itemIDs = new String[tableModel.getRowCount()];
+			for(int i = 0;i<tableModel.getRowCount();i++) {
+				itemIDs[i] = (String) tableModel.getValueAt(i, 0);
+			}
+		}
+	}
+	private void warnning() {
+		
 	}
 }

@@ -13,5 +13,7 @@ public interface YArrivalDocService {
 	public YArrivalDocVO findYArrivalDocVO(int ID);//获取到达单VO
 	public ArrayList<YArrivalDocPO> getUncheckedYaArrivalDocPOs();
 	public YArrivalDocVO createYArrivalDocVO(String fromDocID, String[][] changeStates);
-
+	public String getAddressByID(String itemID);
+	public String[] getCouriers();
+	public boolean createYDeliverDoc(String[][] table);
 }

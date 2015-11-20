@@ -3,22 +3,14 @@ package edu.nju.vo;
 import edu.nju.po.Doc;
 
 public class YDeliverDocVO extends Doc{
-	String YdeliverDocID;
 	String date;
 	String courier;
 	String[] itemIDs;
-	public YDeliverDocVO(String ydeliverDocID, String date, String courier, String[] itemIDs) {
+	public YDeliverDocVO( String date, String courier, String[] itemIDs) {
 		super();
-		YdeliverDocID = ydeliverDocID;
 		this.date = date;
 		this.courier = courier;
 		this.itemIDs = itemIDs;
-	}
-	public String getYdeliverDocID() {
-		return YdeliverDocID;
-	}
-	public void setYdeliverDocID(String ydeliverDocID) {
-		YdeliverDocID = ydeliverDocID;
 	}
 	public String getDate() {
 		return date;

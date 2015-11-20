@@ -4,6 +4,9 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.table.DefaultTableModel;
+
+import edu.nju.vo.YLoadDocVO;
+
 import java.awt.Font;
 public class checkYLoadDoc extends JPanel{
 	private JTextField textField;
@@ -18,7 +21,7 @@ public class checkYLoadDoc extends JPanel{
 	private JLabel label_6;
 	private JLabel label_7;
 	private JTextField textField_7;
-	public checkYLoadDoc() {
+	public checkYLoadDoc(YLoadDocVO vo) {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 76, 148, 0, 0, 0, 0, 140, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 39, 113, 0, 0};

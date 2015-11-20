@@ -5,14 +5,14 @@ public class ZLoadDocPO extends Doc{
 	long date;
 	int tranceID;
 	String targetBusinessHall;
-	int CarID;
+	String CarID;
 	String watcher;
 	String driver;
-	int[] itemIDs;
+	String[] itemIDs;
 	double price;
 	public ZLoadDocPO( long date, int tranceID,
-			String targetBusinessHall, int carID, String watcher,
-			String driver, int[] itemIDs, double price) {
+			String targetBusinessHall, String carID, String watcher,
+			String driver, String[] itemIDs, double price) {
 		super();
 		this.date = date;
 		this.tranceID = tranceID;
@@ -41,10 +41,10 @@ public class ZLoadDocPO extends Doc{
 	public void setTargetBusinessHall(String targetBusinessHall) {
 		this.targetBusinessHall = targetBusinessHall;
 	}
-	public int getCarID() {
+	public String getCarID() {
 		return CarID;
 	}
-	public void setCarID(int carID) {
+	public void setCarID(String carID) {
 		CarID = carID;
 	}
 	public String getWatcher() {
@@ -59,10 +59,10 @@ public class ZLoadDocPO extends Doc{
 	public void setDriver(String driver) {
 		this.driver = driver;
 	}
-	public int[] getItemIDs() {
+	public String[] getItemIDs() {
 		return itemIDs;
 	}
-	public void setItemIDs(int[] itemIDs) {
+	public void setItemIDs(String[] itemIDs) {
 		this.itemIDs = itemIDs;
 	}
 	public double getPrice() {

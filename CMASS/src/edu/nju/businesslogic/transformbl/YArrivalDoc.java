@@ -51,4 +51,22 @@ public class YArrivalDoc implements YArrivalDocService {
 		return null;
 	}
 
+	@Override
+	public String getAddressByID(String itemID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String[] getCouriers() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean createYDeliverDoc(String[][] table) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

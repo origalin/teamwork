@@ -2,11 +2,11 @@ package edu.nju.po;
 
 public class YArrivalDocPO extends Doc{
 	long date;
-	int TransferDocID;
+	String TransferDocID;
 	String from;
 	String[][] itemAndState;// -1==lost 0==fine 1==broken
 
-	public YArrivalDocPO(long date, int transferDocID, String from, String[][] itemAndState) {
+	public YArrivalDocPO(long date, String transferDocID, String from, String[][] itemAndState) {
 		super();
 
 		this.date = date;
@@ -25,11 +25,11 @@ public class YArrivalDocPO extends Doc{
 		this.date = date;
 	}
 
-	public int getTransferDocID() {
+	public String getTransferDocID() {
 		return TransferDocID;
 	}
 
-	public void setTransferDocID(int transferDocID) {
+	public void setTransferDocID(String transferDocID) {
 		TransferDocID = transferDocID;
 	}
 

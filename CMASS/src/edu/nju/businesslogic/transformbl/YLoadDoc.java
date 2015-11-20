@@ -7,7 +7,14 @@ import edu.nju.po.YLoadDocPO;
 import edu.nju.vo.YLoadDocVO;
 
 public class YLoadDoc implements YLoadDocService{
+	String institutionID;
+	String staffID;
 
+	public YLoadDoc(String institutionID, String staffID) {
+		super();
+		this.institutionID = institutionID;
+		this.staffID = staffID;
+	}
 	@Override
 	public void saveYloadDocPO(YLoadDocPO po) {
 		// TODO 自动生成的方法存根
@@ -33,8 +40,8 @@ public class YLoadDoc implements YLoadDocService{
 	}
 
 	@Override
-	public YLoadDocVO createYLoadDocVO(int carID, String target,
-			String watcher, String deliver) {
+	public YLoadDocVO createYLoadDocVO(String carID, String target,
+			String watcher, String[] itemIDs) {
 		// TODO 自动生成的方法存根
 		return null;
 	}
@@ -59,6 +66,16 @@ public class YLoadDoc implements YLoadDocService{
 
 	@Override
 	public YLoadDocPO getYloadPOByID(String ID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public String getTransferCenter() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public String getDrivers() {
 		// TODO Auto-generated method stub
 		return null;
 	}

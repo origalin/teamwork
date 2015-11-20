@@ -7,6 +7,14 @@ import edu.nju.po.ZLoadDocPO;
 import edu.nju.vo.ZLoadDocVO;
 
 public class ZLoadDoc implements ZLoadDocService{
+	String institutionID;
+	String staffID;
+
+	public ZLoadDoc(String institutionID, String staffID) {
+		super();
+		this.institutionID = institutionID;
+		this.staffID = staffID;
+	}
 
 	@Override
 	public void saveZloadDocPO(ZLoadDocPO po) {
@@ -32,12 +40,7 @@ public class ZLoadDoc implements ZLoadDocService{
 		
 	}
 
-	@Override
-	public ZLoadDocVO createZLoadDocVO(int carID, String target,
-			String watcher, String deliver) {
-		// TODO 自动生成的方法存根
-		return null;
-	}
+
 
 	@Override
 	public ZLoadDocVO findZLoadDocVO(int ID) {
@@ -54,6 +57,24 @@ public class ZLoadDoc implements ZLoadDocService{
 	@Override
 	public double[] getPriceToday() {
 		// TODO 自动生成的方法存根
+		return null;
+	}
+
+	@Override
+	public String[] getSubBusinessHall() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String[] getDrivers() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ZLoadDocVO createZLoadDocVO(String carID, String target, String watcher, String driver, String[] itemIDs) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
