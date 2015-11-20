@@ -1,6 +1,8 @@
 package edu.nju.po;
 
-public class Doc {
+import java.io.Serializable;
+
+public class Doc implements Serializable{
 	String ID;
 
 	boolean isChecked=false;//表示是否被审核过

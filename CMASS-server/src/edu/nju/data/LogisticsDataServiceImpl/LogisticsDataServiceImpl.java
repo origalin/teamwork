@@ -8,6 +8,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.Buffer;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -17,14 +19,25 @@ import edu.nju.data.database.SQL;
 import edu.nju.dataservice.logisticsqueryDataService.LogisticsDataService;
 import edu.nju.po.PositionPO;
 
-public class LogisticsDataServiceImpl implements LogisticsDataService {
+public class LogisticsDataServiceImpl  extends UnicastRemoteObject implements LogisticsDataService {
 
-	 public static void main(String[] args) {
-	 LogisticsDataServiceImpl t=new LogisticsDataServiceImpl();
-//	 t.createPosition("0002500010","朝阳区营业厅,北京市中转中心,南京市中转中心,栖霞区营业厅,派件中" );
-	t.createPosition("0544","lingpeitang");
-	t.changePosition("0544", "lzm");
-	 }
+	 protected LogisticsDataServiceImpl() throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+//	public static void main(String[] args) {
+//	 LogisticsDataServiceImpl t = null;
+//	try {
+//		t = new LogisticsDataServiceImpl();
+//	} catch (RemoteException e) {
+//		// TODO Auto-generated catch block
+//		e.printStackTrace();
+//	}
+////	 t.createPosition("0002500010","朝阳区营业厅,北京市中转中心,南京市中转中心,栖霞区营业厅,派件中" );
+//	
+//	t.createPosition("0544","lingpeitang");
+//	t.changePosition("0544", "lzm");
+//	 }
 	@Override
 	public PositionPO positionQuery(String ItemID) {
 		String string = "SELECT his from history where itemId=" + ItemID + ";";
