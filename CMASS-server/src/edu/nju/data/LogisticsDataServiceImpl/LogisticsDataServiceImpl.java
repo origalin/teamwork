@@ -8,76 +8,98 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.Buffer;
+import java.sql.*;
 import java.util.ArrayList;
 
+import com.sun.crypto.provider.RSACipher;
 
-
+import edu.nju.data.database.SQL;
 import edu.nju.dataservice.logisticsqueryDataService.LogisticsDataService;
 import edu.nju.po.PositionPO;
 
-public class LogisticsDataServiceImpl implements LogisticsDataService{
+public class LogisticsDataServiceImpl implements LogisticsDataService {
 
-	public static void main(String[] args) {
-		LogisticsDataServiceImpl t=new LogisticsDataServiceImpl();
-	    t.createPosition("0002500010","朝阳区营业厅,北京市中转中心,南京市中转中心,栖霞区营业厅,派件中" );
-	
-	}
+	 public static void main(String[] args) {
+	 LogisticsDataServiceImpl t=new LogisticsDataServiceImpl();
+//	 t.createPosition("0002500010","朝阳区营业厅,北京市中转中心,南京市中转中心,栖霞区营业厅,派件中" );
+	System.out.println(t.positionQuery("1025020022"));
+	 }
 	@Override
 	public PositionPO positionQuery(String ItemID) {
+		String string = "SELECT his from history where itemId=" + ItemID + ";";
+		SQL.databaseQuery(string);
+		String temp = "";
+		String[] pos=null;
 		try {
-			BufferedReader reader=new BufferedReader(new FileReader("D:\\teamwork\\CMASS-server\\data\\LogisticsData\\Position.txt"));
-			PositionPO positionPO = null;
-			String input="";
-			try {
-				while((input=reader.readLine())!=null){
-					
-					String[] s1=input.split(" ");
-					String currID=s1[0];
-					if(!currID.equals(ItemID))
-						continue;
-					String[] s2=s1[1].split(",");
-					ArrayList<String> history=new ArrayList<String>();
-					for(String str:s2){
-						history.add(str);
-					}
-					positionPO=new PositionPO(currID, history);
-					break;
-				}
-				reader.close();
-				return positionPO;
-				
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			while(SQL.rs.next()){
+				temp += SQL.rs.getString("his");
 			}
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			System.out.println("cannot find the LogisticsData file");
-			e.printStackTrace();
 			
+			if(temp!=null)
+				pos = temp.split(",");
+		} catch (SQLException e) {
+			System.out.println("物流历史轨迹查询错误");
+			e.printStackTrace();
 		}
-		return null;
+		ArrayList<String>  history = new ArrayList<String>();
+		for(String tmp2:pos)
+			history.add(tmp2);
+		PositionPO positionPO=new PositionPO(ItemID, history);
+		SQL.closeDatabase();
+		return positionPO;
+		// try {
+		// BufferedReader reader=new BufferedReader(new
+		// FileReader("D:\\teamwork\\CMASS-server\\data\\LogisticsData\\Position.txt"));
+		// PositionPO positionPO = null;
+		// String input="";
+		// try {
+		// while((input=reader.readLine())!=null){
+		//
+		// String[] s1=input.split(" ");
+		// String currID=s1[0];
+		// if(!currID.equals(ItemID))
+		// continue;
+		// String[] s2=s1[1].split(",");
+		// ArrayList<String> history=new ArrayList<String>();
+		// for(String str:s2){
+		// history.add(str);
+		// }
+		// positionPO=new PositionPO(currID, history);
+		// break;
+		// }
+		// reader.close();
+		// return positionPO;
+		//
+		// } catch (IOException e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// }
+		// } catch (FileNotFoundException e) {
+		// // TODO Auto-generated catch block
+		// System.out.println("cannot find the LogisticsData file");
+		// e.printStackTrace();
+		//
+		// }
+		// return null;
 	}
 
 	@Override
 	public void changePosition(String ItemID, String pos) {
-		
-		
+
 	}
 
 	@Override
 	public void createPosition(String Item, String pos) {
-		File file=new File("D:\\teamwork\\CMASS-server\\data\\LogisticsData\\Position.txt");
+		File file = new File("D:\\teamwork\\CMASS-server\\data\\LogisticsData\\Position.txt");
 		try {
-			FileWriter writer=new FileWriter(file,true);
-			writer.write(Item+" "+pos+"\n");
+			FileWriter writer = new FileWriter(file, true);
+			writer.write(Item + " " + pos + "\n");
 			writer.close();
 		} catch (IOException e) {
 			System.out.println("cannot find the logisticsData file");
 			e.printStackTrace();
 		}
-		
-		
+
 	}
 
 }
