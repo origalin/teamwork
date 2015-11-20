@@ -61,12 +61,18 @@ public class SQL {
 	}
 
 	public static int databaseUpdate(String sql) {
+		loadDrive();
+		linkToDatabase();
 
+		int result=0;
 		try {
 			stmt = conn.createStatement();
-			sql = "UPDATE Customers set cust_name='lpt' WHERE cust_id='1310901401';";// dept这张表有deptno，deptname和age这三个字段
-			System.out.print(stmt.executeUpdate(sql));
-			;// 执行sql语句
+			result=stmt.executeUpdate(sql);
+			if(result!=0)
+				System.out.println("Update Success!");
+			else
+				System.out.println("Update failed");
+			// 执行sql语句
 				// while(rs.next()) {
 				// System.out.print(rs.getString("prod_name") + " ");
 				//
@@ -74,7 +80,7 @@ public class SQL {
 				// System.out.println(rs.getString("vend_id") + " ");
 				// }
 		} catch (SQLException e) {
-			System.out.println("数据操作错误");
+			System.out.println("数据操作错误2");
 			e.printStackTrace();
 		}
 		// 关闭数据库
@@ -95,7 +101,7 @@ public class SQL {
 //			System.out.println("数据库关闭错误");
 //			e.printStackTrace();
 //		}
-		return 0;
+		return result;
 
 	}
 

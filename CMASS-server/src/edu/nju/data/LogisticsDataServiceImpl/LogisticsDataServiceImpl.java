@@ -22,7 +22,8 @@ public class LogisticsDataServiceImpl implements LogisticsDataService {
 	 public static void main(String[] args) {
 	 LogisticsDataServiceImpl t=new LogisticsDataServiceImpl();
 //	 t.createPosition("0002500010","朝阳区营业厅,北京市中转中心,南京市中转中心,栖霞区营业厅,派件中" );
-	System.out.println(t.positionQuery("1025020022"));
+	t.createPosition("0544","lingpeitang");
+	t.changePosition("0544", "lzm");
 	 }
 	@Override
 	public PositionPO positionQuery(String ItemID) {
@@ -85,20 +86,41 @@ public class LogisticsDataServiceImpl implements LogisticsDataService {
 
 	@Override
 	public void changePosition(String ItemID, String pos) {
-
+		String sql="select his from history where itemId="+ItemID+";";
+		SQL.databaseQuery(sql);
+		String history="";
+		try {
+			while(SQL.rs.next()){
+				history += SQL.rs.getString("his");
+			}
+		} catch (SQLException e) {
+			System.out.println("查询历史轨迹错误");
+			e.printStackTrace();
+		}
+		history=history+","+pos;
+		sql="UPDATE history SET his='"+history+"'where itemId="+ItemID+";";
+		SQL.databaseUpdate(sql);
+		SQL.closeDatabase();
 	}
 
 	@Override
 	public void createPosition(String Item, String pos) {
-		File file = new File("D:\\teamwork\\CMASS-server\\data\\LogisticsData\\Position.txt");
-		try {
-			FileWriter writer = new FileWriter(file, true);
-			writer.write(Item + " " + pos + "\n");
-			writer.close();
-		} catch (IOException e) {
-			System.out.println("cannot find the logisticsData file");
-			e.printStackTrace();
-		}
+		String sql="INSERT INTO history (itemId,his) VALUES('"+Item+"','"+pos+"');";
+		System.out.println(sql);
+		SQL.databaseUpdate(sql);
+		SQL.closeDatabase();
+		
+		
+		
+//		File file = new File("D:\\teamwork\\CMASS-server\\data\\LogisticsData\\Position.txt");
+//		try {
+//			FileWriter writer = new FileWriter(file, true);
+//			writer.write(Item + " " + pos + "\n");
+//			writer.close();
+//		} catch (IOException e) {
+//			System.out.println("cannot find the logisticsData file");
+//			e.printStackTrace();
+//		}
 
 	}
 
