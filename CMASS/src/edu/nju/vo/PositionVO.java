@@ -2,6 +2,8 @@ package edu.nju.vo;
 
 import java.util.ArrayList;
 
+import edu.nju.po.PositionPO;
+
 public class PositionVO {
 	String itemID;
 	ArrayList<String> history;
@@ -9,6 +11,12 @@ public class PositionVO {
 		super();
 		this.itemID = itemID;
 		this.history = history;
+	}
+	
+	public PositionVO(PositionPO p){
+		super();
+		this.itemID=p.getItemID();
+		this.history=p.getHistory();
 	}
 	public String getItemID() {
 		return itemID;

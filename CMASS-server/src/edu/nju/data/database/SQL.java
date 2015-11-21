@@ -2,7 +2,7 @@ package edu.nju.data.database;
 
 import java.sql.*;
 
-import edu.nju.presentation.mainui.Main;
+
 
 /**
  * @author ½¡

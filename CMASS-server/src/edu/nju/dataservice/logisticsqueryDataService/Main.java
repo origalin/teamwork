@@ -10,9 +10,9 @@ public class Main {
 	
 
 	public static void main(String[] args) {
-		 System.out.println("Service Start!");
+		 
 		 try {
-			 System.out.println("Service Start!");
+			
 				LogisticsDataService logisticsDataService=new LogisticsDataServiceImpl();
 				//×¢²áÍ¨Ñ¶¶Ë¿Ú
 				LocateRegistry.createRegistry(6600);

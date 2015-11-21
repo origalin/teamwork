@@ -1,20 +1,22 @@
 package edu.nju.businesslogic.logispicsquerybl;
 
 import java.rmi.Naming;
+import java.sql.Blob;
 
 import edu.nju.dataservice.logisticsqueryDataService.LogisticsDataService;
 import edu.nju.po.PositionPO;
 
 public class Main {
 
-	public Main() {
-		// TODO Auto-generated constructor stub
-	}
+	
 	public static void main(String[] args) {
 		try{
     		//调用远程对象，注意RMI路径与接口必须与服务器配置一致
-    		LogisticsDataService personService=(LogisticsDataService)Naming.lookup("rmi://127.0.0.1:6600/LogisticsDataService");
-    		System.out.println(personService.positionQuery("0025010010"));
+			Logisticsquerybl lbl=new Logisticsquerybl();
+    		lbl.createPosition("2036030037", "北京市朝阳区营业厅");
+    		lbl.changePosition("2036030037", "北京市中转中心");
+    		System.out.println(lbl.historyQuery("2036030037"));
+    		//System.out.println(po.toString());
     	}catch(Exception ex){
     		ex.printStackTrace();
     	}

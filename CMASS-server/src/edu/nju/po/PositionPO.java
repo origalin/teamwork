@@ -1,8 +1,9 @@
 package edu.nju.po;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class PositionPO {
+public class PositionPO implements Serializable{
 	String itemID;
 	ArrayList<String> history;
 	public PositionPO(String itemID, ArrayList<String> history) {
