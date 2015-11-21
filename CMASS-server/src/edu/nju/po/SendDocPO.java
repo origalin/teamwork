@@ -1,7 +1,5 @@
 package edu.nju.po;
 
-import edu.nju.vo.SendDocVO;
-
 public class SendDocPO extends Doc{
 	String sName,aAddress,sCity,sUnit,sTelePhone,sMobilePhone;
 	String rName,rAddress,rCity,rUnit,rTelePhone,rMobilePhone;
@@ -164,10 +162,6 @@ public class SendDocPO extends Doc{
 	}
 	public void setDate(long date) {
 		this.date = date;
-	}
-
-	public SendDocVO toVo() {
-		return null;
 	}
 	
 }

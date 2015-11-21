@@ -119,7 +119,7 @@ public class Collectionbl implements CollectionLogicService{
 		long date = System.currentTimeMillis();
 		po = new SendDocPO(sName, sAddress, sCity, sUnit, sTelePhone, sMobilePhone, rName, rAddress, rCity, rUnit, rTelePhone, rMobilePhone, itemNum, weight, volume, itemKind, packageType, price, packageType, date, time);
 		po.setID(sendType+institutionID.substring(0, 4)+getSequence());
-		return po.toVo();
+		return null;
 
 	}
 

@@ -1,7 +1,5 @@
 package edu.nju.po;
 
-import edu.nju.vo.OverDocVO;
-
 public class OverDocPO extends Doc{
 	
 	String[] itemID;//¿ìµÝid
@@ -42,9 +40,5 @@ public class OverDocPO extends Doc{
 		this.date = date;
 	}
 
-	public OverDocVO toVO() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 }

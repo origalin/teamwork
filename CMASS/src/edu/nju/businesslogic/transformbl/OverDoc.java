@@ -54,7 +54,7 @@ public class OverDoc implements OverDocService{
 		// TODO Auto-generated method stub
 		po = new OverDocPO(itemIDs, receivers, System.currentTimeMillis(), staffID);
 		po.setID("13"+getOverDocSequence());
-		return po.toVO();
+		return null;
 	}
 
 }
