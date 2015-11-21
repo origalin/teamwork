@@ -5,6 +5,10 @@ import edu.nju.po.TransferDocPO;
 import edu.nju.vo.TransferDoc_CarVO;
 
 public class MockTransferDoc extends TransferDoc{
+	
+	public MockTransferDoc() {
+		super();
+	}
 	public MockTransferDoc(String institutionID, String staffID) {
 		super(institutionID, staffID);
 		// TODO Auto-generated constructor stub

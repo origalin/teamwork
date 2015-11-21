@@ -13,6 +13,9 @@ import edu.nju.vo.TransferDoc_TrainVO;
 public class TransferDoc implements TransferDocService{
 	String institutionID,staffID;
 
+	public TransferDoc (){
+		this(null, null);
+	}
 
 	public TransferDoc(String institutionID, String staffID) {
 		super();
