@@ -12,11 +12,11 @@ import edu.nju.vo.PositionVO;
 
 public class Logisticsquerybl implements LogispicsQueryLogicService{
 	LogisticsDataService logisticsDataService;
-	ArrayList<PositionPO> list;
+//	ArrayList<PositionPO> list;
 	
 	public Logisticsquerybl() {
 		super();
-		list= new ArrayList<PositionPO>();
+//		list= new ArrayList<PositionPO>();
 		try {
 			this.logisticsDataService = logisticsDataService=(LogisticsDataService)Naming.lookup("rmi://127.0.0.1:6600/LogisticsDataService");
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
