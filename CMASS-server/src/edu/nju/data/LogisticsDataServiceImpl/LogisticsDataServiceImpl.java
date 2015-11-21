@@ -21,7 +21,7 @@ import edu.nju.po.PositionPO;
 
 public class LogisticsDataServiceImpl  extends UnicastRemoteObject implements LogisticsDataService {
 
-	 protected LogisticsDataServiceImpl() throws RemoteException {
+	 public LogisticsDataServiceImpl() throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -39,7 +39,7 @@ public class LogisticsDataServiceImpl  extends UnicastRemoteObject implements Lo
 //	t.changePosition("0544", "lzm");
 //	 }
 	@Override
-	public PositionPO positionQuery(String ItemID) {
+	public PositionPO positionQuery(String ItemID)throws RemoteException  {
 		String string = "SELECT his from history where itemId=" + ItemID + ";";
 		SQL.databaseQuery(string);
 		String temp = "";
@@ -98,7 +98,7 @@ public class LogisticsDataServiceImpl  extends UnicastRemoteObject implements Lo
 	}
 
 	@Override
-	public void changePosition(String ItemID, String pos) {
+	public void changePosition(String ItemID, String pos) throws RemoteException {
 		String sql="select his from history where itemId="+ItemID+";";
 		SQL.databaseQuery(sql);
 		String history="";
@@ -117,7 +117,7 @@ public class LogisticsDataServiceImpl  extends UnicastRemoteObject implements Lo
 	}
 
 	@Override
-	public void createPosition(String Item, String pos) {
+	public void createPosition(String Item, String pos)throws RemoteException  {
 		String sql="INSERT INTO history (itemId,his) VALUES('"+Item+"','"+pos+"');";
 		System.out.println(sql);
 		SQL.databaseUpdate(sql);
