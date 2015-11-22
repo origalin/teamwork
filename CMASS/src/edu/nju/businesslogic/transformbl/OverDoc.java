@@ -1,6 +1,7 @@
 package edu.nju.businesslogic.transformbl;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import edu.nju.businesslogicservice.transformlogicservice.OverDocService;
 import edu.nju.po.OverDocPO;
@@ -52,9 +53,8 @@ public class OverDoc implements OverDocService{
 	@Override
 	public OverDocVO createOverDocVO(String[] itemIDs, String[] receivers) {
 		// TODO Auto-generated method stub
-		po = new OverDocPO(itemIDs, receivers, System.currentTimeMillis(), staffID);
-		po.setID("13"+getOverDocSequence());
-		return null;
+		po = new OverDocPO("13"+getOverDocSequence(),itemIDs, receivers, new Date(), staffID);
+		return new OverDocVO(po);
 	}
 
 }

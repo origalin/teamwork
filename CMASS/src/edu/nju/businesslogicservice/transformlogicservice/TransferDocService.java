@@ -20,4 +20,5 @@ public interface TransferDocService {
 	public TransferDocVO findTransferDocVO (int ID);//获取中转单VO
 	public ArrayList<TransferDocPO> getUncheckedTransferDocPOs();
 	public double[] getPriceToday();
+	public TransferDocPO geTransferDocPOByID(String ID);
 }

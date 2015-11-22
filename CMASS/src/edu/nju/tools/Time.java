@@ -16,4 +16,9 @@ public class Time {
 		String result = sdm.format(date);
 		return result;
 	}
+	public static String  toDocTime(Date date) {
+		SimpleDateFormat sdm = new SimpleDateFormat("yyyyMMdd");	
+		String result = sdm.format(date);
+		return result;
+	}
 }

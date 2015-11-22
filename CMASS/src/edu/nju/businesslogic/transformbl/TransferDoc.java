@@ -1,10 +1,14 @@
 package edu.nju.businesslogic.transformbl;
 import java.util.ArrayList;
+import java.util.Date;
 
 import edu.nju.businesslogic.infobl.Institution;
 import edu.nju.businesslogicservice.transformlogicservice.*;
 import edu.nju.po.TransferDocPO;
+import edu.nju.po.TransferDoc_CarPO;
 import edu.nju.po.TransferDoc_PlanePO;
+import edu.nju.po.TransferDoc_TrainPO;
+import edu.nju.tools.Time;
 import edu.nju.vo.TransferDocVO;
 import edu.nju.vo.TransferDoc_CarVO;
 import edu.nju.vo.TransferDoc_PlaneVO;
@@ -12,7 +16,7 @@ import edu.nju.vo.TransferDoc_TrainVO;
 
 public class TransferDoc implements TransferDocService{
 	String institutionID,staffID;
-
+	TransferDocPO po;
 	public TransferDoc (){
 		this(null, null);
 	}
@@ -58,21 +62,24 @@ public class TransferDoc implements TransferDocService{
 	public TransferDoc_CarVO createTransferDocVO_Car(String city,
 			String carNum, String watcher,String[] itemIDs) {
 		// TODO 自动生成的方法存根
-		return null;
+		po = new TransferDoc_CarPO(institutionID+Time.toDocTime(new Date())+getTransferSequence(), new Date(), carNum, getTransferID(), "城市", city, calcPrice(city), itemIDs);
+		return new TransferDoc_CarVO((TransferDoc_CarPO) po);
 	}
 
 	@Override
 	public TransferDoc_PlaneVO createTransferDocVO_Plane(String city,
 			String carNum, String watcher, String container,String[] itemIDs) {
 		// TODO 自动生成的方法存根
-		return null;
+		po = new TransferDoc_PlanePO(institutionID+Time.toDocTime(new Date())+getTransferSequence(), new Date(), carNum, getTransferID(), "城市", city, container, calcPrice(city), itemIDs);
+		return new TransferDoc_PlaneVO((TransferDoc_PlanePO) po);
 	}
 
 	@Override
 	public TransferDoc_TrainVO createTransferDocVO_Train(String city,
 			String carNum, String watcher, String carriage,String[] itemIDs) {
 		// TODO 自动生成的方法存根
-		return null;
+		po = new TransferDoc_TrainPO(institutionID+Time.toDocTime(new Date())+getTransferSequence(), new Date(), carNum, getTransferID(), "城市", city, carriage, calcPrice(city), itemIDs);
+		return new TransferDoc_TrainVO((TransferDoc_TrainPO) po);
 	}
 
 	@Override
@@ -92,5 +99,13 @@ public class TransferDoc implements TransferDocService{
 		// TODO 自动生成的方法存根
 		return null;
 	}
+	private double calcPrice(String targetCity) {
+		return 0;
+	}
 
+	@Override
+	public TransferDocPO geTransferDocPOByID(String ID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
