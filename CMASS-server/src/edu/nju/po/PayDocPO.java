@@ -57,6 +57,12 @@ public class PayDocPO extends Doc{
 	public void setType(PayType type) {
 		this.type = type;
 	}
+	public String getBack() {
+		return back;
+	}
+	public void setBack(String back) {
+		this.back = back;
+	}
 	
 
 }

@@ -11,6 +11,7 @@ public class checkPayDoc extends JPanel{
 	private JTextField textField_3;
 	private JTextField textField_4;
 	private JTextField textField_5;
+	private JTextField textField_6;
 	public checkPayDoc() {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 54, 70, 65, 0, 109, 0};
@@ -142,6 +143,24 @@ public class checkPayDoc extends JPanel{
 		gbc_textField_4.gridy = 6;
 		add(textField_4, gbc_textField_4);
 		textField_4.setColumns(10);
+		
+		JLabel label_6 = new JLabel("\u5907\u6CE8");
+		label_6.setFont(new Font("ºÚÌå", Font.BOLD, 12));
+		GridBagConstraints gbc_label_6 = new GridBagConstraints();
+		gbc_label_6.insets = new Insets(0, 0, 0, 5);
+		gbc_label_6.gridx = 1;
+		gbc_label_6.gridy = 8;
+		add(label_6, gbc_label_6);
+		
+		textField_6 = new JTextField();
+		textField_6.setEditable(false);
+		GridBagConstraints gbc_textField_6 = new GridBagConstraints();
+		gbc_textField_6.insets = new Insets(0, 0, 0, 5);
+		gbc_textField_6.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textField_6.gridx = 3;
+		gbc_textField_6.gridy = 8;
+		add(textField_6, gbc_textField_6);
+		textField_6.setColumns(10);
 	}
 
 }

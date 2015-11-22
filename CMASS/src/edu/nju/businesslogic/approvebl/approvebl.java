@@ -58,19 +58,7 @@ public class approvebl implements ApproveLogicService{
 	 utilitybl
 	 */
 	
-	
-	ArrayList<SendDocPO> uncheckedSendDocList;
-	ArrayList<GatheringDocPO> unchekedGatheringDocList;
-	ArrayList<InWareHouseDocPO> unchekedInWareHouseDocList;
-	ArrayList<OutWareHouseDocPO> unchekedOutWareHouseDocList;
-	ArrayList<TransferDocPO> unchekedTransferDocList;
-	ArrayList<ZLoadDocPO> unchekedZLoadDocList;
-	ArrayList<OverDocPO> unchekedOverDocList;
-	ArrayList<PayDocPO> unchekedPayDocList;
-	ArrayList<YArrivalDocPO> unchekedYArrivalDocList;
-	ArrayList<YDeliverDocPO> unchekedYDeliverDocList;
-	ArrayList<YLoadDocPO> unchekedYLoadDocList;
-	ArrayList<ZArrivalDocPO> unchekedZArrivalDocList;
+
 	Collectionbl collectionbl=new Collectionbl();
 	financebl fnc=new financebl();
 	StorageTools storageTools=new StorageTools();
