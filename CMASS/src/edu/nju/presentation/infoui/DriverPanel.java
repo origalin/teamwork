@@ -10,6 +10,8 @@ import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class DriverPanel extends JPanel {
 	private JTable table;
@@ -73,6 +75,10 @@ public class DriverPanel extends JPanel {
 		panel_1.add(button_2, gbc_button_2);
 		
 		JButton button_3 = new JButton("\u67E5\u8BE2");
+		button_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		GridBagConstraints gbc_button_3 = new GridBagConstraints();
 		gbc_button_3.insets = new Insets(0, 0, 0, 5);
 		gbc_button_3.fill = GridBagConstraints.HORIZONTAL;

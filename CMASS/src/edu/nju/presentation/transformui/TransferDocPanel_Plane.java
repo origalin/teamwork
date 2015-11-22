@@ -19,8 +19,10 @@ import javax.swing.table.DefaultTableModel;
 
 import edu.nju.businesslogic.transformbl.TransferDoc;
 import edu.nju.presentation.approveui.CheckTransferDoc_Car;
+import edu.nju.presentation.approveui.CheckTransferDoc_Plane;
 import edu.nju.presentation.mainui.CheckDialog;
 import edu.nju.vo.TransferDoc_CarVO;
+import edu.nju.vo.TransferDoc_PlaneVO;
 
 @SuppressWarnings("serial")
 public class TransferDocPanel_Plane extends JPanel{
@@ -34,9 +36,10 @@ public class TransferDocPanel_Plane extends JPanel{
 	private String city,carNum,watcher,box;
 	private String[] itemIDs;
 	private int itemIDNum;
-	private TransferDoc_CarVO vo;
+	private TransferDoc_PlaneVO vo;
 	DefaultTableModel tableModel;
 	private String institutionID, staffID;
+	private String container;
 	public TransferDocPanel_Plane(String institutionID, String staffID) {
 		this.institutionID = institutionID;
 		this.staffID = staffID;
@@ -222,9 +225,9 @@ public class TransferDocPanel_Plane extends JPanel{
 	private void createTransferDoc() {
 		intialize();
 		if (creatable()) {
-			vo = transferDoc.createTransferDocVO_Car(city,carNum, transferDoc.getTransferID(),watcher, itemIDs);
+			vo = transferDoc.createTransferDocVO_Plane(city, carNum,  watcher, container, itemIDs);
 			CheckDialog dialog = new CheckDialog();
-			dialog.getDocPanel().add(new CheckTransferDoc_Car(vo));
+			dialog.getDocPanel().add(new CheckTransferDoc_Plane(vo));
 			dialog.getConfirmButton().addActionListener(new ActionListener() {
 				
 				@Override
@@ -238,7 +241,7 @@ public class TransferDocPanel_Plane extends JPanel{
 	}
 
 	private boolean creatable() {
-		if(city.equals("")||carNum.equals("")||watcher.equals("")||box.equals("")||itemIDNum<1){
+		if(city.equals("")||carNum.equals("")||watcher.equals("")||box.equals("")||container.equals("")||itemIDNum<1){
 			return false;
 		}else {
 			return true;
@@ -249,6 +252,7 @@ public class TransferDocPanel_Plane extends JPanel{
 		this.carNum = carNumField.getText();
 		this.watcher = watcherField.getText();
 		this.box = boxField.getText();
+		this.container = boxField.getText();
 		this.itemIDs = new String[tableModel.getRowCount()];
 		itemIDNum = 0;
 		for(int i = 0;i<tableModel.getRowCount();i++) {

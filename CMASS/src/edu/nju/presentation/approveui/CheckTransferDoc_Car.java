@@ -15,6 +15,7 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.table.DefaultTableModel;
 
 import edu.nju.vo.TransferDoc_CarVO;
+import edu.nju.vo.TransferDoc_TrainVO;
 
 import javax.swing.SwingConstants;
 
@@ -260,5 +261,8 @@ public class CheckTransferDoc_Car extends JPanel{
 		panel_14.add(table);
 		
 
+	}
+	public CheckTransferDoc_Car(TransferDoc_TrainVO vo) {
+		// TODO Auto-generated constructor stub
 	}
 }

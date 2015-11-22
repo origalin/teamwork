@@ -21,6 +21,7 @@ import edu.nju.businesslogic.transformbl.TransferDoc;
 import edu.nju.presentation.approveui.CheckTransferDoc_Car;
 import edu.nju.presentation.mainui.CheckDialog;
 import edu.nju.vo.TransferDoc_CarVO;
+import edu.nju.vo.TransferDoc_TrainVO;
 
 @SuppressWarnings("serial")
 public class TransferDocPanel_Train extends JPanel{
@@ -31,10 +32,10 @@ public class TransferDocPanel_Train extends JPanel{
 	private JTable table;
 	private JTextField carrriageField;
 	private TransferDoc transferDoc;
-	private String city,carNum,watcher,carrriage;
+	private String city,carNum,watcher,carriage;
 	private String[] itemIDs;
 	private int itemIDNum;
-	private TransferDoc_CarVO vo;
+	private TransferDoc_TrainVO vo;
 	DefaultTableModel tableModel;
 	private String institutionID, staffID;
 	public TransferDocPanel_Train(String institutionID, String staffID) {
@@ -222,7 +223,7 @@ public class TransferDocPanel_Train extends JPanel{
 	private void createTransferDoc() {
 		intialize();
 		if (creatable()) {
-			vo = transferDoc.createTransferDocVO_Car(city,carNum, transferDoc.getTransferID(),watcher, itemIDs);
+			vo = transferDoc.createTransferDocVO_Train(city, carNum, watcher, carriage, itemIDs);
 			CheckDialog dialog = new CheckDialog();
 			dialog.getDocPanel().add(new CheckTransferDoc_Car(vo));
 			dialog.getConfirmButton().addActionListener(new ActionListener() {
@@ -238,7 +239,7 @@ public class TransferDocPanel_Train extends JPanel{
 	}
 
 	private boolean creatable() {
-		if(city.equals("")||carNum.equals("")||watcher.equals("")||carrriage.equals("")||itemIDNum<1){
+		if(city.equals("")||carNum.equals("")||watcher.equals("")||carriage.equals("")||itemIDNum<1){
 			return false;
 		}else {
 			return true;
@@ -248,7 +249,7 @@ public class TransferDocPanel_Train extends JPanel{
 		this.city = targetField.getText();
 		this.carNum = carNumField.getText();
 		this.watcher = watcherField.getText();
-		this.carrriage = carrriageField.getText();
+		this.carriage = carrriageField.getText();
 		this.itemIDs = new String[tableModel.getRowCount()];
 		itemIDNum = 0;
 		for(int i = 0;i<tableModel.getRowCount();i++) {

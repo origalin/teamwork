@@ -1,6 +1,7 @@
 package edu.nju.businesslogic.collectionbl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import edu.nju.businesslogic.infobl.Institution;
@@ -116,9 +117,9 @@ public class Collectionbl implements CollectionLogicService{
 		// TODO 自动生成的方法存根
 		int time = timeEstimate(sCity, rCity);
 		double price = priceCalc(sCity, rCity, packageType, volume, weight);
-		long date = System.currentTimeMillis();
-		po = new SendDocPO(sName, sAddress, sCity, sUnit, sTelePhone, sMobilePhone, rName, rAddress, rCity, rUnit, rTelePhone, rMobilePhone, itemNum, weight, volume, itemKind, packageType, price, packageType, date, time);
-		po.setID(sendType+institutionID.substring(0, 4)+getSequence());
+		Date date = new Date();
+		String id = sendType+institutionID.substring(0, 4)+getSequence();
+		po = new SendDocPO(id,sName, sAddress, sCity, sUnit, sTelePhone, sMobilePhone, rName, rAddress, rCity, rUnit, rTelePhone, rMobilePhone, itemNum, weight, volume, itemKind, packageType, price, packageType, date, time);
 		return null;
 
 	}

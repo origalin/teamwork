@@ -56,21 +56,21 @@ public class TransferDoc implements TransferDocService{
 
 	@Override
 	public TransferDoc_CarVO createTransferDocVO_Car(String city,
-			String carNum, String tranceID, String watcher,String[] itemIDs) {
+			String carNum, String watcher,String[] itemIDs) {
 		// TODO 自动生成的方法存根
 		return null;
 	}
 
 	@Override
 	public TransferDoc_PlaneVO createTransferDocVO_Plane(String city,
-			String carNum, String tranceID, String watcher, int container,String[] itemIDs) {
+			String carNum, String watcher, String container,String[] itemIDs) {
 		// TODO 自动生成的方法存根
 		return null;
 	}
 
 	@Override
 	public TransferDoc_TrainVO createTransferDocVO_Train(String city,
-			String carNum, String tranceID, String watcher, int carriage,String[] itemIDs) {
+			String carNum, String watcher, String carriage,String[] itemIDs) {
 		// TODO 自动生成的方法存根
 		return null;
 	}
