@@ -2,7 +2,7 @@ package edu.nju.data.FinanceDataServiceImpl;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -240,7 +240,7 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements
 			payType = "工资";
 		}
 		String sql = "INSERT INTO PayDocPOList VALUES('" + payDocID + "','"
-				+ getCurrentDate().toString() + "'," + money + ",'" + account
+				+ Time.toDaysTime(new Date()) + "'," + money + ",'" + account
 				+ "','" + payType + "','" + back + "';";
 		SQL.databaseUpdate(sql);
 		SQL.closeDatabase();
@@ -287,7 +287,7 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements
 		}
 		items = items.substring(0, itemIDs.size() - 1);// 删除最后一个逗号
 		String sql = "INSERT INTO GatheringDocPOList VALUES('" + GatheringDocID
-				+ "','" + getCurrentDate().toString() + "'," + money + ",'"
+				+ "','" +new Date().toString() + "'," + money + ",'"
 				+ courier_name + "','" + items + "';";
 		SQL.databaseUpdate(sql);
 		SQL.closeDatabase();

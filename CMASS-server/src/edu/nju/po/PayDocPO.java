@@ -1,14 +1,16 @@
 package edu.nju.po;
 
+import java.util.Date;
+
 public class PayDocPO extends Doc{
 //	int ID;
-	long date;
+	Date date;
 	double money;
 	String payer;
 	String account;
 	PayType type;
 	String back;
-	public PayDocPO(String payDocID, long date, double money, String payer,
+	public PayDocPO(String payDocID, Date date, double money, String payer,
 			String account, PayType type, String back) {
 		super();
 		ID = payDocID;
@@ -25,10 +27,10 @@ public class PayDocPO extends Doc{
 	public void setPayDocID(String payDocID) {
 		ID = payDocID;
 	}
-	public long getDate() {
+	public Date getDate() {
 		return date;
 	}
-	public void setDate(long date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 	public double getMoney() {

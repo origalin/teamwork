@@ -21,6 +21,11 @@ public class Collectionbl implements CollectionLogicService{
 		this.institutionID = institutionID;
 		this.staffID = staffID;
 	}
+	
+	public Collectionbl(){
+		this.institutionID=null;
+		this.staffID=null;
+	}
 
 	@Override
 	public void saveSendDocPO(SendDocPO po) {
@@ -59,7 +64,7 @@ public class Collectionbl implements CollectionLogicService{
 	}
 
 	@Override
-	public List<SendDocPO> getAllSendDoc() {
+	public ArrayList<SendDocPO> getAllSendDoc() {
 		// TODO 自动生成的方法存根
 		return null;
 	}

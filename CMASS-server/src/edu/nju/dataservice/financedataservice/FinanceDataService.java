@@ -3,7 +3,7 @@ import edu.nju.po.*;
 
 
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
 public interface FinanceDataService{
 	//提供给审批单据的供接口

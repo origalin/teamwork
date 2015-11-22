@@ -15,6 +15,10 @@ public class ZLoadDoc implements ZLoadDocService{
 		this.institutionID = institutionID;
 		this.staffID = staffID;
 	}
+	public ZLoadDoc(){
+		this.institutionID=null;
+		this.staffID=null;
+	}
 
 	@Override
 	public void saveZloadDocPO(ZLoadDocPO po) {

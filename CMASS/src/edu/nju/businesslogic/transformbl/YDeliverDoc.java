@@ -15,6 +15,10 @@ public class YDeliverDoc implements YDeliverDocService{
 		this.staffID = staffID;
 	}
 
+	public YDeliverDoc() {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public void saveYDeliverDocPO(YDeliverDocPO po) {
 		// TODO 自动生成的方法存根

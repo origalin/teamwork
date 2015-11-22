@@ -1,26 +1,27 @@
 package edu.nju.po;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 //（收款日期、收款金额、收款快递员、对应的所有快递订单条形码号。）
 
 public class GatheringDocPO extends Doc {
-	Long date;
+	Date date;
 	Double money;
 	String courier_name;
 	ArrayList<String> itemIDs;
-	public GatheringDocPO(String GatheringDocID,Double money, String courier_name,ArrayList<String> itemIDs) {
+	public GatheringDocPO(String GatheringDocID,Date date,Double money, String courier_name,ArrayList<String> itemIDs) {
 		super();
 		this.ID=GatheringDocID;
 		this.money = money;
 		this.courier_name = courier_name;
 		this.itemIDs = itemIDs;
-		this.date = System.currentTimeMillis();
+		this.date = date;
 	}
-	public Long getDate() {
+	public Date getDate() {
 		return date;
 	}
-	public void setDate(Long date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 	public Double getMoney() {

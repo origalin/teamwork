@@ -20,6 +20,10 @@ public class YArrivalDoc implements YArrivalDocService {
 		transferDoc = new TransferDoc(institutionID, staffID);
 	}
 
+	public YArrivalDoc() {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public void saveYArrivalDocPO(YArrivalDocPO po) {
 		// TODO 自动生成的方法存根

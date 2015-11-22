@@ -24,6 +24,10 @@ public class ZArrivalDoc implements ZArrivalDocService{
 		yLoadDoc = new YLoadDoc(institutionID, staffID);
 	}
 
+	public ZArrivalDoc() {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public void saveZArrivalDocPO(ZArrivalDocPO po) {
 		// TODO 自动生成的方法存根

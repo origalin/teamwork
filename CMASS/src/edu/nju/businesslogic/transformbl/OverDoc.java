@@ -18,6 +18,10 @@ public class OverDoc implements OverDocService{
 		this.staffID = staffID;
 	}
 
+	public OverDoc() {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public void saveOverDocPO(OverDocPO po) {
 		// TODO 自动生成的方法存根

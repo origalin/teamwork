@@ -67,6 +67,7 @@ public class financebl implements FinanceLogicService{
 	
 
 	//账户管理使用的属性
+	FinanceDataServiceImpl FinanceDataServiceImpl=new FinanceDataServiceImpl();
 	ArrayList<AccountVO> companyAccountPOList;
 	//审批单据需要用到的付款单和收款单的list
 	ArrayList<PayDocPO> PayDocList;
@@ -218,7 +219,7 @@ public class financebl implements FinanceLogicService{
 	
 
 	@Override
-	public void saveOverDocPO(PayDocPO po) {
+	public void savePayDocPO(PayDocPO po) {
 		// TODO Auto-generated method stub
 		
 	}

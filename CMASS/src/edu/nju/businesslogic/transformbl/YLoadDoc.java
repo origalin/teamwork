@@ -15,6 +15,9 @@ public class YLoadDoc implements YLoadDocService{
 		this.institutionID = institutionID;
 		this.staffID = staffID;
 	}
+	public YLoadDoc() {
+		// TODO Auto-generated constructor stub
+	}
 	@Override
 	public void saveYloadDocPO(YLoadDocPO po) {
 		// TODO 自动生成的方法存根

@@ -26,6 +26,7 @@ public class TransferDoc implements TransferDocService{
 		this.institutionID = institutionID;
 		this.staffID = staffID;
 	}
+	
 
 	@Override
 	public void saveTransferDocPO(TransferDocPO po) {

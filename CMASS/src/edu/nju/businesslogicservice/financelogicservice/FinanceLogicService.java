@@ -28,7 +28,7 @@ import edu.nju.vo.showStaffSalaryVO;
 public interface FinanceLogicService {
 	//提供给审批单据的供接口
 	public ArrayList<PayDocPO> getunchekedPayDocList();
-	public void saveOverDocPO(PayDocPO po);
+	public void savePayDocPO(PayDocPO po);
 	public ArrayList<GatheringDocPO> getunchekedGatheringDocList();
 	public void saveGatheringDocPO(GatheringDocPO po);
 	//账户管理部分
