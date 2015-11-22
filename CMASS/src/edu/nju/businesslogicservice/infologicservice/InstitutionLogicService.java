@@ -21,6 +21,10 @@ public interface InstitutionLogicService {
 	public void saveDistance(String city,String city2,double distance);//保存距离信息
 	//collection依赖我
 	public double getDistance(String city);//构造时调用两个参数的方法
+	public String[][] getCouriers();//返回登陆机构的所有人员名单，第一个是ID 第二个是名字
+	public String[][] getBusinessHalls(String id);//根据中转中心ID列出下属机构
+	public String[][] getDrivers();
+	public String[][] getTransfers(String id);//根据营业厅ID列出上属机构
 
 	//financedata依赖我
 
