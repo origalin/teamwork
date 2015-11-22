@@ -208,7 +208,7 @@ public class TransferDocPanel_Car extends JPanel {
 	private void createTransferDoc() {
 		intialize();
 		if (creatable()) {
-			vo = transferDoc.createTransferDocVO_Car(city,carNum, transferDoc.getTransferID(),watcher, itemIDs);
+			vo = transferDoc.createTransferDocVO_Car(city,carNum,watcher, itemIDs);
 			CheckDialog dialog = new CheckDialog();
 			dialog.getDocPanel().add(new CheckTransferDoc_Car(vo));
 			dialog.getConfirmButton().addActionListener(new ActionListener() {

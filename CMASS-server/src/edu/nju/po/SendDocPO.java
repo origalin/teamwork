@@ -1,5 +1,7 @@
 package edu.nju.po;
 
+import java.util.Date;
+
 public class SendDocPO extends Doc{
 	String sName,aAddress,sCity,sUnit,sTelePhone,sMobilePhone;
 	String rName,rAddress,rCity,rUnit,rTelePhone,rMobilePhone;
@@ -11,16 +13,17 @@ public class SendDocPO extends Doc{
 	Double sumPrice;
 //	int itemID;
 	int courier_Type;
-	long date;
+	Date date;
 	int time;
 	
-	public SendDocPO(String sName, String aAddress, String sCity, String sUnit,
+	public SendDocPO(String id,String sName, String aAddress, String sCity, String sUnit,
 			String sTelePhone, String sMobilePhone, String rName,
 			String rAddress, String rCity, String rUnit, String rTelePhone,
 			String rMobilePhone, int itemNum, Double weight, double[] volume2,
 			String item_type, int packageType, Double sumPrice,
-			int courier_Type, long date, int time) {
+			int courier_Type, Date date, int time) {
 		super();
+		this.ID = id;
 		this.sName = sName;
 		this.aAddress = aAddress;
 		this.sCity = sCity;
@@ -41,6 +44,12 @@ public class SendDocPO extends Doc{
 		this.sumPrice = sumPrice;
 		this.courier_Type = courier_Type;
 		this.date = date;
+		this.time = time;
+	}
+	public int getTime() {
+		return time;
+	}
+	public void setTime(int time) {
 		this.time = time;
 	}
 	public String getsName() {
@@ -157,10 +166,10 @@ public class SendDocPO extends Doc{
 	public void setCourier_Type(int courier_Type) {
 		this.courier_Type = courier_Type;
 	}
-	public long getDate() {
+	public Date getDate() {
 		return date;
 	}
-	public void setDate(long date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 	

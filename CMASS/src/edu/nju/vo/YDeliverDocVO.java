@@ -1,16 +1,18 @@
 package edu.nju.vo;
 
-import edu.nju.po.Doc;
+import edu.nju.po.YDeliverDocPO;
+import edu.nju.tools.Time;
+import edu.nju.vo.Doc;
 
 public class YDeliverDocVO extends Doc{
 	String date;
 	String courier;
 	String[] itemIDs;
-	public YDeliverDocVO( String date, String courier, String[] itemIDs) {
-		super();
-		this.date = date;
-		this.courier = courier;
-		this.itemIDs = itemIDs;
+	public YDeliverDocVO(YDeliverDocPO po) {
+		this.ID = po.getID();
+		this.date = Time.toDaysTime(po.getDate());
+		this.courier = po.getCourier();
+		this.itemIDs = po.getItemIDs();
 	}
 	public String getDate() {
 		return date;

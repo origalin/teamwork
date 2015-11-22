@@ -13,6 +13,9 @@ import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.table.DefaultTableModel;
+
+import edu.nju.vo.TransferDoc_PlaneVO;
+
 import javax.swing.SwingConstants;
 
 import java.awt.Font;
@@ -267,5 +270,8 @@ public class CheckTransferDoc_Plane extends JPanel{
 		panel_14.add(table);
 		
 
+	}
+	public CheckTransferDoc_Plane(TransferDoc_PlaneVO vo) {
+		// TODO Auto-generated constructor stub
 	}
 }

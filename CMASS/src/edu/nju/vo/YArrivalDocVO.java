@@ -1,29 +1,33 @@
 package edu.nju.vo;
 
-import edu.nju.po.Doc;
+import edu.nju.vo.Doc;
+
+import java.util.Date;
+
+import edu.nju.po.YArrivalDocPO;
+import edu.nju.tools.Time;
 
 public class YArrivalDocVO extends Doc{
-	long date;
+	String date;
 	String TransferDocID;
 	String from;
 	String[][] itemAndState;// -1==lost 0==fine 1==broken
 
-	public YArrivalDocVO(long date, String transferDocID, String from, String[][] itemAndState) {
-		super();
-
-		this.date = date;
-		TransferDocID = transferDocID;
-		this.from = from;
-		this.itemAndState = itemAndState;
+	public YArrivalDocVO(YArrivalDocPO po) {
+		this.date = Time.toDaysTime(po.getDate());
+		this.TransferDocID = po.getID();
+		this.ID = po.getID();
+		this.from = po.getFrom();
+		this.itemAndState = po.getItemAndState();
 	}
 
 
 
-	public long getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(long date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 

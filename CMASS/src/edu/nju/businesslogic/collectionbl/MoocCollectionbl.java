@@ -16,7 +16,7 @@ public class MoocCollectionbl extends Collectionbl{
 		double[] volume = {12.5,23.5,21.4};
 		ArrayList<SendDocPO>  list= new ArrayList<SendDocPO>();
 		for(int i = 0;i<10;i++) {
-			list.add(new SendDocPO("name"+i, "address"+i, "city"+i, "unit"+i, "123445432", "123445432", "name"+i, "address"+i, "city"+i, "unit"+i,	"123445432", "123445432", 1, 12.5, volume, "haha", 1, 12.5, 0, System.currentTimeMillis(), 3));
+			//list.add(new SendDocPO("name"+i, "address"+i, "city"+i, "unit"+i, "123445432", "123445432", "name"+i, "address"+i, "city"+i, "unit"+i,	"123445432", "123445432", 1, 12.5, volume, "haha", 1, 12.5, 0, System.currentTimeMillis(), 3));
 		}
 		return list;
 		

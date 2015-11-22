@@ -1,14 +1,16 @@
 package edu.nju.po;
 
+import java.util.Date;
+
 public class YArrivalDocPO extends Doc{
-	long date;
+	Date date;
 	String TransferDocID;
 	String from;
 	String[][] itemAndState;// -1==lost 0==fine 1==broken
 
-	public YArrivalDocPO(long date, String transferDocID, String from, String[][] itemAndState) {
+	public YArrivalDocPO(String id,Date date, String transferDocID, String from, String[][] itemAndState) {
 		super();
-
+		this.ID = id;
 		this.date = date;
 		TransferDocID = transferDocID;
 		this.from = from;
@@ -17,11 +19,11 @@ public class YArrivalDocPO extends Doc{
 
 
 
-	public long getDate() {
+	public Date getDate() {
 		return date;
 	}
 
-	public void setDate(long date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 

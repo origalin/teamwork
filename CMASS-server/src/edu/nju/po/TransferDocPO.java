@@ -1,15 +1,16 @@
 package edu.nju.po;
 
+import java.util.Date;
 
 public class TransferDocPO extends Doc{
 	//long TransferDocID;
-	long date;
-	int planeNum;
-	int TrainNum;
-	int CarNum;
+	Date date;
+	String planeNum;
+	String TrainNum;
+	String CarNum;
 	String tranceID;
-	int corriage;
-	int container;
+	String corriage;
+	String container;
 	String from;
 	String targetCity;
 	String[] itemIDs;
@@ -20,28 +21,28 @@ public class TransferDocPO extends Doc{
 	public void setTransferDocID(String transferDocID) {
 		this.ID = transferDocID;
 	}
-	public long getDate() {
+	public Date getDate() {
 		return date;
 	}
-	public void setDate(long date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
-	public int getPlaneNum() {
+	public String getPlaneNum() {
 		return planeNum;
 	}
-	public void setPlaneNum(int planeNum) {
+	public void setPlaneNum(String planeNum) {
 		this.planeNum = planeNum;
 	}
-	public int getTrainNum() {
+	public String getTrainNum() {
 		return TrainNum;
 	}
-	public void setTrainNum(int trainNum) {
+	public void setTrainNum(String trainNum) {
 		TrainNum = trainNum;
 	}
-	public int getCarNum() {
+	public String getCarNum() {
 		return CarNum;
 	}
-	public void setCarNum(int carNum) {
+	public void setCarNum(String carNum) {
 		CarNum = carNum;
 	}
 	public String getTranceID() {
@@ -50,16 +51,16 @@ public class TransferDocPO extends Doc{
 	public void setTranceID(String tranceID) {
 		this.tranceID = tranceID;
 	}
-	public int getCorriage() {
+	public String getCorriage() {
 		return corriage;
 	}
-	public void setCorriage(int corriage) {
+	public void setCorriage(String corriage) {
 		this.corriage = corriage;
 	}
-	public int getContainer() {
+	public String getContainer() {
 		return container;
 	}
-	public void setContainer(int container) {
+	public void setContainer(String container) {
 		this.container = container;
 	}
 	public String getFrom() {

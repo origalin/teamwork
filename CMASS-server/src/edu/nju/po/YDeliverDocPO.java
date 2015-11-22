@@ -1,19 +1,22 @@
 package edu.nju.po;
 
+import java.util.Date;
+
 public class YDeliverDocPO extends Doc{
-	long date;
+	Date date;
 	String courier;
 	String[] itemIDs;
-	public YDeliverDocPO(long date, String courier, String[] itemIDs) {
+	public YDeliverDocPO(String id,Date date, String courier, String[] itemIDs) {
 		super();
+		this.ID = id;
 		this.date = date;
 		this.courier = courier;
 		this.itemIDs = itemIDs;
 	}
-	public long getDate() {
+	public Date getDate() {
 		return date;
 	}
-	public void setDate(long date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 	public String getCourier() {

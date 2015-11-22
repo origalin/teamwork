@@ -14,9 +14,9 @@ public interface TransferDocService {
 	public String getTransferSequence();//获取中转单基准序列号
 	public int[] getSendDocIDList(int id);
 	public void changeTransferSequence(int TransferSequence);//改变基准序列号
-	public TransferDoc_CarVO createTransferDocVO_Car(String city,String carNum/*汽运编号*/,String tranceID/*车次号*/, String watcher ,String[] itemIDs);//创建汽运中转单VO
-	public TransferDoc_PlaneVO createTransferDocVO_Plane(String city,String carNum/*航运编号*/,String tranceID/*航班号*/, String watcher,int container,String[] itemIDs);//创建航运中转单VO
-	public TransferDoc_TrainVO createTransferDocVO_Train(String city,String carNum/*货运编号*/,String tranceID/*车次号*/, String watcher,int carriage,String[] itemIDs);//创建陆运中转单VO
+	public TransferDoc_CarVO createTransferDocVO_Car(String city,String carNum/*汽运编号*/, String watcher ,String[] itemIDs);//创建汽运中转单VO
+	public TransferDoc_PlaneVO createTransferDocVO_Plane(String city,String carNum/*航运编号*/, String watcher,String container,String[] itemIDs);//创建航运中转单VO
+	public TransferDoc_TrainVO createTransferDocVO_Train(String city,String carNum/*货运编号*/, String watcher,String carriage,String[] itemIDs);//创建陆运中转单VO
 	public TransferDocVO findTransferDocVO (int ID);//获取中转单VO
 	public ArrayList<TransferDocPO> getUncheckedTransferDocPOs();
 	public double[] getPriceToday();

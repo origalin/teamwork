@@ -1,24 +1,27 @@
 package edu.nju.po;
 
+import java.util.Date;
+
 public class ZArrivalDocPO extends Doc{
-	long date;
+	Date date;
 	String fromID;
 	String from;
 	String[][] itemAndState;// -1==lost 0==fine 1==broken
 
-	public ZArrivalDocPO( long date, String fromID, String from, String[][] itemAndState) {
+	public ZArrivalDocPO(String id, Date date, String fromID, String from, String[][] itemAndState) {
 		super();
+		this.ID = id;
 		this.date = date;
 		this.fromID = fromID;
 		this.from = from;
 		this.itemAndState = itemAndState;
 	}
 
-	public long getDate() {
+	public Date getDate() {
 		return date;
 	}
 
-	public void setDate(long date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 
