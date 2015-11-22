@@ -1,5 +1,6 @@
 package edu.nju.businesslogic.financebl;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 import edu.nju.businesslogicservice.financelogicservice.FinanceLogicService;
@@ -34,11 +35,10 @@ public class financebl implements FinanceLogicService{
 	public ArrayList<AccountPO> deleteAccountPO(String accountName)
 	public ArrayList<AccountPO> modifyAccountPO(String oldName,String newName)
 	public ArrayList<AccountPO> checkAccountPO(String accountName)
-	public ArrayList<PayDocVO> getPayDoc(String startTime, String endTime)
-	public ArrayList<GatheringDocVO> getGatheringDoc(String startTime,
-			String endTime) 
-	public ArrayList<PayDocVO> getPayDoc//无参的是为了生成总支出，需要截至当前的所有付款单来计算
-	public ArrayList<GatheringDocVO> getGatheringDoc//无参的是为了生成总收入
+	public ArrayList<PayDocPO> getPayDoc(Date startDate, Date endDate);
+	public ArrayList<GatheringDocPO> getGatheringDoc(Date startDate,Date endDate);
+	public double getTotalPayment();//生成总支出
+	public double getTotalIncome();
 	
 	transformlogicservice
 	public double getCourierBonus(int courierID)//用于计算每个快递员工资的提成
