@@ -25,7 +25,12 @@ public interface InstitutionLogicService {
 	public String[][] getBusinessHalls(String id);//根据中转中心ID列出下属机构
 	public String[][] getDrivers();
 	public String[][] getTransfers(String id);//根据营业厅ID列出上属机构
-
+	public String getCityAndName(String id);//根据机构id返回city+name  
+	public String getStaffName(String id);//根据人员ID返回人员姓名
+	public String getInstitutionName(String id);//根据人员ID返回机构姓名
+	public String getInstitutionID(String id);//根据人员ID返回机构ID
+	
+	
 	//financedata依赖我
 
 	public ArrayList<InstitutionPO> getUnpaidInstitutionList();

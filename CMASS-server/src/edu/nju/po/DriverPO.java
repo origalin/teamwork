@@ -1,17 +1,20 @@
 package edu.nju.po;
+
+import java.util.Date;
+
 //司机信息（司机编号（城市编号（电话号码区号南京025）
 //+营业厅编号（000三位数字）+000三位数字、姓名、出生日期、
 //身份证号、手机 、性别、行驶证期限）
 public class DriverPO {
-	int driverID;
+	String driverID;
 	String name;
-	String birthday;
+	Date birthday;
 	String identity;
 	String phone_numer;
 	String sex;
-	int limit;
-	public DriverPO(int driverID, String name, String birthday,
-			String identity, String phone_numer, String sex, int limit) {
+	String limit;
+	public DriverPO(String driverID, String name, Date birthday,
+			String identity, String phone_numer, String sex, String limit) {
 		super();
 		this.driverID = driverID;
 		this.name = name;
@@ -21,10 +24,10 @@ public class DriverPO {
 		this.sex = sex;
 		this.limit = limit;
 	}
-	public int getDriverID() {
+	public String getDriverID() {
 		return driverID;
 	}
-	public void setDriverID(int driverID) {
+	public void setDriverID(String driverID) {
 		this.driverID = driverID;
 	}
 	public String getName() {
@@ -33,10 +36,10 @@ public class DriverPO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getBirthday() {
+	public Date getBirthday() {
 		return birthday;
 	}
-	public void setBirthday(String birthday) {
+	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 	}
 	public String getIdentity() {
@@ -57,10 +60,10 @@ public class DriverPO {
 	public void setSex(String sex) {
 		this.sex = sex;
 	}
-	public int getLimit() {
+	public String getLimit() {
 		return limit;
 	}
-	public void setLimit(int limit) {
+	public void setLimit(String limit) {
 		this.limit = limit;
 	}
 	

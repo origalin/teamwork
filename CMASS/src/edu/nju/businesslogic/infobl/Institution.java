@@ -100,4 +100,28 @@ public class Institution implements InstitutionLogicService{
 		return null;
 	}
 
+	@Override
+	public String getCityAndName(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getStaffName(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getInstitutionName(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getInstitutionID(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

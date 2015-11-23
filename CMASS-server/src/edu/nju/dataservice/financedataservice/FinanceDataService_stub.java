@@ -1,6 +1,7 @@
 package edu.nju.dataservice.financedataservice;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import edu.nju.po.AccountPO;
 import edu.nju.po.GatheringDocPO;
@@ -11,34 +12,27 @@ import edu.nju.po.PayType;
 public class FinanceDataService_stub implements FinanceDataService{
 
 	@Override
-	public ArrayList<AccountPO> getAccountPO() {
+	public ArrayList<PayDocPO> getunchekedPayDocList() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<PayDocPO> getPayDoc(String startTime, String endTime) {
+	public ArrayList<GatheringDocPO> getunchekedGatheringDocList() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<GatheringDocPO> getGatheringDoc(String startTime,
-			String endTime) {
+	public void savePayDocPO(PayDocPO po) {
 		// TODO Auto-generated method stub
-		return null;
+		
 	}
 
 	@Override
-	public ArrayList<PayDocPO> getPayDoc() {
+	public void saveGatheringDocPO(GatheringDocPO po) {
 		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ArrayList<GatheringDocPO> getGatheringDoc() {
-		// TODO Auto-generated method stub
-		return null;
+		
 	}
 
 	@Override
@@ -61,45 +55,38 @@ public class FinanceDataService_stub implements FinanceDataService{
 
 	@Override
 	public AccountPO checkAccountPO(String accountName) {
-		return null;
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public ArrayList<PayDocPO> getunchekedPayDocList() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<GatheringDocPO> getunchekedGatheringDocList() {
+	public ArrayList<PayDocPO> getPayDoc(Date startDate, Date endDate) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void saveOverDocPO(PayDocPO po) {
+	public ArrayList<GatheringDocPO> getGatheringDoc(Date startDate,
+			Date endDate) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
-	public void saveGatheringDocPO(GatheringDocPO po) {
+	public double getTotalPayment() {
 		// TODO Auto-generated method stub
-		
+		return 0;
 	}
 
 	@Override
-	public void createGatheringDoc(String GatheringDocID, Double money,
-			String courier_name, ArrayList<String> itemIDs) {
+	public double getTotalIncome() {
 		// TODO Auto-generated method stub
-		
+		return 0;
 	}
 
 	@Override
 	public void createPayDoc(String payDocID, double money, String account,
-			PayType type,String back) {
+			PayType type, String back) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -111,10 +98,19 @@ public class FinanceDataService_stub implements FinanceDataService{
 	}
 
 	@Override
+	public void createGatheringDoc(String GatheringDocID, Double money,
+			String courier_name, ArrayList<String> itemIDs) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
 	public GatheringDocPO getGatheringDocPO(String GatheringDocID) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	
 	
 /*
 	public FinanceDataService_stub(int rent,
