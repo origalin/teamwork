@@ -64,6 +64,7 @@ public class QueryFrame extends JFrame{
 		JTextArea textArea = new JTextArea();
 		scrollPane.setViewportView(textArea);
 		
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		textField.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				LogispicsQueryLogicService logicService=new Logisticsquerybl();
