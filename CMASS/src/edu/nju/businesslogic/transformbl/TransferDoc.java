@@ -17,14 +17,15 @@ import edu.nju.vo.TransferDoc_TrainVO;
 public class TransferDoc implements TransferDocService{
 	String institutionID,staffID;
 	TransferDocPO po;
+	Institution institution;
 	public TransferDoc (){
-		this(null, null);
+		this( null);
 	}
 
-	public TransferDoc(String institutionID, String staffID) {
+	public TransferDoc(String staffID) {
 		super();
-		this.institutionID = institutionID;
 		this.staffID = staffID;
+		institution = new Institution();
 	}
 	
 
@@ -63,7 +64,7 @@ public class TransferDoc implements TransferDocService{
 	public TransferDoc_CarVO createTransferDocVO_Car(String city,
 			String carNum, String watcher,String[] itemIDs) {
 		// TODO 自动生成的方法存根
-		po = new TransferDoc_CarPO(institutionID+Time.toDocTime(new Date())+getTransferSequence(), new Date(), carNum, getTransferID(), "城市", city, calcPrice(city), itemIDs);
+		po = new TransferDoc_CarPO(institutionID+Time.toDocTime(new Date())+getTransferSequence(), new Date(), carNum, getTransferID(), institution.getCityAndName(institution.getInstitutionID(staffID)), city, calcPrice(city), itemIDs);
 		return new TransferDoc_CarVO((TransferDoc_CarPO) po);
 	}
 
@@ -71,7 +72,7 @@ public class TransferDoc implements TransferDocService{
 	public TransferDoc_PlaneVO createTransferDocVO_Plane(String city,
 			String carNum, String watcher, String container,String[] itemIDs) {
 		// TODO 自动生成的方法存根
-		po = new TransferDoc_PlanePO(institutionID+Time.toDocTime(new Date())+getTransferSequence(), new Date(), carNum, getTransferID(), "城市", city, container, calcPrice(city), itemIDs);
+		po = new TransferDoc_PlanePO(institutionID+Time.toDocTime(new Date())+getTransferSequence(), new Date(), carNum, getTransferID(), institution.getCityAndName(institution.getInstitutionID(staffID)), city, container, calcPrice(city), itemIDs);
 		return new TransferDoc_PlaneVO((TransferDoc_PlanePO) po);
 	}
 
@@ -79,7 +80,7 @@ public class TransferDoc implements TransferDocService{
 	public TransferDoc_TrainVO createTransferDocVO_Train(String city,
 			String carNum, String watcher, String carriage,String[] itemIDs) {
 		// TODO 自动生成的方法存根
-		po = new TransferDoc_TrainPO(institutionID+Time.toDocTime(new Date())+getTransferSequence(), new Date(), carNum, getTransferID(), "城市", city, carriage, calcPrice(city), itemIDs);
+		po = new TransferDoc_TrainPO(institutionID+Time.toDocTime(new Date())+getTransferSequence(), new Date(), carNum, getTransferID(), institution.getCityAndName(institution.getInstitutionID(staffID)), city, carriage, calcPrice(city), itemIDs);
 		return new TransferDoc_TrainVO((TransferDoc_TrainPO) po);
 	}
 

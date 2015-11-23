@@ -13,11 +13,10 @@ public class YArrivalDoc implements YArrivalDocService {
 	private YArrivalDocPO po;
 	private TransferDoc transferDoc;
 
-	public YArrivalDoc(String institutionID, String staffID) {
+	public YArrivalDoc( String staffID) {
 		super();
-		this.institutionID = institutionID;
 		this.staffID = staffID;
-		transferDoc = new TransferDoc(institutionID, staffID);
+		transferDoc = new TransferDoc( staffID);
 	}
 
 	public YArrivalDoc() {
@@ -86,10 +85,6 @@ public class YArrivalDoc implements YArrivalDocService {
 		return null;
 	}
 
-	@Override
-	public boolean createYDeliverDoc(String[][] table) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+
 
 }

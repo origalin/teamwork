@@ -36,11 +36,10 @@ public class SendPanel extends JPanel{
 	YDeliverDoc yDeliverDoc;
 	Collectionbl collectionbl;
 	OverDoc overDoc;
-	public SendPanel(String institutionID,String staffID) {
-		this.institutionID = institutionID;
+	public SendPanel(String staffID) {
 		this.staffID = staffID;
-		yDeliverDoc = new YDeliverDoc(institutionID,staffID);
-		overDoc = new OverDoc(institutionID,staffID);
+		yDeliverDoc = new YDeliverDoc(staffID);
+		overDoc = new OverDoc(staffID);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{104, 1, 107, 93, 0, 0};
 		gridBagLayout.rowHeights = new int[]{35, 0, 0, 0, 0, 0, 0};
@@ -76,7 +75,7 @@ public class SendPanel extends JPanel{
 			new Object[][] {
 			},
 			new String[] {
-				"\u5FEB\u9012\u5355\u53F7", "\u6536\u4EF6\u4EBA", "\u5730\u5740"
+				"\u5FEB\u9012\u5355\u53F7", "\u5730\u5740", "\u6536\u4EF6\u4EBA"
 			}
 		));
 		toSendModel = (DefaultTableModel) toSendTable.getModel();
@@ -144,7 +143,7 @@ public class SendPanel extends JPanel{
 		for(int i = toOverModel.getRowCount();i>0;i--) {
 			toOverModel.removeRow(i);
 		}
-		collectionbl = new Collectionbl(institutionID, staffID);
+		collectionbl = new Collectionbl(staffID);
 		ArrayList<YDeliverDocVO> yDeliverDocVOs = yDeliverDoc.getDeliverDocVOsByID(staffID);
 		SendDocVO sendDocVO ;
 		for(YDeliverDocVO vo:yDeliverDocVOs) {

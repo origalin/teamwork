@@ -4,14 +4,14 @@ import java.util.Date;
 
 public class ZLoadDocPO extends Doc{
 	Date date;
-	int tranceID;
+	String tranceID;
 	String targetBusinessHall;
 	String CarID;
 	String watcher;
 	String driver;
 	String[] itemIDs;
 	double price;
-	public ZLoadDocPO(String id, Date date, int tranceID,
+	public ZLoadDocPO(String id, Date date, String tranceID,
 			String targetBusinessHall, String carID, String watcher,
 			String driver, String[] itemIDs, double price) {
 		super();
@@ -31,10 +31,10 @@ public class ZLoadDocPO extends Doc{
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	public int getTranceID() {
+	public String getTranceID() {
 		return tranceID;
 	}
-	public void setTranceID(int tranceID) {
+	public void setTranceID(String tranceID) {
 		this.tranceID = tranceID;
 	}
 	public String getTargetBusinessHall() {

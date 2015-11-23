@@ -42,10 +42,9 @@ public class YLoadDocPanel extends JPanel{
 	private JComboBox driverBox;
 	String[] drivers;
 
-	public YLoadDocPanel(String institutionID,String staffID) {
-		this.institutionID = institutionID;
+	public YLoadDocPanel(String staffID) {
 		this.staffID = staffID;
-		yLoadDoc = new YLoadDoc(institutionID, staffID);
+		yLoadDoc = new YLoadDoc(staffID);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{144, 334, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 248, 0, 0, 0, 0};
@@ -192,7 +191,7 @@ public class YLoadDocPanel extends JPanel{
 	}
 	private void createYLoadDoc() {
 		if(creatable()) {
-			vo = yLoadDoc.createYLoadDocVO(carID, watcher, driver,itemIDs);
+			vo = yLoadDoc.createYLoadDocVO(carID,"…œº∂", watcher, driver,itemIDs);
 			CheckDialog cDialog = new CheckDialog();
 			cDialog.getDocPanel().add(new checkYLoadDoc(vo));
 			cDialog.getConfirmButton().addActionListener(new ActionListener() {

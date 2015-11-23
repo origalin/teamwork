@@ -12,9 +12,8 @@ public class OverDoc implements OverDocService{
 	String staffID;
 	OverDocPO po;
 
-	public OverDoc(String institutionID, String staffID) {
+	public OverDoc( String staffID) {
 		// TODO 自动生成的构造函数存根
-		this.institutionID = institutionID;
 		this.staffID = staffID;
 	}
 

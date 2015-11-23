@@ -41,13 +41,14 @@ public class YArrivalDocPanel extends JPanel{
 	DefaultTableModel tableModel,DeliverModel;
 	String institutionID, staffID;
 	YArrivalDoc yArrivalDoc;
+	YDeliverDoc yDeliverDoc;
 	YArrivalDocVO vo;
 	String[][] IDAndState;
 	String[] courier;
-	public YArrivalDocPanel(String institutionID, String staffID) {
-		this.institutionID = institutionID;
+	public YArrivalDocPanel( String staffID) {
 		this.staffID = staffID;
-		yArrivalDoc = new YArrivalDoc(institutionID, staffID);
+		yArrivalDoc = new YArrivalDoc(staffID);
+		yDeliverDoc = new YDeliverDoc(staffID);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{202, 295, 0};
 		gridBagLayout.rowHeights = new int[]{248, 0, 0, 0, 0, 0};
@@ -346,12 +347,12 @@ public class YArrivalDocPanel extends JPanel{
 		}
 	}
 	private void createYDeliverDoc() {
-		String[][] table = new String[DeliverModel.getRowCount()][3];
+		String[][] table = new String[DeliverModel.getRowCount()][2];
 		for(int i = 0;i<DeliverModel.getRowCount();i++) {
 			table[i][0] = (String) DeliverModel.getValueAt(i, 0);
-			table[i][1] = (String) DeliverModel.getValueAt(i, 1);
 			table[i][2] = (String) DeliverModel.getValueAt(i, 2);
 		}
-		yArrivalDoc.createYDeliverDoc(table);
+		yDeliverDoc.createYDeliverDoc(table);
+		CheckDialog cDialog = new CheckDialog();
 	}
 }

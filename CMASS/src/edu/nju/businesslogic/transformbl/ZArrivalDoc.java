@@ -16,12 +16,11 @@ public class ZArrivalDoc implements ZArrivalDocService{
 	private ZArrivalDocPO po;
 	private TransferDoc transferDoc;
 	private YLoadDoc yLoadDoc;
-	public ZArrivalDoc(String institutionID, String staffID) {
+	public ZArrivalDoc( String staffID) {
 		super();
-		this.institutionID = institutionID;
 		this.staffID = staffID;
-		transferDoc = new TransferDoc(institutionID, staffID);
-		yLoadDoc = new YLoadDoc(institutionID, staffID);
+		transferDoc = new TransferDoc( staffID);
+		yLoadDoc = new YLoadDoc(staffID);
 	}
 
 	public ZArrivalDoc() {

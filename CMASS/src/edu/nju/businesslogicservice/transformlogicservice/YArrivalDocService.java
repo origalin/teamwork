@@ -15,5 +15,4 @@ public interface YArrivalDocService {
 	public YArrivalDocVO createYArrivalDocVO(String fromDocID, String[][] changeStates);
 	public String getAddressByID(String itemID);
 	public String[] getCouriers();
-	public boolean createYDeliverDoc(String[][] table);
 }

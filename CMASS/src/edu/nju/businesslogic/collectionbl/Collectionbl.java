@@ -16,9 +16,8 @@ public class Collectionbl implements CollectionLogicService{
 	String institutionID;
 	String staffID;
 
-	public Collectionbl(String institutionID, String staffID) {
+	public Collectionbl( String staffID) {
 		super();
-		this.institutionID = institutionID;
 		this.staffID = staffID;
 	}
 	

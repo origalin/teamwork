@@ -11,7 +11,7 @@ public interface YLoadDocService {
 	public int getYloadSequence();//获取装车单基准序列号
 	public void changeYloadSequence(int YloadSequence);//改变基准序列号
 	public YLoadDocVO createYLoadDocVO(String carID, String target,
-			String watcher, String[] itemIDs);//创建装车单VO
+			String watcher,String driver, String[] itemIDs);//创建装车单VO
 	public YLoadDocVO findYLoadDocVO(int ID);//获取装车单VO
 	public ArrayList<YLoadDocPO> getUncheckedyLoadDocPOs();
 	public double[] getPriceToday();

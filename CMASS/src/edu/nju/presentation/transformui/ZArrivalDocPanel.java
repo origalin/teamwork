@@ -37,10 +37,9 @@ public class ZArrivalDocPanel extends JPanel {
 	String[][] str;
 	int docType;//0-中转单1-装车单
 
-	public ZArrivalDocPanel(String institutionID, String staffID) {
-		this.institutionID = institutionID;
+	public ZArrivalDocPanel( String staffID) {
 		this.staffID = staffID;
-		zArrivalDoc = new ZArrivalDoc(institutionID, staffID);
+		zArrivalDoc = new ZArrivalDoc( staffID);
 
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] { 183, 295, 0 };

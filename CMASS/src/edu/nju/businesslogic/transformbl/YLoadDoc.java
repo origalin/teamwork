@@ -1,6 +1,7 @@
 package edu.nju.businesslogic.transformbl;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import edu.nju.businesslogicservice.transformlogicservice.YLoadDocService;
 import edu.nju.po.YLoadDocPO;
@@ -9,10 +10,10 @@ import edu.nju.vo.YLoadDocVO;
 public class YLoadDoc implements YLoadDocService{
 	String institutionID;
 	String staffID;
+	YLoadDocPO po;
 
-	public YLoadDoc(String institutionID, String staffID) {
+	public YLoadDoc(String staffID) {
 		super();
-		this.institutionID = institutionID;
 		this.staffID = staffID;
 	}
 	public YLoadDoc() {
@@ -44,8 +45,9 @@ public class YLoadDoc implements YLoadDocService{
 
 	@Override
 	public YLoadDocVO createYLoadDocVO(String carID, String target,
-			String watcher, String[] itemIDs) {
+			String watcher,String driver, String[] itemIDs) {
 		// TODO 自动生成的方法存根
+		po = new YLoadDocPO("00"+getYloadSequence(), new Date(), getTranceID(), target, carID, watcher, driver, itemIDs, priceCalc(target));
 		return null;
 	}
 
@@ -82,5 +84,13 @@ public class YLoadDoc implements YLoadDocService{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	private String getTranceID() {
+		return null;
+	}
+	private void changeTranceID() {
+		
+	}
+	private double priceCalc(String target) {
+		return 0;
+	}
 }

@@ -15,7 +15,7 @@ public class CollectionblTest {
 
 	@Test
 	public void testCreateSendDocVO() {
-		Collectionbl bl = new Collectionbl("0773001", "0902102");
+		Collectionbl bl = new Collectionbl("0902102");
 		double[] volume = {12.5,23.5,21.4};
 		SendDocVO vo = bl.createSendDocVO("name", "address", "北京", "unit", "123445432", "123445432", "name", "address", "南京", "unit",	"123445432", "123445432", 1, 12.5, volume, "haha", 1, 0);
 		assertEquals(100, vo.getSumPrice());

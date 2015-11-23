@@ -6,7 +6,7 @@ import edu.nju.po.SendDocPO;
 
 public class MoocCollectionbl extends Collectionbl{
 	public MoocCollectionbl(String institutionID, String staffID) {
-		super(institutionID, staffID);
+		super( staffID);
 		// TODO 自动生成的构造函数存根
 	}
 	String getTargetAddress(String itemID) {

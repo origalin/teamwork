@@ -49,12 +49,11 @@ public class CollertionPanel extends JPanel{
 	private JTextField HeighthField;
 	private JTextField sUnitField;
 	private JTextField rUnitField_1;
-	public CollertionPanel(String institutionID,String staffID) {
-		this.institutionID = institutionID;
+	public CollertionPanel(String staffID) {
 		this.staffID = staffID;
 		sendType = -1;
 		weight = -1.0;
-		collection = new Collectionbl(institutionID,staffID);
+		collection = new Collectionbl(staffID);
 		
 		ButtonGroup buttonGroup = new ButtonGroup();
 		

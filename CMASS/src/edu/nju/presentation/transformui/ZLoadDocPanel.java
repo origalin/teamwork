@@ -44,10 +44,9 @@ public class ZLoadDocPanel extends JPanel{
 	ZLoadDocVO vo;
 	private JComboBox targetBox;
 	private JComboBox driverBox;
-	public ZLoadDocPanel(String institutionID,String staffID) {
-		this.institutionID = institutionID;
+	public ZLoadDocPanel(String staffID) {
 		this.staffID = staffID;
-		zLoadDoc = new ZLoadDoc( institutionID, staffID);
+		zLoadDoc = new ZLoadDoc(staffID);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{290, 168, 0};
 		gridBagLayout.rowHeights = new int[]{0, 17, 248, 0, 0};

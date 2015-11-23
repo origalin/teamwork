@@ -1,17 +1,19 @@
 package edu.nju.businesslogic.transformbl;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import edu.nju.businesslogicservice.transformlogicservice.YDeliverDocService;
 import edu.nju.po.YDeliverDocPO;
+import edu.nju.tools.SequenceCalc;
 import edu.nju.vo.YDeliverDocVO;
 
 public class YDeliverDoc implements YDeliverDocService{
 	String institutionID,  staffID;
+	private YDeliverDocPO po;
 
-	public YDeliverDoc(String institutionID, String staffID) {
+	public YDeliverDoc(String staffID) {
 		// TODO 自动生成的构造函数存根
-		this.institutionID = institutionID;
 		this.staffID = staffID;
 	}
 
@@ -26,21 +28,38 @@ public class YDeliverDoc implements YDeliverDocService{
 	}
 
 	@Override
-	public int getYDeliverSequence() {
+	public String getYDeliverSequence() {
 		// TODO 自动生成的方法存根
-		return 0;
+		return null;
 	}
 
 	@Override
-	public void changeYDeliverDocSequence(int sequence) {
+	public void changeYDeliverDocSequence(String string) {
 		// TODO 自动生成的方法存根
 		
 	}
 
 	@Override
-	public YDeliverDocVO createYDeliverDocVO(String courier) {
+	public void createYDeliverDoc(String[][] IDAndCourier) {
 		// TODO 自动生成的方法存根
-		return null;
+		ArrayList<String> couriers = new ArrayList<String>();
+		for(int i = 0;i<IDAndCourier.length;i++) {
+			if(!couriers.contains(IDAndCourier[i][1])) {
+				couriers.add(IDAndCourier[i][1]);
+			}
+		}
+		for(int i = 0;i<couriers.size();i++) {
+			ArrayList<String> item = new ArrayList<String>();
+			for(int j = 0;j<IDAndCourier.length;j++) {
+				if(IDAndCourier[i][1].equals(couriers.get(i))) {
+					item.add(IDAndCourier[i][0]);
+				}
+			}
+			String[] itemIDs = (String[]) item.toArray();
+			po = new YDeliverDocPO("10"+getYDeliverSequence(), new Date(), staffID, itemIDs);
+			saveYDeliverDocPO(po);
+			changeYDeliverDocSequence(SequenceCalc.calcNextSequence6(getYDeliverSequence()));
+		}
 	}
 
 	@Override
@@ -64,6 +83,8 @@ public class YDeliverDoc implements YDeliverDocService{
 	public ArrayList<YDeliverDocVO> getDeliverDocVOsByID(String staffID) {
 		// TODO Auto-generated method stub
 		return null;
-	}
+	}	
+
+	
 
 }

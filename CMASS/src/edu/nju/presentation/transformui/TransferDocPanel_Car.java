@@ -39,10 +39,9 @@ public class TransferDocPanel_Car extends JPanel {
 	private TransferDoc_CarVO vo;
 	DefaultTableModel tableModel;
 
-	public TransferDocPanel_Car(String institutionID, String staffID) {
-		this.institutionID = institutionID;
+	public TransferDocPanel_Car(String staffID) {
 		this.staffID = staffID;
-		transferDoc = new TransferDoc(institutionID, staffID);
+		transferDoc = new TransferDoc(staffID);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] { 418, 168, 0 };
 		gridBagLayout.rowHeights = new int[] { 248, 0 };
