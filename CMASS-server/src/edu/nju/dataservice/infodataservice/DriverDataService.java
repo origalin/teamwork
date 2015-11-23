@@ -6,6 +6,7 @@ import edu.nju.po.DriverPO;
 
 public interface DriverDataService {
 	public ArrayList<DriverPO> findDriver();
-	public void saveDriver(DriverPO po);
+	public void addDriver(DriverPO po);
+	public void changeDriver(DriverPO po);
 	
 }

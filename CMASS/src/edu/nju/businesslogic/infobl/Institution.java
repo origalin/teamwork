@@ -76,4 +76,28 @@ public class Institution implements InstitutionLogicService{
 		return null;
 	}
 
+	@Override
+	public String[][] getCouriers() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String[][] getBusinessHalls(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String[][] getDrivers() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String[][] getTransfers(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
