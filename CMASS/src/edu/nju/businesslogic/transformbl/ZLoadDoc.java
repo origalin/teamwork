@@ -91,4 +91,8 @@ public class ZLoadDoc implements ZLoadDocService{
 	private double priceCalc(String target) {
 		return 0;
 	}
+	public ArrayList<ZLoadDocPO> getUnPaidZLoadDocPOs() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

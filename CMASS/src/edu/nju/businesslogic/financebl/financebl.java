@@ -79,14 +79,23 @@ public class financebl implements FinanceLogicService{
 	
 
 	//账户管理使用的属性
+	String staffID;
 	Collectionbl collectionbl=new Collectionbl();
 	Institution institution=new Institution();
 	TransferDoc transfer=new TransferDoc();
 	YLoadDoc YLoad=new YLoadDoc();
 	ZLoadDoc ZLoad=new ZLoadDoc();
 	FinanceDataService financeDataService;
-	public financebl() {
-		super();
+	public financebl(){
+		try {
+			this.financeDataService = financeDataService=(FinanceDataService)Naming.lookup("rmi://127.0.0.1:6600/FinanceDataService");
+		} catch (MalformedURLException | RemoteException | NotBoundException e) {
+			e.printStackTrace();
+		};
+		
+	}
+	public financebl(String staffID) {
+		this.staffID=staffID;
 //		list= new ArrayList<PositionPO>();
 		try {
 			this.financeDataService = financeDataService=(FinanceDataService)Naming.lookup("rmi://127.0.0.1:6600/FinanceDataService");
@@ -99,14 +108,12 @@ public class financebl implements FinanceLogicService{
 	
 	@Override
 	public double getTotalIncome() {
-		// TODO Auto-generated method stub
 		return financeDataService.getTotalIncome();
 		
 	}
 
 	@Override
 	public double getTotalPayment() {
-		// TODO Auto-generated method stub
 		return financeDataService.getTotalPayment();
 	}
 
@@ -127,20 +134,19 @@ public class financebl implements FinanceLogicService{
 	//，只有当financebl中没有机构的时候才会去找别人要未付款的机构
 	@Override
 	public ArrayList<InstitutionPO> getUnpaidInstitutionList(){
-		// TODO Auto-generated method stub
 		return institution.getUnpaidInstitutionList();
 	}
 
 	@Override
 	public ArrayList<YLoadDocPO> getUnpaidYLoadDocList() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return YLoad.getUnPaidYLoadDocPOs();
 	}
 
 	@Override
 	public ArrayList<ZLoadDocPO> getUnpaidZLoadDocList() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return ZLoad.getUnPaidZLoadDocPOs();
 	}
 
 	@Override
@@ -151,8 +157,12 @@ public class financebl implements FinanceLogicService{
 
 	@Override
 	public ArrayList<AccountVO> getAccount() {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<AccountVO> accountListVO=new ArrayList<AccountVO>();
+		ArrayList<AccountPO> accountListPO=financeDataService.getAccount();
+		for(AccountPO po:accountListPO){
+			accountListVO.add(new AccountVO(po.getName(),po.getBalance()));
+		}
+		return accountListVO;
 	}
 
 	
@@ -165,21 +175,17 @@ public class financebl implements FinanceLogicService{
 
 	@Override
 	public void deleteAccountPO(String accountName) {
-		// TODO Auto-generated method stub
 		financeDataService.deleteAccountPO(accountName);
 		
 	}
 
 	@Override
 	public void modifyAccountPO(String oldAccountName, String newAccountName) {
-		// TODO Auto-generated method stub
 		financeDataService.modifyAccountPO(oldAccountName, newAccountName);
 	}
 
 	@Override
 	public AccountVO checkAccountPO(String accountName) {
-		
-		// TODO Auto-generated method stub
 		AccountPO accountPO=financeDataService.checkAccountPO(accountName);
 		return new AccountVO(accountPO.getName(),accountPO.getBalance());
 	}
@@ -188,39 +194,33 @@ public class financebl implements FinanceLogicService{
 
 	@Override
 	public ArrayList<PayDocPO> getunchekedPayDocList() {
-		// TODO Auto-generated method stub
 		return financeDataService.getunchekedPayDocList();
 	}
 
 	@Override
 	public ArrayList<GatheringDocPO> getunchekedGatheringDocList() {
-		// TODO Auto-generated method stub
 		return financeDataService.getunchekedGatheringDocList();
 	}
 
 	@Override
 	public ArrayList<TransferDocPO> getUnpaidCarTransferList() {
-		// TODO Auto-generated method stub
-		return null;
+		return transfer.getUnPaidTransferDocPOs();
 	}
 
 	
 
 	@Override
 	public void savePayDocPO(PayDocPO po) {
-		// TODO Auto-generated method stub
 		financeDataService.savePayDocPO(po);
 	}
 
 	@Override
 	public void saveGatheringDocPO(GatheringDocPO po) {
-		// TODO Auto-generated method stub
 		financeDataService.saveGatheringDocPO(po);
 	}
 
 	@Override
 	public void setInstitutionList(ArrayList<InstitutionPO> InstitutionList) {
-		// TODO Auto-generated method stub
 		
 		for(InstitutionPO po:InstitutionList){
 			institution.saveInstitution(po);
@@ -229,7 +229,6 @@ public class financebl implements FinanceLogicService{
 
 	@Override
 	public void setTransferDocList(ArrayList<TransferDocPO> TransferDocList) {
-		// TODO Auto-generated method stub
 		for(TransferDocPO po:TransferDocList){
 			transfer.saveTransferDocPO(po);
 		}
@@ -237,7 +236,6 @@ public class financebl implements FinanceLogicService{
 
 	@Override
 	public void setYLoadDocList(ArrayList<YLoadDocPO> YLoadDocList) {
-		// TODO Auto-generated method stub
 		for(YLoadDocPO po:YLoadDocList){
 			YLoad.saveYloadDocPO(po);
 		}
@@ -245,7 +243,6 @@ public class financebl implements FinanceLogicService{
 
 	@Override
 	public void setZLoadDocList(ArrayList<ZLoadDocPO> ZLoadDocList) {
-		// TODO Auto-generated method stub
 		for(ZLoadDocPO po:ZLoadDocList){
 			ZLoad.saveZloadDocPO(po);
 		}
@@ -253,7 +250,6 @@ public class financebl implements FinanceLogicService{
 
 	@Override
 	public void setStaffList(ArrayList<StaffPO> staffList) {
-		// TODO Auto-generated method stub
 		for(StaffPO po:staffList){
 			institution.saveStaff(po);
 		}
@@ -263,18 +259,17 @@ public class financebl implements FinanceLogicService{
 	@Override
 	public void createGatheringDoc(String GatheringDocID, String courier_name) {
 		// TODO Auto-generated method stub
-		
+		//系统只用知道快递员是谁就可以生成他的收款单，其他的信息需要从其他模块获取
 	}
 
 	@Override
 	public GatheringDocVO getGatheringDocVO(String GatheringDocID) {
-		// TODO Auto-generated method stub
-		return null;
+		GatheringDocPO po= financeDataService.getGatheringDocPO(GatheringDocID);
+		return new GatheringDocVO(po.getID(),po.getDate(),po.getMoney(),po.getCourier_name(),po.getItemIDs());
 	}
 
 	@Override
 	public void setSendDocList(ArrayList<SendDocPO> SendDocPOList) {
-		// TODO Auto-generated method stub
 		for(SendDocPO po:SendDocPOList){
 		collectionbl.saveSendDocPO(po);
 		}
@@ -283,16 +278,18 @@ public class financebl implements FinanceLogicService{
 	@Override
 	public void createPayDoc(String payDocID, double money, String account,
 			PayType type,String back) {
-		// TODO Auto-generated method stub
 		financeDataService.createPayDoc(payDocID, money, account, type, back);
 		
 	}
 
 	@Override
 	public PayDocVO getPayDocVO(String PayDocID) {
-		// TODO Auto-generated method stub
 		PayDocPO po= financeDataService.getPayDocPO(PayDocID);
 		return new PayDocVO(po.getID(),po.getDate(),po.getMoney(),po.getPayer(),po.getAccount(),po.getType(),po.getBack());
+	}
+	
+	public String getStaffName(){
+		return institution.getStaffName(staffID);
 	}
 
 }

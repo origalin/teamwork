@@ -93,4 +93,8 @@ public class YLoadDoc implements YLoadDocService{
 	private double priceCalc(String target) {
 		return 0;
 	}
+	public ArrayList<YLoadDocPO> getUnPaidYLoadDocPOs() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

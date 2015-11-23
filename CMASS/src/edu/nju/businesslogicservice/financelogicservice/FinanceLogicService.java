@@ -64,7 +64,7 @@ public interface FinanceLogicService {
 	public ArrayList<StaffPO> getUnpaidStaffList();
 	public ArrayList<AccountVO> getAccount();
 	public void setStaffList(ArrayList<StaffPO> staffList);//原理同deleteInstitution
-	public void createPayDoc(String payDocID, double money,	String account, PayType type,String back);
+	public void createPayDoc(String payDocID, double money,String account, PayType type,String back);
 	public PayDocVO getPayDocVO(String PayDocID);//支持预览收款单
 	//生成收款单部分
 		public void createGatheringDoc(String GatheringDocID,String courier_name);//实现的时候需要先得到SendDocPOList

@@ -1,7 +1,6 @@
 package edu.nju.dataservice.financedataservice;
 import edu.nju.po.*;
-
-
+import edu.nju.vo.AccountVO;
 
 import java.util.Date;
 import java.util.ArrayList;
@@ -11,7 +10,7 @@ public interface FinanceDataService{
 	public ArrayList<GatheringDocPO> getunchekedGatheringDocList();
 	public void savePayDocPO(PayDocPO po);
 	public void saveGatheringDocPO(GatheringDocPO po);
-	
+	public ArrayList<AccountPO> getAccount();//用于界面选择所有可以付款的账户
 	public void addAccountPO(String accountName);
 	public void deleteAccountPO(String accountName);
 	public void modifyAccountPO(String oldAccountName,String newAccountName);

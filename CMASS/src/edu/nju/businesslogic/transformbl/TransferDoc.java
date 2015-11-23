@@ -110,4 +110,9 @@ public class TransferDoc implements TransferDocService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	public ArrayList<TransferDocPO> getUnPaidTransferDocPOs() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

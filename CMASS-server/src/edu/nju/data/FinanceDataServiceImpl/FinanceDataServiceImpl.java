@@ -148,7 +148,6 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements
 
 	@Override
 	public void deleteAccountPO(String accountName) {
-		// TODO Auto-generated method stub
 		String sql = "DELETE FROM account WHERE 账户名称 ='" + accountName + "';";
 		SQL.databaseUpdate(sql);
 		SQL.closeDatabase();
@@ -156,7 +155,6 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements
 
 	@Override
 	public void modifyAccountPO(String oldAccountName, String newAccountName) {
-		// TODO Auto-generated method stub
 		String sql = "UPDATE account SET 账户名称='" + newAccountName
 				+ "'WHERE 账户名称='" + oldAccountName + "';";
 		SQL.databaseUpdate(sql);
@@ -165,7 +163,6 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements
 
 	@Override
 	public AccountPO checkAccountPO(String accountName) {
-		// TODO Auto-generated method stub
 		String sql = "SELECT 账户名称,账户余额 FROM account WHERE 账户名称='" + accountName
 				+ "';";
 		SQL.databaseQuery(sql);
@@ -280,7 +277,6 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements
 	@Override
 	public void createGatheringDoc(String GatheringDocID, Double money,
 			String courier_name, ArrayList<String> itemIDs) {
-		// TODO Auto-generated method stub
 		String items = "";
 		for (String temp : itemIDs) {
 			items += temp + ",";
@@ -317,7 +313,23 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements
 		return null;
 	}
 
-	public Date getCurrentDate() {
+
+	@Override
+	public ArrayList<AccountPO> getAccount() {
+		ArrayList<AccountPO> accountPOList=new ArrayList<AccountPO>();
+		String sql = "SELECT 账户名称FROM account;";
+		SQL.databaseQuery(sql);
+		try {
+			while(SQL.rs.next()){
+			AccountPO temp = new AccountPO(SQL.rs.getString("账户名称"),
+					SQL.rs.getDouble("账户余额"));
+			accountPOList.add(temp);
+			}
+			return accountPOList;
+		} catch (SQLException e) {
+			System.out.println("账户查询错误");
+			e.printStackTrace();
+		}
 		return null;
 	}
 
