@@ -82,6 +82,9 @@ public class Collectionbl implements CollectionLogicService{
 		// TODO 自动生成的方法存根
 		return 0;
 	}
+	private void appendCourierMoney(String courierID){
+		
+	}
 
 	@Override
 	public int[] getSendDocIDList(String courierID) {
