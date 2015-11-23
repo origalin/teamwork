@@ -4,21 +4,29 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.sound.midi.Sequence;
+import javax.tools.Tool;
+
 import edu.nju.businesslogic.infobl.Institution;
 import edu.nju.businesslogicservice.collectionlogicservice.CollectionLogicService;
+import edu.nju.data.collectionDataServiceImpl.CollectionDataServiceImpl;
+import edu.nju.dataservice.collectiondataservice.CollectionDataService;
 import edu.nju.po.HistoryTimePO;
 import edu.nju.po.PositionPO;
 import edu.nju.po.SendDocPO;
+import edu.nju.tools.SequenceCalc;
 import edu.nju.vo.SendDocVO;
 
 public class Collectionbl implements CollectionLogicService{
 	SendDocPO po ;
 	String institutionID;
 	String staffID;
+	CollectionDataService collectionData;
 
 	public Collectionbl( String staffID) {
 		super();
 		this.staffID = staffID;
+		collectionData = new CollectionDataServiceImpl();
 	}
 	
 	public Collectionbl(){
@@ -33,21 +41,22 @@ public class Collectionbl implements CollectionLogicService{
 	}
 
 	@Override
-	public int getDistance(String city) {
+	public double getDistance(String city) {
 		// TODO 自动生成的方法存根
 		return 0;
 	}
 
 	@Override
-	public int getSequence() {
+	public String getSequence() {
 		// TODO 自动生成的方法存根
-		return 0;
+		return collectionData.getSequence();
 	}
 
 	@Override
-	public void changeSequence(int sequence) {
+	public void changeSequence() {
 		// TODO 自动生成的方法存根
-		
+		String sequence = SequenceCalc.calcNextSequence5(getSequence());
+		collectionData.changeSequence(sequence);
 	}
 
 	@Override
@@ -65,17 +74,17 @@ public class Collectionbl implements CollectionLogicService{
 	@Override
 	public ArrayList<SendDocPO> getAllSendDoc() {
 		// TODO 自动生成的方法存根
-		return null;
+		return collectionData.getAllSendDoc();
 	}
 
 	@Override
-	public int getCourierMoney(String courier) {
+	public double getCourierMoney(String courier) {
 		// TODO 自动生成的方法存根
 		return 0;
 	}
 
 	@Override
-	public int[] getSendDocIDList(String courier) {
+	public int[] getSendDocIDList(String courierID) {
 		// TODO 自动生成的方法存根
 		return null;
 	}
@@ -124,7 +133,7 @@ public class Collectionbl implements CollectionLogicService{
 		Date date = new Date();
 		String id = sendType+institutionID.substring(0, 4)+getSequence();
 		po = new SendDocPO(id,sName, sAddress, sCity, sUnit, sTelePhone, sMobilePhone, rName, rAddress, rCity, rUnit, rTelePhone, rMobilePhone, itemNum, weight, volume, itemKind, packageType, price, packageType, date, time);
-		return null;
+		return new SendDocVO(po);
 
 	}
 

@@ -8,8 +8,8 @@ import edu.nju.po.*;
 public interface CollectionDataService {
 	public void saveSendDocPO(SendDocPO po);
 	public Double getDistance(String city);
-	public int getSequence();
-	public void changeSequence(int sequence);
+	public String getSequence();
+	public void changeSequence(String sequence);
 	public void saveHistory(HistoryTimePO po);
 	public ArrayList<PositionPO> QueryGoodsInfo(int SendDocID);
 	public ArrayList<SendDocPO> getAllSendDoc();

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import edu.nju.po.*;
 
-public interface TransformDataService {
+public interface TransferDataService {
 	public void saveTransferDocPO(TransferDocPO po);
 	public int getTransferSequence();
 	public void changeTransferSequence(int TransferSequence);
