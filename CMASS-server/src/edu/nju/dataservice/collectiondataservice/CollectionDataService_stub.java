@@ -16,30 +16,6 @@ public class CollectionDataService_stub implements CollectionDataService {
 	}
 
 	@Override
-	public Double getDistance(String city) {
-		// TODO 自动生成的方法存根
-		return 33.0;
-	}
-
-	@Override
-	public int getSequence() {
-		// TODO 自动生成的方法存根
-		return 10086;
-	}
-
-	@Override
-	public void changeSequence(int sequence) {
-		// TODO 自动生成的方法存根
-		
-	}
-
-	@Override
-	public void saveHistory(HistoryTimePO po) {
-		// TODO 自动生成的方法存根
-		
-	}
-
-	@Override
 	public ArrayList<PositionPO> QueryGoodsInfo(int SendDocID) {
 		// TODO 自动生成的方法存根
 		ArrayList<PositionPO> list = new ArrayList<PositionPO>();
@@ -54,15 +30,48 @@ public class CollectionDataService_stub implements CollectionDataService {
 	}
 
 	@Override
-	public int getCourierMoney(String courier) {
-		// TODO 自动生成的方法存根
+	public double getCourierMoney(String courier) {
 		return 100;
 	}
 
 	@Override
-	public int[] getSendDocIDList(String courier) {
+	public ArrayList<String> getSendDocIDList(String courier) {
 		// TODO 自动生成的方法存根
-		return new int[]{0002512345,1002523423,2002598233};
+		return null;//new int[]{0002512345,1002523423,2002598233};
+	}
+
+	@Override
+	public String getSequence() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void changeSequence(String sequence) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void appendCourierMoney(String courierID, String itemID, double money) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+
+
+	@Override
+	public void cleanCourierMessage(String courierID) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public ArrayList<HistoryTimePO> getHistoryPO(String sCity, String rCity) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

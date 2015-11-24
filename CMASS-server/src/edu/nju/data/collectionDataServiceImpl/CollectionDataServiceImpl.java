@@ -16,12 +16,6 @@ public class CollectionDataServiceImpl implements CollectionDataService{
 	}
 
 	@Override
-	public Double getDistance(String city) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public String getSequence() {
 		// TODO Auto-generated method stub
 		return null;
@@ -29,12 +23,6 @@ public class CollectionDataServiceImpl implements CollectionDataService{
 
 	@Override
 	public void changeSequence(String sequence) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void saveHistory(HistoryTimePO po) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -52,13 +40,31 @@ public class CollectionDataServiceImpl implements CollectionDataService{
 	}
 
 	@Override
-	public int getCourierMoney(String courier) {
+	public double getCourierMoney(String courier) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int[] getSendDocIDList(String courier) {
+	public ArrayList<String> getSendDocIDList(String courier) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void appendCourierMoney(String courierID, String itemID, double money) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void cleanCourierMessage(String courierID) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public ArrayList<HistoryTimePO> getHistoryPO(String sCity, String rCity) {
 		// TODO Auto-generated method stub
 		return null;
 	}

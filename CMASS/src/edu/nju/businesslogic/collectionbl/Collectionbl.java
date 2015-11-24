@@ -8,6 +8,7 @@ import javax.sound.midi.Sequence;
 import javax.tools.Tool;
 
 import edu.nju.businesslogic.infobl.Institution;
+import edu.nju.businesslogic.transformbl.OverDoc;
 import edu.nju.businesslogicservice.collectionlogicservice.CollectionLogicService;
 import edu.nju.data.collectionDataServiceImpl.CollectionDataServiceImpl;
 import edu.nju.dataservice.collectiondataservice.CollectionDataService;
@@ -22,11 +23,13 @@ public class Collectionbl implements CollectionLogicService{
 	String institutionID;
 	String staffID;
 	CollectionDataService collectionData;
+	OverDoc overDoc;
 
 	public Collectionbl( String staffID) {
 		super();
 		this.staffID = staffID;
 		collectionData = new CollectionDataServiceImpl();
+		overDoc = new OverDoc(staffID);
 	}
 	
 	public Collectionbl(){
@@ -59,11 +62,6 @@ public class Collectionbl implements CollectionLogicService{
 		collectionData.changeSequence(sequence);
 	}
 
-	@Override
-	public void saveHistory(HistoryTimePO po) {
-		// TODO 自动生成的方法存根
-		
-	}
 
 	@Override
 	public PositionPO QueryGoodsInfo(int SendDocID) {
@@ -80,30 +78,67 @@ public class Collectionbl implements CollectionLogicService{
 	@Override
 	public double getCourierMoney(String courier) {
 		// TODO 自动生成的方法存根
-		return 0;
+		return collectionData.getCourierMoney(courier);
 	}
 	private void appendCourierMoney(String courierID){
-		
+		collectionData.appendCourierMoney(staffID, po.getID(), po.getSumPrice());
 	}
 
-	@Override
-	public int[] getSendDocIDList(String courierID) {
-		// TODO 自动生成的方法存根
-		return null;
-	}
 
 
 	@Override
 	public int timeEstimate(String sCity, String rCity) {
 		// TODO 自动生成的方法存根
-		return 0;
+		ArrayList<HistoryTimePO> historyTimePOs = getHistoryPO(sCity, rCity);
+		int sum = 0;
+		for(int i = 0;i < historyTimePOs.size();i++) {
+			sum+=historyTimePOs.get(i).getDays();
+		}
+		return sum/historyTimePOs.size();
 	}
 
 	@Override
 	public double priceCalc(String sCity, String rCity, int packing,
-			double[] volume, double weight) {
+			double[] volume, double weight,int sendType) {
 		// TODO 自动生成的方法存根
-		return 0;
+		double mayWeight = volume[0]*volume[1]*volume[2]/5000;
+		if(weight<=mayWeight) {
+			weight = mayWeight;
+		}
+		int x = 0;
+		switch (sendType) {
+		case 0:
+			x = 25;
+			break;
+		case 1:
+			x = 23;
+			break;
+		case 2:
+			x = 18;
+			break;
+
+		default:
+			break;
+		}
+		int y = 0;
+		switch (packing) {
+		case 1:
+			y = 5;
+			break;
+		case 2:
+			y = 10;
+			break;
+		case 3:
+			y = 1;
+			break;
+		case 4:
+			y = 5;
+			break;
+
+		default:
+			break;
+		}
+		return weight*getDistance(rCity)*x/1000+y;
 	}
 
 	@Override
@@ -113,15 +148,9 @@ public class Collectionbl implements CollectionLogicService{
 	}
 
 	@Override
-	public HistoryTimePO getHistoryPO(int ID) {
+	public ArrayList<HistoryTimePO> getHistoryPO(String sCity,String rCity) {
 		// TODO 自动生成的方法存根
-		return null;
-	}
-
-	@Override
-	public ArrayList<SendDocPO> getUncheckedSendDocPOs() {
-		// TODO 自动生成的方法存根
-		return null;
+		return collectionData.getHistoryPO(sCity, rCity);
 	}
 
 	@Override
@@ -132,7 +161,7 @@ public class Collectionbl implements CollectionLogicService{
 			String itemKind, int packageType, int sendType) {
 		// TODO 自动生成的方法存根
 		int time = timeEstimate(sCity, rCity);
-		double price = priceCalc(sCity, rCity, packageType, volume, weight);
+		double price = priceCalc(sCity, rCity, packageType, volume, weight,sendType);
 		Date date = new Date();
 		String id = sendType+institutionID.substring(0, 4)+getSequence();
 		po = new SendDocPO(id,sName, sAddress, sCity, sUnit, sTelePhone, sMobilePhone, rName, rAddress, rCity, rUnit, rTelePhone, rMobilePhone, itemNum, weight, volume, itemKind, packageType, price, packageType, date, time);
@@ -150,6 +179,18 @@ public class Collectionbl implements CollectionLogicService{
 	public SendDocPO getSendDocPOByID(String itemID) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public ArrayList<String> getSendDocsByID(String courier_ID) {
+		// TODO Auto-generated method stub
+		return collectionData.getSendDocIDList(courier_ID);
+	}
+
+	@Override
+	public void saveSendDocCreateGatheringDoc(String courierID) {
+		// TODO Auto-generated method stub
+		collectionData.cleanCourierMessage(courierID);
 	}
 	
 }

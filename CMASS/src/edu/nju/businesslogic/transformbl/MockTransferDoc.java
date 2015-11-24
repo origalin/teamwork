@@ -8,7 +8,7 @@ public class MockTransferDoc extends TransferDoc{
 		super();
 	}
 	public MockTransferDoc(String institutionID, String staffID) {
-		super(institutionID, staffID);
+		super( staffID);
 		// TODO Auto-generated constructor stub
 	}
 	String[] ids = {"0231212212","1232321232","2321233212","1233221234"};

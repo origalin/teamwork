@@ -20,13 +20,13 @@ public class TransferDataServiceImpl implements TransferDataService{
 	}
 
 	@Override
-	public int getTransferSequence() {
+	public String getTransferSequence() {
 		// TODO Auto-generated method stub
-		return 0;
+		return null;
 	}
 
 	@Override
-	public void changeTransferSequence(int TransferSequence) {
+	public void changeTransferSequence(String TransferSequence) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -38,13 +38,13 @@ public class TransferDataServiceImpl implements TransferDataService{
 	}
 
 	@Override
-	public int getZLoadSequence() {
+	public String getZLoadSequence() {
 		// TODO Auto-generated method stub
-		return 0;
+		return null;
 	}
 
 	@Override
-	public void changeZLoadSequence(int ZLoadSequence) {
+	public void changeZLoadSequence(String ZLoadSequence) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -56,13 +56,13 @@ public class TransferDataServiceImpl implements TransferDataService{
 	}
 
 	@Override
-	public int getZArrivalSequence() {
+	public String getZArrivalSequence() {
 		// TODO Auto-generated method stub
-		return 0;
+		return null;
 	}
 
 	@Override
-	public void changeZArrivalSequence(int ZArrivalSequence) {
+	public void changeZArrivalSequence(String ZArrivalSequence) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -74,13 +74,13 @@ public class TransferDataServiceImpl implements TransferDataService{
 	}
 
 	@Override
-	public int getYArrivalSequence() {
+	public String getYArrivalSequence() {
 		// TODO Auto-generated method stub
-		return 0;
+		return null;
 	}
 
 	@Override
-	public void changeYArrivalSequence(int YArrivalSequence) {
+	public void changeYArrivalSequence(String YArrivalSequence) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -92,13 +92,13 @@ public class TransferDataServiceImpl implements TransferDataService{
 	}
 
 	@Override
-	public int getYDeliverSequence() {
+	public String getYDeliverSequence() {
 		// TODO Auto-generated method stub
-		return 0;
+		return null;
 	}
 
 	@Override
-	public void changeYDeliverSequence(int YDeliverSequence) {
+	public void changeYDeliverSequence(String YDeliverSequence) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -110,49 +110,49 @@ public class TransferDataServiceImpl implements TransferDataService{
 	}
 
 	@Override
-	public int getOverSequence() {
+	public String getOverSequence() {
 		// TODO Auto-generated method stub
-		return 0;
+		return null;
 	}
 
 	@Override
-	public void changeOverSequence(int OverSequence) {
+	public void changeOverSequence(String OverSequence) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public TransferDocPO getTransferDocPO(int TransferDocID) {
+	public TransferDocPO getTransferDocPO(String TransferDocID) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ZLoadDocPO getZLoadDocPO(int ZLoadDocID) {
+	public ZLoadDocPO getZLoadDocPO(String ZLoadDocID) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ZArrivalDocPO getZArrivalDocPO(int ZArrivalDocID) {
+	public ZArrivalDocPO getZArrivalDocPO(String ZArrivalDocID) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public YArrivalDocPO getYArrivalDocPO(int YArrivalDocID) {
+	public YArrivalDocPO getYArrivalDocPO(String YArrivalDocID) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public YDeliverDocPO getYDeliverDocPO(int YDeliverDocID) {
+	public YDeliverDocPO getYDeliverDocPO(String YDeliverDocID) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public OverDocPO getOverDocPO(int OverDocID) {
+	public OverDocPO getOverDocPO(String OverDocID) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -193,4 +193,11 @@ public class TransferDataServiceImpl implements TransferDataService{
 		return null;
 	}
 
+	@Override
+	public ArrayList<OverDocPO> getAllOverDoc() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 }

@@ -233,15 +233,15 @@ public class CollertionPanel extends JPanel{
 		label_30.setForeground(Color.RED);
 		panel_6.add(label_30);
 		
-		JLabel label_11 = new JLabel("\u91CD\u91CF");
-		panel_6.add(label_11);
+		JLabel lblkg = new JLabel("\u91CD\u91CF(kg)");
+		panel_6.add(lblkg);
 		
 		WeightField = new JTextField();
 		WeightField.setColumns(5);
 		panel_6.add(WeightField);
 		
-		JLabel label_12 = new JLabel("\u4F53\u79EF");
-		panel_6.add(label_12);
+		JLabel lblcm = new JLabel("\u4F53\u79EF(cm)");
+		panel_6.add(lblcm);
 		
 		LengthField = new JTextField();
 		LengthField.setColumns(5);
@@ -390,15 +390,15 @@ public class CollertionPanel extends JPanel{
 		flowLayout_13.setAlignment(FlowLayout.LEFT);
 		panel_11.add(panel_13);
 		
-		JLabel label_18 = new JLabel("\u4EF7\u683C");
+		JLabel label_18 = new JLabel("\u4EF7\u683C(\u5143)");
 		panel_13.add(label_18);
 		
 		priceField = new JTextField();
 		priceField.setColumns(5);
 		panel_13.add(priceField);
 		
-		JLabel label_19 = new JLabel("\u65F6\u95F4\u9884\u4F30");
-		panel_13.add(label_19);
+		JLabel lblday = new JLabel("\u65F6\u95F4\u9884\u4F30(day)");
+		panel_13.add(lblday);
 		
 		timeField = new JTextField();
 		timeField.setColumns(5);
@@ -435,7 +435,7 @@ public class CollertionPanel extends JPanel{
 		intialize();
 		if(estimatable()) {
 			timeField.setText(String.valueOf(collection.timeEstimate(scity, rcity)));
-			priceField.setText(String.valueOf(collection.priceCalc(scity, rcity, packageType, volume, weight)));
+			priceField.setText(String.valueOf(collection.priceCalc(scity, rcity, packageType, volume, weight,sendType)));
 		}else {
 			warnning();
 		}

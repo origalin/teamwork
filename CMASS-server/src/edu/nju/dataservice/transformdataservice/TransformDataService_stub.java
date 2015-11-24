@@ -14,182 +14,190 @@ public class TransformDataService_stub implements TransferDataService{
 
 	@Override
 	public void saveTransferDocPO(TransferDocPO po) {
-		// TODO 自动生成的方法存根
+		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public int getTransferSequence() {
-		// TODO 自动生成的方法存根
-		return 0001020;
+	public String getTransferSequence() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public void changeTransferSequence(int TransferSequence) {
-		// TODO 自动生成的方法存根
+	public void changeTransferSequence(String TransferSequence) {
+		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void saveZLoadDocPO(ZLoadDocPO po) {
-		// TODO 自动生成的方法存根
+		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public int getZLoadSequence() {
-		// TODO 自动生成的方法存根
-		return 021231;
+	public String getZLoadSequence() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public void changeZLoadSequence(int ZLoadSequence) {
-		// TODO 自动生成的方法存根
+	public void changeZLoadSequence(String ZLoadSequence) {
+		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void saveZArrivalDocPO(ZArrivalDocPO po) {
-		// TODO 自动生成的方法存根
+		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public int getZArrivalSequence() {
-		// TODO 自动生成的方法存根
-		return 023212;
+	public String getZArrivalSequence() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public void changeZArrivalSequence(int ZArrivalSequence) {
-		// TODO 自动生成的方法存根
+	public void changeZArrivalSequence(String ZArrivalSequence) {
+		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void saveYArrivalDocPO(YArrivalDocPO po) {
-		// TODO 自动生成的方法存根
+		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public int getYArrivalSequence() {
-		// TODO 自动生成的方法存根
-		return 023123;
+	public String getYArrivalSequence() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public void changeYArrivalSequence(int YArrivalSequence) {
-		// TODO 自动生成的方法存根
+	public void changeYArrivalSequence(String YArrivalSequence) {
+		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void saveYDeliverDocPO(YDeliverDocPO po) {
-		// TODO 自动生成的方法存根
+		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public int getYDeliverSequence() {
-		// TODO 自动生成的方法存根
-		return 023212;
+	public String getYDeliverSequence() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public void changeYDeliverSequence(int YDeliverSequence) {
-		// TODO 自动生成的方法存根
+	public void changeYDeliverSequence(String YDeliverSequence) {
+		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void saveOverDocPO(OverDocPO po) {
-		// TODO 自动生成的方法存根
+		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public int getOverSequence() {
-		// TODO 自动生成的方法存根
-		return 033221;
+	public String getOverSequence() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public void changeOverSequence(int OverSequence) {
-		// TODO 自动生成的方法存根
+	public void changeOverSequence(String OverSequence) {
+		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public TransferDocPO getTransferDocPO(int TransferDocID) {
-		// TODO 自动生成的方法存根
+	public TransferDocPO getTransferDocPO(String TransferDocID) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ZLoadDocPO getZLoadDocPO(int ZLoadDocID) {
-		// TODO 自动生成的方法存根
+	public ZLoadDocPO getZLoadDocPO(String ZLoadDocID) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ZArrivalDocPO getZArrivalDocPO(int ZArrivalDocID) {
-		// TODO 自动生成的方法存根
+	public ZArrivalDocPO getZArrivalDocPO(String ZArrivalDocID) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public YArrivalDocPO getYArrivalDocPO(int YArrivalDocID) {
-		// TODO 自动生成的方法存根
+	public YArrivalDocPO getYArrivalDocPO(String YArrivalDocID) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public YDeliverDocPO getYDeliverDocPO(int YDeliverDocID) {
-		// TODO 自动生成的方法存根
+	public YDeliverDocPO getYDeliverDocPO(String YDeliverDocID) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public OverDocPO getOverDocPO(int OverDocID) {
-		// TODO 自动生成的方法存根
+	public OverDocPO getOverDocPO(String OverDocID) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public ArrayList<YDeliverDocPO> getAllYDeliverDoc() {
-		// TODO 自动生成的方法存根
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public ArrayList<YArrivalDocPO> getAllYArrivalDoc() {
-		// TODO 自动生成的方法存根
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public ArrayList<ZArrivalDocPO> getAllZArrivalDoc() {
-		// TODO 自动生成的方法存根
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public ArrayList<TransferDocPO> getAllTransferDoc() {
-		// TODO 自动生成的方法存根
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public ArrayList<YLoadDocPO> getAllYLoadDoc() {
-		// TODO 自动生成的方法存根
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public ArrayList<ZLoadDocPO> getAllZloadDoc() {
-		// TODO 自动生成的方法存根
+		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public ArrayList<OverDocPO> getAllOverDoc() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 
 }

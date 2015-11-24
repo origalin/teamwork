@@ -7,12 +7,13 @@ import edu.nju.po.*;
 
 public interface CollectionDataService {
 	public void saveSendDocPO(SendDocPO po);
-	public Double getDistance(String city);
 	public String getSequence();
 	public void changeSequence(String sequence);
-	public void saveHistory(HistoryTimePO po);
+	ArrayList<HistoryTimePO> getHistoryPO(String sCity, String rCity);
 	public ArrayList<PositionPO> QueryGoodsInfo(int SendDocID);
 	public ArrayList<SendDocPO> getAllSendDoc();
-	public int getCourierMoney(String courier);
-	public int[] getSendDocIDList(String courier);
+	public double getCourierMoney(String courierID);
+	public ArrayList<String> getSendDocIDList(String courierID);
+	public void appendCourierMoney(String courierID,String itemID,double money);
+	public void cleanCourierMessage(String courierID);
 }

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import edu.nju.businesslogicservice.transformlogicservice.OverDocService;
+import edu.nju.data.transferDataServiceImpl.TransferDataServiceImpl;
+import edu.nju.dataservice.transformdataservice.TransferDataService;
 import edu.nju.po.OverDocPO;
 import edu.nju.vo.OverDocVO;
 
@@ -11,6 +13,7 @@ public class OverDoc implements OverDocService{
 	String institutionID;
 	String staffID;
 	OverDocPO po;
+	TransferDataService transferDataService = new TransferDataServiceImpl();
 
 	public OverDoc( String staffID) {
 		// TODO 自动生成的构造函数存根
@@ -30,19 +33,19 @@ public class OverDoc implements OverDocService{
 	@Override
 	public String getOverDocSequence() {
 		// TODO 自动生成的方法存根
-		return null;
+		return transferDataService.getOverSequence();
 	}
 
 	@Override
-	public void changeOverDocSequence(int sequence) {
+	public void changeOverDocSequence(String sequence) {
 		// TODO 自动生成的方法存根
-		
+		transferDataService.changeOverSequence(sequence);
 	}
 
 
 
 	@Override
-	public OverDocVO findOverDocVO(int ID) {
+	public OverDocVO findOverDocVO(String  ID) {
 		// TODO 自动生成的方法存根
 		return null;
 	}
@@ -50,7 +53,7 @@ public class OverDoc implements OverDocService{
 	@Override
 	public ArrayList<OverDocPO> getUncheckedOverDocPOs() {
 		// TODO 自动生成的方法存根
-		return null;
+		return transferDataService.getAllOverDoc();
 	}
 
 	@Override

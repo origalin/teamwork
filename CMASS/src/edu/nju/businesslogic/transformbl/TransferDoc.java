@@ -4,6 +4,8 @@ import java.util.Date;
 
 import edu.nju.businesslogic.infobl.Institution;
 import edu.nju.businesslogicservice.transformlogicservice.*;
+import edu.nju.data.transferDataServiceImpl.TransferDataServiceImpl;
+import edu.nju.dataservice.transformdataservice.TransferDataService;
 import edu.nju.po.TransferDocPO;
 import edu.nju.po.TransferDoc_CarPO;
 import edu.nju.po.TransferDoc_PlanePO;
@@ -18,6 +20,7 @@ public class TransferDoc implements TransferDocService{
 	String institutionID,staffID;
 	TransferDocPO po;
 	Institution institution;
+	TransferDataService transferDataService = new TransferDataServiceImpl();
 	public TransferDoc (){
 		this( null);
 	}
@@ -38,7 +41,7 @@ public class TransferDoc implements TransferDocService{
 	@Override
 	public String getTransferSequence() {
 		// TODO 自动生成的方法存根
-		return null;
+		return transferDataService.getTransferSequence();
 	}
 	public String getTransferID() {
 		return null;
@@ -49,13 +52,13 @@ public class TransferDoc implements TransferDocService{
 	}
 
 	@Override
-	public int[] getSendDocIDList(int id) {
+	public int[] getSendDocIDList(String id) {
 		// TODO 自动生成的方法存根
 		return null;
 	}
 
 	@Override
-	public void changeTransferSequence(int TransferSequence) {
+	public void changeTransferSequence(String TransferSequence) {
 		// TODO 自动生成的方法存根
 		
 	}
@@ -85,7 +88,7 @@ public class TransferDoc implements TransferDocService{
 	}
 
 	@Override
-	public TransferDocVO findTransferDocVO(int ID) {
+	public TransferDocVO findTransferDocVO(String ID) {
 		// TODO 自动生成的方法存根
 		return null;
 	}
