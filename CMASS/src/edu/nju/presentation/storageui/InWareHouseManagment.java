@@ -30,6 +30,13 @@ public class InWareHouseManagment extends JPanel{
 	private JLabel lblNewLabel;
 	private JTextField textField;
 	private JButton btnNewButton_1;
+	private String currInstitution;
+	private String currPersonID;
+	public InWareHouseManagment(String currInstitution,String currPersonID){
+		this();
+		this.currInstitution=currInstitution;
+		this.currPersonID=currPersonID;
+	}
 	public InWareHouseManagment() {
 		String[] columnNames={"快递编号","入库日期","目的地","区号","排号","架号","位号"};
 		String[][] data={

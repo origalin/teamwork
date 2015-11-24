@@ -1,5 +1,6 @@
 package edu.nju.dataservice.storagedataservice;
 
+import java.rmi.Remote;
 import java.util.ArrayList;
 
 import edu.nju.po.InWareHouseDocPO;
@@ -7,7 +8,7 @@ import edu.nju.po.OutWareHouseDocPO;
 import edu.nju.po.RecordPO;
 import edu.nju.po.WareHousePO;
 
-public interface StorageDataService{
+public interface StorageDataService extends Remote{
 	public void update(ArrayList<RecordPO> recordPO);
 	public void update(RecordPO recordPO);
 	
