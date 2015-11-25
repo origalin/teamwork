@@ -27,19 +27,19 @@ public class StorageDataServiceImpl implements StorageDataService {
 	}
 
 	@Override
-	public ArrayList<RecordPO> getInWareHouseDocVO_Fly() {
+	public ArrayList<RecordPO> getInWareHouseDocPO_Fly() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<RecordPO> getInWareHouseDocVO_Train() {
+	public ArrayList<RecordPO> getInWareHouseDocPO_Train() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<RecordPO> getInWareHouseDocVO_Car() {
+	public ArrayList<RecordPO> getInWareHouseDocPO_Car() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -88,7 +88,8 @@ public class StorageDataServiceImpl implements StorageDataService {
 
 	@Override
 	public void addNewStorageItem(RecordPO recordPO) {
-		// TODO Auto-generated method stub
+		
+		String sql="UPDATE TABLE 仓库存储货物 SET StorageItem_ID='"+recordPO.getItemID()+"',入库日期=",'入库日期','目的地','',";
 
 	}
 
