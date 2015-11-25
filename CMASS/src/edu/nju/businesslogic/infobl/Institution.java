@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import edu.nju.businesslogicservice.infologicservice.InstitutionLogicService;
 import edu.nju.po.InstitutionPO;
+import edu.nju.po.Post;
 import edu.nju.po.StaffPO;
 import edu.nju.vo.InstitutionVO;
 import edu.nju.vo.StaffVO;
@@ -29,12 +30,6 @@ public class Institution implements InstitutionLogicService{
 	}
 
 	@Override
-	public double getDistance(String city1, String city2) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
 	public void saveSalary(StaffPO po) {
 		// TODO Auto-generated method stub
 		
@@ -53,30 +48,6 @@ public class Institution implements InstitutionLogicService{
 	}
 
 	@Override
-	public void saveDistance(String city, String city2, double distance) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public double getDistance(String city) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public ArrayList<InstitutionPO> getUnpaidInstitutionList() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ArrayList<StaffPO> getUnpaidStaffList() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public String[][] getCouriers() {
 		// TODO Auto-generated method stub
 		return null;
@@ -89,7 +60,7 @@ public class Institution implements InstitutionLogicService{
 	}
 
 	@Override
-	public String[][] getDrivers() {
+	public String[][] getDrivers(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -123,5 +94,60 @@ public class Institution implements InstitutionLogicService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public ArrayList<InstitutionPO> getUnpaidInstitutionList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<StaffPO> getUnpaidStaffList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void resetSalary() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void resetRent() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Post getPosition(String staffID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public double getBase(String staffID) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double getBonus(String staffID) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double getPercentage(String staffID) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double getDriverCommision(String driverID) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 
 }

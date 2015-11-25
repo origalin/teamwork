@@ -1,70 +1,85 @@
 package edu.nju.po;
+
+import java.util.Date;
+
 //入库单（快递编号、入库日期、目的地、区号、排号、
 //架号、位号）
 //相当于storageitempo
 public class RecordPO {
 	int itemID;
-	String date;
+	Date date;
 	String destination;
 	String district;
-	int row;
-	int shelf;
-	int point;
-	public RecordPO(int itemID, String date, String destination,
-			String district, int row, int shelf, int point) {
+	int location;//代替原来的排架位，6位的数字，2位排号，2位架号，2位位号
+	String storageID;//仓库ID
+	boolean isCoordinate;
+	
+	public RecordPO(int itemID, Date date, String destination, String district, int location, String storageID,
+			boolean isCoordinate) {
 		super();
 		this.itemID = itemID;
 		this.date = date;
 		this.destination = destination;
 		this.district = district;
-		this.row = row;
-		this.shelf = shelf;
-		this.point = point;
+		this.location = location;
+		this.storageID = storageID;
+		this.isCoordinate = isCoordinate;
 	}
-	public RecordPO() {
-		// TODO 自动生成的构造函数存根
-	}
+
 	public int getItemID() {
 		return itemID;
 	}
+
 	public void setItemID(int itemID) {
 		this.itemID = itemID;
 	}
-	public String getDate() {
+
+	public Date getDate() {
 		return date;
 	}
-	public void setDate(String date) {
+
+	public void setDate(Date date) {
 		this.date = date;
 	}
+
 	public String getDestination() {
 		return destination;
 	}
+
 	public void setDestination(String destination) {
 		this.destination = destination;
 	}
+
 	public String getDistrict() {
 		return district;
 	}
+
 	public void setDistrict(String district) {
 		this.district = district;
 	}
-	public int getRow() {
-		return row;
+
+	public int getLocation() {
+		return location;
 	}
-	public void setRow(int row) {
-		this.row = row;
+
+	public void setLocation(int location) {
+		this.location = location;
 	}
-	public int getShelf() {
-		return shelf;
+
+	public String getStorageID() {
+		return storageID;
 	}
-	public void setShelf(int shelf) {
-		this.shelf = shelf;
+
+	public void setStorageID(String storageID) {
+		this.storageID = storageID;
 	}
-	public int getPoint() {
-		return point;
+
+	public boolean isCoordinate() {
+		return isCoordinate;
 	}
-	public void setPoint(int point) {
-		this.point = point;
+
+	public void setCoordinate(boolean isCoordinate) {
+		this.isCoordinate = isCoordinate;
 	}
 	
 }

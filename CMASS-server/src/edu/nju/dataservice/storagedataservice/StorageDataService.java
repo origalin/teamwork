@@ -12,13 +12,13 @@ public interface StorageDataService extends Remote{
 	public void update(ArrayList<RecordPO> recordPO);
 	public void update(RecordPO recordPO);
 	
-	public ArrayList<RecordPO> getInWareHouseDocVO_Fly();
+	public ArrayList<RecordPO> getInWareHouseDocPO_Fly();
 
 
-	public ArrayList<RecordPO> getInWareHouseDocVO_Train();
+	public ArrayList<RecordPO> getInWareHouseDocPO_Train();
 
 
-	public ArrayList<RecordPO> getInWareHouseDocVO_Car();
+	public ArrayList<RecordPO> getInWareHouseDocPO_Car();
 	public long getInWareHouseDocID();//得到这次生成入库单的id应为多少
 	
 	ArrayList<RecordPO> getStorageItemList(int[] SendDocIDList);//出库时生成出库单用

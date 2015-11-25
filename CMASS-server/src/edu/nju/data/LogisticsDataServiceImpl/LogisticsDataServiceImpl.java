@@ -117,7 +117,7 @@ public class LogisticsDataServiceImpl  extends UnicastRemoteObject implements Lo
 	}
 
 	@Override
-	public void createPosition(String Item, String pos)throws RemoteException  {
+	public void createPosition(String Item, String pos,String destination)throws RemoteException  {
 		String sql="INSERT INTO history (itemId,his) VALUES('"+Item+"','"+pos+"');";
 		System.out.println(sql);
 		SQL.databaseUpdate(sql);

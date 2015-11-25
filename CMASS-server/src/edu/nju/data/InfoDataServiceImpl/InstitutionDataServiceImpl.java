@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 
 
+
+
 import edu.nju.dataservice.infodataservice.InstitutionDataService;
 import edu.nju.po.CarPO;
 import edu.nju.po.DriverPO;
@@ -13,57 +15,32 @@ import edu.nju.po.StaffPO;
 public class InstitutionDataServiceImpl implements InstitutionDataService{
 
 	@Override
-	public ArrayList<StaffPO> getBusinessManList() {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<StaffPO> findStaff(String institutionName) {
+		
 	}
 
 	@Override
-	public int findSalary() {
+	public void addStaff(StaffPO po) {
 		// TODO Auto-generated method stub
-		return 0;
+		
 	}
 
 	@Override
-	public ArrayList<StaffPO> findStaff() {
+	public void changeStaff(StaffPO po) {
 		// TODO Auto-generated method stub
-		return null;
+		
+	}
+
+	@Override
+	public void deleteStaff(StaffPO po) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
 	public ArrayList<InstitutionPO> findInstitution() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	public double getDistance(String city1, String city2) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public void saveSalary(StaffPO po) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void saveStaff(StaffPO po) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void saveInstitution(InstitutionPO po) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void saveDistance(String city1, String city2, double distance) {
-		// TODO Auto-generated method stub
-		
 	}
 
 

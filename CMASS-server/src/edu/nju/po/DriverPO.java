@@ -2,27 +2,35 @@ package edu.nju.po;
 
 import java.util.Date;
 
-//司机信息（司机编号（城市编号（电话号码区号南京025）
-//+营业厅编号（000三位数字）+000三位数字、姓名、出生日期、
-//身份证号、手机 、性别、行驶证期限）
-public class DriverPO {
+//司机信息（司机编号（城市编号（电话号码区号南京0025）
+//+营业厅编号（000三位数字）+000三位数字、姓名、性别、出生日期、
+//身份证号、手机 、行驶证初始日期、行驶证失效日期）
+public class DriverPO{
 	String driverID;
-	String name;
+	String name;	
+	String sex;
 	Date birthday;
 	String identity;
-	String phone_numer;
-	String sex;
-	String limit;
-	public DriverPO(String driverID, String name, Date birthday,
-			String identity, String phone_numer, String sex, String limit) {
+	String tel;
+	String institution;
+	Date beginLimit;
+	Date endLimit;
+	Double money;
+
+	public DriverPO(String driverID, String name, String sex,Date birthday,
+			String identity, String tel,String institution, Date beginLimit,Date endLimit) {
 		super();
 		this.driverID = driverID;
 		this.name = name;
 		this.birthday = birthday;
 		this.identity = identity;
-		this.phone_numer = phone_numer;
+		this.tel = tel;
+		this.institution=institution;
 		this.sex = sex;
-		this.limit = limit;
+		this.beginLimit = beginLimit;
+		this.endLimit=endLimit;
+		this.money=20.00;
+
 	}
 	public String getDriverID() {
 		return driverID;
@@ -36,6 +44,12 @@ public class DriverPO {
 	public void setName(String name) {
 		this.name = name;
 	}
+	public String getSex() {
+		return sex;
+	}
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
 	public Date getBirthday() {
 		return birthday;
 	}
@@ -48,23 +62,43 @@ public class DriverPO {
 	public void setIdentity(String identity) {
 		this.identity = identity;
 	}
-	public String getPhone_numer() {
-		return phone_numer;
+	public String getTel() {
+		return tel;
 	}
-	public void setPhone_numer(String phone_numer) {
-		this.phone_numer = phone_numer;
+	public void setTel(String tel) {
+		this.tel = tel;
 	}
-	public String getSex() {
-		return sex;
+	public String getInstitution() {
+		return institution;
 	}
-	public void setSex(String sex) {
-		this.sex = sex;
+	public void setInstitution(String institution) {
+		this.institution = institution;
 	}
-	public String getLimit() {
-		return limit;
+	public Date getBeginLimit() {
+		return beginLimit;
 	}
-	public void setLimit(String limit) {
-		this.limit = limit;
+	public void setBeginLimit(Date beginLimit) {
+		this.beginLimit = beginLimit;
+	}
+	public Date getEndLimit() {
+		return endLimit;
+	}
+	public void setEndLimit(Date endLimit) {
+		this.endLimit = endLimit;
+	}
+	public Double getMoney() {
+		return money;
+	}
+	public void setMoney(Double money) {
+		this.money = money;
+	}
+	@Override
+	public String toString() {
+		return "DriverPO [driverID=" + driverID + ", name=" + name + ", sex="
+				+ sex + ", birthday=" + birthday + ", identity=" + identity
+				+ ", tel=" + tel + ", institution="
+				+ institution + ", beginLimit=" + beginLimit + ", endLimit="
+				+ endLimit + "]";
 	}
 	
 }
