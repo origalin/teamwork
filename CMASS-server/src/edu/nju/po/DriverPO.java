@@ -16,21 +16,22 @@ public class DriverPO{
 	Date beginLimit;
 	Date endLimit;
 	Double money;
-
-	public DriverPO(String driverID, String name, String sex,Date birthday,
-			String identity, String tel,String institution, Date beginLimit,Date endLimit) {
+	boolean isPaid;
+	public DriverPO(String driverID, String name, String sex, Date birthday,
+			String identity, String tel, String institution, Date beginLimit,
+			Date endLimit, Double money, boolean isPaid) {
 		super();
 		this.driverID = driverID;
 		this.name = name;
+		this.sex = sex;
 		this.birthday = birthday;
 		this.identity = identity;
 		this.tel = tel;
-		this.institution=institution;
-		this.sex = sex;
+		this.institution = institution;
 		this.beginLimit = beginLimit;
-		this.endLimit=endLimit;
-		this.money=20.00;
-
+		this.endLimit = endLimit;
+		this.money = 20.00;
+		this.isPaid = isPaid;
 	}
 	public String getDriverID() {
 		return driverID;
@@ -92,13 +93,20 @@ public class DriverPO{
 	public void setMoney(Double money) {
 		this.money = money;
 	}
+	public boolean isPaid() {
+		return isPaid;
+	}
+	public void setPaid(boolean isPaid) {
+		this.isPaid = isPaid;
+	}
 	@Override
 	public String toString() {
 		return "DriverPO [driverID=" + driverID + ", name=" + name + ", sex="
 				+ sex + ", birthday=" + birthday + ", identity=" + identity
-				+ ", tel=" + tel + ", institution="
-				+ institution + ", beginLimit=" + beginLimit + ", endLimit="
-				+ endLimit + "]";
+				+ ", tel=" + tel + ", institution=" + institution
+				+ ", beginLimit=" + beginLimit + ", endLimit=" + endLimit
+				+ ", money=" + money + ", isPaid=" + isPaid + "]";
 	}
+	
 	
 }

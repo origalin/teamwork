@@ -45,9 +45,9 @@ public class DistancePanel extends JPanel {
 		gbc_panel_1.gridy = 1;
 		add(panel_1, gbc_panel_1);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
-		gbl_panel_1.columnWidths = new int[]{0, 0, 0, 89, 90, 99, 0, 0, 0};
+		gbl_panel_1.columnWidths = new int[]{0, 0, 0, 89, 51, 84, 0, 0, 0, 0};
 		gbl_panel_1.rowHeights = new int[]{0, 0, 0, 0, 0};
-		gbl_panel_1.columnWeights = new double[]{0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_1.columnWeights = new double[]{0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
 		gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel_1.setLayout(gbl_panel_1);
 		
@@ -67,7 +67,7 @@ public class DistancePanel extends JPanel {
 		gbc_comboBox.gridy = 1;
 		panel_1.add(comboBox, gbc_comboBox);
 		
-		JLabel label_2 = new JLabel("\u2192");
+		JLabel label_2 = new JLabel("\u2190\u2192");
 		GridBagConstraints gbc_label_2 = new GridBagConstraints();
 		gbc_label_2.insets = new Insets(0, 0, 5, 5);
 		gbc_label_2.gridx = 4;
@@ -83,6 +83,13 @@ public class DistancePanel extends JPanel {
 		gbc_comboBox_1.gridy = 1;
 		panel_1.add(comboBox_1, gbc_comboBox_1);
 		
+		JButton button_2 = new JButton("\u589E\u52A0\u57CE\u5E02");
+		GridBagConstraints gbc_button_2 = new GridBagConstraints();
+		gbc_button_2.insets = new Insets(0, 0, 5, 5);
+		gbc_button_2.gridx = 7;
+		gbc_button_2.gridy = 1;
+		panel_1.add(button_2, gbc_button_2);
+		
 		JLabel label_3 = new JLabel("\u4FEE\u6539\u8DDD\u79BB");
 		GridBagConstraints gbc_label_3 = new GridBagConstraints();
 		gbc_label_3.insets = new Insets(0, 0, 0, 5);
@@ -93,7 +100,7 @@ public class DistancePanel extends JPanel {
 		txtkm = new JTextField();
 		txtkm.setText("100/km");
 		GridBagConstraints gbc_txtkm = new GridBagConstraints();
-		gbc_txtkm.gridwidth = 3;
+		gbc_txtkm.gridwidth = 5;
 		gbc_txtkm.insets = new Insets(0, 0, 0, 5);
 		gbc_txtkm.fill = GridBagConstraints.HORIZONTAL;
 		gbc_txtkm.gridx = 3;
@@ -114,14 +121,14 @@ public class DistancePanel extends JPanel {
 		gbl_panel_2.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
 		panel_2.setLayout(gbl_panel_2);
 		
-		JButton button = new JButton("\u786E\u8BA4\u4FEE\u6539");
+		JButton button = new JButton("\u786E\u8BA4");
 		GridBagConstraints gbc_button = new GridBagConstraints();
 		gbc_button.insets = new Insets(0, 0, 0, 5);
 		gbc_button.gridx = 0;
 		gbc_button.gridy = 1;
 		panel_2.add(button, gbc_button);
 		
-		JButton button_1 = new JButton("\u53D6\u6D88\u4FDD\u5B58");
+		JButton button_1 = new JButton("\u53D6\u6D88");
 		GridBagConstraints gbc_button_1 = new GridBagConstraints();
 		gbc_button_1.gridx = 1;
 		gbc_button_1.gridy = 1;

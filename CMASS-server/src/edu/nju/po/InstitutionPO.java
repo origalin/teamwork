@@ -8,6 +8,7 @@ public abstract class InstitutionPO {
 	String city;
 	String name;
 	Institutation type;
+	double rent;
 	public ArrayList<StaffPO> getStaffPOs() {
 		return staffPOs;
 	}
