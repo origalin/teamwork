@@ -21,7 +21,10 @@ public interface InstitutionLogicService {
 	public void saveInstitution (InstitutionPO po);//保存机构信息
 	//collection依赖我
 	
-	
+	public ArrayList<String> getDirverID(String institutionID);//
+	public ArrayList<String> getDirverName(String institutionID);
+	public ArrayList<String> getCourierID(String institutionID);//
+	public ArrayList<String> getTransferCenterID(String institutionID);//
 	public String getName(String id);//根据机构id返回name  
 	public String getStaffName(String id);//根据人员ID返回人员姓名
 	public String getInstitutionName(String id);//根据人员ID返回机构姓名
@@ -44,8 +47,4 @@ public interface InstitutionLogicService {
 	double getBonus(String staffID);//根据ID查找到这个人的奖金
 	double getPercentage(String staffID);//根据ID查找这个快递员的提成比例
 	double getDriverCommision(String driverID);//根据ID查找这个司机每次的钱数
-	
-	
-
-
 }

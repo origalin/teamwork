@@ -20,8 +20,7 @@ public class GuidePanel_Courier extends JPanel{
 	MainFrame frame;
 	CollertionPanel collertionPanel;
 	SendPanel sendPanel;
-	public GuidePanel_Courier(MainFrame frame,String institutionID,String staffID) {
-		this.institutionID = institutionID;
+	public GuidePanel_Courier(MainFrame frame,String staffID) {
 		this.staffID = staffID;
 		this.frame = frame;
 		collertionPanel = new CollertionPanel(staffID);

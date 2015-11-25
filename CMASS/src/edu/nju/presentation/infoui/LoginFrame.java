@@ -39,7 +39,7 @@ public class LoginFrame extends JFrame{
 		GridBagLayout gbl_pn1 = new GridBagLayout();
 		gbl_pn1.columnWidths = new int[]{94, 24, 126, 0};
 		gbl_pn1.rowHeights = new int[]{53, 0};
-		gbl_pn1.columnWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_pn1.columnWeights = new double[]{0.0, 0.0, 1.0, Double.MIN_VALUE};
 		gbl_pn1.rowWeights = new double[]{0.0, Double.MIN_VALUE};
 		pn1.setLayout(gbl_pn1);
 		GridBagConstraints gbc = new GridBagConstraints();
@@ -52,7 +52,7 @@ public class LoginFrame extends JFrame{
 		GridBagLayout gbl_pn2 = new GridBagLayout();
 		gbl_pn2.columnWidths = new int[]{94, 24, 126, 0};
 		gbl_pn2.rowHeights = new int[]{57, 0};
-		gbl_pn2.columnWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_pn2.columnWeights = new double[]{0.0, 0.0, 1.0, Double.MIN_VALUE};
 		gbl_pn2.rowWeights = new double[]{0.0, Double.MIN_VALUE};
 		pn2.setLayout(gbl_pn2);
 		GridBagConstraints gbc_1 = new GridBagConstraints();
@@ -121,8 +121,8 @@ public class LoginFrame extends JFrame{
 		 mainFrame = new MainFrame();
 		 
 		 mainFrame.comeout();
-//		 mainFrame.setFunctionPanel(new CollertionPanel("1010101010","10010101010"));
-		 mainFrame.setGuidePanel(new GuidePanel_Courier(mainFrame, "1010101010", "1010101010"));
+		 mainFrame.setFunctionPanel(new CollertionPanel("10010101010"));
+		 mainFrame.setGuidePanel(new GuidePanel_Courier(mainFrame, "1010101010"));
 		 
 		 this.setVisible(false);
 	 }

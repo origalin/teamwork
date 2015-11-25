@@ -1,5 +1,11 @@
 package edu.nju.presentation.infoui;
 
-public class Test {
+import javax.swing.JFrame;
 
+public class Test {
+public static void main(String[] args) {
+	JFrame frame = new JFrame();
+frame.setVisible(true);
+frame.add(new CarPanel());
+}
 }
