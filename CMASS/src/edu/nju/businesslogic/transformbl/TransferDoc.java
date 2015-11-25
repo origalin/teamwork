@@ -5,6 +5,7 @@ import java.util.TooManyListenersException;
 
 import javax.tools.Tool;
 
+import edu.nju.businesslogic.infobl.Distance;
 import edu.nju.businesslogic.infobl.Institution;
 import edu.nju.businesslogicservice.transformlogicservice.*;
 import edu.nju.data.transferDataServiceImpl.TransferDataServiceImpl;
@@ -24,6 +25,7 @@ public class TransferDoc implements TransferDocService{
 	String institutionID,staffID;
 	TransferDocPO po;
 	Institution institution;
+	Distance distance;
 	TransferDataService transferDataService ;
 	public TransferDoc (){
 		this( null);
@@ -33,6 +35,7 @@ public class TransferDoc implements TransferDocService{
 		super();
 		this.staffID = staffID;
 		institution = new Institution();
+		distance = new Distance();
 		this.institutionID = institution.getInstitutionID(staffID);
 		transferDataService = new TransferDataServiceImpl(institutionID);
 	}
@@ -129,15 +132,16 @@ public class TransferDoc implements TransferDocService{
 		return null;
 	}
 	private double calcPrice_car(String targetCity) {
-		double distance = institution.getDistance(institution.getCityAndName(institutionID));
+		double distance = this.distance.getDistance(institution.getCityAndName(institutionID));
 		return distance*20;
+		
 	}
 	private double calcPrice_plain(String targetCity) {
-		double distance = institution.getDistance(institution.getCityAndName(institutionID));
+		double distance = distance.getDistance(institution.getCityAndName(institutionID));
 		return distance*1000;
 	}
 	private double calcPrice_train(String targetCity) {
-		double distance = institution.getDistance(institution.getCityAndName(institutionID));
+		double distance = distance.getDistance(institution.getCityAndName(institutionID));
 		return distance*400;
 	}
 
