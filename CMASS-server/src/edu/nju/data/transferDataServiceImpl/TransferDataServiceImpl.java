@@ -12,7 +12,11 @@ import edu.nju.po.ZArrivalDocPO;
 import edu.nju.po.ZLoadDocPO;
 
 public class TransferDataServiceImpl implements TransferDataService{
-
+	String institutionID;
+	public TransferDataServiceImpl(String institutionID) {
+		// TODO Auto-generated constructor stub
+		this.institutionID = institutionID;
+	}
 	@Override
 	public void saveTransferDocPO(TransferDocPO po) {
 		// TODO Auto-generated method stub
@@ -197,6 +201,72 @@ public class TransferDataServiceImpl implements TransferDataService{
 	public ArrayList<OverDocPO> getAllOverDoc() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public String getTransferID() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getTransferID_Plain() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getTransferID_Train() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void changeTransferID(String transferDocID) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void changeTransferID_Plain(String transferDocID) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void changeTransferID_Train(String transferDocID) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public ArrayList<TransferDocPO> getunPaidTransferDocPO() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ArrayList<YLoadDocPO> getunPaidYLoadDocPO() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ArrayList<ZLoadDocPO> getunPaidZLoadDocPO() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public void saveYLoadDocPO(YLoadDocPO po) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public String getYLoadSequence() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public void changeYLoadSequence(String ZLoadSequence) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	

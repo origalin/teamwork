@@ -3,11 +3,15 @@ package edu.nju.businesslogic.transformbl;
 import java.util.ArrayList;
 import java.util.Date;
 
+import edu.nju.businesslogic.infobl.Institution;
 import edu.nju.businesslogicservice.transformlogicservice.ZArrivalDocService;
+import edu.nju.data.transferDataServiceImpl.TransferDataServiceImpl;
+import edu.nju.dataservice.transformdataservice.TransferDataService;
 import edu.nju.po.TransferDocPO;
 import edu.nju.po.YArrivalDocPO;
 import edu.nju.po.YLoadDocPO;
 import edu.nju.po.ZArrivalDocPO;
+import edu.nju.tools.SequenceCalc;
 import edu.nju.vo.YArrivalDocVO;
 import edu.nju.vo.ZArrivalDocVO;
 
@@ -16,11 +20,16 @@ public class ZArrivalDoc implements ZArrivalDocService{
 	private ZArrivalDocPO po;
 	private TransferDoc transferDoc;
 	private YLoadDoc yLoadDoc;
+	private Institution institution;
+	private TransferDataService transferDataService;
 	public ZArrivalDoc( String staffID) {
 		super();
 		this.staffID = staffID;
 		transferDoc = new TransferDoc( staffID);
 		yLoadDoc = new YLoadDoc(staffID);
+		institution = new Institution();
+		this.institutionID = institution.getInstitutionID(staffID);
+		transferDataService = new TransferDataServiceImpl(institutionID);
 	}
 
 	public ZArrivalDoc() {
@@ -30,24 +39,25 @@ public class ZArrivalDoc implements ZArrivalDocService{
 	@Override
 	public void saveZArrivalDocPO(ZArrivalDocPO po) {
 		// TODO 自动生成的方法存根
-		
+		transferDataService.saveZArrivalDocPO(po);
 	}
 
 	@Override
-	public int getZArrivalSequence() {
+	public String getZArrivalSequence() {
 		// TODO 自动生成的方法存根
-		return 0;
+		return transferDataService.getZArrivalSequence();
 	}
 
 	@Override
-	public void changeZArrivalSequence(int ZArrivalSequence) {
+	public void changeZArrivalSequence() {
 		// TODO 自动生成的方法存根
-		
+		String next = SequenceCalc.calcNextSequence6(getZArrivalSequence());
+		transferDataService.changeZArrivalSequence(next);
 	}
 
 
 	@Override
-	public ZArrivalDocVO findZArrivalDocVO(int ID) {
+	public ZArrivalDocVO findZArrivalDocVO(String ID) {
 		// TODO 自动生成的方法存根
 		return null;
 	}
@@ -55,7 +65,7 @@ public class ZArrivalDoc implements ZArrivalDocService{
 	@Override
 	public ArrayList<ZArrivalDocPO> getUncheckedZArrivalDocPOs() {
 		// TODO 自动生成的方法存根
-		return null;
+		return transferDataService.getAllZArrivalDoc();
 	}
 
 	@Override

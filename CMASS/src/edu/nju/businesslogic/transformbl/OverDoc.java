@@ -3,21 +3,25 @@ package edu.nju.businesslogic.transformbl;
 import java.util.ArrayList;
 import java.util.Date;
 
+import edu.nju.businesslogic.infobl.Institution;
 import edu.nju.businesslogicservice.transformlogicservice.OverDocService;
 import edu.nju.data.transferDataServiceImpl.TransferDataServiceImpl;
 import edu.nju.dataservice.transformdataservice.TransferDataService;
 import edu.nju.po.OverDocPO;
+import edu.nju.tools.SequenceCalc;
 import edu.nju.vo.OverDocVO;
 
 public class OverDoc implements OverDocService{
 	String institutionID;
 	String staffID;
 	OverDocPO po;
-	TransferDataService transferDataService = new TransferDataServiceImpl();
+	TransferDataService transferDataService;
 
 	public OverDoc( String staffID) {
 		// TODO 自动生成的构造函数存根
 		this.staffID = staffID;
+		this.institutionID = new Institution().getInstitutionID(staffID);
+		transferDataService = new TransferDataServiceImpl(institutionID);
 	}
 
 	public OverDoc() {
@@ -37,9 +41,10 @@ public class OverDoc implements OverDocService{
 	}
 
 	@Override
-	public void changeOverDocSequence(String sequence) {
+	public void changeOverDocSequence() {
 		// TODO 自动生成的方法存根
-		transferDataService.changeOverSequence(sequence);
+		String next = SequenceCalc.calcNextSequence6(getOverDocSequence());
+		transferDataService.changeOverSequence(next);
 	}
 
 

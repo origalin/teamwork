@@ -1,6 +1,9 @@
 package edu.nju.businesslogic.transformbl;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.TooManyListenersException;
+
+import javax.tools.Tool;
 
 import edu.nju.businesslogic.infobl.Institution;
 import edu.nju.businesslogicservice.transformlogicservice.*;
@@ -10,6 +13,7 @@ import edu.nju.po.TransferDocPO;
 import edu.nju.po.TransferDoc_CarPO;
 import edu.nju.po.TransferDoc_PlanePO;
 import edu.nju.po.TransferDoc_TrainPO;
+import edu.nju.tools.SequenceCalc;
 import edu.nju.tools.Time;
 import edu.nju.vo.TransferDocVO;
 import edu.nju.vo.TransferDoc_CarVO;
@@ -20,7 +24,7 @@ public class TransferDoc implements TransferDocService{
 	String institutionID,staffID;
 	TransferDocPO po;
 	Institution institution;
-	TransferDataService transferDataService = new TransferDataServiceImpl();
+	TransferDataService transferDataService ;
 	public TransferDoc (){
 		this( null);
 	}
@@ -29,13 +33,15 @@ public class TransferDoc implements TransferDocService{
 		super();
 		this.staffID = staffID;
 		institution = new Institution();
+		this.institutionID = institution.getInstitutionID(staffID);
+		transferDataService = new TransferDataServiceImpl(institutionID);
 	}
 	
 
 	@Override
 	public void saveTransferDocPO(TransferDocPO po) {
 		// TODO 自动生成的方法存根
-		
+		transferDataService.saveTransferDocPO(po);
 	}
 
 	@Override
@@ -44,11 +50,28 @@ public class TransferDoc implements TransferDocService{
 		return transferDataService.getTransferSequence();
 	}
 	public String getTransferID() {
-		return null;
+		return transferDataService.getTransferID();
+		
+	}
+	public String getTransferID_Plain() {
+		return transferDataService.getTransferID_Plain();
+		
+	}
+	public String getTransferID_Train() {
+		return transferDataService.getTransferID_Train();
 		
 	}
 	public void changeTransferID() {
-		
+		String next = SequenceCalc.calcNextSequence6(getTransferID());
+		transferDataService.changeTransferID(next);
+	}
+	public void changeTransferID_Plain() {
+		String next = SequenceCalc.calcNextSequence6(getTransferID_Plain());
+		transferDataService.changeTransferID_Plain(next);
+	}
+	public void changeTransferID_Train() {
+		String next = SequenceCalc.calcNextSequence6(getTransferID_Train());
+		transferDataService.changeTransferID_Train(next);
 	}
 
 	@Override
@@ -58,16 +81,17 @@ public class TransferDoc implements TransferDocService{
 	}
 
 	@Override
-	public void changeTransferSequence(String TransferSequence) {
+	public void changeTransferSequence() {
 		// TODO 自动生成的方法存根
-		
+		String next = SequenceCalc.calcNextSequence7(getTransferSequence());
+		transferDataService.changeTransferSequence(next);
 	}
 
 	@Override
 	public TransferDoc_CarVO createTransferDocVO_Car(String city,
 			String carNum, String watcher,String[] itemIDs) {
 		// TODO 自动生成的方法存根
-		po = new TransferDoc_CarPO(institutionID+Time.toDocTime(new Date())+getTransferSequence(), new Date(), carNum, getTransferID(), institution.getCityAndName(institution.getInstitutionID(staffID)), city, calcPrice(city), itemIDs);
+		po = new TransferDoc_CarPO(institutionID+Time.toDocTime(new Date())+getTransferSequence(), new Date(), carNum, getTransferID(), institution.getCityAndName(institution.getInstitutionID(staffID)), city, calcPrice_car(city), itemIDs);
 		return new TransferDoc_CarVO((TransferDoc_CarPO) po);
 	}
 
@@ -75,7 +99,7 @@ public class TransferDoc implements TransferDocService{
 	public TransferDoc_PlaneVO createTransferDocVO_Plane(String city,
 			String carNum, String watcher, String container,String[] itemIDs) {
 		// TODO 自动生成的方法存根
-		po = new TransferDoc_PlanePO(institutionID+Time.toDocTime(new Date())+getTransferSequence(), new Date(), carNum, getTransferID(), institution.getCityAndName(institution.getInstitutionID(staffID)), city, container, calcPrice(city), itemIDs);
+		po = new TransferDoc_PlanePO(institutionID+Time.toDocTime(new Date())+getTransferSequence(), new Date(), carNum, getTransferID(), institution.getCityAndName(institution.getInstitutionID(staffID)), city, container, calcPrice_plain(city), itemIDs);
 		return new TransferDoc_PlaneVO((TransferDoc_PlanePO) po);
 	}
 
@@ -83,7 +107,7 @@ public class TransferDoc implements TransferDocService{
 	public TransferDoc_TrainVO createTransferDocVO_Train(String city,
 			String carNum, String watcher, String carriage,String[] itemIDs) {
 		// TODO 自动生成的方法存根
-		po = new TransferDoc_TrainPO(institutionID+Time.toDocTime(new Date())+getTransferSequence(), new Date(), carNum, getTransferID(), institution.getCityAndName(institution.getInstitutionID(staffID)), city, carriage, calcPrice(city), itemIDs);
+		po = new TransferDoc_TrainPO(institutionID+Time.toDocTime(new Date())+getTransferSequence(), new Date(), carNum, getTransferID(), institution.getCityAndName(institution.getInstitutionID(staffID)), city, carriage, calcPrice_train(city), itemIDs);
 		return new TransferDoc_TrainVO((TransferDoc_TrainPO) po);
 	}
 
@@ -96,7 +120,7 @@ public class TransferDoc implements TransferDocService{
 	@Override
 	public ArrayList<TransferDocPO> getUncheckedTransferDocPOs() {
 		// TODO 自动生成的方法存根
-		return null;
+		return transferDataService.getAllTransferDoc();
 	}
 
 	@Override
@@ -104,8 +128,17 @@ public class TransferDoc implements TransferDocService{
 		// TODO 自动生成的方法存根
 		return null;
 	}
-	private double calcPrice(String targetCity) {
-		return 0;
+	private double calcPrice_car(String targetCity) {
+		double distance = institution.getDistance(institution.getCityAndName(institutionID));
+		return distance*20;
+	}
+	private double calcPrice_plain(String targetCity) {
+		double distance = institution.getDistance(institution.getCityAndName(institutionID));
+		return distance*1000;
+	}
+	private double calcPrice_train(String targetCity) {
+		double distance = institution.getDistance(institution.getCityAndName(institutionID));
+		return distance*400;
 	}
 
 	@Override

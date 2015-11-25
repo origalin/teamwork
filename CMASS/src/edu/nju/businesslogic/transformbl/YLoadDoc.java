@@ -3,18 +3,25 @@ package edu.nju.businesslogic.transformbl;
 import java.util.ArrayList;
 import java.util.Date;
 
+import edu.nju.businesslogic.infobl.Institution;
 import edu.nju.businesslogicservice.transformlogicservice.YLoadDocService;
+import edu.nju.dataservice.transformdataservice.TransferDataService;
 import edu.nju.po.YLoadDocPO;
+import edu.nju.tools.SequenceCalc;
 import edu.nju.vo.YLoadDocVO;
 
 public class YLoadDoc implements YLoadDocService{
 	String institutionID;
 	String staffID;
 	YLoadDocPO po;
+	private TransferDataService transferDataService;
+	private Institution institution;
 
 	public YLoadDoc(String staffID) {
 		super();
 		this.staffID = staffID;
+		institution = new Institution();
+		this.institutionID = institution.getInstitutionID(staffID);
 	}
 	public YLoadDoc() {
 		// TODO Auto-generated constructor stub
@@ -22,25 +29,26 @@ public class YLoadDoc implements YLoadDocService{
 	@Override
 	public void saveYloadDocPO(YLoadDocPO po) {
 		// TODO 自动生成的方法存根
-		
+		transferDataService.saveYLoadDocPO(po);
 	}
 
 	@Override
-	public int[] getSendDocIDList(int id) {
+	public String[] getSendDocIDList(String id) {
 		// TODO 自动生成的方法存根
 		return null;
 	}
 
 	@Override
-	public int getYloadSequence() {
+	public String getYloadSequence() {
 		// TODO 自动生成的方法存根
-		return 0;
+		return transferDataService.getYLoadSequence();
 	}
 
 	@Override
-	public void changeYloadSequence(int YloadSequence) {
+	public void changeYloadSequence() {
 		// TODO 自动生成的方法存根
-		
+		String next = SequenceCalc.calcNextSequence6(getYloadSequence());
+		transferDataService.changeYLoadSequence(next);
 	}
 
 	@Override
@@ -48,7 +56,7 @@ public class YLoadDoc implements YLoadDocService{
 			String watcher,String driver, String[] itemIDs) {
 		// TODO 自动生成的方法存根
 		po = new YLoadDocPO("00"+getYloadSequence(), new Date(), getTranceID(), target, carID, watcher, driver, itemIDs, priceCalc(target));
-		return null;
+		return new YLoadDocVO(po);
 	}
 
 	@Override
@@ -60,7 +68,7 @@ public class YLoadDoc implements YLoadDocService{
 	@Override
 	public ArrayList<YLoadDocPO> getUncheckedyLoadDocPOs() {
 		// TODO 自动生成的方法存根
-		return null;
+		return transferDataService.getAllYLoadDoc();
 	}
 
 	@Override
@@ -85,13 +93,14 @@ public class YLoadDoc implements YLoadDocService{
 		return null;
 	}
 	private String getTranceID() {
-		return null;
+		return transferDataService.getTransferID();
 	}
 	private void changeTranceID() {
-		
+		String next = SequenceCalc.calcNextSequence6(getTranceID());
+		transferDataService.changeTransferID(next);
 	}
 	private double priceCalc(String target) {
-		return 0;
+		return 600;
 	}
 	public ArrayList<YLoadDocPO> getUnPaidYLoadDocPOs() {
 		// TODO Auto-generated method stub

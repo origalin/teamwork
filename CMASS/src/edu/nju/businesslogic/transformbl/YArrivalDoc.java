@@ -3,20 +3,29 @@ package edu.nju.businesslogic.transformbl;
 import java.util.ArrayList;
 import java.util.Date;
 
+import edu.nju.businesslogic.infobl.Institution;
 import edu.nju.businesslogicservice.transformlogicservice.YArrivalDocService;
+import edu.nju.data.transferDataServiceImpl.TransferDataServiceImpl;
+import edu.nju.dataservice.transformdataservice.TransferDataService;
 import edu.nju.po.TransferDocPO;
 import edu.nju.po.YArrivalDocPO;
+import edu.nju.tools.SequenceCalc;
 import edu.nju.vo.YArrivalDocVO;
 
 public class YArrivalDoc implements YArrivalDocService {
 	String institutionID, staffID;
 	private YArrivalDocPO po;
 	private TransferDoc transferDoc;
+	private Institution institution;
+	private TransferDataService transferDataService; 
 
 	public YArrivalDoc( String staffID) {
 		super();
 		this.staffID = staffID;
 		transferDoc = new TransferDoc( staffID);
+		institution = new Institution();
+		this.institutionID = institution.getInstitutionID(staffID);
+		transferDataService = new TransferDataServiceImpl(institutionID);
 	}
 
 	public YArrivalDoc() {
@@ -26,19 +35,20 @@ public class YArrivalDoc implements YArrivalDocService {
 	@Override
 	public void saveYArrivalDocPO(YArrivalDocPO po) {
 		// TODO 自动生成的方法存根
-
+		transferDataService.saveYArrivalDocPO(po);
 	}
 
 	@Override
-	public int getYArrivalSequence() {
+	public String getYArrivalSequence() {
 		// TODO 自动生成的方法存根
-		return 0;
+		return transferDataService.getYArrivalSequence();
 	}
 
 	@Override
-	public void changeYArrivalSequence(int YArrivalSequence) {
+	public void changeYArrivalSequence() {
 		// TODO 自动生成的方法存根
-
+		String next = SequenceCalc.calcNextSequence6(getYArrivalSequence());
+		transferDataService.changeYArrivalSequence(next);
 	}
 
 	@Override
@@ -50,7 +60,7 @@ public class YArrivalDoc implements YArrivalDocService {
 	@Override
 	public ArrayList<YArrivalDocPO> getUncheckedYaArrivalDocPOs() {
 		// TODO 自动生成的方法存根
-		return null;
+		return transferDataService.getAllYArrivalDoc();
 	}
 
 	@Override

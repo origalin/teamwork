@@ -198,6 +198,12 @@ public class TransformDataService_stub implements TransferDataService{
 		return null;
 	}
 
+	@Override
+	public String getTransferID(String institutionID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 
 }
