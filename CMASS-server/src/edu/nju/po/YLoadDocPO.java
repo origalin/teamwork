@@ -11,6 +11,13 @@ public class YLoadDocPO extends Doc{
 	String driver;
 	String[] itemIDs;
 	double price;
+	boolean paid;
+	public boolean isPaid() {
+		return paid;
+	}
+	public void setPaid(boolean paid) {
+		this.paid = paid;
+	}
 	public YLoadDocPO(String id,Date date, String tranceID,
 			String targetBusinessHall, String carID, String watcher,
 			String driver, String[] itemIDs, double price) {
