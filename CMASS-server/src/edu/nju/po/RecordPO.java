@@ -6,15 +6,15 @@ import java.util.Date;
 //架号、位号）
 //相当于storageitempo
 public class RecordPO {
-	int itemID;
+	String itemID;
 	Date date;
 	String destination;
 	String district;
 	int location;//代替原来的排架位，6位的数字，2位排号，2位架号，2位位号
 	String storageID;//仓库ID
-	boolean isCoordinate;
+	boolean isCoordinate=false;
 	
-	public RecordPO(int itemID, Date date, String destination, String district, int location, String storageID,
+	public RecordPO(String itemID, Date date, String destination, String district, int location, String storageID,
 			boolean isCoordinate) {
 		super();
 		this.itemID = itemID;
@@ -25,12 +25,38 @@ public class RecordPO {
 		this.storageID = storageID;
 		this.isCoordinate = isCoordinate;
 	}
+	
+	
 
-	public int getItemID() {
+	public RecordPO(String itemID, Date date, String destination, String district, int location, String storageID) {
+		super();
+		this.itemID = itemID;
+		this.date = date;
+		this.destination = destination;
+		this.district = district;
+		this.location = location;
+		this.storageID = storageID;
+	}
+	
+	
+
+
+
+	public RecordPO(String itemID, Date date, String destination, String storageID) {
+		super();
+		this.itemID = itemID;
+		this.date = date;
+		this.destination = destination;
+		this.storageID = storageID;
+	}
+
+
+
+	public String getItemID() {
 		return itemID;
 	}
 
-	public void setItemID(int itemID) {
+	public void setItemID(String itemID) {
 		this.itemID = itemID;
 	}
 

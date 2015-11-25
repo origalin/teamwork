@@ -1,12 +1,15 @@
 package edu.nju.data.StorageDataServiceImpl;
 
 import java.util.ArrayList;
+import java.util.Date;
 
+import edu.nju.data.database.SQL;
 import edu.nju.dataservice.storagedataservice.StorageDataService;
 import edu.nju.po.InWareHouseDocPO;
 import edu.nju.po.OutWareHouseDocPO;
 import edu.nju.po.RecordPO;
 import edu.nju.po.WareHousePO;
+import edu.nju.tools.Time;
 
 public class StorageDataServiceImpl implements StorageDataService {
 
@@ -82,14 +85,28 @@ public class StorageDataServiceImpl implements StorageDataService {
 
 	@Override
 	public void clear() {
-		// TODO Auto-generated method stub
+		String sql="truncate table 仓库存储货物;";
+		SQL.databaseUpdate(sql);
+		SQL.closeDatabase();
+		System.out.println("仓库已清空");
 
 	}
-
+public static void main(String[] args) {
+//	StorageDataServiceImpl serviceImpl=new StorageDataServiceImpl();
+//	RecordPO recordPO=new RecordPO("0025010010",new Date() , "北京", "汽运区", 000003, "002500");
+//	serviceImpl.clear();
+	
+	
+}
 	@Override
 	public void addNewStorageItem(RecordPO recordPO) {
-		
-		String sql="UPDATE TABLE 仓库存储货物 SET StorageItem_ID='"+recordPO.getItemID()+"',入库日期=",'入库日期','目的地','',";
+		String date=Time.toDaysTime(recordPO.getDate());
+		String distriction=recordPO.getDistrict();
+		String storageID=recordPO.getStorageID();
+		String sql="UPDATE 仓库存储货物 SET StorageItem_ID='"+recordPO.getItemID()+"',入库日期='"+date+"',目的地='"+recordPO.getDestination()+
+				"' WHERE StorageItem_ID IS NULL && 区='"+distriction+"'&&仓库ID='"+storageID+"' LIMIT 1;";
+		SQL.databaseUpdate(sql);
+		SQL.closeDatabase();
 
 	}
 
