@@ -24,8 +24,8 @@ public class GuidePanel_Courier extends JPanel{
 		this.institutionID = institutionID;
 		this.staffID = staffID;
 		this.frame = frame;
-		collertionPanel = new CollertionPanel(institutionID,staffID);
-		sendPanel = new SendPanel(institutionID,staffID);
+		collertionPanel = new CollertionPanel(staffID);
+		sendPanel = new SendPanel(staffID);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0};
 		gridBagLayout.rowHeights = new int[]{66, 64, 0, 0};

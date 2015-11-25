@@ -132,16 +132,16 @@ public class TransferDoc implements TransferDocService{
 		return null;
 	}
 	private double calcPrice_car(String targetCity) {
-		double distance = this.distance.getDistance(institution.getCityAndName(institutionID));
+		double distance = this.distance.getDistance(institution.getCity(institutionID),targetCity);
 		return distance*20;
 		
 	}
 	private double calcPrice_plain(String targetCity) {
-		double distance = distance.getDistance(institution.getCityAndName(institutionID));
+		double distance = this.distance.getDistance(institution.getCity(institutionID),targetCity);
 		return distance*1000;
 	}
 	private double calcPrice_train(String targetCity) {
-		double distance = distance.getDistance(institution.getCityAndName(institutionID));
+		double distance = this.distance.getDistance(institution.getCity(institutionID),targetCity);
 		return distance*400;
 	}
 

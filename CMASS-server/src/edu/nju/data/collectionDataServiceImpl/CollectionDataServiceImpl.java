@@ -1,5 +1,7 @@
 package edu.nju.data.collectionDataServiceImpl;
 
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 import edu.nju.dataservice.collectiondataservice.CollectionDataService;
@@ -7,7 +9,12 @@ import edu.nju.po.HistoryTimePO;
 import edu.nju.po.PositionPO;
 import edu.nju.po.SendDocPO;
 
-public class CollectionDataServiceImpl implements CollectionDataService{
+public class CollectionDataServiceImpl extends UnicastRemoteObject implements CollectionDataService{
+
+	protected CollectionDataServiceImpl() throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public void saveSendDocPO(SendDocPO po) {
