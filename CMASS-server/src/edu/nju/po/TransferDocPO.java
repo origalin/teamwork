@@ -15,6 +15,13 @@ public class TransferDocPO extends Doc{
 	String targetCity;
 	String[] itemIDs;
 	double price;
+	boolean paid;
+	public boolean isPaid() {
+		return paid;
+	}
+	public void setPaid(boolean paid) {
+		this.paid = paid;
+	}
 	public String getTransferDocID() {
 		return ID;
 	}
