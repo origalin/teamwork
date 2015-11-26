@@ -15,6 +15,7 @@ import java.awt.Insets;
 import javax.swing.JButton;
 import javax.swing.UIManager;
 import java.awt.Color;
+import javax.swing.JComboBox;
 
 public class StorageQuery extends JPanel{
 	String[] columnNames={"快递编号","入库日期","目的地","区","排号","架号","位号"};
@@ -35,7 +36,7 @@ public class StorageQuery extends JPanel{
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{584, 0};
 		gridBagLayout.rowHeights = new int[]{104, 106, 106, 47, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, Double.MIN_VALUE};
+		gridBagLayout.columnWeights = new double[]{1.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{1.0, 1.0, 1.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
@@ -102,9 +103,22 @@ public class StorageQuery extends JPanel{
 		gbl_panel_3.rowWeights = new double[]{0.0, Double.MIN_VALUE};
 		panel_3.setLayout(gbl_panel_3);
 		
+		JComboBox comboBox = new JComboBox();
+		comboBox.addItem("上海市中转中心仓库");
+		comboBox.addItem("南京市中转中心仓库");
+		comboBox.addItem("北京市中转中心仓库");
+		comboBox.addItem("广州市中转中心仓库");
+		GridBagConstraints gbc_comboBox = new GridBagConstraints();
+		gbc_comboBox.insets = new Insets(0, 0, 0, 5);
+		gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBox.gridx = 2;
+		gbc_comboBox.gridy = 0;
+		panel_3.add(comboBox, gbc_comboBox);
+		
 		JButton btnNewButton = new JButton("\u5BFC\u51FA");
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
-		gbc_btnNewButton.gridx = 15;
+		gbc_btnNewButton.insets = new Insets(0, 0, 0, 5);
+		gbc_btnNewButton.gridx = 11;
 		gbc_btnNewButton.gridy = 0;
 		panel_3.add(btnNewButton, gbc_btnNewButton);
 	}

@@ -10,11 +10,22 @@ public class RecordPO {
 	Date date;
 	String destination;
 	String district;
-	int location;//代替原来的排架位，6位的数字，2位排号，2位架号，2位位号
+	String location;//代替原来的排架位，6位的数字，2位排号，2位架号，2位位号
 	String storageID;//仓库ID
 	boolean isCoordinate=false;
 	
-	public RecordPO(String itemID, Date date, String destination, String district, int location, String storageID,
+	public RecordPO(String itemID, Date date, String destination, String district, String location) {
+		super();
+		this.itemID = itemID;
+		this.date = date;
+		this.destination = destination;
+		this.district = district;
+		this.location = location;
+	}
+
+
+
+	public RecordPO(String itemID, Date date, String destination, String district,String location, String storageID,
 			boolean isCoordinate) {
 		super();
 		this.itemID = itemID;
@@ -28,7 +39,7 @@ public class RecordPO {
 	
 	
 
-	public RecordPO(String itemID, Date date, String destination, String district, int location, String storageID) {
+	public RecordPO(String itemID, Date date, String destination, String district, String location, String storageID) {
 		super();
 		this.itemID = itemID;
 		this.date = date;
@@ -84,11 +95,11 @@ public class RecordPO {
 		this.district = district;
 	}
 
-	public int getLocation() {
+	public String getLocation() {
 		return location;
 	}
 
-	public void setLocation(int location) {
+	public void setLocation(String location) {
 		this.location = location;
 	}
 

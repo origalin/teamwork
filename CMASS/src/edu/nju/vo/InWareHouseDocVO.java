@@ -5,11 +5,21 @@ import java.util.ArrayList;
 import edu.nju.po.Doc;
 
 public class InWareHouseDocVO extends Doc{
-	int ID;
+	String ID;
 	ArrayList<InWareHouseDocLineItem> list;
 	
-
+public String toString(){
+	String reString=ID;
+	for(InWareHouseDocLineItem temp:list)
+		reString+=temp.toString();
+	return reString;
+}
 	
+	public InWareHouseDocVO(String iD, ArrayList<InWareHouseDocLineItem> list) {
+		super();
+		ID = iD;
+		this.list = list;
+	}
 	public InWareHouseDocVO() {
 		super();
 		

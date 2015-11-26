@@ -1,35 +1,41 @@
 package edu.nju.vo;
 
+import java.util.Date;
+
 public class InWareHouseDocLineItem {
-	int SendDocID;
-	String date;
+	String SendDocID;
+	Date date;
 	String destination;
-	int district;
-	int row;
-	int shelf;
-	int point;
-	
-	
-	public InWareHouseDocLineItem(int sendDocID, String date, String destination, int district, int row, int shelf, int point) {
+	String district;
+	String location;
+	public String toString(){
+		return SendDocID+" "+date+" "+destination+" "+district+" "+location+"\n";
+	}
+	public InWareHouseDocLineItem(String sendDocID, Date date, String district) {
+		super();
+		SendDocID = sendDocID;
+		this.date = date;
+		
+		this.district = district;
+	}
+	public InWareHouseDocLineItem(String sendDocID, Date date, String destination, String district, String location) {
 		super();
 		SendDocID = sendDocID;
 		this.date = date;
 		this.destination = destination;
 		this.district = district;
-		this.row = row;
-		this.shelf = shelf;
-		this.point = point;
+		this.location = location;
 	}
-	public int getSendDocID() {
+	public String getSendDocID() {
 		return SendDocID;
 	}
-	public void setSendDocID(int sendDocID) {
+	public void setSendDocID(String sendDocID) {
 		SendDocID = sendDocID;
 	}
-	public String getDate() {
+	public Date getDate() {
 		return date;
 	}
-	public void setDate(String date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 	public String getDestination() {
@@ -38,30 +44,24 @@ public class InWareHouseDocLineItem {
 	public void setDestination(String destination) {
 		this.destination = destination;
 	}
-	public int getDistrict() {
+	public String getDistrict() {
 		return district;
 	}
-	public void setDistrict(int district) {
+	public void setDistrict(String district) {
 		this.district = district;
 	}
-	public int getRow() {
-		return row;
+	public String getLocation() {
+		return location;
 	}
-	public void setRow(int row) {
-		this.row = row;
+	public void setLocation(String location) {
+		this.location = location;
 	}
-	public int getShelf() {
-		return shelf;
-	}
-	public void setShelf(int shelf) {
-		this.shelf = shelf;
-	}
-	public int getPoint() {
-		return point;
-	}
-	public void setPoint(int point) {
-		this.point = point;
-	}
+	
+	
+	
+	
+	
+
 	
 	
 
