@@ -8,13 +8,15 @@ public class GatheringDocVO extends Doc{
 	Double money;
 	String courier_name;
 	ArrayList<String> itemIDs;
-	public GatheringDocVO(String GatheringDocID,Date date,Double money, String courier_name,ArrayList<String> itemIDs) {
+	String account;
+	public GatheringDocVO(String GatheringDocID,Date date,Double money, String courier_name,ArrayList<String> itemIDs,String account) {
 		super();
 		this.ID=GatheringDocID;
 		this.money = money;
 		this.courier_name = courier_name;
 		this.itemIDs = itemIDs;
 		this.date = date;
+		this.account=account;
 	}
 	public Date getDate() {
 		return date;

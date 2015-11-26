@@ -307,10 +307,10 @@ public double getCourierMoney(String courier_ID);
 	}
 
 	@Override
-	public void createPayDoc(String payDocID, double money, String account,
+	public void createPayDoc(String payDocID, double money,String payMen, String account,
 			PayType type,String back) {
 		Date date=new Date();
-		financeDataService.createPayDoc(payDocID,date, money, account, type, back);
+		financeDataService.createPayDoc(payDocID,date, money,payMen, account, type, back);
 		
 	}
 

@@ -66,7 +66,7 @@ public interface FinanceLogicService {
 	public void setStaffList(ArrayList<StaffPO> staffList);//原理同deleteInstitution
 	public String getStaffSalaryName(String staffID);////工资管理要显示人员的名字
 	public double calculateSalary(String staffID);
-	public void createPayDoc(String payDocID, double money,String account, PayType type,String back);
+	public void createPayDoc(String payDocID, double money,String payMen,String account, PayType type,String back);
 	public PayDocVO getPayDocVO(String PayDocID);//支持预览收款单
 	public void resetSalary();
 	public void resetRent();

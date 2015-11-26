@@ -10,13 +10,15 @@ public class GatheringDocPO extends Doc {
 	Double money;
 	String courier_name;
 	ArrayList<String> itemIDs;
-	public GatheringDocPO(String GatheringDocID,Date date,Double money, String courier_name,ArrayList<String> itemIDs) {
+	String account;
+	public GatheringDocPO(String GatheringDocID,Date date,Double money, String courier_name,ArrayList<String> itemIDs,String account) {
 		super();
 		this.ID=GatheringDocID;
 		this.money = money;
 		this.courier_name = courier_name;
 		this.itemIDs = itemIDs;
 		this.date = date;
+		this.account=account;
 	}
 	public Date getDate() {
 		return date;
@@ -41,6 +43,12 @@ public class GatheringDocPO extends Doc {
 	}
 	public void setItemIDs(ArrayList<String> itemIDs) {
 		this.itemIDs = itemIDs;
+	}
+	public String getAccount() {
+		return account;
+	}
+	public void setAccount(String account) {
+		this.account = account;
 	}
 	
 	

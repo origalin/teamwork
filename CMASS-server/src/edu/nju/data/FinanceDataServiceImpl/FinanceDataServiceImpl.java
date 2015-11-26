@@ -3,6 +3,8 @@ package edu.nju.data.FinanceDataServiceImpl;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -14,6 +16,7 @@ import edu.nju.po.GatheringDocPO;
 import edu.nju.po.PayDocPO;
 import edu.nju.po.PayType;
 import edu.nju.po.PositionPO;
+import edu.nju.tools.Time;
 
 public class FinanceDataServiceImpl extends UnicastRemoteObject implements
 		FinanceDataService {
@@ -22,71 +25,14 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements
 		// TODO Auto-generated constructor stub
 	}
 
-	public static void main(String[] args) throws RemoteException {
+	public static void main(String[] args) throws RemoteException, ParseException {		 
 		FinanceDataServiceImpl temp = new FinanceDataServiceImpl();
-		/*
-		 * 得到未审批付款单测试成功
-		ArrayList<PayDocPO> payDocList=temp.getunchekedPayDocList();
-		for(PayDocPO po:payDocList){
-			System.out.println(po.getID());
-			System.out.println(po.getDate());
-			System.out.println(po.getMoney());
-			System.out.println(po.getPayer());
-			System.out.println(po.getAccount());
-			System.out.println(po.getType());
-			System.out.println(po.getBack());
-		}
-		*/
-		/*
-		 * 得到未审批收款单测试成功
-		ArrayList<GatheringDocPO> GatheringDocList=temp.getunchekedGatheringDocList();
-		for(GatheringDocPO po:GatheringDocList){
-			System.out.println(po.getID());
-			System.out.println(po.getDate());
-			System.out.println(po.getMoney());
-			System.out.println(po.getCourier_name());
-			System.out.println(po.getItemIDs());
-		}
-		*/
-		/*
-		 可以成功设置付款单为已审批
-		PayDocPO po=new PayDocPO("11000002",new Date(),5000,"Michael Jackson","6228480010200900000",PayType.RENT,"...");
-		temp.savePayDocPO(po);
-		*/
-		//temp.addAccountPO("丁二玉");
-		//temp.deleteAccountPO("丁二玉");
-		/*
-		public void modifyAccountPO(String oldAccountName,String newAccountName);
-		public AccountPO checkAccountPO(String accountName);
-		public ArrayList<PayDocPO> getPayDoc(Date startDate, Date endDate);
-		public ArrayList<GatheringDocPO> getGatheringDoc(Date startDate,Date endDate); 
-		public double getTotalPayment();//生成总支出
-		public double getTotalIncome();//无参的是为了生成总收入
-		//生成付款单
-		public void createPayDoc(String payDocID,Date date, double money,	String account, PayType type,String back);
-		public PayDocPO getPayDocPO(String PayDocID);//支持预览
-		//生成收款单
-		public void createGatheringDoc(String GatheringDocID,Date date,Double money, String courier_name,ArrayList<String> itemIDs);
-		public GatheringDocPO getGatheringDocPO(String GatheringDocID);//支持预览
-		*/
-		//temp.modifyAccountPO("dingeryu","lizhimu");
-		/*
-		AccountPO account=temp.checkAccountPO("linqing");
-		System.out.println(account.getName());
-		System.out.println(account.getBalance());
-		*/
-		/*
-		System.out.println(temp.getTotalPayment());
-		*/
-		temp.createPayDoc("11000004", new Date(), 400,"1412" , PayType.RENT,"新建");
 	}
 
 	// 提供给审批单据的供接口
 	@Override
 	public ArrayList<PayDocPO> getunchekedPayDocList() {
 		ArrayList<PayDocPO> uncheckedPayDocList = new ArrayList<PayDocPO>();
-		// String
-		// sql="SELECT 付款单号,日期,钱,付款人,付款账号,付款类型,备注,是否被审批 FROM PayDocPOList WHERE 是否被审批=no";
 		String sql = "SELECT 付款单号,日期,钱,付款人,付款账号,付款类型,备注 FROM PayDocPOList WHERE 是否被审批='false';";
 		SQL.databaseQuery(sql);
 		ArrayList<String> payDocno = new ArrayList<String>();
@@ -135,19 +81,21 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements
 	@Override
 	public ArrayList<GatheringDocPO> getunchekedGatheringDocList() {
 		ArrayList<GatheringDocPO> uncheckedGatheringDocList = new ArrayList<GatheringDocPO>();
-		String sql = "SELECT 收款单号,日期,钱,快递员,寄件单编号列表 FROM GatheringDocPOList WHERE 是否被审批='false';";
+		String sql = "SELECT 收款单号,日期,钱,快递员,寄件单编号列表,收款账号 FROM GatheringDocPOList WHERE 是否被审批='false';";
 		SQL.databaseQuery(sql);
 		ArrayList<String> GatheringDocno = new ArrayList<String>();
 		ArrayList<Date> date = new ArrayList<Date>();
 		ArrayList<Double> money = new ArrayList<Double>();
 		ArrayList<String> courier = new ArrayList<String>();
 		ArrayList<ArrayList<String>> sendDocnoList = new ArrayList<ArrayList<String>>();
+		ArrayList<String> account=new ArrayList<String>();
 		try {
 			while (SQL.rs.next()) {
 				GatheringDocno.add(SQL.rs.getString("收款单号"));
 				date.add(SQL.rs.getDate("日期"));
 				money.add(SQL.rs.getDouble("钱"));
 				courier.add(SQL.rs.getString("快递员"));
+				account.add(SQL.rs.getString("收款账号"));
 				// 接下来我们把寄件单列表从String转为ArryaList
 				String temp = SQL.rs.getString("寄件单编号列表");
 				String[] split = temp.split(",");
@@ -165,7 +113,7 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements
 		for (int i = 0; i < GatheringDocno.size(); i++) {
 			GatheringDocPO temp = new GatheringDocPO(GatheringDocno.get(i),
 					date.get(i), money.get(i), courier.get(i),
-					sendDocnoList.get(i));
+					sendDocnoList.get(i),account.get(i));
 			uncheckedGatheringDocList.add(temp);
 		}
 		SQL.closeDatabase();
@@ -239,16 +187,94 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements
 
 	@Override
 	public ArrayList<PayDocPO> getPayDoc(Date startDate, Date endDate) {
-		// TODO Auto-generated method stub
-		//select * from tb where riqi between '2009-01-22 00:00:00' and '2009-01-22 23:59:59'  
-		return null;
+		ArrayList<PayDocPO> uncheckedPayDocList = new ArrayList<PayDocPO>();
+		String sql = "SELECT 付款单号,日期,钱,付款人,付款账号,付款类型,备注 FROM PayDocPOList WHERE 日期  BETWEEN '"+Time.toDaysTime(startDate)+"' AND '"+Time.toDaysTime(endDate)+"';";
+		SQL.databaseQuery(sql);
+		ArrayList<String> payDocno = new ArrayList<String>();
+		ArrayList<Date> date = new ArrayList<Date>();
+		ArrayList<Double> money = new ArrayList<Double>();
+		ArrayList<String> payer = new ArrayList<String>();
+		ArrayList<String> account = new ArrayList<String>();
+		ArrayList<PayType> payType = new ArrayList<PayType>();
+		ArrayList<String> back = new ArrayList<String>();
+		// ArrayList<String> isChecked=new ArrayList<String>();
+		try {
+			while (SQL.rs.next()) {
+				payDocno.add(SQL.rs.getString("付款单号"));
+				date.add(SQL.rs.getDate("日期"));
+				money.add(SQL.rs.getDouble("钱"));
+				payer.add(SQL.rs.getString("付款人"));
+				account.add(SQL.rs.getString("付款账号"));
+				back.add(SQL.rs.getString("备注"));
+				// PayType是一个enum,所以我们先把string转成对应的payType再进行添加
+				String temp = SQL.rs.getString("付款类型");
+				if (temp.equals("租金")) {
+					payType.add(PayType.RENT);
+				} else if (temp.equals("运费")) {
+					payType.add(PayType.FREIGHT);
+				} else {
+					payType.add(PayType.SALARY);
+				}
+
+				// isChecked.add(SQL.rs.getString("是否被审批"));
+			}
+		} catch (SQLException e) {
+			System.out.println("付款单查询错误");
+			e.printStackTrace();
+		}
+		for (int i = 0; i < payDocno.size(); i++) {
+			PayDocPO temp = new PayDocPO(payDocno.get(i), date.get(i),
+					money.get(i), payer.get(i), account.get(i), payType.get(i),
+					back.get(i));
+			uncheckedPayDocList.add(temp);
+		}
+
+		SQL.closeDatabase();
+		return uncheckedPayDocList;
 	}
 
 	@Override
 	public ArrayList<GatheringDocPO> getGatheringDoc(Date startDate,
 			Date endDate) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<GatheringDocPO> uncheckedGatheringDocList = new ArrayList<GatheringDocPO>();
+		String sql = "SELECT 收款单号,日期,钱,快递员,寄件单编号列表,收款账号 FROM GatheringDocPOList WHERE 日期  BETWEEN '"+Time.toDaysTime(startDate)+"' AND '"+Time.toDaysTime(endDate)+"';";
+		//SELECT prod_name, prod_price FROM Products WHERE prod_price BETWEEN 5 AND 10;
+		SQL.databaseQuery(sql);
+		ArrayList<String> GatheringDocno = new ArrayList<String>();
+		ArrayList<Date> date = new ArrayList<Date>();
+		ArrayList<Double> money = new ArrayList<Double>();
+		ArrayList<String> courier = new ArrayList<String>();
+		ArrayList<ArrayList<String>> sendDocnoList = new ArrayList<ArrayList<String>>();
+		ArrayList<String> account=new ArrayList<String>();
+		try {
+			while (SQL.rs.next()) {
+				GatheringDocno.add(SQL.rs.getString("收款单号"));
+				date.add(SQL.rs.getDate("日期"));
+				money.add(SQL.rs.getDouble("钱"));
+				courier.add(SQL.rs.getString("快递员"));
+				account.add(SQL.rs.getString("收款账号"));
+				// 接下来我们把寄件单列表从String转为ArryaList
+				String temp = SQL.rs.getString("寄件单编号列表");
+				String[] split = temp.split(",");
+				ArrayList<String> numberList = new ArrayList<String>();
+				for (String temp1 : split) {
+					numberList.add(temp1);
+				}
+				sendDocnoList.add(numberList);
+
+			}
+		} catch (SQLException e) {
+			System.out.println("收款单查询错误");
+			e.printStackTrace();
+		}
+		for (int i = 0; i < GatheringDocno.size(); i++) {
+			GatheringDocPO temp = new GatheringDocPO(GatheringDocno.get(i),
+					date.get(i), money.get(i), courier.get(i),
+					sendDocnoList.get(i),account.get(i));
+			uncheckedGatheringDocList.add(temp);
+		}
+		SQL.closeDatabase();
+		return uncheckedGatheringDocList;
 	}
 
 	@Override
@@ -285,10 +311,10 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements
 
 	// 生成付款单
 	@Override
-	public void createPayDoc(String payDocID,Date date, double money, String account,
+	public void createPayDoc(String payDocID,Date date, double money,String payMen, String account,
 			PayType type, String back) {
+
 		String payType;
-	    DateFormat df1 = DateFormat.getDateInstance();//日期格式，精确到日
 		if (type.equals(PayType.RENT)) {
 			payType = "租金";
 		} else if (type.equals(PayType.FREIGHT)) {
@@ -297,8 +323,9 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements
 			payType = "工资";
 		}
 		String sql = "INSERT INTO PayDocPOList VALUES('" + payDocID + "','"
-				+df1.format(date)+ "'," + money + ",'" + account
-				+ "','" + payType + "','" + back + "';";
+				+Time.toDaysTime(date)+ "','" + money + "','" + payMen+"','"+account
+				+ "','" + payType + "','" + back + "','false');";
+		System.out.println(sql);
 		SQL.databaseUpdate(sql);
 		SQL.closeDatabase();
 
@@ -311,6 +338,7 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements
 				+ PayDocID + "';";
 		SQL.databaseQuery(sql);
 		try {
+			if(SQL.rs.next()){
 			String temp = SQL.rs.getString("付款类型");
 			PayType payType;
 			if (temp.equals("租金")) {
@@ -325,6 +353,7 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements
 					SQL.rs.getString("付款人"), SQL.rs.getString("付款账号"), payType,
 					SQL.rs.getString("备注"));
 			return PO;
+			}
 		} catch (SQLException e) {
 			System.out.println("付款单预览出错");
 			e.printStackTrace();
@@ -336,26 +365,28 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements
 	// 生成收款单
 	@Override
 	public void createGatheringDoc(String GatheringDocID,Date date, Double money,
-			String courier_name, ArrayList<String> itemIDs) {
+			String courier_name, ArrayList<String> itemIDs,String account) {
 		DateFormat df1 = DateFormat.getDateInstance();//日期格式，精确到日
 		String items = "";
 		for (String temp : itemIDs) {
 			items += temp + ",";
 		}
-		items = items.substring(0, itemIDs.size() - 1);// 删除最后一个逗号
+		items = items.substring(0,items.length() - 1);// 删除最后一个逗号
 		String sql = "INSERT INTO GatheringDocPOList VALUES('" + GatheringDocID
-				+ "','" +df1.format(date) + "'," + money + ",'"
-				+ courier_name + "','" + items + "';";
+				+ "','" +Time.toDaysTime(date)+ "','" + money + "','"
+				+ courier_name + "','" + items + "','"+account+"','false');";
+		System.out.println(sql);
 		SQL.databaseUpdate(sql);
 		SQL.closeDatabase();
 	}
 
 	@Override
 	public GatheringDocPO getGatheringDocPO(String GatheringDocID) {
-		String sql = "SELECT 收款单号,日期,钱,快递员,寄件单编号列表 FROM GatheringDocPOList WHERE 收款单号='"
+		String sql = "SELECT 收款单号,日期,钱,快递员,寄件单编号列表,收款账号 FROM GatheringDocPOList WHERE 收款单号='"
 				+ GatheringDocID + "';";
 		SQL.databaseQuery(sql);
 		try {
+			if(SQL.rs.next()){
 			String temp = SQL.rs.getString("寄件单编号列表");
 			String[] split = temp.split(",");
 			ArrayList<String> numberList = new ArrayList<String>();
@@ -364,8 +395,9 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements
 			}
 			GatheringDocPO PO = new GatheringDocPO(SQL.rs.getString("收款单号"),
 					SQL.rs.getDate("日期"), SQL.rs.getDouble("钱"),
-					SQL.rs.getString("快递员"), numberList);
+					SQL.rs.getString("快递员"), numberList,SQL.rs.getString("收款账号"));
 			return PO;
+			}
 		} catch (SQLException e) {
 			System.out.println("付款单预览出错");
 			e.printStackTrace();
@@ -396,7 +428,7 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements
 	@Override
 	public ArrayList<String> getAccountList() {
 		ArrayList<String> accountNameList=new ArrayList<String>();
-		String sql = "SELECT 账户名称FROM account;";
+		String sql = "SELECT 账户名称 FROM account;";
 		SQL.databaseQuery(sql);
 		try {
 			while(SQL.rs.next()){
@@ -413,7 +445,26 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements
 
 	@Override
 	public void addMoney(String accountName, double money) {
-		String sql = "UPDATE account SET 账户余额='"
+		double currentMoney=0;
+		String s= "SELECT 账户余额 FROM account WHERE 账户名称='" + accountName
+				+ "';";
+		SQL.databaseQuery(s);
+		try {
+			if(SQL.rs.next()){
+			double temp = SQL.rs.getDouble("账户余额");
+			SQL.closeDatabase();
+			currentMoney=temp;
+			}
+		} catch (SQLException e) {
+			System.out.println("账户查询错误");
+			e.printStackTrace();
+			SQL.closeDatabase();
+		}
+		
+		currentMoney+=money;
+		
+		
+		String sql = "UPDATE account SET 账户余额='"+currentMoney
 				+ "'WHERE 账户名称='" + accountName + "';";
 		SQL.databaseUpdate(sql);
 		SQL.closeDatabase();
@@ -421,8 +472,9 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements
 	}
 
 	@Override
-	public void minusMoney(String accountName, String money) {
-		// TODO Auto-generated method stub
+	public void minusMoney(String accountName, double money) {
+		double temp=-money;
+		this.addMoney(accountName,temp);
 		
 	}
 
