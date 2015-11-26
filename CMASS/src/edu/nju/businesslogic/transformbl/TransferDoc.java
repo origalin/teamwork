@@ -148,7 +148,7 @@ public class TransferDoc implements TransferDocService{
 	@Override
 	public TransferDocPO geTransferDocPOByID(String ID) {
 		// TODO Auto-generated method stub
-		return null;
+		return transferDataService.getTransferDocPO(ID);
 	}
 
 	public ArrayList<TransferDocPO> getUnPaidTransferDocPOs() {

@@ -66,7 +66,7 @@ public class CollectionDataServiceImpl extends UnicastRemoteObject implements Co
 		sumPrice = po.getSumPrice();
 		courier_Type = po.getCourier_Type();
 		time = po.getTime();
-		String sql = "insert into sendDoc (id,sName, sAddress, sCity, sUnit, "
+		String sql = "replace into sendDoc (id,sName, sAddress, sCity, sUnit, "
 				+ "sTelePhone, sMobilePhone, rName, rAddress, rCity, rUnit, "
 				+ "rTelePhone, rMobilePhone, itemNum, weight, lehgth,wideth,height, item_type, "
 				+ "packageType, sumPrice, courier_Type, date, time, checked) " + "values('" + ID + "','" + sName + "','"
@@ -74,7 +74,7 @@ public class CollectionDataServiceImpl extends UnicastRemoteObject implements Co
 				+ rName + "','" + rAddress + "'," + "'" + rCity + "','" + rUnit + "','" + rTelePhone + "','"
 				+ rMobilePhone + "','" + itemNum + "'," + "'" + weight + "','" + volume[0] + "','" + volume[1] + "','"
 				+ volume[2] + "','" + item_type + "'," + "'" + packageType + "','" + sumPrice + "','" + courier_Type
-				+ "','" + date + "','" + time + "'," + "'" + checked + "');";
+				+ "','" + Time.toDaysTime(date) + "','" + time + "'," + "'" + checked + "');";
 		System.out.println(sql);
 		SQL.databaseUpdate(sql);
 		SQL.closeDatabase();
@@ -102,7 +102,7 @@ public class CollectionDataServiceImpl extends UnicastRemoteObject implements Co
 	@Override
 	public void changeSequence(String sequence) {
 		// TODO Auto-generated method stub
-		String sql = "UPDATE history SET Sequence='" + sequence + "'where Kind=SendDoc;";
+		String sql = "UPDATE SequenceTable SET Sequence='" + sequence + "'where Kind=SendDoc;";
 		SQL.databaseUpdate(sql);
 		SQL.closeDatabase();
 	}
@@ -180,7 +180,7 @@ public class CollectionDataServiceImpl extends UnicastRemoteObject implements Co
 			for(String s : str) {
 				itemIDs+=s+" ";
 			}
-			String cmd = "insret into CourieMoney(courierID,money,itemIDs) values('"+courierID+"','"+money+"','"+itemIDs+"')";
+			String cmd = "replace into CourieMoney(courierID,money,itemIDs) values('"+courierID+"','"+money+"','"+itemIDs+"')";
 			SQL.databaseUpdate(cmd);
 			SQL.closeDatabase();
 		}

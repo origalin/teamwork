@@ -12,7 +12,9 @@ import edu.nju.businesslogic.infobl.Institution;
 import edu.nju.businesslogic.transformbl.OverDoc;
 import edu.nju.businesslogicservice.collectionlogicservice.CollectionLogicService;
 import edu.nju.data.collectionDataServiceImpl.CollectionDataServiceImpl;
+import edu.nju.data.transferDataServiceImpl.TransferDataServiceImpl;
 import edu.nju.dataservice.collectiondataservice.CollectionDataService;
+import edu.nju.dataservice.transformdataservice.TransferDataService;
 import edu.nju.po.HistoryTimePO;
 import edu.nju.po.PositionPO;
 import edu.nju.po.SendDocPO;
@@ -24,12 +26,17 @@ public class Collectionbl implements CollectionLogicService{
 	String institutionID;
 	String staffID;
 	CollectionDataService collectionData;
+	TransferDataService transferData;
+	Institution institution;
 	OverDoc overDoc;
 
 	public Collectionbl( String staffID) throws RemoteException {
 		super();
 		this.staffID = staffID;
+		institution = new Institution();
 		collectionData = new CollectionDataServiceImpl();
+		this.institutionID = institution.getInstitutionID(staffID);
+		transferData = new TransferDataServiceImpl(institutionID);
 		overDoc = new OverDoc(staffID);
 	}
 	
@@ -79,10 +86,10 @@ public class Collectionbl implements CollectionLogicService{
 	@Override
 	public double getCourierMoney(String courier) {
 		// TODO 自动生成的方法存根
-		return collectionData.getCourierMoney(courier);
+		return collectionData.getCourierMoneyPO(courier).getCourierMoney(courier);
 	}
 	private void appendCourierMoney(String courierID){
-		collectionData.appendCourierMoney(staffID, po.getID(), po.getSumPrice());
+		collectionData.getCourierMoneyPO(courierID).appendMoney(staffID, po.getID(), po.getSumPrice());
 	}
 
 
@@ -151,7 +158,7 @@ public class Collectionbl implements CollectionLogicService{
 	@Override
 	public ArrayList<HistoryTimePO> getHistoryPO(String sCity,String rCity) {
 		// TODO 自动生成的方法存根
-		return collectionData.getHistoryPO(sCity, rCity);
+		return transferData.getHistoryTimePO(sCity, rCity);
 	}
 
 	@Override
@@ -185,13 +192,13 @@ public class Collectionbl implements CollectionLogicService{
 	@Override
 	public ArrayList<String> getSendDocsByID(String courier_ID) {
 		// TODO Auto-generated method stub
-		return collectionData.getSendDocIDList(courier_ID);
+		return collectionData.getCourierMoneyPO(courier_ID).getCourierSendDoc(courier_ID);
 	}
 
 	@Override
 	public void saveSendDocCreateGatheringDoc(String courierID) {
 		// TODO Auto-generated method stub
-		collectionData.cleanCourierMessage(courierID);
+		collectionData.getCourierMoneyPO(courierID).cleanCourierMessage(courierID);
 	}
 	
 }

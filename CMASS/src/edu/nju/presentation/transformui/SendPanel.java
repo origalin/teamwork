@@ -5,6 +5,7 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -136,7 +137,7 @@ public class SendPanel extends JPanel{
 		gbc_createButtom.gridy = 5;
 		add(createButtom, gbc_createButtom);
 	}
-	private void  intialize() {
+	private void  intialize() throws RemoteException {
 		for(int i = toSendModel.getRowCount();i>0;i--) {
 			toSendModel.removeRow(i);
 		}

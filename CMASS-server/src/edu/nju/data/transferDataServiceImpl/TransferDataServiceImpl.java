@@ -1,8 +1,12 @@
 package edu.nju.data.transferDataServiceImpl;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 
+import edu.nju.data.database.SQL;
 import edu.nju.dataservice.transformdataservice.TransferDataService;
+import edu.nju.po.HistoryTimePO;
 import edu.nju.po.OverDocPO;
 import edu.nju.po.TransferDocPO;
 import edu.nju.po.YArrivalDocPO;
@@ -10,8 +14,10 @@ import edu.nju.po.YDeliverDocPO;
 import edu.nju.po.YLoadDocPO;
 import edu.nju.po.ZArrivalDocPO;
 import edu.nju.po.ZLoadDocPO;
+import edu.nju.tools.StringTools;
+import sun.launcher.resources.launcher;
 
-public class TransferDataServiceImpl implements TransferDataService{
+public class TransferDataServiceImpl   implements TransferDataService{
 	String institutionID;
 	public TransferDataServiceImpl(String institutionID) {
 		// TODO Auto-generated constructor stub
@@ -20,19 +26,73 @@ public class TransferDataServiceImpl implements TransferDataService{
 	@Override
 	public void saveTransferDocPO(TransferDocPO po) {
 		// TODO Auto-generated method stub
-		
+		String ID;
+		Date date;
+		String planeNum;
+		String TrainNum;
+		String CarNum;
+		String tranceID;
+		String corriage;
+		String container;
+		String from;
+		String targetCity;
+		String itemIDs;
+		double price;
+		int checked;
+		int paid;
+		ID = po.getID();
+		date = po.getDate();
+		planeNum = po.getPlaneNum();
+		TrainNum = po.getTrainNum();
+		CarNum = po.getCarNum();
+		tranceID = po.getTranceID();
+		corriage = po.getCorriage();
+		container = po.getContainer();
+		from = po.getFrom();
+		targetCity = po.getTargetCity();
+		itemIDs = StringTools.toAString(po.getItemIDs());
+		price = po.getPrice();
+		if (po.isPaid()) {
+			paid = 1;
+		} else {
+			paid = 0;
+		}
+		if (po.isChecked()) {
+			checked = 1;
+		} else {
+			checked = 0;
+		}
+
+		String str = "replace into TransferID(ID,Date,PlaneNum,TrainNum,CarNum,tranceID,corriage,container,from,targetCity,itemIDs,price,checked,paid) "
+		+ "values('"+ID+"','"+date+"','"+planeNum+"','"+TrainNum+"','"+CarNum+"',"
+		+ "'"+tranceID+"','"+corriage+"','"+container+"','"+from+"','"+targetCity+"',"
+		+ "'"+itemIDs+"','"+price+"','"+checked+"','"+paid+"');";
+		SQL.databaseUpdate(str);
+		SQL.closeDatabase();
 	}
 
 	@Override
 	public String getTransferSequence() {
 		// TODO Auto-generated method stub
-		return null;
+		String str = "get Sequence from SequenceTable where Kind = 'TransferDoc';";
+		String ret = "";
+		SQL.databaseQuery(str);
+		try {
+			ret =  SQL.rs.getString("Sequence");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		SQL.closeDatabase();
+		return ret;
 	}
 
 	@Override
 	public void changeTransferSequence(String TransferSequence) {
 		// TODO Auto-generated method stub
-		
+		String str = "update SequenceTable set Sequence = '"+TransferSequence+"' where Kind = 'TransferDoc'";
+		SQL.databaseUpdate(str);
+		SQL.closeDatabase();
 	}
 
 	@Override
@@ -44,13 +104,25 @@ public class TransferDataServiceImpl implements TransferDataService{
 	@Override
 	public String getZLoadSequence() {
 		// TODO Auto-generated method stub
-		return null;
+		String str = "get Sequence from SequenceTable where Kind = 'ZLoadDoc';";
+		String ret = "";
+		SQL.databaseQuery(str);
+		try {
+			ret =  SQL.rs.getString("Sequence");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		SQL.closeDatabase();
+		return ret;
 	}
 
 	@Override
 	public void changeZLoadSequence(String ZLoadSequence) {
 		// TODO Auto-generated method stub
-		
+		String str = "update SequenceTable set Sequence = '"+ZLoadSequence+"' where Kind = 'ZLoadDoc'";
+		SQL.databaseUpdate(str);
+		SQL.closeDatabase();
 	}
 
 	@Override
@@ -62,13 +134,25 @@ public class TransferDataServiceImpl implements TransferDataService{
 	@Override
 	public String getZArrivalSequence() {
 		// TODO Auto-generated method stub
-		return null;
+		String str = "get Sequence from SequenceTable where Kind = 'ZArrivalDoc';";
+		String ret = "";
+		SQL.databaseQuery(str);
+		try {
+			ret =  SQL.rs.getString("Sequence");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		SQL.closeDatabase();
+		return ret;
 	}
 
 	@Override
 	public void changeZArrivalSequence(String ZArrivalSequence) {
 		// TODO Auto-generated method stub
-		
+		String str = "update SequenceTable set Sequence = '"+ZArrivalSequence+"' where Kind = 'ZArrivalDoc'";
+		SQL.databaseUpdate(str);
+		SQL.closeDatabase();
 	}
 
 	@Override
@@ -80,13 +164,25 @@ public class TransferDataServiceImpl implements TransferDataService{
 	@Override
 	public String getYArrivalSequence() {
 		// TODO Auto-generated method stub
-		return null;
+		String str = "get Sequence from SequenceTable where Kind = 'YArrivalDoc';";
+		String ret = "";
+		SQL.databaseQuery(str);
+		try {
+			ret =  SQL.rs.getString("Sequence");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		SQL.closeDatabase();
+		return ret;
 	}
 
 	@Override
 	public void changeYArrivalSequence(String YArrivalSequence) {
 		// TODO Auto-generated method stub
-		
+		String str = "update SequenceTable set Sequence = '"+YArrivalSequence+"' where Kind = 'YArrivalDoc'";
+		SQL.databaseUpdate(str);
+		SQL.closeDatabase();
 	}
 
 	@Override
@@ -98,13 +194,25 @@ public class TransferDataServiceImpl implements TransferDataService{
 	@Override
 	public String getYDeliverSequence() {
 		// TODO Auto-generated method stub
-		return null;
+		String str = "get Sequence from SequenceTable where Kind = 'YDeliverDoc';";
+		String ret = "";
+		SQL.databaseQuery(str);
+		try {
+			ret =  SQL.rs.getString("Sequence");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		SQL.closeDatabase();
+		return ret;
 	}
 
 	@Override
 	public void changeYDeliverSequence(String YDeliverSequence) {
 		// TODO Auto-generated method stub
-		
+		String str = "update SequenceTable set Sequence = '"+YDeliverSequence+"' where Kind = 'TDeliverDoc'";
+		SQL.databaseUpdate(str);
+		SQL.closeDatabase();
 	}
 
 	@Override
@@ -116,18 +224,63 @@ public class TransferDataServiceImpl implements TransferDataService{
 	@Override
 	public String getOverSequence() {
 		// TODO Auto-generated method stub
-		return null;
+		String str = "get Sequence from SequenceTable where Kind = 'OverDoc';";
+		String ret = "";
+		SQL.databaseQuery(str);
+		try {
+			ret =  SQL.rs.getString("Sequence");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		SQL.closeDatabase();
+		return ret;
 	}
 
 	@Override
 	public void changeOverSequence(String OverSequence) {
 		// TODO Auto-generated method stub
-		
+		String str = "update SequenceTable set Sequence = '"+OverSequence+"' where Kind = 'OverDoc'";
+		SQL.databaseUpdate(str);
+		SQL.closeDatabase();
 	}
 
 	@Override
 	public TransferDocPO getTransferDocPO(String TransferDocID) {
 		// TODO Auto-generated method stub
+		String ID = null;
+		Date date = null;
+		String planeNum= null;
+		String TrainNum= null;
+		String CarNum= null;
+		String tranceID= null;
+		String corriage= null;
+		String container= null;
+		String from= null;
+		String targetCity= null;
+		String[] itemIDs= null;
+		double price = 0;
+		String str = "select * from TransferDoc where ID = '"+TransferDocID+"'";
+		SQL.databaseQuery(str);
+		try {
+			while (SQL.rs.next()) {
+				ID = SQL.rs.getString("ID");
+				date = SQL.rs.getDate("date");
+				planeNum = SQL.rs.getString("planeNum");
+				TrainNum = SQL.rs.getString("TrainNum");
+				CarNum = SQL.rs.getString("CarNum");
+				tranceID = SQL.rs.getString("tranceID");
+				corriage = SQL.rs.getString("corriage");
+				container = SQL.rs.getString("container");
+				from = SQL.rs.getString("from");
+				targetCity = SQL.rs.getString("targetCity");
+				itemIDs = SQL.rs.getString("itemIDs").split(" ");
+				price = SQL.rs.getDouble("price");
+			}
+			return new TransferDocPO(ID, date, planeNum, TrainNum, CarNum, tranceID, corriage, container, from, targetCity, itemIDs, price);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		return null;
 	}
 
@@ -206,37 +359,73 @@ public class TransferDataServiceImpl implements TransferDataService{
 	@Override
 	public String getTransferID() {
 		// TODO Auto-generated method stub
-		return null;
+		String str = "get Sequence from SequenceTable where Kind = 'TransferID';";
+		String ret = "";
+		SQL.databaseQuery(str);
+		try {
+			ret =  SQL.rs.getString("Sequence");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		SQL.closeDatabase();
+		return ret;
 	}
 
 	@Override
 	public String getTransferID_Plain() {
 		// TODO Auto-generated method stub
-		return null;
+		String str = "get Sequence from SequenceTable where Kind = 'TransferID_Plain';";
+		String ret = "";
+		SQL.databaseQuery(str);
+		try {
+			ret =  SQL.rs.getString("Sequence");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		SQL.closeDatabase();
+		return ret;
 	}
 
 	@Override
 	public String getTransferID_Train() {
 		// TODO Auto-generated method stub
-		return null;
+		String str = "get Sequence from SequenceTable where Kind = 'TransferID_Train';";
+		String ret = "";
+		SQL.databaseQuery(str);
+		try {
+			ret =  SQL.rs.getString("Sequence");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		SQL.closeDatabase();
+		return ret;
 	}
 
 	@Override
 	public void changeTransferID(String transferDocID) {
 		// TODO Auto-generated method stub
-		
+		String str = "update SequenceTable set Sequence = '"+transferDocID+"' where Kind = 'TransferID'";
+		SQL.databaseUpdate(str);
+		SQL.closeDatabase();
 	}
 
 	@Override
 	public void changeTransferID_Plain(String transferDocID) {
 		// TODO Auto-generated method stub
-		
+		String str = "update SequenceTable set Sequence = '"+transferDocID+"' where Kind = 'TransferID_Plain'";
+		SQL.databaseUpdate(str);
+		SQL.closeDatabase();
 	}
 
 	@Override
 	public void changeTransferID_Train(String transferDocID) {
 		// TODO Auto-generated method stub
-		
+		String str = "update SequenceTable set Sequence = '"+transferDocID+"' where Kind = 'TransferID_Train'";
+		SQL.databaseUpdate(str);
+		SQL.closeDatabase();
 	}
 	@Override
 	public ArrayList<TransferDocPO> getunPaidTransferDocPO() {
@@ -261,12 +450,34 @@ public class TransferDataServiceImpl implements TransferDataService{
 	@Override
 	public String getYLoadSequence() {
 		// TODO Auto-generated method stub
-		return null;
+		String str = "get Sequence from SequenceTable where Kind = 'TLoadDoc';";
+		String ret = "";
+		SQL.databaseQuery(str);
+		try {
+			ret =  SQL.rs.getString("Sequence");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		SQL.closeDatabase();
+		return ret;
 	}
 	@Override
-	public void changeYLoadSequence(String ZLoadSequence) {
+	public void changeYLoadSequence(String YLoadSequence) {
+		// TODO Auto-generated method stub
+		String str = "update SequenceTable set Sequence = '"+YLoadSequence+"' where Kind = 'YLoadDoc'";
+		SQL.databaseUpdate(str);
+		SQL.closeDatabase();
+	}
+	@Override
+	public void saveHistoryTimePO(HistoryTimePO po) {
 		// TODO Auto-generated method stub
 		
+	}
+	@Override
+	public ArrayList<HistoryTimePO> getHistoryTimePO(String sCity, String rCity) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

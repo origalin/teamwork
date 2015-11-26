@@ -48,4 +48,6 @@ public interface TransferDataService {
 	public ArrayList<TransferDocPO>getunPaidTransferDocPO();
 	public ArrayList<YLoadDocPO>getunPaidYLoadDocPO();
 	public ArrayList<ZLoadDocPO>getunPaidZLoadDocPO();
+	public void saveHistoryTimePO(HistoryTimePO po);
+	public ArrayList<HistoryTimePO> getHistoryTimePO(String sCity,String rCity);
 }

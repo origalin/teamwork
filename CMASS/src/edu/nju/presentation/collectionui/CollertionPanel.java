@@ -10,6 +10,7 @@ import java.awt.FlowLayout;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 
 import javax.swing.border.BevelBorder;
 
@@ -49,7 +50,7 @@ public class CollertionPanel extends JPanel{
 	private JTextField HeighthField;
 	private JTextField sUnitField;
 	private JTextField rUnitField_1;
-	public CollertionPanel(String staffID) {
+	public CollertionPanel(String staffID) throws RemoteException {
 		this.staffID = staffID;
 		sendType = -1;
 		weight = -1.0;

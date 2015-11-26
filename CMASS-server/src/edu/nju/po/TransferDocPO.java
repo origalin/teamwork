@@ -16,6 +16,23 @@ public class TransferDocPO extends Doc{
 	String[] itemIDs;
 	double price;
 	boolean paid;
+	public TransferDocPO() {};
+	public TransferDocPO(String ID,Date date, String planeNum, String trainNum, String carNum, String tranceID, String corriage,
+			String container, String from, String targetCity, String[] itemIDs, double price) {
+		super();
+		this.ID = ID;
+		this.date = date;
+		this.planeNum = planeNum;
+		TrainNum = trainNum;
+		CarNum = carNum;
+		this.tranceID = tranceID;
+		this.corriage = corriage;
+		this.container = container;
+		this.from = from;
+		this.targetCity = targetCity;
+		this.itemIDs = itemIDs;
+		this.price = price;
+	}
 	public boolean isPaid() {
 		return paid;
 	}
