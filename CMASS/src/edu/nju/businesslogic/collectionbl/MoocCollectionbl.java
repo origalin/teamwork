@@ -1,11 +1,12 @@
 package edu.nju.businesslogic.collectionbl;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import edu.nju.po.SendDocPO;
 
 public class MoocCollectionbl extends Collectionbl{
-	public MoocCollectionbl(String institutionID, String staffID) {
+	public MoocCollectionbl(String institutionID, String staffID) throws RemoteException {
 		super( staffID);
 		// TODO 自动生成的构造函数存根
 	}

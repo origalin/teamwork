@@ -1,5 +1,6 @@
 package edu.nju.businesslogic.collectionbl;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -25,7 +26,7 @@ public class Collectionbl implements CollectionLogicService{
 	CollectionDataService collectionData;
 	OverDoc overDoc;
 
-	public Collectionbl( String staffID) {
+	public Collectionbl( String staffID) throws RemoteException {
 		super();
 		this.staffID = staffID;
 		collectionData = new CollectionDataServiceImpl();
@@ -164,7 +165,7 @@ public class Collectionbl implements CollectionLogicService{
 		double price = priceCalc(sCity, rCity, packageType, volume, weight,sendType);
 		Date date = new Date();
 		String id = sendType+institutionID.substring(0, 4)+getSequence();
-		po = new SendDocPO(id,sName, sAddress, sCity, sUnit, sTelePhone, sMobilePhone, rName, rAddress, rCity, rUnit, rTelePhone, rMobilePhone, itemNum, weight, volume, itemKind, packageType, price, packageType, date, time);
+		po = new SendDocPO(id,sName, sAddress, sCity, sUnit, sTelePhone, sMobilePhone, rName, rAddress, rCity, rUnit, rTelePhone, rMobilePhone, itemNum, weight, volume, itemKind, packageType, price, sendType, date, time);
 		return new SendDocVO(po);
 
 	}
