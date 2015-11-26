@@ -4,7 +4,7 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
 
 import edu.nju.businesslogic.collectionbl.Collectionbl;
@@ -21,11 +21,13 @@ import edu.nju.po.InstitutionPO;
 import edu.nju.po.OverDocPO;
 import edu.nju.po.PayDocPO;
 import edu.nju.po.PayType;
+import edu.nju.po.Post;
 import edu.nju.po.SendDocPO;
 import edu.nju.po.StaffPO;
 import edu.nju.po.TransferDocPO;
 import edu.nju.po.YLoadDocPO;
 import edu.nju.po.ZLoadDocPO;
+import edu.nju.tools.Time;
 import edu.nju.vo.AccountVO;
 import edu.nju.vo.GatheringDocVO;
 import edu.nju.vo.InstitutionVO;
@@ -119,15 +121,27 @@ public class financebl implements FinanceLogicService{
 
 	@Override
 	public ArrayList<PayDocVO> getPayDoc(String startTime, String endTime) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<PayDocVO>answer=new ArrayList<PayDocVO>();
+		Date startDate=Time.stringToDate(startTime);
+		Date endDate=Time.stringToDate(endTime);
+		ArrayList <PayDocPO> payDocList= financeDataService.getPayDoc(startDate, endDate);
+		for(PayDocPO po:payDocList){
+			answer.add(new PayDocVO(po.getID(),po.getDate(),po.getMoney(),po.getPayer(),po.getAccount(),po.getType(),po.getBack()));
+		}
+		return answer;
 	}
 
 	@Override
 	public ArrayList<GatheringDocVO> getGatheringDoc(String startTime,
 			String endTime) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<GatheringDocVO>answer=new ArrayList<GatheringDocVO>();
+		Date startDate=Time.stringToDate(startTime);
+		Date endDate=Time.stringToDate(endTime);
+		ArrayList <GatheringDocPO> GatheringDocList= financeDataService.getGatheringDoc(startDate, endDate);
+		for(GatheringDocPO po:GatheringDocList){
+			answer.add(new GatheringDocVO(po.getID(),po.getDate(),po.getMoney(),po.getCourier_name(),po.getItemIDs()));
+		}
+		return answer;
 	}
 
 //每次都是获取一系列的机构名称，填写完一部分的租金生成付款单后，在financebl的机构列表中删除这个已付款的机构
@@ -151,8 +165,7 @@ public class financebl implements FinanceLogicService{
 
 	@Override
 	public ArrayList<StaffPO> getUnpaidStaffList() {
-		// TODO Auto-generated method stub
-		return null;
+		return institution.getUnpaidStaffList();
 	}
 
 	@Override
@@ -260,6 +273,24 @@ public class financebl implements FinanceLogicService{
 	public void createGatheringDoc(String GatheringDocID, String courier_name) {
 		// TODO Auto-generated method stub
 		//系统只用知道快递员是谁就可以生成他的收款单，其他的信息需要从其他模块获取
+		//GatheringDocID,Date date,Double money, String courier_name,ArrayList<String> itemIDs)
+		/*
+		 public ArrayList<String> getSendDocsByID(String courier_ID);
+public void savecSendDocCreateGatheringDoc(String SendDocID);
+public double getCourierMoney(String courier_ID);
+其中第二个方法需要根据ID把一个用来检查该寄件单是否生成收款单的bool变量置为true
+
+		 */
+		/*
+		 public ArrayList<String> getSendDocsByID(String courier_ID);
+public void savecSendDocCreateGatheringDoc(String SendDocID);
+public double getCourierMoney(String courier_ID);
+其中第二个方法需要根据ID把一个用来检查该寄件单是否生成收款单的bool变量置为true
+
+		 */
+		Date date=new Date();
+		ArrayList
+		 financeDataService.createGatheringDoc(GatheringDocID,date, money, courier_name, itemIDs);
 	}
 
 	@Override
@@ -278,7 +309,8 @@ public class financebl implements FinanceLogicService{
 	@Override
 	public void createPayDoc(String payDocID, double money, String account,
 			PayType type,String back) {
-		financeDataService.createPayDoc(payDocID, money, account, type, back);
+		Date date=new Date();
+		financeDataService.createPayDoc(payDocID,date, money, account, type, back);
 		
 	}
 
@@ -287,9 +319,78 @@ public class financebl implements FinanceLogicService{
 		PayDocPO po= financeDataService.getPayDocPO(PayDocID);
 		return new PayDocVO(po.getID(),po.getDate(),po.getMoney(),po.getPayer(),po.getAccount(),po.getType(),po.getBack());
 	}
+
+	@Override
+	public String getStaffSalaryName(String staffID) {
+		return institution.getStaffName(staffID);
+	}
+	@Override
+	public double calculateSalary(String staffID) {
+		
+		// TODO Auto-generated method stub
+		/*
+		 第一步：获取这个员工的职位
+		 第二步：获取这个员工的工资策略（普通人员获得基础工资和奖金，快递员在以上的基础上获得提成的比例，司机在以上 的基础上获得每一次多少钱）
+		 第三步：计算这个员工的工资
+		 */
+		//StaffPO staff=institution.getStaff(staffID);
+		Post position=institution.getPosition(staffID);
+		if(position==Post.COURIER){
+			return calculateCourierSalary(staffID);
+		}else if(position==Post.Driver){
+			return calculateDriverSalary(staffID);
+		}else{
+			return calculateNormalSalary(staffID);
+		}
+		return 0;
+	}
+	
+	public double calculateCourierSalary(String staffID){
+		double base=institution.getBase(staffID);
+		double bonus=institution.getBonus(staffID);
+		double commision=institution.getPercentage()*;
+		return base+bonus+commision;
+	}
+	
+	public double calculateDriverSalary(String staffID){
+		double base=institution.getBase(staffID);
+		double bonus=institution.getBonus(staffID);
+		return base+bonus+institution.getDriverCommision()*;
+	}
+	
+	public double calculateNormalSalary(String staffID){
+		double base=institution.getBase(staffID);
+		double bonus=institution.getBonus(staffID);
+		return base+bonus;
+	}
+	
 	
 	public String getStaffName(){
 		return institution.getStaffName(staffID);
+	}
+	@Override
+	public void resetSalary() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void resetRent() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public ArrayList<String> getAccountList() {
+		return financeDataService.getAccountList();
+	}
+	@Override
+	public void addMoney(String accountName, double money) {
+		financeDataService.addMoney(accountName,money);
+		
+	}
+	@Override
+	public void minusMoney(String accountName, String money) {
+		financeDataService.minusMoney(accountName,money);
+		
 	}
 
 }

@@ -84,12 +84,7 @@ public class FinanceDataService_stub implements FinanceDataService{
 		return 0;
 	}
 
-	@Override
-	public void createPayDoc(String payDocID, double money, String account,
-			PayType type, String back) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 	@Override
 	public PayDocPO getPayDocPO(String PayDocID) {
@@ -97,17 +92,32 @@ public class FinanceDataService_stub implements FinanceDataService{
 		return null;
 	}
 
-	@Override
-	public void createGatheringDoc(String GatheringDocID, Double money,
-			String courier_name, ArrayList<String> itemIDs) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 	@Override
 	public GatheringDocPO getGatheringDocPO(String GatheringDocID) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public ArrayList<AccountPO> getAccount() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void createPayDoc(String payDocID, Date date, double money,
+			String account, PayType type, String back) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void createGatheringDoc(String GatheringDocID, Date date,
+			Double money, String courier_name, ArrayList<String> itemIDs) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	

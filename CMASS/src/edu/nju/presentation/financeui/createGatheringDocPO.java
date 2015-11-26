@@ -12,17 +12,19 @@ public class createGatheringDocPO extends JPanel{
 	
 		private JTextField textField_2;
 		private JTextField textField_4;
+		private JTextField textField;
 		 
 		public createGatheringDocPO() {
 			GridBagLayout gridBagLayout = new GridBagLayout();
-			gridBagLayout.columnWidths = new int[]{233, 109, 0, 113, 65, 62, 0, 48, 0};
-			gridBagLayout.rowHeights = new int[]{42, 0, 19, 118, 0, 0, 0};
-			gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+			gridBagLayout.columnWidths = new int[]{286, 109, 0, 113, 65, 62, 0, 48, 0};
+			gridBagLayout.rowHeights = new int[]{30, 0, 19, 77, 0, 0, 0};
+			gridBagLayout.columnWeights = new double[]{0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 			gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 			setLayout(gridBagLayout);
 			
 			JLabel label_2 = new JLabel("\u6536\u6B3E\u5355");
 			GridBagConstraints gbc_label_2 = new GridBagConstraints();
+			gbc_label_2.anchor = GridBagConstraints.NORTH;
 			gbc_label_2.insets = new Insets(0, 0, 5, 5);
 			gbc_label_2.gridx = 0;
 			gbc_label_2.gridy = 0;
@@ -66,11 +68,28 @@ public class createGatheringDocPO extends JPanel{
 			add(textField_4, gbc_textField_4);
 			textField_4.setColumns(10);
 			
+			JLabel label_1 = new JLabel("\u6536\u6B3E\u8D26\u6237");
+			GridBagConstraints gbc_label_1 = new GridBagConstraints();
+			gbc_label_1.anchor = GridBagConstraints.EAST;
+			gbc_label_1.insets = new Insets(0, 0, 5, 5);
+			gbc_label_1.gridx = 0;
+			gbc_label_1.gridy = 2;
+			add(label_1, gbc_label_1);
+			
+			textField = new JTextField();
+			GridBagConstraints gbc_textField = new GridBagConstraints();
+			gbc_textField.insets = new Insets(0, 0, 5, 5);
+			gbc_textField.fill = GridBagConstraints.HORIZONTAL;
+			gbc_textField.gridx = 1;
+			gbc_textField.gridy = 2;
+			add(textField, gbc_textField);
+			textField.setColumns(10);
+			
 			JButton btnNewButton = new JButton("\u786E\u5B9A");
 			GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
 			gbc_btnNewButton.insets = new Insets(0, 0, 5, 5);
 			gbc_btnNewButton.gridx = 2;
-			gbc_btnNewButton.gridy = 3;
+			gbc_btnNewButton.gridy = 4;
 			add(btnNewButton, gbc_btnNewButton);
 		}
 
