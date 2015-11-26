@@ -4,7 +4,13 @@ import java.util.ArrayList;
 
 public class CourierMoneyPO {
 	ArrayList<CourierMessage> courierList;
-	class CourierMessage{
+	public ArrayList<CourierMessage> getCourierList() {
+		return courierList;
+	}
+	public void setCourierList(ArrayList<CourierMessage> courierList) {
+		this.courierList = courierList;
+	}
+	public class CourierMessage{
 		public CourierMessage(String courierID,String itemID,double money) {
 			// TODO Auto-generated constructor stub
 			this.courierID = courierID;
@@ -12,9 +18,33 @@ public class CourierMoneyPO {
 			this.itemIDs = new ArrayList<String>();
 			this.itemIDs.add(itemID);
 		}
+		public CourierMessage(String courierID,ArrayList<String> itemIDs,double money) {
+			// TODO Auto-generated constructor stub
+			this.courierID = courierID;
+			this.money = money;
+			this.itemIDs = itemIDs;
+		}
 		String courierID;
 		Double money = 0.0;
 		ArrayList<String> itemIDs;
+		public String getCourierID() {
+			return courierID;
+		}
+		public void setCourierID(String courierID) {
+			this.courierID = courierID;
+		}
+		public Double getMoney() {
+			return money;
+		}
+		public void setMoney(Double money) {
+			this.money = money;
+		}
+		public ArrayList<String> getItemIDs() {
+			return itemIDs;
+		}
+		public void setItemIDs(ArrayList<String> itemIDs) {
+			this.itemIDs = itemIDs;
+		}
 	}
 	public void appendMoney(String courierID,String itemID,double money) {
 		for(int i = 0;i<courierList.size();i++) {

@@ -5,15 +5,20 @@ import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
+
+import com.sun.crypto.provider.RSACipher;
 
 import edu.nju.data.database.SQL;
 import edu.nju.dataservice.collectiondataservice.CollectionDataService;
+import edu.nju.po.CourierMoneyPO;
+import edu.nju.po.CourierMoneyPO.CourierMessage;
 import edu.nju.po.HistoryTimePO;
 import edu.nju.po.PositionPO;
 import edu.nju.po.SendDocPO;
 import edu.nju.tools.Time;
 
-public class CollectionDataServiceImpl extends UnicastRemoteObject implements CollectionDataService{
+public class CollectionDataServiceImpl extends UnicastRemoteObject implements CollectionDataService {
 	String ID;
 	String sName, sCity, sAddress, sUnit, sTelePhone, sMobilePhone;
 	String rName, rCity, rAddress, rUnit, rTelePhone, rMobilePhone;
@@ -28,6 +33,7 @@ public class CollectionDataServiceImpl extends UnicastRemoteObject implements Co
 	int time;
 	Date date;
 	boolean checked;
+
 	public CollectionDataServiceImpl() throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub
@@ -36,7 +42,7 @@ public class CollectionDataServiceImpl extends UnicastRemoteObject implements Co
 	@Override
 	public void saveSendDocPO(SendDocPO po) {
 		// TODO Auto-generated method stub
-		
+
 		ID = po.getID();
 		date = po.getDate();
 		sName = po.getsName();
@@ -55,7 +61,7 @@ public class CollectionDataServiceImpl extends UnicastRemoteObject implements Co
 		weight = po.getWeight();
 		volume = po.getVolume();
 		item_type = po.getItem_type();
-		 checked = po.isChecked();
+		checked = po.isChecked();
 		packageType = po.getPackageType();
 		sumPrice = po.getSumPrice();
 		courier_Type = po.getCourier_Type();
@@ -63,13 +69,12 @@ public class CollectionDataServiceImpl extends UnicastRemoteObject implements Co
 		String sql = "insert into sendDoc (id,sName, sAddress, sCity, sUnit, "
 				+ "sTelePhone, sMobilePhone, rName, rAddress, rCity, rUnit, "
 				+ "rTelePhone, rMobilePhone, itemNum, weight, lehgth,wideth,height, item_type, "
-				+ "packageType, sumPrice, courier_Type, date, time, checked) "
-				+ "values('"+ID+"','"+sName+"','"+sAddress+"','"+sCity+"','"+sUnit+"',"
-				+ "'"+sTelePhone+"','"+sMobilePhone+"','"+rName+"','"+rAddress+"',"
-				+ "'"+rCity+"','"+rUnit+"','"+rTelePhone+"','"+rMobilePhone+"','"+itemNum+"',"
-				+ "'"+weight+"','"+volume[0]+"','"+volume[1]+"','"+volume[2]+"','"+item_type+"',"
-				+ "'"+packageType+"','"+sumPrice+"','"+courier_Type+"','"+date+"','"+time+"',"
-				+ "'"+checked+"');";
+				+ "packageType, sumPrice, courier_Type, date, time, checked) " + "values('" + ID + "','" + sName + "','"
+				+ sAddress + "','" + sCity + "','" + sUnit + "'," + "'" + sTelePhone + "','" + sMobilePhone + "','"
+				+ rName + "','" + rAddress + "'," + "'" + rCity + "','" + rUnit + "','" + rTelePhone + "','"
+				+ rMobilePhone + "','" + itemNum + "'," + "'" + weight + "','" + volume[0] + "','" + volume[1] + "','"
+				+ volume[2] + "','" + item_type + "'," + "'" + packageType + "','" + sumPrice + "','" + courier_Type
+				+ "','" + date + "','" + time + "'," + "'" + checked + "');";
 		System.out.println(sql);
 		SQL.databaseUpdate(sql);
 		SQL.closeDatabase();
@@ -78,13 +83,13 @@ public class CollectionDataServiceImpl extends UnicastRemoteObject implements Co
 	@Override
 	public String getSequence() {
 		// TODO Auto-generated method stub
-		String sql="select Sequence from SequenceTable where Kind=SendDoc;";
+		String sql = "select Sequence from SequenceTable where Kind=SendDoc;";
 		SQL.databaseQuery(sql);
 		try {
-			while(SQL.rs.next()){
+			while (SQL.rs.next()) {
 				String result = SQL.rs.getString("Sequence");
 				SQL.closeDatabase();
-				return  result;
+				return result;
 			}
 		} catch (SQLException e) {
 			System.out.println("´íÎó");
@@ -97,60 +102,35 @@ public class CollectionDataServiceImpl extends UnicastRemoteObject implements Co
 	@Override
 	public void changeSequence(String sequence) {
 		// TODO Auto-generated method stub
-		String sql="UPDATE history SET Sequence='"+sequence+"'where Kind=SendDoc;";
+		String sql = "UPDATE history SET Sequence='" + sequence + "'where Kind=SendDoc;";
 		SQL.databaseUpdate(sql);
 		SQL.closeDatabase();
 	}
 
 	@Override
-	public ArrayList<PositionPO> QueryGoodsInfo(int SendDocID) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public ArrayList<SendDocPO> getAllSendDoc() {
 		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public double getCourierMoney(String courier) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public ArrayList<String> getSendDocIDList(String courier) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void appendCourierMoney(String courierID, String itemID, double money) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void cleanCourierMessage(String courierID) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public ArrayList<HistoryTimePO> getHistoryPO(String sCity, String rCity) {
-		// TODO Auto-generated method stub
-		return null;
+		String sql = "select ID from SendDoc where checked=true;";
+		SQL.databaseQuery(sql);
+		ArrayList<SendDocPO> sendDocPOs = new ArrayList<SendDocPO>();
+		try {
+			while (SQL.rs.next()) {
+				sendDocPOs.add(getSendDocPOByID(SQL.rs.getString(ID)));
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		SQL.closeDatabase();
+		return sendDocPOs;
 	}
 
 	@Override
 	public SendDocPO getSendDocPOByID(String ID) {
 		// TODO Auto-generated method stub
-		String sql="select * from SendDoc where ID="+ID+";";
+		String sql = "select * from SendDoc where ID=" + ID + ";";
 		SQL.databaseQuery(sql);
 		try {
-			while(SQL.rs.next()){
+			while (SQL.rs.next()) {
 				sName = SQL.rs.getString("sName");
 				sCity = SQL.rs.getString("sCity");
 				sAddress = SQL.rs.getString("sAddress");
@@ -174,13 +154,64 @@ public class CollectionDataServiceImpl extends UnicastRemoteObject implements Co
 				courier_Type = SQL.rs.getInt("courier_Type");
 				time = SQL.rs.getInt("time");
 				date = SQL.rs.getDate("date");
-				return new SendDocPO(ID,sName, sAddress, sCity, sUnit, sTelePhone, sMobilePhone, rName, rAddress, rCity, rUnit, rTelePhone, rMobilePhone, itemNum, weight, volume, item_type, packageType, sumPrice, courier_Type, date, time);
+				return new SendDocPO(ID, sName, sAddress, sCity, sUnit, sTelePhone, sMobilePhone, rName, rAddress,
+						rCity, rUnit, rTelePhone, rMobilePhone, itemNum, weight, volume, item_type, packageType,
+						sumPrice, courier_Type, date, time);
 			}
 		} catch (SQLException e) {
 			System.out.println("´íÎó");
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	@Override
+	public void saveCourierMoneyPO(CourierMoneyPO po) {
+		// TODO Auto-generated method stub
+		String courierID;
+		Double money = 0.0;
+		String itemIDs = "";
+		ArrayList<CourierMessage> courierList = po.getCourierList();
+		for(CourierMessage cm : courierList) {
+			itemIDs = "";
+			courierID = cm.getCourierID();
+			money = cm.getMoney();
+			ArrayList<String> str = cm.getItemIDs();
+			for(String s : str) {
+				itemIDs+=s+" ";
+			}
+			String cmd = "insret into CourieMoney(courierID,money,itemIDs) values('"+courierID+"','"+money+"','"+itemIDs+"')";
+			SQL.databaseUpdate(cmd);
+			SQL.closeDatabase();
+		}
+		
+	}
+
+	@Override
+	public CourierMoneyPO getCourierMoneyPO(String courierID) {
+		// TODO Auto-generated method stub
+		ArrayList<CourierMessage> courierMessages = new ArrayList<CourierMessage>();
+		String[] itemIDs;
+		double money;
+		String string = "select * from CourierMoney where courierID = "+courierID+";";
+		SQL.databaseQuery(string);
+		try {
+			while (SQL.rs.next()) {
+				money = SQL.rs.getDouble("money");
+				itemIDs = SQL.rs.getString("itemIDs").split(" ");
+				ArrayList<String> items = new ArrayList<String>();
+				for(String s : itemIDs) {
+					items.add(s);
+				}
+				courierMessages.add(new CourierMoneyPO().new CourierMessage(courierID, items, money));			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		CourierMoneyPO courierMoney= new CourierMoneyPO();
+		courierMoney.setCourierList(courierMessages);
+		SQL.closeDatabase();
+		return courierMoney;
 	}
 
 }
