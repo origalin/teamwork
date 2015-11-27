@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.ArrayList;
 
 import edu.nju.businesslogic.collectionbl.Collectionbl;
+import edu.nju.businesslogic.infobl.Driver;
 import edu.nju.businesslogic.infobl.Institution;
 import edu.nju.businesslogic.transformbl.TransferDoc;
 import edu.nju.businesslogic.transformbl.YLoadDoc;
@@ -88,6 +89,7 @@ public class financebl implements FinanceLogicService{
 	YLoadDoc YLoad=new YLoadDoc();
 	ZLoadDoc ZLoad=new ZLoadDoc();
 	FinanceDataService financeDataService;
+	Driver driver=new Driver();
 	public financebl(){
 		try {
 			this.financeDataService = financeDataService=(FinanceDataService)Naming.lookup("rmi://127.0.0.1:6600/FinanceDataService");
@@ -139,7 +141,7 @@ public class financebl implements FinanceLogicService{
 		Date endDate=Time.stringToDate(endTime);
 		ArrayList <GatheringDocPO> GatheringDocList= financeDataService.getGatheringDoc(startDate, endDate);
 		for(GatheringDocPO po:GatheringDocList){
-			answer.add(new GatheringDocVO(po.getID(),po.getDate(),po.getMoney(),po.getCourier_name(),po.getItemIDs()));
+			answer.add(new GatheringDocVO(po.getID(),po.getDate(),po.getMoney(),po.getCourier_name(),po.getItemIDs(), po.getAccount()));
 		}
 		return answer;
 	}
@@ -167,17 +169,6 @@ public class financebl implements FinanceLogicService{
 	public ArrayList<StaffPO> getUnpaidStaffList() {
 		return institution.getUnpaidStaffList();
 	}
-
-	@Override
-	public ArrayList<AccountVO> getAccount() {
-		ArrayList<AccountVO> accountListVO=new ArrayList<AccountVO>();
-		ArrayList<AccountPO> accountListPO=financeDataService.getAccount();
-		for(AccountPO po:accountListPO){
-			accountListVO.add(new AccountVO(po.getName(),po.getBalance()));
-		}
-		return accountListVO;
-	}
-
 	
 //账户管理方法
 	@Override
@@ -270,10 +261,9 @@ public class financebl implements FinanceLogicService{
 	}
 
 	@Override
-	public void createGatheringDoc(String GatheringDocID, String courier_name) {
-		// TODO Auto-generated method stub
+	public void createGatheringDoc(String GatheringDocID, String courier_ID,String account) {
 		//系统只用知道快递员是谁就可以生成他的收款单，其他的信息需要从其他模块获取
-		//GatheringDocID,Date date,Double money, String courier_name,ArrayList<String> itemIDs)
+		//GatheringDocID,Date date,Double money, String courier_name,ArrayList<String> itemIDs,String account)
 		/*
 		 public ArrayList<String> getSendDocsByID(String courier_ID);
 public void savecSendDocCreateGatheringDoc(String SendDocID);
@@ -288,15 +278,15 @@ public double getCourierMoney(String courier_ID);
 其中第二个方法需要根据ID把一个用来检查该寄件单是否生成收款单的bool变量置为true
 
 		 */
-		Date date=new Date();
-		ArrayList
-		 financeDataService.createGatheringDoc(GatheringDocID,date, money, courier_name, itemIDs);
+		double money=collectionbl.getCourierMoney(courier_ID);
+		ArrayList<String> SendDoclist=collectionbl.getSendDocsByID(courier_ID);
+		 financeDataService.createGatheringDoc(GatheringDocID,new Date(), money, courier_ID,SendDoclist,account);
 	}
 
 	@Override
 	public GatheringDocVO getGatheringDocVO(String GatheringDocID) {
 		GatheringDocPO po= financeDataService.getGatheringDocPO(GatheringDocID);
-		return new GatheringDocVO(po.getID(),po.getDate(),po.getMoney(),po.getCourier_name(),po.getItemIDs());
+		return new GatheringDocVO(po.getID(),po.getDate(),po.getMoney(),po.getCourier_name(),po.getItemIDs(),po.getAccount());
 	}
 
 	@Override
@@ -334,28 +324,31 @@ public double getCourierMoney(String courier_ID);
 		 第三步：计算这个员工的工资
 		 */
 		//StaffPO staff=institution.getStaff(staffID);
+		//10位说明是司机
+		if(staffID.length()==10){
+			return calculateDriverSalary(staffID);
+		}
+		//11位说明是普通员工
 		Post position=institution.getPosition(staffID);
 		if(position==Post.COURIER){
 			return calculateCourierSalary(staffID);
-		}else if(position==Post.Driver){
-			return calculateDriverSalary(staffID);
 		}else{
 			return calculateNormalSalary(staffID);
 		}
-		return 0;
 	}
 	
 	public double calculateCourierSalary(String staffID){
 		double base=institution.getBase(staffID);
 		double bonus=institution.getBonus(staffID);
-		double commision=institution.getPercentage()*;
-		return base+bonus+commision;
+		double commision=institution.getPercentage(staffID);
+		double totalMoney=collectionbl.getCourierMoney(staffID);
+		return base+bonus+commision*totalMoney;
 	}
 	
-	public double calculateDriverSalary(String staffID){
-		double base=institution.getBase(staffID);
-		double bonus=institution.getBonus(staffID);
-		return base+bonus+institution.getDriverCommision()*;
+	public double calculateDriverSalary(String DriverID){
+		double oneTimeMoney=institution.getDriverCommision(DriverID);
+		int time=YLoad.getDriverTime(DriverID)+ZLoad.getDriverTime(DriverID);
+		return oneTimeMoney*time;
 	}
 	
 	public double calculateNormalSalary(String staffID){
@@ -370,12 +363,11 @@ public double getCourierMoney(String courier_ID);
 	}
 	@Override
 	public void resetSalary() {
-		// TODO Auto-generated method stub
-		
+		institution.resetSalary();
 	}
 	@Override
 	public void resetRent() {
-		// TODO Auto-generated method stub
+		institution.resetRent();
 		
 	}
 	@Override
@@ -388,7 +380,7 @@ public double getCourierMoney(String courier_ID);
 		
 	}
 	@Override
-	public void minusMoney(String accountName, String money) {
+	public void minusMoney(String accountName, double money) {
 		financeDataService.minusMoney(accountName,money);
 		
 	}
