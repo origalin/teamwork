@@ -106,4 +106,9 @@ public class YLoadDoc implements YLoadDocService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	public int getDriverTime(String drrverID) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

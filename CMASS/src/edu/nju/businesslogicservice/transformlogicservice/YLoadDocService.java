@@ -18,4 +18,5 @@ public interface YLoadDocService {
 	public YLoadDocPO getYloadPOByID(String ID);
 	public String getTransferCenter();
 	public String getDrivers();
+	public int getDriverTime(String drrverID);
 }

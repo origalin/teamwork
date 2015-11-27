@@ -98,7 +98,41 @@ public class TransferDataServiceImpl   implements TransferDataService{
 	@Override
 	public void saveZLoadDocPO(ZLoadDocPO po) {
 		// TODO Auto-generated method stub
-		
+		String ID;
+		Date date;
+		String tranceID;
+		String targetBusinessHall;
+		String CarID;
+		String watcher;
+		String driver;
+		String itemIDs;
+		double price;
+		int checked;
+		int paid;
+		ID = po.getID();
+		date = po.getDate();
+		tranceID = po.getTranceID();
+		targetBusinessHall = po.getTargetBusinessHall();
+		CarID = po.getCarID();
+		watcher = po.getWatcher();
+		driver = po.getDriver();
+		itemIDs = StringTools.toAString(po.getItemIDs());
+		price = po.getPrice();
+		if(po.isChecked()) {
+			checked = 1;
+		}else {
+			checked = 0;
+		}
+		if (po.isPaid()) {
+			paid = 1;
+		} else {
+			paid = 0;
+		}
+		String str = "replace into ZLoadDoc (ID,date,tranceid,targetbusinesshall,"
+		+ "carid,watcher,driver,itemids,price,checked,paid) values("
+		+ "'"+ID+"','"+date+"','"+tranceID+"','"+targetBusinessHall+"','"+CarID+"',"
+		+ "'"+watcher+"','"+driver+"','"+itemIDs+"','"+price+"','"+checked+"',"
+		+"'"+paid+"',);";
 	}
 
 	@Override
@@ -244,7 +278,6 @@ public class TransferDataServiceImpl   implements TransferDataService{
 		SQL.databaseUpdate(str);
 		SQL.closeDatabase();
 	}
-
 	@Override
 	public TransferDocPO getTransferDocPO(String TransferDocID) {
 		// TODO Auto-generated method stub
@@ -260,7 +293,7 @@ public class TransferDataServiceImpl   implements TransferDataService{
 		String targetCity= null;
 		String[] itemIDs= null;
 		double price = 0;
-		String str = "select * from TransferDoc where ID = '"+TransferDocID+"'";
+		String str = "select * from TransferDoc where ID = '"+TransferDocID+"';";
 		SQL.databaseQuery(str);
 		try {
 			while (SQL.rs.next()) {
@@ -277,16 +310,48 @@ public class TransferDataServiceImpl   implements TransferDataService{
 				itemIDs = SQL.rs.getString("itemIDs").split(" ");
 				price = SQL.rs.getDouble("price");
 			}
+			SQL.closeDatabase();
 			return new TransferDocPO(ID, date, planeNum, TrainNum, CarNum, tranceID, corriage, container, from, targetCity, itemIDs, price);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
+		SQL.closeDatabase();
 		return null;
 	}
 
 	@Override
 	public ZLoadDocPO getZLoadDocPO(String ZLoadDocID) {
 		// TODO Auto-generated method stub
+		String ID = null;
+		Date date= null;
+		String tranceID= null;
+		String targetBusinessHall= null;
+		String CarID= null;
+		String watcher= null;
+		String driver= null;
+		String[] itemIDs= null;
+		double price = 0;
+		String str = "select * from ZLoadDoc where ID = '"+ZLoadDocID+"'";
+		SQL.databaseQuery(str);
+		try {
+			while (SQL.rs.next()) {
+				ID = SQL.rs.getString("ID");
+				date = SQL.rs.getDate("date");
+				tranceID = SQL.rs.getString("tranceID");
+				targetBusinessHall = SQL.rs.getString("targetBusinessHall");
+				CarID = SQL.rs.getString("CarID");
+				watcher = SQL.rs.getString("watcher");
+				driver = SQL.rs.getString("driver");
+				itemIDs = SQL.rs.getString("itemIDs").split(" ");
+				price = SQL.rs.getDouble("price");
+				SQL.closeDatabase();
+				return new ZLoadDocPO(ID, date, tranceID, targetBusinessHall, CarID, watcher, driver, itemIDs, price);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		SQL.closeDatabase();
 		return null;
 	}
 
