@@ -16,4 +16,5 @@ public interface ZLoadDocService {
 	public double[] getPriceToday();
 	public String[] getSubBusinessHall();
 	public String[] getDrivers();
+	public int getDriverTime(String drrverID);
 }

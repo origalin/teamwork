@@ -32,7 +32,7 @@ public class CollectionDataServiceImpl extends UnicastRemoteObject implements Co
 	int courier_Type;
 	int time;
 	Date date;
-	boolean checked;
+	int checked;
 
 	public CollectionDataServiceImpl() throws RemoteException {
 		super();
@@ -61,7 +61,12 @@ public class CollectionDataServiceImpl extends UnicastRemoteObject implements Co
 		weight = po.getWeight();
 		volume = po.getVolume();
 		item_type = po.getItem_type();
-		checked = po.isChecked();
+
+		if(po.isChecked()) {
+			checked = 1;
+		}else {
+			checked = 0;
+		}
 		packageType = po.getPackageType();
 		sumPrice = po.getSumPrice();
 		courier_Type = po.getCourier_Type();
@@ -110,7 +115,7 @@ public class CollectionDataServiceImpl extends UnicastRemoteObject implements Co
 	@Override
 	public ArrayList<SendDocPO> getAllSendDoc() {
 		// TODO Auto-generated method stub
-		String sql = "select ID from SendDoc where checked=true;";
+		String sql = "select ID from SendDoc where checked='0';";
 		SQL.databaseQuery(sql);
 		ArrayList<SendDocPO> sendDocPOs = new ArrayList<SendDocPO>();
 		try {

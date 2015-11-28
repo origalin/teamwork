@@ -3,16 +3,16 @@ package edu.nju.po;
 import java.util.Date;
 
 public class OverDocPO extends Doc{
-	
-	String[] itemID;//¿ìµÝid
-	String[] receiver;
 	Date date;
+	String[] itemIDs;//¿ìµÝid
+	String[] receiver;
+
 	String courier;
 
 	public OverDocPO(String id,String[] itemID, String[] receiver, Date date, String courier) {
 		super();
 		this.ID = id;
-		this.itemID = itemID;
+		this.itemIDs = itemID;
 		this.receiver = receiver;
 		this.date = date;
 		this.courier = courier;
@@ -33,10 +33,10 @@ public class OverDocPO extends Doc{
 		ID = overDocID;
 	}
 	public String[] getItemID() {
-		return itemID;
+		return itemIDs;
 	}
 	public void setItemID(String[] itemID) {
-		this.itemID = itemID;
+		this.itemIDs = itemID;
 	}
 	public String[] getReceiver() {
 		return receiver;

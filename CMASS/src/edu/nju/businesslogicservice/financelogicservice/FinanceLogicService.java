@@ -62,24 +62,23 @@ public interface FinanceLogicService {
 	public void setZLoadDocList(ArrayList<ZLoadDocPO>ZLoadDocList);
 	//工资部分
 	public ArrayList<StaffPO> getUnpaidStaffList();
-	public ArrayList<AccountVO> getAccount();
 	public void setStaffList(ArrayList<StaffPO> staffList);//原理同deleteInstitution
 	public String getStaffSalaryName(String staffID);////工资管理要显示人员的名字
-	public double calculateSalary(String staffID);
+	public double calculateSalary(String ID);
 	public void createPayDoc(String payDocID, double money,String payMen,String account, PayType type,String back);
 	public PayDocVO getPayDocVO(String PayDocID);//支持预览收款单
 	public void resetSalary();
 	public void resetRent();
 	//生成收款单部分
-		public void createGatheringDoc(String GatheringDocID,String courier_name);//实现的时候需要先得到SendDocPOList
+		public void createGatheringDoc(String GatheringDocID,String courier_ID,String account);//实现的时候需要先得到SendDocPOList
 		public GatheringDocVO getGatheringDocVO(String GatheringDocID);//支持预览收款单
-		public void setSendDocList(ArrayList<SendDocPO> SendDocPOList);//设为已经收款
+		public void setSendDocList(ArrayList<SendDocPO> SendDocPOList);//将这部分寄件单设为已经生成收款单
 	//生成付款单和生成收款单共有的部分
 		public ArrayList<String> getAccountList();
 		//收款单
 		public void addMoney(String accountName,double money);
 		//付款单
-		public void minusMoney(String accountName,String money);
+		public void minusMoney(String accountName,double money);
 	
 }
 
