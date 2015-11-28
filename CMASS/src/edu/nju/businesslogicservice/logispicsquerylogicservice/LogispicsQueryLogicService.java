@@ -9,7 +9,7 @@ public interface LogispicsQueryLogicService {
 	public PositionVO historyQuery(String SendDocID);
 	
 	public void changePosition(String ItemID,String pos);
-	public void createPosition(String string,String pos);
+	public void createPosition(String string,String pos,String destination);
 
 	
 

@@ -49,10 +49,10 @@ public class Logisticsquerybl implements LogispicsQueryLogicService {
 		}
 	}
 
-	public void createPosition(String string, String pos) {
+	public void createPosition(String string, String pos,String  destination) {
 		// 对自己数据层有依赖，创建新快递的历史轨迹对象
 		try {
-			logisticsDataService.createPosition(string, pos, pos);
+			logisticsDataService.createPosition(string, pos, destination);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			System.out.println("逻辑层历史轨迹记录创建失败");
