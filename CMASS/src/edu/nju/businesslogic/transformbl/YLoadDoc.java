@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import edu.nju.businesslogic.infobl.Institution;
+import edu.nju.businesslogic.logispicsquerybl.Logisticsquerybl;
 import edu.nju.businesslogicservice.transformlogicservice.YLoadDocService;
 import edu.nju.dataservice.transformdataservice.TransferDataService;
 import edu.nju.po.YLoadDocPO;
@@ -16,15 +17,26 @@ public class YLoadDoc implements YLoadDocService{
 	YLoadDocPO po;
 	private TransferDataService transferDataService;
 	private Institution institution;
+	private Logisticsquerybl logisticsquerybl;
 
 	public YLoadDoc(String staffID) {
 		super();
 		this.staffID = staffID;
 		institution = new Institution();
 		this.institutionID = institution.getInstitutionID(staffID);
+		logisticsquerybl = new Logisticsquerybl();
 	}
 	public YLoadDoc() {
 		// TODO Auto-generated constructor stub
+	}
+	public void confirmSave() {
+		saveYloadDocPO(po);
+		changeTranceID();
+		changeYloadSequence();
+		for(int i = 0;i<po.getItemIDs().length;i++) {
+			logisticsquerybl.changePosition(po.getItemIDs()[i], "已装车，送往"+po.getTarget());	
+		}
+		
 	}
 	@Override
 	public void saveYloadDocPO(YLoadDocPO po) {
@@ -32,11 +44,6 @@ public class YLoadDoc implements YLoadDocService{
 		transferDataService.saveYLoadDocPO(po);
 	}
 
-	@Override
-	public String[] getSendDocIDList(String id) {
-		// TODO 自动生成的方法存根
-		return null;
-	}
 
 	@Override
 	public String getYloadSequence() {
@@ -60,9 +67,9 @@ public class YLoadDoc implements YLoadDocService{
 	}
 
 	@Override
-	public YLoadDocVO findYLoadDocVO(int ID) {
+	public YLoadDocVO getYLoadDocVO(String ID) {
 		// TODO 自动生成的方法存根
-		return null;
+		return new YLoadDocVO(transferDataService.getYLoadDocPO(ID, false));
 	}
 
 	@Override
@@ -78,19 +85,24 @@ public class YLoadDoc implements YLoadDocService{
 	}
 
 	@Override
-	public YLoadDocPO getYloadPOByID(String ID) {
+	public YLoadDocPO getYloadDocPOByID(String ID) {
 		// TODO Auto-generated method stub
-		return null;
+		return transferDataService.getYLoadDocPO(ID, true);
 	}
 	@Override
 	public String getTransferCenter() {
 		// TODO Auto-generated method stub
-		return null;
+		return institution.getInstitutionName(institution.getTransferCenterID(institutionID));
 	}
 	@Override
-	public String getDrivers() {
+	public String[] getDrivers() {
 		// TODO Auto-generated method stub
-		return null;
+		ArrayList<String> driverIDs = institution.getDirverID(institutionID);
+		ArrayList<String> driverNames = new ArrayList<String>();
+		for(String ID : driverIDs) {
+			driverNames.add(institution.getDirverName(ID));
+		}
+		return (String[]) driverNames.toArray();
 	}
 	private String getTranceID() {
 		return transferDataService.getTransferID();
@@ -104,7 +116,7 @@ public class YLoadDoc implements YLoadDocService{
 	}
 	public ArrayList<YLoadDocPO> getUnPaidYLoadDocPOs() {
 		// TODO Auto-generated method stub
-		return null;
+		return transferDataService.getunPaidYLoadDocPO();
 	}
 	@Override
 	public int getDriverTime(String drrverID) {

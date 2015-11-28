@@ -6,6 +6,7 @@ import java.util.Date;
 
 import edu.nju.businesslogic.collectionbl.Collectionbl;
 import edu.nju.businesslogic.infobl.Institution;
+import edu.nju.businesslogic.logispicsquerybl.Logisticsquerybl;
 import edu.nju.businesslogicservice.transformlogicservice.YArrivalDocService;
 import edu.nju.data.transferDataServiceImpl.TransferDataServiceImpl;
 import edu.nju.dataservice.transformdataservice.TransferDataService;
@@ -21,6 +22,7 @@ public class YArrivalDoc implements YArrivalDocService {
 	private TransferDoc transferDoc;
 	private Institution institution;
 	private TransferDataService transferDataService; 
+	Logisticsquerybl logisticsquerybl;
 
 	public YArrivalDoc( String staffID) throws RemoteException {
 		super();
@@ -30,17 +32,27 @@ public class YArrivalDoc implements YArrivalDocService {
 		this.institutionID = institution.getInstitutionID(staffID);
 		transferDataService = new TransferDataServiceImpl(institutionID);
 		collectionbl = new Collectionbl(staffID);
+		logisticsquerybl = new Logisticsquerybl();
 	}
 
 	public YArrivalDoc() {
 		// TODO Auto-generated constructor stub
 	}
 
+	public void confirmSave() {
+		saveYArrivalDocPO(po);
+		changeYArrivalSequence();
+		int num = po.getItemAndState().length;
+		for(int i = 0;i<num;i++) {
+			logisticsquerybl.changePosition(po.getItemAndState()[i][0], "快递已到达"+institution.getCityAndName(institutionID));
+		}
+
+	}
+	
 	@Override
 	public void saveYArrivalDocPO(YArrivalDocPO po) {
 		// TODO 自动生成的方法存根
 		transferDataService.saveYArrivalDocPO(po);
-		changeYArrivalSequence();
 	}
 
 	@Override

@@ -2,8 +2,10 @@ package edu.nju.businesslogic.transformbl;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 
 import edu.nju.businesslogic.infobl.Institution;
+import edu.nju.businesslogic.logispicsquerybl.Logisticsquerybl;
 import edu.nju.businesslogicservice.transformlogicservice.ZArrivalDocService;
 import edu.nju.data.transferDataServiceImpl.TransferDataServiceImpl;
 import edu.nju.dataservice.transformdataservice.TransferDataService;
@@ -22,6 +24,7 @@ public class ZArrivalDoc implements ZArrivalDocService{
 	private YLoadDoc yLoadDoc;
 	private Institution institution;
 	private TransferDataService transferDataService;
+	private Logisticsquerybl logisticsquerybl;
 	public ZArrivalDoc( String staffID) {
 		super();
 		this.staffID = staffID;
@@ -30,12 +33,20 @@ public class ZArrivalDoc implements ZArrivalDocService{
 		institution = new Institution();
 		this.institutionID = institution.getInstitutionID(staffID);
 		transferDataService = new TransferDataServiceImpl(institutionID);
+		logisticsquerybl = new Logisticsquerybl();
 	}
 
 	public ZArrivalDoc() {
 		// TODO Auto-generated constructor stub
 	}
-
+	public void confirmSave() {
+		saveZArrivalDocPO(po);
+		changeZArrivalSequence();
+		for(int i = 0;i < po.getItemAndState().length;i++) {
+			logisticsquerybl.changePosition(po.getItemAndState()[i][0], "快递已到达"+institution.getCityAndName(institutionID));	
+		}
+		
+	}
 	@Override
 	public void saveZArrivalDocPO(ZArrivalDocPO po) {
 		// TODO 自动生成的方法存根
@@ -59,7 +70,7 @@ public class ZArrivalDoc implements ZArrivalDocService{
 	@Override
 	public ZArrivalDocVO findZArrivalDocVO(String ID) {
 		// TODO 自动生成的方法存根
-		return null;
+		return new ZArrivalDocVO(transferDataService.getZArrivalDocPO(ID, false));
 	}
 
 	@Override
@@ -90,7 +101,7 @@ public class ZArrivalDoc implements ZArrivalDocService{
 	@Override
 	public ZArrivalDocVO createZArrivalDocVO_YLoadDoc(String fromDocID, String[][] changeStates) {
 		// TODO Auto-generated method stub
-		YLoadDocPO yLoadDocPO = yLoadDoc.getYloadPOByID(fromDocID);
+		YLoadDocPO yLoadDocPO = yLoadDoc.getYloadDocPOByID(fromDocID);
 		String[][] itemAndState = new String[yLoadDocPO.getItemIDs().length][2];
 		for(int i = 0;i<yLoadDocPO.getItemIDs().length;i++) {
 			itemAndState[i][0] = yLoadDocPO.getItemIDs()[i];

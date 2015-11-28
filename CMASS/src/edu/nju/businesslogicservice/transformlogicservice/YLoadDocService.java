@@ -12,10 +12,10 @@ public interface YLoadDocService {
 	public void changeYloadSequence();//改变基准序列号
 	public YLoadDocVO createYLoadDocVO(String carID, String target,
 			String watcher,String driver, String[] itemIDs);//创建装车单VO
-	public YLoadDocVO findYLoadDocVO(int ID);//获取装车单VO
+	public YLoadDocVO getYLoadDocVO(String ID);//获取装车单VO
 	public ArrayList<YLoadDocPO> getUncheckedyLoadDocPOs();
 	public double[] getPriceToday();
-	public YLoadDocPO getYloadPOByID(String ID);
+	public YLoadDocPO getYloadDocPOByID(String ID);
 	public String getTransferCenter();
 	public String getDrivers();
 	public int getDriverTime(String drrverID);

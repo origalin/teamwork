@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import edu.nju.businesslogic.infobl.Institution;
+import edu.nju.businesslogic.logispicsquerybl.Logisticsquerybl;
 import edu.nju.businesslogicservice.transformlogicservice.ZLoadDocService;
 import edu.nju.data.transferDataServiceImpl.TransferDataServiceImpl;
 import edu.nju.dataservice.transformdataservice.TransferDataService;
@@ -17,18 +18,26 @@ public class ZLoadDoc implements ZLoadDocService{
 	ZLoadDocPO po;
 	private Institution institution;
 	private TransferDataService transferDataService;
+	private Logisticsquerybl logisticsquerybl;
 	public ZLoadDoc( String staffID) {
 		super();
 		this.staffID = staffID;
 		institution = new Institution();
 		this.institutionID = institution.getInstitutionID(staffID);
 		transferDataService = new TransferDataServiceImpl(institutionID);
+		logisticsquerybl = new Logisticsquerybl();
 	}
 	public ZLoadDoc(){
 		this.institutionID=null;
 		this.staffID=null;
 	}
-
+	public void confirmSave() {
+		saveZloadDocPO(po);
+		changeTranceID();
+		for(int i = 0;i < po.getItemIDs().length;i++) {
+			logisticsquerybl.changePosition(po.getItemIDs()[i], "快递已装车，将送往"+institution.getInstitutionName(po.getTargetBusinessHall()));
+		}
+	}
 	@Override
 	public void saveZloadDocPO(ZLoadDocPO po) {
 		// TODO 自动生成的方法存根
@@ -42,12 +51,6 @@ public class ZLoadDoc implements ZLoadDocService{
 	}
 
 	@Override
-	public String[] getSendDocIDList(String id) {
-		// TODO 自动生成的方法存根
-		return null;
-	}
-
-	@Override
 	public void changeZloadSequence() {
 		// TODO 自动生成的方法存根
 		String next = SequenceCalc.calcNextSequence6(getZloadSequence());
@@ -57,9 +60,9 @@ public class ZLoadDoc implements ZLoadDocService{
 
 
 	@Override
-	public ZLoadDocVO findZLoadDocVO(int ID) {
+	public ZLoadDocVO getZLoadDocVO(String ID) {
 		// TODO 自动生成的方法存根
-		return null;
+		return new ZLoadDocVO(transferDataService.getZLoadDocPO(ID, false));
 	}
 
 	@Override
@@ -95,7 +98,7 @@ public class ZLoadDoc implements ZLoadDocService{
 	private String getTranceID() {
 		return transferDataService.getTransferID();
 	}
-	private void changeTranceID(String TranceID) {
+	private void changeTranceID() {
 		String next = SequenceCalc.calcNextSequence6(getTranceID());
 		transferDataService.changeTransferID(next);
 	}
@@ -104,11 +107,16 @@ public class ZLoadDoc implements ZLoadDocService{
 	}
 	public ArrayList<ZLoadDocPO> getUnPaidZLoadDocPOs() {
 		// TODO Auto-generated method stub
-		return null;
+		return transferDataService.getunPaidZLoadDocPO();
 	}
 	@Override
 	public int getDriverTime(String drrverID) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+	@Override
+	public ZLoadDocPO getZLoadDocPO(String ID) {
+		// TODO Auto-generated method stub
+		return transferDataService.getZLoadDocPO(ID, true);
 	}
 }

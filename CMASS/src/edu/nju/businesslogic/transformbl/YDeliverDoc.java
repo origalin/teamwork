@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import edu.nju.businesslogic.infobl.Institution;
+import edu.nju.businesslogic.logispicsquerybl.Logisticsquerybl;
 import edu.nju.businesslogicservice.transformlogicservice.YDeliverDocService;
 import edu.nju.data.transferDataServiceImpl.TransferDataServiceImpl;
 import edu.nju.dataservice.transformdataservice.TransferDataService;
@@ -16,6 +17,7 @@ public class YDeliverDoc implements YDeliverDocService{
 	private YDeliverDocPO po;
 	private Institution institution;
 	private TransferDataService transferDataService;
+	Logisticsquerybl logisticsquerybl;
 
 	public YDeliverDoc(String staffID) {
 		// TODO 自动生成的构造函数存根
@@ -23,17 +25,24 @@ public class YDeliverDoc implements YDeliverDocService{
 		institution = new Institution();
 		this.institutionID = institution.getInstitutionID(staffID);
 		transferDataService = new TransferDataServiceImpl(institutionID);
+		logisticsquerybl = new Logisticsquerybl();
 	}
 
 	public YDeliverDoc() {
 		// TODO Auto-generated constructor stub
 	}
-
+	public void confirmSave() {
+		saveYDeliverDocPO(po);
+		changeYDeliverDocSequence();
+		for(int i = 0;i< po.getItemIDs().length;i++) {
+			logisticsquerybl.changePosition(po.getItemIDs()[i], "派件中，快递员为"+institution.getStaffName(po.getCourier()));
+		}
+		
+	}
 	@Override
 	public void saveYDeliverDocPO(YDeliverDocPO po) {
 		// TODO 自动生成的方法存根
 		transferDataService.saveYDeliverDocPO(po);
-		changeYDeliverDocSequence();
 	}
 
 	@Override

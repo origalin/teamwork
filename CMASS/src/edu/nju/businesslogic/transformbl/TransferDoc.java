@@ -40,22 +40,36 @@ public class TransferDoc implements TransferDocService{
 		distance = new Distance();
 		this.institutionID = institution.getInstitutionID(staffID);
 		transferDataService = new TransferDataServiceImpl(institutionID);
+		logisticsquerybl = new Logisticsquerybl();
 	}
 	
 	public void  confirmsave() {
 		saveTransferDocPO(po);
 		changeTransferSequence();
 		changeTransferID();
+		String[] itemIDs = po.getItemIDs();
+		for(String itemID : itemIDs) {
+			logisticsquerybl.changePosition(itemID, "快件已由"+institution.getCityAndName(institutionID)+"送出，目的地"+po.getTargetCity());
+		}
+
 	}
 	public void  confirmsave_Train() {
 		saveTransferDocPO(po);
 		changeTransferSequence();
 		changeTransferID_Train();
+		String[] itemIDs = po.getItemIDs();
+		for(String itemID : itemIDs) {
+			logisticsquerybl.changePosition(itemID, "快件已由"+institution.getCityAndName(institutionID)+"送出，目的地"+po.getTargetCity());
+		}
 	}
 	public void  confirmsave_Plane() {
 		saveTransferDocPO(po);
 		changeTransferSequence();
 		changeTransferID_Plain();
+		String[] itemIDs = po.getItemIDs();
+		for(String itemID : itemIDs) {
+			logisticsquerybl.changePosition(itemID, "快件已由"+institution.getCityAndName(institutionID)+"送出，目的地"+po.getTargetCity());
+		}
 	}
 	@Override
 	public void saveTransferDocPO(TransferDocPO po) {
