@@ -12,6 +12,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
+import javax.swing.table.DefaultTableModel;
 
 import edu.nju.businesslogic.storagebl.InWareHouseManagementbl;
 import edu.nju.businesslogicservice.storagelogicservice.InWareHouseManagementService;
@@ -31,6 +32,9 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 
 public class InWareHouseManagment extends JPanel {
+	InWareHouseDocVO inWareHouseDocVO;
+	JTable table;
+	DefaultTableModel model;
 	private JTextField textField_1;
 	private JScrollPane scrollPane;
 	private JButton btnNewButton;
@@ -44,7 +48,7 @@ public class InWareHouseManagment extends JPanel {
 public static void main(String[] args) {
 	InWareHouseManagment in=new InWareHouseManagment();
 	JFrame mainFrame=new JFrame();
-	mainFrame.add(in);
+	mainFrame.getContentPane().add(in);
 	mainFrame.setVisible(true);
 	mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	mainFrame.setLocationRelativeTo(null);
@@ -57,18 +61,10 @@ public static void main(String[] args) {
 	}
 
 	public InWareHouseManagment() {
+		
+		
 		String[] columnNames = { "快递编号", "入库日期", "目的地", "区号", "排号", "架号", "位号" };
-		String[][] data = { { "100031", "20151031", "北京", "航运区", "10", "12", "1" },
-				{ "100032", "20151031", "北京", "航运区", "10", "12", "1" },
-				{ "100033", "20151031", "北京", "航运区", "10", "12", "1" },
-				{ "100034", "20151031", "北京", "航运区", "10", "12", "1" },
-				{ "100035", "20151031", "北京", "航运区", "10", "12", "1" },
-				{ "100036", "20151031", "北京", "航运区", "10", "12", "1" },
-				{ "100037", "20151031", "北京", "航运区", "10", "12", "1" },
-				{ "100038", "20151031", "北京", "航运区", "10", "12", "1" },
-				{ "100039", "20151031", "北京", "航运区", "10", "12", "1" },
-				{ "100040", "20151031", "北京", "航运区", "10", "12", "1" },
-				{ "100041", "20151031", "北京", "航运区", "10", "12", "1" }, };
+		
 		setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "\u5165\u5E93\u7BA1\u7406",
 				TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -125,38 +121,41 @@ public static void main(String[] args) {
 		gbc_scrollPane.gridx = 0;
 		gbc_scrollPane.gridy = 1;
 		add(scrollPane, gbc_scrollPane);
-
-		btnNewButton = new JButton("\u81EA\u52A8\u751F\u6210\u4E00\u90E8\u5206");
+		scrollPane.setViewportView(table);
+		btnNewButton = new JButton("\u786E\u8BA4");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				InWareHouseManagementService inWare;
-				InWareHouseDocVO inWareHouseDocVO;
+				
 				String selectedItem = (String) comboBox.getSelectedItem();
 				
 				if (selectedItem.equals("中转单编号")) {
 					System.out.println("hello");
 					inWare = new InWareHouseManagementbl();
 					inWareHouseDocVO=inWare.getInWareHouseDocVO_Transfer(textField_1.getText());
-					System.out.println("hello");
+					System.out.println(inWareHouseDocVO);
+					
 					textField.setText(inWareHouseDocVO.getID());
+					//该行以上没有问题
 					ArrayList<InWareHouseDocLineItem>  list=inWareHouseDocVO.getList();
-					JTable table;
+					
 					String[][] data1=new String[list.size()][7];
 					int i=0;
 					for(InWareHouseDocLineItem temp:list){
-						data1[i][0]=temp.getSendDocID();
-						data1[i][1]=temp.getDate().toString();
-						data1[i][2]=temp.getDestination();
-						data1[i][3]=temp.getDistrict();
-						data1[i][4]=temp.getLocation().substring(0, 2);
-						data1[i][5]=temp.getLocation().substring(2, 4);
-						data1[i][6]=temp.getLocation().substring(4);
+						data1[i][0]=temp.getSendDocID();//快递编号
+						data1[i][1]=temp.getDate().toString();//入库日期
+						data1[i][2]=temp.getDestination();//目的地
+						data1[i][3]=temp.getDistrict();//区
+//						data1[i][4]=temp.getLocation().substring(0, 2);//排
+//						data1[i][5]=temp.getLocation().substring(2, 4);//架
+//						data1[i][6]=temp.getLocation().substring(4);//位
 						i++;
 					}
+					System.out.println("linqing");
 					table=new JTable(data1,columnNames);
-					scrollPane.add(table);
-				}
+					scrollPane.setViewportView(table);
+							}
 				
 
 			}
@@ -174,7 +173,23 @@ public static void main(String[] args) {
 		gbc_btnNewButton.gridy = 2;
 		add(btnNewButton, gbc_btnNewButton);
 
-		btnNewButton_1 = new JButton("\u786E\u8BA4");
+		btnNewButton_1 = new JButton("\u4FDD\u5B58");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int rowNum=table.getRowCount();
+				int columnNum=table.getColumnCount();
+				model =(DefaultTableModel) table.getModel();
+				for(int i=0;i<rowNum;i++)
+					for(int j=0;j<columnNum;j++)
+					{
+						String object=(String)model.getValueAt(i,j);
+						
+						
+					}
+				
+				
+			}
+		});
 		GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();
 		gbc_btnNewButton_1.insets = new Insets(0, 0, 0, 5);
 		gbc_btnNewButton_1.gridx = 4;

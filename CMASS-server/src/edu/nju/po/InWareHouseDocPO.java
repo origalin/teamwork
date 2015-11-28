@@ -4,12 +4,12 @@ import java.util.ArrayList;
 
 
 public class InWareHouseDocPO extends Doc{
-	int InWareHouseDocID;
+	String InWareHouseDocID;
 	ArrayList<RecordPO> recordPOs;
-	public int getInWareHouseDocID() {
+	public String getInWareHouseDocID() {
 		return InWareHouseDocID;
 	}
-	public void setInWareHouseDocID(int inWareHouseDocID) {
+	public void setInWareHouseDocID(String inWareHouseDocID) {
 		InWareHouseDocID = inWareHouseDocID;
 	}
 	public ArrayList<RecordPO> getRecordPOs() {

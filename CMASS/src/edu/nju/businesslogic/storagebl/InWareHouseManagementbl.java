@@ -23,8 +23,11 @@ public class InWareHouseManagementbl implements InWareHouseManagementService {
 		// 根据单号确定特快还是经济
 		// 对数据层依赖：获取该次入库单的编号 获得对仓库的引用
 
+		
 		TransferDoc transferDoc = new TransferDoc();
+		System.out.println("linqing");
 		TransferDocPO transferDocPO = transferDoc.geTransferDocPOByID(TransferDocID);
+		System.out.println(transferDocPO);
 //		StorageDataService storageDataService = DataFactory.getStorageImpl();
 //		storageDataService.
 		
@@ -68,6 +71,7 @@ public class InWareHouseManagementbl implements InWareHouseManagementService {
 	public void updateInWareHouseDoc(InWareHouseDocVO out) {
 		// 对数据层依赖：void updateInWareHouseDoc(InWareHouseDocPO out)
 
+		
 	}
 
 	public String getAddressDatail(String ItemID) {

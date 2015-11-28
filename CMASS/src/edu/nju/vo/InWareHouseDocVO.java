@@ -2,6 +2,8 @@ package edu.nju.vo;
 
 import java.util.ArrayList;
 
+import javax.swing.table.DefaultTableModel;
+
 import edu.nju.po.Doc;
 
 public class InWareHouseDocVO extends Doc{
@@ -35,6 +37,14 @@ public String toString(){
 
 	public void setList(ArrayList<InWareHouseDocLineItem> list) {
 		this.list = list;
+	}
+
+	public String getID() {
+		return ID;
+	}
+
+	public void setID(String iD) {
+		ID = iD;
 	}
 	
 	

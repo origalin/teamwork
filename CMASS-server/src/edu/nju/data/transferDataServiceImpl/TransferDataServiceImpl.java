@@ -260,7 +260,7 @@ public class TransferDataServiceImpl   implements TransferDataService{
 		String targetCity= null;
 		String[] itemIDs= null;
 		double price = 0;
-		String str = "select * from TransferDoc where ID = '"+TransferDocID+"'";
+		String str = "select * from TransferDoc where ID = '"+TransferDocID+"';";
 		SQL.databaseQuery(str);
 		try {
 			while (SQL.rs.next()) {

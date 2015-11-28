@@ -184,7 +184,19 @@ System.out.println(serviceImpl.getCurrInWare_ID());
 
 	@Override
 	public void updateInWarehouseDoc(InWareHouseDocPO t) throws RemoteException{
-		// TODO Auto-generated method stub
+		String iD=t.getInWareHouseDocID();
+		ArrayList<RecordPO> list=t.getRecordPOs();
+		for(RecordPO temp:list){
+			String itemID=temp.getItemID();
+			Date date=temp.getDate();
+			String destination=temp.getDestination();
+			String location=temp.getLocation();
+			String sql="INSERT INTO Èë¿âµ¥ VALUES("+iD+","+Time.toDaysTime(date)+","+destination+","+location+","+itemID+");";
+			SQL.databaseUpdate(sql);
+			
+		}
+		SQL.closeDatabase();
+		
 
 	}
 
@@ -231,10 +243,6 @@ System.out.println(serviceImpl.getCurrInWare_ID());
 		return currID;
 	}
 
-	@Override
-	public TransferDocPO getTransferDocPO(String Transfer) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 }

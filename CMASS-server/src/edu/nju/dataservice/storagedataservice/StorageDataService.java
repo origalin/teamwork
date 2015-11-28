@@ -12,7 +12,7 @@ import edu.nju.po.TransferDocPO;
 import edu.nju.po.WareHousePO;
 
 public interface StorageDataService extends Remote{
-	public TransferDocPO getTransferDocPO(String Transfer);
+	
 	public String getCurrInWare_ID() throws RemoteException;
 	public void update(ArrayList<RecordPO> recordPO) throws RemoteException;
 	public void update(RecordPO recordPO) throws RemoteException;

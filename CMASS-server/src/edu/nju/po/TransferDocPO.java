@@ -16,6 +16,11 @@ public class TransferDocPO extends Doc{
 	String[] itemIDs;
 	double price;
 	boolean paid;
+	public String toString(){
+	String rees="";
+	rees+=ID+" "+date;
+	return rees;
+	}
 	public TransferDocPO() {};
 	public TransferDocPO(String ID,Date date, String planeNum, String trainNum, String carNum, String tranceID, String corriage,
 			String container, String from, String targetCity, String[] itemIDs, double price) {
