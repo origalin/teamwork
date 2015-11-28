@@ -33,6 +33,7 @@ public class YDeliverDoc implements YDeliverDocService{
 	public void saveYDeliverDocPO(YDeliverDocPO po) {
 		// TODO 自动生成的方法存根
 		transferDataService.saveYDeliverDocPO(po);
+		changeYDeliverDocSequence();
 	}
 
 	@Override
@@ -72,7 +73,7 @@ public class YDeliverDoc implements YDeliverDocService{
 	}
 
 	@Override
-	public YDeliverDocVO findYDeliverDocVO(String courierID) {
+	public ArrayList<YDeliverDocVO> findYDeliverDocVOs(String courierID) {
 		// TODO 自动生成的方法存根
 		return null;
 	}
@@ -84,14 +85,14 @@ public class YDeliverDoc implements YDeliverDocService{
 	}
 
 	@Override
-	public ArrayList<YDeliverDocPO> getDeliverDocPOsByID(String staffID) {
+	public YDeliverDocPO getDeliverDocPOsByID(String YDeliverID) {
 		// TODO 自动生成的方法存根
-		return null;
+		return transferDataService.getYDeliverDocPO(YDeliverID, true);
 	}
 
-	public ArrayList<YDeliverDocVO> getDeliverDocVOsByID(String staffID) {
+	public YDeliverDocVO getDeliverDocVOsByID(String YDeliverDocID) {
 		// TODO Auto-generated method stub
-		return null;
+		return new YDeliverDocVO(transferDataService.getYDeliverDocPO(YDeliverDocID, false));
 	}	
 
 	

@@ -7,6 +7,7 @@ import javax.tools.Tool;
 
 import edu.nju.businesslogic.infobl.Distance;
 import edu.nju.businesslogic.infobl.Institution;
+import edu.nju.businesslogic.logispicsquerybl.Logisticsquerybl;
 import edu.nju.businesslogicservice.transformlogicservice.*;
 import edu.nju.data.transferDataServiceImpl.TransferDataServiceImpl;
 import edu.nju.dataservice.transformdataservice.TransferDataService;
@@ -27,6 +28,7 @@ public class TransferDoc implements TransferDocService{
 	Institution institution;
 	Distance distance;
 	TransferDataService transferDataService ;
+	Logisticsquerybl logisticsquerybl;
 	public TransferDoc (){
 		this( null);
 	}
@@ -40,11 +42,27 @@ public class TransferDoc implements TransferDocService{
 		transferDataService = new TransferDataServiceImpl(institutionID);
 	}
 	
-
+	public void  confirmsave() {
+		saveTransferDocPO(po);
+		changeTransferSequence();
+		changeTransferID();
+	}
+	public void  confirmsave_Train() {
+		saveTransferDocPO(po);
+		changeTransferSequence();
+		changeTransferID_Train();
+	}
+	public void  confirmsave_Plane() {
+		saveTransferDocPO(po);
+		changeTransferSequence();
+		changeTransferID_Plain();
+	}
 	@Override
 	public void saveTransferDocPO(TransferDocPO po) {
 		// TODO 自动生成的方法存根
 		transferDataService.saveTransferDocPO(po);
+	
+		
 	}
 
 	@Override
@@ -77,11 +95,6 @@ public class TransferDoc implements TransferDocService{
 		transferDataService.changeTransferID_Train(next);
 	}
 
-	@Override
-	public int[] getSendDocIDList(String id) {
-		// TODO 自动生成的方法存根
-		return null;
-	}
 
 	@Override
 	public void changeTransferSequence() {
@@ -117,7 +130,7 @@ public class TransferDoc implements TransferDocService{
 	@Override
 	public TransferDocVO findTransferDocVO(String ID) {
 		// TODO 自动生成的方法存根
-		return null;
+		return new TransferDocVO(transferDataService.getTransferDocPO(ID, false));
 	}
 
 	@Override
@@ -148,11 +161,11 @@ public class TransferDoc implements TransferDocService{
 	@Override
 	public TransferDocPO geTransferDocPOByID(String ID) {
 		// TODO Auto-generated method stub
-		return transferDataService.getTransferDocPO(ID);
+		return transferDataService.getTransferDocPO(ID,true);
 	}
 
 	public ArrayList<TransferDocPO> getUnPaidTransferDocPOs() {
 		// TODO Auto-generated method stub
-		return null;
+		return transferDataService.getunPaidTransferDocPO();
 	}
 }

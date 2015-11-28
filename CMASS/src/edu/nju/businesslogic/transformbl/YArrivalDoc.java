@@ -1,8 +1,10 @@
 package edu.nju.businesslogic.transformbl;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Date;
 
+import edu.nju.businesslogic.collectionbl.Collectionbl;
 import edu.nju.businesslogic.infobl.Institution;
 import edu.nju.businesslogicservice.transformlogicservice.YArrivalDocService;
 import edu.nju.data.transferDataServiceImpl.TransferDataServiceImpl;
@@ -15,17 +17,19 @@ import edu.nju.vo.YArrivalDocVO;
 public class YArrivalDoc implements YArrivalDocService {
 	String institutionID, staffID;
 	private YArrivalDocPO po;
+	private Collectionbl collectionbl;
 	private TransferDoc transferDoc;
 	private Institution institution;
 	private TransferDataService transferDataService; 
 
-	public YArrivalDoc( String staffID) {
+	public YArrivalDoc( String staffID) throws RemoteException {
 		super();
 		this.staffID = staffID;
 		transferDoc = new TransferDoc( staffID);
 		institution = new Institution();
 		this.institutionID = institution.getInstitutionID(staffID);
 		transferDataService = new TransferDataServiceImpl(institutionID);
+		collectionbl = new Collectionbl(staffID);
 	}
 
 	public YArrivalDoc() {
@@ -36,6 +40,7 @@ public class YArrivalDoc implements YArrivalDocService {
 	public void saveYArrivalDocPO(YArrivalDocPO po) {
 		// TODO 自动生成的方法存根
 		transferDataService.saveYArrivalDocPO(po);
+		changeYArrivalSequence();
 	}
 
 	@Override
@@ -52,9 +57,9 @@ public class YArrivalDoc implements YArrivalDocService {
 	}
 
 	@Override
-	public YArrivalDocVO findYArrivalDocVO(int ID) {
+	public YArrivalDocVO findYArrivalDocVO(String ID) {
 		// TODO 自动生成的方法存根
-		return null;
+		return new YArrivalDocVO(transferDataService.getYArrivalDocPO(ID, false));
 	}
 
 	@Override
@@ -86,13 +91,13 @@ public class YArrivalDoc implements YArrivalDocService {
 	@Override
 	public String getAddressByID(String itemID) {
 		// TODO Auto-generated method stub
-		return null;
+		return collectionbl.getSendDocPOByID(itemID).getrAddress();
 	}
 
 	@Override
 	public String[] getCouriers() {
 		// TODO Auto-generated method stub
-		return null;
+		return (String[]) institution.getCourierID(institutionID).toArray();
 	}
 
 

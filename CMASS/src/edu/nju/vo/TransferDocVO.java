@@ -2,6 +2,8 @@ package edu.nju.vo;
 
 import java.util.Date;
 
+import edu.nju.po.TransferDocPO;
+
 public class TransferDocVO extends Doc{
 	//long TransferDocID;
 	String date;
@@ -15,6 +17,9 @@ public class TransferDocVO extends Doc{
 	String targetCity;
 	String[] itemIDs;
 	String price;
+	public TransferDocVO(TransferDocPO PO) {
+		// TODO Auto-generated constructor stub
+	}
 	public String getTransferDocID() {
 		return ID;
 	}

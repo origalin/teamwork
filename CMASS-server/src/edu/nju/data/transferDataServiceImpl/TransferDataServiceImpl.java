@@ -8,7 +8,6 @@ import edu.nju.data.database.SQL;
 import edu.nju.dataservice.transformdataservice.TransferDataService;
 import edu.nju.po.HistoryTimePO;
 import edu.nju.po.OverDocPO;
-import edu.nju.po.SendDocPO;
 import edu.nju.po.TransferDocPO;
 import edu.nju.po.YArrivalDocPO;
 import edu.nju.po.YDeliverDocPO;
@@ -16,7 +15,6 @@ import edu.nju.po.YLoadDocPO;
 import edu.nju.po.ZArrivalDocPO;
 import edu.nju.po.ZLoadDocPO;
 import edu.nju.tools.StringTools;
-import sun.launcher.resources.launcher;
 
 public class TransferDataServiceImpl   implements TransferDataService{
 	String institutionID;

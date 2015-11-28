@@ -8,9 +8,12 @@ import java.util.List;
 import javax.sound.midi.Sequence;
 import javax.tools.Tool;
 
+import edu.nju.businesslogic.infobl.Distance;
 import edu.nju.businesslogic.infobl.Institution;
+import edu.nju.businesslogic.logispicsquerybl.Logisticsquerybl;
 import edu.nju.businesslogic.transformbl.OverDoc;
 import edu.nju.businesslogicservice.collectionlogicservice.CollectionLogicService;
+import edu.nju.businesslogicservice.logispicsquerylogicservice.LogispicsQueryLogicService;
 import edu.nju.data.collectionDataServiceImpl.CollectionDataServiceImpl;
 import edu.nju.data.transferDataServiceImpl.TransferDataServiceImpl;
 import edu.nju.dataservice.collectiondataservice.CollectionDataService;
@@ -28,6 +31,8 @@ public class Collectionbl implements CollectionLogicService{
 	CollectionDataService collectionData;
 	TransferDataService transferData;
 	Institution institution;
+	Distance distance;
+	Logisticsquerybl logisticsquerybl;
 	OverDoc overDoc;
 
 	public Collectionbl( String staffID) throws RemoteException {
@@ -37,24 +42,33 @@ public class Collectionbl implements CollectionLogicService{
 		collectionData = new CollectionDataServiceImpl();
 		this.institutionID = institution.getInstitutionID(staffID);
 		transferData = new TransferDataServiceImpl(institutionID);
+		logisticsquerybl = new Logisticsquerybl();
 		overDoc = new OverDoc(staffID);
+		distance = new Distance();
 	}
 	
 	public Collectionbl(){
 		this.institutionID=null;
 		this.staffID=null;
 	}
+	public void  confirmsave() {
+		saveSendDocPO(po);
+		changeSequence();
+		logisticsquerybl.createPosition(po.getID(),institution.getCityAndName(institutionID)+"已揽件",po.getrCity()+po.getrAddress());
+	}
 
 	@Override
 	public void saveSendDocPO(SendDocPO po) {
 		// TODO 自动生成的方法存根
+		collectionData.saveSendDocPO(po);
 		
 	}
 
 	@Override
 	public double getDistance(String city) {
 		// TODO 自动生成的方法存根
-		return 0;
+		String sCity = institution.getCity(institutionID);
+		return distance.getDistance(sCity, city);
 	}
 
 	@Override
@@ -68,13 +82,6 @@ public class Collectionbl implements CollectionLogicService{
 		// TODO 自动生成的方法存根
 		String sequence = SequenceCalc.calcNextSequence5(getSequence());
 		collectionData.changeSequence(sequence);
-	}
-
-
-	@Override
-	public PositionPO QueryGoodsInfo(int SendDocID) {
-		// TODO 自动生成的方法存根
-		return null;
 	}
 
 	@Override
@@ -150,12 +157,6 @@ public class Collectionbl implements CollectionLogicService{
 	}
 
 	@Override
-	public SendDocVO findSendDocVO(int ID) {
-		// TODO 自动生成的方法存根
-		return null;
-	}
-
-	@Override
 	public ArrayList<HistoryTimePO> getHistoryPO(String sCity,String rCity) {
 		// TODO 自动生成的方法存根
 		return transferData.getHistoryTimePO(sCity, rCity);
@@ -180,13 +181,13 @@ public class Collectionbl implements CollectionLogicService{
 	@Override
 	public SendDocVO getSendDocVOByID(String itemID) {
 		// TODO Auto-generated method stub
-		return null;
+		return new SendDocVO(collectionData.getSendDocPOByID(itemID));
 	}
 
 	@Override
 	public SendDocPO getSendDocPOByID(String itemID) {
 		// TODO Auto-generated method stub
-		return null;
+		return collectionData.getSendDocPOByID(itemID);
 	}
 
 	@Override
