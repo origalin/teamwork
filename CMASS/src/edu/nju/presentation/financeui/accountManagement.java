@@ -1,13 +1,29 @@
 package edu.nju.presentation.financeui;
 import javax.swing.*;
+
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+
 import javax.swing.table.DefaultTableModel;
+
+import edu.nju.presentation.approveui.checkMainUI;
+import edu.nju.vo.AccountVO;
+
 import java.awt.Font;
+import java.util.ArrayList;
 public class accountManagement extends JPanel{
 	private JTextField textField;
 	private JTable table;
+	
+	public static void main(String[]args){
+		JFrame frame=new JFrame();
+		accountManagement ui=new accountManagement();
+		ui.setVisible(true);
+		frame.getContentPane().add(ui);
+		frame.setSize(500,500);
+		frame.setVisible(true);
+	}
 	public accountManagement() {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 302, 0, 0, 0};
@@ -24,7 +40,7 @@ public class accountManagement extends JPanel{
 		add(label, gbc_label);
 		
 		JButton button = new JButton("\u589E\u52A0");
-		button.setFont(new Font("黑体", Font.BOLD, 12));
+		button.setFont(new Font("宋体", Font.PLAIN, 12));
 		GridBagConstraints gbc_button = new GridBagConstraints();
 		gbc_button.insets = new Insets(0, 0, 5, 5);
 		gbc_button.gridx = 1;
@@ -32,7 +48,7 @@ public class accountManagement extends JPanel{
 		add(button, gbc_button);
 		
 		JButton button_1 = new JButton("\u5220\u9664");
-		button_1.setFont(new Font("黑体", Font.BOLD, 12));
+		button_1.setFont(new Font("宋体", Font.PLAIN, 12));
 		GridBagConstraints gbc_button_1 = new GridBagConstraints();
 		gbc_button_1.insets = new Insets(0, 0, 5, 5);
 		gbc_button_1.gridx = 2;
@@ -40,7 +56,7 @@ public class accountManagement extends JPanel{
 		add(button_1, gbc_button_1);
 		
 		JButton button_2 = new JButton("\u4FEE\u6539");
-		button_2.setFont(new Font("黑体", Font.BOLD, 12));
+		button_2.setFont(new Font("宋体", Font.PLAIN, 12));
 		GridBagConstraints gbc_button_2 = new GridBagConstraints();
 		gbc_button_2.insets = new Insets(0, 0, 5, 5);
 		gbc_button_2.gridx = 1;
@@ -48,7 +64,7 @@ public class accountManagement extends JPanel{
 		add(button_2, gbc_button_2);
 		
 		JButton button_3 = new JButton("\u67E5\u770B");
-		button_3.setFont(new Font("黑体", Font.BOLD, 12));
+		button_3.setFont(new Font("宋体", Font.PLAIN, 12));
 		GridBagConstraints gbc_button_3 = new GridBagConstraints();
 		gbc_button_3.insets = new Insets(0, 0, 5, 5);
 		gbc_button_3.gridx = 2;
@@ -56,7 +72,7 @@ public class accountManagement extends JPanel{
 		add(button_3, gbc_button_3);
 		
 		JLabel label_1 = new JLabel("\u8D26\u6237\u540D\u79F0");
-		label_1.setFont(new Font("黑体", Font.BOLD, 12));
+		label_1.setFont(new Font("宋体", Font.PLAIN, 12));
 		GridBagConstraints gbc_label_1 = new GridBagConstraints();
 		gbc_label_1.insets = new Insets(0, 0, 5, 5);
 		gbc_label_1.anchor = GridBagConstraints.EAST;
@@ -81,21 +97,62 @@ public class accountManagement extends JPanel{
 		gbc_scrollPane.gridx = 2;
 		gbc_scrollPane.gridy = 6;
 		add(scrollPane, gbc_scrollPane);
-		
+		/*
 		table = new JTable();
 		scrollPane.setViewportView(table);
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null},
-				{null},
-				{null},
-				{null},
-				{null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
 			},
 			new String[] {
-				"\u516C\u53F8\u94F6\u884C\u8D26\u6237"
+				"\u516C\u53F8\u94F6\u884C\u8D26\u6237", "\u8D26\u6237\u4F59\u989D"
 			}
-		));
+		) {
+			Class[] columnTypes = new Class[] {
+				String.class, Double.class
+			};
+			public Class getColumnClass(int columnIndex) {
+				return columnTypes[columnIndex];
+			}
+		});
+		*/
+		/*测试代码
+		ArrayList<AccountVO> list=new ArrayList<AccountVO>();
+		for(int i=0;i<5;i++){
+			AccountVO vo=new AccountVO("账户名"+i,i*1000.0);
+			list.add(vo);
+		}
+		*/
+		ArrayList<AccountVO> list=
+		scrollPane.setViewportView(initializeTable(list));
+		
+	}
+	public JTable initializeTable(ArrayList<AccountVO> accountList){
+		table = new JTable();
+		Object[][] tableInfo=new Object[accountList.size()][2];
+		for(int i=0;i<accountList.size();i++){
+			Object[] oneLine={accountList.get(i).getName(),accountList.get(i).getBalance()};
+			tableInfo[i]=oneLine;
+		}
+		table.setModel(new DefaultTableModel(
+			tableInfo,
+				new String[] {
+					"\u516C\u53F8\u94F6\u884C\u8D26\u6237", "\u8D26\u6237\u4F59\u989D"
+				}
+			) {
+				Class[] columnTypes = new Class[] {
+					String.class,String.class
+				};
+				public Class getColumnClass(int columnIndex) {
+					return columnTypes[columnIndex];
+				}
+			});
+		return table;
+		
 	}
 
 }

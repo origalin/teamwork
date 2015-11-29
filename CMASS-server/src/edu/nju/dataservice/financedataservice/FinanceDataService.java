@@ -25,7 +25,7 @@ public interface FinanceDataService{
 	public void createGatheringDoc(String GatheringDocID,Date date,Double money, String courier_name,ArrayList<String> itemIDs,String account);
 	public GatheringDocPO getGatheringDocPO(String GatheringDocID);//支持预览
 	//生成收款单与生成付款单都需要的操作
-	public ArrayList<String> getAccountList();
+	public ArrayList<AccountPO> getAccountList();
 	public void addMoney(String accountName, double money);
 	public void minusMoney(String accountName, double money);
 }

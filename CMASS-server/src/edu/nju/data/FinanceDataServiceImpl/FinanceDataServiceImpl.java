@@ -27,6 +27,14 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements
 
 	public static void main(String[] args) throws RemoteException, ParseException {		 
 		FinanceDataServiceImpl temp = new FinanceDataServiceImpl();
+		/*
+		ArrayList<AccountPO> poList=temp.getAccountList();
+		for(AccountPO po:poList){
+			System.out.println(po.getName()+" "+po.getBalance());
+			
+		}
+		*/
+		System.out.println(temp.getTotalIncome());
 	}
 
 	// 提供给审批单据的供接口
@@ -426,20 +434,22 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements
 	}
 
 	@Override
-	public ArrayList<String> getAccountList() {
-		ArrayList<String> accountNameList=new ArrayList<String>();
-		String sql = "SELECT 账户名称 FROM account;";
+	public ArrayList<AccountPO> getAccountList() {
+		ArrayList<AccountPO> accountList=new ArrayList<AccountPO>();
+		String sql = "SELECT 账户名称,账户余额 FROM account;";
 		SQL.databaseQuery(sql);
 		try {
 			while(SQL.rs.next()){
 			String accountName = SQL.rs.getString("账户名称");	
-			accountNameList.add(accountName);
+			double accountBalance=SQL.rs.getDouble("账户余额");
+			accountList.add(new AccountPO(accountName,accountBalance));
 			}
-			return accountNameList;
+			return accountList;
 		} catch (SQLException e) {
 			System.out.println("账户查询错误");
 			e.printStackTrace();
 		}
+		SQL.closeDatabase();
 		return null;
 	}
 

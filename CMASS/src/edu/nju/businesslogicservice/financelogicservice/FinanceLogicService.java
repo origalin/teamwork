@@ -36,6 +36,7 @@ public interface FinanceLogicService {
 	public void deleteAccountPO(String accountName);
 	public void modifyAccountPO(String oldAccountName,String newAccountName);
 	public AccountVO checkAccountPO(String accountName);
+	
 	//查看成本收益表部分
 	public double getTotalIncome();//得到总收入
 	public double getTotalPayment();//得到总支出
@@ -73,7 +74,7 @@ public interface FinanceLogicService {
 		public void createGatheringDoc(String GatheringDocID,String courier_ID,String account);//实现的时候需要先得到SendDocPOList
 		public GatheringDocVO getGatheringDocVO(String GatheringDocID);//支持预览收款单
 		public void setSendDocList(ArrayList<SendDocPO> SendDocPOList);//将这部分寄件单设为已经生成收款单
-	//生成付款单和生成收款单共有的部分
+	//生成付款单和生成收款单共有的部分,账户管理界面显示也会用到
 		public ArrayList<String> getAccountList();
 		//收款单
 		public void addMoney(String accountName,double money);
