@@ -22,5 +22,15 @@ public class Car implements CarLogicService{
 		return carVOList;
 		
 	}
+	@Override
+	public void saveCar(CarPO po) {
+		// TODO Auto-generated method stub
+		carDataService.changeCar(po);
+	}
+	@Override
+	public void deleteCar(CarPO po) {
+		// TODO Auto-generated method stub
+		carDataService.deleteCar(po);
+	}
 	
 }

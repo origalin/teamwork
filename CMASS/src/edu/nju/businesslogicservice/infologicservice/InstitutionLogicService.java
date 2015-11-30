@@ -22,9 +22,11 @@ public interface InstitutionLogicService {
 	//collection依赖我
 	
 	public ArrayList<String> getDirverID(String institutionID);//
-	public ArrayList<String> getDirverName(String institutionID);
+	public String getDirverName(String driverID);
 	public ArrayList<String> getCourierID(String institutionID);//
 	public ArrayList<String> getTransferCenterID(String institutionID);//
+	public ArrayList<String> getSubInstitutionID(String institutionID);
+	
 	public String getName(String id);//根据机构id返回name  
 	public String getStaffName(String id);//根据人员ID返回人员姓名
 	public String getInstitutionName(String id);//根据人员ID返回机构姓名

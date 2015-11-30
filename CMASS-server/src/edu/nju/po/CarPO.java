@@ -14,14 +14,14 @@ public class CarPO {
 	String institutionName;
 	Date buyTime;
 	int years;
-	public CarPO(String carID,String engineID,String plateID,String underpanID,String institutionName,Date buyTime,int years) {
+	public CarPO(String carID,String engineID,String plateID,String underpanID,String institutionName,Date date,int years) {
 		super();
 		this.carID=carID;
 		this.engineID=engineID;
 		this.plateID=plateID;
 		this.underpanID=underpanID;
 		this.institutionName=institutionName;
-		this.buyTime=buyTime;
+		this.buyTime=date;
 		this.years=years;
 	}
 	public String getCarID() {

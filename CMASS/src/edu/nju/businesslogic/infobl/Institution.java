@@ -48,31 +48,31 @@ public class Institution implements InstitutionLogicService{
 	}
 
 	@Override
-	public String[][] getCouriers() {
+	public ArrayList<String> getDirverID(String institutionID) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public String[][] getBusinessHalls(String id) {
+	public ArrayList<String> getDirverName(String institutionID) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public String[][] getDrivers(String id) {
+	public ArrayList<String> getCourierID(String institutionID) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public String[][] getTransfers(String id) {
+	public ArrayList<String> getTransferCenterID(String institutionID) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public String getCityAndName(String id) {
+	public String getName(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -96,6 +96,12 @@ public class Institution implements InstitutionLogicService{
 	}
 
 	@Override
+	public String getCity(String institutionid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
 	public ArrayList<InstitutionPO> getUnpaidInstitutionList() {
 		// TODO Auto-generated method stub
 		return null;
@@ -109,6 +115,24 @@ public class Institution implements InstitutionLogicService{
 
 	@Override
 	public void resetSalary() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void saveSalary(String id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void saveDriverSalary(String id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void saveRent(String id) {
 		// TODO Auto-generated method stub
 		
 	}

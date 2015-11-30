@@ -1,11 +1,12 @@
 package edu.nju.dataservice.infodataservice;
 
+import java.rmi.Remote;
 import java.util.ArrayList;
 
 import edu.nju.po.InstitutionPO;
 import edu.nju.po.StaffPO;
 
-public interface InstitutionDataService {
+public interface InstitutionDataService extends Remote{
 	
 	public ArrayList<StaffPO> findStaff(String institutionName);
 	public void addStaff(StaffPO po);

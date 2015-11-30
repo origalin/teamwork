@@ -1,8 +1,10 @@
 package edu.nju.dataservice.infodataservice;
 
+import java.rmi.Remote;
+
 import edu.nju.po.DistancePO;
 
-public interface DistanceDataService {
+public interface DistanceDataService extends Remote{
 	public double  getDistance(String city1,String city2);
 	
 	
