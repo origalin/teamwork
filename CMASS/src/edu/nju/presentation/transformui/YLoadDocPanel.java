@@ -35,11 +35,13 @@ public class YLoadDocPanel extends JPanel{
 	private JTextField itemIDField;
 	private JTable table;
 	protected DefaultTableModel tableModel;
-	String carID,watcher,institutionID,staffID,driver;
+	String carID,watcher,institutionID,staffID;
+	String driver;
 	String[] itemIDs;
 	YLoadDoc yLoadDoc;
 	YLoadDocVO vo;
 	private JComboBox driverBox;
+	String[][] driverNameAndIDs;
 	String[] drivers;
 
 	public YLoadDocPanel(String staffID) {
@@ -93,7 +95,11 @@ public class YLoadDocPanel extends JPanel{
 		JLabel label_12 = new JLabel("\u53F8\u673A");
 		panel_8.add(label_12);
 		
-		driver = yLoadDoc.getDrivers();
+		driverNameAndIDs = yLoadDoc.getDrivers();
+		drivers = new String[driverNameAndIDs.length];
+		for(int i = 0;i<driverNameAndIDs.length;i++) {
+			drivers[i] = driverNameAndIDs[i][1];
+		}
 		driverBox = new JComboBox();
 		driverBox.setModel(new DefaultComboBoxModel<String>(drivers));
 		panel_8.add(driverBox);
@@ -217,7 +223,7 @@ public class YLoadDocPanel extends JPanel{
 	private void  intialize() {
 		carID = carIDField.getText();
 		watcher = watcherField.getText();
-		driver = (String) driverBox.getSelectedItem();
+		driver = driverNameAndIDs[driverBox.getSelectedIndex()][0];
 		if(tableModel.getRowCount()>0) {
 			itemIDs = new String[tableModel.getRowCount()];
 			for(int i = 0;i<tableModel.getRowCount();i++) {

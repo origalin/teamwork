@@ -5,6 +5,7 @@ import edu.nju.tools.Time;
 
 public class TransferDoc_CarVO extends TransferDocVO{
 	public TransferDoc_CarVO(TransferDoc_CarPO po) {
+		super(po);
 		this.date = Time.toDaysTime(po.getDate());
 		this.ID = po.getTransferDocID();
 		this.CarNum = po.getCarNum();

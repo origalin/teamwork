@@ -17,6 +17,6 @@ public interface YLoadDocService {
 	public double[] getPriceToday();
 	public YLoadDocPO getYloadDocPOByID(String ID);
 	public String getTransferCenter();
-	public String getDrivers();
+	public String[][] getDrivers();
 	public int getDriverTime(String drrverID);
 }

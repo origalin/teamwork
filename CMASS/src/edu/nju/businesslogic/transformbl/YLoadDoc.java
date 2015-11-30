@@ -95,14 +95,25 @@ public class YLoadDoc implements YLoadDocService{
 		return institution.getInstitutionName(institution.getTransferCenterID(institutionID));
 	}
 	@Override
-	public String[] getDrivers() {
+	public String[][] getDrivers() {
 		// TODO Auto-generated method stub
 		ArrayList<String> driverIDs = institution.getDirverID(institutionID);
 		ArrayList<String> driverNames = new ArrayList<String>();
 		for(String ID : driverIDs) {
 			driverNames.add(institution.getDirverName(ID));
 		}
-		return (String[]) driverNames.toArray();
+		String[][] drivers = new String[driverIDs.size()][2];
+		for(int i = 0;i < driverIDs.size();i++) {
+			drivers[i][0] = driverIDs.get(i);
+			drivers[i][1] = driverNames.get(i);
+		}
+		return drivers;
+	}
+	public String getInstitutionID() {
+		return institutionID;
+	}
+	public void setInstitutionID(String institutionID) {
+		this.institutionID = institutionID;
 	}
 	private String getTranceID() {
 		return transferDataService.getTransferID();

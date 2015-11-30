@@ -1,6 +1,7 @@
 package edu.nju.businesslogic.transformbl;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 
 import edu.nju.businesslogic.infobl.Institution;
@@ -19,6 +20,7 @@ public class ZLoadDoc implements ZLoadDocService{
 	private Institution institution;
 	private TransferDataService transferDataService;
 	private Logisticsquerybl logisticsquerybl;
+	private YLoadDoc yLoadDoc;
 	public ZLoadDoc( String staffID) {
 		super();
 		this.staffID = staffID;
@@ -84,9 +86,28 @@ public class ZLoadDoc implements ZLoadDocService{
 	}
 
 	@Override
-	public String[] getDrivers() {
+	public String[][] getDrivers() {
 		// TODO Auto-generated method stub
-		return null;
+		ArrayList<String> subInstitution = institution.getSubInstitution(institutionID);
+		
+		ArrayList<String[][]> subDrivers = new ArrayList<String[][]>();
+		int num;
+		for(int i = 0;i<subInstitution.size();i++) {
+			yLoadDoc = new YLoadDoc(staffID);
+			yLoadDoc.setInstitutionID(subInstitution.get(i));
+			subDrivers.add(yLoadDoc.getDrivers());
+			num+=yLoadDoc.getDrivers().length;
+		}
+		String[][] allDrivers = new String[num][2];
+		int j = 0;
+		for(String[][] s : subDrivers) {
+			for(int i = 0;i<s.length;i++) {
+				allDrivers[j+i][0] = s[i][0];
+				allDrivers[j+i][0] = s[i][1];
+			}
+			j+=s.length;
+		}
+		return allDrivers;
 	}
 
 	@Override

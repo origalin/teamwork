@@ -38,6 +38,7 @@ public class ZLoadDocPanel extends JPanel{
 	ZLoadDoc zLoadDoc;
 	String[] subBusinessHall;
 	String[] drivers;
+	String[][] driverNameAndIDs;
 	private DefaultTableModel tableModel;
 	String carID,watcher,driver,target;
 	String[] itemIDs;
@@ -102,7 +103,11 @@ public class ZLoadDocPanel extends JPanel{
 		JLabel label_12 = new JLabel("\u53F8\u673A");
 		panel_8.add(label_12);
 		
-		drivers = zLoadDoc.getDrivers();
+		driverNameAndIDs = zLoadDoc.getDrivers();
+		drivers = new String[driverNameAndIDs.length];
+		for(int i = 0;i<driverNameAndIDs.length;i++) {
+			drivers[i] = driverNameAndIDs[i][0];
+		}
 		driverBox = new JComboBox();
 		driverBox.setModel(new DefaultComboBoxModel<String>(drivers));
 		panel_8.add(driverBox);
@@ -224,7 +229,7 @@ public class ZLoadDocPanel extends JPanel{
 		carID = carIDField.getText();
 		watcher = watcherField.getText();
 		target = (String) targetBox.getSelectedItem();
-		driver = (String) driverBox.getSelectedItem();
+		driver = driverNameAndIDs[driverBox.getSelectedIndex()][1];
 		if(tableModel.getRowCount()>0) {
 			itemIDs = new String[tableModel.getRowCount()];
 			for(int i = 0;i<tableModel.getRowCount();i++) {

@@ -15,6 +15,6 @@ public interface ZLoadDocService {
 	public ArrayList<ZLoadDocPO> getUncheckedZLoadDocPOs();
 	public double[] getPriceToday();
 	public String[] getSubBusinessHall();
-	public String[] getDrivers();
+	public String[][] getDrivers();
 	public int getDriverTime(String drrverID);
 }

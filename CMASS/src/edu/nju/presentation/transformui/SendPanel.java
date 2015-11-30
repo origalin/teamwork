@@ -145,7 +145,7 @@ public class SendPanel extends JPanel{
 			toOverModel.removeRow(i);
 		}
 		collectionbl = new Collectionbl(staffID);
-		ArrayList<YDeliverDocVO> yDeliverDocVOs = yDeliverDoc.getDeliverDocVOsByID(staffID);
+		ArrayList<YDeliverDocVO> yDeliverDocVOs = yDeliverDoc.findYDeliverDocVOs(staffID);
 		SendDocVO sendDocVO ;
 		for(YDeliverDocVO vo:yDeliverDocVOs) {
 			String[] itemIDs = vo.getItemIDs();
