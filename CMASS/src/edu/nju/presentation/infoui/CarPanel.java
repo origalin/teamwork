@@ -173,6 +173,7 @@ public class CarPanel extends JPanel {
 				for (int i = 0; i < table.getRowCount(); i++) {
 					CarPO carPO;
 						Date date = null;
+						//ÕâÀïÓÐbug!!!!!!!!!!!!!
 						date = (Date) table.getValueAt(i, 5);
 						System.out.println(date);
 				
