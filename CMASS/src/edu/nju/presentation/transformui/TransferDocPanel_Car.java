@@ -215,7 +215,7 @@ public class TransferDocPanel_Car extends JPanel {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					// TODO Auto-generated method stub
-					
+					saveDoc();
 				}
 			});
 		}
@@ -239,5 +239,8 @@ public class TransferDocPanel_Car extends JPanel {
 			this.itemIDs[i] = (String) tableModel.getValueAt(i,0);
 			itemIDNum++;
 		}
+	}
+	private void saveDoc() {
+		transferDoc.confirmSave();
 	}
 }

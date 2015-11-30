@@ -210,7 +210,7 @@ public class ZLoadDocPanel extends JPanel{
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					// TODO Auto-generated method stub
-					
+					saveDoc();
 				}
 			});
 		}else {
@@ -239,5 +239,8 @@ public class ZLoadDocPanel extends JPanel{
 	}
 	private void warnning() {
 		
+	}
+	private void saveDoc() {
+		zLoadDoc.confirmSave();
 	}
 }

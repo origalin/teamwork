@@ -18,6 +18,8 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.table.DefaultTableModel;
 
 import edu.nju.businesslogic.transformbl.ZArrivalDoc;
+import edu.nju.presentation.approveui.checkZArrivalDoc;
+import edu.nju.presentation.mainui.CheckDialog;
 import edu.nju.vo.ZArrivalDocVO;
 
 import javax.swing.JComboBox;
@@ -35,7 +37,7 @@ public class ZArrivalDocPanel extends JPanel {
 	ZArrivalDocVO vo;
 	DefaultTableModel tableModel;
 	String[][] str;
-	int docType;//0-中转单1-装车单
+	int docType = -1;//0-中转单1-装车单
 
 	public ZArrivalDocPanel( String staffID) {
 		this.staffID = staffID;
@@ -229,7 +231,7 @@ public class ZArrivalDocPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-
+				createZArrivalDoc();
 			}
 		});
 		GridBagConstraints gbc_createButton = new GridBagConstraints();
@@ -264,7 +266,7 @@ public class ZArrivalDocPanel extends JPanel {
 	}
 
 	private boolean intializable() {
-		if (transferDocIDField.getText().equals("")) {
+		if (transferDocIDField.getText().equals("")||docType==-1) {
 			return false;
 		} else {
 			return true;
@@ -280,19 +282,34 @@ public class ZArrivalDocPanel extends JPanel {
 	}
 
 	private void createZArrivalDoc() {
-		if (creatable()) {
-
+		if (creatable()&&intializable()) {
+			intializeWithFromDoc();
 			str = new String[tableModel.getRowCount()][2];
 			for (int i = 0; i < tableModel.getRowCount(); i++) {
 				str[i][0] = (String) tableModel.getValueAt(i, 0);
 				str[i][0] = (String) tableModel.getValueAt(i, 1);
-				if(docType==0) {
-					vo = zArrivalDoc.createZArrivalDocVO_TransferDoc(transferDocIDField.getText(), str);
-				}else {
-					vo = zArrivalDoc.createZArrivalDocVO_YLoadDoc(transferDocIDField.getText(), str);
-				}
+				
+				
 				
 			}
+			if(docType==0) {
+				vo = zArrivalDoc.createZArrivalDocVO_TransferDoc(transferDocIDField.getText(), str);
+			}else {
+				vo = zArrivalDoc.createZArrivalDocVO_YLoadDoc(transferDocIDField.getText(), str);
+			}
+			CheckDialog cDialog = new CheckDialog();
+			cDialog.getDocPanel().add(new checkZArrivalDoc(vo));
+			cDialog.getConfirmButton().addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					saveDoc();
+				}
+			});
 		}
+	}
+	private void saveDoc() {
+		zArrivalDoc.confirmSave();
 	}
 }

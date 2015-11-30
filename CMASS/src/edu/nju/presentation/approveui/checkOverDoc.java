@@ -1,5 +1,8 @@
 package edu.nju.presentation.approveui;
 import javax.swing.*;
+
+import edu.nju.vo.OverDocVO;
+
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
@@ -94,6 +97,9 @@ public class checkOverDoc extends JPanel{
 		gbc_textField_2.gridy = 4;
 		add(textField_2, gbc_textField_2);
 		textField_2.setColumns(10);
+	}
+	public checkOverDoc(OverDocVO vo) {
+		// TODO Auto-generated constructor stub
 	}
 
 }

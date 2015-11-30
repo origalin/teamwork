@@ -59,7 +59,7 @@ public class YDeliverDoc implements YDeliverDocService{
 	}
 
 	@Override
-	public void createYDeliverDoc(String[][] IDAndCourier) {
+	public YDeliverDocVO createYDeliverDoc(String[][] IDAndCourier) {
 		// TODO 自动生成的方法存根
 		ArrayList<String> couriers = new ArrayList<String>();
 		for(int i = 0;i<IDAndCourier.length;i++) {
@@ -76,8 +76,7 @@ public class YDeliverDoc implements YDeliverDocService{
 			}
 			String[] itemIDs = (String[]) item.toArray();
 			po = new YDeliverDocPO("10"+getYDeliverSequence(), new Date(), staffID, itemIDs);
-			saveYDeliverDocPO(po);
-			changeYDeliverDocSequence();
+			return new YDeliverDocVO(po);
 		}
 	}
 

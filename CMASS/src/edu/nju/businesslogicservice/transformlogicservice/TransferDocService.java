@@ -20,4 +20,5 @@ public interface TransferDocService {
 	public ArrayList<TransferDocPO> getUncheckedTransferDocPOs();
 	public double[] getPriceToday();
 	public TransferDocPO geTransferDocPOByID(String ID);
+	public void  confirmSave();
 }

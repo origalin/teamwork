@@ -7,6 +7,7 @@ import java.awt.Font;
 import javax.swing.table.DefaultTableModel;
 
 import edu.nju.vo.YArrivalDocVO;
+import edu.nju.vo.YDeliverDocVO;
 public class checkYArrivalDoc extends JPanel{
 	private JTextField textField;
 	private JTextField textField_1;
@@ -140,6 +141,9 @@ public class checkYArrivalDoc extends JPanel{
 				"\u5BC4\u4EF6\u5355\u53F7"
 			}
 		));
+	}
+	public checkYArrivalDoc(YDeliverDocVO vo) {
+		// TODO Auto-generated constructor stub
 	}
 
 }

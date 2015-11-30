@@ -88,10 +88,10 @@ public class ZLoadDoc implements ZLoadDocService{
 	@Override
 	public String[][] getDrivers() {
 		// TODO Auto-generated method stub
-		ArrayList<String> subInstitution = institution.getSubInstitution(institutionID);
+		ArrayList<String> subInstitution = institution.getSubInstitutionID(institutionID);
 		
 		ArrayList<String[][]> subDrivers = new ArrayList<String[][]>();
-		int num;
+		int num = 0;
 		for(int i = 0;i<subInstitution.size();i++) {
 			yLoadDoc = new YLoadDoc(staffID);
 			yLoadDoc.setInstitutionID(subInstitution.get(i));

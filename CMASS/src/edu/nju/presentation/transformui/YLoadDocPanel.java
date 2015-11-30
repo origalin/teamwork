@@ -205,7 +205,7 @@ public class YLoadDocPanel extends JPanel{
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					// TODO Auto-generated method stub
-					
+					saveDoc();
 				}
 			});
 		}else {
@@ -233,5 +233,8 @@ public class YLoadDocPanel extends JPanel{
 	}
 	private void warnning() {
 		
+	}
+	private void saveDoc() {
+		yLoadDoc.confirmSave();
 	}
 }

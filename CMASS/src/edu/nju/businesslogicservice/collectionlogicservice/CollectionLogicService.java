@@ -24,4 +24,5 @@ public interface CollectionLogicService {
 	public ArrayList<String> getSendDocsByID(String courier_ID);
 	public void saveSendDocCreateGatheringDoc(String courierID);
 	ArrayList<HistoryTimePO> getHistoryPO(String sCity, String rCity);
+	public void  confirmSave();
 }

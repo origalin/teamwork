@@ -517,7 +517,7 @@ public class CollertionPanel extends JPanel{
 		});
 	}
 	public void  saveDoc() {
-		
+		collection.confirmSave();
 	}
 	
 }

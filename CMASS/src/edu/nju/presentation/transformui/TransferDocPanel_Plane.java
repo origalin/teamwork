@@ -6,6 +6,7 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Savepoint;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -232,7 +233,7 @@ public class TransferDocPanel_Plane extends JPanel{
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					// TODO Auto-generated method stub
-					
+					saveDoc();
 				}
 			});
 		}
@@ -258,5 +259,8 @@ public class TransferDocPanel_Plane extends JPanel{
 			this.itemIDs[i] = (String) tableModel.getValueAt(i,0);
 			itemIDNum++;
 		}
+	}
+	private void saveDoc() {
+		transferDoc.confirmsave_Plane();
 	}
 }

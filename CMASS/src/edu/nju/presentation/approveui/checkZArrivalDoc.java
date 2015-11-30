@@ -5,6 +5,8 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.Font;
 import javax.swing.table.DefaultTableModel;
+
+import edu.nju.vo.ZArrivalDocVO;
 public class checkZArrivalDoc extends JPanel{
 	private JTextField textField;
 	private JTextField textField_1;
@@ -161,6 +163,9 @@ public class checkZArrivalDoc extends JPanel{
 				"\u5BC4\u4EF6\u5355\u53F7"
 			}
 		));
+	}
+	public checkZArrivalDoc(ZArrivalDocVO vo) {
+		// TODO Auto-generated constructor stub
 	}
 
 }

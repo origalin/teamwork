@@ -22,7 +22,10 @@ import edu.nju.businesslogic.transformbl.OverDoc;
 import edu.nju.businesslogic.transformbl.YDeliverDoc;
 import edu.nju.po.SendDocPO;
 import edu.nju.po.YDeliverDocPO;
+import edu.nju.presentation.approveui.checkOverDoc;
 import edu.nju.presentation.financeui.accountManagement;
+import edu.nju.presentation.mainui.CheckDialog;
+import edu.nju.vo.OverDocVO;
 import edu.nju.vo.SendDocVO;
 import edu.nju.vo.YDeliverDocVO;
 
@@ -168,7 +171,19 @@ public class SendPanel extends JPanel{
 			itemIDs[i] = (String) toOverModel.getValueAt(i, 0);
 			receivers[i] = (String) toOverModel.getValueAt(i, 1);
 		}
-		
-		overDoc.createOverDocVO(itemIDs, receivers);
+		OverDocVO vo = overDoc.createOverDocVO(itemIDs, receivers);
+		CheckDialog cDialog = new CheckDialog();
+		cDialog.getDocPanel().add(new checkOverDoc(vo));
+		cDialog.getConfirmButton().addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				saveDoc();
+			}
+		});
+	}
+	private void saveDoc() {
+		overDoc.confirmSave();
 	}
 }

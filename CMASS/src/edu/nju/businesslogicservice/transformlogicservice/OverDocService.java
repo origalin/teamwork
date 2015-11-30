@@ -11,5 +11,6 @@ public interface OverDocService {
 	public void changeOverDocSequence();//改变基准序列号
 	public OverDocVO findOverDocVO(String ID);//获取收件单VO
 	public ArrayList<OverDocPO> getUncheckedOverDocPOs();
+	public void  confirmSave();
 	public OverDocVO createOverDocVO(String[] itemIDs ,String[] receivers);
 }

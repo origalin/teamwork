@@ -51,10 +51,10 @@ public class Collectionbl implements CollectionLogicService{
 		this.institutionID=null;
 		this.staffID=null;
 	}
-	public void  confirmsave() {
+	public void  confirmSave() {
 		saveSendDocPO(po);
 		changeSequence();
-		logisticsquerybl.createPosition(po.getID(),institution.getCityAndName(institutionID)+"已揽件",po.getrCity()+po.getrAddress());
+		logisticsquerybl.createPosition(po.getID(),institution.getCity(institutionID)+institution.getInstitutionName(institutionID)+"已揽件",po.getrCity()+po.getrAddress());
 	}
 
 	@Override

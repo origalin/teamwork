@@ -26,6 +26,7 @@ import edu.nju.businesslogic.transformbl.ZArrivalDoc;
 import edu.nju.presentation.approveui.checkYArrivalDoc;
 import edu.nju.presentation.mainui.CheckDialog;
 import edu.nju.vo.YArrivalDocVO;
+import edu.nju.vo.YDeliverDocVO;
 import edu.nju.vo.ZArrivalDocVO;
 
 import javax.swing.JComboBox;
@@ -334,7 +335,7 @@ public class YArrivalDocPanel extends JPanel{
 		}
 	}
 	private void  saveYArrivalDoc() {
-		
+		yArrivalDoc.confirmSave();
 	}
 	private void intializeYDeliver() {
 		String[][] itStrings = vo.getItemAndState();
@@ -352,7 +353,19 @@ public class YArrivalDocPanel extends JPanel{
 			table[i][0] = (String) DeliverModel.getValueAt(i, 0);
 			table[i][2] = (String) DeliverModel.getValueAt(i, 2);
 		}
-		yDeliverDoc.createYDeliverDoc(table);
+		YDeliverDocVO vo = yDeliverDoc.createYDeliverDoc(table);
 		CheckDialog cDialog = new CheckDialog();
+		cDialog.getDocPanel().add(new checkYArrivalDoc(vo));
+		cDialog.getConfirmButton().addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				saveDoc();
+			}
+		});
+	}
+	private void saveDoc() {
+		yDeliverDoc.confirmSave();
 	}
 }

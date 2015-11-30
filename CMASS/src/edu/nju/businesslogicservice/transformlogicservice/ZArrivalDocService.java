@@ -13,5 +13,5 @@ public interface ZArrivalDocService {
 	public ArrayList<ZArrivalDocPO> getUncheckedZArrivalDocPOs();
 	public ZArrivalDocVO createZArrivalDocVO_TransferDoc(String fromDocID, String[][] changeStates);
 	public ZArrivalDocVO createZArrivalDocVO_YLoadDoc(String fromDocID, String[][] changeStates);
-
+	public void  confirmSave();
 }

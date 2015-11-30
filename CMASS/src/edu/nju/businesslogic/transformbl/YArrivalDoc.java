@@ -44,7 +44,7 @@ public class YArrivalDoc implements YArrivalDocService {
 		changeYArrivalSequence();
 		int num = po.getItemAndState().length;
 		for(int i = 0;i<num;i++) {
-			logisticsquerybl.changePosition(po.getItemAndState()[i][0], "快递已到达"+institution.getCityAndName(institutionID));
+			logisticsquerybl.changePosition(po.getItemAndState()[i][0], "快递已到达"+institution.getCity(institutionID)+institution.getInstitutionName(institutionID));
 		}
 
 	}
