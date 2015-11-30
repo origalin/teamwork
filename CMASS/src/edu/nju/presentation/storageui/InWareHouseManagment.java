@@ -16,7 +16,9 @@ import javax.swing.table.DefaultTableModel;
 
 import edu.nju.businesslogic.storagebl.InWareHouseManagementbl;
 import edu.nju.businesslogicservice.storagelogicservice.InWareHouseManagementService;
-import edu.nju.vo.InWareHouseDocLineItem;
+import edu.nju.dataFactory.DataFactory;
+import edu.nju.presentation.UiFactory;
+import edu.nju.po.InWareHouseDocLineItem;
 import edu.nju.vo.InWareHouseDocVO;
 
 import javax.swing.UIManager;
@@ -34,6 +36,7 @@ import javax.swing.JFrame;
 public class InWareHouseManagment extends JPanel {
 	InWareHouseDocVO inWareHouseDocVO;
 	JTable table;
+	InWareHouseManagementService inWare;
 	DefaultTableModel model;
 	private JTextField textField_1;
 	private JScrollPane scrollPane;
@@ -42,18 +45,20 @@ public class InWareHouseManagment extends JPanel {
 	private JLabel lblNewLabel;
 	private JTextField textField;
 	private JButton btnNewButton_1;
-	private String currInstitution;
+	private String currInstitution = "001000";
 	private String currPersonID;
 	private JComboBox comboBox;
-public static void main(String[] args) {
-	InWareHouseManagment in=new InWareHouseManagment();
-	JFrame mainFrame=new JFrame();
-	mainFrame.getContentPane().add(in);
-	mainFrame.setVisible(true);
-	mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	mainFrame.setLocationRelativeTo(null);
-	mainFrame.setSize(500, 300);
-}
+
+	public static void main(String[] args) {
+		InWareHouseManagment in = new InWareHouseManagment();
+		JFrame mainFrame = new JFrame();
+		mainFrame.getContentPane().add(in);
+		mainFrame.setVisible(true);
+		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		mainFrame.setLocationRelativeTo(null);
+		mainFrame.setSize(500, 300);
+	}
+
 	public InWareHouseManagment(String currInstitution, String currPersonID) {
 		this();
 		this.currInstitution = currInstitution;
@@ -61,10 +66,9 @@ public static void main(String[] args) {
 	}
 
 	public InWareHouseManagment() {
-		
-		
+
 		String[] columnNames = { "快递编号", "入库日期", "目的地", "区号", "排号", "架号", "位号" };
-		
+
 		setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "\u5165\u5E93\u7BA1\u7406",
 				TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -125,38 +129,34 @@ public static void main(String[] args) {
 		btnNewButton = new JButton("\u786E\u8BA4");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				InWareHouseManagementService inWare;
-				
+
 				String selectedItem = (String) comboBox.getSelectedItem();
-				
+
 				if (selectedItem.equals("中转单编号")) {
-					System.out.println("hello");
+
 					inWare = new InWareHouseManagementbl();
-					inWareHouseDocVO=inWare.getInWareHouseDocVO_Transfer(textField_1.getText());
-					System.out.println(inWareHouseDocVO);
-					
+					inWareHouseDocVO = inWare.getInWareHouseDocVO_Transfer(textField_1.getText(), currInstitution);
+
 					textField.setText(inWareHouseDocVO.getID());
-					//该行以上没有问题
-					ArrayList<InWareHouseDocLineItem>  list=inWareHouseDocVO.getList();
-					
-					String[][] data1=new String[list.size()][7];
-					int i=0;
-					for(InWareHouseDocLineItem temp:list){
-						data1[i][0]=temp.getSendDocID();//快递编号
-						data1[i][1]=temp.getDate().toString();//入库日期
-						data1[i][2]=temp.getDestination();//目的地
-						data1[i][3]=temp.getDistrict();//区
-//						data1[i][4]=temp.getLocation().substring(0, 2);//排
-//						data1[i][5]=temp.getLocation().substring(2, 4);//架
-//						data1[i][6]=temp.getLocation().substring(4);//位
+					// 该行以上没有问题
+					ArrayList<InWareHouseDocLineItem> list = inWareHouseDocVO.getList();
+
+					String[][] data1 = new String[list.size()][7];
+					int i = 0;
+					for (InWareHouseDocLineItem temp : list) {
+						data1[i][0] = temp.getSendDocID();// 快递编号
+						data1[i][1] = temp.getDate().toString();// 入库日期
+						data1[i][2] = temp.getDestination();// 目的地
+						data1[i][3] = temp.getDistrict();// 区
+						data1[i][4] = temp.getLocation().substring(0, 2);// 排
+						data1[i][5] = temp.getLocation().substring(2, 4);// 架
+						data1[i][6] = temp.getLocation().substring(4);// 位
 						i++;
 					}
 					System.out.println("linqing");
-					table=new JTable(data1,columnNames);
+					table = new JTable(data1, columnNames);
 					scrollPane.setViewportView(table);
-							}
-				
+				}
 
 			}
 		});
@@ -176,18 +176,24 @@ public static void main(String[] args) {
 		btnNewButton_1 = new JButton("\u4FDD\u5B58");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int rowNum=table.getRowCount();
-				int columnNum=table.getColumnCount();
-				model =(DefaultTableModel) table.getModel();
-				for(int i=0;i<rowNum;i++)
-					for(int j=0;j<columnNum;j++)
-					{
-						String object=(String)model.getValueAt(i,j);
-						
-						
-					}
-				
-				
+				for(int i=0;i<10;i++)
+				System.out.println("hello world");
+//				int rowNum = table.getRowCount();
+//				int columnNum = table.getColumnCount();
+//				model = (DefaultTableModel) table.getModel();
+//				ArrayList<InWareHouseDocLineItem> line = inWareHouseDocVO.getList();
+//				int i = 0, j = 2;
+//				for (InWareHouseDocLineItem temp : line)
+//
+//				{
+//					String object = (String) model.getValueAt(i, j);
+//					temp.setDestination(object);
+//				}
+//
+//				inWareHouseDocVO.setList(line);
+//				inWare = UiFactory.getInWareHouseManagementService();
+//				inWare.updateInWareHouseDoc(inWareHouseDocVO);
+
 			}
 		});
 		GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();

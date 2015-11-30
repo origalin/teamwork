@@ -5,9 +5,12 @@ import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 import edu.nju.po.Doc;
+import edu.nju.po.InWareHouseDocLineItem;
+import edu.nju.po.InWareHouseDocPO;
 
 public class InWareHouseDocVO extends Doc{
 	String ID;
+	String storageID;
 	ArrayList<InWareHouseDocLineItem> list;
 	
 public String toString(){
@@ -17,6 +20,13 @@ public String toString(){
 	return reString;
 }
 	
+	public InWareHouseDocVO(String iD, String storageID, ArrayList<InWareHouseDocLineItem> list) {
+	super();
+	ID = iD;
+	this.storageID = storageID;
+	this.list = list;
+}
+
 	public InWareHouseDocVO(String iD, ArrayList<InWareHouseDocLineItem> list) {
 		super();
 		ID = iD;
@@ -45,6 +55,11 @@ public String toString(){
 
 	public void setID(String iD) {
 		ID = iD;
+	}
+	
+	public InWareHouseDocPO unpack(){
+		
+		return new InWareHouseDocPO(this.ID,this.storageID,this.list);
 	}
 	
 	

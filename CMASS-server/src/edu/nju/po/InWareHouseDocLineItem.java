@@ -1,4 +1,4 @@
-package edu.nju.vo;
+package edu.nju.po;
 
 import java.util.Date;
 
@@ -17,6 +17,14 @@ public class InWareHouseDocLineItem {
 		this.date = date;
 		
 		this.district = district;
+	}
+	
+	public InWareHouseDocLineItem(String sendDocID, Date date, String district, String location) {
+		super();
+		SendDocID = sendDocID;
+		this.date = date;
+		this.district = district;
+		this.location = location;
 	}
 	public InWareHouseDocLineItem(String sendDocID, Date date, String destination, String district, String location) {
 		super();

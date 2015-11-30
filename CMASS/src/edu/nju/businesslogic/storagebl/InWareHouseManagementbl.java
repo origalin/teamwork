@@ -6,11 +6,13 @@ import java.util.Date;
 
 import edu.nju.businesslogic.transformbl.TransferDoc;
 import edu.nju.businesslogicservice.storagelogicservice.InWareHouseManagementService;
+import edu.nju.data.StorageDataServiceImpl.StorageLocation;
 import edu.nju.dataFactory.DataFactory;
 import edu.nju.dataservice.storagedataservice.StorageDataService;
+import edu.nju.po.InWareHouseDocLineItem;
 import edu.nju.po.InWareHouseDocPO;
 import edu.nju.po.TransferDocPO;
-import edu.nju.vo.InWareHouseDocLineItem;
+
 import edu.nju.vo.InWareHouseDocVO;
 
 public class InWareHouseManagementbl implements InWareHouseManagementService {
@@ -18,12 +20,12 @@ public class InWareHouseManagementbl implements InWareHouseManagementService {
 	InWareHouseDocPO inWareHouseDocPO;
 
 	@Override
-	public InWareHouseDocVO getInWareHouseDocVO_Transfer(String TransferDocID) {
+	public InWareHouseDocVO getInWareHouseDocVO_Transfer(String TransferDocID,String currInstitutionID) {
 		// 对运输模块有依赖，TransferDocPO getTransferPO(int TransferID)
 		// 根据单号确定特快还是经济
 		// 对数据层依赖：获取该次入库单的编号 获得对仓库的引用
 
-		
+		StorageDataService storageDataService = DataFactory.getStorageImpl();
 		TransferDoc transferDoc = new TransferDoc();
 		System.out.println("linqing");
 		TransferDocPO transferDocPO = transferDoc.geTransferDocPOByID(TransferDocID);
@@ -32,6 +34,7 @@ public class InWareHouseManagementbl implements InWareHouseManagementService {
 //		storageDataService.
 		
 		String[] itemsID = transferDocPO.getItemIDs();
+		StorageLocation storageLocation = null;
 		ArrayList<InWareHouseDocLineItem> list = new ArrayList<InWareHouseDocLineItem>();
 		for (String temp : itemsID) {
 			String district = "";
@@ -42,10 +45,18 @@ public class InWareHouseManagementbl implements InWareHouseManagementService {
 			else
 				district = "汽运区";
 
-			InWareHouseDocLineItem lineItem = new InWareHouseDocLineItem(temp, new Date(), district);
+			try {
+				storageLocation=storageDataService.getValidLocation(currInstitutionID, district);
+				System.out.println("currInstitution="+currInstitutionID+";district:"+district);
+			} catch (RemoteException e) {
+				System.out.println("获取有效位置出错");
+				e.printStackTrace();
+			}
+			
+			InWareHouseDocLineItem lineItem=new InWareHouseDocLineItem(temp, new Date(), district, storageLocation.getLocation());
 			list.add(lineItem);
 		}
-		StorageDataService storageDataService = DataFactory.getStorageImpl();
+		
 		String currInWareID = "";
 		try {
 			currInWareID = storageDataService.getCurrInWare_ID();
@@ -54,7 +65,7 @@ public class InWareHouseManagementbl implements InWareHouseManagementService {
 			e.printStackTrace();
 		}
 
-		InWareHouseDocVO inWareHouseDocVO = new InWareHouseDocVO(currInWareID, list);
+		InWareHouseDocVO inWareHouseDocVO = new InWareHouseDocVO(currInWareID,currInstitutionID, list);
 
 		return inWareHouseDocVO;
 	}
@@ -68,9 +79,18 @@ public class InWareHouseManagementbl implements InWareHouseManagementService {
 	}
 
 	@Override
-	public void updateInWareHouseDoc(InWareHouseDocVO out) {
+	public void updateInWareHouseDoc(InWareHouseDocVO in) {
 		// 对数据层依赖：void updateInWareHouseDoc(InWareHouseDocPO out)
 
+		
+		StorageDataService storageDataService=DataFactory.getStorageImpl();
+		try {
+			storageDataService.updateInWareHouseDoc(in.unpack());
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		
 	}
 
