@@ -83,14 +83,16 @@ public class CarPanel extends JPanel {
 		// 新增的监听
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Vector newRow = new Vector();// 创建一个用来存储新添加行内容的Vector
-				int columnNum = model.getColumnCount();// 获取表格的列数
-				for (int i = 0; i < columnNum; i++) {
-					newRow.add("");// 将新行内容设置为空
-				}
-				model.getDataVector().add(newRow);
-				((DefaultTableModel) table.getModel())
-						.fireTableStructureChanged();
+//				Vector newRow = new Vector();// 创建一个用来存储新添加行内容的Vector
+//				int columnNum = model.getColumnCount();// 获取表格的列数
+//				for (int i = 0; i < columnNum; i++) {
+//					newRow.add("");// 将新行内容设置为空
+//				}
+//				model.getDataVector().add(newRow);
+//				((DefaultTableModel) table.getModel())
+//						.fireTableStructureChanged();
+				
+				model.addRow(new Object[]{"","","","","","",""});
 				
 				table.setEnabled(true);
 			}
