@@ -176,23 +176,22 @@ public class InWareHouseManagment extends JPanel {
 		btnNewButton_1 = new JButton("\u4FDD\u5B58");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				for(int i=0;i<10;i++)
-				System.out.println("hello world");
-//				int rowNum = table.getRowCount();
-//				int columnNum = table.getColumnCount();
-//				model = (DefaultTableModel) table.getModel();
-//				ArrayList<InWareHouseDocLineItem> line = inWareHouseDocVO.getList();
-//				int i = 0, j = 2;
-//				for (InWareHouseDocLineItem temp : line)
-//
-//				{
-//					String object = (String) model.getValueAt(i, j);
-//					temp.setDestination(object);
-//				}
-//
-//				inWareHouseDocVO.setList(line);
-//				inWare = UiFactory.getInWareHouseManagementService();
-//				inWare.updateInWareHouseDoc(inWareHouseDocVO);
+
+				int rowNum = table.getRowCount();
+				int columnNum = table.getColumnCount();
+				model = (DefaultTableModel) table.getModel();
+				ArrayList<InWareHouseDocLineItem> line = inWareHouseDocVO.getList();
+				int i = 0, j = 2;
+				for (InWareHouseDocLineItem temp : line)
+
+				{
+					String object = (String) model.getValueAt(i, j);
+					temp.setDestination(object);
+				}
+
+				inWareHouseDocVO.setList(line);
+				inWare = UiFactory.getInWareHouseManagementService();
+				inWare.updateInWareHouseDoc(inWareHouseDocVO);
 
 			}
 		});

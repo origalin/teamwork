@@ -141,7 +141,7 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 
 		}
 	}
-	new Date();
+	
 
 	@Override
 	public WareHousePO getWareHouse() throws RemoteException {
