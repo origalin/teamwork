@@ -81,6 +81,7 @@ public class InWareHouseManagementbl implements InWareHouseManagementService {
 	@Override
 	public void updateInWareHouseDoc(InWareHouseDocVO in) {
 		// ∂‘ ˝æ›≤„“¿¿µ£∫void updateInWareHouseDoc(InWareHouseDocPO out)
+		
 
 		
 		StorageDataService storageDataService=DataFactory.getStorageImpl();

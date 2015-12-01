@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 
+import com.mysql.fabric.xmlrpc.base.Array;
 import com.sun.crypto.provider.RSACipher;
 
 import edu.nju.data.database.SQL;
@@ -126,20 +127,34 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 		// TODO Auto-generated method stub
 
 	}
+	
 
+	/**
+	 * 这个方法用来保存入库单文件，但此时并未对仓库进行事实上的变动
+	 * @param in
+	 * @throws RemoteException
+	 */
 	@Override
+	          
 	public void updateInWareHouseDoc(InWareHouseDocPO in) throws RemoteException {
 		// TODO Auto-generated method stub
-
+		String sql="";
 		String iD = in.getID();
 		String storageID = in.getStorageID();
 		ArrayList<InWareHouseDocLineItem> list = in.getList();
+		InWareHouseDocLineItem lineItem=list.get(0);
+		Date inDate=lineItem.getDate();
+		sql="INSERT INTO 入库单 VALUES('" + iD + "','" + Time.toDaysTime(inDate) + "','"
+				+ storageID + "');";
+		SQL.databaseUpdate(sql);
 		for (InWareHouseDocLineItem temp : list) {
-			String sql = "INSERT INTO 入库单 VALUES('" + iD + "','" + Time.toDaysTime(temp.getDate()) + "','"
-					+ temp.getDestination() + "','" + temp.getLocation() + "','" + temp.getSendDocID() + "','"
-					+ storageID + "');";
+			sql = "INSERT INTO 入库items VALUES('" + temp.getSendDocID() + "','" 
+					+ temp.getDestination() + "','" + temp.getLocation() + "','" + iD +"','"+storageID+ "');";
 
+			SQL.databaseUpdate(sql);
 		}
+		
+		SQL.closeDatabase();
 	}
 	
 
@@ -209,23 +224,23 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 	 * @param t
 	 * @throws RemoteException
 	 */
-	@Override
-	public void updateInWarehouseDoc(InWareHouseDocPO t) throws RemoteException {
-		String iD = t.getInWareHouseDocID();
-		ArrayList<RecordPO> list = t.getRecordPOs();
-		for (RecordPO temp : list) {
-			String itemID = temp.getItemID();
-			Date date = temp.getDate();
-			String destination = temp.getDestination();
-			String location = temp.getLocation();
-			String sql = "INSERT INTO 入库单 VALUES(" + iD + "," + Time.toDaysTime(date) + "," + destination + ","
-					+ location + "," + itemID + ");";
-			SQL.databaseUpdate(sql);
-
-		}
-		SQL.closeDatabase();
-
-	}
+//	@Override
+//	public void updateInWarehouseDoc(InWareHouseDocPO t) throws RemoteException {
+//		String iD = t.getInWareHouseDocID();
+//		ArrayList<RecordPO> list = t.getRecordPOs();
+//		for (RecordPO temp : list) {
+//			String itemID = temp.getItemID();
+//			Date date = temp.getDate();
+//			String destination = temp.getDestination();
+//			String location = temp.getLocation();
+//			String sql = "INSERT INTO 入库单 VALUES(" + iD + "," + Time.toDaysTime(date) + "," + destination + ","
+//					+ location + "," + itemID + ");";
+//			SQL.databaseUpdate(sql);
+//
+//		}
+//		SQL.closeDatabase();
+//
+//	}
 
 	@Override
 	public RecordPO find(int StorageItemID) throws RemoteException {
@@ -247,7 +262,20 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 
 	@Override
 	public ArrayList<InWareHouseDocPO> getInWarehouseDoc() throws RemoteException {
-		// TODO Auto-generated method stub
+		ArrayList<InWareHouseDocPO> list=new ArrayList<InWareHouseDocPO>();
+		String sql="SELECT * FROM 入库单 WHERE 已审批='1';";
+		SQL.databaseQuery(sql);
+		try {
+			while(SQL.rs.next()){
+				String inWareHouseDoc_ID=SQL.rs.getString("ID");
+				Date date=SQL.rs.getDate(1);
+				String storageID=SQL.rs.getString(2);
+				
+			}
+		} catch (SQLException e) {
+			System.out.println("未审批入库单读取错误");
+			e.printStackTrace();
+		}
 		return null;
 	}
 
@@ -323,6 +351,26 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 		SQL.closeDatabase();
 
 		return storageLocation;
+	}
+
+	/**
+	 * 未经测试
+	 * @param in
+	 * @throws RemoteException
+	 */
+	@Override
+	public void saveInWareHouseDoc(InWareHouseDocPO in) throws RemoteException {
+		ArrayList<InWareHouseDocLineItem> list=in.getList();
+		String sql="";
+		sql="UPDATE 入库单 SET 已审批='1' WHERE ID= '"+in.getID()+"';";
+		SQL.databaseUpdate(sql);
+		for(InWareHouseDocLineItem temp:list){
+			sql="UPDATE 仓库存储货物 SET StorageItem_ID='"+temp.getSendDocID()+"',入库日期='"+Time.toDaysTime(temp.getDate())+"',目的地='"+temp.getDestination()
+			+"' WHERE 仓库ID='"+in.getStorageID()+"'&&位置='"+temp.getLocation()+"';";
+			SQL.databaseUpdate(sql);
+		}
+		SQL.closeDatabase();
+		
 	}
 
 }
