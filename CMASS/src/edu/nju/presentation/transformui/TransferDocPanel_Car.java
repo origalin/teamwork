@@ -253,6 +253,17 @@ public class TransferDocPanel_Car extends JPanel {
 		transferDoc.confirmSave();
 	}
 	private void warning(String type) {
-		
+		CheckDialog warningDialog = new CheckDialog();
+		switch (type) {
+		case "net":
+			warningDialog.setNetMode();
+			break;	
+		case "lost":
+			warningDialog.setLostMode();
+			break;
+
+		default:
+			break;
+		}
 	}
 }

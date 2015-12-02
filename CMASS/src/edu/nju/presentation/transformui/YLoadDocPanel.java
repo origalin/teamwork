@@ -209,7 +209,7 @@ public class YLoadDocPanel extends JPanel{
 				}
 			});
 		}else {
-			warnning();
+			warning("lost");
 		}
 	}
 	private boolean creatable() {
@@ -231,8 +231,19 @@ public class YLoadDocPanel extends JPanel{
 			}
 		}
 	}
-	private void warnning() {
-		
+	private void warning(String type) {
+		CheckDialog warningDialog = new CheckDialog();
+		switch (type) {
+		case "net":
+			warningDialog.setNetMode();
+			break;	
+		case "lost":
+			warningDialog.setLostMode();
+			break;
+
+		default:
+			break;
+		}
 	}
 	private void saveDoc() {
 		yLoadDoc.confirmSave();

@@ -203,6 +203,9 @@ public class SendPanel extends JPanel{
 		overDoc.confirmSave();
 	}
 	public void warning() {
+		CheckDialog warningDialog = new CheckDialog();
+			warningDialog.setNetMode();
+			warningDialog.setLostMode();
 		
 	}
 }

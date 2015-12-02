@@ -273,6 +273,17 @@ public class TransferDocPanel_Plane extends JPanel{
 		transferDoc.confirmsave_Plane();
 	}
 	private void warning(String type) {
-		
+		CheckDialog warningDialog = new CheckDialog();
+		switch (type) {
+		case "net":
+			warningDialog.setNetMode();
+			break;	
+		case "lost":
+			warningDialog.setLostMode();
+			break;
+
+		default:
+			break;
+		}
 	}
 }

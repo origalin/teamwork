@@ -509,18 +509,17 @@ public class CollertionPanel extends JPanel{
 	}
 	public void warning(String type) {
 		CheckDialog warningDialog = new CheckDialog();
-		warningDialog.setTitle("提示！");
-		warningDialog.getDocPanel().add(new JLabel("请检查输入信息完整性"));
-		warningDialog.setSize(300, 150);
-		warningDialog.setVisible(true);
-		warningDialog.getConfirmButton().addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				// TODO 自动生成的方法存根
-				warningDialog.dispose();
-			}
-		});
+		switch (type) {
+		case "net":
+			warningDialog.setNetMode();
+			break;	
+		case "lost":
+			warningDialog.setLostMode();
+			break;
+
+		default:
+			break;
+		}
 	}
 	public void  saveDoc() {
 		collection.confirmSave();

@@ -268,8 +268,19 @@ public class ZArrivalDocPanel extends JPanel {
 
 	}
 
-	private void warning(String msg) {
+	private void warning(String type) {
+		CheckDialog warningDialog = new CheckDialog();
+		switch (type) {
+		case "net":
+			warningDialog.setNetMode();
+			break;	
+		case "lost":
+			warningDialog.setLostMode();
+			break;
 
+		default:
+			break;
+		}
 	}
 
 	private boolean intializable() {
