@@ -1,10 +1,22 @@
 package edu.nju.presentation.financeui;
 import javax.swing.*;
+
+import edu.nju.businesslogic.financebl.financebl;
+
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.Font;
 public class checkCostIncomDocPO extends JPanel{
+	public static void main(String[]args){
+		JFrame frame=new JFrame();
+		checkCostIncomDocPO ui=new checkCostIncomDocPO();
+		ui.setVisible(true);
+		frame.getContentPane().add(ui);
+		frame.setSize(500,500);
+		frame.setVisible(true);
+	}
+	financebl bl=new financebl();
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
@@ -32,6 +44,8 @@ public class checkCostIncomDocPO extends JPanel{
 		add(label_1, gbc_label_1);
 		
 		textField = new JTextField();
+		textField.setText(bl.getTotalIncome()+"");
+		textField.setEditable(false);
 		GridBagConstraints gbc_textField = new GridBagConstraints();
 		gbc_textField.insets = new Insets(0, 0, 5, 5);
 		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
@@ -56,6 +70,8 @@ public class checkCostIncomDocPO extends JPanel{
 		add(lblNewLabel, gbc_lblNewLabel);
 		
 		textField_1 = new JTextField();
+		textField_1.setText(bl.getTotalPayment()+"");
+		textField_1.setEditable(false);
 		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
 		gbc_textField_1.insets = new Insets(0, 0, 5, 5);
 		gbc_textField_1.fill = GridBagConstraints.HORIZONTAL;
@@ -80,6 +96,9 @@ public class checkCostIncomDocPO extends JPanel{
 		add(label_2, gbc_label_2);
 		
 		textField_2 = new JTextField();
+		double profit=bl.getTotalIncome()-bl.getTotalPayment();
+		textField_1.setText(profit+"");
+		textField_2.setEditable(false);
 		GridBagConstraints gbc_textField_2 = new GridBagConstraints();
 		gbc_textField_2.insets = new Insets(0, 0, 0, 5);
 		gbc_textField_2.fill = GridBagConstraints.HORIZONTAL;

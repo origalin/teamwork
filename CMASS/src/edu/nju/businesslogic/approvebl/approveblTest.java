@@ -11,7 +11,7 @@ import edu.nju.po.PayType;
 
 public class approveblTest {
 	public void test(){
-		
+		/*
 		PayDocPO payDoc1=new PayDocPO("11123456", 20151116, 5000, "Michael Jackson", "6228480010200900214", PayType.RENT,"南京市中转中心0250租金");
 		PayDocPO payDoc2=new PayDocPO("11839475",20151225,100,"Michael Jordan","9558800200136624752",PayType.FREIGHT,"车辆代号为为0025000010，从南京运往上海的运费");
 		ArrayList<PayDocPO> payDocList = new ArrayList<PayDocPO>();
@@ -32,6 +32,6 @@ public class approveblTest {
 				System.out.println("The method setPayDocList failed!!!");
 			}
 		}
-		
+		*/
 	}
 }

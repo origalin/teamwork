@@ -75,7 +75,7 @@ public interface FinanceLogicService {
 		public GatheringDocVO getGatheringDocVO(String GatheringDocID);//支持预览收款单
 		public void setSendDocList(ArrayList<SendDocPO> SendDocPOList);//将这部分寄件单设为已经生成收款单
 	//生成付款单和生成收款单共有的部分,账户管理界面显示也会用到
-		public ArrayList<String> getAccountList();
+		public ArrayList<AccountVO> getAccountList();
 		//收款单
 		public void addMoney(String accountName,double money);
 		//付款单
