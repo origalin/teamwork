@@ -86,6 +86,7 @@ public class InWareHouseManagementbl implements InWareHouseManagementService {
 		
 		StorageDataService storageDataService=DataFactory.getStorageImpl();
 		try {
+			System.out.println("Âß¼­²ãµÄVO in:"+in);
 			storageDataService.updateInWareHouseDoc(in.unpack());
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block

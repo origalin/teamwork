@@ -68,10 +68,10 @@ public class SQL {
 		try {
 			stmt = conn.createStatement();
 			result=stmt.executeUpdate(sql);
-			if(result!=0)
-				System.out.println("Update Success!");
-			else
-				System.out.println("Update failed");
+//			if(result!=0)
+//				System.out.println("Update Success!");
+//			else
+//				System.out.println("Update failed");
 			// ÷¥––sql”Ôæ‰
 				// while(rs.next()) {
 				// System.out.print(rs.getString("prod_name") + " ");

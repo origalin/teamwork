@@ -13,6 +13,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 import edu.nju.businesslogic.storagebl.InWareHouseManagementbl;
 import edu.nju.businesslogicservice.storagelogicservice.InWareHouseManagementService;
@@ -25,6 +26,8 @@ import javax.swing.UIManager;
 import java.awt.Color;
 import javax.swing.SwingConstants;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -37,7 +40,7 @@ public class InWareHouseManagment extends JPanel {
 	InWareHouseDocVO inWareHouseDocVO;
 	JTable table;
 	InWareHouseManagementService inWare;
-	DefaultTableModel model;
+	TableModel model;
 	private JTextField textField_1;
 	private JScrollPane scrollPane;
 	private JButton btnNewButton;
@@ -179,7 +182,7 @@ public class InWareHouseManagment extends JPanel {
 
 				int rowNum = table.getRowCount();
 				int columnNum = table.getColumnCount();
-				model = (DefaultTableModel) table.getModel();
+				model =  (table.getModel());
 				ArrayList<InWareHouseDocLineItem> line = inWareHouseDocVO.getList();
 				int i = 0, j = 2;
 				for (InWareHouseDocLineItem temp : line)
@@ -187,8 +190,13 @@ public class InWareHouseManagment extends JPanel {
 				{
 					String object = (String) model.getValueAt(i, j);
 					temp.setDestination(object);
+					i++;
 				}
 
+				for(InWareHouseDocLineItem temp : line){
+					if(temp.getDestination()==null)
+						JOptionPane.showMessageDialog(null, "请输入完整的信息");
+				}
 				inWareHouseDocVO.setList(line);
 				inWare = UiFactory.getInWareHouseManagementService();
 				inWare.updateInWareHouseDoc(inWareHouseDocVO);

@@ -13,13 +13,16 @@ public class InWareHouseDocVO extends Doc{
 	String storageID;
 	ArrayList<InWareHouseDocLineItem> list;
 	
-public String toString(){
-	String reString=ID;
-	for(InWareHouseDocLineItem temp:list)
-		reString+=temp.toString();
-	return reString;
-}
+
 	
+	@Override
+	public String toString() {
+		String lString="";
+		for(InWareHouseDocLineItem temp:list)
+			lString+=temp;
+		return "InWareHouseDocVO [ID=" + ID + ", storageID=" + storageID + ", list=" + lString + "]";
+	}
+
 	public InWareHouseDocVO(String iD, String storageID, ArrayList<InWareHouseDocLineItem> list) {
 	super();
 	ID = iD;

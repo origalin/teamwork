@@ -128,7 +128,18 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 
 	}
 	
+	public static void main(String[] args) throws RemoteException {
+		StorageDataServiceImpl serviceImpl = new StorageDataServiceImpl();
+//		for (int i = 0; i < 5; ++i)
+//			System.out.println(serviceImpl.getValidLocation("001000", "航运区"));
+		ArrayList<InWareHouseDocLineItem> list=new ArrayList<InWareHouseDocLineItem>() ;
+		list.add(new InWareHouseDocLineItem("0025010010", new Date(), "efjekjfewf", "航运区", "000000"));
+		InWareHouseDocPO po=new InWareHouseDocPO("08000002", "001000", list);
+		
+		serviceImpl.updateInWareHouseDoc(po);
+		return;
 
+	}
 	/**
 	 * 这个方法用来保存入库单文件，但此时并未对仓库进行事实上的变动
 	 * @param in
@@ -138,13 +149,14 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 	          
 	public void updateInWareHouseDoc(InWareHouseDocPO in) throws RemoteException {
 		// TODO Auto-generated method stub
+		System.out.println("zjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj");
 		String sql="";
 		String iD = in.getID();
 		String storageID = in.getStorageID();
 		ArrayList<InWareHouseDocLineItem> list = in.getList();
 		InWareHouseDocLineItem lineItem=list.get(0);
 		Date inDate=lineItem.getDate();
-		sql="INSERT INTO 入库单 VALUES('" + iD + "','" + Time.toDaysTime(inDate) + "','"
+		sql="INSERT INTO 入库单(ID,入库日期,仓库ID) VALUES('" + iD + "','" + Time.toDaysTime(inDate) + "','"
 				+ storageID + "');";
 		SQL.databaseUpdate(sql);
 		for (InWareHouseDocLineItem temp : list) {
@@ -173,13 +185,7 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 
 	}
 
-	public static void main(String[] args) throws RemoteException {
-		StorageDataServiceImpl serviceImpl = new StorageDataServiceImpl();
-		for (int i = 0; i < 5; ++i)
-			System.out.println(serviceImpl.getValidLocation("001000", "航运区"));
-		return;
-
-	}
+	
 
 	/**
 	 * 往仓库里加东西，会修改仓库
@@ -260,10 +266,14 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 		return null;
 	}
 
+	/* (non-Javadoc)
+	 * 为总经理返回未审批的入库单列表
+	 * @see edu.nju.dataservice.storagedataservice.StorageDataService#getInWarehouseDoc()
+	 */
 	@Override
 	public ArrayList<InWareHouseDocPO> getInWarehouseDoc() throws RemoteException {
 		ArrayList<InWareHouseDocPO> list=new ArrayList<InWareHouseDocPO>();
-		String sql="SELECT * FROM 入库单 WHERE 已审批='1';";
+		String sql="SELECT ID,入库日期,仓库ID,快递编号,目的地,位置 FROM 入库单,入库items WHERE 已审批='0'&&入库单.ID=入库items.快递编号;"; 
 		SQL.databaseQuery(sql);
 		try {
 			while(SQL.rs.next()){
@@ -369,6 +379,8 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 			+"' WHERE 仓库ID='"+in.getStorageID()+"'&&位置='"+temp.getLocation()+"';";
 			SQL.databaseUpdate(sql);
 		}
+		
+		
 		SQL.closeDatabase();
 		
 	}
