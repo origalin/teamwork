@@ -30,7 +30,7 @@ public class DriverPO{
 		this.institution = institution;
 		this.beginLimit = beginLimit;
 		this.endLimit = endLimit;
-		this.money = 20.00;
+		this.money =money;
 		this.isPaid = isPaid;
 	}
 	public String getDriverID() {

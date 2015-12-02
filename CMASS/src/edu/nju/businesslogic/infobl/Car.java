@@ -25,12 +25,18 @@ public class Car implements CarLogicService{
 	@Override
 	public void saveCar(CarPO po) {
 		// TODO Auto-generated method stub
-		carDataService.changeCar(po);
+		if(carDataService.isVaild(po.getCarID(), po.getInstitutionName())){
+			carDataService.changeCar(po);
+		}else{
+			carDataService.addCar(po);
+		}
+		
 	}
 	@Override
 	public void deleteCar(CarPO po) {
 		// TODO Auto-generated method stub
 		carDataService.deleteCar(po);
 	}
-	
+
+
 }

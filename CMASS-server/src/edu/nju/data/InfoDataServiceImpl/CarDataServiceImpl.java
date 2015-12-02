@@ -57,4 +57,26 @@ public class CarDataServiceImpl implements CarDataService{
 		SQL.closeDatabase();
 	}
 
+	@Override
+	public boolean isVaild(String id,String institutionName) {
+		boolean flag=false;
+		String sql = "SELECT 车辆代号 FROM CAR WHERE 车辆单位='"+institutionName+"';";
+		SQL.databaseQuery(sql);
+		try {
+			while (SQL.rs.next()) {
+				String ID=SQL.rs.getString("车辆代号");
+				if(ID.equals(id)){
+					flag=true;
+				}else{
+					flag=false;
+				}
+			}
+		} catch (SQLException e) {
+			System.out.println("判断错误");
+			e.printStackTrace();
+		}
+		SQL.closeDatabase();
+		return flag;
+	}
+
 }

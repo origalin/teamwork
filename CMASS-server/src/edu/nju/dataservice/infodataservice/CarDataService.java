@@ -10,4 +10,5 @@ public interface CarDataService extends Remote{
 	public void addCar(CarPO po);
 	public void changeCar(CarPO po);
 	public void deleteCar(CarPO po);
+	public boolean isVaild(String id,String institutionName);
 }

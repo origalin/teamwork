@@ -1,6 +1,7 @@
 package edu.nju.presentation.infoui;
 
 import javax.swing.JPanel;
+
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
@@ -11,6 +12,7 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -25,6 +27,7 @@ import javax.swing.JScrollPane;
 import edu.nju.businesslogic.infobl.Car;
 import edu.nju.businesslogicservice.infologicservice.CarLogicService;
 import edu.nju.po.CarPO;
+import edu.nju.tools.Time;
 import edu.nju.vo.CarVO;
 
 public class CarPanel extends JPanel {
@@ -83,15 +86,7 @@ public class CarPanel extends JPanel {
 		// 新增的监听
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//				Vector newRow = new Vector();// 创建一个用来存储新添加行内容的Vector
-//				int columnNum = model.getColumnCount();// 获取表格的列数
-//				for (int i = 0; i < columnNum; i++) {
-//					newRow.add("");// 将新行内容设置为空
-//				}
-//				model.getDataVector().add(newRow);
-//				((DefaultTableModel) table.getModel())
-//						.fireTableStructureChanged();
-				
+
 				model.addRow(new Object[]{"","","","","","",""});
 				
 				table.setEnabled(true);
@@ -123,16 +118,37 @@ public class CarPanel extends JPanel {
 		// 删除当前行的监听
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent Event) {
+				if(table.getSelectedRow()==-1){
+				String str = JOptionPane.showInputDialog(null, "Find:", "Find",
+						JOptionPane.QUESTION_MESSAGE);
+				System.out.println("S");
+				if (str != null) {
+					findInTable(str);
+				}
+				}
 				int row = table.getSelectedRow();
 				if (row >= 0) {
+					Date date = null;
+					int year=0;
+					SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd");
+					try {
+						date=df.parse( (String) table.getValueAt(row, 5));
+					} catch (ParseException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					year=Integer.valueOf( (String) table.getValueAt(row, 6));
 					CarPO carPO = new CarPO((String) table.getValueAt(row, 0),
-							(String) table.getValueAt(row, 1), (String) table
+							(String) table.getValueAt(row,1), (String) table
 									.getValueAt(row, 2), (String) table
 									.getValueAt(row, 3), (String) table
-									.getValueAt(row, 4), (Date) table.getValueAt(
-									row, 5), (int) table.getValueAt(row, 6));
-					carBl.deleteCar(carPO);
+									.getValueAt(row, 4),date, year);
+					
+						carBl.deleteCar(carPO);
 					model.removeRow(row);
+				
+				
+				
 				}
 				table.revalidate();
 			}
@@ -175,19 +191,21 @@ public class CarPanel extends JPanel {
 				for (int i = 0; i < table.getRowCount(); i++) {
 					CarPO carPO;
 						Date date = null;
-						//这里有bug!!!!!!!!!!!!!
-						date = (Date) table.getValueAt(i, 5);
-						System.out.println(date);
+						int year=0;
+						try {
+							date=df.parse( (String) table.getValueAt(i, 5));
+							year=Integer.valueOf( (String) table.getValueAt(i, 6));
+						} catch (ParseException e1) {
+							e1.printStackTrace();
+						}
+//						System.out.println(date);
 				
-//						carPO = new CarPO((String) table.getValueAt(i, 0),
-//								(String) table.getValueAt(i, 1), (String) table
-//										.getValueAt(i, 2), (String) table
-//										.getValueAt(i, 3), (String) table
-//										.getValueAt(i, 4),date, (int) table.getValueAt(i, 6));
-//							carBl.saveCar(carPO);
-						
-			
-				
+						carPO = new CarPO((String) table.getValueAt(i, 0),
+								(String) table.getValueAt(i, 1), (String) table
+										.getValueAt(i, 2), (String) table
+										.getValueAt(i, 3), (String) table
+										.getValueAt(i, 4),date, year);
+							carBl.saveCar(carPO);
 				}		
 				
 			}
@@ -216,9 +234,8 @@ public class CarPanel extends JPanel {
 		for (CarVO vo : carList) {
 			model.addRow(new Object[] { vo.getCarID(), vo.getEngineID(),
 					vo.getPlateID(), vo.getUnderpanID(),
-					vo.getInstitutionName(), vo.getBuyTime(), vo.getYears() });
+					vo.getInstitutionName(), Time.toDaysTime(vo.getBuyTime()), String.valueOf(vo.getYears()) });
 		}
-
 	}
 
 	private void findInTable(String str) {

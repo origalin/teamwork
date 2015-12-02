@@ -9,4 +9,5 @@ public interface CarLogicService {
 	public void saveCar(CarPO po);//保存车辆PO
 	public ArrayList<CarVO> getCarList(String institutionName);//获得车辆信息
 	public void deleteCar(CarPO po);
+	
 }
