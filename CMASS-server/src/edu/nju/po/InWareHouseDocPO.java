@@ -9,7 +9,9 @@ public class InWareHouseDocPO extends Doc{
 	String ID;
 	String storageID;
 	ArrayList<InWareHouseDocLineItem> list;
-	
+	public void listAppend(InWareHouseDocLineItem in){
+		list.add(in);
+	}
 public String getStorageID() {
 		return storageID;
 	}
