@@ -1,13 +1,15 @@
 package edu.nju.businesslogic.transformbl;
 
+import java.rmi.RemoteException;
+
 import edu.nju.po.TransferDocPO;
 
 public class MockTransferDoc extends TransferDoc{
 	
-	public MockTransferDoc() {
+	public MockTransferDoc() throws RemoteException {
 		super();
 	}
-	public MockTransferDoc(String institutionID, String staffID) {
+	public MockTransferDoc(String institutionID, String staffID) throws RemoteException {
 		super( staffID);
 		// TODO Auto-generated constructor stub
 	}

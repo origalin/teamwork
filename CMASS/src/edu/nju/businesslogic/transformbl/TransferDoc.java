@@ -1,4 +1,5 @@
 package edu.nju.businesslogic.transformbl;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.TooManyListenersException;
@@ -10,6 +11,7 @@ import edu.nju.businesslogic.infobl.Institution;
 import edu.nju.businesslogic.logispicsquerybl.Logisticsquerybl;
 import edu.nju.businesslogicservice.transformlogicservice.*;
 import edu.nju.data.transferDataServiceImpl.TransferDataServiceImpl;
+import edu.nju.dataFactory.DataFactory;
 import edu.nju.dataservice.transformdataservice.TransferDataService;
 import edu.nju.po.TransferDocPO;
 import edu.nju.po.TransferDoc_CarPO;
@@ -29,17 +31,18 @@ public class TransferDoc implements TransferDocService{
 	Distance distance;
 	TransferDataService transferDataService ;
 	Logisticsquerybl logisticsquerybl;
-	public TransferDoc (){
+	public TransferDoc () throws RemoteException{
 		this( null);
 	}
 
-	public TransferDoc(String staffID) {
+	public TransferDoc(String staffID) throws RemoteException {
 		super();
 		this.staffID = staffID;
 		institution = new Institution();
 		distance = new Distance();
 		this.institutionID = institution.getInstitutionID(staffID);
-		transferDataService = new TransferDataServiceImpl(institutionID);
+		transferDataService = DataFactory.getTransferDataService();
+		transferDataService.setInstitutionID(institutionID);
 		logisticsquerybl = new Logisticsquerybl();
 	}
 	

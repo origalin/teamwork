@@ -1,5 +1,6 @@
 package edu.nju.businesslogic.transformbl;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -8,6 +9,7 @@ import edu.nju.businesslogic.infobl.Institution;
 import edu.nju.businesslogic.logispicsquerybl.Logisticsquerybl;
 import edu.nju.businesslogicservice.transformlogicservice.ZLoadDocService;
 import edu.nju.data.transferDataServiceImpl.TransferDataServiceImpl;
+import edu.nju.dataFactory.DataFactory;
 import edu.nju.dataservice.transformdataservice.TransferDataService;
 import edu.nju.po.ZLoadDocPO;
 import edu.nju.tools.SequenceCalc;
@@ -21,12 +23,13 @@ public class ZLoadDoc implements ZLoadDocService{
 	private TransferDataService transferDataService;
 	private Logisticsquerybl logisticsquerybl;
 	private YLoadDoc yLoadDoc;
-	public ZLoadDoc( String staffID) {
+	public ZLoadDoc( String staffID) throws RemoteException {
 		super();
 		this.staffID = staffID;
 		institution = new Institution();
 		this.institutionID = institution.getInstitutionID(staffID);
-		transferDataService = new TransferDataServiceImpl(institutionID);
+		transferDataService = DataFactory.getTransferDataService();
+		transferDataService.setInstitutionID(institutionID);
 		logisticsquerybl = new Logisticsquerybl();
 	}
 	public ZLoadDoc(){
@@ -131,9 +134,9 @@ public class ZLoadDoc implements ZLoadDocService{
 		return transferDataService.getunPaidZLoadDocPO();
 	}
 	@Override
-	public int getDriverTime(String drrverID) {
+	public int getDriverTime(String driverID) {
 		// TODO Auto-generated method stub
-		return 0;
+		return transferDataService.getDriverTime_ZLoad(driverID);
 	}
 	@Override
 	public ZLoadDocPO getZLoadDocPO(String ID) {

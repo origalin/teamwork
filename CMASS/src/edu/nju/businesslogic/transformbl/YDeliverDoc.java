@@ -1,5 +1,6 @@
 package edu.nju.businesslogic.transformbl;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -7,6 +8,7 @@ import edu.nju.businesslogic.infobl.Institution;
 import edu.nju.businesslogic.logispicsquerybl.Logisticsquerybl;
 import edu.nju.businesslogicservice.transformlogicservice.YDeliverDocService;
 import edu.nju.data.transferDataServiceImpl.TransferDataServiceImpl;
+import edu.nju.dataFactory.DataFactory;
 import edu.nju.dataservice.transformdataservice.TransferDataService;
 import edu.nju.po.YDeliverDocPO;
 import edu.nju.tools.SequenceCalc;
@@ -19,12 +21,13 @@ public class YDeliverDoc implements YDeliverDocService{
 	private TransferDataService transferDataService;
 	Logisticsquerybl logisticsquerybl;
 
-	public YDeliverDoc(String staffID) {
+	public YDeliverDoc(String staffID) throws RemoteException {
 		// TODO 自动生成的构造函数存根
 		this.staffID = staffID;
 		institution = new Institution();
 		this.institutionID = institution.getInstitutionID(staffID);
-		transferDataService = new TransferDataServiceImpl(institutionID);
+		transferDataService = DataFactory.getTransferDataService();
+		transferDataService.setInstitutionID(institutionID);
 		logisticsquerybl = new Logisticsquerybl();
 	}
 
@@ -78,6 +81,7 @@ public class YDeliverDoc implements YDeliverDocService{
 			po = new YDeliverDocPO("10"+getYDeliverSequence(), new Date(), staffID, itemIDs);
 			return new YDeliverDocVO(po);
 		}
+		return null;
 	}
 
 	@Override

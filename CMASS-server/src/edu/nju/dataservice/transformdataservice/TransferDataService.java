@@ -1,10 +1,12 @@
 package edu.nju.dataservice.transformdataservice;
 
+import java.rmi.Remote;
 import java.util.ArrayList;
 
 import edu.nju.po.*;
 
-public interface TransferDataService {
+public interface TransferDataService extends Remote{
+	public void setInstitutionID(String institutionID);
 	public void saveTransferDocPO(TransferDocPO po);
 	public String getTransferSequence();
 	public void changeTransferSequence(String TransferSequence);
@@ -51,4 +53,6 @@ public interface TransferDataService {
 	public ArrayList<ZLoadDocPO>getunPaidZLoadDocPO();
 	public void saveHistoryTimePO(HistoryTimePO po);
 	public ArrayList<HistoryTimePO> getHistoryTimePO(String sCity,String rCity);
+	public int  getDriverTime_YLoad(String driverID);
+	public int  getDriverTime_ZLoad(String driverID);
 }

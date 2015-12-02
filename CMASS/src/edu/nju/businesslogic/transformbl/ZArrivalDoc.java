@@ -1,5 +1,6 @@
 package edu.nju.businesslogic.transformbl;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
@@ -8,6 +9,7 @@ import edu.nju.businesslogic.infobl.Institution;
 import edu.nju.businesslogic.logispicsquerybl.Logisticsquerybl;
 import edu.nju.businesslogicservice.transformlogicservice.ZArrivalDocService;
 import edu.nju.data.transferDataServiceImpl.TransferDataServiceImpl;
+import edu.nju.dataFactory.DataFactory;
 import edu.nju.dataservice.transformdataservice.TransferDataService;
 import edu.nju.po.TransferDocPO;
 import edu.nju.po.YArrivalDocPO;
@@ -25,14 +27,15 @@ public class ZArrivalDoc implements ZArrivalDocService{
 	private Institution institution;
 	private TransferDataService transferDataService;
 	private Logisticsquerybl logisticsquerybl;
-	public ZArrivalDoc( String staffID) {
+	public ZArrivalDoc( String staffID) throws RemoteException {
 		super();
 		this.staffID = staffID;
 		transferDoc = new TransferDoc( staffID);
 		yLoadDoc = new YLoadDoc(staffID);
 		institution = new Institution();
 		this.institutionID = institution.getInstitutionID(staffID);
-		transferDataService = new TransferDataServiceImpl(institutionID);
+		transferDataService = DataFactory.getTransferDataService();
+		transferDataService.setInstitutionID(institutionID);
 		logisticsquerybl = new Logisticsquerybl();
 	}
 

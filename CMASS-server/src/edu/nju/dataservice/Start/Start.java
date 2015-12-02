@@ -13,7 +13,10 @@ import edu.nju.data.InfoDataServiceImpl.InstitutionDataServiceImpl;
 import edu.nju.data.LogisticsDataServiceImpl.LogisticsDataServiceImpl;
 import edu.nju.data.StorageDataServiceImpl.StorageDataServiceImpl;
 import edu.nju.data.SystemDataServiceImpl.SystemDataServiceImpl;
+import edu.nju.data.collectionDataServiceImpl.CollectionDataServiceImpl;
+import edu.nju.data.transferDataServiceImpl.TransferDataServiceImpl;
 import edu.nju.dataservice.approvedataservice.ApproveDataService;
+import edu.nju.dataservice.collectiondataservice.CollectionDataService;
 import edu.nju.dataservice.infodataservice.CarDataService;
 import edu.nju.dataservice.infodataservice.DistanceDataService;
 import edu.nju.dataservice.infodataservice.DriverDataService;
@@ -21,6 +24,7 @@ import edu.nju.dataservice.infodataservice.InstitutionDataService;
 import edu.nju.dataservice.logisticsqueryDataService.LogisticsDataService;
 import edu.nju.dataservice.storagedataservice.StorageDataService;
 import edu.nju.dataservice.systemdataservice.SystemDataService;
+import edu.nju.dataservice.transformdataservice.TransferDataService;
 
 public class Start {
 
@@ -40,6 +44,9 @@ public class Start {
 				DriverDataService driverDataService=new DriverDataServiceImpl();
 				InstitutionDataService institutionDataService=new InstitutionDataServiceImpl();
 				
+				CollectionDataService collectionDataService = new CollectionDataServiceImpl();
+				TransferDataService transferDataService = new TransferDataServiceImpl();
+				
 				//注册通讯端口
 				LocateRegistry.createRegistry(6600);
 				//注册通讯路径
@@ -52,6 +59,8 @@ public class Start {
 				Naming.rebind("rmi://127.0.0.1:6600/DriverDataService", driverDataService);
 				Naming.rebind("rmi://127.0.0.1:6600/InstitutionDataService", institutionDataService);
 				
+				Naming.rebind("rmi://127.0.0.1:6600/collectionDataService", collectionDataService);
+				Naming.rebind("rmi://127.0.0.1:6600/transferDataService", transferDataService);
 				System.out.println("Service Start!");
 			} catch (Exception e) {
 				// TODO Auto-generated catch block

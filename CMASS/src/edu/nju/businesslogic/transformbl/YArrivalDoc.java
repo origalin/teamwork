@@ -9,6 +9,7 @@ import edu.nju.businesslogic.infobl.Institution;
 import edu.nju.businesslogic.logispicsquerybl.Logisticsquerybl;
 import edu.nju.businesslogicservice.transformlogicservice.YArrivalDocService;
 import edu.nju.data.transferDataServiceImpl.TransferDataServiceImpl;
+import edu.nju.dataFactory.DataFactory;
 import edu.nju.dataservice.transformdataservice.TransferDataService;
 import edu.nju.po.TransferDocPO;
 import edu.nju.po.YArrivalDocPO;
@@ -30,7 +31,8 @@ public class YArrivalDoc implements YArrivalDocService {
 		transferDoc = new TransferDoc( staffID);
 		institution = new Institution();
 		this.institutionID = institution.getInstitutionID(staffID);
-		transferDataService = new TransferDataServiceImpl(institutionID);
+		transferDataService = DataFactory.getTransferDataService();
+		transferDataService.setInstitutionID(institutionID);
 		collectionbl = new Collectionbl(staffID);
 		logisticsquerybl = new Logisticsquerybl();
 	}

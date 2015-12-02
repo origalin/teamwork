@@ -16,6 +16,7 @@ import edu.nju.businesslogicservice.collectionlogicservice.CollectionLogicServic
 import edu.nju.businesslogicservice.logispicsquerylogicservice.LogispicsQueryLogicService;
 import edu.nju.data.collectionDataServiceImpl.CollectionDataServiceImpl;
 import edu.nju.data.transferDataServiceImpl.TransferDataServiceImpl;
+import edu.nju.dataFactory.DataFactory;
 import edu.nju.dataservice.collectiondataservice.CollectionDataService;
 import edu.nju.dataservice.transformdataservice.TransferDataService;
 import edu.nju.po.HistoryTimePO;
@@ -39,9 +40,10 @@ public class Collectionbl implements CollectionLogicService{
 		super();
 		this.staffID = staffID;
 		institution = new Institution();
-		collectionData = new CollectionDataServiceImpl();
+		collectionData = DataFactory.getCollectionDataService();
 		this.institutionID = institution.getInstitutionID(staffID);
-		transferData = new TransferDataServiceImpl(institutionID);
+		transferData = DataFactory.getTransferDataService();
+		transferData.setInstitutionID(institutionID);
 		logisticsquerybl = new Logisticsquerybl();
 		overDoc = new OverDoc(staffID);
 		distance = new Distance();

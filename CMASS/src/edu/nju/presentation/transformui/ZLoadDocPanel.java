@@ -6,6 +6,7 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -47,7 +48,13 @@ public class ZLoadDocPanel extends JPanel{
 	private JComboBox driverBox;
 	public ZLoadDocPanel(String staffID) {
 		this.staffID = staffID;
-		zLoadDoc = new ZLoadDoc(staffID);
+		try {
+			zLoadDoc = new ZLoadDoc(staffID);
+		} catch (RemoteException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+			warning("net");
+		}
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{290, 168, 0};
 		gridBagLayout.rowHeights = new int[]{0, 17, 248, 0, 0};
@@ -214,7 +221,7 @@ public class ZLoadDocPanel extends JPanel{
 				}
 			});
 		}else {
-			warnning();
+			warning("lost");
 		}
 	}
 	private boolean creatable() {
@@ -237,7 +244,7 @@ public class ZLoadDocPanel extends JPanel{
 			}
 		}
 	}
-	private void warnning() {
+	private void warning(String type) {
 		
 	}
 	private void saveDoc() {

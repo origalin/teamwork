@@ -6,6 +6,7 @@ import java.util.Date;
 import edu.nju.businesslogic.infobl.Institution;
 import edu.nju.businesslogic.logispicsquerybl.Logisticsquerybl;
 import edu.nju.businesslogicservice.transformlogicservice.YLoadDocService;
+import edu.nju.dataFactory.DataFactory;
 import edu.nju.dataservice.transformdataservice.TransferDataService;
 import edu.nju.po.YLoadDocPO;
 import edu.nju.tools.SequenceCalc;
@@ -25,6 +26,8 @@ public class YLoadDoc implements YLoadDocService{
 		institution = new Institution();
 		this.institutionID = institution.getInstitutionID(staffID);
 		logisticsquerybl = new Logisticsquerybl();
+		transferDataService = DataFactory.getTransferDataService();
+		transferDataService.setInstitutionID(institutionID);
 	}
 	public YLoadDoc() {
 		// TODO Auto-generated constructor stub
@@ -130,8 +133,8 @@ public class YLoadDoc implements YLoadDocService{
 		return transferDataService.getunPaidYLoadDocPO();
 	}
 	@Override
-	public int getDriverTime(String drrverID) {
+	public int getDriverTime(String driverID) {
 		// TODO Auto-generated method stub
-		return 0;
+		return transferDataService.getDriverTime_YLoad(driverID);
 	}
 }

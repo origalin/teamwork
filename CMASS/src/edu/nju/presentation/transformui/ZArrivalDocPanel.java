@@ -6,6 +6,7 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -41,7 +42,13 @@ public class ZArrivalDocPanel extends JPanel {
 
 	public ZArrivalDocPanel( String staffID) {
 		this.staffID = staffID;
-		zArrivalDoc = new ZArrivalDoc( staffID);
+		try {
+			zArrivalDoc = new ZArrivalDoc( staffID);
+		} catch (RemoteException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+			warning("net");
+		}
 
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] { 183, 295, 0 };
@@ -256,12 +263,12 @@ public class ZArrivalDocPanel extends JPanel {
 			}
 				
 		} else {
-			warnning("NULL");
+			warning("lost");
 		}
 
 	}
 
-	private void warnning(String msg) {
+	private void warning(String msg) {
 
 	}
 
