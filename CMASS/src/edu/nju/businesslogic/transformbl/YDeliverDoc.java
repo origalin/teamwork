@@ -34,7 +34,7 @@ public class YDeliverDoc implements YDeliverDocService{
 	public YDeliverDoc() {
 		// TODO Auto-generated constructor stub
 	}
-	public void confirmSave() {
+	public void confirmSave() throws RemoteException {
 		saveYDeliverDocPO(po);
 		changeYDeliverDocSequence();
 		for(int i = 0;i< po.getItemIDs().length;i++) {
@@ -43,26 +43,26 @@ public class YDeliverDoc implements YDeliverDocService{
 		
 	}
 	@Override
-	public void saveYDeliverDocPO(YDeliverDocPO po) {
+	public void saveYDeliverDocPO(YDeliverDocPO po) throws RemoteException {
 		// TODO 自动生成的方法存根
 		transferDataService.saveYDeliverDocPO(po);
 	}
 
 	@Override
-	public String getYDeliverSequence() {
+	public String getYDeliverSequence() throws RemoteException {
 		// TODO 自动生成的方法存根
 		return transferDataService.getYDeliverSequence();
 	}
 
 	@Override
-	public void changeYDeliverDocSequence() {
+	public void changeYDeliverDocSequence() throws RemoteException {
 		// TODO 自动生成的方法存根
 		String next = SequenceCalc.calcNextSequence6(getYDeliverSequence());
 		transferDataService.changeYDeliverSequence(next);
 	}
 
 	@Override
-	public YDeliverDocVO createYDeliverDoc(String[][] IDAndCourier) {
+	public YDeliverDocVO createYDeliverDoc(String[][] IDAndCourier) throws RemoteException {
 		// TODO 自动生成的方法存根
 		ArrayList<String> couriers = new ArrayList<String>();
 		for(int i = 0;i<IDAndCourier.length;i++) {
@@ -91,18 +91,18 @@ public class YDeliverDoc implements YDeliverDocService{
 	}
 
 	@Override
-	public ArrayList<YDeliverDocPO> getUncheckedDeliverDocPOs() {
+	public ArrayList<YDeliverDocPO> getUncheckedDeliverDocPOs() throws RemoteException {
 		// TODO 自动生成的方法存根
 		return transferDataService.getAllYDeliverDoc();
 	}
 
 	@Override
-	public YDeliverDocPO getDeliverDocPOsByID(String YDeliverID) {
+	public YDeliverDocPO getDeliverDocPOsByID(String YDeliverID) throws RemoteException {
 		// TODO 自动生成的方法存根
 		return transferDataService.getYDeliverDocPO(YDeliverID, true);
 	}
 
-	public YDeliverDocVO getDeliverDocVOsByID(String YDeliverDocID) {
+	public YDeliverDocVO getDeliverDocVOsByID(String YDeliverDocID) throws RemoteException {
 		// TODO Auto-generated method stub
 		return new YDeliverDocVO(transferDataService.getYDeliverDocPO(YDeliverDocID, false));
 	}	

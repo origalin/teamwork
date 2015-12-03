@@ -53,14 +53,14 @@ public class Collectionbl implements CollectionLogicService{
 		this.institutionID=null;
 		this.staffID=null;
 	}
-	public void  confirmSave() {
+	public void  confirmSave() throws RemoteException {
 		saveSendDocPO(po);
 		changeSequence();
 		logisticsquerybl.createPosition(po.getID(),institution.getCity(institutionID)+institution.getInstitutionName(institutionID)+"已揽件",po.getrCity()+po.getrAddress());
 	}
 
 	@Override
-	public void saveSendDocPO(SendDocPO po) {
+	public void saveSendDocPO(SendDocPO po) throws RemoteException {
 		// TODO 自动生成的方法存根
 		collectionData.saveSendDocPO(po);
 		
@@ -74,37 +74,37 @@ public class Collectionbl implements CollectionLogicService{
 	}
 
 	@Override
-	public String getSequence() {
+	public String getSequence() throws RemoteException {
 		// TODO 自动生成的方法存根
 		return collectionData.getSequence();
 	}
 
 	@Override
-	public void changeSequence() {
+	public void changeSequence() throws RemoteException {
 		// TODO 自动生成的方法存根
 		String sequence = SequenceCalc.calcNextSequence5(getSequence());
 		collectionData.changeSequence(sequence);
 	}
 
 	@Override
-	public ArrayList<SendDocPO> getAllSendDoc() {
+	public ArrayList<SendDocPO> getAllSendDoc() throws RemoteException {
 		// TODO 自动生成的方法存根
 		return collectionData.getAllSendDoc();
 	}
 
 	@Override
-	public double getCourierMoney(String courier) {
+	public double getCourierMoney(String courier) throws RemoteException {
 		// TODO 自动生成的方法存根
 		return collectionData.getCourierMoneyPO(courier).getCourierMoney(courier);
 	}
-	private void appendCourierMoney(String courierID){
+	private void appendCourierMoney(String courierID) throws RemoteException{
 		collectionData.getCourierMoneyPO(courierID).appendMoney(staffID, po.getID(), po.getSumPrice());
 	}
 
 
 
 	@Override
-	public int timeEstimate(String sCity, String rCity) {
+	public int timeEstimate(String sCity, String rCity) throws RemoteException {
 		// TODO 自动生成的方法存根
 		ArrayList<HistoryTimePO> historyTimePOs = getHistoryPO(sCity, rCity);
 		int sum = 0;
@@ -159,7 +159,7 @@ public class Collectionbl implements CollectionLogicService{
 	}
 
 	@Override
-	public ArrayList<HistoryTimePO> getHistoryPO(String sCity,String rCity) {
+	public ArrayList<HistoryTimePO> getHistoryPO(String sCity,String rCity) throws RemoteException {
 		// TODO 自动生成的方法存根
 		return transferData.getHistoryTimePO(sCity, rCity);
 	}
@@ -169,7 +169,7 @@ public class Collectionbl implements CollectionLogicService{
 			String sUnit, String sTelePhone, String sMobilePhone, String rName,String rCity,
 			String rAddress, String rUnit, String rTelePhone,
 			String rMobilePhone, int itemNum, double weight, double[] volume,
-			String itemKind, int packageType, int sendType) {
+			String itemKind, int packageType, int sendType) throws RemoteException {
 		// TODO 自动生成的方法存根
 		int time = timeEstimate(sCity, rCity);
 		double price = priceCalc(sCity, rCity, packageType, volume, weight,sendType);
@@ -181,25 +181,25 @@ public class Collectionbl implements CollectionLogicService{
 	}
 
 	@Override
-	public SendDocVO getSendDocVOByID(String itemID) {
+	public SendDocVO getSendDocVOByID(String itemID) throws RemoteException {
 		// TODO Auto-generated method stub
 		return new SendDocVO(collectionData.getSendDocPOByID(itemID));
 	}
 
 	@Override
-	public SendDocPO getSendDocPOByID(String itemID) {
+	public SendDocPO getSendDocPOByID(String itemID) throws RemoteException {
 		// TODO Auto-generated method stub
 		return collectionData.getSendDocPOByID(itemID);
 	}
 
 	@Override
-	public ArrayList<String> getSendDocsByID(String courier_ID) {
+	public ArrayList<String> getSendDocsByID(String courier_ID) throws RemoteException {
 		// TODO Auto-generated method stub
 		return collectionData.getCourierMoneyPO(courier_ID).getCourierSendDoc(courier_ID);
 	}
 
 	@Override
-	public void saveSendDocCreateGatheringDoc(String courierID) {
+	public void saveSendDocCreateGatheringDoc(String courierID) throws RemoteException {
 		// TODO Auto-generated method stub
 		collectionData.getCourierMoneyPO(courierID).cleanCourierMessage(courierID);
 	}

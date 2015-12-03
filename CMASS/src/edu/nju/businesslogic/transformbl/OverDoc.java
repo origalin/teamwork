@@ -46,13 +46,13 @@ public class OverDoc implements OverDocService{
 	}
 
 	@Override
-	public String getOverDocSequence() {
+	public String getOverDocSequence() throws RemoteException {
 		// TODO 自动生成的方法存根
 		return transferDataService.getOverSequence();
 	}
 
 	@Override
-	public void changeOverDocSequence() {
+	public void changeOverDocSequence() throws RemoteException {
 		// TODO 自动生成的方法存根
 		String next = SequenceCalc.calcNextSequence6(getOverDocSequence());
 		transferDataService.changeOverSequence(next);
@@ -67,20 +67,20 @@ public class OverDoc implements OverDocService{
 	}
 
 	@Override
-	public ArrayList<OverDocPO> getUncheckedOverDocPOs() {
+	public ArrayList<OverDocPO> getUncheckedOverDocPOs() throws RemoteException {
 		// TODO 自动生成的方法存根
 		return transferDataService.getAllOverDoc();
 	}
 
 	@Override
-	public OverDocVO createOverDocVO(String[] itemIDs, String[] receivers) {
+	public OverDocVO createOverDocVO(String[] itemIDs, String[] receivers) throws RemoteException {
 		// TODO Auto-generated method stub
 		po = new OverDocPO("13"+getOverDocSequence(),itemIDs, receivers, new Date(), staffID);
 		return new OverDocVO(po);
 	}
 
 	@Override
-	public void confirmSave() {
+	public void confirmSave() throws RemoteException {
 		// TODO Auto-generated method stub
 		transferDataService.saveOverDocPO(po);
 		changeOverDocSequence();

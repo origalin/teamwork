@@ -46,7 +46,7 @@ public class TransferDoc implements TransferDocService{
 		logisticsquerybl = new Logisticsquerybl();
 	}
 	
-	public void  confirmSave() {
+	public void  confirmSave() throws RemoteException {
 		saveTransferDocPO(po);
 		changeTransferSequence();
 		changeTransferID();
@@ -56,7 +56,7 @@ public class TransferDoc implements TransferDocService{
 		}
 
 	}
-	public void  confirmsave_Train() {
+	public void  confirmsave_Train() throws RemoteException {
 		saveTransferDocPO(po);
 		changeTransferSequence();
 		changeTransferID_Train();
@@ -65,7 +65,7 @@ public class TransferDoc implements TransferDocService{
 			logisticsquerybl.changePosition(itemID, "快件已由"+institution.getCity(institutionID)+institution.getInstitutionName(institutionID)+"送出，目的地"+po.getTargetCity());
 		}
 	}
-	public void  confirmsave_Plane() {
+	public void  confirmsave_Plane() throws RemoteException {
 		saveTransferDocPO(po);
 		changeTransferSequence();
 		changeTransferID_Plain();
@@ -75,7 +75,7 @@ public class TransferDoc implements TransferDocService{
 		}
 	}
 	@Override
-	public void saveTransferDocPO(TransferDocPO po) {
+	public void saveTransferDocPO(TransferDocPO po) throws RemoteException {
 		// TODO 自动生成的方法存根
 		transferDataService.saveTransferDocPO(po);
 	
@@ -83,38 +83,38 @@ public class TransferDoc implements TransferDocService{
 	}
 
 	@Override
-	public String getTransferSequence() {
+	public String getTransferSequence() throws RemoteException {
 		// TODO 自动生成的方法存根
 		return transferDataService.getTransferSequence();
 	}
-	public String getTransferID() {
+	public String getTransferID() throws RemoteException {
 		return transferDataService.getTransferID();
 		
 	}
-	public String getTransferID_Plain() {
+	public String getTransferID_Plain() throws RemoteException {
 		return transferDataService.getTransferID_Plain();
 		
 	}
-	public String getTransferID_Train() {
+	public String getTransferID_Train() throws RemoteException {
 		return transferDataService.getTransferID_Train();
 		
 	}
-	public void changeTransferID() {
+	public void changeTransferID() throws RemoteException {
 		String next = SequenceCalc.calcNextSequence6(getTransferID());
 		transferDataService.changeTransferID(next);
 	}
-	public void changeTransferID_Plain() {
+	public void changeTransferID_Plain() throws RemoteException {
 		String next = SequenceCalc.calcNextSequence6(getTransferID_Plain());
 		transferDataService.changeTransferID_Plain(next);
 	}
-	public void changeTransferID_Train() {
+	public void changeTransferID_Train() throws RemoteException {
 		String next = SequenceCalc.calcNextSequence6(getTransferID_Train());
 		transferDataService.changeTransferID_Train(next);
 	}
 
 
 	@Override
-	public void changeTransferSequence() {
+	public void changeTransferSequence() throws RemoteException {
 		// TODO 自动生成的方法存根
 		String next = SequenceCalc.calcNextSequence7(getTransferSequence());
 		transferDataService.changeTransferSequence(next);
@@ -122,7 +122,7 @@ public class TransferDoc implements TransferDocService{
 
 	@Override
 	public TransferDoc_CarVO createTransferDocVO_Car(String city,
-			String carNum, String watcher,String[] itemIDs) {
+			String carNum, String watcher,String[] itemIDs) throws RemoteException {
 		// TODO 自动生成的方法存根
 		po = new TransferDoc_CarPO(institutionID+Time.toDocTime(new Date())+getTransferSequence(), new Date(), carNum, getTransferID(), institution.getCity(institutionID), city, calcPrice_car(city), itemIDs);
 		return new TransferDoc_CarVO((TransferDoc_CarPO) po);
@@ -130,7 +130,7 @@ public class TransferDoc implements TransferDocService{
 
 	@Override
 	public TransferDoc_PlaneVO createTransferDocVO_Plane(String city,
-			String carNum, String watcher, String container,String[] itemIDs) {
+			String carNum, String watcher, String container,String[] itemIDs) throws RemoteException {
 		// TODO 自动生成的方法存根
 		po = new TransferDoc_PlanePO(institutionID+Time.toDocTime(new Date())+getTransferSequence(), new Date(), carNum, getTransferID(),institution.getCity(institutionID), city, container, calcPrice_plain(city), itemIDs);
 		return new TransferDoc_PlaneVO((TransferDoc_PlanePO) po);
@@ -138,20 +138,20 @@ public class TransferDoc implements TransferDocService{
 
 	@Override
 	public TransferDoc_TrainVO createTransferDocVO_Train(String city,
-			String carNum, String watcher, String carriage,String[] itemIDs) {
+			String carNum, String watcher, String carriage,String[] itemIDs) throws RemoteException {
 		// TODO 自动生成的方法存根
 		po = new TransferDoc_TrainPO(institutionID+Time.toDocTime(new Date())+getTransferSequence(), new Date(), carNum, getTransferID(), institution.getCity(institutionID), city, carriage, calcPrice_train(city), itemIDs);
 		return new TransferDoc_TrainVO((TransferDoc_TrainPO) po);
 	}
 
 	@Override
-	public TransferDocVO findTransferDocVO(String ID) {
+	public TransferDocVO findTransferDocVO(String ID) throws RemoteException {
 		// TODO 自动生成的方法存根
 		return new TransferDocVO(transferDataService.getTransferDocPO(ID, false));
 	}
 
 	@Override
-	public ArrayList<TransferDocPO> getUncheckedTransferDocPOs() {
+	public ArrayList<TransferDocPO> getUncheckedTransferDocPOs() throws RemoteException {
 		// TODO 自动生成的方法存根
 		return transferDataService.getAllTransferDoc();
 	}
@@ -176,12 +176,12 @@ public class TransferDoc implements TransferDocService{
 	}
 
 	@Override
-	public TransferDocPO geTransferDocPOByID(String ID) {
+	public TransferDocPO geTransferDocPOByID(String ID) throws RemoteException {
 		// TODO Auto-generated method stub
 		return transferDataService.getTransferDocPO(ID,true);
 	}
 
-	public ArrayList<TransferDocPO> getUnPaidTransferDocPOs() {
+	public ArrayList<TransferDocPO> getUnPaidTransferDocPOs() throws RemoteException {
 		// TODO Auto-generated method stub
 		return transferDataService.getunPaidTransferDocPO();
 	}

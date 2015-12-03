@@ -42,7 +42,7 @@ public class ZArrivalDoc implements ZArrivalDocService{
 	public ZArrivalDoc() {
 		// TODO Auto-generated constructor stub
 	}
-	public void confirmSave() {
+	public void confirmSave() throws RemoteException {
 		saveZArrivalDocPO(po);
 		changeZArrivalSequence();
 		for(int i = 0;i < po.getItemAndState().length;i++) {
@@ -51,19 +51,19 @@ public class ZArrivalDoc implements ZArrivalDocService{
 		
 	}
 	@Override
-	public void saveZArrivalDocPO(ZArrivalDocPO po) {
+	public void saveZArrivalDocPO(ZArrivalDocPO po) throws RemoteException {
 		// TODO 自动生成的方法存根
 		transferDataService.saveZArrivalDocPO(po);
 	}
 
 	@Override
-	public String getZArrivalSequence() {
+	public String getZArrivalSequence() throws RemoteException {
 		// TODO 自动生成的方法存根
 		return transferDataService.getZArrivalSequence();
 	}
 
 	@Override
-	public void changeZArrivalSequence() {
+	public void changeZArrivalSequence() throws RemoteException {
 		// TODO 自动生成的方法存根
 		String next = SequenceCalc.calcNextSequence6(getZArrivalSequence());
 		transferDataService.changeZArrivalSequence(next);
@@ -71,19 +71,19 @@ public class ZArrivalDoc implements ZArrivalDocService{
 
 
 	@Override
-	public ZArrivalDocVO findZArrivalDocVO(String ID) {
+	public ZArrivalDocVO findZArrivalDocVO(String ID) throws RemoteException {
 		// TODO 自动生成的方法存根
 		return new ZArrivalDocVO(transferDataService.getZArrivalDocPO(ID, false));
 	}
 
 	@Override
-	public ArrayList<ZArrivalDocPO> getUncheckedZArrivalDocPOs() {
+	public ArrayList<ZArrivalDocPO> getUncheckedZArrivalDocPOs() throws RemoteException {
 		// TODO 自动生成的方法存根
 		return transferDataService.getAllZArrivalDoc();
 	}
 
 	@Override
-	public ZArrivalDocVO createZArrivalDocVO_TransferDoc(String fromDocID, String[][] changeStates) {
+	public ZArrivalDocVO createZArrivalDocVO_TransferDoc(String fromDocID, String[][] changeStates) throws RemoteException {
 		// TODO Auto-generated method stub
 		TransferDocPO transferDocPO = transferDoc.geTransferDocPOByID(fromDocID);
 		String[][] itemAndState = new String[transferDocPO.getItemIDs().length][2];
@@ -102,7 +102,7 @@ public class ZArrivalDoc implements ZArrivalDocService{
 		return new ZArrivalDocVO(po);
 	}
 	@Override
-	public ZArrivalDocVO createZArrivalDocVO_YLoadDoc(String fromDocID, String[][] changeStates) {
+	public ZArrivalDocVO createZArrivalDocVO_YLoadDoc(String fromDocID, String[][] changeStates) throws RemoteException {
 		// TODO Auto-generated method stub
 		YLoadDocPO yLoadDocPO = yLoadDoc.getYloadDocPOByID(fromDocID);
 		String[][] itemAndState = new String[yLoadDocPO.getItemIDs().length][2];

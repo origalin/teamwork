@@ -1,5 +1,6 @@
 package edu.nju.businesslogic.transformbl;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -20,7 +21,7 @@ public class YLoadDoc implements YLoadDocService{
 	private Institution institution;
 	private Logisticsquerybl logisticsquerybl;
 
-	public YLoadDoc(String staffID) {
+	public YLoadDoc(String staffID) throws RemoteException {
 		super();
 		this.staffID = staffID;
 		institution = new Institution();
@@ -32,7 +33,7 @@ public class YLoadDoc implements YLoadDocService{
 	public YLoadDoc() {
 		// TODO Auto-generated constructor stub
 	}
-	public void confirmSave() {
+	public void confirmSave() throws RemoteException {
 		saveYloadDocPO(po);
 		changeTranceID();
 		changeYloadSequence();
@@ -42,20 +43,20 @@ public class YLoadDoc implements YLoadDocService{
 		
 	}
 	@Override
-	public void saveYloadDocPO(YLoadDocPO po) {
+	public void saveYloadDocPO(YLoadDocPO po) throws RemoteException {
 		// TODO 自动生成的方法存根
 		transferDataService.saveYLoadDocPO(po);
 	}
 
 
 	@Override
-	public String getYloadSequence() {
+	public String getYloadSequence() throws RemoteException {
 		// TODO 自动生成的方法存根
 		return transferDataService.getYLoadSequence();
 	}
 
 	@Override
-	public void changeYloadSequence() {
+	public void changeYloadSequence() throws RemoteException {
 		// TODO 自动生成的方法存根
 		String next = SequenceCalc.calcNextSequence6(getYloadSequence());
 		transferDataService.changeYLoadSequence(next);
@@ -63,20 +64,20 @@ public class YLoadDoc implements YLoadDocService{
 
 	@Override
 	public YLoadDocVO createYLoadDocVO(String carID, String target,
-			String watcher,String driver, String[] itemIDs) {
+			String watcher,String driver, String[] itemIDs) throws RemoteException {
 		// TODO 自动生成的方法存根
 		po = new YLoadDocPO("00"+getYloadSequence(), new Date(), getTranceID(), target, carID, watcher, driver, itemIDs, priceCalc(target));
 		return new YLoadDocVO(po);
 	}
 
 	@Override
-	public YLoadDocVO getYLoadDocVO(String ID) {
+	public YLoadDocVO getYLoadDocVO(String ID) throws RemoteException {
 		// TODO 自动生成的方法存根
 		return new YLoadDocVO(transferDataService.getYLoadDocPO(ID, false));
 	}
 
 	@Override
-	public ArrayList<YLoadDocPO> getUncheckedyLoadDocPOs() {
+	public ArrayList<YLoadDocPO> getUncheckedyLoadDocPOs() throws RemoteException {
 		// TODO 自动生成的方法存根
 		return transferDataService.getAllYLoadDoc();
 	}
@@ -88,7 +89,7 @@ public class YLoadDoc implements YLoadDocService{
 	}
 
 	@Override
-	public YLoadDocPO getYloadDocPOByID(String ID) {
+	public YLoadDocPO getYloadDocPOByID(String ID) throws RemoteException {
 		// TODO Auto-generated method stub
 		return transferDataService.getYLoadDocPO(ID, true);
 	}
@@ -118,22 +119,22 @@ public class YLoadDoc implements YLoadDocService{
 	public void setInstitutionID(String institutionID) {
 		this.institutionID = institutionID;
 	}
-	private String getTranceID() {
+	private String getTranceID() throws RemoteException {
 		return transferDataService.getTransferID();
 	}
-	private void changeTranceID() {
+	private void changeTranceID() throws RemoteException {
 		String next = SequenceCalc.calcNextSequence6(getTranceID());
 		transferDataService.changeTransferID(next);
 	}
 	private double priceCalc(String target) {
 		return 600;
 	}
-	public ArrayList<YLoadDocPO> getUnPaidYLoadDocPOs() {
+	public ArrayList<YLoadDocPO> getUnPaidYLoadDocPOs() throws RemoteException {
 		// TODO Auto-generated method stub
 		return transferDataService.getunPaidYLoadDocPO();
 	}
 	@Override
-	public int getDriverTime(String driverID) {
+	public int getDriverTime(String driverID) throws RemoteException {
 		// TODO Auto-generated method stub
 		return transferDataService.getDriverTime_YLoad(driverID);
 	}

@@ -36,7 +36,7 @@ public class ZLoadDoc implements ZLoadDocService{
 		this.institutionID=null;
 		this.staffID=null;
 	}
-	public void confirmSave() {
+	public void confirmSave() throws RemoteException {
 		saveZloadDocPO(po);
 		changeTranceID();
 		for(int i = 0;i < po.getItemIDs().length;i++) {
@@ -44,19 +44,19 @@ public class ZLoadDoc implements ZLoadDocService{
 		}
 	}
 	@Override
-	public void saveZloadDocPO(ZLoadDocPO po) {
+	public void saveZloadDocPO(ZLoadDocPO po) throws RemoteException {
 		// TODO 自动生成的方法存根
 		transferDataService.saveZLoadDocPO(po);
 	}
 
 	@Override
-	public String getZloadSequence() {
+	public String getZloadSequence() throws RemoteException {
 		// TODO 自动生成的方法存根
 		return transferDataService.getZLoadSequence();
 	}
 
 	@Override
-	public void changeZloadSequence() {
+	public void changeZloadSequence() throws RemoteException {
 		// TODO 自动生成的方法存根
 		String next = SequenceCalc.calcNextSequence6(getZloadSequence());
 		transferDataService.changeZLoadSequence(next);
@@ -65,13 +65,13 @@ public class ZLoadDoc implements ZLoadDocService{
 
 
 	@Override
-	public ZLoadDocVO getZLoadDocVO(String ID) {
+	public ZLoadDocVO getZLoadDocVO(String ID) throws RemoteException {
 		// TODO 自动生成的方法存根
 		return new ZLoadDocVO(transferDataService.getZLoadDocPO(ID, false));
 	}
 
 	@Override
-	public ArrayList<ZLoadDocPO> getUncheckedZLoadDocPOs() {
+	public ArrayList<ZLoadDocPO> getUncheckedZLoadDocPOs() throws RemoteException {
 		// TODO 自动生成的方法存根
 		return transferDataService.getAllZloadDoc();
 	}
@@ -89,7 +89,7 @@ public class ZLoadDoc implements ZLoadDocService{
 	}
 
 	@Override
-	public String[][] getDrivers() {
+	public String[][] getDrivers() throws RemoteException {
 		// TODO Auto-generated method stub
 		ArrayList<String> subInstitution = institution.getSubInstitutionID(institutionID);
 		
@@ -114,32 +114,32 @@ public class ZLoadDoc implements ZLoadDocService{
 	}
 
 	@Override
-	public ZLoadDocVO createZLoadDocVO(String carID, String target, String watcher, String driver, String[] itemIDs) {
+	public ZLoadDocVO createZLoadDocVO(String carID, String target, String watcher, String driver, String[] itemIDs) throws RemoteException {
 		// TODO Auto-generated method stub
 		po = new ZLoadDocPO("05"+getZloadSequence(), new Date(), getTranceID(), target, carID, watcher, driver, itemIDs, priceCalc(target));
 		return new ZLoadDocVO(po);
 	}
-	private String getTranceID() {
+	private String getTranceID() throws RemoteException {
 		return transferDataService.getTransferID();
 	}
-	private void changeTranceID() {
+	private void changeTranceID() throws RemoteException {
 		String next = SequenceCalc.calcNextSequence6(getTranceID());
 		transferDataService.changeTransferID(next);
 	}
 	private double priceCalc(String target) {
 		return 600;
 	}
-	public ArrayList<ZLoadDocPO> getUnPaidZLoadDocPOs() {
+	public ArrayList<ZLoadDocPO> getUnPaidZLoadDocPOs() throws RemoteException {
 		// TODO Auto-generated method stub
 		return transferDataService.getunPaidZLoadDocPO();
 	}
 	@Override
-	public int getDriverTime(String driverID) {
+	public int getDriverTime(String driverID) throws RemoteException {
 		// TODO Auto-generated method stub
 		return transferDataService.getDriverTime_ZLoad(driverID);
 	}
 	@Override
-	public ZLoadDocPO getZLoadDocPO(String ID) {
+	public ZLoadDocPO getZLoadDocPO(String ID) throws RemoteException {
 		// TODO Auto-generated method stub
 		return transferDataService.getZLoadDocPO(ID, true);
 	}
