@@ -21,7 +21,7 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import edu.nju.businesslogic.transformbl.YLoadDoc;
+import edu.nju.businesslogic.transferbl.YLoadDoc;
 import edu.nju.presentation.approveui.checkOverDoc;
 import edu.nju.presentation.approveui.checkYLoadDoc;
 import edu.nju.presentation.mainui.CheckDialog;

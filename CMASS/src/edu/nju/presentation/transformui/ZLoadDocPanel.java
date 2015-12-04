@@ -18,8 +18,8 @@ import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.table.DefaultTableModel;
 
-import edu.nju.businesslogic.transformbl.YLoadDoc;
-import edu.nju.businesslogic.transformbl.ZLoadDoc;
+import edu.nju.businesslogic.transferbl.YLoadDoc;
+import edu.nju.businesslogic.transferbl.ZLoadDoc;
 import edu.nju.presentation.approveui.CheckZLoadDoc;
 import edu.nju.presentation.approveui.checkOverDoc;
 import edu.nju.presentation.approveui.checkYLoadDoc;

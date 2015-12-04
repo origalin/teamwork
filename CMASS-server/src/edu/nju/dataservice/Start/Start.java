@@ -24,7 +24,7 @@ import edu.nju.dataservice.infodataservice.InstitutionDataService;
 import edu.nju.dataservice.logisticsqueryDataService.LogisticsDataService;
 import edu.nju.dataservice.storagedataservice.StorageDataService;
 import edu.nju.dataservice.systemdataservice.SystemDataService;
-import edu.nju.dataservice.transformdataservice.TransferDataService;
+import edu.nju.dataservice.transferdataservice.TransferDataService;
 
 public class Start {
 

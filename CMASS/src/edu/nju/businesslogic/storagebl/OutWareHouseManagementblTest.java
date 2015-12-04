@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
-import edu.nju.businesslogic.transformbl.MockTransferDoc;
+import edu.nju.businesslogic.transferbl.MockTransferDoc;
 import edu.nju.po.TransferDocPO;
 import edu.nju.vo.OutWareHouseDocLineItem;
 import edu.nju.vo.OutWareHouseDocVO;

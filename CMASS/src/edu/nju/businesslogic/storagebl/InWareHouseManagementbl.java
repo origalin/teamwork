@@ -4,8 +4,8 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Date;
 
-import edu.nju.businesslogic.transformbl.TransferDoc;
-import edu.nju.businesslogic.transformbl.YLoadDoc;
+import edu.nju.businesslogic.transferbl.TransferDoc;
+import edu.nju.businesslogic.transferbl.YLoadDoc;
 import edu.nju.businesslogicservice.storagelogicservice.InWareHouseManagementService;
 import edu.nju.data.StorageDataServiceImpl.StorageLocation;
 import edu.nju.dataFactory.DataFactory;

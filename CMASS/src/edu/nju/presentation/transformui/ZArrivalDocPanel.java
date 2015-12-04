@@ -18,7 +18,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.table.DefaultTableModel;
 
-import edu.nju.businesslogic.transformbl.ZArrivalDoc;
+import edu.nju.businesslogic.transferbl.ZArrivalDoc;
 import edu.nju.presentation.approveui.checkOverDoc;
 import edu.nju.presentation.approveui.checkZArrivalDoc;
 import edu.nju.presentation.mainui.CheckDialog;

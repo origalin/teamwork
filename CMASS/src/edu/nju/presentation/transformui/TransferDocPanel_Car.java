@@ -20,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
 
 import org.omg.CORBA.INITIALIZE;
 
-import edu.nju.businesslogic.transformbl.TransferDoc;
+import edu.nju.businesslogic.transferbl.TransferDoc;
 import edu.nju.presentation.approveui.CheckTransferDoc_Car;
 import edu.nju.presentation.approveui.checkOverDoc;
 import edu.nju.presentation.mainui.CheckDialog;

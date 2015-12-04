@@ -18,8 +18,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.SwingConstants;
 
 import edu.nju.businesslogic.collectionbl.Collectionbl;
-import edu.nju.businesslogic.transformbl.OverDoc;
-import edu.nju.businesslogic.transformbl.YDeliverDoc;
+import edu.nju.businesslogic.transferbl.OverDoc;
+import edu.nju.businesslogic.transferbl.YDeliverDoc;
 import edu.nju.po.SendDocPO;
 import edu.nju.po.YDeliverDocPO;
 import edu.nju.presentation.approveui.checkOverDoc;

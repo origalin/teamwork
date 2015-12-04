@@ -21,9 +21,9 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 
 import edu.nju.businesslogic.collectionbl.Collectionbl;
-import edu.nju.businesslogic.transformbl.YArrivalDoc;
-import edu.nju.businesslogic.transformbl.YDeliverDoc;
-import edu.nju.businesslogic.transformbl.ZArrivalDoc;
+import edu.nju.businesslogic.transferbl.YArrivalDoc;
+import edu.nju.businesslogic.transferbl.YDeliverDoc;
+import edu.nju.businesslogic.transferbl.ZArrivalDoc;
 import edu.nju.presentation.approveui.checkOverDoc;
 import edu.nju.presentation.approveui.checkYArrivalDoc;
 import edu.nju.presentation.approveui.checkZArrivalDoc;

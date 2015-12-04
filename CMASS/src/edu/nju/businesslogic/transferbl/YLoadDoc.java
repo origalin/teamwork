@@ -1,4 +1,4 @@
-package edu.nju.businesslogic.transformbl;
+package edu.nju.businesslogic.transferbl;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -9,7 +9,7 @@ import edu.nju.businesslogic.logispicsquerybl.Logisticsquerybl;
 import edu.nju.businesslogic.systembl.SystemBl;
 import edu.nju.businesslogicservice.transformlogicservice.YLoadDocService;
 import edu.nju.dataFactory.DataFactory;
-import edu.nju.dataservice.transformdataservice.TransferDataService;
+import edu.nju.dataservice.transferdataservice.TransferDataService;
 import edu.nju.po.OperationPO;
 import edu.nju.po.YLoadDocPO;
 import edu.nju.tools.SequenceCalc;

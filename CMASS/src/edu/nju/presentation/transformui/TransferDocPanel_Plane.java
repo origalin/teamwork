@@ -19,7 +19,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.table.DefaultTableModel;
 
-import edu.nju.businesslogic.transformbl.TransferDoc;
+import edu.nju.businesslogic.transferbl.TransferDoc;
 import edu.nju.presentation.approveui.CheckTransferDoc_Car;
 import edu.nju.presentation.approveui.CheckTransferDoc_Plane;
 import edu.nju.presentation.approveui.checkOverDoc;

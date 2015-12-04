@@ -2,7 +2,7 @@ package edu.nju.businesslogicservice.approvelogicservice;
 
 import java.util.ArrayList;
 
-import edu.nju.businesslogic.transformbl.ZLoadDoc;
+import edu.nju.businesslogic.transferbl.ZLoadDoc;
 import edu.nju.po.GatheringDocPO;
 import edu.nju.po.InWareHouseDocPO;
 import edu.nju.po.OutWareHouseDocPO;
