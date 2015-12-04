@@ -39,6 +39,14 @@ public abstract class InstitutionPO {
 	public void setType(Institutation type) {
 		this.type = type;
 	}
+	
+	
+	public double getRent() {
+		return rent;
+	}
+	public void setRent(double rent) {
+		this.rent = rent;
+	}
 	//缺少职务判断，待修改
 	void addStaff(StaffPO po){
 		this.staffPOs.add(po);

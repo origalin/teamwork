@@ -45,12 +45,12 @@ public class Start {
 				//×¢²áÍ¨Ñ¶Â·¾¶
 				Naming.rebind("rmi://127.0.0.1:6600/LogisticsDataService", logisticsDataService);
 				Naming.rebind("rmi://127.0.0.1:6600/storageDataService", storageDataService);
-				Naming.rebind("rmi://127.0.0.1:6600/SystemDataService", systemDataService);
+//				Naming.rebind("rmi://127.0.0.1:6600/SystemDataService", systemDataService);
 				
 				Naming.rebind("rmi://127.0.0.1:6600/CarDataService", carDataService);
-				Naming.rebind("rmi://127.0.0.1:6600/DistanceDataService", distanceDataService);
-				Naming.rebind("rmi://127.0.0.1:6600/DriverDataService", driverDataService);
-				Naming.rebind("rmi://127.0.0.1:6600/InstitutionDataService", institutionDataService);
+//				Naming.rebind("rmi://127.0.0.1:6600/DistanceDataService", distanceDataService);
+//				Naming.rebind("rmi://127.0.0.1:6600/DriverDataService", driverDataService);
+//				Naming.rebind("rmi://127.0.0.1:6600/InstitutionDataService", institutionDataService);
 				
 				System.out.println("Service Start!");
 			} catch (Exception e) {

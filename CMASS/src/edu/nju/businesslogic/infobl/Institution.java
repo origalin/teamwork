@@ -54,7 +54,7 @@ public class Institution implements InstitutionLogicService{
 	}
 
 	@Override
-	public ArrayList<String> getDirverName(String institutionID) {
+	public String getDirverName(String driverID) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -66,7 +66,13 @@ public class Institution implements InstitutionLogicService{
 	}
 
 	@Override
-	public ArrayList<String> getTransferCenterID(String institutionID) {
+	public String getTransferCenterID(String institutionID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<String> getSubInstitutionID(String institutionID) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -172,6 +178,7 @@ public class Institution implements InstitutionLogicService{
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
 
 
 }

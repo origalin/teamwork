@@ -24,7 +24,7 @@ public interface InstitutionLogicService {
 	public ArrayList<String> getDirverID(String institutionID);//
 	public String getDirverName(String driverID);
 	public ArrayList<String> getCourierID(String institutionID);//
-	public ArrayList<String> getTransferCenterID(String institutionID);//
+	public String getTransferCenterID(String institutionID);//
 	public ArrayList<String> getSubInstitutionID(String institutionID);
 	
 	public String getName(String id);//根据机构id返回name  

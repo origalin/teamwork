@@ -1,11 +1,12 @@
 package edu.nju.po;
 
+import java.io.Serializable;
 import java.util.Date;
 
 //车辆（车辆代号（城市编号（电话号码区号南京025）+
 //营业厅编号（000三位数字）+000三位数字）、车牌号（
 //苏A 00000）、服役时间）
-public class CarPO {
+public class CarPO  implements Serializable{
 	String carID;
 	
 	String engineID;

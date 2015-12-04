@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -37,9 +38,10 @@ public class CarPanel extends JPanel {
 
 	/**
 	 * Create the panel.
+	 * @throws RemoteException 
 	 */
 
-	public CarPanel(String institutionName) {
+	public CarPanel(String institutionName) throws RemoteException {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] { 0, 0 };
 		gridBagLayout.rowHeights = new int[] { 63, 0, 320, 0 };
@@ -118,14 +120,14 @@ public class CarPanel extends JPanel {
 		// 删除当前行的监听
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent Event) {
-				if(table.getSelectedRow()==-1){
+//				if(table.getSelectedRow()==-1){
 				String str = JOptionPane.showInputDialog(null, "Find:", "Find",
 						JOptionPane.QUESTION_MESSAGE);
-				System.out.println("S");
+				
 				if (str != null) {
 					findInTable(str);
 				}
-				}
+//				}
 				int row = table.getSelectedRow();
 				if (row >= 0) {
 					Date date = null;
@@ -144,11 +146,13 @@ public class CarPanel extends JPanel {
 									.getValueAt(row, 3), (String) table
 									.getValueAt(row, 4),date, year);
 					
-						carBl.deleteCar(carPO);
+						try {
+							carBl.deleteCar(carPO);
+						} catch (RemoteException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 					model.removeRow(row);
-				
-				
-				
 				}
 				table.revalidate();
 			}
@@ -205,7 +209,12 @@ public class CarPanel extends JPanel {
 										.getValueAt(i, 2), (String) table
 										.getValueAt(i, 3), (String) table
 										.getValueAt(i, 4),date, year);
-							carBl.saveCar(carPO);
+							try {
+								carBl.saveCar(carPO);
+							} catch (RemoteException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
 				}		
 				
 			}

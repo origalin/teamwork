@@ -1,9 +1,10 @@
 package edu.nju.po;
 
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.util.Date;
 
-public class OperationPO {
+public class OperationPO implements Serializable{
 	Date date;
 	String staffID;
 	String staffName;

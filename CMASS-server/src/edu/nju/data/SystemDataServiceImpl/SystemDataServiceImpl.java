@@ -1,5 +1,7 @@
 package edu.nju.data.SystemDataServiceImpl;
 
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -11,10 +13,15 @@ import edu.nju.po.AccountPO;
 import edu.nju.po.DriverPO;
 import edu.nju.po.OperationPO;
 
-public class SystemDataServiceImpl implements SystemDataService {
+public class SystemDataServiceImpl extends UnicastRemoteObject implements SystemDataService {
+
+	protected SystemDataServiceImpl() throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
-	public ArrayList<OperationPO> findOperationLog(Date beginTime, Date endTime) {
+	public ArrayList<OperationPO> findOperationLog(Date beginTime, Date endTime) throws RemoteException{
 
 		DateFormat df=DateFormat.getDateTimeInstance();
 		ArrayList<OperationPO> operationList=new ArrayList<OperationPO>();
@@ -30,15 +37,11 @@ public class SystemDataServiceImpl implements SystemDataService {
 			e.printStackTrace();
 		}
 		SQL.closeDatabase();
-		
-		
-		
-		
 		return operationList;
 	}
 
 	@Override
-	public void saveOperationLog(OperationPO po) {
+	public void saveOperationLog(OperationPO po) throws RemoteException{
 		// TODO Auto-generated method stub
 		DateFormat df=DateFormat.getDateTimeInstance();
 		String sql = "INSERT INTO OPERATION VALUES('"+df.format(po.getDate())+"','"+po.getStaffID()+"','"+po.getStaffName()+"','"+po.getDescribration()+"');";

@@ -1,6 +1,8 @@
 package edu.nju.businesslogicservice.systemlogicservice;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import edu.nju.po.AccountPO;
@@ -14,8 +16,7 @@ import edu.nju.vo.OperationVO;
 import edu.nju.vo.SendDocVO;
 
 public interface SystemLogicService {
-	public ArrayList<OperationVO> getOperationVOList(long beginTime,long endTime);//获取操作记录VOList
-	public AccountVO getAccountVO(int id);//获取账户VO
+	public ArrayList<OperationVO> getOperationVOList(Date beginTime,Date endTime) throws RemoteException;//获取操作记录VOList
+	public void saveOperation(OperationPO po) throws RemoteException;
 	
-	public void  saveAccount(AccountPO po);//保存账户的PO
 }
