@@ -6,6 +6,7 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 import java.sql.Savepoint;
 
 import javax.swing.JButton;
@@ -43,7 +44,13 @@ public class TransferDocPanel_Plane extends JPanel{
 	private String container;
 	public TransferDocPanel_Plane(String staffID) {
 		this.staffID = staffID;
-		transferDoc = new TransferDoc( staffID);
+		try {
+			transferDoc = new TransferDoc( staffID);
+		} catch (RemoteException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+			warning("net");
+		}
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{418, 168, 0};
 		gridBagLayout.rowHeights = new int[]{248, 0};
@@ -236,6 +243,8 @@ public class TransferDocPanel_Plane extends JPanel{
 					saveDoc();
 				}
 			});
+		}else {
+			warning("lost");
 		}
 
 	}
@@ -262,5 +271,19 @@ public class TransferDocPanel_Plane extends JPanel{
 	}
 	private void saveDoc() {
 		transferDoc.confirmsave_Plane();
+	}
+	private void warning(String type) {
+		CheckDialog warningDialog = new CheckDialog();
+		switch (type) {
+		case "net":
+			warningDialog.setNetMode();
+			break;	
+		case "lost":
+			warningDialog.setLostMode();
+			break;
+
+		default:
+			break;
+		}
 	}
 }

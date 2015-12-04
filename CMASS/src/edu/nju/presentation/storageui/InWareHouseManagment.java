@@ -135,32 +135,32 @@ public class InWareHouseManagment extends JPanel {
 
 				String selectedItem = (String) comboBox.getSelectedItem();
 
-				if (selectedItem.equals("中转单编号")) {
-
-					inWare = new InWareHouseManagementbl();
+				inWare = new InWareHouseManagementbl();
+				if (selectedItem.equals("中转单编号"))
 					inWareHouseDocVO = inWare.getInWareHouseDocVO_Transfer(textField_1.getText(), currInstitution);
+				else if (selectedItem.equals("装车单编号"))
+					inWareHouseDocVO = inWare.getInWareHouseDocVO_YloadDoc(textField_1.getText(), currInstitution);
+				
+				textField.setText(inWareHouseDocVO.getID());
+				// 该行以上没有问题
+				ArrayList<InWareHouseDocLineItem> list = inWareHouseDocVO.getList();
 
-					textField.setText(inWareHouseDocVO.getID());
-					// 该行以上没有问题
-					ArrayList<InWareHouseDocLineItem> list = inWareHouseDocVO.getList();
-
-					String[][] data1 = new String[list.size()][7];
-					int i = 0;
-					for (InWareHouseDocLineItem temp : list) {
-						data1[i][0] = temp.getSendDocID();// 快递编号
-						data1[i][1] = temp.getDate().toString();// 入库日期
-						data1[i][2] = temp.getDestination();// 目的地
-						data1[i][3] = temp.getDistrict();// 区
-						data1[i][4] = temp.getLocation().substring(0, 2);// 排
-						data1[i][5] = temp.getLocation().substring(2, 4);// 架
-						data1[i][6] = temp.getLocation().substring(4);// 位
-						i++;
-					}
-					System.out.println("linqing");
-					table = new JTable(data1, columnNames);
-					scrollPane.setViewportView(table);
+				String[][] data1 = new String[list.size()][7];
+				int i = 0;
+				for (InWareHouseDocLineItem temp : list) {
+					data1[i][0] = temp.getSendDocID();// 快递编号
+					data1[i][1] = temp.getDate().toString();// 入库日期
+					data1[i][2] = temp.getDestination();// 目的地
+					data1[i][3] = temp.getDistrict();// 区
+					data1[i][4] = temp.getLocation().substring(0, 2);// 排
+					data1[i][5] = temp.getLocation().substring(2, 4);// 架
+					data1[i][6] = temp.getLocation().substring(4);// 位
+					i++;
 				}
 
+				table = new JTable(data1, columnNames);
+				scrollPane.setViewportView(table);
+				
 			}
 		});
 		btnNewButton.addMouseListener(new MouseAdapter() {
@@ -179,10 +179,11 @@ public class InWareHouseManagment extends JPanel {
 		btnNewButton_1 = new JButton("\u4FDD\u5B58");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String selectedItem = (String) comboBox.getSelectedItem();
 
 				int rowNum = table.getRowCount();
 				int columnNum = table.getColumnCount();
-				model =  (table.getModel());
+				model = (table.getModel());
 				ArrayList<InWareHouseDocLineItem> line = inWareHouseDocVO.getList();
 				int i = 0, j = 2;
 				for (InWareHouseDocLineItem temp : line)
@@ -193,8 +194,8 @@ public class InWareHouseManagment extends JPanel {
 					i++;
 				}
 
-				for(InWareHouseDocLineItem temp : line){
-					if(temp.getDestination()==null)
+				for (InWareHouseDocLineItem temp : line) {
+					if (temp.getDestination() == null)
 						JOptionPane.showMessageDialog(null, "请输入完整的信息");
 				}
 				inWareHouseDocVO.setList(line);

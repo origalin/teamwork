@@ -100,22 +100,39 @@ public class FinanceDataService_stub implements FinanceDataService{
 		return null;
 	}
 
-	@Override
-	public ArrayList<AccountPO> getAccount() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
+
+	
 
 	@Override
 	public void createPayDoc(String payDocID, Date date, double money,
-			String account, PayType type, String back) {
+			String payMen, String account, PayType type, String back) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void createGatheringDoc(String GatheringDocID, Date date,
-			Double money, String courier_name, ArrayList<String> itemIDs) {
+			Double money, String courier_name, ArrayList<String> itemIDs,
+			String account) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public ArrayList<AccountPO> getAccountList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void addMoney(String accountName, double money) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void minusMoney(String accountName, double money) {
 		// TODO Auto-generated method stub
 		
 	}

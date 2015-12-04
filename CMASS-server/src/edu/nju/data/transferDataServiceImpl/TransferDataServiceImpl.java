@@ -1,5 +1,7 @@
 package edu.nju.data.transferDataServiceImpl;
 
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -15,11 +17,15 @@ import edu.nju.po.YLoadDocPO;
 import edu.nju.po.ZArrivalDocPO;
 import edu.nju.po.ZLoadDocPO;
 import edu.nju.tools.StringTools;
+import edu.nju.tools.Time;
 
-public class TransferDataServiceImpl   implements TransferDataService{
+public class TransferDataServiceImpl extends UnicastRemoteObject  implements TransferDataService{
 	String institutionID;
-	public TransferDataServiceImpl(String institutionID) {
+	public TransferDataServiceImpl()throws RemoteException {
 		// TODO Auto-generated constructor stub
+		
+	}
+	public void setInstitutionID(String institutionID) {
 		this.institutionID = institutionID;
 	}
 	@Override
@@ -987,6 +993,46 @@ public class TransferDataServiceImpl   implements TransferDataService{
 		}
 		SQL.closeDatabase();
 		return null;
+	}
+	@Override
+	public int getDriverTime_YLoad(String driverID) {
+		// TODO Auto-generated method stub
+		int result = 0;
+		String dateStr;
+		String str = "select date from YLoadDoc where driver = '"+driverID+"';";
+		SQL.databaseQuery(str);
+		try {
+			while (SQL.rs.next()) {
+				dateStr = Time.toDocTime(SQL.rs.getDate("date")).substring(4, 6);
+				if(Time.toDaysTime(new Date()).substring(4, 6).equals(dateStr)) {
+					result++;
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+	}
+	@Override
+	public int getDriverTime_ZLoad(String driverID) {
+		// TODO Auto-generated method stub
+		int result = 0;
+		String dateStr;
+		String str = "select date from ZLoadDoc where driver = '"+driverID+"';";
+		SQL.databaseQuery(str);
+		try {
+			while (SQL.rs.next()) {
+				dateStr = Time.toDocTime(SQL.rs.getDate("date")).substring(4, 6);
+				if(Time.toDaysTime(new Date()).substring(4, 6).equals(dateStr)) {
+					result++;
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 	

@@ -42,8 +42,15 @@ public class SendPanel extends JPanel{
 	OverDoc overDoc;
 	public SendPanel(String staffID) {
 		this.staffID = staffID;
-		yDeliverDoc = new YDeliverDoc(staffID);
-		overDoc = new OverDoc(staffID);
+		try {
+			overDoc = new OverDoc(staffID);
+			yDeliverDoc = new YDeliverDoc(staffID);
+		} catch (RemoteException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+			warning();
+		}
+		
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{104, 1, 107, 93, 0, 0};
 		gridBagLayout.rowHeights = new int[]{35, 0, 0, 0, 0, 0, 0};
@@ -139,6 +146,15 @@ public class SendPanel extends JPanel{
 		gbc_createButtom.gridx = 4;
 		gbc_createButtom.gridy = 5;
 		add(createButtom, gbc_createButtom);
+		
+		
+		try {
+			intialize();
+		} catch (RemoteException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+			warning();
+		}
 	}
 	private void  intialize() throws RemoteException {
 		for(int i = toSendModel.getRowCount();i>0;i--) {
@@ -185,5 +201,11 @@ public class SendPanel extends JPanel{
 	}
 	private void saveDoc() {
 		overDoc.confirmSave();
+	}
+	public void warning() {
+		CheckDialog warningDialog = new CheckDialog();
+			warningDialog.setNetMode();
+			warningDialog.setLostMode();
+		
 	}
 }

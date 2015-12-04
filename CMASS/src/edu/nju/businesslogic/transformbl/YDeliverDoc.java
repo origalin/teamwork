@@ -1,5 +1,6 @@
 package edu.nju.businesslogic.transformbl;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -7,6 +8,7 @@ import edu.nju.businesslogic.infobl.Institution;
 import edu.nju.businesslogic.logispicsquerybl.Logisticsquerybl;
 import edu.nju.businesslogicservice.transformlogicservice.YDeliverDocService;
 import edu.nju.data.transferDataServiceImpl.TransferDataServiceImpl;
+import edu.nju.dataFactory.DataFactory;
 import edu.nju.dataservice.transformdataservice.TransferDataService;
 import edu.nju.po.YDeliverDocPO;
 import edu.nju.tools.SequenceCalc;
@@ -19,19 +21,20 @@ public class YDeliverDoc implements YDeliverDocService{
 	private TransferDataService transferDataService;
 	Logisticsquerybl logisticsquerybl;
 
-	public YDeliverDoc(String staffID) {
+	public YDeliverDoc(String staffID) throws RemoteException {
 		// TODO 自动生成的构造函数存根
 		this.staffID = staffID;
 		institution = new Institution();
 		this.institutionID = institution.getInstitutionID(staffID);
-		transferDataService = new TransferDataServiceImpl(institutionID);
+		transferDataService = DataFactory.getTransferDataService();
+		transferDataService.setInstitutionID(institutionID);
 		logisticsquerybl = new Logisticsquerybl();
 	}
 
 	public YDeliverDoc() {
 		// TODO Auto-generated constructor stub
 	}
-	public void confirmSave() {
+	public void confirmSave() throws RemoteException {
 		saveYDeliverDocPO(po);
 		changeYDeliverDocSequence();
 		for(int i = 0;i< po.getItemIDs().length;i++) {
@@ -40,26 +43,26 @@ public class YDeliverDoc implements YDeliverDocService{
 		
 	}
 	@Override
-	public void saveYDeliverDocPO(YDeliverDocPO po) {
+	public void saveYDeliverDocPO(YDeliverDocPO po) throws RemoteException {
 		// TODO 自动生成的方法存根
 		transferDataService.saveYDeliverDocPO(po);
 	}
 
 	@Override
-	public String getYDeliverSequence() {
+	public String getYDeliverSequence() throws RemoteException {
 		// TODO 自动生成的方法存根
 		return transferDataService.getYDeliverSequence();
 	}
 
 	@Override
-	public void changeYDeliverDocSequence() {
+	public void changeYDeliverDocSequence() throws RemoteException {
 		// TODO 自动生成的方法存根
 		String next = SequenceCalc.calcNextSequence6(getYDeliverSequence());
 		transferDataService.changeYDeliverSequence(next);
 	}
 
 	@Override
-	public YDeliverDocVO createYDeliverDoc(String[][] IDAndCourier) {
+	public YDeliverDocVO createYDeliverDoc(String[][] IDAndCourier) throws RemoteException {
 		// TODO 自动生成的方法存根
 		ArrayList<String> couriers = new ArrayList<String>();
 		for(int i = 0;i<IDAndCourier.length;i++) {
@@ -78,6 +81,7 @@ public class YDeliverDoc implements YDeliverDocService{
 			po = new YDeliverDocPO("10"+getYDeliverSequence(), new Date(), staffID, itemIDs);
 			return new YDeliverDocVO(po);
 		}
+		return null;
 	}
 
 	@Override
@@ -87,18 +91,18 @@ public class YDeliverDoc implements YDeliverDocService{
 	}
 
 	@Override
-	public ArrayList<YDeliverDocPO> getUncheckedDeliverDocPOs() {
+	public ArrayList<YDeliverDocPO> getUncheckedDeliverDocPOs() throws RemoteException {
 		// TODO 自动生成的方法存根
 		return transferDataService.getAllYDeliverDoc();
 	}
 
 	@Override
-	public YDeliverDocPO getDeliverDocPOsByID(String YDeliverID) {
+	public YDeliverDocPO getDeliverDocPOsByID(String YDeliverID) throws RemoteException {
 		// TODO 自动生成的方法存根
 		return transferDataService.getYDeliverDocPO(YDeliverID, true);
 	}
 
-	public YDeliverDocVO getDeliverDocVOsByID(String YDeliverDocID) {
+	public YDeliverDocVO getDeliverDocVOsByID(String YDeliverDocID) throws RemoteException {
 		// TODO Auto-generated method stub
 		return new YDeliverDocVO(transferDataService.getYDeliverDocPO(YDeliverDocID, false));
 	}	

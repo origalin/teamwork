@@ -4,7 +4,8 @@ import edu.nju.vo.InWareHouseDocVO;
 
 public interface InWareHouseManagementService {
 	public InWareHouseDocVO getInWareHouseDocVO_Transfer(String TransferDocID,String currInstitutionID) ;
-	public InWareHouseDocVO getInWareHouseDocVO_YloadDoc(String YloadDocID) ;
+	public InWareHouseDocVO getInWareHouseDocVO_YloadDoc(String YloadDocID,String currInstitution) ;
 	public void updateInWareHouseDoc(InWareHouseDocVO out);
+	
 
 }

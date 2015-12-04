@@ -1,11 +1,12 @@
 package edu.nju.po;
 
+import java.io.Serializable;
 import java.util.Date;
 
 //入库单（快递编号、入库日期、目的地、区号、排号、
 //架号、位号）
 //相当于storageitempo
-public class RecordPO {
+public class RecordPO implements Serializable {
 	String itemID;
 	Date date;
 	String destination;

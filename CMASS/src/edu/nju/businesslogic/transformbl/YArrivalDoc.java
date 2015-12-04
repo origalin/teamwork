@@ -9,6 +9,7 @@ import edu.nju.businesslogic.infobl.Institution;
 import edu.nju.businesslogic.logispicsquerybl.Logisticsquerybl;
 import edu.nju.businesslogicservice.transformlogicservice.YArrivalDocService;
 import edu.nju.data.transferDataServiceImpl.TransferDataServiceImpl;
+import edu.nju.dataFactory.DataFactory;
 import edu.nju.dataservice.transformdataservice.TransferDataService;
 import edu.nju.po.TransferDocPO;
 import edu.nju.po.YArrivalDocPO;
@@ -30,7 +31,8 @@ public class YArrivalDoc implements YArrivalDocService {
 		transferDoc = new TransferDoc( staffID);
 		institution = new Institution();
 		this.institutionID = institution.getInstitutionID(staffID);
-		transferDataService = new TransferDataServiceImpl(institutionID);
+		transferDataService = DataFactory.getTransferDataService();
+		transferDataService.setInstitutionID(institutionID);
 		collectionbl = new Collectionbl(staffID);
 		logisticsquerybl = new Logisticsquerybl();
 	}
@@ -39,7 +41,7 @@ public class YArrivalDoc implements YArrivalDocService {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void confirmSave() {
+	public void confirmSave() throws RemoteException {
 		saveYArrivalDocPO(po);
 		changeYArrivalSequence();
 		int num = po.getItemAndState().length;
@@ -50,38 +52,38 @@ public class YArrivalDoc implements YArrivalDocService {
 	}
 	
 	@Override
-	public void saveYArrivalDocPO(YArrivalDocPO po) {
+	public void saveYArrivalDocPO(YArrivalDocPO po) throws RemoteException {
 		// TODO 自动生成的方法存根
 		transferDataService.saveYArrivalDocPO(po);
 	}
 
 	@Override
-	public String getYArrivalSequence() {
+	public String getYArrivalSequence() throws RemoteException {
 		// TODO 自动生成的方法存根
 		return transferDataService.getYArrivalSequence();
 	}
 
 	@Override
-	public void changeYArrivalSequence() {
+	public void changeYArrivalSequence() throws RemoteException {
 		// TODO 自动生成的方法存根
 		String next = SequenceCalc.calcNextSequence6(getYArrivalSequence());
 		transferDataService.changeYArrivalSequence(next);
 	}
 
 	@Override
-	public YArrivalDocVO findYArrivalDocVO(String ID) {
+	public YArrivalDocVO findYArrivalDocVO(String ID) throws RemoteException {
 		// TODO 自动生成的方法存根
 		return new YArrivalDocVO(transferDataService.getYArrivalDocPO(ID, false));
 	}
 
 	@Override
-	public ArrayList<YArrivalDocPO> getUncheckedYaArrivalDocPOs() {
+	public ArrayList<YArrivalDocPO> getUncheckedYaArrivalDocPOs() throws RemoteException {
 		// TODO 自动生成的方法存根
 		return transferDataService.getAllYArrivalDoc();
 	}
 
 	@Override
-	public YArrivalDocVO createYArrivalDocVO(String fromDocID, String[][] changeStates) {
+	public YArrivalDocVO createYArrivalDocVO(String fromDocID, String[][] changeStates) throws RemoteException {
 		// TODO Auto-generated method stub
 		TransferDocPO transferDocPO = transferDoc.geTransferDocPOByID(fromDocID);
 		String[][] itemAndState = new String[transferDocPO.getItemIDs().length][2];
@@ -101,7 +103,7 @@ public class YArrivalDoc implements YArrivalDocService {
 	}
 
 	@Override
-	public String getAddressByID(String itemID) {
+	public String getAddressByID(String itemID) throws RemoteException {
 		// TODO Auto-generated method stub
 		return collectionbl.getSendDocPOByID(itemID).getrAddress();
 	}

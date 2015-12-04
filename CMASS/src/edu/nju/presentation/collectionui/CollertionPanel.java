@@ -50,11 +50,17 @@ public class CollertionPanel extends JPanel{
 	private JTextField HeighthField;
 	private JTextField sUnitField;
 	private JTextField rUnitField_1;
-	public CollertionPanel(String staffID) throws RemoteException {
+	public CollertionPanel(String staffID) {
 		this.staffID = staffID;
 		sendType = -1;
 		weight = -1.0;
-		collection = new Collectionbl(staffID);
+		try {
+			collection = new Collectionbl(staffID);
+		} catch (RemoteException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+			warning("net");
+		}
 		
 		ButtonGroup buttonGroup = new ButtonGroup();
 		
@@ -438,7 +444,7 @@ public class CollertionPanel extends JPanel{
 			timeField.setText(String.valueOf(collection.timeEstimate(scity, rcity)));
 			priceField.setText(String.valueOf(collection.priceCalc(scity, rcity, packageType, volume, weight,sendType)));
 		}else {
-			warnning();
+			warning("lost");
 		}
 	}
 	public void create() {
@@ -458,7 +464,7 @@ public class CollertionPanel extends JPanel{
 			});
 			
 		}else {
-			warnning();
+			warning("lost");
 		}
 	}
 	public boolean estimatable() {
@@ -501,20 +507,19 @@ public class CollertionPanel extends JPanel{
 		}
 		
 	}
-	public void warnning() {
+	public void warning(String type) {
 		CheckDialog warningDialog = new CheckDialog();
-		warningDialog.setTitle("提示！");
-		warningDialog.getDocPanel().add(new JLabel("请检查输入信息完整性"));
-		warningDialog.setSize(300, 150);
-		warningDialog.setVisible(true);
-		warningDialog.getConfirmButton().addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				// TODO 自动生成的方法存根
-				warningDialog.dispose();
-			}
-		});
+		switch (type) {
+		case "net":
+			warningDialog.setNetMode();
+			break;	
+		case "lost":
+			warningDialog.setLostMode();
+			break;
+
+		default:
+			break;
+		}
 	}
 	public void  saveDoc() {
 		collection.confirmSave();

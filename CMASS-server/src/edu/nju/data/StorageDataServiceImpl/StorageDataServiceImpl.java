@@ -8,6 +8,7 @@ import java.util.Date;
 
 import com.mysql.fabric.xmlrpc.base.Array;
 import com.sun.crypto.provider.RSACipher;
+import com.sun.org.apache.xalan.internal.xsltc.compiler.Template;
 
 import edu.nju.data.database.SQL;
 import edu.nju.dataservice.storagedataservice.StorageDataService;
@@ -127,48 +128,49 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 		// TODO Auto-generated method stub
 
 	}
-	
+
 	public static void main(String[] args) throws RemoteException {
 		StorageDataServiceImpl serviceImpl = new StorageDataServiceImpl();
-//		for (int i = 0; i < 5; ++i)
-//			System.out.println(serviceImpl.getValidLocation("001000", "航运区"));
-		ArrayList<InWareHouseDocLineItem> list=new ArrayList<InWareHouseDocLineItem>() ;
+		// for (int i = 0; i < 5; ++i)
+		// System.out.println(serviceImpl.getValidLocation("001000", "航运区"));
+		ArrayList<InWareHouseDocLineItem> list = new ArrayList<InWareHouseDocLineItem>();
 		list.add(new InWareHouseDocLineItem("0025010010", new Date(), "efjekjfewf", "航运区", "000000"));
-		InWareHouseDocPO po=new InWareHouseDocPO("08000002", "001000", list);
-		
+		InWareHouseDocPO po = new InWareHouseDocPO("08000002", "001000", list);
+
 		serviceImpl.updateInWareHouseDoc(po);
 		return;
 
 	}
+
 	/**
 	 * 这个方法用来保存入库单文件，但此时并未对仓库进行事实上的变动
+	 * 
 	 * @param in
 	 * @throws RemoteException
 	 */
 	@Override
-	          
+
 	public void updateInWareHouseDoc(InWareHouseDocPO in) throws RemoteException {
 		// TODO Auto-generated method stub
 		System.out.println("zjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj");
-		String sql="";
+		String sql = "";
 		String iD = in.getID();
 		String storageID = in.getStorageID();
 		ArrayList<InWareHouseDocLineItem> list = in.getList();
-		InWareHouseDocLineItem lineItem=list.get(0);
-		Date inDate=lineItem.getDate();
-		sql="INSERT INTO 入库单(ID,入库日期,仓库ID) VALUES('" + iD + "','" + Time.toDaysTime(inDate) + "','"
-				+ storageID + "');";
+		InWareHouseDocLineItem lineItem = list.get(0);
+		Date inDate = lineItem.getDate();
+		sql = "INSERT INTO 入库单(ID,入库日期,仓库ID) VALUES('" + iD + "','" + Time.toDaysTime(inDate) + "','" + storageID
+				+ "');";
 		SQL.databaseUpdate(sql);
 		for (InWareHouseDocLineItem temp : list) {
-			sql = "INSERT INTO 入库items VALUES('" + temp.getSendDocID() + "','" 
-					+ temp.getDestination() + "','" + temp.getLocation() + "','" + iD +"','"+storageID+ "');";
+			sql = "INSERT INTO 入库items VALUES('" + temp.getSendDocID() + "','" + temp.getDestination() + "','"
+					+ temp.getLocation() + "','" + iD + "','" + storageID + "','" + temp.getDistrict() + "');";
 
 			SQL.databaseUpdate(sql);
 		}
-		
+
 		SQL.closeDatabase();
 	}
-	
 
 	@Override
 	public WareHousePO getWareHouse() throws RemoteException {
@@ -184,8 +186,6 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 		System.out.println("仓库已清空");
 
 	}
-
-	
 
 	/**
 	 * 往仓库里加东西，会修改仓库
@@ -230,23 +230,25 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 	 * @param t
 	 * @throws RemoteException
 	 */
-//	@Override
-//	public void updateInWarehouseDoc(InWareHouseDocPO t) throws RemoteException {
-//		String iD = t.getInWareHouseDocID();
-//		ArrayList<RecordPO> list = t.getRecordPOs();
-//		for (RecordPO temp : list) {
-//			String itemID = temp.getItemID();
-//			Date date = temp.getDate();
-//			String destination = temp.getDestination();
-//			String location = temp.getLocation();
-//			String sql = "INSERT INTO 入库单 VALUES(" + iD + "," + Time.toDaysTime(date) + "," + destination + ","
-//					+ location + "," + itemID + ");";
-//			SQL.databaseUpdate(sql);
-//
-//		}
-//		SQL.closeDatabase();
-//
-//	}
+	// @Override
+	// public void updateInWarehouseDoc(InWareHouseDocPO t) throws
+	// RemoteException {
+	// String iD = t.getInWareHouseDocID();
+	// ArrayList<RecordPO> list = t.getRecordPOs();
+	// for (RecordPO temp : list) {
+	// String itemID = temp.getItemID();
+	// Date date = temp.getDate();
+	// String destination = temp.getDestination();
+	// String location = temp.getLocation();
+	// String sql = "INSERT INTO 入库单 VALUES(" + iD + "," + Time.toDaysTime(date)
+	// + "," + destination + ","
+	// + location + "," + itemID + ");";
+	// SQL.databaseUpdate(sql);
+	//
+	// }
+	// SQL.closeDatabase();
+	//
+	// }
 
 	@Override
 	public RecordPO find(int StorageItemID) throws RemoteException {
@@ -266,27 +268,60 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 		return null;
 	}
 
-	/* (non-Javadoc)
-	 * 为总经理返回未审批的入库单列表
-	 * @see edu.nju.dataservice.storagedataservice.StorageDataService#getInWarehouseDoc()
+	/*
+	 * (non-Javadoc) 为总经理返回未审批的入库单列表
+	 * 未经测试
+	 * @see edu.nju.dataservice.storagedataservice.StorageDataService#
+	 * getInWarehouseDoc()
 	 */
 	@Override
 	public ArrayList<InWareHouseDocPO> getInWarehouseDoc() throws RemoteException {
-		ArrayList<InWareHouseDocPO> list=new ArrayList<InWareHouseDocPO>();
-		String sql="SELECT ID,入库日期,仓库ID,快递编号,目的地,位置 FROM 入库单,入库items WHERE 已审批='0'&&入库单.ID=入库items.快递编号;"; 
+		ArrayList<InWareHouseDocPO> list = new ArrayList<InWareHouseDocPO>();
+		String sql = "SELECT ID,入库日期,仓库ID,快递编号,目的地,位置,区 FROM 入库单,入库items WHERE 已审批='0'&&入库单.ID=入库items.入库单编号 ORDER BY ID;";
 		SQL.databaseQuery(sql);
+		InWareHouseDocPO element = null;
+		String currinWareHouseDoc_ID = "";
+		String inWareHouseDoc_ID = "";
+
+		ArrayList<String> iDs = new ArrayList<String>();
+		ArrayList<Date> dates = new ArrayList<Date>();
+		ArrayList<String> storageIDs = new ArrayList<String>();
+		ArrayList<String> SendDocID = new ArrayList<String>();
+		ArrayList<String> destination = new ArrayList<String>();
+		ArrayList<String> location = new ArrayList<String>();
+		ArrayList<String> district=new ArrayList<String>();
 		try {
-			while(SQL.rs.next()){
-				String inWareHouseDoc_ID=SQL.rs.getString("ID");
-				Date date=SQL.rs.getDate(1);
-				String storageID=SQL.rs.getString(2);
-				
+			while (SQL.rs.next()) {
+				iDs.add(SQL.rs.getString(0));
+				dates.add(SQL.rs.getDate(1));
+				storageIDs.add(SQL.rs.getString(2));
+				SendDocID.add(SQL.rs.getString(3));
+				destination.add(SQL.rs.getString(4));
+				location.add(SQL.rs.getString(5));
+				district.add(SQL.rs.getString(6));
 			}
 		} catch (SQLException e) {
 			System.out.println("未审批入库单读取错误");
 			e.printStackTrace();
 		}
-		return null;
+		int j=0;
+		currinWareHouseDoc_ID="";
+		String currStorage_ID="";
+		for(int i=0;i<storageIDs.size();++i,++j){
+			if(!iDs.get(i).equals(currinWareHouseDoc_ID))
+			{
+				if(j!=0)
+					list.add(element);
+				element=new InWareHouseDocPO(iDs.get(i),storageIDs.get(i),new ArrayList<InWareHouseDocLineItem>());
+				currinWareHouseDoc_ID=iDs.get(i);
+				
+			}
+			InWareHouseDocLineItem lineItem=new InWareHouseDocLineItem(SendDocID.get(i), dates.get(i), destination.get(i),district.get(i),location.get(i));
+			element.listAppend(lineItem);
+			
+			
+		}
+		return list;
 	}
 
 	/**
@@ -365,24 +400,25 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 
 	/**
 	 * 未经测试
+	 * 
 	 * @param in
 	 * @throws RemoteException
 	 */
 	@Override
 	public void saveInWareHouseDoc(InWareHouseDocPO in) throws RemoteException {
-		ArrayList<InWareHouseDocLineItem> list=in.getList();
-		String sql="";
-		sql="UPDATE 入库单 SET 已审批='1' WHERE ID= '"+in.getID()+"';";
+		ArrayList<InWareHouseDocLineItem> list = in.getList();
+		String sql = "";
+		sql = "UPDATE 入库单 SET 已审批='1' WHERE ID= '" + in.getID() + "';";
 		SQL.databaseUpdate(sql);
-		for(InWareHouseDocLineItem temp:list){
-			sql="UPDATE 仓库存储货物 SET StorageItem_ID='"+temp.getSendDocID()+"',入库日期='"+Time.toDaysTime(temp.getDate())+"',目的地='"+temp.getDestination()
-			+"' WHERE 仓库ID='"+in.getStorageID()+"'&&位置='"+temp.getLocation()+"';";
+		for (InWareHouseDocLineItem temp : list) {
+			sql = "UPDATE 仓库存储货物 SET StorageItem_ID='" + temp.getSendDocID() + "',入库日期='"
+					+ Time.toDaysTime(temp.getDate()) + "',目的地='" + temp.getDestination() + "' WHERE 仓库ID='"
+					+ in.getStorageID() + "'&&位置='" + temp.getLocation() + "';";
 			SQL.databaseUpdate(sql);
 		}
-		
-		
+
 		SQL.closeDatabase();
-		
+
 	}
 
 }

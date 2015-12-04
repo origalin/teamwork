@@ -371,8 +371,13 @@ public double getCourierMoney(String courier_ID);
 		
 	}
 	@Override
-	public ArrayList<String> getAccountList() {
-		return financeDataService.getAccountList();
+	public ArrayList<AccountVO> getAccountList() {
+		ArrayList<AccountPO> POList= financeDataService.getAccountList();
+		ArrayList<AccountVO> VOList=new ArrayList<AccountVO>();
+		for(AccountPO po:POList){
+			VOList.add(new AccountVO(po.getName(),po.getBalance()));
+		}
+		return VOList;	
 	}
 	@Override
 	public void addMoney(String accountName, double money) {
