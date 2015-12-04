@@ -8,13 +8,21 @@ import java.awt.Insets;
 import javax.swing.table.DefaultTableModel;
 
 import edu.nju.businesslogic.financebl.financebl;
+import edu.nju.po.PayDocPO;
+import edu.nju.po.PayType;
+import edu.nju.presentation.approveui.checkGatheringDoc;
+import edu.nju.presentation.approveui.checkPayDoc;
+import edu.nju.presentation.mainui.CheckDialog;
 import edu.nju.vo.GatheringDocVO;
 import edu.nju.vo.PayDocVO;
 
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.Date;
 public class checkManageStateDoc extends JPanel{
 	public static void main(String[]args){
 		JFrame frame=new JFrame();
@@ -31,10 +39,12 @@ public class checkManageStateDoc extends JPanel{
 	private JTextField textField_1;
 	private JTable table;
 	private JTable table_1;
+	private JScrollPane scrollPane;
+	private JScrollPane scrollPane_1;
 	public checkManageStateDoc() {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 34, 58, 92, 0, 80, 0};
-		gridBagLayout.rowHeights = new int[]{43, -10, 0, 12, 117, 129, 0, 0};
+		gridBagLayout.rowHeights = new int[]{43, -10, 0, 12, 126, 151, 0, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
@@ -90,10 +100,30 @@ public class checkManageStateDoc extends JPanel{
 		JButton checkButton = new JButton("\u67E5\u8BE2");
 		checkButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String startDate=textField.getText().trim();
-				String endDate=textField_1.getText().trim();
+				//String startDate=textField.getText().trim();
+				//String endDate=textField_1.getText().trim();
+				/*
 				PayDocVOList=bl.getPayDoc(startDate, endDate);
 				GatheringDocVOList=bl.getGatheringDoc(startDate, endDate);
+				*/
+				//测试代码
+				PayDocVOList=new ArrayList<PayDocVO>();
+				for(int i=0;i<5;i++){
+					PayDocVOList.add(new PayDocVO(100000+i+"", new Date(),(double) 500+i*10, "付款人"+i+"", "付款账户"+i+"", PayType.RENT,"备注"+i+""));
+				}
+				GatheringDocVOList=new ArrayList<GatheringDocVO>();
+				for(int i=0;i<6;i++){
+					ArrayList<String> itemIDs=new ArrayList<String>();
+					for(int temp=0;temp<5;temp++){
+					itemIDs.add(i*1000+temp+"");
+					}
+					GatheringDocVOList.add(new GatheringDocVO(110000+i+"",new Date(),(double) (1000+i*10),"快递员"+i+"",itemIDs,"付款账号"+i+""));
+				}
+				table=initializeTable(PayDocVOList);
+				table_1=initializeTable_1(GatheringDocVOList);
+				scrollPane.setViewportView(table);
+				scrollPane_1.setViewportView(table_1);
+				updateUI();
 			}
 		});
 		GridBagConstraints gbc_checkButton = new GridBagConstraints();
@@ -102,7 +132,7 @@ public class checkManageStateDoc extends JPanel{
 		gbc_checkButton.gridy = 3;
 		add(checkButton, gbc_checkButton);
 		
-		JScrollPane scrollPane = new JScrollPane();
+		scrollPane = new JScrollPane();
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
@@ -110,7 +140,7 @@ public class checkManageStateDoc extends JPanel{
 		gbc_scrollPane.gridx = 3;
 		gbc_scrollPane.gridy = 4;
 		add(scrollPane, gbc_scrollPane);
-		
+		/*
 		table = new JTable();
 		scrollPane.setViewportView(table);
 		table.setModel(new DefaultTableModel(
@@ -122,18 +152,25 @@ public class checkManageStateDoc extends JPanel{
 				{null},
 			},
 			new String[] {
-				"\u5165\u6B3E\u5355"
+				"\u4ED8\u6B3E\u5355"
 			}
 		));
+		*/
+		ArrayList<PayDocVO> tempPayDocList=new ArrayList<PayDocVO>();
+		for(int i=0;i<5;i++){
+			tempPayDocList.add(null);
+		}
+		scrollPane.setViewportView(initializeTable(tempPayDocList));
 		
-		JScrollPane scrollPane_1 = new JScrollPane();
+		
+		scrollPane_1 = new JScrollPane();
 		GridBagConstraints gbc_scrollPane_1 = new GridBagConstraints();
 		gbc_scrollPane_1.fill = GridBagConstraints.BOTH;
 		gbc_scrollPane_1.insets = new Insets(0, 0, 5, 5);
 		gbc_scrollPane_1.gridx = 3;
 		gbc_scrollPane_1.gridy = 5;
 		add(scrollPane_1, gbc_scrollPane_1);
-		
+		/*
 		table_1 = new JTable();
 		scrollPane_1.setViewportView(table_1);
 		table_1.setModel(new DefaultTableModel(
@@ -148,8 +185,100 @@ public class checkManageStateDoc extends JPanel{
 				"\u6536\u6B3E\u5355"
 			}
 		));
+		*/
+		ArrayList<GatheringDocVO> tempGatheringDocList=new ArrayList<GatheringDocVO>();
+		for(int i=0;i<5;i++){
+			tempGatheringDocList.add(null);
+		}
+		scrollPane_1.setViewportView(initializeTable_1(tempGatheringDocList));
+	}
+
+	public JTable initializeTable(ArrayList<PayDocVO> vo ){
+		JTable table = new JTable();
+		Object[][] PayDocList=new Object[vo.size()][];
+		for(int i=0;i<vo.size();i++){
+			if(vo.get(i)!=null){
+			Object[] oneLine={vo.get(i).getID()};
+			PayDocList[i]=oneLine;
+			}else{
+				PayDocList[i]=null;
+			}
+		}
+		table.setModel(new DefaultTableModel(
+			PayDocList,
+			new String[] {
+				"\u4ED8\u6B3E\u5355"
+			}
+		));
+		
+		table.addMouseListener(new MouseAdapter(){
+			public void mouseClicked(MouseEvent e)
+			{
+				 int r= table.getSelectedRow();
+	             int c= table.getSelectedColumn();
+	              //得到选中的单元格的值，表格中都是字符串
+	              String value= (String) table.getValueAt(r, c);
+	              PayDocVO vo=getPayDocByID(value);
+	              CheckDialog dialog=new CheckDialog();
+	              dialog.setSize(500,500);
+	              checkPayDoc ui=new checkPayDoc(vo);
+	              dialog.getContentPane().add(ui);
+	              dialog.setVisible(true);
+	              /*
+	               CheckDialog dialog=new CheckDialog();
+						dialog.setSize(500,500);
+						checkGatheringDoc  ui=new checkGatheringDoc();
+						ui.getTextField_2().setText(po.getID());
+						ui.getTextField().setText(DateToString(po.getDate()));
+						ui.getTextField_4().setText(po.getCourier_name());
+						ui.getTextField_3().setText(po.getMoney().toString());
+						ui.getTextField_1().setText(po.getAccount());
+						ui.getScrollPane().setViewportView(ui.initializeTable(po.getItemIDs()));
+					
+						dialog.getContentPane().add(ui);
+						dialog.setVisible(true);
+	               */
+			}
+		});
+		return table;
 	}
 	
-	public JTable initializeTable(ArrayList)
+	public JTable initializeTable_1(ArrayList<GatheringDocVO> vo ){
+		JTable table= new JTable();
+		Object[][] GatheringDocList=new Object[vo.size()][];
+		for(int i=0;i<vo.size();i++){
+			if(vo.get(i)!=null){
+			Object[] oneLine={vo.get(i).getID()};
+			GatheringDocList[i]=oneLine;
+			}else{
+				GatheringDocList[i]=null;
+			}
+		}
+		table.setModel(new DefaultTableModel(
+				GatheringDocList,
+			new String[] {
+						"\u6536\u6B3E\u5355"
+			}
+		));
+		return table;
+	}
+	
+	public PayDocVO getPayDocByID(String ID){
+		for(PayDocVO vo:PayDocVOList){
+			if(vo.getID().equals(ID)){
+				return vo;
+			}
+		}
+		return null;
+	}
+	
+	public GatheringDocVO getGatheringDocByID(String ID){
+		for(GatheringDocVO vo:GatheringDocVOList){
+			if(vo.getID().equals(ID)){
+				return vo;
+			}
+		}
+		return null;
+	}
 
 }

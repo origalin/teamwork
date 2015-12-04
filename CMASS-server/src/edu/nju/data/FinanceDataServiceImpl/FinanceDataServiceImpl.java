@@ -24,22 +24,15 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+/*
 	public static void main(String[] args) throws RemoteException, ParseException {		 
 		FinanceDataServiceImpl temp = new FinanceDataServiceImpl();
-		/*
-		ArrayList<AccountPO> poList=temp.getAccountList();
-		for(AccountPO po:poList){
-			System.out.println(po.getName()+" "+po.getBalance());
-			
-		}
-		*/
 		System.out.println(temp.getTotalIncome());
 	}
-
+*/
 	// 提供给审批单据的供接口
 	@Override
-	public ArrayList<PayDocPO> getunchekedPayDocList() {
+	public ArrayList<PayDocPO> getunchekedPayDocList() throws RemoteException{
 		ArrayList<PayDocPO> uncheckedPayDocList = new ArrayList<PayDocPO>();
 		String sql = "SELECT 付款单号,日期,钱,付款人,付款账号,付款类型,备注 FROM PayDocPOList WHERE 是否被审批='false';";
 		SQL.databaseQuery(sql);
@@ -87,7 +80,7 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements
 	}
 
 	@Override
-	public ArrayList<GatheringDocPO> getunchekedGatheringDocList() {
+	public ArrayList<GatheringDocPO> getunchekedGatheringDocList() throws RemoteException{
 		ArrayList<GatheringDocPO> uncheckedGatheringDocList = new ArrayList<GatheringDocPO>();
 		String sql = "SELECT 收款单号,日期,钱,快递员,寄件单编号列表,收款账号 FROM GatheringDocPOList WHERE 是否被审批='false';";
 		SQL.databaseQuery(sql);
@@ -129,7 +122,7 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements
 	}
 
 	@Override
-	public void savePayDocPO(PayDocPO po) {
+	public void savePayDocPO(PayDocPO po) throws RemoteException{
 		String PayDocID = po.getID();
 		String sql = "UPDATE PayDocPOList SET 是否被审批='true'where 付款单号="
 				+ PayDocID + ";";
@@ -139,7 +132,7 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements
 	}
 
 	@Override
-	public void saveGatheringDocPO(GatheringDocPO po) {
+	public void saveGatheringDocPO(GatheringDocPO po) throws RemoteException{
 		String GatheringDocID = po.getID();
 		String sql = "UPDATE GatheringDocPOList SET 是否被审批='true'where 收款单号="
 				+ GatheringDocID + ";";
@@ -149,7 +142,7 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements
 	}
 
 	@Override
-	public void addAccountPO(String accountName) {
+	public void addAccountPO(String accountName) throws RemoteException{
 		String sql = "INSERT INTO account VALUES('" + accountName + "',0);";
 
 		SQL.databaseUpdate(sql);
@@ -157,14 +150,14 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements
 	}
 
 	@Override
-	public void deleteAccountPO(String accountName) {
+	public void deleteAccountPO(String accountName) throws RemoteException{
 		String sql = "DELETE FROM account WHERE 账户名称 ='" + accountName + "';";
 		SQL.databaseUpdate(sql);
 		SQL.closeDatabase();
 	}
 
 	@Override
-	public void modifyAccountPO(String oldAccountName, String newAccountName) {
+	public void modifyAccountPO(String oldAccountName, String newAccountName)throws RemoteException {
 		String sql = "UPDATE account SET 账户名称='" + newAccountName
 				+ "'WHERE 账户名称='" + oldAccountName + "';";
 		SQL.databaseUpdate(sql);
@@ -172,7 +165,7 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements
 	}
 
 	@Override
-	public AccountPO checkAccountPO(String accountName) {
+	public AccountPO checkAccountPO(String accountName)throws RemoteException {
 		String sql = "SELECT 账户名称,账户余额 FROM account WHERE 账户名称='" + accountName
 				+ "';";
 		SQL.databaseQuery(sql);
@@ -194,7 +187,7 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements
 	}
 
 	@Override
-	public ArrayList<PayDocPO> getPayDoc(Date startDate, Date endDate) {
+	public ArrayList<PayDocPO> getPayDoc(Date startDate, Date endDate)throws RemoteException {
 		ArrayList<PayDocPO> uncheckedPayDocList = new ArrayList<PayDocPO>();
 		String sql = "SELECT 付款单号,日期,钱,付款人,付款账号,付款类型,备注 FROM PayDocPOList WHERE 日期  BETWEEN '"+Time.toDaysTime(startDate)+"' AND '"+Time.toDaysTime(endDate)+"';";
 		SQL.databaseQuery(sql);
@@ -243,7 +236,7 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements
 
 	@Override
 	public ArrayList<GatheringDocPO> getGatheringDoc(Date startDate,
-			Date endDate) {
+			Date endDate) throws RemoteException{
 		ArrayList<GatheringDocPO> uncheckedGatheringDocList = new ArrayList<GatheringDocPO>();
 		String sql = "SELECT 收款单号,日期,钱,快递员,寄件单编号列表,收款账号 FROM GatheringDocPOList WHERE 日期  BETWEEN '"+Time.toDaysTime(startDate)+"' AND '"+Time.toDaysTime(endDate)+"';";
 		//SELECT prod_name, prod_price FROM Products WHERE prod_price BETWEEN 5 AND 10;
@@ -286,7 +279,7 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements
 	}
 
 	@Override
-	public double getTotalPayment() {
+	public double getTotalPayment() throws RemoteException{
 		double totalPayment = 0;
 		String sql = "SELECT 钱 FROM PayDocPOList;";
 		SQL.databaseQuery(sql);
@@ -302,7 +295,7 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements
 	}
 
 	@Override
-	public double getTotalIncome() {
+	public double getTotalIncome() throws RemoteException{
 		double totalIncome = 0;
 		String sql = "SELECT 钱 FROM GatheringDocPOList;";
 		SQL.databaseQuery(sql);
@@ -320,7 +313,7 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements
 	// 生成付款单
 	@Override
 	public void createPayDoc(String payDocID,Date date, double money,String payMen, String account,
-			PayType type, String back) {
+			PayType type, String back) throws RemoteException{
 
 		String payType;
 		if (type.equals(PayType.RENT)) {
@@ -340,7 +333,7 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements
 	}
 
 	@Override
-	public PayDocPO getPayDocPO(String PayDocID) {
+	public PayDocPO getPayDocPO(String PayDocID) throws RemoteException{
 
 		String sql = "SELECT 付款单号,日期,钱,付款人,付款账号,付款类型,备注 FROM PayDocPOList WHERE 付款单号='"
 				+ PayDocID + "';";
@@ -373,7 +366,7 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements
 	// 生成收款单
 	@Override
 	public void createGatheringDoc(String GatheringDocID,Date date, Double money,
-			String courier_name, ArrayList<String> itemIDs,String account) {
+			String courier_ID, ArrayList<String> itemIDs,String account)throws RemoteException {
 		DateFormat df1 = DateFormat.getDateInstance();//日期格式，精确到日
 		String items = "";
 		for (String temp : itemIDs) {
@@ -382,14 +375,14 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements
 		items = items.substring(0,items.length() - 1);// 删除最后一个逗号
 		String sql = "INSERT INTO GatheringDocPOList VALUES('" + GatheringDocID
 				+ "','" +Time.toDaysTime(date)+ "','" + money + "','"
-				+ courier_name + "','" + items + "','"+account+"','false');";
+				+ courier_ID + "','" + items + "','"+account+"','false');";
 		System.out.println(sql);
 		SQL.databaseUpdate(sql);
 		SQL.closeDatabase();
 	}
 
 	@Override
-	public GatheringDocPO getGatheringDocPO(String GatheringDocID) {
+	public GatheringDocPO getGatheringDocPO(String GatheringDocID)throws RemoteException {
 		String sql = "SELECT 收款单号,日期,钱,快递员,寄件单编号列表,收款账号 FROM GatheringDocPOList WHERE 收款单号='"
 				+ GatheringDocID + "';";
 		SQL.databaseQuery(sql);
@@ -434,7 +427,7 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements
 	}
 
 	@Override
-	public ArrayList<AccountPO> getAccountList() {
+	public ArrayList<AccountPO> getAccountList() throws RemoteException{
 		ArrayList<AccountPO> accountList=new ArrayList<AccountPO>();
 		String sql = "SELECT 账户名称,账户余额 FROM account;";
 		SQL.databaseQuery(sql);
@@ -454,7 +447,7 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements
 	}
 
 	@Override
-	public void addMoney(String accountName, double money) {
+	public void addMoney(String accountName, double money) throws RemoteException{
 		double currentMoney=0;
 		String s= "SELECT 账户余额 FROM account WHERE 账户名称='" + accountName
 				+ "';";
@@ -482,7 +475,7 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements
 	}
 
 	@Override
-	public void minusMoney(String accountName, double money) {
+	public void minusMoney(String accountName, double money) throws RemoteException{
 		double temp=-money;
 		this.addMoney(accountName,temp);
 		

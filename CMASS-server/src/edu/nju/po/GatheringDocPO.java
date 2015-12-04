@@ -8,14 +8,14 @@ import java.util.Date;
 public class GatheringDocPO extends Doc {
 	Date date;
 	Double money;
-	String courier_name;
+	String courier_ID;
 	ArrayList<String> itemIDs;
 	String account;
-	public GatheringDocPO(String GatheringDocID,Date date,Double money, String courier_name,ArrayList<String> itemIDs,String account) {
+	public GatheringDocPO(String GatheringDocID,Date date,Double money, String courier_ID,ArrayList<String> itemIDs,String account) {
 		super();
 		this.ID=GatheringDocID;
 		this.money = money;
-		this.courier_name = courier_name;
+		this.courier_ID = courier_ID;
 		this.itemIDs = itemIDs;
 		this.date = date;
 		this.account=account;
@@ -32,11 +32,11 @@ public class GatheringDocPO extends Doc {
 	public void setMoney(Double money) {
 		this.money = money;
 	}
-	public String getCourier_name() {
-		return courier_name;
+	public String getCourier_ID() {
+		return courier_ID;
 	}
-	public void setCourier_name(String courier_name) {
-		this.courier_name = courier_name;
+	public void setCourier_ID(String courier_ID) {
+		this.courier_ID = courier_ID;
 	}
 	public ArrayList<String> getItemIDs() {
 		return itemIDs;

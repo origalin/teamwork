@@ -143,30 +143,20 @@ public class checkMainUI extends JPanel{
 					String inputID=textField.getText().trim();
 					String DocType=(String) comboBox.getSelectedItem();
 					switch(DocType){
-					case "收款单":
+					case "收款单":/*
 						GatheringDocPO po=getGatheringDocPOByID(inputID);
 						CheckDialog dialog=new CheckDialog();
 						dialog.setSize(500,500);
 						checkGatheringDoc  ui=new checkGatheringDoc();
 						ui.getTextField_2().setText(po.getID());
 						ui.getTextField().setText(DateToString(po.getDate()));
-						ui.getTextField_4().setText(po.getCourier_name());
+						ui.getTextField_4().setText(po.getCourier_ID());
 						ui.getTextField_3().setText(po.getMoney().toString());
 						ui.getTextField_1().setText(po.getAccount());
 						ui.getScrollPane().setViewportView(ui.initializeTable(po.getItemIDs()));
-						/*测试代码
-						ui.getTextField_2().setText("141290034");
-						ui.getTextField().setText(DateToString(new Date()));
-						ui.getTextField_4().setText("李宁");
-						ui.getTextField_3().setText("500");
-						ui.getTextField_1().setText("haha");
-						ArrayList<String> temp=new ArrayList<String> ();
-						temp.add("hey");
-						temp.add("jode");
-						ui.getScrollPane().setViewportView(ui.initializeTable(temp));
-						*/
 						dialog.getContentPane().add(ui);
 						dialog.setVisible(true);
+						*/
 						break;
 					
 					}

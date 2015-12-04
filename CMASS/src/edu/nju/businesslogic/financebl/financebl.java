@@ -41,7 +41,7 @@ import edu.nju.vo.YLoadDocVO;
 import edu.nju.vo.ZLoadDocVO;
 import edu.nju.vo.showStaffSalaryVO;
 
-public class financebl implements FinanceLogicService{
+public class financebl implements FinanceLogicService {
 	/*financedataService
 	
 	public void saveOverDocPO(PayDocPO po);
@@ -112,17 +112,30 @@ public class financebl implements FinanceLogicService{
 	
 	@Override
 	public double getTotalIncome() {
+		try{
 		return financeDataService.getTotalIncome();
+		}catch(RemoteException e){
+			System.out.println("财务数据层查询失败");
+			e.printStackTrace();
+			return 0;
+		}
 		
 	}
 
 	@Override
 	public double getTotalPayment() {
+		try{
 		return financeDataService.getTotalPayment();
+		}catch(RemoteException e){
+			System.out.println("财务数据层查询失败");
+			e.printStackTrace();
+			return 0;
+		}
 	}
 
 	@Override
 	public ArrayList<PayDocVO> getPayDoc(String startTime, String endTime) {
+		try{
 		ArrayList<PayDocVO>answer=new ArrayList<PayDocVO>();
 		Date startDate=Time.stringToDate(startTime);
 		Date endDate=Time.stringToDate(endTime);
@@ -131,26 +144,39 @@ public class financebl implements FinanceLogicService{
 			answer.add(new PayDocVO(po.getID(),po.getDate(),po.getMoney(),po.getPayer(),po.getAccount(),po.getType(),po.getBack()));
 		}
 		return answer;
+		}catch(RemoteException e){
+			System.out.println("财务数据层查询失败");
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	@Override
 	public ArrayList<GatheringDocVO> getGatheringDoc(String startTime,
 			String endTime) {
+		try{
 		ArrayList<GatheringDocVO>answer=new ArrayList<GatheringDocVO>();
 		Date startDate=Time.stringToDate(startTime);
 		Date endDate=Time.stringToDate(endTime);
 		ArrayList <GatheringDocPO> GatheringDocList= financeDataService.getGatheringDoc(startDate, endDate);
 		for(GatheringDocPO po:GatheringDocList){
-			answer.add(new GatheringDocVO(po.getID(),po.getDate(),po.getMoney(),po.getCourier_name(),po.getItemIDs(), po.getAccount()));
+			answer.add(new GatheringDocVO(po.getID(),po.getDate(),po.getMoney(),po.getCourier_ID(),po.getItemIDs(), po.getAccount()));
 		}
 		return answer;
+		}catch(RemoteException e){
+			System.out.println("财务数据层查询失败");
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 //每次都是获取一系列的机构名称，填写完一部分的租金生成付款单后，在financebl的机构列表中删除这个已付款的机构
 	//，只有当financebl中没有机构的时候才会去找别人要未付款的机构
 	@Override
 	public ArrayList<InstitutionPO> getUnpaidInstitutionList(){
+		
 		return institution.getUnpaidInstitutionList();
+	
 	}
 
 	@Override
@@ -259,9 +285,17 @@ public class financebl implements FinanceLogicService{
 		}
 		
 	}
+	
+	@Override
+	public GatheringDocVO reviewGatheringDoc(String GatheringDocID,
+			String courier_ID, String account) {
+		double money=collectionbl.getCourierMoney(courier_ID);
+		ArrayList<String> SendDoclist=collectionbl.getSendDocsByID(courier_ID);
+		return new GatheringDocVO(GatheringDocID,new Date(), money, courier_ID, SendDoclist, account);
+	}
 
 	@Override
-	public void createGatheringDoc(String GatheringDocID, String courier_ID,String account) {
+	public void createGatheringDoc(GatheringDocVO vo) {
 		//系统只用知道快递员是谁就可以生成他的收款单，其他的信息需要从其他模块获取
 		//GatheringDocID,Date date,Double money, String courier_name,ArrayList<String> itemIDs,String account)
 		/*
@@ -278,15 +312,13 @@ public double getCourierMoney(String courier_ID);
 其中第二个方法需要根据ID把一个用来检查该寄件单是否生成收款单的bool变量置为true
 
 		 */
-		double money=collectionbl.getCourierMoney(courier_ID);
-		ArrayList<String> SendDoclist=collectionbl.getSendDocsByID(courier_ID);
-		 financeDataService.createGatheringDoc(GatheringDocID,new Date(), money, courier_ID,SendDoclist,account);
+		 financeDataService.createGatheringDoc(vo.getID(),vo.getDate(), vo.getMoney(),vo.getCourier_ID(),vo.getItemIDs(),vo.getAccount());
 	}
 
 	@Override
 	public GatheringDocVO getGatheringDocVO(String GatheringDocID) {
 		GatheringDocPO po= financeDataService.getGatheringDocPO(GatheringDocID);
-		return new GatheringDocVO(po.getID(),po.getDate(),po.getMoney(),po.getCourier_name(),po.getItemIDs(),po.getAccount());
+		return new GatheringDocVO(po.getID(),po.getDate(),po.getMoney(),po.getCourier_ID(),po.getItemIDs(),po.getAccount());
 	}
 
 	@Override
@@ -295,12 +327,17 @@ public double getCourierMoney(String courier_ID);
 		collectionbl.saveSendDocPO(po);
 		}
 	}
-
+	
 	@Override
-	public void createPayDoc(String payDocID, double money,String payMen, String account,
-			PayType type,String back) {
-		Date date=new Date();
-		financeDataService.createPayDoc(payDocID,date, money,payMen, account, type, back);
+	public PayDocVO reviewPayDoc(String payDocID, double money, String payMen,
+			String account, PayType type, String back) {
+		// TODO Auto-generated method stub
+		return new PayDocVO(payDocID, new Date(), money,payMen, account, type, back);
+	}
+	
+	@Override
+	public void createPayDoc(PayDocVO vo) {
+		financeDataService.createPayDoc(vo.getID(),vo.getDate(),vo.getMoney(),vo.getPayer(), vo.getAccount(), vo.getType(), vo.getBack());
 		
 	}
 
@@ -389,5 +426,7 @@ public double getCourierMoney(String courier_ID);
 		financeDataService.minusMoney(accountName,money);
 		
 	}
+	
+	
 
 }
