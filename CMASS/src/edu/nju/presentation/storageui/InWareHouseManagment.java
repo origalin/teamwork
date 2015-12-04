@@ -72,6 +72,8 @@ public class InWareHouseManagment extends JPanel {
 
 		String[] columnNames = { "快递编号", "入库日期", "目的地", "区号", "排号", "架号", "位号" };
 
+		String data[][]=new String[0][0];
+		table=new JTable(data,columnNames);
 		setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "\u5165\u5E93\u7BA1\u7406",
 				TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		GridBagLayout gridBagLayout = new GridBagLayout();
