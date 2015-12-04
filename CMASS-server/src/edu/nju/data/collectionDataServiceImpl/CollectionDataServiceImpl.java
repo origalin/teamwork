@@ -88,7 +88,7 @@ public class CollectionDataServiceImpl extends UnicastRemoteObject implements Co
 	@Override
 	public String getSequence() {
 		// TODO Auto-generated method stub
-		String sql = "select Sequence from SequenceTable where Kind=SendDoc;";
+		String sql = "select Sequence from SequenceTable where Kind='SendDoc';";
 		SQL.databaseQuery(sql);
 		try {
 			while (SQL.rs.next()) {
@@ -107,7 +107,7 @@ public class CollectionDataServiceImpl extends UnicastRemoteObject implements Co
 	@Override
 	public void changeSequence(String sequence) {
 		// TODO Auto-generated method stub
-		String sql = "UPDATE SequenceTable SET Sequence='" + sequence + "'where Kind=SendDoc;";
+		String sql = "UPDATE SequenceTable SET Sequence='" + sequence + "'where Kind='SendDoc';";
 		SQL.databaseUpdate(sql);
 		SQL.closeDatabase();
 	}
@@ -132,7 +132,7 @@ public class CollectionDataServiceImpl extends UnicastRemoteObject implements Co
 	@Override
 	public SendDocPO getSendDocPOByID(String ID) {
 		// TODO Auto-generated method stub
-		String sql = "select * from SendDoc where ID=" + ID + ";";
+		String sql = "select * from SendDoc where ID='" + ID + "';";
 		SQL.databaseQuery(sql);
 		try {
 			while (SQL.rs.next()) {
@@ -198,7 +198,7 @@ public class CollectionDataServiceImpl extends UnicastRemoteObject implements Co
 		ArrayList<CourierMessage> courierMessages = new ArrayList<CourierMessage>();
 		String[] itemIDs;
 		double money;
-		String string = "select * from CourierMoney where courierID = "+courierID+";";
+		String string = "select * from CourierMoney where courierID = '"+courierID+"';";
 		SQL.databaseQuery(string);
 		try {
 			while (SQL.rs.next()) {

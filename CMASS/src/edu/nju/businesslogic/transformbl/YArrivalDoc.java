@@ -7,10 +7,12 @@ import java.util.Date;
 import edu.nju.businesslogic.collectionbl.Collectionbl;
 import edu.nju.businesslogic.infobl.Institution;
 import edu.nju.businesslogic.logispicsquerybl.Logisticsquerybl;
+import edu.nju.businesslogic.systembl.SystemBl;
 import edu.nju.businesslogicservice.transformlogicservice.YArrivalDocService;
 import edu.nju.data.transferDataServiceImpl.TransferDataServiceImpl;
 import edu.nju.dataFactory.DataFactory;
 import edu.nju.dataservice.transformdataservice.TransferDataService;
+import edu.nju.po.OperationPO;
 import edu.nju.po.TransferDocPO;
 import edu.nju.po.YArrivalDocPO;
 import edu.nju.tools.SequenceCalc;
@@ -24,6 +26,7 @@ public class YArrivalDoc implements YArrivalDocService {
 	private Institution institution;
 	private TransferDataService transferDataService; 
 	Logisticsquerybl logisticsquerybl;
+	SystemBl systemBl;
 
 	public YArrivalDoc( String staffID) throws RemoteException {
 		super();
@@ -35,6 +38,7 @@ public class YArrivalDoc implements YArrivalDocService {
 		transferDataService.setInstitutionID(institutionID);
 		collectionbl = new Collectionbl(staffID);
 		logisticsquerybl = new Logisticsquerybl();
+		systemBl = new SystemBl();
 	}
 
 	public YArrivalDoc() {
@@ -48,7 +52,7 @@ public class YArrivalDoc implements YArrivalDocService {
 		for(int i = 0;i<num;i++) {
 			logisticsquerybl.changePosition(po.getItemAndState()[i][0], "快递已到达"+institution.getCity(institutionID)+institution.getInstitutionName(institutionID));
 		}
-
+		systemBl.saveOperation(new OperationPO(new Date(), staffID, institution.getStaffName(staffID), "生成营业厅到达单"));
 	}
 	
 	@Override

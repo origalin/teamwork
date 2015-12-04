@@ -166,6 +166,7 @@ public class SendPanel extends JPanel{
 		collectionbl = new Collectionbl(staffID);
 		ArrayList<YDeliverDocVO> yDeliverDocVOs = yDeliverDoc.findYDeliverDocVOs(staffID);
 		SendDocVO sendDocVO ;
+		if(yDeliverDocVOs.size()!=0)
 		for(YDeliverDocVO vo:yDeliverDocVOs) {
 			String[] itemIDs = vo.getItemIDs();
 			for(String itemID : itemIDs) {
@@ -187,25 +188,38 @@ public class SendPanel extends JPanel{
 			itemIDs[i] = (String) toOverModel.getValueAt(i, 0);
 			receivers[i] = (String) toOverModel.getValueAt(i, 1);
 		}
-		OverDocVO vo = overDoc.createOverDocVO(itemIDs, receivers);
-		CheckDialog cDialog = new CheckDialog();
-		cDialog.getDocPanel().add(new checkOverDoc(vo));
-		cDialog.getConfirmButton().addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				saveDoc();
-			}
-		});
+		OverDocVO vo = null;
+		try {
+			vo = overDoc.createOverDocVO(itemIDs, receivers);
+			CheckDialog cDialog = new CheckDialog();
+			cDialog.setPreviewMode(new checkOverDoc(vo));
+			cDialog.getConfirmButton().addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					saveDoc();
+				}
+			});
+		} catch (RemoteException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+			warning();
+		}
+		
 	}
 	private void saveDoc() {
-		overDoc.confirmSave();
+		try {
+			overDoc.confirmSave();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			warning();
+		}
 	}
 	public void warning() {
 		CheckDialog warningDialog = new CheckDialog();
 			warningDialog.setNetMode();
-			warningDialog.setLostMode();
 		
 	}
 }

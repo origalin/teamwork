@@ -15,7 +15,7 @@ import edu.nju.po.OperationPO;
 
 public class SystemDataServiceImpl extends UnicastRemoteObject implements SystemDataService {
 
-	protected SystemDataServiceImpl() throws RemoteException {
+	public SystemDataServiceImpl() throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub
 	}

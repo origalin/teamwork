@@ -19,6 +19,7 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.table.DefaultTableModel;
 
 import edu.nju.businesslogic.transformbl.ZArrivalDoc;
+import edu.nju.presentation.approveui.checkOverDoc;
 import edu.nju.presentation.approveui.checkZArrivalDoc;
 import edu.nju.presentation.mainui.CheckDialog;
 import edu.nju.vo.ZArrivalDocVO;
@@ -310,11 +311,27 @@ public class ZArrivalDocPanel extends JPanel {
 				
 				
 			}
-			if(docType==0) {
-				vo = zArrivalDoc.createZArrivalDocVO_TransferDoc(transferDocIDField.getText(), str);
-			}else {
-				vo = zArrivalDoc.createZArrivalDocVO_YLoadDoc(transferDocIDField.getText(), str);
+			try {
+				if(docType==0) {
+					vo = zArrivalDoc.createZArrivalDocVO_TransferDoc(transferDocIDField.getText(), str);
+				}else {
+					vo = zArrivalDoc.createZArrivalDocVO_YLoadDoc(transferDocIDField.getText(), str);
+				}
+				CheckDialog cDialog = new CheckDialog();
+				cDialog.setPreviewMode(new checkZArrivalDoc(vo));
+				cDialog.getConfirmButton().addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						// TODO Auto-generated method stub
+						saveDoc();
+					}
+				});
+			} catch (Exception e) {
+				// TODO: handle exception
+				warning("net");
 			}
+			
 			CheckDialog cDialog = new CheckDialog();
 			cDialog.getDocPanel().add(new checkZArrivalDoc(vo));
 			cDialog.getConfirmButton().addActionListener(new ActionListener() {
@@ -328,6 +345,12 @@ public class ZArrivalDocPanel extends JPanel {
 		}
 	}
 	private void saveDoc() {
-		zArrivalDoc.confirmSave();
+		try {
+			zArrivalDoc.confirmSave();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			warning("net");
+		}
 	}
 }

@@ -22,6 +22,7 @@ import org.omg.CORBA.INITIALIZE;
 
 import edu.nju.businesslogic.transformbl.TransferDoc;
 import edu.nju.presentation.approveui.CheckTransferDoc_Car;
+import edu.nju.presentation.approveui.checkOverDoc;
 import edu.nju.presentation.mainui.CheckDialog;
 import edu.nju.vo.TransferDoc_CarVO;
 
@@ -214,17 +215,24 @@ public class TransferDocPanel_Car extends JPanel {
 	private void createTransferDoc() {
 		intialize();
 		if (creatable()) {
-			vo = transferDoc.createTransferDocVO_Car(city,carNum,watcher, itemIDs);
-			CheckDialog dialog = new CheckDialog();
-			dialog.getDocPanel().add(new CheckTransferDoc_Car(vo));
-			dialog.getConfirmButton().addActionListener(new ActionListener() {
-				
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					// TODO Auto-generated method stub
-					saveDoc();
-				}
-			});
+			try {
+				vo = transferDoc.createTransferDocVO_Car(city,carNum,watcher, itemIDs);
+				CheckDialog cDialog = new CheckDialog();
+				cDialog.setPreviewMode(new CheckTransferDoc_Car(vo));
+				cDialog.getConfirmButton().addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						// TODO Auto-generated method stub
+						saveDoc();
+					}
+				});
+			} catch (RemoteException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+				warning("net");
+			}
+			
 		}else {
 			warning("lost");
 		}
@@ -250,7 +258,13 @@ public class TransferDocPanel_Car extends JPanel {
 		}
 	}
 	private void saveDoc() {
-		transferDoc.confirmSave();
+		try {
+			transferDoc.confirmSave();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			warning("net");
+		}
 	}
 	private void warning(String type) {
 		CheckDialog warningDialog = new CheckDialog();

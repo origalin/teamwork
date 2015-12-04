@@ -24,7 +24,9 @@ import edu.nju.businesslogic.collectionbl.Collectionbl;
 import edu.nju.businesslogic.transformbl.YArrivalDoc;
 import edu.nju.businesslogic.transformbl.YDeliverDoc;
 import edu.nju.businesslogic.transformbl.ZArrivalDoc;
+import edu.nju.presentation.approveui.checkOverDoc;
 import edu.nju.presentation.approveui.checkYArrivalDoc;
+import edu.nju.presentation.approveui.checkZArrivalDoc;
 import edu.nju.presentation.mainui.CheckDialog;
 import edu.nju.vo.YArrivalDocVO;
 import edu.nju.vo.YDeliverDocVO;
@@ -338,23 +340,35 @@ public class YArrivalDocPanel extends JPanel{
 			for (int i = 0; i < tableModel.getRowCount(); i++) {
 				IDAndState[i][0] = (String) tableModel.getValueAt(i, 0);
 				IDAndState[i][0] = (String) tableModel.getValueAt(i, 1);
-				vo = yArrivalDoc.createYArrivalDocVO(zLoadDocIDField.getText(), IDAndState);
-				CheckDialog cDialog = new CheckDialog();
-				cDialog.getDocPanel().add(new checkYArrivalDoc(vo));
-				cDialog.getConfirmButton().addActionListener(new ActionListener() {
-					
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						// TODO Auto-generated method stub
-						saveYArrivalDoc();
-						intializeYDeliver();
-					}
-				});
+				try {
+					vo = yArrivalDoc.createYArrivalDocVO(zLoadDocIDField.getText(), IDAndState);
+					CheckDialog cDialog = new CheckDialog();
+					cDialog.setPreviewMode(new checkYArrivalDoc(vo));
+					cDialog.getConfirmButton().addActionListener(new ActionListener() {
+						
+						@Override
+						public void actionPerformed(ActionEvent e) {
+							// TODO Auto-generated method stub
+							saveDoc();
+						}
+					});
+				} catch (RemoteException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+					warning("net");
+				}
+			
 			}
 		}
 	}
 	private void  saveYArrivalDoc() {
-		yArrivalDoc.confirmSave();
+		try {
+			yArrivalDoc.confirmSave();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			warning("net");
+		}
 	}
 	private void intializeYDeliver() {
 		String[][] itStrings = vo.getItemAndState();
@@ -363,7 +377,13 @@ public class YArrivalDocPanel extends JPanel{
 			docs[i] = itStrings[i][0];
 		}
 		for(String str : docs) {
-			DeliverModel.addRow(new Object[]{str,yArrivalDoc.getAddressByID(str),""});
+			try {
+				DeliverModel.addRow(new Object[]{str,yArrivalDoc.getAddressByID(str),""});
+			} catch (RemoteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				warning("net");
+			}
 		}
 	}
 	private void createYDeliverDoc() {
@@ -372,19 +392,33 @@ public class YArrivalDocPanel extends JPanel{
 			table[i][0] = (String) DeliverModel.getValueAt(i, 0);
 			table[i][2] = (String) DeliverModel.getValueAt(i, 2);
 		}
-		YDeliverDocVO vo = yDeliverDoc.createYDeliverDoc(table);
-		CheckDialog cDialog = new CheckDialog();
-		cDialog.getDocPanel().add(new checkYArrivalDoc(vo));
-		cDialog.getConfirmButton().addActionListener(new ActionListener() {
+		YDeliverDocVO vo;
+		try {
+			vo = yDeliverDoc.createYDeliverDoc(table);
+			CheckDialog cDialog = new CheckDialog();
 			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				saveDoc();
-			}
-		});
+			cDialog.getConfirmButton().addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					saveDoc();
+				}
+			});
+		} catch (RemoteException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+			warning("net");
+		}
+		
 	}
 	private void saveDoc() {
-		yDeliverDoc.confirmSave();
+		try {
+			yDeliverDoc.confirmSave();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			warning("net");
+		}
 	}
 }

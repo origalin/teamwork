@@ -1034,6 +1034,11 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 		}
 		return result;
 	}
+	@Override
+	public ArrayList<YDeliverDocPO> getYDeliverDocPOByCourier(String courierID) throws RemoteException {
+		// TODO Auto-generated method stub
+		return new ArrayList<>();
+	}
 
 	
 }

@@ -56,4 +56,5 @@ public interface TransferDataService extends Remote{
 	public ArrayList<HistoryTimePO> getHistoryTimePO(String sCity,String rCity)throws RemoteException;
 	public int  getDriverTime_YLoad(String driverID)throws RemoteException;
 	public int  getDriverTime_ZLoad(String driverID)throws RemoteException;
+	public ArrayList<YDeliverDocPO> getYDeliverDocPOByCourier(String courierID)throws RemoteException;
 }

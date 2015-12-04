@@ -15,12 +15,14 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 
 import javax.swing.ScrollPaneConstants;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import edu.nju.businesslogic.transformbl.YLoadDoc;
+import edu.nju.presentation.approveui.checkOverDoc;
 import edu.nju.presentation.approveui.checkYLoadDoc;
 import edu.nju.presentation.mainui.CheckDialog;
 import edu.nju.vo.YLoadDocVO;
@@ -46,7 +48,13 @@ public class YLoadDocPanel extends JPanel{
 
 	public YLoadDocPanel(String staffID) {
 		this.staffID = staffID;
-		yLoadDoc = new YLoadDoc(staffID);
+		try {
+			yLoadDoc = new YLoadDoc(staffID);
+		} catch (RemoteException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+			warning("net");
+		}
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{144, 334, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 248, 0, 0, 0, 0};
@@ -197,17 +205,24 @@ public class YLoadDocPanel extends JPanel{
 	}
 	private void createYLoadDoc() {
 		if(creatable()) {
-			vo = yLoadDoc.createYLoadDocVO(carID,"上级", watcher, driver,itemIDs);
-			CheckDialog cDialog = new CheckDialog();
-			cDialog.getDocPanel().add(new checkYLoadDoc(vo));
-			cDialog.getConfirmButton().addActionListener(new ActionListener() {
-				
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					// TODO Auto-generated method stub
-					saveDoc();
-				}
-			});
+			try {
+				vo = yLoadDoc.createYLoadDocVO(carID,"上级", watcher, driver,itemIDs);
+				CheckDialog cDialog = new CheckDialog();
+				cDialog.setPreviewMode(new checkYLoadDoc(vo));
+				cDialog.getConfirmButton().addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						// TODO Auto-generated method stub
+						saveDoc();
+					}
+				});
+			} catch (RemoteException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+				warning("net");
+			}
+		
 		}else {
 			warning("lost");
 		}
@@ -246,6 +261,12 @@ public class YLoadDocPanel extends JPanel{
 		}
 	}
 	private void saveDoc() {
-		yLoadDoc.confirmSave();
+		try {
+			yLoadDoc.confirmSave();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			warning("net");
+		}
 	}
 }

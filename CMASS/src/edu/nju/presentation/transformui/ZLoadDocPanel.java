@@ -21,6 +21,7 @@ import javax.swing.table.DefaultTableModel;
 import edu.nju.businesslogic.transformbl.YLoadDoc;
 import edu.nju.businesslogic.transformbl.ZLoadDoc;
 import edu.nju.presentation.approveui.CheckZLoadDoc;
+import edu.nju.presentation.approveui.checkOverDoc;
 import edu.nju.presentation.approveui.checkYLoadDoc;
 import edu.nju.presentation.mainui.CheckDialog;
 import edu.nju.vo.YLoadDocVO;
@@ -110,7 +111,13 @@ public class ZLoadDocPanel extends JPanel{
 		JLabel label_12 = new JLabel("\u53F8\u673A");
 		panel_8.add(label_12);
 		
-		driverNameAndIDs = zLoadDoc.getDrivers();
+		try {
+			driverNameAndIDs = zLoadDoc.getDrivers();
+		} catch (RemoteException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+			warning("net");
+		}
 		drivers = new String[driverNameAndIDs.length];
 		for(int i = 0;i<driverNameAndIDs.length;i++) {
 			drivers[i] = driverNameAndIDs[i][0];
@@ -209,17 +216,23 @@ public class ZLoadDocPanel extends JPanel{
 	}
 	private void createZLoadDoc() {
 		if(creatable()) {
-			vo = zLoadDoc.createZLoadDocVO(carID,target ,watcher, driver,itemIDs);
-			CheckDialog cDialog = new CheckDialog();
-			cDialog.getDocPanel().add(new CheckZLoadDoc(vo));
-			cDialog.getConfirmButton().addActionListener(new ActionListener() {
-				
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					// TODO Auto-generated method stub
-					saveDoc();
-				}
-			});
+			try {
+				vo = zLoadDoc.createZLoadDocVO(carID,target ,watcher, driver,itemIDs);
+				CheckDialog cDialog = new CheckDialog();
+				cDialog.setPreviewMode(new CheckZLoadDoc(vo));
+				cDialog.getConfirmButton().addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						// TODO Auto-generated method stub
+						saveDoc();
+					}
+				});
+			} catch (RemoteException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+				warning("net");
+			}
 		}else {
 			warning("lost");
 		}
@@ -259,6 +272,12 @@ public class ZLoadDocPanel extends JPanel{
 		}
 	}
 	private void saveDoc() {
-		zLoadDoc.confirmSave();
+		try {
+			zLoadDoc.confirmSave();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			warning("net");
+		}
 	}
 }

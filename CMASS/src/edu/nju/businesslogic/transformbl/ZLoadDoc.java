@@ -7,10 +7,12 @@ import java.util.Date;
 
 import edu.nju.businesslogic.infobl.Institution;
 import edu.nju.businesslogic.logispicsquerybl.Logisticsquerybl;
+import edu.nju.businesslogic.systembl.SystemBl;
 import edu.nju.businesslogicservice.transformlogicservice.ZLoadDocService;
 import edu.nju.data.transferDataServiceImpl.TransferDataServiceImpl;
 import edu.nju.dataFactory.DataFactory;
 import edu.nju.dataservice.transformdataservice.TransferDataService;
+import edu.nju.po.OperationPO;
 import edu.nju.po.ZLoadDocPO;
 import edu.nju.tools.SequenceCalc;
 import edu.nju.vo.ZLoadDocVO;
@@ -23,6 +25,7 @@ public class ZLoadDoc implements ZLoadDocService{
 	private TransferDataService transferDataService;
 	private Logisticsquerybl logisticsquerybl;
 	private YLoadDoc yLoadDoc;
+	private SystemBl systemBl;
 	public ZLoadDoc( String staffID) throws RemoteException {
 		super();
 		this.staffID = staffID;
@@ -31,6 +34,7 @@ public class ZLoadDoc implements ZLoadDocService{
 		transferDataService = DataFactory.getTransferDataService();
 		transferDataService.setInstitutionID(institutionID);
 		logisticsquerybl = new Logisticsquerybl();
+		systemBl = new SystemBl();
 	}
 	public ZLoadDoc(){
 		this.institutionID=null;
@@ -42,6 +46,7 @@ public class ZLoadDoc implements ZLoadDocService{
 		for(int i = 0;i < po.getItemIDs().length;i++) {
 			logisticsquerybl.changePosition(po.getItemIDs()[i], "快递已装车，将送往"+institution.getInstitutionName(po.getTargetBusinessHall()));
 		}
+		systemBl.saveOperation(new OperationPO(new Date(), staffID, institution.getStaffName(staffID), "生成中转中心装车单"));
 	}
 	@Override
 	public void saveZloadDocPO(ZLoadDocPO po) throws RemoteException {

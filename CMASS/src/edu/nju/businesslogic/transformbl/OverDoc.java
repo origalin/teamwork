@@ -8,11 +8,13 @@ import java.util.Date;
 import edu.nju.businesslogic.collectionbl.Collectionbl;
 import edu.nju.businesslogic.infobl.Institution;
 import edu.nju.businesslogic.logispicsquerybl.Logisticsquerybl;
+import edu.nju.businesslogic.systembl.SystemBl;
 import edu.nju.businesslogicservice.transformlogicservice.OverDocService;
 import edu.nju.data.transferDataServiceImpl.TransferDataServiceImpl;
 import edu.nju.dataFactory.DataFactory;
 import edu.nju.dataservice.transformdataservice.TransferDataService;
 import edu.nju.po.HistoryTimePO;
+import edu.nju.po.OperationPO;
 import edu.nju.po.OverDocPO;
 import edu.nju.tools.SequenceCalc;
 import edu.nju.vo.OverDocVO;
@@ -23,16 +25,20 @@ public class OverDoc implements OverDocService{
 	OverDocPO po;
 	TransferDataService transferDataService;
 	Logisticsquerybl logisticsquerybl;
+	Institution institution;
 	Collectionbl collectionbl;
+	SystemBl systemBl;
 
 	public OverDoc( String staffID) throws RemoteException {
 		// TODO 自动生成的构造函数存根
 		this.staffID = staffID;
-		this.institutionID = new Institution().getInstitutionID(staffID);
+		institution = new Institution();
+		this.institutionID = institution.getInstitutionID(staffID);
 		transferDataService = DataFactory.getTransferDataService();
 		transferDataService.setInstitutionID(institutionID);
 		logisticsquerybl = new Logisticsquerybl();
 		collectionbl = new Collectionbl(staffID);
+		systemBl = new SystemBl();
 	}
 
 	public OverDoc() {
@@ -99,6 +105,7 @@ public class OverDoc implements OverDocService{
 			transferDataService.saveHistoryTimePO(new HistoryTimePO(start, end, days));
 			logisticsquerybl.changePosition(po.getItemID()[i], "快件已送达，收件人是："+po.getReceiver()[i]);	
 		}
+		systemBl.saveOperation(new OperationPO(new Date(), staffID, institution.getStaffName(staffID), "生成收件单"));
 		
 	}
 

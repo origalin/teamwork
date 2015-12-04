@@ -7,6 +7,7 @@ import java.rmi.RemoteException;
 
 import edu.nju.data.StorageDataServiceImpl.StorageDataServiceImpl;
 import edu.nju.data.SystemDataServiceImpl.SystemDataServiceImpl;
+import edu.nju.dataservice.collectiondataservice.CollectionDataService;
 import edu.nju.dataservice.infodataservice.CarDataService;
 import edu.nju.dataservice.infodataservice.DistanceDataService;
 import edu.nju.dataservice.infodataservice.DriverDataService;
@@ -14,6 +15,7 @@ import edu.nju.dataservice.infodataservice.InstitutionDataService;
 import edu.nju.dataservice.logisticsqueryDataService.LogisticsDataService;
 import edu.nju.dataservice.storagedataservice.StorageDataService;
 import edu.nju.dataservice.systemdataservice.SystemDataService;
+import edu.nju.dataservice.transformdataservice.TransferDataService;
 
 public class DataFactory {
 	static StorageDataService storageDataService = null;
@@ -23,6 +25,8 @@ public class DataFactory {
 	static DistanceDataService distanceDataService=null;
 	static InstitutionDataService institutionDataService=null;
 	static SystemDataService systemDataService=null;
+	static TransferDataService transferDataService = null;
+	static CollectionDataService collectionDataService = null;
 
 	public DataFactory() {
 		// TODO Auto-generated constructor stub
@@ -116,6 +120,32 @@ public class DataFactory {
 			e.printStackTrace();
 		}
 		return systemDataService;
+	}
+
+	public static TransferDataService getTransferDataService() {
+		// TODO Auto-generated method stub
+		try {
+			if (transferDataService == null)
+				transferDataService = (TransferDataService) Naming
+						.lookup("rmi://127.0.0.1:6600/transferDataService");
+		} catch (MalformedURLException | RemoteException | NotBoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return transferDataService;
+	}
+
+	public static CollectionDataService getCollectionDataService() {
+		// TODO Auto-generated method stub
+		try {
+			if (collectionDataService == null)
+				collectionDataService = (CollectionDataService) Naming
+						.lookup("rmi://127.0.0.1:6600/collectionDataService");
+		} catch (MalformedURLException | RemoteException | NotBoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return collectionDataService;
 	}
 
 }

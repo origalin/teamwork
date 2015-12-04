@@ -441,7 +441,13 @@ public class CollertionPanel extends JPanel{
 	public void estimate() {
 		intialize();
 		if(estimatable()) {
-			timeField.setText(String.valueOf(collection.timeEstimate(scity, rcity)));
+			try {
+				timeField.setText(String.valueOf(collection.timeEstimate(scity, rcity)));
+			} catch (RemoteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				warning("net");
+			}
 			priceField.setText(String.valueOf(collection.priceCalc(scity, rcity, packageType, volume, weight,sendType)));
 		}else {
 			warning("lost");
@@ -450,18 +456,26 @@ public class CollertionPanel extends JPanel{
 	public void create() {
 		intialize();
 		if(creatable()) {
-			SendDocVO sendDoc = collection.createSendDocVO(sName,scity, sAddress, sUnit, sTelePhone, sMobilePhone,
-					rName,rcity, rAddress, rUnit, rTelePhone, rMobilePhone, itemNum, weight, volume, itemKind, packageType,sendType);
-			CheckDialog cDialog = new CheckDialog();
-			cDialog.getDocPanel().add(new CheckSendDoc(sendDoc));
-			cDialog.getConfirmButton().addActionListener(new ActionListener() {
-				
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					// TODO 自动生成的方法存根
-					saveDoc();
-				}
-			});
+			SendDocVO sendDoc = null;
+			try {
+				sendDoc = collection.createSendDocVO(sName,scity, sAddress, sUnit, sTelePhone, sMobilePhone,
+						rName,rcity, rAddress, rUnit, rTelePhone, rMobilePhone, itemNum, weight, volume, itemKind, packageType,sendType);
+				CheckDialog cDialog = new CheckDialog();
+				cDialog.setPreviewMode(new CheckSendDoc(sendDoc));
+				cDialog.getConfirmButton().addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						// TODO 自动生成的方法存根
+						saveDoc();
+					}
+				});
+			} catch (RemoteException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+				warning("net");
+			}
+			
 			
 		}else {
 			warning("lost");
@@ -522,7 +536,13 @@ public class CollertionPanel extends JPanel{
 		}
 	}
 	public void  saveDoc() {
-		collection.confirmSave();
+		try {
+			collection.confirmSave();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			warning("net");
+		}
 	}
 	
 }

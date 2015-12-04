@@ -9,10 +9,12 @@ import javax.tools.Tool;
 import edu.nju.businesslogic.infobl.Distance;
 import edu.nju.businesslogic.infobl.Institution;
 import edu.nju.businesslogic.logispicsquerybl.Logisticsquerybl;
+import edu.nju.businesslogic.systembl.SystemBl;
 import edu.nju.businesslogicservice.transformlogicservice.*;
 import edu.nju.data.transferDataServiceImpl.TransferDataServiceImpl;
 import edu.nju.dataFactory.DataFactory;
 import edu.nju.dataservice.transformdataservice.TransferDataService;
+import edu.nju.po.OperationPO;
 import edu.nju.po.TransferDocPO;
 import edu.nju.po.TransferDoc_CarPO;
 import edu.nju.po.TransferDoc_PlanePO;
@@ -31,6 +33,7 @@ public class TransferDoc implements TransferDocService{
 	Distance distance;
 	TransferDataService transferDataService ;
 	Logisticsquerybl logisticsquerybl;
+	SystemBl systemBl;
 	public TransferDoc () throws RemoteException{
 		this( null);
 	}
@@ -44,6 +47,7 @@ public class TransferDoc implements TransferDocService{
 		transferDataService = DataFactory.getTransferDataService();
 		transferDataService.setInstitutionID(institutionID);
 		logisticsquerybl = new Logisticsquerybl();
+		systemBl = new SystemBl();
 	}
 	
 	public void  confirmSave() throws RemoteException {
@@ -54,6 +58,7 @@ public class TransferDoc implements TransferDocService{
 		for(String itemID : itemIDs) {
 			logisticsquerybl.changePosition(itemID, "快件已由"+institution.getCity(institutionID)+institution.getInstitutionName(institutionID)+"送出，目的地"+po.getTargetCity());
 		}
+		systemBl.saveOperation(new OperationPO(new Date(), staffID, institution.getStaffName(staffID), "生成中转单"));
 
 	}
 	public void  confirmsave_Train() throws RemoteException {
@@ -64,6 +69,7 @@ public class TransferDoc implements TransferDocService{
 		for(String itemID : itemIDs) {
 			logisticsquerybl.changePosition(itemID, "快件已由"+institution.getCity(institutionID)+institution.getInstitutionName(institutionID)+"送出，目的地"+po.getTargetCity());
 		}
+		systemBl.saveOperation(new OperationPO(new Date(), staffID, institution.getStaffName(staffID), "生成中转单"));
 	}
 	public void  confirmsave_Plane() throws RemoteException {
 		saveTransferDocPO(po);
@@ -73,6 +79,7 @@ public class TransferDoc implements TransferDocService{
 		for(String itemID : itemIDs) {
 			logisticsquerybl.changePosition(itemID, "快件已由"+institution.getCity(institutionID)+institution.getInstitutionName(institutionID)+"送出，目的地"+po.getTargetCity());
 		}
+		systemBl.saveOperation(new OperationPO(new Date(), staffID, institution.getStaffName(staffID), "生成中转单"));
 	}
 	@Override
 	public void saveTransferDocPO(TransferDocPO po) throws RemoteException {

@@ -34,7 +34,6 @@ public class Collectionbl implements CollectionLogicService{
 	Institution institution;
 	Distance distance;
 	Logisticsquerybl logisticsquerybl;
-	OverDoc overDoc;
 
 	public Collectionbl( String staffID) throws RemoteException {
 		super();
@@ -45,7 +44,6 @@ public class Collectionbl implements CollectionLogicService{
 		transferData = DataFactory.getTransferDataService();
 		transferData.setInstitutionID(institutionID);
 		logisticsquerybl = new Logisticsquerybl();
-		overDoc = new OverDoc(staffID);
 		distance = new Distance();
 	}
 	

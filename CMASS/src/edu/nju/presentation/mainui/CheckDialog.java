@@ -91,4 +91,32 @@ public class CheckDialog extends JDialog{
 			}
 		});
 	}
+	public void setCheckMode(JPanel panel) {
+		setTitle("详情");
+		getDocPanel().add(panel);
+		setSize(600,900);
+		setVisible(true);
+		getConfirmButton().addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO 自动生成的方法存根
+				dispose();
+			}
+		});
+	}
+	public void setPreviewMode(JPanel panel) {
+		setTitle("预览");
+		getDocPanel().add(panel);
+		setSize(600,900);
+		setVisible(true);
+		getConfirmButton().addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO 自动生成的方法存根
+				dispose();
+			}
+		});
+	}
 }

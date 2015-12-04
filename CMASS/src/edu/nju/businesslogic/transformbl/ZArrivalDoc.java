@@ -7,10 +7,12 @@ import java.util.Iterator;
 
 import edu.nju.businesslogic.infobl.Institution;
 import edu.nju.businesslogic.logispicsquerybl.Logisticsquerybl;
+import edu.nju.businesslogic.systembl.SystemBl;
 import edu.nju.businesslogicservice.transformlogicservice.ZArrivalDocService;
 import edu.nju.data.transferDataServiceImpl.TransferDataServiceImpl;
 import edu.nju.dataFactory.DataFactory;
 import edu.nju.dataservice.transformdataservice.TransferDataService;
+import edu.nju.po.OperationPO;
 import edu.nju.po.TransferDocPO;
 import edu.nju.po.YArrivalDocPO;
 import edu.nju.po.YLoadDocPO;
@@ -27,6 +29,7 @@ public class ZArrivalDoc implements ZArrivalDocService{
 	private Institution institution;
 	private TransferDataService transferDataService;
 	private Logisticsquerybl logisticsquerybl;
+	private SystemBl systemBl;
 	public ZArrivalDoc( String staffID) throws RemoteException {
 		super();
 		this.staffID = staffID;
@@ -37,7 +40,9 @@ public class ZArrivalDoc implements ZArrivalDocService{
 		transferDataService = DataFactory.getTransferDataService();
 		transferDataService.setInstitutionID(institutionID);
 		logisticsquerybl = new Logisticsquerybl();
+		systemBl = new SystemBl();
 	}
+	
 
 	public ZArrivalDoc() {
 		// TODO Auto-generated constructor stub
@@ -48,7 +53,7 @@ public class ZArrivalDoc implements ZArrivalDocService{
 		for(int i = 0;i < po.getItemAndState().length;i++) {
 			logisticsquerybl.changePosition(po.getItemAndState()[i][0], "快递已到达"+institution.getCity(institutionID)+institution.getInstitutionName(institutionID));	
 		}
-		
+		systemBl.saveOperation(new OperationPO(new Date(), staffID, institution.getStaffName(staffID), "生成中转中心到达单"));
 	}
 	@Override
 	public void saveZArrivalDocPO(ZArrivalDocPO po) throws RemoteException {

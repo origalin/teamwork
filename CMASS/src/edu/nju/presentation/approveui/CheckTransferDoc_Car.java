@@ -262,7 +262,4 @@ public class CheckTransferDoc_Car extends JPanel{
 		
 
 	}
-	public CheckTransferDoc_Car(TransferDoc_TrainVO vo) {
-		// TODO Auto-generated constructor stub
-	}
 }

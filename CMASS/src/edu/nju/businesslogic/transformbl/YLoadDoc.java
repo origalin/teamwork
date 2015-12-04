@@ -6,9 +6,11 @@ import java.util.Date;
 
 import edu.nju.businesslogic.infobl.Institution;
 import edu.nju.businesslogic.logispicsquerybl.Logisticsquerybl;
+import edu.nju.businesslogic.systembl.SystemBl;
 import edu.nju.businesslogicservice.transformlogicservice.YLoadDocService;
 import edu.nju.dataFactory.DataFactory;
 import edu.nju.dataservice.transformdataservice.TransferDataService;
+import edu.nju.po.OperationPO;
 import edu.nju.po.YLoadDocPO;
 import edu.nju.tools.SequenceCalc;
 import edu.nju.vo.YLoadDocVO;
@@ -20,6 +22,7 @@ public class YLoadDoc implements YLoadDocService{
 	private TransferDataService transferDataService;
 	private Institution institution;
 	private Logisticsquerybl logisticsquerybl;
+	SystemBl systemBl;
 
 	public YLoadDoc(String staffID) throws RemoteException {
 		super();
@@ -29,6 +32,7 @@ public class YLoadDoc implements YLoadDocService{
 		logisticsquerybl = new Logisticsquerybl();
 		transferDataService = DataFactory.getTransferDataService();
 		transferDataService.setInstitutionID(institutionID);
+		systemBl = new SystemBl();
 	}
 	public YLoadDoc() {
 		// TODO Auto-generated constructor stub
@@ -40,6 +44,7 @@ public class YLoadDoc implements YLoadDocService{
 		for(int i = 0;i<po.getItemIDs().length;i++) {
 			logisticsquerybl.changePosition(po.getItemIDs()[i], "已装车，送往"+po.getTarget());	
 		}
+		systemBl.saveOperation(new OperationPO(new Date(), staffID, institution.getStaffName(staffID), "生成中营业厅装车单"));
 		
 	}
 	@Override
