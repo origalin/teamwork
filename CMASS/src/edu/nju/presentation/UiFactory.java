@@ -3,10 +3,12 @@ package edu.nju.presentation;
 import edu.nju.businesslogic.logispicsquerybl.Logisticsquerybl;
 import edu.nju.businesslogic.storagebl.InWareHouseManagementbl;
 import edu.nju.businesslogic.storagebl.OutWareHouseManagementbl;
+import edu.nju.businesslogic.storagebl.StorageQuerybl;
 import edu.nju.businesslogicservice.logispicsquerylogicservice.LogispicsQueryLogicService;
 import edu.nju.businesslogicservice.storagelogicservice.InWareHouseManagementService;
 import edu.nju.businesslogicservice.storagelogicservice.OutWareHouseManagementService;
 import edu.nju.businesslogicservice.storagelogicservice.StorageLogicService;
+import edu.nju.businesslogicservice.storagelogicservice.StorageQueryService;
 import edu.nju.data.LogisticsDataServiceImpl.LogisticsDataServiceImpl;
 
 public class UiFactory {
