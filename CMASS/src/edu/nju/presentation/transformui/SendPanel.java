@@ -40,6 +40,7 @@ public class SendPanel extends JPanel{
 	YDeliverDoc yDeliverDoc;
 	Collectionbl collectionbl;
 	OverDoc overDoc;
+	ArrayList<YDeliverDocVO> yDeliverDocVOs;
 	public SendPanel(String staffID) {
 		this.staffID = staffID;
 		try {
@@ -164,7 +165,7 @@ public class SendPanel extends JPanel{
 			toOverModel.removeRow(i);
 		}
 		collectionbl = new Collectionbl(staffID);
-		ArrayList<YDeliverDocVO> yDeliverDocVOs = yDeliverDoc.findYDeliverDocVOs(staffID);
+		yDeliverDocVOs = yDeliverDoc.findYDeliverDocVOs(staffID);
 		SendDocVO sendDocVO ;
 		if(yDeliverDocVOs.size()!=0)
 		for(YDeliverDocVO vo:yDeliverDocVOs) {
@@ -210,6 +211,11 @@ public class SendPanel extends JPanel{
 	}
 	private void saveDoc() {
 		try {
+			for(YDeliverDocVO vo : yDeliverDocVOs) {
+				YDeliverDocPO po = yDeliverDoc.getDeliverDocPOsByID(vo.getID());
+				po.setDealed(true);
+				yDeliverDoc.saveYDeliverDocPO(po);
+			}
 			overDoc.confirmSave();
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block

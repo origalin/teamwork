@@ -6,6 +6,13 @@ public class YDeliverDocPO extends Doc{
 	Date date;
 	String courier;
 	String[] itemIDs;
+	boolean dealed = false;
+	public boolean isDealed() {
+		return dealed;
+	}
+	public void setDealed(boolean dealed) {
+		this.dealed = dealed;
+	}
 	public YDeliverDocPO(String id,Date date, String courier, String[] itemIDs) {
 		super();
 		this.ID = id;

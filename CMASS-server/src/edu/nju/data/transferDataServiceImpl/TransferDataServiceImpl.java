@@ -1037,7 +1037,18 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 	@Override
 	public ArrayList<YDeliverDocPO> getYDeliverDocPOByCourier(String courierID) throws RemoteException {
 		// TODO Auto-generated method stub
-		return new ArrayList<>();
+		ArrayList<YDeliverDocPO> yDeliverDocPOs = new ArrayList<>();
+		String str = "select ID from YDeliverDoc where courier = '"+courierID+"' and dealed = '1';";	
+		SQL.databaseQuery(str);
+		try {
+			while (SQL.rs.next()) {
+				yDeliverDocPOs.add(getYDeliverDocPO(SQL.rs.getString("ID"), true));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return yDeliverDocPOs;
 	}
 
 	
