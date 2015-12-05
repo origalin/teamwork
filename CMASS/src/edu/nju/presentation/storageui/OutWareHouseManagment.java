@@ -13,6 +13,7 @@ import javax.swing.JTextField;
 import java.awt.BorderLayout;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.border.TitledBorder;
+import javax.swing.table.TableModel;
 
 import edu.nju.businesslogic.storagebl.InWareHouseManagementbl;
 import edu.nju.businesslogic.storagebl.OutWareHouseManagementbl;
@@ -27,6 +28,7 @@ import javax.swing.JButton;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
@@ -38,9 +40,11 @@ public class OutWareHouseManagment extends JPanel{
 	private String currInstitution;
 	private JTextField textField;
 	private JTable table;
+	private TableModel model;
 	private JTextField textField_1;
 	private OutWareHouseDocVO outWareHouseDocVO;
-	String[] columnNames={"快递编号","出库日期","装运形式","目的地"};
+	String[] columnNames={"快递编号","目的地"};
+	private JTextField textField_2;
 	public OutWareHouseManagment() {
 		
 		
@@ -58,9 +62,9 @@ public class OutWareHouseManagment extends JPanel{
 		setBorder(new TitledBorder(null, "\u51FA\u5E93\u7BA1\u7406", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{114, 223, 0, 0};
-		gridBagLayout.rowHeights = new int[]{20, 171, 0, 0, 0};
+		gridBagLayout.rowHeights = new int[]{20, 171, 0, 0, 0, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 1.0, 1.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
 		JPanel panel = new JPanel();
@@ -88,6 +92,17 @@ public class OutWareHouseManagment extends JPanel{
 		gbc_textField.gridy = 0;
 		add(textField, gbc_textField);
 		textField.setColumns(10);
+		
+		JComboBox comboBox_1 = new JComboBox();
+		comboBox_1.addItem("航运");
+		comboBox_1.addItem("汽运");
+		comboBox_1.addItem("货运");
+		GridBagConstraints gbc_comboBox_1 = new GridBagConstraints();
+		gbc_comboBox_1.insets = new Insets(0, 0, 5, 0);
+		gbc_comboBox_1.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBox_1.gridx = 2;
+		gbc_comboBox_1.gridy = 0;
+		add(comboBox_1, gbc_comboBox_1);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
 		GridBagConstraints gbc_scrollPane_1 = new GridBagConstraints();
@@ -123,22 +138,23 @@ public class OutWareHouseManagment extends JPanel{
 				String selectedItem = (String) comboBox.getSelectedItem();
 
 				outWareHouseManagement = UiFactory.getOutWareHouseManagementService();//与逻辑层建立联系以便调用
-				if (selectedItem.equals("中转单编号"))
+				
+				if (selectedItem.equals("中转单编号"))//辨析是中转出库还是装车出库
 					outWareHouseDocVO = outWareHouseManagement.getOutWareHouseDocVO_Transfer(textField.getText(), currInstitution);
 				else if (selectedItem.equals("装车单编号"))
 					outWareHouseDocVO = outWareHouseManagement.getOutWareHouseDocVO_ZloadDoc(textField.getText(), currInstitution);
 				
-				textField_1.setText(outWareHouseDocVO.getID());
-				// 该行以上没有问题
+				outWareHouseDocVO.setTransferPattern((String)comboBox_1.getSelectedItem());//设置装运形式
+				textField_1.setText(outWareHouseDocVO.getID());//设置当前出库单编号
+				textField_2.setText(outWareHouseDocVO.getDate().toString());
+				//以下对vo进行解析在界面上显示出来
 				ArrayList<OutWareHouseDocLineItem> list = outWareHouseDocVO.getLineItemList();
 
 				String[][] data1 = new String[list.size()][4];
 				int i = 0;
 				for (OutWareHouseDocLineItem temp : list) {
 					data1[i][0] = temp.getSendDocID();// 快递编号
-					data1[i][1] = temp.getOutDate().toString();// 入库日期
-					data1[i][2] = temp.getTransformPattern();// 目的地
-					
+							
 					i++;
 				}
 
@@ -153,9 +169,55 @@ public class OutWareHouseManagment extends JPanel{
 		add(button, gbc_button);
 		
 		JButton btnNewButton = new JButton("\u751F\u6210\u51FA\u5E93\u5355");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String selectedItem = (String) comboBox.getSelectedItem();
+
+				int rowNum = table.getRowCount();
+				int columnNum = table.getColumnCount();
+				model = (table.getModel());
+				ArrayList<OutWareHouseDocLineItem> lines = outWareHouseDocVO.getLineItemList();
+				int i = 0, j = 1;
+				for (OutWareHouseDocLineItem temp : lines)
+
+				{
+					String object = (String) model.getValueAt(i, j);
+					temp.setDestination(object);
+					i++;
+				}
+				//根据table的model更新vo的信息
+
+				for (OutWareHouseDocLineItem temp : lines) {
+					if (temp.getDestination() == null)
+						JOptionPane.showMessageDialog(null, "请输入完整的信息");
+				}
+				//check是否有某行目的地没有填写
+				
+				outWareHouseDocVO.setLineItemList(lines);
+				outWareHouseManagement = UiFactory.getOutWareHouseManagementService();
+				outWareHouseManagement.updateOutWareHouseDoc(outWareHouseDocVO);
+				//根据新的vo去更新调用逻辑层更新数据层
+			}
+		});
+		
+		JLabel lblNewLabel_1 = new JLabel("\u51FA\u5E93\u65E5\u671F");
+		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
+		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel_1.gridx = 0;
+		gbc_lblNewLabel_1.gridy = 3;
+		add(lblNewLabel_1, gbc_lblNewLabel_1);
+		
+		textField_2 = new JTextField();
+		GridBagConstraints gbc_textField_2 = new GridBagConstraints();
+		gbc_textField_2.insets = new Insets(0, 0, 5, 5);
+		gbc_textField_2.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textField_2.gridx = 1;
+		gbc_textField_2.gridy = 3;
+		add(textField_2, gbc_textField_2);
+		textField_2.setColumns(10);
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
 		gbc_btnNewButton.gridx = 2;
-		gbc_btnNewButton.gridy = 3;
+		gbc_btnNewButton.gridy = 4;
 		add(btnNewButton, gbc_btnNewButton);
 	}
 }

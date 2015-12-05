@@ -64,5 +64,6 @@ public interface StorageDataService extends Remote{
 	public ArrayList<RecordPO> getOutWarehouseDoc() throws RemoteException;
 	
 	public ArrayList<InWareHouseDocPO> getInWarehouseDoc() throws RemoteException;
+	public String getCurrOutWare_ID() throws RemoteException;
 
 }

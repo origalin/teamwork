@@ -1,49 +1,40 @@
 package edu.nju.po;
 
 public class OutRecord {
-	int itemID;
-	String date;
+	String itemID;
+
 	String destination;
-	String tranceType;
-	int  other;
-	public OutRecord(int itemID, String date, String destination,
-			String tranceType, int other) {
+	String outWareHouseDocID;
+
+	public OutRecord(String itemID, String destination, String outWareHouseDocID) {
 		super();
 		this.itemID = itemID;
-		this.date = date;
 		this.destination = destination;
-		this.tranceType = tranceType;
-		this.other = other;
+		this.outWareHouseDocID = outWareHouseDocID;
 	}
-	public int getItemID() {
+
+	public String getItemID() {
 		return itemID;
 	}
-	public void setItemID(int itemID) {
+
+	public void setItemID(String itemID) {
 		this.itemID = itemID;
 	}
-	public String getDate() {
-		return date;
-	}
-	public void setDate(String date) {
-		this.date = date;
-	}
+
 	public String getDestination() {
 		return destination;
 	}
+
 	public void setDestination(String destination) {
 		this.destination = destination;
 	}
-	public String getTranceType() {
-		return tranceType;
+
+	public String getOutWareHouseDocID() {
+		return outWareHouseDocID;
 	}
-	public void setTranceType(String tranceType) {
-		this.tranceType = tranceType;
+
+	public void setOutWareHouseDocID(String outWareHouseDocID) {
+		this.outWareHouseDocID = outWareHouseDocID;
 	}
-	public int getOther() {
-		return other;
-	}
-	public void setOther(int other) {
-		this.other = other;
-	}
-	
+
 }

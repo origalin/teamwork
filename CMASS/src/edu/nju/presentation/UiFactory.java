@@ -13,9 +13,16 @@ public class UiFactory {
 
 	static InWareHouseManagementService inWareHouseManagementService = null;
 	static LogispicsQueryLogicService logispicsQueryLogicService = null;
+	static StorageQueryService storageQueryService=null;
 static OutWareHouseManagementService outWareHouseManagementService=null;
 	public UiFactory() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public static StorageQueryService getStorageQueryService(){
+		if(storageQueryService==null)
+			storageQueryService=new StorageQuerybl();
+		return storageQueryService;
 	}
 
 	public static InWareHouseManagementService getInWareHouseManagementService() {

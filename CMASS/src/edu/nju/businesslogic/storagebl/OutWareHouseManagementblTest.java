@@ -2,6 +2,7 @@ package edu.nju.businesslogic.storagebl;
 
 import static org.junit.Assert.*;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import org.junit.Before;
@@ -25,10 +26,16 @@ public class OutWareHouseManagementblTest {
 
 	@Test
 	public void testGetOutWareHouseDocVO_Transfer() {
-		MockTransferDoc mockTransferDoc = new MockTransferDoc();
+		MockTransferDoc mockTransferDoc = null;
+		try {
+			mockTransferDoc = new MockTransferDoc();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		ou.tran=mockTransferDoc.getTransferDocPO("0250201511160000008");
 		
-		OutWareHouseDocVO outWareHouseDocVO=ou.getOutWareHouseDocVO_Transfer("0250201511160000008");
+		OutWareHouseDocVO outWareHouseDocVO=ou.getOutWareHouseDocVO_Transfer("0250201511160000008", null);
 	
 		ArrayList<OutWareHouseDocLineItem> arrayList = null;
 		arrayList.add(new OutWareHouseDocLineItem("0231212212","º½ÔË","ÄÏ¾©"));
@@ -45,3 +52,4 @@ public class OutWareHouseManagementblTest {
 	}
 
 }
+
