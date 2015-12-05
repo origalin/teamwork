@@ -63,8 +63,7 @@ public class salaryPanel extends JPanel{
 		
 	}
 	public JTable initializeTable(ArrayList<StaffPO> staffList){
-		table = new JTable();
-		scrollPane.setViewportView(table);
+		JTable table = new JTable();
 		Object[][]tableInfo=new Object[staffList.size()][];
 		for(int i=0;i<staffList.size();i++){
 			String staffID=staffList.get(i).getStaffID();
@@ -87,5 +86,17 @@ public class salaryPanel extends JPanel{
 		
 		return table;
 		
+	}
+	public JTable getTable() {
+		return table;
+	}
+	public void setTable(JTable table) {
+		this.table = table;
+	}
+	public JScrollPane getScrollPane() {
+		return scrollPane;
+	}
+	public void setScrollPane(JScrollPane scrollPane) {
+		this.scrollPane = scrollPane;
 	}
 }

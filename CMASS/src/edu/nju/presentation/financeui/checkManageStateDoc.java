@@ -37,8 +37,8 @@ public class checkManageStateDoc extends JPanel{
 	financebl bl=new financebl();
 	private JTextField textField;
 	private JTextField textField_1;
-	private JTable table;
-	private JTable table_1;
+	private JTable PayDocTable;
+	private JTable GatheringDocTable;
 	private JScrollPane scrollPane;
 	private JScrollPane scrollPane_1;
 	public checkManageStateDoc() {
@@ -119,10 +119,10 @@ public class checkManageStateDoc extends JPanel{
 					}
 					GatheringDocVOList.add(new GatheringDocVO(110000+i+"",new Date(),(double) (1000+i*10),"快递员"+i+"",itemIDs,"付款账号"+i+""));
 				}
-				table=initializeTable(PayDocVOList);
-				table_1=initializeTable_1(GatheringDocVOList);
-				scrollPane.setViewportView(table);
-				scrollPane_1.setViewportView(table_1);
+				PayDocTable=initializeTable(PayDocVOList);
+				GatheringDocTable=initializeTable_1(GatheringDocVOList);
+				scrollPane.setViewportView(PayDocTable);
+				scrollPane_1.setViewportView(GatheringDocTable);
 				updateUI();
 			}
 		});
@@ -133,6 +133,7 @@ public class checkManageStateDoc extends JPanel{
 		add(checkButton, gbc_checkButton);
 		
 		scrollPane = new JScrollPane();
+		
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
@@ -220,10 +221,15 @@ public class checkManageStateDoc extends JPanel{
 	              String value= (String) table.getValueAt(r, c);
 	              PayDocVO vo=getPayDocByID(value);
 	              CheckDialog dialog=new CheckDialog();
+	              checkPayDoc ui=new checkPayDoc(vo);
+	              dialog.setCheckMode(ui);
+	              /*
+	              CheckDialog dialog=new CheckDialog();
 	              dialog.setSize(500,500);
 	              checkPayDoc ui=new checkPayDoc(vo);
 	              dialog.getContentPane().add(ui);
 	              dialog.setVisible(true);
+	              */
 	              /*
 	               CheckDialog dialog=new CheckDialog();
 						dialog.setSize(500,500);
@@ -254,12 +260,26 @@ public class checkManageStateDoc extends JPanel{
 				GatheringDocList[i]=null;
 			}
 		}
-		table.setModel(new DefaultTableModel(
+		GatheringDocTable.setModel(new DefaultTableModel(
 				GatheringDocList,
 			new String[] {
 						"\u6536\u6B3E\u5355"
 			}
 		));
+		table.addMouseListener(new MouseAdapter(){
+			public void mouseClicked(MouseEvent e)
+			{
+				 int r= table.getSelectedRow();
+	             int c= table.getSelectedColumn();
+	              //得到选中的单元格的值，表格中都是字符串
+	              String value= (String) table.getValueAt(r, c);
+	              GatheringDocVO vo=getGatheringDocByID(value);
+	              CheckDialog dialog=new CheckDialog();
+	              checkGatheringDoc ui=new checkGatheringDoc(vo);
+	              dialog.setCheckMode(ui);
+			}
+		});
+		
 		return table;
 	}
 	

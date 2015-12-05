@@ -97,5 +97,17 @@ public class freightMoneyPanel extends JPanel{
 		});
 		return table;
 	}
+	public JTable getTable() {
+		return table;
+	}
+	public void setTable(JTable table) {
+		this.table = table;
+	}
+	public JScrollPane getScrollPane() {
+		return scrollPane;
+	}
+	public void setScrollPane(JScrollPane scrollPane) {
+		this.scrollPane = scrollPane;
+	}
 	
 }

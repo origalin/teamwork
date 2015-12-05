@@ -79,7 +79,19 @@ public class rentMoneyPanel extends JPanel{
 				return columnTypes[columnIndex];
 			}
 		});
-		return null;
+		return table;
+	}
+	public JTable getTable() {
+		return table;
+	}
+	public void setTable(JTable table) {
+		this.table = table;
+	}
+	public JScrollPane getScrollPane() {
+		return scrollPane;
+	}
+	public void setScrollPane(JScrollPane scrollPane) {
+		this.scrollPane = scrollPane;
 	}
 	
 
