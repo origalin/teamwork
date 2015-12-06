@@ -292,6 +292,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 		String courier;
 		String itemIDs;
 		int checked;
+		int dealed;
 		ID = po.getID();
 		date = po.getDate();
 		courier = po.getCourier();
@@ -301,9 +302,14 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 		}else {
 			checked = 0;
 		}
-		String str = "replace into YDeliverDoc (ID,date,courier,itemIDs,checked) values("
+		if(po.isDealed()) {
+			dealed = 1;
+		}else {
+			dealed = 0;
+		}
+		String str = "replace into YDeliverDoc (ID,date,courier,itemIDs,checked,dealed) values("
 		+ "'"+ID+"','"+date+"','"+courier+"','"+itemIDs+"',"
-		+ "'"+checked+"');";
+		+ "'"+checked+"','"+dealed+"');";
 		SQL.databaseUpdate(str);
 		SQL.closeDatabase();
 	}
@@ -785,25 +791,25 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 	}
 
 	@Override
-	public void changeTransferID(String transferDocID) {
+	public void changeTransferID(String transferID) {
 		// TODO Auto-generated method stub
-		String str = "update SequenceTable set Sequence = '"+transferDocID+"' where Kind = 'TransferID'";
+		String str = "update SequenceTable set Sequence = '"+transferID+"' where Kind = 'TransferID';";
 		SQL.databaseUpdate(str);
 		SQL.closeDatabase();
 	}
 
 	@Override
-	public void changeTransferID_Plain(String transferDocID) {
+	public void changeTransferID_Plain(String transferID) {
 		// TODO Auto-generated method stub
-		String str = "update SequenceTable set Sequence = '"+transferDocID+"' where Kind = 'TransferID_Plain'";
+		String str = "update SequenceTable set Sequence = '"+transferID+"' where Kind = 'TransferID_Plane';";
 		SQL.databaseUpdate(str);
 		SQL.closeDatabase();
 	}
 
 	@Override
-	public void changeTransferID_Train(String transferDocID) {
+	public void changeTransferID_Train(String transferID) {
 		// TODO Auto-generated method stub
-		String str = "update SequenceTable set Sequence = '"+transferDocID+"' where Kind = 'TransferID_Train'";
+		String str = "update SequenceTable set Sequence = '"+transferID+"' where Kind = 'TransferID_Train';";
 		SQL.databaseUpdate(str);
 		SQL.closeDatabase();
 	}
