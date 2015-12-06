@@ -58,7 +58,7 @@ public class freightMoneyPanel extends JPanel{
 			}
 		) {
 			Class[] columnTypes = new Class[] {
-				Boolean.class, Object.class, Object.class, Object.class
+				Boolean.class, String.class, String.class, Double.class
 			};
 			public Class getColumnClass(int columnIndex) {
 				return columnTypes[columnIndex];

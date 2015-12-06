@@ -23,6 +23,9 @@ import edu.nju.po.YLoadDocPO;
 import edu.nju.po.ZArrivalDocPO;
 import edu.nju.po.ZLoadDocPO;
 import edu.nju.presentation.mainui.CheckDialog;
+import edu.nju.vo.GatheringDocVO;
+import edu.nju.vo.PayDocVO;
+import edu.nju.presentation.mainui.*;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -92,16 +95,21 @@ public class checkMainUI extends JPanel{
 				switch(s){
 				case "收款单":
 					ArrayList<String> uncheckedGatheringDocID=new ArrayList<String>();
-					/*
 					uncheckedGatheringDocList=bl.getunchekedGatheringDocList();
 					for(GatheringDocPO GatheringDoc:uncheckedGatheringDocList){
 						uncheckedGatheringDocID.add(GatheringDoc.getID());
 					}
-					*/
-					//下面一段为代替上面的测试代码
-					uncheckedGatheringDocID.add("141250067");
-					uncheckedGatheringDocID.add("141250068");
 					table=initializeTable(uncheckedGatheringDocID);
+					scrollPane.setViewportView(table);
+					updateUI();
+					break;
+				case "付款单":
+					ArrayList<String> uncheckedPayDocID=new ArrayList<String>();
+					uncheckedPayDocList=bl.getunchekedPayDocList();
+					for(PayDocPO PayDoc:uncheckedPayDocList){
+						uncheckedPayDocID.add(PayDoc.getID());
+					}
+					table=initializeTable(uncheckedPayDocID);
 					scrollPane.setViewportView(table);
 					updateUI();
 					break;
@@ -143,24 +151,40 @@ public class checkMainUI extends JPanel{
 					String inputID=textField.getText().trim();
 					String DocType=(String) comboBox.getSelectedItem();
 					switch(DocType){
-					case "收款单":/*
-						GatheringDocPO po=getGatheringDocPOByID(inputID);
-						CheckDialog dialog=new CheckDialog();
-						dialog.setSize(500,500);
-						checkGatheringDoc  ui=new checkGatheringDoc();
-						ui.getTextField_2().setText(po.getID());
-						ui.getTextField().setText(DateToString(po.getDate()));
-						ui.getTextField_4().setText(po.getCourier_ID());
-						ui.getTextField_3().setText(po.getMoney().toString());
-						ui.getTextField_1().setText(po.getAccount());
-						ui.getScrollPane().setViewportView(ui.initializeTable(po.getItemIDs()));
-						dialog.getContentPane().add(ui);
-						dialog.setVisible(true);
-						*/
+					case "收款单":
+						GatheringDocPO GatheringDocPO=getGatheringDocPOByID(inputID);
+						GatheringDocVO GatheringDocVO=GatheringDocVOToPO(GatheringDocPO);
+						CheckDialog GatheringDocdialog=new CheckDialog();
+			            checkGatheringDoc GatheringDocui=new checkGatheringDoc(GatheringDocVO);
+			            GatheringDocdialog.setCheckMode(GatheringDocui);
 						break;
-					
+					case"付款单":
+						PayDocPO PayDocPO=getPayDocPOByID(inputID);
+						PayDocVO PayDocVO=PayDocVOToPO(PayDocPO);
+						CheckDialog PayDocdialog=new CheckDialog();
+			            checkPayDoc PayDocui=new checkPayDoc(PayDocVO);
+			            PayDocdialog.setCheckMode(PayDocui);
+						break;
 					}
 				}
+			}
+
+			private PayDocVO PayDocVOToPO(PayDocPO payDocPO) {
+				return new PayDocVO(payDocPO.getID(),payDocPO.getDate(),payDocPO.getMoney(),payDocPO.getPayer(),payDocPO.getAccount(), payDocPO.getType(), payDocPO.getBack());
+			}
+
+			private PayDocPO getPayDocPOByID(String inputID) {
+				for(PayDocPO PayDoc:uncheckedPayDocList){
+					if(PayDoc.getID().equals(inputID)){
+						return PayDoc;
+					}
+				}
+				return null;
+			}
+
+			private GatheringDocVO GatheringDocVOToPO(
+					GatheringDocPO po) {
+				return new GatheringDocVO(po.getID(), po.getDate(),po.getMoney(),po.getCourier_ID(), po.getItemIDs(),po.getAccount());
 			}
 		});
 		
@@ -221,13 +245,29 @@ public class checkMainUI extends JPanel{
 					switch((String) comboBox.getSelectedItem()){
 					case "收款单":
 						//首先遍历JTable,改变ArrayList中的是否已经被审批的属性
+						ArrayList<GatheringDocPO> checkedGatheringDocList=new ArrayList<GatheringDocPO>();
 						for(int i=0;i<table.getRowCount();i++){
 							if((boolean)table.getValueAt(i, 0)==true){
-								approveGatheringDoc((String)table.getValueAt(i, 1),uncheckedGatheringDocList);
+								checkedGatheringDocList.add(uncheckedGatheringDocList.get(i));
 							}
 						}
-						bl.setGatheringDocList(uncheckedGatheringDocList);
-						
+						bl.setGatheringDocList(checkedGatheringDocList);
+						uncheckedGatheringDocList=null;
+						table=initializeTable(getEmptyList());
+						scrollPane.setViewportView(table);
+						updateUI();
+					case"付款单":
+						ArrayList<PayDocPO> checkedPayDocList=new ArrayList<PayDocPO>();
+						for(int i=0;i<table.getRowCount();i++){
+							if((boolean)table.getValueAt(i, 0)==true){
+								checkedPayDocList.add(uncheckedPayDocList.get(i));
+							}
+						}
+						bl.setPayDocList(checkedPayDocList);
+						uncheckedPayDocList=null;
+						table=initializeTable(getEmptyList());
+						scrollPane.setViewportView(table);
+						updateUI();
 					}
 				}
 			}
@@ -237,16 +277,6 @@ public class checkMainUI extends JPanel{
 		gbc_button.gridx = 0;
 		gbc_button.gridy = 4;
 		add(button, gbc_button);
-		
-		JButton btnNewButton = new JButton("\u53D6\u6D88");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
-		gbc_btnNewButton.gridx = 2;
-		gbc_btnNewButton.gridy = 4;
-		add(btnNewButton, gbc_btnNewButton);
 	}
 	
 	
@@ -282,18 +312,25 @@ public class checkMainUI extends JPanel{
 		
 	}
 	
+	public ArrayList<String> getEmptyList(){
+		ArrayList<String> tempList=new ArrayList<String>();
+		for(int i=0;i<10;i++){
+			tempList.add(null);
+		}
+		return tempList;
+	}
+	
 	public String DateToString(Date date){
 		 DateFormat df1 = DateFormat.getDateInstance();//日期格式，精确到日
 		 return df1.format(date);
 	}
 	
-	public void approveGatheringDoc(String DocID,ArrayList<GatheringDocPO> list){
+	public void approveDoc(String DocID,ArrayList<Doc>list){
 		for(int i=0;i<list.size();i++){
 			if(list.get(i).getID().equals(DocID)){
 				list.get(i).setChecked(true);
 			}
 		}
-		
 	}
 	
 

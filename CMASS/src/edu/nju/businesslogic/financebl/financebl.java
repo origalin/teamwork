@@ -199,37 +199,71 @@ public class financebl implements FinanceLogicService {
 //账户管理方法
 	@Override
 	public void addAccountPO(String accountName) {
-		financeDataService.addAccountPO(accountName);
+		try {
+			financeDataService.addAccountPO(accountName);
+		} catch (RemoteException e) {
+			System.out.println("财务数据层查询失败");
+			e.printStackTrace();
+		}
 		
 	}
 
 	@Override
 	public void deleteAccountPO(String accountName) {
-		financeDataService.deleteAccountPO(accountName);
+		try {
+			financeDataService.deleteAccountPO(accountName);
+		} catch (RemoteException e) {
+			System.out.println("财务数据层查询失败");
+			e.printStackTrace();
+		}
 		
 	}
 
 	@Override
 	public void modifyAccountPO(String oldAccountName, String newAccountName) {
-		financeDataService.modifyAccountPO(oldAccountName, newAccountName);
+		try {
+			financeDataService.modifyAccountPO(oldAccountName, newAccountName);
+		} catch (RemoteException e) {
+			System.out.println("财务数据层查询失败");
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public AccountVO checkAccountPO(String accountName) {
+		try{
 		AccountPO accountPO=financeDataService.checkAccountPO(accountName);
 		return new AccountVO(accountPO.getName(),accountPO.getBalance());
+		}catch(RemoteException e){
+			System.out.println("财务数据层查询失败");
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	
 
 	@Override
 	public ArrayList<PayDocPO> getunchekedPayDocList() {
-		return financeDataService.getunchekedPayDocList();
+		try {
+			return financeDataService.getunchekedPayDocList();
+		} catch (RemoteException e) {
+			System.out.println("财务数据层查询失败");
+			e.printStackTrace();
+			return null;
+		}
+		
 	}
 
 	@Override
 	public ArrayList<GatheringDocPO> getunchekedGatheringDocList() {
-		return financeDataService.getunchekedGatheringDocList();
+		try {
+			return financeDataService.getunchekedGatheringDocList();
+		} catch (RemoteException e) {
+			System.out.println("财务数据层查询失败");
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	@Override
@@ -241,12 +275,22 @@ public class financebl implements FinanceLogicService {
 
 	@Override
 	public void savePayDocPO(PayDocPO po) {
-		financeDataService.savePayDocPO(po);
+		try {
+			financeDataService.savePayDocPO(po);
+		} catch (RemoteException e) {
+			System.out.println("财务数据层查询失败");
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public void saveGatheringDocPO(GatheringDocPO po) {
-		financeDataService.saveGatheringDocPO(po);
+		try {
+			financeDataService.saveGatheringDocPO(po);
+		} catch (RemoteException e) {
+			System.out.println("财务数据层查询失败");
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -260,7 +304,12 @@ public class financebl implements FinanceLogicService {
 	@Override
 	public void setTransferDocList(ArrayList<TransferDocPO> TransferDocList) {
 		for(TransferDocPO po:TransferDocList){
-			transfer.saveTransferDocPO(po);
+			try {
+				transfer.saveTransferDocPO(po);
+			} catch (RemoteException e) {
+				System.out.println("财务数据层查询失败");
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -289,8 +338,13 @@ public class financebl implements FinanceLogicService {
 	@Override
 	public GatheringDocVO reviewGatheringDoc(String GatheringDocID,
 			String courier_ID, String account) {
-		double money=collectionbl.getCourierMoney(courier_ID);
+		//double money=collectionbl.getCourierMoney(courier_ID);
 		ArrayList<String> SendDoclist=collectionbl.getSendDocsByID(courier_ID);
+		double money=0;
+		for(String itemID:SendDoclist){
+			SendDocPO po=collectionbl.getSendDocPOByID(itemID);
+			money+=po.getSumPrice();
+		}
 		return new GatheringDocVO(GatheringDocID,new Date(), money, courier_ID, SendDoclist, account);
 	}
 
@@ -312,39 +366,60 @@ public double getCourierMoney(String courier_ID);
 其中第二个方法需要根据ID把一个用来检查该寄件单是否生成收款单的bool变量置为true
 
 		 */
-		 financeDataService.createGatheringDoc(vo.getID(),vo.getDate(), vo.getMoney(),vo.getCourier_ID(),vo.getItemIDs(),vo.getAccount());
+		 try {
+			financeDataService.createGatheringDoc(vo.getID(),vo.getDate(), vo.getMoney(),vo.getCourier_ID(),vo.getItemIDs(),vo.getAccount());
+		} catch (RemoteException e) {
+			System.out.println("财务数据层查询失败");
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public GatheringDocVO getGatheringDocVO(String GatheringDocID) {
-		GatheringDocPO po= financeDataService.getGatheringDocPO(GatheringDocID);
-		return new GatheringDocVO(po.getID(),po.getDate(),po.getMoney(),po.getCourier_ID(),po.getItemIDs(),po.getAccount());
+		GatheringDocPO po;
+		try {
+			po = financeDataService.getGatheringDocPO(GatheringDocID);
+			return new GatheringDocVO(po.getID(),po.getDate(),po.getMoney(),po.getCourier_ID(),po.getItemIDs(),po.getAccount());
+		} catch (RemoteException e) {
+			System.out.println("财务数据层查询失败");
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	@Override
-	public void setSendDocList(ArrayList<SendDocPO> SendDocPOList) {
-		for(SendDocPO po:SendDocPOList){
-		collectionbl.saveSendDocPO(po);
-		}
+	public void setSendDocList(String courier_ID) {
+		collectionbl.saveSendDocCreateGatheringDoc(courier_ID);
 	}
 	
 	@Override
 	public PayDocVO reviewPayDoc(String payDocID, double money, String payMen,
 			String account, PayType type, String back) {
-		// TODO Auto-generated method stub
 		return new PayDocVO(payDocID, new Date(), money,payMen, account, type, back);
 	}
 	
 	@Override
 	public void createPayDoc(PayDocVO vo) {
-		financeDataService.createPayDoc(vo.getID(),vo.getDate(),vo.getMoney(),vo.getPayer(), vo.getAccount(), vo.getType(), vo.getBack());
+		try {
+			financeDataService.createPayDoc(vo.getID(),vo.getDate(),vo.getMoney(),vo.getPayer(), vo.getAccount(), vo.getType(), vo.getBack());
+		} catch (RemoteException e) {
+			System.out.println("财务数据层查询失败");
+			e.printStackTrace();
+		}
 		
 	}
 
 	@Override
 	public PayDocVO getPayDocVO(String PayDocID) {
-		PayDocPO po= financeDataService.getPayDocPO(PayDocID);
-		return new PayDocVO(po.getID(),po.getDate(),po.getMoney(),po.getPayer(),po.getAccount(),po.getType(),po.getBack());
+		PayDocPO po;
+		try {
+			po = financeDataService.getPayDocPO(PayDocID);
+			return new PayDocVO(po.getID(),po.getDate(),po.getMoney(),po.getPayer(),po.getAccount(),po.getType(),po.getBack());
+		} catch (RemoteException e) {
+			System.out.println("财务数据层查询失败");
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	@Override
@@ -409,21 +484,35 @@ public double getCourierMoney(String courier_ID);
 	}
 	@Override
 	public ArrayList<AccountVO> getAccountList() {
+		try{
 		ArrayList<AccountPO> POList= financeDataService.getAccountList();
 		ArrayList<AccountVO> VOList=new ArrayList<AccountVO>();
 		for(AccountPO po:POList){
 			VOList.add(new AccountVO(po.getName(),po.getBalance()));
 		}
 		return VOList;	
+		}catch(RemoteException e){
+			return null;
+		}
 	}
 	@Override
 	public void addMoney(String accountName, double money) {
-		financeDataService.addMoney(accountName,money);
+		try {
+			financeDataService.addMoney(accountName,money);
+		} catch (RemoteException e) {
+			System.out.println("财务数据层查询失败");
+			e.printStackTrace();
+		}
 		
 	}
 	@Override
 	public void minusMoney(String accountName, double money) {
-		financeDataService.minusMoney(accountName,money);
+		try {
+			financeDataService.minusMoney(accountName,money);
+		} catch (RemoteException e) {
+			System.out.println("财务数据层查询失败");
+			e.printStackTrace();
+		}
 		
 	}
 	

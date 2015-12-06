@@ -37,7 +37,7 @@ public class salaryPanel extends JPanel{
 		scrollPane.setViewportView(table);
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null, null, null, null},
+				{Boolean.FALSE, null, null, null},
 				{null, null, null, null},
 				{null, null, null, null},
 				{null, null, null, null},
@@ -53,7 +53,7 @@ public class salaryPanel extends JPanel{
 			}
 		) {
 			Class[] columnTypes = new Class[] {
-				Boolean.class, String.class, String.class, String.class
+				Boolean.class, String.class, String.class, Double.class
 			};
 			public Class getColumnClass(int columnIndex) {
 				return columnTypes[columnIndex];

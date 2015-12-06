@@ -108,7 +108,8 @@ public class createGatheringDocPO extends JPanel{
 		            dialog.getConfirmButton().addActionListener(new ActionListener(){
 		            	@Override
 		            	public void actionPerformed(ActionEvent e){
-		            		bl.saveGatheringDocPO(GatheringDocPO);
+		            		bl.setSendDocList(courierID);
+		            		bl.createGatheringDoc(GatheringDocVO);
 		            		bl.addMoney(GatheringDocPO.getAccount(), GatheringDocPO.getMoney());
 		            	}
 		            });

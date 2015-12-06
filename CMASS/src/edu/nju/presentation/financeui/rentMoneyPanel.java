@@ -37,7 +37,7 @@ public class rentMoneyPanel extends JPanel{
 			new Object[][] {
 				{null, null, null},
 				{null, null, null},
-				{null, null, null},
+				{Boolean.FALSE, null, null},
 				{null, null, null},
 				{null, null, null},
 				{null, null, null},
@@ -51,7 +51,7 @@ public class rentMoneyPanel extends JPanel{
 			}
 		) {
 			Class[] columnTypes = new Class[] {
-				Boolean.class, String.class, String.class
+				Boolean.class, String.class, Double.class
 			};
 			public Class getColumnClass(int columnIndex) {
 				return columnTypes[columnIndex];
