@@ -12,6 +12,7 @@ import edu.nju.businesslogicservice.transformlogicservice.YArrivalDocService;
 import edu.nju.data.transferDataServiceImpl.TransferDataServiceImpl;
 import edu.nju.dataFactory.DataFactory;
 import edu.nju.dataservice.transferdataservice.TransferDataService;
+import edu.nju.exception.DatabaseNULLException;
 import edu.nju.po.OperationPO;
 import edu.nju.po.TransferDocPO;
 import edu.nju.po.YArrivalDocPO;
@@ -75,7 +76,7 @@ public class YArrivalDoc implements YArrivalDocService {
 	}
 
 	@Override
-	public YArrivalDocVO findYArrivalDocVO(String ID) throws RemoteException {
+	public YArrivalDocVO findYArrivalDocVO(String ID) throws RemoteException, DatabaseNULLException {
 		// TODO 自动生成的方法存根
 		return new YArrivalDocVO(transferDataService.getYArrivalDocPO(ID, false));
 	}
@@ -87,7 +88,7 @@ public class YArrivalDoc implements YArrivalDocService {
 	}
 
 	@Override
-	public YArrivalDocVO createYArrivalDocVO(String fromDocID, String[][] changeStates) throws RemoteException {
+	public YArrivalDocVO createYArrivalDocVO(String fromDocID, String[][] changeStates) throws RemoteException, DatabaseNULLException {
 		// TODO Auto-generated method stub
 		TransferDocPO transferDocPO = transferDoc.geTransferDocPOByID(fromDocID);
 		String[][] itemAndState = new String[transferDocPO.getItemIDs().length][2];
@@ -107,7 +108,7 @@ public class YArrivalDoc implements YArrivalDocService {
 	}
 
 	@Override
-	public String getAddressByID(String itemID) throws RemoteException {
+	public String getAddressByID(String itemID) throws RemoteException, DatabaseNULLException {
 		// TODO Auto-generated method stub
 		return collectionbl.getSendDocPOByID(itemID).getrAddress();
 	}

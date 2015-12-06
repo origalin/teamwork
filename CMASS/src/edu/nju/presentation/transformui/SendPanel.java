@@ -20,6 +20,7 @@ import javax.swing.SwingConstants;
 import edu.nju.businesslogic.collectionbl.Collectionbl;
 import edu.nju.businesslogic.transferbl.OverDoc;
 import edu.nju.businesslogic.transferbl.YDeliverDoc;
+import edu.nju.exception.DatabaseNULLException;
 import edu.nju.po.SendDocPO;
 import edu.nju.po.YDeliverDocPO;
 import edu.nju.presentation.approveui.checkOverDoc;
@@ -166,12 +167,17 @@ public class SendPanel extends JPanel{
 		}
 		collectionbl = new Collectionbl(staffID);
 		yDeliverDocVOs = yDeliverDoc.findYDeliverDocVOs(staffID);
-		SendDocVO sendDocVO ;
+		SendDocVO sendDocVO = null ;
 		if(yDeliverDocVOs.size()!=0)
 		for(YDeliverDocVO vo:yDeliverDocVOs) {
 			String[] itemIDs = vo.getItemIDs();
 			for(String itemID : itemIDs) {
-				sendDocVO = collectionbl.getSendDocVOByID(itemID);
+				try {
+					sendDocVO = collectionbl.getSendDocVOByID(itemID);
+				} catch (DatabaseNULLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				toSendModel.addRow(new Object[] {itemID,sendDocVO.getrName(),sendDocVO.getrAddress()});		
 			}
 		}
@@ -221,6 +227,9 @@ public class SendPanel extends JPanel{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			warning();
+		} catch (DatabaseNULLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 	public void warning() {

@@ -12,6 +12,7 @@ import edu.nju.businesslogicservice.transformlogicservice.ZLoadDocService;
 import edu.nju.data.transferDataServiceImpl.TransferDataServiceImpl;
 import edu.nju.dataFactory.DataFactory;
 import edu.nju.dataservice.transferdataservice.TransferDataService;
+import edu.nju.exception.DatabaseNULLException;
 import edu.nju.po.OperationPO;
 import edu.nju.po.ZLoadDocPO;
 import edu.nju.tools.SequenceCalc;
@@ -70,7 +71,7 @@ public class ZLoadDoc implements ZLoadDocService{
 
 
 	@Override
-	public ZLoadDocVO getZLoadDocVO(String ID) throws RemoteException {
+	public ZLoadDocVO getZLoadDocVO(String ID) throws RemoteException, DatabaseNULLException {
 		// TODO 自动生成的方法存根
 		return new ZLoadDocVO(transferDataService.getZLoadDocPO(ID, false));
 	}
@@ -144,7 +145,7 @@ public class ZLoadDoc implements ZLoadDocService{
 		return transferDataService.getDriverTime_ZLoad(driverID);
 	}
 	@Override
-	public ZLoadDocPO getZLoadDocPO(String ID) throws RemoteException {
+	public ZLoadDocPO getZLoadDocPO(String ID) throws RemoteException, DatabaseNULLException {
 		// TODO Auto-generated method stub
 		return transferDataService.getZLoadDocPO(ID, true);
 	}

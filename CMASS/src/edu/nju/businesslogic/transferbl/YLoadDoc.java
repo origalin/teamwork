@@ -10,6 +10,7 @@ import edu.nju.businesslogic.systembl.SystemBl;
 import edu.nju.businesslogicservice.transformlogicservice.YLoadDocService;
 import edu.nju.dataFactory.DataFactory;
 import edu.nju.dataservice.transferdataservice.TransferDataService;
+import edu.nju.exception.DatabaseNULLException;
 import edu.nju.po.OperationPO;
 import edu.nju.po.YLoadDocPO;
 import edu.nju.tools.SequenceCalc;
@@ -76,7 +77,7 @@ public class YLoadDoc implements YLoadDocService{
 	}
 
 	@Override
-	public YLoadDocVO getYLoadDocVO(String ID) throws RemoteException {
+	public YLoadDocVO getYLoadDocVO(String ID) throws RemoteException, DatabaseNULLException {
 		// TODO 自动生成的方法存根
 		return new YLoadDocVO(transferDataService.getYLoadDocPO(ID, false));
 	}
@@ -94,7 +95,7 @@ public class YLoadDoc implements YLoadDocService{
 	}
 
 	@Override
-	public YLoadDocPO getYloadDocPOByID(String ID) throws RemoteException {
+	public YLoadDocPO getYloadDocPOByID(String ID) throws RemoteException, DatabaseNULLException {
 		// TODO Auto-generated method stub
 		return transferDataService.getYLoadDocPO(ID, true);
 	}

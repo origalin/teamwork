@@ -11,6 +11,7 @@ import com.sun.crypto.provider.RSACipher;
 
 import edu.nju.data.database.SQL;
 import edu.nju.dataservice.collectiondataservice.CollectionDataService;
+import edu.nju.exception.DatabaseNULLException;
 import edu.nju.po.CourierMoneyPO;
 import edu.nju.po.CourierMoneyPO.CourierMessage;
 import edu.nju.po.HistoryTimePO;
@@ -130,7 +131,7 @@ public class CollectionDataServiceImpl extends UnicastRemoteObject implements Co
 	}
 
 	@Override
-	public SendDocPO getSendDocPOByID(String ID) {
+	public SendDocPO getSendDocPOByID(String ID) throws DatabaseNULLException {
 		// TODO Auto-generated method stub
 		String sql = "select * from SendDoc where ID='" + ID + "';";
 		SQL.databaseQuery(sql);
@@ -159,10 +160,15 @@ public class CollectionDataServiceImpl extends UnicastRemoteObject implements Co
 				courier_Type = SQL.rs.getInt("courier_Type");
 				time = SQL.rs.getInt("time");
 				date = SQL.rs.getDate("date");
-				return new SendDocPO(ID, sName, sAddress, sCity, sUnit, sTelePhone, sMobilePhone, rName, rAddress,
-						rCity, rUnit, rTelePhone, rMobilePhone, itemNum, weight, volume, item_type, packageType,
-						sumPrice, courier_Type, date, time);
+				
 			}
+			SQL.closeDatabase();
+			if (ID == null) {
+				throw new DatabaseNULLException();
+			}
+			return new SendDocPO(ID, sName, sAddress, sCity, sUnit, sTelePhone, sMobilePhone, rName, rAddress,
+					rCity, rUnit, rTelePhone, rMobilePhone, itemNum, weight, volume, item_type, packageType,
+					sumPrice, courier_Type, date, time);
 		} catch (SQLException e) {
 			System.out.println("´íÎó");
 			e.printStackTrace();

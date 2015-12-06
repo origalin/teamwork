@@ -8,6 +8,7 @@ import java.util.Date;
 
 import edu.nju.data.database.SQL;
 import edu.nju.dataservice.transferdataservice.TransferDataService;
+import edu.nju.exception.DatabaseNULLException;
 import edu.nju.po.HistoryTimePO;
 import edu.nju.po.OverDocPO;
 import edu.nju.po.TransferDocPO;
@@ -69,7 +70,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 		}
 
 		String str = "replace into TransferID(ID,Date,PlaneNum,TrainNum,CarNum,tranceID,corriage,container,from,targetCity,itemIDs,price,checked,paid) "
-		+ "values('"+ID+"','"+date+"','"+planeNum+"','"+TrainNum+"','"+CarNum+"',"
+		+ "values('"+ID+"','"+Time.toDaysTime(date)+"','"+planeNum+"','"+TrainNum+"','"+CarNum+"',"
 		+ "'"+tranceID+"','"+corriage+"','"+container+"','"+from+"','"+targetCity+"',"
 		+ "'"+itemIDs+"','"+price+"','"+checked+"','"+paid+"');";
 		SQL.databaseUpdate(str);
@@ -83,7 +84,9 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 		String ret = "";
 		SQL.databaseQuery(str);
 		try {
-			ret =  SQL.rs.getString("Sequence");
+			while (SQL.rs.next()) {
+				ret =  SQL.rs.getString("Sequence");
+			}		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -135,7 +138,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 		}
 		String str = "replace into ZLoadDoc (ID,date,tranceid,targetbusinesshall,"
 		+ "carid,watcher,driver,itemids,price,checked,paid) values("
-		+ "'"+ID+"','"+date+"','"+tranceID+"','"+targetBusinessHall+"','"+CarID+"',"
+		+ "'"+ID+"','"+Time.toDaysTime(date)+"','"+tranceID+"','"+targetBusinessHall+"','"+CarID+"',"
 		+ "'"+watcher+"','"+driver+"','"+itemIDs+"','"+price+"','"+checked+"',"
 		+"'"+paid+"');";
 		SQL.databaseUpdate(str);
@@ -195,7 +198,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 			checked = 0;
 		}
 		String str = "replace into ZArricalDoc (ID,date,fromID,from,itemandstate,checked) values("
-		+ "'"+ID+"','"+date+"','"+fromID+"','"+from+"','"+itemAndState+"',"
+		+ "'"+ID+"','"+Time.toDaysTime(date)+"','"+fromID+"','"+from+"','"+itemAndState+"',"
 		+ "'"+checked+"');";
 		SQL.databaseUpdate(str);
 		SQL.closeDatabase();
@@ -254,7 +257,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 			checked = 0;
 		}
 		String str = "replace into YArricalDoc (ID,date,transferDocID,from,itemandstate,checked) values("
-		+ "'"+ID+"','"+date+"','"+transferDocID+"','"+from+"','"+itemAndState+"',"
+		+ "'"+ID+"','"+Time.toDaysTime(date)+"','"+transferDocID+"','"+from+"','"+itemAndState+"',"
 		+ "'"+checked+"');";
 		SQL.databaseUpdate(str);
 		SQL.closeDatabase();
@@ -308,7 +311,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 			dealed = 0;
 		}
 		String str = "replace into YDeliverDoc (ID,date,courier,itemIDs,checked,dealed) values("
-		+ "'"+ID+"','"+date+"','"+courier+"','"+itemIDs+"',"
+		+ "'"+ID+"','"+Time.toDaysTime(date)+"','"+courier+"','"+itemIDs+"',"
 		+ "'"+checked+"','"+dealed+"');";
 		SQL.databaseUpdate(str);
 		SQL.closeDatabase();
@@ -358,7 +361,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 			checked = 0;
 		}
 		String str = "replace into OverDoc (ID,date,itemIDs,receiver,courier,checked) values("
-		+ "'"+ID+"','"+date+"','"+itemIDs+"','"+receiver+"','"+courier+"',"
+		+ "'"+ID+"','"+Time.toDaysTime(date)+"','"+itemIDs+"','"+receiver+"','"+courier+"',"
 		+ "'"+checked+"');";
 		SQL.databaseUpdate(str);
 		SQL.closeDatabase();
@@ -388,7 +391,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 		SQL.closeDatabase();
 	}
 	@Override
-	public TransferDocPO getTransferDocPO(String TransferDocID,boolean normal) {
+	public TransferDocPO getTransferDocPO(String TransferDocID,boolean normal) throws DatabaseNULLException {
 		// TODO Auto-generated method stub
 		String ID = null;
 		Date date = null;
@@ -429,16 +432,20 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 				price = SQL.rs.getDouble("price");
 			}
 			SQL.closeDatabase();
+			if(ID == null) {
+				throw new DatabaseNULLException();
+			}
 			return new TransferDocPO(ID, date, planeNum, TrainNum, CarNum, tranceID, corriage, container, from, targetCity, itemIDs, price);
 		} catch (Exception e) {
 			// TODO: handle exception
+			System.out.println("errer");
 		}
 		SQL.closeDatabase();
-		return null;
+		throw new DatabaseNULLException();
 	}
 
 	@Override
-	public ZLoadDocPO getZLoadDocPO(String ZLoadDocID,boolean normal) {
+	public ZLoadDocPO getZLoadDocPO(String ZLoadDocID,boolean normal) throws DatabaseNULLException{
 		// TODO Auto-generated method stub
 		String ID = null;
 		Date date= null;
@@ -468,9 +475,13 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 				driver = SQL.rs.getString("driver");
 				itemIDs = SQL.rs.getString("itemIDs").split(" ");
 				price = SQL.rs.getDouble("price");
-				SQL.closeDatabase();
-				return new ZLoadDocPO(ID, date, tranceID, targetBusinessHall, CarID, watcher, driver, itemIDs, price);
+				
 			}
+			SQL.closeDatabase();
+			if(ID == null) {
+				throw new DatabaseNULLException();
+			}
+			return new ZLoadDocPO(ID, date, tranceID, targetBusinessHall, CarID, watcher, driver, itemIDs, price);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -480,13 +491,13 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 	}
 
 	@Override
-	public ZArrivalDocPO getZArrivalDocPO(String ZArrivalDocID,boolean normal) {
+	public ZArrivalDocPO getZArrivalDocPO(String ZArrivalDocID,boolean normal) throws DatabaseNULLException{
 		// TODO Auto-generated method stub
-		String ID;
-		Date date;
-		String fromID;
+		String ID = null;
+		Date date = null;
+		String fromID = null;
 		String from = null;
-		String[][] itemAndState;
+		String[][] itemAndState = null;
 		String str;
 		if (normal) {
 			str = "select * from ZArrivalDoc where id = '"+ZArrivalDocID+"' and checked = '1';";
@@ -508,9 +519,14 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 						itemAndState[i/2][1] = strings[i];
 					}
 				}
-				SQL.closeDatabase();
-				return new ZArrivalDocPO(ID, date, fromID, from, itemAndState);
+				
 			}
+			
+			SQL.closeDatabase();
+			if (ID == null) {
+				throw new DatabaseNULLException();
+			}
+			return new ZArrivalDocPO(ID, date, fromID, from, itemAndState);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -520,13 +536,13 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 	}
 
 	@Override
-	public YArrivalDocPO getYArrivalDocPO(String YArrivalDocID,boolean normal) {
+	public YArrivalDocPO getYArrivalDocPO(String YArrivalDocID,boolean normal) throws DatabaseNULLException {
 		// TODO Auto-generated method stub
-		String ID;
-		Date date;
-		String TransferDocID;
+		String ID = null;
+		Date date = null;
+		String TransferDocID = null;
 		String from = null;
-		String[][] itemAndState;
+		String[][] itemAndState = null;
 		String str;
 		if (normal) {
 			str = "select * from YArrivalDoc where id = '"+YArrivalDocID+"' and checked = '1';";
@@ -548,9 +564,13 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 						itemAndState[i/2][1] = strings[i];
 					}
 				}
-				SQL.closeDatabase();
-				return new YArrivalDocPO(ID, date, TransferDocID, from, itemAndState);
+				
 			}
+			SQL.closeDatabase();
+			if(ID == null) {
+				throw new DatabaseNULLException();
+			}
+			return new YArrivalDocPO(ID, date, TransferDocID, from, itemAndState);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -560,12 +580,12 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 	}
 
 	@Override
-	public YDeliverDocPO getYDeliverDocPO(String YDeliverDocID,boolean normal) {
+	public YDeliverDocPO getYDeliverDocPO(String YDeliverDocID,boolean normal) throws DatabaseNULLException {
 		// TODO Auto-generated method stub
-		String ID;
-		Date date;
-		String courier;
-		String[] itemIDs;
+		String ID = null;
+		Date date = null;
+		String courier = null;
+		String[] itemIDs = null;
 		String str;
 		if (normal) {
 			str = "select * from YDeliverDoc where id = '"+YDeliverDocID+"' and checked = '1';";
@@ -579,9 +599,13 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 				date = SQL.rs.getDate("date");
 				courier = SQL.rs.getString("courier");
 				itemIDs =SQL.rs.getString("itemIDs").split(" ");
-				SQL.closeDatabase();
-				return new YDeliverDocPO(ID, date, courier, itemIDs);
+				
 			}
+			SQL.closeDatabase();
+			if (ID == null) {
+				throw new DatabaseNULLException();
+			}
+			return new YDeliverDocPO(ID, date, courier, itemIDs);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -591,13 +615,13 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 	}
 
 	@Override
-	public OverDocPO getOverDocPO(String OverDocID,boolean normal) {
+	public OverDocPO getOverDocPO(String OverDocID,boolean normal) throws DatabaseNULLException {
 		// TODO Auto-generated method stub
-		String ID;
-		Date date;
-		String[] receiver;
-		String[] itemIDs;
-		String courier;
+		String ID = null;
+		Date date = null;
+		String[] receiver = null;
+		String[] itemIDs = null;
+		String courier = null;
 		String str;
 		if (normal) {
 			str = "select * from OverDoc where id = '"+OverDocID+"' and checked = '1';";
@@ -612,9 +636,13 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 				courier = SQL.rs.getString("courier");
 				receiver = SQL.rs.getString("receiver").split(" ");
 				itemIDs =SQL.rs.getString("itemIDs").split(" ");
-				SQL.closeDatabase();
-				return new OverDocPO(ID, itemIDs, receiver, date, courier);
+				
 			}
+			SQL.closeDatabase();
+			if (ID == null) {
+				throw new DatabaseNULLException();
+			}
+			return new OverDocPO(ID, itemIDs, receiver, date, courier);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -896,7 +924,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 		}
 		String str = "replace into ZLoadDoc (ID,date,tranceid,targetbusinesshall,"
 		+ "carid,watcher,driver,itemids,price,checked,paid) values("
-		+ "'"+ID+"','"+date+"','"+tranceID+"','"+target+"','"+CarID+"',"
+		+ "'"+ID+"','"+Time.toDaysTime(date)+"','"+tranceID+"','"+target+"','"+CarID+"',"
 		+ "'"+watcher+"','"+driver+"','"+itemIDs+"','"+price+"','"+checked+"',"
 		+"'"+paid+"',);";
 		SQL.databaseUpdate(str);
@@ -960,7 +988,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 		return historyTimePOs;
 	}
 	@Override
-	public YLoadDocPO getYLoadDocPO(String YLoadDocID, boolean normal) {
+	public YLoadDocPO getYLoadDocPO(String YLoadDocID, boolean normal) throws DatabaseNULLException{
 		// TODO Auto-generated method stub
 		String ID = null;
 		Date date= null;
@@ -990,9 +1018,13 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 				driver = SQL.rs.getString("driver");
 				itemIDs = SQL.rs.getString("itemIDs").split(" ");
 				price = SQL.rs.getDouble("price");
-				SQL.closeDatabase();
-				return new YLoadDocPO(ID, date, tranceID, targetBusinessHall, CarID, watcher, driver, itemIDs, price);
+				
 			}
+			SQL.closeDatabase();
+			if (ID == null) {
+				throw new DatabaseNULLException();
+			}
+			return new YLoadDocPO(ID, date, tranceID, targetBusinessHall, CarID, watcher, driver, itemIDs, price);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -1041,7 +1073,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 		return result;
 	}
 	@Override
-	public ArrayList<YDeliverDocPO> getYDeliverDocPOByCourier(String courierID) throws RemoteException {
+	public ArrayList<YDeliverDocPO> getYDeliverDocPOByCourier(String courierID) throws RemoteException{
 		// TODO Auto-generated method stub
 		ArrayList<YDeliverDocPO> yDeliverDocPOs = new ArrayList<>();
 		String str = "select ID from YDeliverDoc where courier = '"+courierID+"' and dealed = '1';";	
@@ -1050,7 +1082,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 			while (SQL.rs.next()) {
 				yDeliverDocPOs.add(getYDeliverDocPO(SQL.rs.getString("ID"), true));
 			}
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

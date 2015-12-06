@@ -14,6 +14,7 @@ import edu.nju.businesslogicservice.transformlogicservice.*;
 import edu.nju.data.transferDataServiceImpl.TransferDataServiceImpl;
 import edu.nju.dataFactory.DataFactory;
 import edu.nju.dataservice.transferdataservice.TransferDataService;
+import edu.nju.exception.DatabaseNULLException;
 import edu.nju.po.OperationPO;
 import edu.nju.po.TransferDocPO;
 import edu.nju.po.TransferDoc_CarPO;
@@ -152,7 +153,7 @@ public class TransferDoc implements TransferDocService{
 	}
 
 	@Override
-	public TransferDocVO findTransferDocVO(String ID) throws RemoteException {
+	public TransferDocVO findTransferDocVO(String ID) throws RemoteException, DatabaseNULLException {
 		// TODO 自动生成的方法存根
 		return new TransferDocVO(transferDataService.getTransferDocPO(ID, false));
 	}
@@ -183,7 +184,7 @@ public class TransferDoc implements TransferDocService{
 	}
 
 	@Override
-	public TransferDocPO geTransferDocPOByID(String ID) throws RemoteException {
+	public TransferDocPO geTransferDocPOByID(String ID) throws RemoteException, DatabaseNULLException {
 		// TODO Auto-generated method stub
 		return transferDataService.getTransferDocPO(ID,true);
 	}

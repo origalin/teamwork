@@ -11,6 +11,7 @@ import edu.nju.businesslogicservice.transformlogicservice.YDeliverDocService;
 import edu.nju.data.transferDataServiceImpl.TransferDataServiceImpl;
 import edu.nju.dataFactory.DataFactory;
 import edu.nju.dataservice.transferdataservice.TransferDataService;
+import edu.nju.exception.DatabaseNULLException;
 import edu.nju.po.OperationPO;
 import edu.nju.po.YDeliverDocPO;
 import edu.nju.tools.SequenceCalc;
@@ -109,12 +110,12 @@ public class YDeliverDoc implements YDeliverDocService{
 	}
 
 	@Override
-	public YDeliverDocPO getDeliverDocPOsByID(String YDeliverID) throws RemoteException {
+	public YDeliverDocPO getDeliverDocPOsByID(String YDeliverID) throws RemoteException, DatabaseNULLException {
 		// TODO 自动生成的方法存根
 		return transferDataService.getYDeliverDocPO(YDeliverID, true);
 	}
 
-	public YDeliverDocVO getDeliverDocVOsByID(String YDeliverDocID) throws RemoteException {
+	public YDeliverDocVO getDeliverDocVOsByID(String YDeliverDocID) throws RemoteException, DatabaseNULLException {
 		// TODO Auto-generated method stub
 		return new YDeliverDocVO(transferDataService.getYDeliverDocPO(YDeliverDocID, false));
 	}	

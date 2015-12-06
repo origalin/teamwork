@@ -13,6 +13,7 @@ import edu.nju.businesslogicservice.transformlogicservice.OverDocService;
 import edu.nju.data.transferDataServiceImpl.TransferDataServiceImpl;
 import edu.nju.dataFactory.DataFactory;
 import edu.nju.dataservice.transferdataservice.TransferDataService;
+import edu.nju.exception.DatabaseNULLException;
 import edu.nju.po.HistoryTimePO;
 import edu.nju.po.OperationPO;
 import edu.nju.po.OverDocPO;
@@ -86,7 +87,7 @@ public class OverDoc implements OverDocService{
 	}
 
 	@Override
-	public void confirmSave() throws RemoteException {
+	public void confirmSave() throws RemoteException, DatabaseNULLException {
 		// TODO Auto-generated method stub
 		transferDataService.saveOverDocPO(po);
 		changeOverDocSequence();

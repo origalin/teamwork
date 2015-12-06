@@ -24,6 +24,7 @@ import edu.nju.businesslogic.collectionbl.Collectionbl;
 import edu.nju.businesslogic.transferbl.YArrivalDoc;
 import edu.nju.businesslogic.transferbl.YDeliverDoc;
 import edu.nju.businesslogic.transferbl.ZArrivalDoc;
+import edu.nju.exception.DatabaseNULLException;
 import edu.nju.presentation.approveui.checkOverDoc;
 import edu.nju.presentation.approveui.checkYArrivalDoc;
 import edu.nju.presentation.approveui.checkZArrivalDoc;
@@ -356,6 +357,9 @@ public class YArrivalDocPanel extends JPanel{
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 					warning("net");
+				} catch (DatabaseNULLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
 				}
 			
 			}
@@ -383,6 +387,9 @@ public class YArrivalDocPanel extends JPanel{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 				warning("net");
+			} catch (DatabaseNULLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}
 	}

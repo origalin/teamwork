@@ -3,6 +3,7 @@ package edu.nju.businesslogicservice.transformlogicservice;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import edu.nju.exception.DatabaseNULLException;
 import edu.nju.po.SendDocPO;
 import edu.nju.po.YDeliverDocPO;
 import edu.nju.vo.YDeliverDocVO;
@@ -13,8 +14,8 @@ public interface YDeliverDocService {
 	public YDeliverDocVO createYDeliverDoc(String[][] courierAndID) throws RemoteException;//创建派件单VO
 	public ArrayList<YDeliverDocVO> findYDeliverDocVOs(String courierID) throws RemoteException;//获取派件单VO
 	public ArrayList<YDeliverDocPO> getUncheckedDeliverDocPOs() throws RemoteException;
-	public YDeliverDocPO getDeliverDocPOsByID(String staffID) throws RemoteException;
-	public YDeliverDocVO getDeliverDocVOsByID(String YDeliverDocID) throws RemoteException;
+	public YDeliverDocPO getDeliverDocPOsByID(String staffID) throws RemoteException, DatabaseNULLException;
+	public YDeliverDocVO getDeliverDocVOsByID(String YDeliverDocID) throws RemoteException, DatabaseNULLException;
 	public void changeYDeliverDocSequence() throws RemoteException;
 	public void  confirmSave() throws RemoteException;
 }

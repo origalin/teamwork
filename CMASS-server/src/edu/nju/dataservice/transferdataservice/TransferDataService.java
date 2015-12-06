@@ -4,6 +4,7 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import edu.nju.exception.DatabaseNULLException;
 import edu.nju.po.*;
 
 public interface TransferDataService extends Remote{
@@ -29,13 +30,13 @@ public interface TransferDataService extends Remote{
 	public void saveOverDocPO(OverDocPO po)throws RemoteException;
 	public String getOverSequence()throws RemoteException;
 	public void changeOverSequence(String OverSequence)throws RemoteException;
-	public TransferDocPO getTransferDocPO(String TransferDocID,boolean normal)throws RemoteException;
-	public ZLoadDocPO getZLoadDocPO(String ZLoadDocID,boolean normal)throws RemoteException;
-	public YLoadDocPO getYLoadDocPO(String YLoadDocID,boolean normal)throws RemoteException;
-	public ZArrivalDocPO getZArrivalDocPO(String ZArrivalDocID,boolean normal)throws RemoteException;
-	public YArrivalDocPO getYArrivalDocPO(String YArrivalDocID,boolean normal)throws RemoteException;
-	public YDeliverDocPO getYDeliverDocPO(String YDeliverDocID,boolean normal)throws RemoteException;
-	public OverDocPO getOverDocPO(String OverDocID,boolean normal)throws RemoteException;
+	public TransferDocPO getTransferDocPO(String TransferDocID,boolean normal)throws RemoteException, DatabaseNULLException;
+	public ZLoadDocPO getZLoadDocPO(String ZLoadDocID,boolean normal)throws RemoteException, DatabaseNULLException;
+	public YLoadDocPO getYLoadDocPO(String YLoadDocID,boolean normal)throws RemoteException, DatabaseNULLException;
+	public ZArrivalDocPO getZArrivalDocPO(String ZArrivalDocID,boolean normal)throws RemoteException, DatabaseNULLException;
+	public YArrivalDocPO getYArrivalDocPO(String YArrivalDocID,boolean normal)throws RemoteException, DatabaseNULLException;
+	public YDeliverDocPO getYDeliverDocPO(String YDeliverDocID,boolean normal)throws RemoteException, DatabaseNULLException;
+	public OverDocPO getOverDocPO(String OverDocID,boolean normal)throws RemoteException, DatabaseNULLException;
 	public ArrayList<YDeliverDocPO> getAllYDeliverDoc()throws RemoteException;
 	public ArrayList<YArrivalDocPO> getAllYArrivalDoc()throws RemoteException;
 	public ArrayList<ZArrivalDocPO> getAllZArrivalDoc()throws RemoteException;

@@ -5,12 +5,13 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.nju.exception.DatabaseNULLException;
 import edu.nju.po.*;
 
 public interface CollectionDataService extends Remote{
 	public void saveSendDocPO(SendDocPO po)throws RemoteException;
 
-	public SendDocPO getSendDocPOByID(String ID)throws RemoteException;
+	public SendDocPO getSendDocPOByID(String ID)throws RemoteException, DatabaseNULLException;
 
 	public String getSequence() throws RemoteException;
 

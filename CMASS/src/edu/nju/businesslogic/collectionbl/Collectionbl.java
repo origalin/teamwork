@@ -19,6 +19,7 @@ import edu.nju.data.transferDataServiceImpl.TransferDataServiceImpl;
 import edu.nju.dataFactory.DataFactory;
 import edu.nju.dataservice.collectiondataservice.CollectionDataService;
 import edu.nju.dataservice.transferdataservice.TransferDataService;
+import edu.nju.exception.DatabaseNULLException;
 import edu.nju.po.HistoryTimePO;
 import edu.nju.po.PositionPO;
 import edu.nju.po.SendDocPO;
@@ -179,13 +180,13 @@ public class Collectionbl implements CollectionLogicService{
 	}
 
 	@Override
-	public SendDocVO getSendDocVOByID(String itemID) throws RemoteException {
+	public SendDocVO getSendDocVOByID(String itemID) throws RemoteException, DatabaseNULLException {
 		// TODO Auto-generated method stub
 		return new SendDocVO(collectionData.getSendDocPOByID(itemID));
 	}
 
 	@Override
-	public SendDocPO getSendDocPOByID(String itemID) throws RemoteException {
+	public SendDocPO getSendDocPOByID(String itemID) throws RemoteException, DatabaseNULLException {
 		// TODO Auto-generated method stub
 		return collectionData.getSendDocPOByID(itemID);
 	}

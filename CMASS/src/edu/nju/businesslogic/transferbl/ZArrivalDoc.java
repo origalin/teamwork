@@ -12,6 +12,7 @@ import edu.nju.businesslogicservice.transformlogicservice.ZArrivalDocService;
 import edu.nju.data.transferDataServiceImpl.TransferDataServiceImpl;
 import edu.nju.dataFactory.DataFactory;
 import edu.nju.dataservice.transferdataservice.TransferDataService;
+import edu.nju.exception.DatabaseNULLException;
 import edu.nju.po.OperationPO;
 import edu.nju.po.TransferDocPO;
 import edu.nju.po.YArrivalDocPO;
@@ -76,7 +77,7 @@ public class ZArrivalDoc implements ZArrivalDocService{
 
 
 	@Override
-	public ZArrivalDocVO findZArrivalDocVO(String ID) throws RemoteException {
+	public ZArrivalDocVO findZArrivalDocVO(String ID) throws RemoteException, DatabaseNULLException {
 		// TODO 自动生成的方法存根
 		return new ZArrivalDocVO(transferDataService.getZArrivalDocPO(ID, false));
 	}
@@ -88,7 +89,7 @@ public class ZArrivalDoc implements ZArrivalDocService{
 	}
 
 	@Override
-	public ZArrivalDocVO createZArrivalDocVO_TransferDoc(String fromDocID, String[][] changeStates) throws RemoteException {
+	public ZArrivalDocVO createZArrivalDocVO_TransferDoc(String fromDocID, String[][] changeStates) throws RemoteException, DatabaseNULLException {
 		// TODO Auto-generated method stub
 		TransferDocPO transferDocPO = transferDoc.geTransferDocPOByID(fromDocID);
 		String[][] itemAndState = new String[transferDocPO.getItemIDs().length][2];
@@ -107,7 +108,7 @@ public class ZArrivalDoc implements ZArrivalDocService{
 		return new ZArrivalDocVO(po);
 	}
 	@Override
-	public ZArrivalDocVO createZArrivalDocVO_YLoadDoc(String fromDocID, String[][] changeStates) throws RemoteException {
+	public ZArrivalDocVO createZArrivalDocVO_YLoadDoc(String fromDocID, String[][] changeStates) throws RemoteException, DatabaseNULLException {
 		// TODO Auto-generated method stub
 		YLoadDocPO yLoadDocPO = yLoadDoc.getYloadDocPOByID(fromDocID);
 		String[][] itemAndState = new String[yLoadDocPO.getItemIDs().length][2];

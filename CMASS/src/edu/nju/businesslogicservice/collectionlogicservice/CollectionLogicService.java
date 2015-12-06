@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.nju.exception.DatabaseNULLException;
 import edu.nju.po.*;
 import edu.nju.vo.SendDocVO;
 
@@ -20,8 +21,8 @@ public interface CollectionLogicService {
 			,String itemKind,int packageType,int sendType) throws RemoteException;//创建寄件单VO
 	public int timeEstimate(String sCity,String rCity) throws RemoteException;//时间预估
 	public double priceCalc(String sCity,String rCity,int packing,double[] volume,double weight,int sendType);//运费计算
-	public SendDocVO getSendDocVOByID(String itemID) throws RemoteException;
-	public SendDocPO getSendDocPOByID(String itemID) throws RemoteException;
+	public SendDocVO getSendDocVOByID(String itemID) throws RemoteException, DatabaseNULLException;
+	public SendDocPO getSendDocPOByID(String itemID) throws RemoteException, DatabaseNULLException;
 	public ArrayList<String> getSendDocsByID(String courier_ID) throws RemoteException;
 	public void saveSendDocCreateGatheringDoc(String courierID) throws RemoteException;
 	ArrayList<HistoryTimePO> getHistoryPO(String sCity, String rCity) throws RemoteException;
