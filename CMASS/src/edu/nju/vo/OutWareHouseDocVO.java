@@ -13,7 +13,20 @@ public class OutWareHouseDocVO {
 	String transferPattern;
 	Date date;
 	
-	
+	public OutWareHouseDocVO(OutWareHouseDocPO po){
+		ArrayList<OutWareHouseDocLineItem> lineItems=new ArrayList<OutWareHouseDocLineItem>();
+		ArrayList<OutRecord> outRecords=po.getOutRecords();
+		for(OutRecord temp:outRecords){
+			OutWareHouseDocLineItem lineItem=new OutWareHouseDocLineItem(temp.getItemID(),temp.getDestination());
+			lineItems.add(lineItem);
+		}
+		
+		this.list=lineItems;
+		this.outWareHouseDocID=po.getOutWareHouseDocID();
+		this.storageID=po.getStorageID();
+		this.transferPattern=po.getTransferPattern();
+		this.date=po.getOutDate();
+	}
 	public OutWareHouseDocVO(ArrayList<OutWareHouseDocLineItem> list, String outWareHouseDocID, String storageID,
 			Date date) {
 		super();
@@ -94,4 +107,6 @@ public class OutWareHouseDocVO {
 		return new OutWareHouseDocPO(outWareHouseDocID, date, transferPattern, storageID, outRecords);
 		
 	}
+	
+	
 }

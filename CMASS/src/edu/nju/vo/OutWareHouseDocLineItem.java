@@ -4,16 +4,21 @@ import java.util.Date;
 
 public class OutWareHouseDocLineItem {
 	String SendDocID;
-	Date outDate;
+	
 	
 	String destination;
 	
 	
 	
-	public OutWareHouseDocLineItem(String sendDocID, Date outDate) {
+	public OutWareHouseDocLineItem(String sendDocID, String destination) {
 		super();
 		SendDocID = sendDocID;
-		this.outDate = outDate;
+		this.destination = destination;
+	}
+	public OutWareHouseDocLineItem(String sendDocID) {
+		super();
+		SendDocID = sendDocID;
+		
 	}
 	public String getSendDocID() {
 		return SendDocID;
@@ -24,12 +29,7 @@ public class OutWareHouseDocLineItem {
 	
 
 	
-	public Date getOutDate() {
-		return outDate;
-	}
-	public void setOutDate(Date outDate) {
-		this.outDate = outDate;
-	}
+	
 	public String getDestination() {
 		return destination;
 	}

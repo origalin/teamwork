@@ -426,7 +426,7 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 		System.out.println("sID:" + sID + ";distriction:" + distriction);
 		StorageLocation storageLocation = null;
 		String location = null;
-		String sql = "SELECT 位置 FROM 仓库存储货物 WHERE StorageItem_ID IS NULL &&仓库ID='" + sID + "'&&被入库单占用!=1&&区='"
+		String sql = "SELECT 位置 FROM 仓库存储货物 WHERE 被快递占用='"+'0'+"'&&仓库ID='" + sID + "'&&被入库单占用!=1&&区='"
 				+ distriction + "'LIMIT 1;";
 		SQL.databaseQuery(sql);
 		try {
@@ -465,7 +465,7 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 		SQL.databaseUpdate(sql);
 		for (InWareHouseDocLineItem temp : list) {
 			sql = "UPDATE 仓库存储货物 SET StorageItem_ID='" + temp.getSendDocID() + "',入库日期='"
-					+ Time.toDaysTime(temp.getDate()) + "',目的地='" + temp.getDestination() + "' WHERE 仓库ID='"
+					+ Time.toDaysTime(temp.getDate()) + "',目的地='" + temp.getDestination() + "',被快递占用='"+0+"' WHERE 仓库ID='"
 					+ in.getStorageID() + "'&&位置='" + temp.getLocation() + "';";
 			SQL.databaseUpdate(sql);
 		}
@@ -492,6 +492,67 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 		SQL.closeDatabase();
 		return currID;
 
+	}
+
+	@Override
+	public void saveOutWareHouseDoc(OutWareHouseDocPO out) throws RemoteException {
+		ArrayList<OutRecord> list=out.getOutRecords();
+		String storageID=out.getStorageID();
+		
+		for(OutRecord temp:list){
+			String sql="UPDATE 仓库存储货物 SET 被快递占用='"+0+"' WHERE StorageItem_ID='"+temp.getItemID()+"';";
+			SQL.databaseUpdate(sql);
+		}
+		return;
+	}
+
+	@Override
+	public ArrayList<OutWareHouseDocPO> getOutWareHouseDoc_unchecked() throws RemoteException {
+		ArrayList<OutWareHouseDocPO> list = new ArrayList<OutWareHouseDocPO>();
+//		String sql = "SELECT ID,入库日期,仓库ID,快递编号,目的地,位置,区 FROM 入库单,入库items WHERE 已审批='0'&&入库单.ID=入库items.入库单编号 ORDER BY ID;";
+//		SQL.databaseQuery(sql);
+//		InWareHouseDocPO element = null;
+//		String currinWareHouseDoc_ID = "";
+//		String inWareHouseDoc_ID = "";
+//
+//		ArrayList<String> iDs = new ArrayList<String>();
+//		ArrayList<Date> dates = new ArrayList<Date>();
+//		ArrayList<String> storageIDs = new ArrayList<String>();
+//		ArrayList<String> SendDocID = new ArrayList<String>();
+//		ArrayList<String> destination = new ArrayList<String>();
+//		ArrayList<String> location = new ArrayList<String>();
+//		ArrayList<String> district = new ArrayList<String>();
+//		try {
+//			while (SQL.rs.next()) {
+//				iDs.add(SQL.rs.getString(0));
+//				dates.add(SQL.rs.getDate(1));
+//				storageIDs.add(SQL.rs.getString(2));
+//				SendDocID.add(SQL.rs.getString(3));
+//				destination.add(SQL.rs.getString(4));
+//				location.add(SQL.rs.getString(5));
+//				district.add(SQL.rs.getString(6));
+//			}
+//		} catch (SQLException e) {
+//			System.out.println("未审批入库单读取错误");
+//			e.printStackTrace();
+//		}
+//		int j = 0;
+//		currinWareHouseDoc_ID = "";
+//		String currStorage_ID = "";
+//		for (int i = 0; i < storageIDs.size(); ++i, ++j) {
+//			if (!iDs.get(i).equals(currinWareHouseDoc_ID)) {
+//				if (j != 0)
+//					list.add(element);
+//				element = new InWareHouseDocPO(iDs.get(i), storageIDs.get(i), new ArrayList<InWareHouseDocLineItem>());
+//				currinWareHouseDoc_ID = iDs.get(i);
+//
+//			}
+//			InWareHouseDocLineItem lineItem = new InWareHouseDocLineItem(SendDocID.get(i), dates.get(i),
+//					destination.get(i), district.get(i), location.get(i));
+//			element.listAppend(lineItem);
+//
+//		}
+		return list;
 	}
 
 }

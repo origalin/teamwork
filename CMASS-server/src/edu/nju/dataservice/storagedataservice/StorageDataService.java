@@ -17,6 +17,7 @@ public interface StorageDataService extends Remote{
 	public void markPositionOccupied(ArrayList<StorageLocation> list) throws RemoteException;
 	public String getCurrInWare_ID() throws RemoteException;
 	public void saveInWareHouseDoc(InWareHouseDocPO in) throws RemoteException;
+	public void saveOutWareHouseDoc(OutWareHouseDocPO out) throws RemoteException;
 	public void update(ArrayList<RecordPO> recordPO) throws RemoteException;
 	public void update(RecordPO recordPO) throws RemoteException;
 	
@@ -64,6 +65,7 @@ public interface StorageDataService extends Remote{
 	public ArrayList<RecordPO> getOutWarehouseDoc() throws RemoteException;
 	
 	public ArrayList<InWareHouseDocPO> getInWarehouseDoc() throws RemoteException;
+	public ArrayList<OutWareHouseDocPO> getOutWareHouseDoc_unchecked() throws RemoteException;
 	public String getCurrOutWare_ID() throws RemoteException;
 
 }
