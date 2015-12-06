@@ -1,11 +1,15 @@
 package edu.nju.businesslogicservice.infologicservice;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import edu.nju.businesslogic.infobl.Driver;
 import edu.nju.po.DriverPO;
 import edu.nju.vo.DriverVO;
 
 public interface DriverLogicService {
-	public ArrayList<DriverVO> getDriveVOList();//获得司机信息列表
-	public void saveDriver(DriverPO po);//保存司机PO
+	public void saveDriver(DriverPO po) throws RemoteException;//保存司机PO
+	public ArrayList<DriverVO> getDriveVOList(String institutionName)throws RemoteException;
+	public void deleteDriver(DriverPO po) throws RemoteException;
+
 }

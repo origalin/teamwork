@@ -1,12 +1,24 @@
 package edu.nju.presentation.systemui;
 
 import javax.swing.JPanel;
+
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.ScrollPane;
+
 import javax.swing.JRadioButton;
 import javax.swing.JLabel;
+
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTabbedPane;
@@ -18,15 +30,27 @@ import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
+import edu.nju.businesslogic.systembl.SystemBl;
+import edu.nju.businesslogicservice.systemlogicservice.SystemLogicService;
+import edu.nju.tools.Time;
+import edu.nju.vo.CarVO;
+import edu.nju.vo.OperationVO;
+
 public class OperationPanel extends JPanel {
 	private JTable table;
 	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField textField_1;	
+	DefaultTableModel model;
+	JScrollPane scrollPane = new JScrollPane();
+	SystemLogicService systemBl=new SystemBl();
+	
 
 	/**
 	 * Create the panel.
+	 * @throws ParseException 
+	 * @throws RemoteException 
 	 */
-	public OperationPanel() {
+	public OperationPanel() throws ParseException, RemoteException {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{220, 0};
 		gridBagLayout.rowHeights = new int[]{43, 89, 209, 0};
@@ -63,7 +87,7 @@ public class OperationPanel extends JPanel {
 		gbc_panel_1.gridy = 1;
 		add(panel_1, gbc_panel_1);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
-		gbl_panel_1.columnWidths = new int[]{56, 86, 71, 83, 40, 0, 0, 0};
+		gbl_panel_1.columnWidths = new int[]{56, 155, 71, 123, 40, 0, 0, 0};
 		gbl_panel_1.rowHeights = new int[]{44, 0};
 		gbl_panel_1.columnWeights = new double[]{0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gbl_panel_1.rowWeights = new double[]{1.0, Double.MIN_VALUE};
@@ -78,6 +102,7 @@ public class OperationPanel extends JPanel {
 		panel_1.add(label, gbc_label);
 		
 		textField = new JTextField();
+		textField.setText("2015-1-1 00:00:00\r\n");
 		GridBagConstraints gbc_textField = new GridBagConstraints();
 		gbc_textField.insets = new Insets(0, 0, 0, 5);
 		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
@@ -95,6 +120,7 @@ public class OperationPanel extends JPanel {
 		panel_1.add(label_1, gbc_label_1);
 		
 		textField_1 = new JTextField();
+		textField_1.setText("2016-1-1 00:00:00\r\n");
 		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
 		gbc_textField_1.insets = new Insets(0, 0, 0, 5);
 		gbc_textField_1.fill = GridBagConstraints.HORIZONTAL;
@@ -110,7 +136,50 @@ public class OperationPanel extends JPanel {
 		gbc_button.gridy = 0;
 		panel_1.add(button, gbc_button);
 		
-		JScrollPane scrollPane = new JScrollPane();
+		//search 
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+
+				
+model=(DefaultTableModel)table.getModel();
+		int row=model.getRowCount();
+		for(int i=0;i<row;i++){
+			System.out.println(model.getRowCount());
+				model.removeRow(0);
+		}
+		
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		
+		Date beginTime = null;
+		try {
+			beginTime = sdf.parse(textField.getText());
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		Date endTime = null;
+		try {
+			endTime = sdf.parse(textField_1.getText());
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		ArrayList<OperationVO> operationList = null;
+		try {
+			operationList = systemBl.getOperationVOList(beginTime, endTime);
+		} catch (RemoteException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		for (OperationVO vo : operationList) {
+			model.addRow(new Object[] { Time.toSecondTime(vo.getDate()),vo.getStaffID(),vo.getStaffName(),vo.getDescribration()
+			 });
+			
+		}
+			}
+		});
+	
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
 		gbc_scrollPane.gridx = 0;
@@ -131,7 +200,41 @@ public class OperationPanel extends JPanel {
 			}
 		));
 		table.getColumnModel().getColumn(3).setPreferredWidth(359);
-
+		
+		
+		model = (DefaultTableModel) table.getModel();
+		
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		
+		Date beginTime = null;
+		try {
+			beginTime = sdf.parse(textField.getText());
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		Date endTime = null;
+		try {
+			endTime = sdf.parse(textField_1.getText());
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		ArrayList<OperationVO> operationList = null;
+		try {
+			operationList = systemBl.getOperationVOList(beginTime, endTime);
+		} catch (RemoteException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		for (OperationVO vo : operationList) {
+			model.addRow(new Object[] { Time.toSecondTime(vo.getDate()),vo.getStaffID(),vo.getStaffName(),vo.getDescribration()
+			 });
+		}
+		
+		
+		
+		
 	}
 
 }

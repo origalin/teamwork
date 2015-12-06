@@ -1,5 +1,6 @@
 package edu.nju.data.InfoDataServiceImpl;
 
+import java.rmi.RemoteException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -17,7 +18,7 @@ import edu.nju.po.DriverPO;
 import edu.nju.po.OperationPO;
 
 public class Main {
-	public static void main(String[] args) throws ParseException {
+	public static void main(String[] args) throws ParseException, RemoteException {
 		//测试driverdata
 //		DriverDataServiceImpl d=new DriverDataServiceImpl();
 //		
@@ -46,19 +47,22 @@ public class Main {
 //		operationList=s.findOperationLog(f.parse("2015-11-24 20:30:27"),f.parse("2015-11-24 20:53:20"));
 //		System.out.println(operationList);
 		
-		CarDataServiceImpl c=new CarDataServiceImpl();
-		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-ww-ww");
+//		CarDataServiceImpl c=new CarDataServiceImpl();
+//		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-ww-ww");
 //		CarPO po=new CarPO("0025000000",	"CY1111023",	"苏A00000",	"WVWZZZ32ZHN153624",	"南京市鼓楼营业厅",sdf.parse("2014-11-11"),3);
 	
-		CarPO po=new CarPO("0025001001","CY1111021",	"甘J00000",	"WVWZZZ32ZHN153625",	"南京市鼓楼营业厅",sdf.parse("2015-11-11"),2);
+//		CarPO po=new CarPO("0025001001","CY1111021",	"甘J00000",	"WVWZZZ32ZHN153625",	"南京市鼓楼营业厅",sdf.parse("2015-11-11"),2);
 //		c.addCar(po);
-		po.setInstitutionName("南京市鼓楼营业厅");
-		c.changeCar(po);
-		c.deleteCar(po);
-		ArrayList<CarPO> carList=new ArrayList<CarPO>();
-		carList=c.findCar("南京市鼓楼营业厅");
-		System.out.println(carList);
+//		po.setInstitutionName("南京市鼓楼营业厅");
+//		c.changeCar(po);
+//		c.deleteCar(po);
+//		ArrayList<CarPO> carList=new ArrayList<CarPO>();
+//		carList=c.findCar("南京市鼓楼营业厅");
+//		System.out.println(carList);
 	
+		
+		DistanceDataServiceImpl d=new DistanceDataServiceImpl();
+		System.out.println(d.getDistance("南京", "北京"));
 		
 	}
 

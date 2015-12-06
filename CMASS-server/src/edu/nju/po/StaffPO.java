@@ -5,9 +5,6 @@ public class StaffPO {
 	String name;
 	Institutation institutation;
 	Post post;
-	
-	
-	
 	Double baseSalary;
 	Double bonusSalary;
 	Double percentageSalary;

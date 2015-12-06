@@ -1,19 +1,31 @@
 package edu.nju.presentation.infoui;
 
 import javax.swing.JPanel;
+
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+
 import javax.swing.JLabel;
+
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
+
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JDialog;
 import javax.swing.JTextField;
+
+import edu.nju.businesslogic.infobl.Distance;
+import edu.nju.businesslogicservice.infologicservice.DistanceLogicService;
+import edu.nju.po.DistancePO;
 
 public class DistancePanel extends JPanel {
 	private JTextField txtkm;
-
+	DistanceLogicService distanceBl=new Distance();
 	/**
 	 * Create the panel.
 	 */
@@ -83,14 +95,51 @@ public class DistancePanel extends JPanel {
 		gbc_comboBox_1.gridy = 1;
 		panel_1.add(comboBox_1, gbc_comboBox_1);
 		
-		JButton button_2 = new JButton("\u589E\u52A0\u57CE\u5E02");
+		JButton button_2 = new JButton("\u70B9\u51FB\u67E5\u8BE2");
 		GridBagConstraints gbc_button_2 = new GridBagConstraints();
 		gbc_button_2.insets = new Insets(0, 0, 5, 5);
 		gbc_button_2.gridx = 7;
 		gbc_button_2.gridy = 1;
 		panel_1.add(button_2, gbc_button_2);
 		
-		JLabel label_3 = new JLabel("\u4FEE\u6539\u8DDD\u79BB");
+		//查询
+		button_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				double distance = 0;
+				try {
+					distance = distanceBl.getDistance((String)comboBox.getSelectedItem(), (String)comboBox_1.getSelectedItem());
+				} catch (RemoteException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				txtkm.setText(String.valueOf(distance));
+				txtkm.setEnabled(false);
+		
+			}
+		});
+
+		
+		JButton btnNewButton = new JButton("\u65B0\u589E\u57CE\u5E02\r\n");
+		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
+		gbc_btnNewButton.insets = new Insets(0, 0, 5, 0);
+		gbc_btnNewButton.gridx = 8;
+		gbc_btnNewButton.gridy = 1;
+		panel_1.add(btnNewButton, gbc_btnNewButton);
+		
+		
+		//新增
+		btnNewButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				DistanceAdd dialog = new DistanceAdd();
+				dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+				dialog.setVisible(true);
+			}
+		});
+		
+		JLabel label_3 = new JLabel("\u5F53\u524D\u8DDD\u79BB\r\n");
 		GridBagConstraints gbc_label_3 = new GridBagConstraints();
 		gbc_label_3.insets = new Insets(0, 0, 0, 5);
 		gbc_label_3.gridx = 1;
@@ -100,13 +149,30 @@ public class DistancePanel extends JPanel {
 		txtkm = new JTextField();
 		txtkm.setText("100/km");
 		GridBagConstraints gbc_txtkm = new GridBagConstraints();
-		gbc_txtkm.gridwidth = 5;
+		gbc_txtkm.gridwidth = 3;
 		gbc_txtkm.insets = new Insets(0, 0, 0, 5);
 		gbc_txtkm.fill = GridBagConstraints.HORIZONTAL;
 		gbc_txtkm.gridx = 3;
 		gbc_txtkm.gridy = 3;
 		panel_1.add(txtkm, gbc_txtkm);
 		txtkm.setColumns(10);
+	
+		
+		JButton button_3 = new JButton("\u70B9\u51FB\u4FEE\u6539");
+		GridBagConstraints gbc_button_3 = new GridBagConstraints();
+		gbc_button_3.fill = GridBagConstraints.HORIZONTAL;
+		gbc_button_3.gridwidth = 2;
+		gbc_button_3.insets = new Insets(0, 0, 0, 5);
+		gbc_button_3.gridx = 7;
+		gbc_button_3.gridy = 3;
+		panel_1.add(button_3, gbc_button_3);
+		//修改
+		button_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				txtkm.setEnabled(true);
+		
+			}
+		});
 		
 		JPanel panel_2 = new JPanel();
 		GridBagConstraints gbc_panel_2 = new GridBagConstraints();
@@ -116,23 +182,57 @@ public class DistancePanel extends JPanel {
 		add(panel_2, gbc_panel_2);
 		GridBagLayout gbl_panel_2 = new GridBagLayout();
 		gbl_panel_2.columnWidths = new int[]{97, 108, 0};
-		gbl_panel_2.rowHeights = new int[]{0, 0, 0};
+		gbl_panel_2.rowHeights = new int[]{0, 0, 0, 0};
 		gbl_panel_2.columnWeights = new double[]{1.0, 1.0, Double.MIN_VALUE};
-		gbl_panel_2.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_2.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel_2.setLayout(gbl_panel_2);
 		
 		JButton button = new JButton("\u786E\u8BA4");
 		GridBagConstraints gbc_button = new GridBagConstraints();
-		gbc_button.insets = new Insets(0, 0, 0, 5);
+		gbc_button.insets = new Insets(0, 0, 5, 5);
 		gbc_button.gridx = 0;
 		gbc_button.gridy = 1;
 		panel_2.add(button, gbc_button);
+		//queren
+		button.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				DistancePO po=new DistancePO((String)comboBox.getSelectedItem(),(String)comboBox_1.getSelectedItem(),Double.valueOf(txtkm.getText()));
+				try {
+					distanceBl.changeDistance(po);
+				} catch (RemoteException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				txtkm.setEnabled(false);
+				
+			}
+		});
+	
 		
 		JButton button_1 = new JButton("\u53D6\u6D88");
 		GridBagConstraints gbc_button_1 = new GridBagConstraints();
+		gbc_button_1.insets = new Insets(0, 0, 5, 0);
 		gbc_button_1.gridx = 1;
 		gbc_button_1.gridy = 1;
 		panel_2.add(button_1, gbc_button_1);
+		
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				double distance = 0;
+				try {
+					distance = distanceBl.getDistance((String)comboBox.getSelectedItem(), (String)comboBox_1.getSelectedItem());
+				} catch (RemoteException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				txtkm.setText(String.valueOf(distance));
+				txtkm.setEnabled(false);
+		
+			}
+		});
 
 	}
 

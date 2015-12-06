@@ -1,14 +1,13 @@
-package edu.nju.po;
+package edu.nju.vo;
 
-import java.io.Serializable;
-
-public class DistancePO implements Serializable {
+public class DistanceVO {
 	int id;
 	String city1;
 	String city2;
     double distance;
-	public DistancePO(String city1, String city2, double distance) {
+	public DistanceVO(int id,String city1, String city2, double distance) {
 		super();
+		this.id=id;
 		this.city1 = city1;
 		this.city2 = city2;
 		this.distance = distance;
@@ -39,5 +38,4 @@ public class DistancePO implements Serializable {
 	}
 
     
-	
 }

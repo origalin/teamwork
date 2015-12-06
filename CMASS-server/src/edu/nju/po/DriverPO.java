@@ -1,11 +1,12 @@
 package edu.nju.po;
 
+import java.io.Serializable;
 import java.util.Date;
 
 //司机信息（司机编号（城市编号（电话号码区号南京0025）
 //+营业厅编号（000三位数字）+000三位数字、姓名、性别、出生日期、
 //身份证号、手机 、行驶证初始日期、行驶证失效日期）
-public class DriverPO{
+public class DriverPO implements Serializable{
 	String driverID;
 	String name;	
 	String sex;
@@ -33,6 +34,22 @@ public class DriverPO{
 		this.money =money;
 		this.isPaid = isPaid;
 	}
+	
+	public DriverPO(String driverID, String name, String sex, Date birthday,
+			String identity, String tel, String institution, Date beginLimit,
+			Date endLimit) {
+		super();
+		this.driverID = driverID;
+		this.name = name;
+		this.sex = sex;
+		this.birthday = birthday;
+		this.identity = identity;
+		this.tel = tel;
+		this.institution = institution;
+		this.beginLimit = beginLimit;
+		this.endLimit = endLimit;
+	}
+
 	public String getDriverID() {
 		return driverID;
 	}
