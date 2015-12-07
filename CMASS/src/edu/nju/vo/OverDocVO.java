@@ -45,5 +45,13 @@ public class OverDocVO extends Doc{
 		this.date = date;
 	}
 
+	public String getCourier() {
+		return courier;
+	}
+
+	public void setCourier(String courier) {
+		this.courier = courier;
+	}
+
 	
 }

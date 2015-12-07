@@ -39,12 +39,19 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 
 	}
 
+	
+	/**
+	 * 经过测试
+	 * @param storageID
+	 * @param ctrl
+	 * @return
+	 */
 	public ArrayList<RecordPO> getStorageItems(String storageID,int ctrl){
 		
 		//表驱动
-		String[] sqls={"SELECT * FROM 仓库存储货物 WHERE 区='航运区'&&仓库ID='" + storageID + "';",
-			"SELECT * FROM 仓库存储货物 WHERE 区='货运区'&&仓库ID='" + storageID + "';",
-			"SELECT * FROM 仓库存储货物 WHERE 区='汽运区'&&仓库ID='" + storageID + "';"};
+		String[] sqls={"SELECT * FROM 仓库存储货物 WHERE 区='航运区'&&仓库ID='" + storageID + "'&&被快递占用='1';",
+			"SELECT * FROM 仓库存储货物 WHERE 区='货运区'&&仓库ID='" + storageID + "'&&被快递占用='1';",
+			"SELECT * FROM 仓库存储货物 WHERE 区='汽运区'&&仓库ID='" + storageID + "'&&被快递占用='1';"};
 		String[] districts={"航运区","货运区","汽运区"};
 		String sql=sqls[ctrl];
 		String district=districts[ctrl];
@@ -57,7 +64,8 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 				Date date = SQL.rs.getDate("入库日期");
 				String destination = SQL.rs.getString("目的地");
 				String location = SQL.rs.getString("位置");
-				RecordPO recordPO = new RecordPO(storageItem_ID, date, destination, district, location);
+				
+				RecordPO recordPO = new RecordPO(storageItem_ID, date, destination, district, location,storageID);
 				list.add(recordPO);
 			}
 			return list;
@@ -141,11 +149,7 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 //		return list;
 	}
 
-	@Override
-	public long getInWareHouseDocID() throws RemoteException {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	
 
 	@Override
 	public ArrayList<RecordPO> getStorageItemList(int[] SendDocIDList) throws RemoteException {
@@ -153,12 +157,13 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 		return null;
 	}
 
-	@Override
-	public long getOutWareHouseDocID() throws RemoteException {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	
 
+	/**
+	 * 已测试
+	 * @param out
+	 * @throws RemoteException
+	 */
 	@Override
 	public void updateOutWareHouseDoc(OutWareHouseDocPO out) throws RemoteException {
 
@@ -166,33 +171,45 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 		String iD = out.getOutWareHouseDocID();
 		String storageID = out.getStorageID();
 		ArrayList<OutRecord> list = out.getOutRecords();
-		OutRecord lineItem = list.get(0);
+		
 		Date outDate = out.getOutDate();
 		String transferPattern = out.getTransferPattern();
 		sql = "INSERT INTO 出库单(ID,出库日期,装运形式,仓库ID) VALUES('" + iD + "','" + Time.toDaysTime(outDate) + "','"
 				+ transferPattern + "','" + storageID + "');";
 		SQL.databaseUpdate(sql);
 		for (OutRecord temp : list) {
-			sql = "INSERT INTO 出库items VALUES('" + temp.getItemID() + "','" + temp.getDestination() + "','" + storageID
+			sql = "INSERT INTO 出库items VALUES('" + temp.getItemID() + "','" + temp.getDestination() + "','" + iD
 					+ "');";
 
 			SQL.databaseUpdate(sql);
 		}
 
 		SQL.closeDatabase();
+		return;
 
 	}
 
 	public static void main(String[] args) throws RemoteException {
 		StorageDataServiceImpl serviceImpl = new StorageDataServiceImpl();
-		// for (int i = 0; i < 5; ++i)
-		// System.out.println(serviceImpl.getValidLocation("001000", "航运区"));
-		ArrayList<InWareHouseDocLineItem> list = new ArrayList<InWareHouseDocLineItem>();
-		list.add(new InWareHouseDocLineItem("0025010010", new Date(), "efjekjfewf", "航运区", "000000"));
-		InWareHouseDocPO po = new InWareHouseDocPO("08000002", "001000", list);
-
-		serviceImpl.updateInWareHouseDoc(po);
-		return;
+		
+//		ArrayList<OutRecord> list = new ArrayList<OutRecord>();//这是测试更新出库单
+//		OutRecord outRecord=new OutRecord("0025010010", "北京", "09000010");
+//		list.add(outRecord);		
+//		OutWareHouseDocPO outWareHouseDocPO=new OutWareHouseDocPO("09000010", new Date(), "航运", "001000", list);		
+//		serviceImpl.updateOutWareHouseDoc(outWareHouseDocPO);
+		
+//		ArrayList<InWareHouseDocLineItem> list=new ArrayList<InWareHouseDocLineItem>();
+//		InWareHouseDocLineItem in=new InWareHouseDocLineItem("08000010", new Date(), "南京市栖霞区", "航运区","");
+		
+		//System.out.println(serviceImpl.getStorageItems("001000",2));
+		
+		
+//		serviceImpl.clear();
+		ArrayList<OutRecord> outRecords=new ArrayList<OutRecord>();
+		outRecords.add(new OutRecord("0025010010", "", "09000010"));
+		outRecords.add(new OutRecord("0025010011", "", "09000010"));
+		OutWareHouseDocPO outWareHouseDocPO=new OutWareHouseDocPO("09000010", new Date(), "航运", "001000", outRecords);
+		serviceImpl.saveOutWareHouseDoc(outWareHouseDocPO);
 
 	}
 
@@ -206,7 +223,7 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 
 	public void updateInWareHouseDoc(InWareHouseDocPO in) throws RemoteException {
 		// TODO Auto-generated method stub
-		System.out.println("zjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj");
+		
 		String sql = "";
 		String iD = in.getID();
 		String storageID = in.getStorageID();
@@ -226,15 +243,15 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 		SQL.closeDatabase();
 	}
 
-	@Override
-	public WareHousePO getWareHouse() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
+	/* (non-Javadoc)
+	 * 该方法待修改，清空仓库不应该直接清空表，应该标记该位置为空即可
+	 * @see edu.nju.dataservice.storagedataservice.StorageDataService#clear()
+	 */
 	@Override
 	public void clear() throws RemoteException {
-		String sql = "truncate table 仓库存储货物;";
+		String sql = "UPDATE 仓库存储货物 SET 被快递占用 ='0';";
 		SQL.databaseUpdate(sql);
 		SQL.closeDatabase();
 		System.out.println("仓库已清空");
@@ -260,11 +277,7 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 
 	}
 
-	@Override
-	public void setPercent(double p) throws RemoteException {
-		// TODO Auto-generated method stub
 
-	}
 
 	@Override
 	public void setAlarm(double p) throws RemoteException {
@@ -310,11 +323,6 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 		return null;
 	}
 
-	@Override
-	public double getPercent(String district) throws RemoteException {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 	@Override
 	public ArrayList<RecordPO> getOutWarehouseDoc() throws RemoteException {
@@ -385,7 +393,13 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 	 */
 	@Override
 	public String getCurrInWare_ID() throws RemoteException {
-		String sql = "SELECT currID from currid where Name='入库单';";
+		
+		return getCurrDoc_ID(0);
+	}
+	
+	public String getCurrDoc_ID(int ctrl) throws RemoteException{
+		String[] sqls={ "SELECT currID from currid where Name='入库单';", "SELECT currID from currid where Name='出库单';"};
+		String sql=sqls[ctrl];
 		SQL.databaseQuery(sql);
 		String currID = "";
 		try {
@@ -400,6 +414,8 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 		SQL.databaseUpdate(sql);
 		SQL.closeDatabase();
 		return currID;
+		
+		
 	}
 
 	/**
@@ -474,84 +490,87 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 
 	}
 
+	/* (non-Javadoc)
+	 * 未经测试
+	 * @see edu.nju.dataservice.storagedataservice.StorageDataService#getCurrOutWare_ID()
+	 */
 	@Override
 	public String getCurrOutWare_ID() throws RemoteException {
-		String sql = "SELECT currID from currid where Name='出库单';";
-		SQL.databaseQuery(sql);
-		String currID = "";
-		try {
-			if (SQL.rs.next())
-				currID = SQL.rs.getString("currID");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		String newCurrID = String.format("%08d", Integer.parseUnsignedInt(currID) + 1);
-		sql = "UPDATE currid SET currID='" + newCurrID + "' WHERE Name='出库单';";
-		SQL.databaseUpdate(sql);
-		SQL.closeDatabase();
-		return currID;
+		return getCurrDoc_ID(1);
 
 	}
 
+	/**
+	 * 已测试
+	 * @param out
+	 * @throws RemoteException
+	 */
 	@Override
 	public void saveOutWareHouseDoc(OutWareHouseDocPO out) throws RemoteException {
 		ArrayList<OutRecord> list=out.getOutRecords();
-		String storageID=out.getStorageID();
+		String outWareHouseDocID=out.getOutWareHouseDocID();
+		String sql = "UPDATE 出库单 SET 已审批='1' WHERE ID= '" + outWareHouseDocID + "';";
+		SQL.databaseUpdate(sql);
 		
 		for(OutRecord temp:list){
-			String sql="UPDATE 仓库存储货物 SET 被快递占用='"+0+"' WHERE StorageItem_ID='"+temp.getItemID()+"';";
+			sql="UPDATE 仓库存储货物 SET 被快递占用='"+0+"',被入库单占用='0' WHERE StorageItem_ID='"+temp.getItemID()+"';";
 			SQL.databaseUpdate(sql);
 		}
 		return;
 	}
 
+	/**
+	 * 等待李芷牧方可测试
+	 * @return
+	 * @throws RemoteException
+	 */
 	@Override
 	public ArrayList<OutWareHouseDocPO> getOutWareHouseDoc_unchecked() throws RemoteException {
 		ArrayList<OutWareHouseDocPO> list = new ArrayList<OutWareHouseDocPO>();
-//		String sql = "SELECT ID,入库日期,仓库ID,快递编号,目的地,位置,区 FROM 入库单,入库items WHERE 已审批='0'&&入库单.ID=入库items.入库单编号 ORDER BY ID;";
-//		SQL.databaseQuery(sql);
-//		InWareHouseDocPO element = null;
-//		String currinWareHouseDoc_ID = "";
-//		String inWareHouseDoc_ID = "";
-//
-//		ArrayList<String> iDs = new ArrayList<String>();
-//		ArrayList<Date> dates = new ArrayList<Date>();
-//		ArrayList<String> storageIDs = new ArrayList<String>();
-//		ArrayList<String> SendDocID = new ArrayList<String>();
-//		ArrayList<String> destination = new ArrayList<String>();
-//		ArrayList<String> location = new ArrayList<String>();
-//		ArrayList<String> district = new ArrayList<String>();
-//		try {
-//			while (SQL.rs.next()) {
-//				iDs.add(SQL.rs.getString(0));
-//				dates.add(SQL.rs.getDate(1));
-//				storageIDs.add(SQL.rs.getString(2));
-//				SendDocID.add(SQL.rs.getString(3));
-//				destination.add(SQL.rs.getString(4));
-//				location.add(SQL.rs.getString(5));
-//				district.add(SQL.rs.getString(6));
-//			}
-//		} catch (SQLException e) {
-//			System.out.println("未审批入库单读取错误");
-//			e.printStackTrace();
-//		}
-//		int j = 0;
-//		currinWareHouseDoc_ID = "";
-//		String currStorage_ID = "";
-//		for (int i = 0; i < storageIDs.size(); ++i, ++j) {
-//			if (!iDs.get(i).equals(currinWareHouseDoc_ID)) {
-//				if (j != 0)
-//					list.add(element);
-//				element = new InWareHouseDocPO(iDs.get(i), storageIDs.get(i), new ArrayList<InWareHouseDocLineItem>());
-//				currinWareHouseDoc_ID = iDs.get(i);
-//
-//			}
-//			InWareHouseDocLineItem lineItem = new InWareHouseDocLineItem(SendDocID.get(i), dates.get(i),
-//					destination.get(i), district.get(i), location.get(i));
-//			element.listAppend(lineItem);
-//
-//		}
+		String sql = "SELECT ID,出库日期,装运形式,仓库ID,快递编号,目的地 FROM 出库单,出库items WHERE 已审批='0'&&出库单.ID=出库items.出库单ID ORDER BY 出库单.ID;";
+		SQL.databaseQuery(sql);
+		OutWareHouseDocPO element = null;
+		String curroutWareHouseDoc_ID = "";
+		String outWareHouseDoc_ID = "";
+
+		ArrayList<String> iDs = new ArrayList<String>();
+		ArrayList<Date> dates = new ArrayList<Date>();
+		ArrayList<String> transferPattern=new ArrayList<String>();
+		ArrayList<String> storageIDs = new ArrayList<String>();
+		ArrayList<String> SendDocID = new ArrayList<String>();
+		ArrayList<String> destination = new ArrayList<String>();
+		
+		try {
+			while (SQL.rs.next()) {
+				iDs.add(SQL.rs.getString("ID"));
+				dates.add(SQL.rs.getDate("出库日期"));
+				transferPattern.add(SQL.rs.getString("装运形式"));
+				storageIDs.add(SQL.rs.getString("仓库ID"));
+				SendDocID.add(SQL.rs.getString("快递编号"));
+				destination.add(SQL.rs.getString("目的地"));
+				
+			}
+		} catch (SQLException e) {
+			System.out.println("未审批出库单读取错误");
+			e.printStackTrace();
+		}
+		//数据库读取完毕
+		//下面解析
+		int j = 0;
+		curroutWareHouseDoc_ID = "";
+		String currStorage_ID = "";
+		for (int i = 0; i < storageIDs.size(); ++i, ++j) {
+			if (!iDs.get(i).equals(curroutWareHouseDoc_ID)) {
+				if (j != 0)
+					list.add(element);
+				element = new OutWareHouseDocPO(iDs.get(i), dates.get(i), transferPattern.get(i), storageIDs.get(i));
+				curroutWareHouseDoc_ID = iDs.get(i);
+
+			}
+			OutRecord lineItem = new OutRecord(SendDocID.get(i), destination.get(i), curroutWareHouseDoc_ID);
+			element.listAppend(lineItem);
+
+		}
 		return list;
 	}
 

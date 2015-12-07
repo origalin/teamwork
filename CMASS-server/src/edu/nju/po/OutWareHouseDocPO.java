@@ -15,6 +15,26 @@ public class OutWareHouseDocPO extends Doc{
 	ArrayList<OutRecord> outRecords;
 	
 	
+	public OutWareHouseDocPO(String outWareHouseDocID, Date outDate, String transferPattern, String storageID) {
+		super();
+		this.outWareHouseDocID = outWareHouseDocID;
+		this.outDate = outDate;
+		this.transferPattern = transferPattern;
+		this.storageID = storageID;
+		outRecords=new ArrayList<OutRecord>();
+	}
+	public void listAppend(OutRecord outRecord){
+		outRecords.add(outRecord);
+		return ;
+	}
+	@Override
+	public String getID(){
+		return outWareHouseDocID;
+	}
+	@Override
+	public void setID(String s){
+		this.outWareHouseDocID=s;
+	}
 	public Date getOutDate() {
 		return outDate;
 	}
@@ -49,10 +69,10 @@ public class OutWareHouseDocPO extends Doc{
 		this.outRecords = outRecords;
 	}
 	public String getOutWareHouseDocID() {
-		return ID;
+		return outWareHouseDocID;
 	}
 	public void setOutWareHouseDocID(String outWareHouseDocID) {
-		ID = outWareHouseDocID;
+		outWareHouseDocID = outWareHouseDocID;
 	}
 	public ArrayList<OutRecord> getOutRecords() {
 		return outRecords;

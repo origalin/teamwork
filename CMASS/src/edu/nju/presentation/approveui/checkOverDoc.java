@@ -7,6 +7,7 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.Font;
+
 import java.awt.FlowLayout;
 import javax.swing.table.DefaultTableModel;
 public class checkOverDoc extends JPanel{
@@ -19,6 +20,7 @@ public class checkOverDoc extends JPanel{
 		gridBagLayout.columnWidths = new int[]{48, 117, 0, 76, 0, 52, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 1.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
+
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
@@ -53,6 +55,7 @@ public class checkOverDoc extends JPanel{
 		gbc_panel_1.gridy = 1;
 		add(panel_1, gbc_panel_1);
 		
+
 		textField_3 = new JTextField();
 		panel_1.add(textField_3);
 		textField_3.setEditable(false);
@@ -122,6 +125,8 @@ public class checkOverDoc extends JPanel{
 	}
 	public checkOverDoc(OverDocVO vo) {
 		// TODO Auto-generated constructor stub
+
 	}
+	
 
 }

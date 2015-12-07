@@ -6,13 +6,16 @@ import java.util.Date;
 import edu.nju.po.OutRecord;
 import edu.nju.po.OutWareHouseDocPO;
 
-public class OutWareHouseDocVO {
+public class OutWareHouseDocVO extends Doc{
 	ArrayList<OutWareHouseDocLineItem> list=new ArrayList<OutWareHouseDocLineItem>();
 	String outWareHouseDocID; 
 	String storageID;
 	String transferPattern;
 	Date date;
-	
+	@Override
+	public String getID(){
+		return outWareHouseDocID;
+	}
 	public OutWareHouseDocVO(OutWareHouseDocPO po){
 		ArrayList<OutWareHouseDocLineItem> lineItems=new ArrayList<OutWareHouseDocLineItem>();
 		ArrayList<OutRecord> outRecords=po.getOutRecords();
@@ -82,9 +85,7 @@ public class OutWareHouseDocVO {
 	public void setLineItemList(ArrayList<OutWareHouseDocLineItem> outWareHouseDocVO) {
 		this.list = outWareHouseDocVO;
 	}
-	public String getID() {
-		return outWareHouseDocID;
-	}
+	@Override
 	public void setID(String outWareHouseDocID) {
 		this.outWareHouseDocID = outWareHouseDocID;
 	}
