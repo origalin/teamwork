@@ -4,99 +4,130 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.Font;
+import javax.swing.table.DefaultTableModel;
+import java.awt.FlowLayout;
 public class checkYDeliverDoc extends JPanel{
 	private JTextField textField;
-	private JTextField textField_1;
 	private JTextField textField_2;
 	private JLabel label_1;
 	private JLabel label_2;
 	private JTextField textField_3;
+	private JPanel panel;
+	private JPanel panel_1;
+	private JPanel panel_2;
+	private JPanel panel_3;
+	private JScrollPane scrollPane;
+	private JTable table;
 	public checkYDeliverDoc() {
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 11, 0, 0, 0, 32, 0};
-		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.columnWidths = new int[]{0, 3, 11, 0, 0, 0, 0};
+		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0};
+		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 1.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
+		panel = new JPanel();
+		GridBagConstraints gbc_panel = new GridBagConstraints();
+		gbc_panel.gridwidth = 6;
+		gbc_panel.insets = new Insets(0, 0, 5, 0);
+		gbc_panel.fill = GridBagConstraints.BOTH;
+		gbc_panel.gridx = 0;
+		gbc_panel.gridy = 0;
+		add(panel, gbc_panel);
+		
 		label_1 = new JLabel("\u8425\u4E1A\u5385\u6D3E\u4EF6\u5355");
-		GridBagConstraints gbc_label_1 = new GridBagConstraints();
-		gbc_label_1.insets = new Insets(0, 0, 5, 5);
-		gbc_label_1.gridx = 0;
-		gbc_label_1.gridy = 0;
-		add(label_1, gbc_label_1);
+		label_1.setFont(new Font("黑体", Font.BOLD, 15));
+		panel.add(label_1);
 		
 		label_2 = new JLabel("\u8425\u4E1A\u5385\u6D3E\u4EF6\u5355\u7F16\u53F7");
-		label_2.setFont(new Font("黑体", Font.BOLD, 12));
+		label_2.setFont(new Font("黑体", Font.BOLD, 15));
 		GridBagConstraints gbc_label_2 = new GridBagConstraints();
+		gbc_label_2.anchor = GridBagConstraints.WEST;
 		gbc_label_2.insets = new Insets(0, 0, 5, 5);
 		gbc_label_2.gridx = 1;
 		gbc_label_2.gridy = 1;
 		add(label_2, gbc_label_2);
 		
+		panel_1 = new JPanel();
+		FlowLayout flowLayout = (FlowLayout) panel_1.getLayout();
+		flowLayout.setAlignment(FlowLayout.LEFT);
+		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
+		gbc_panel_1.insets = new Insets(0, 0, 5, 5);
+		gbc_panel_1.fill = GridBagConstraints.BOTH;
+		gbc_panel_1.gridx = 2;
+		gbc_panel_1.gridy = 1;
+		add(panel_1, gbc_panel_1);
+		
 		textField_3 = new JTextField();
+		panel_1.add(textField_3);
 		textField_3.setEditable(false);
-		GridBagConstraints gbc_textField_3 = new GridBagConstraints();
-		gbc_textField_3.insets = new Insets(0, 0, 5, 5);
-		gbc_textField_3.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_3.gridx = 5;
-		gbc_textField_3.gridy = 1;
-		add(textField_3, gbc_textField_3);
-		textField_3.setColumns(10);
+		textField_3.setColumns(15);
 		
 		JLabel label = new JLabel("\u5FEB\u9012\u5458");
-		label.setFont(new Font("黑体", Font.BOLD, 12));
+		label.setFont(new Font("黑体", Font.BOLD, 15));
 		GridBagConstraints gbc_label = new GridBagConstraints();
 		gbc_label.insets = new Insets(0, 0, 5, 5);
-		gbc_label.gridx = 1;
-		gbc_label.gridy = 3;
+		gbc_label.gridx = 3;
+		gbc_label.gridy = 1;
 		add(label, gbc_label);
 		
+		panel_2 = new JPanel();
+		FlowLayout flowLayout_2 = (FlowLayout) panel_2.getLayout();
+		flowLayout_2.setAlignment(FlowLayout.LEFT);
+		GridBagConstraints gbc_panel_2 = new GridBagConstraints();
+		gbc_panel_2.insets = new Insets(0, 0, 5, 5);
+		gbc_panel_2.fill = GridBagConstraints.BOTH;
+		gbc_panel_2.gridx = 4;
+		gbc_panel_2.gridy = 1;
+		add(panel_2, gbc_panel_2);
+		
 		textField_2 = new JTextField();
+		panel_2.add(textField_2);
 		textField_2.setEditable(false);
-		GridBagConstraints gbc_textField_2 = new GridBagConstraints();
-		gbc_textField_2.insets = new Insets(0, 0, 5, 5);
-		gbc_textField_2.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_2.gridx = 5;
-		gbc_textField_2.gridy = 3;
-		add(textField_2, gbc_textField_2);
 		textField_2.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("\u5230\u8FBE\u65E5\u671F");
-		lblNewLabel.setFont(new Font("黑体", Font.BOLD, 12));
+		lblNewLabel.setFont(new Font("黑体", Font.BOLD, 15));
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
+		gbc_lblNewLabel.anchor = GridBagConstraints.WEST;
 		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel.gridx = 1;
-		gbc_lblNewLabel.gridy = 5;
+		gbc_lblNewLabel.gridy = 2;
 		add(lblNewLabel, gbc_lblNewLabel);
 		
+		panel_3 = new JPanel();
+		FlowLayout flowLayout_1 = (FlowLayout) panel_3.getLayout();
+		flowLayout_1.setAlignment(FlowLayout.LEFT);
+		GridBagConstraints gbc_panel_3 = new GridBagConstraints();
+		gbc_panel_3.insets = new Insets(0, 0, 5, 5);
+		gbc_panel_3.fill = GridBagConstraints.BOTH;
+		gbc_panel_3.gridx = 2;
+		gbc_panel_3.gridy = 2;
+		add(panel_3, gbc_panel_3);
+		
 		textField = new JTextField();
+		panel_3.add(textField);
 		textField.setEditable(false);
-		GridBagConstraints gbc_textField = new GridBagConstraints();
-		gbc_textField.insets = new Insets(0, 0, 5, 5);
-		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField.gridx = 5;
-		gbc_textField.gridy = 5;
-		add(textField, gbc_textField);
-		textField.setColumns(10);
+		textField.setColumns(15);
 		
-		JLabel lblNewLabel_1 = new JLabel("\u6258\u8FD0\u8BA2\u5355\u6761\u5F62\u7801\u53F7");
-		lblNewLabel_1.setFont(new Font("黑体", Font.BOLD, 12));
-		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
-		gbc_lblNewLabel_1.insets = new Insets(0, 0, 0, 5);
-		gbc_lblNewLabel_1.gridx = 1;
-		gbc_lblNewLabel_1.gridy = 7;
-		add(lblNewLabel_1, gbc_lblNewLabel_1);
+		scrollPane = new JScrollPane();
+		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
+		gbc_scrollPane.gridwidth = 4;
+		gbc_scrollPane.insets = new Insets(0, 0, 0, 5);
+		gbc_scrollPane.fill = GridBagConstraints.BOTH;
+		gbc_scrollPane.gridx = 1;
+		gbc_scrollPane.gridy = 3;
+		add(scrollPane, gbc_scrollPane);
 		
-		textField_1 = new JTextField();
-		textField_1.setEditable(false);
-		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
-		gbc_textField_1.insets = new Insets(0, 0, 0, 5);
-		gbc_textField_1.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_1.gridx = 5;
-		gbc_textField_1.gridy = 7;
-		add(textField_1, gbc_textField_1);
-		textField_1.setColumns(10);
+		table = new JTable();
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"\u5FEB\u9012\u5355\u53F7"
+			}
+		));
+		scrollPane.setViewportView(table);
 	}
 
 }
