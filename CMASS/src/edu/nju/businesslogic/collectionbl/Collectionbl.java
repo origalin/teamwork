@@ -107,6 +107,9 @@ public class Collectionbl implements CollectionLogicService{
 		// TODO 自动生成的方法存根
 		ArrayList<HistoryTimePO> historyTimePOs = getHistoryPO(sCity, rCity);
 		int sum = 0;
+		if(historyTimePOs.size()==0) {
+			return 0;
+		}
 		for(int i = 0;i < historyTimePOs.size();i++) {
 			sum+=historyTimePOs.get(i).getDays();
 		}
