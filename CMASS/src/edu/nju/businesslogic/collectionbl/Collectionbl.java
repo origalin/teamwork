@@ -66,7 +66,7 @@ public class Collectionbl implements CollectionLogicService{
 	}
 
 	@Override
-	public double getDistance(String city) {
+	public double getDistance(String city) throws RemoteException {
 		// TODO 自动生成的方法存根
 		String sCity = institution.getCity(institutionID);
 		return distance.getDistance(sCity, city);
@@ -115,7 +115,7 @@ public class Collectionbl implements CollectionLogicService{
 
 	@Override
 	public double priceCalc(String sCity, String rCity, int packing,
-			double[] volume, double weight,int sendType) {
+			double[] volume, double weight,int sendType) throws RemoteException {
 		// TODO 自动生成的方法存根
 		double mayWeight = volume[0]*volume[1]*volume[2]/5000;
 		if(weight<=mayWeight) {

@@ -443,12 +443,13 @@ public class CollertionPanel extends JPanel{
 		if(estimatable()) {
 			try {
 				timeField.setText(String.valueOf(collection.timeEstimate(scity, rcity)));
+				priceField.setText(String.valueOf(collection.priceCalc(scity, rcity, packageType, volume, weight,sendType)));
 			} catch (RemoteException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 				warning("net");
 			}
-			priceField.setText(String.valueOf(collection.priceCalc(scity, rcity, packageType, volume, weight,sendType)));
+			
 		}else {
 			warning("lost");
 		}

@@ -169,16 +169,16 @@ public class TransferDoc implements TransferDocService{
 		// TODO 自动生成的方法存根
 		return null;
 	}
-	private double calcPrice_car(String targetCity) {
+	private double calcPrice_car(String targetCity) throws RemoteException {
 		double distance = this.distance.getDistance(institution.getCity(institutionID),targetCity);
 		return distance*20;
 		
 	}
-	private double calcPrice_plain(String targetCity) {
+	private double calcPrice_plain(String targetCity) throws RemoteException {
 		double distance = this.distance.getDistance(institution.getCity(institutionID),targetCity);
 		return distance*1000;
 	}
-	private double calcPrice_train(String targetCity) {
+	private double calcPrice_train(String targetCity) throws RemoteException {
 		double distance = this.distance.getDistance(institution.getCity(institutionID),targetCity);
 		return distance*400;
 	}
