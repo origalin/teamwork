@@ -26,7 +26,15 @@ import edu.nju.presentation.mainui.CheckDialog;
 import edu.nju.vo.GatheringDocVO;
 import edu.nju.vo.InWareHouseDocVO;
 import edu.nju.vo.OutWareHouseDocVO;
+import edu.nju.vo.OverDocVO;
 import edu.nju.vo.PayDocVO;
+import edu.nju.vo.SendDocVO;
+import edu.nju.vo.TransferDocVO;
+import edu.nju.vo.YArrivalDocVO;
+import edu.nju.vo.YDeliverDocVO;
+import edu.nju.vo.YLoadDocVO;
+import edu.nju.vo.ZArrivalDocVO;
+import edu.nju.vo.ZLoadDocVO;
 import edu.nju.presentation.mainui.*;
 
 import java.awt.event.ActionListener;
@@ -227,9 +235,68 @@ public class checkMainUI extends JPanel{
 						CheckDialog InWareHouseDocDialog=new CheckDialog();
 						CheckInWareHouseDoc InWareHouseDocui=new CheckInWareHouseDoc(InWareHouseDocVO);
 						InWareHouseDocDialog.setCheckMode(InWareHouseDocui);
+						break;
 					case "出库单":
 						OutWareHouseDocPO OutWareHouseDocPO=getDocPOByID(inputID,uncheckedOutWareHouseDocList);
 						OutWareHouseDocVO OutWareHouseDocVO=new OutWareHouseDocVO(OutWareHouseDocPO);
+						CheckDialog OutWareHouseDocDialog=new CheckDialog();
+						CheckWareHouseDoc OutWareHouseDocui=new CheckWareHouseDoc(OutWareHouseDocVO);
+						OutWareHouseDocDialog.setCheckMode(OutWareHouseDocui);
+						break;
+						/*
+					case"中转单":
+						TransferDocPO TransferDocPO=getDocPOByID(inputID,uncheckedTransferDocList);
+						TransferDocVO TransferDocVO=new TransferDocVO(TransferDocPO);						
+						 */
+					case "中转中心装车单":
+						ZLoadDocPO ZLoadDocPO=getDocPOByID(inputID,uncheckedZLoadDocList);
+						ZLoadDocVO ZLoadDocVO=new ZLoadDocVO(ZLoadDocPO);
+						CheckDialog ZLoadDocDialog=new CheckDialog();
+						CheckZLoadDoc ZLoadDocui=new CheckZLoadDoc(ZLoadDocVO);
+						ZLoadDocDialog.setCheckMode(ZLoadDocui);
+						break;
+					case"营业厅装车单":
+						YLoadDocPO YLoadDocPO=getDocPOByID(inputID,uncheckedYLoadDocList);
+						YLoadDocVO YLoadDocVO=new YLoadDocVO(YLoadDocPO);
+						CheckDialog YLoadDocDialog=new CheckDialog();
+						checkYLoadDoc YLoadDocui=new checkYLoadDoc(YLoadDocVO);
+						YLoadDocDialog.setCheckMode(YLoadDocui);
+						break;
+					case"收件单":
+						OverDocPO OverDocPO=getDocPOByID(inputID,uncheckedOverDocList);
+						OverDocVO OverDocVO=new OverDocVO(OverDocPO);
+						CheckDialog OverDocDialog=new CheckDialog();
+						checkOverDoc OverDocui=new checkOverDoc(OverDocVO);
+						OverDocDialog.setCheckMode(OverDocui);
+						break;
+					case"营业厅到达单":
+						YArrivalDocPO YArrivalDocPO=getDocPOByID(inputID,uncheckedYArrivalDocList);
+						YArrivalDocVO YArrivalDocVO=new YArrivalDocVO(YArrivalDocPO);
+						CheckDialog YArrivalDocDialog=new CheckDialog();
+						checkYArrivalDoc YArrivalDocui=new checkYArrivalDoc(YArrivalDocVO);
+						YArrivalDocDialog.setCheckMode(YArrivalDocui);
+						break;
+					case"寄件单":
+						SendDocPO SendDocPO=getDocPOByID(inputID,uncheckedSendDocList);
+						SendDocVO SendDocVO=new SendDocVO(SendDocPO);
+						CheckDialog SendDocDialog=new CheckDialog();
+						CheckSendDoc SendDocui=new CheckSendDoc(SendDocVO);
+						SendDocDialog.setCheckMode(SendDocui);
+						break;
+					case"中转中心到达单":
+						ZArrivalDocPO ZArrivalDocPO=getDocPOByID(inputID,uncheckedZArrivalDocList);
+						ZArrivalDocVO ZArrivalDocVO=new ZArrivalDocVO(ZArrivalDocPO);
+						CheckDialog ZArrivalDocDialog=new CheckDialog();
+						checkZArrivalDoc ZArrivalDocui=new checkZArrivalDoc(ZArrivalDocVO);
+						ZArrivalDocDialog.setCheckMode(ZArrivalDocui);
+						break;
+					case"派件单":
+						YDeliverDocPO YDeliverDocPO=getDocPOByID(inputID,uncheckedYDeliverDocList);
+						YDeliverDocVO YDeliverDocVO=new YDeliverDocVO(YDeliverDocPO);
+						CheckDialog YDeliverDocDialog=new CheckDialog();
+						checkYDeliverDoc YDeliverDocui=new checkYDeliverDoc(YDeliverDocVO);
+						YDeliverDocDialog.setCheckMode(YDeliverDocui);
+						break;
 						
 					/*
 						收款单.

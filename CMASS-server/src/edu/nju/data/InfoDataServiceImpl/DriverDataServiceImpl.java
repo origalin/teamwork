@@ -56,6 +56,7 @@ public class DriverDataServiceImpl extends UnicastRemoteObject implements Driver
 		String sql ="DELETE FROM DRIVER WHERE 司机编号='"+po.getDriverID()+"';" ;
 		SQL.databaseUpdate(sql);
 		SQL.closeDatabase();
+		System.out.println("删除成功");
 	}
 
 	@Override

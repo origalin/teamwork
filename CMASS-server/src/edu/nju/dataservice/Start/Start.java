@@ -59,8 +59,11 @@ public class Start {
 				Naming.rebind("rmi://127.0.0.1:6600/CarDataService", carDataService);
 				Naming.rebind("rmi://127.0.0.1:6600/DistanceDataService", distanceDataService);
 				Naming.rebind("rmi://127.0.0.1:6600/DriverDataService", driverDataService);
-//				Naming.rebind("rmi://127.0.0.1:6600/InstitutionDataService", institutionDataService);
+
+				Naming.rebind("rmi://127.0.0.1:6600/InstitutionDataService", institutionDataService);
+
 				Naming.rebind("rmi://127.0.0.1:6600/FinanceDataService",financeDataService);
+
 				Naming.rebind("rmi://127.0.0.1:6600/collectionDataService", collectionDataService);
 				Naming.rebind("rmi://127.0.0.1:6600/transferDataService", transferDataService);
 				System.out.println("Service Start!");

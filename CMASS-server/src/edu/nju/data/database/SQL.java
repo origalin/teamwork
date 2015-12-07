@@ -11,6 +11,8 @@ import java.sql.*;
  *注意：调用以上两个方法获得ResultSet并根据此生成了PO之后务必调用closeDatabase方法关闭数据库连接
  */
 public class SQL {
+	
+	
 	public static Connection conn = null;
 	public static Statement stmt = null;
 	public static ResultSet rs = null;

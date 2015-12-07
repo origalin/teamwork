@@ -25,13 +25,13 @@ import java.awt.Font;
 public class CheckTransferDoc_Car extends JPanel{
 	private JTextField carIDField;
 	private JTextField watcherField;
-	private JTextField targetField;
+	private JTextField endPlace;
 	private JTable table;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
+	private JTextField startPlace;
+	private JTextField TransferDocID;
+	private JTextField Date;
+	private JTextField Money;
+	private JTextField carTransportID;
 	public CheckTransferDoc_Car(TransferDoc_CarVO vo) {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{418, 0};
@@ -86,10 +86,10 @@ public class CheckTransferDoc_Car extends JPanel{
 				gbc_panel_1.gridy = 1;
 				panel_11.add(panel_1, gbc_panel_1);
 				
-				textField_1 = new JTextField();
-				textField_1.setEditable(false);
-				panel_1.add(textField_1);
-				textField_1.setColumns(20);
+				TransferDocID = new JTextField();
+				TransferDocID.setEditable(false);
+				panel_1.add(TransferDocID);
+				TransferDocID.setColumns(20);
 				
 				JLabel label_4 = new JLabel("\u65E5\u671F");
 				GridBagConstraints gbc_label_4 = new GridBagConstraints();
@@ -109,10 +109,10 @@ public class CheckTransferDoc_Car extends JPanel{
 				gbc_panel_2.gridy = 1;
 				panel_11.add(panel_2, gbc_panel_2);
 				
-				textField_2 = new JTextField();
-				textField_2.setEditable(false);
-				panel_2.add(textField_2);
-				textField_2.setColumns(20);
+				Date = new JTextField();
+				Date.setEditable(false);
+				panel_2.add(Date);
+				Date.setColumns(20);
 				
 				JLabel label_2 = new JLabel("\u51FA\u53D1\u5730    ");
 				GridBagConstraints gbc_label_2 = new GridBagConstraints();
@@ -133,19 +133,19 @@ public class CheckTransferDoc_Car extends JPanel{
 				FlowLayout flowLayout_6 = (FlowLayout) panel_6.getLayout();
 				flowLayout_6.setAlignment(FlowLayout.LEFT);
 				
-				textField = new JTextField();
-				textField.setEditable(false);
-				panel_6.add(textField);
-				textField.setColumns(10);
+				startPlace = new JTextField();
+				startPlace.setEditable(false);
+				panel_6.add(startPlace);
+				startPlace.setColumns(10);
 				
 				JLabel label_10 = new JLabel("\u5230\u8FBE\u5730");
 				label_10.setFont(new Font("ºÚÌå", Font.BOLD, 15));
 				panel_6.add(label_10);
 				
-				targetField = new JTextField();
-				targetField.setEditable(false);
-				panel_6.add(targetField);
-				targetField.setColumns(10);
+				endPlace = new JTextField();
+				endPlace.setEditable(false);
+				panel_6.add(endPlace);
+				endPlace.setColumns(10);
 		
 		JLabel label_6 = new JLabel("\u6C7D\u8FD0\u7F16\u53F7");
 		GridBagConstraints gbc_label_6 = new GridBagConstraints();
@@ -165,10 +165,10 @@ public class CheckTransferDoc_Car extends JPanel{
 		gbc_panel_4.gridy = 2;
 		panel_11.add(panel_4, gbc_panel_4);
 		
-		textField_4 = new JTextField();
-		textField_4.setEditable(false);
-		panel_4.add(textField_4);
-		textField_4.setColumns(10);
+		carTransportID = new JTextField();
+		carTransportID.setEditable(false);
+		panel_4.add(carTransportID);
+		carTransportID.setColumns(10);
 		
 		JLabel label_11 = new JLabel("\u8F66\u6B21\u53F7  ");
 		label_11.setFont(new Font("ºÚÌå", Font.BOLD, 15));
@@ -221,10 +221,10 @@ public class CheckTransferDoc_Car extends JPanel{
 		gbc_panel_3.gridy = 3;
 		panel_11.add(panel_3, gbc_panel_3);
 		
-		textField_3 = new JTextField();
-		textField_3.setEditable(false);
-		panel_3.add(textField_3);
-		textField_3.setColumns(10);
+		Money = new JTextField();
+		Money.setEditable(false);
+		panel_3.add(Money);
+		Money.setColumns(10);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
@@ -259,7 +259,14 @@ public class CheckTransferDoc_Car extends JPanel{
 		DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
 		table.getColumnModel().getColumn(0).setPreferredWidth(130);
 		panel_14.add(table);
-		
+		/*
+		TransferDocID.setText(vo.getID());
+		startPlace.setText(vo.getFrom());
+		endPlace.setText(vo.getTargetCity());
+		Money.setText(vo.getPrice());
+		Date.setText(vo.getDate());
+		carTransportID.setText(vo.get);
+		*/
 
 	}
 }
