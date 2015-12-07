@@ -17,6 +17,7 @@ import edu.nju.businesslogicservice.financelogicservice.FinanceLogicService;
 import edu.nju.dataFactory.DataFactory;
 import edu.nju.dataservice.financedataservice.FinanceDataService;
 import edu.nju.dataservice.logisticsqueryDataService.LogisticsDataService;
+import edu.nju.exception.DatabaseNULLException;
 import edu.nju.po.AccountPO;
 import edu.nju.po.GatheringDocPO;
 import edu.nju.po.InstitutionPO;
@@ -177,7 +178,13 @@ public class financebl implements FinanceLogicService {
 	@Override
 	public ArrayList<InstitutionPO> getUnpaidInstitutionList(){
 		
-		return institution.getUnpaidInstitutionList();
+		try {
+			return institution.getUnpaidInstitutionList();
+		} catch (RemoteException e) {
+			System.out.println("机构获取失败");
+			e.printStackTrace();
+			return null;
+		}
 	
 	}
 
@@ -207,7 +214,13 @@ public class financebl implements FinanceLogicService {
 
 	@Override
 	public ArrayList<StaffPO> getUnpaidStaffList() {
-		return institution.getUnpaidStaffList();
+		try {
+			return institution.getUnpaidStaffList();
+		} catch (RemoteException e) {
+			System.out.println("人员获取失败");
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 //账户管理方法
@@ -317,7 +330,7 @@ public class financebl implements FinanceLogicService {
 	public void setInstitutionList(ArrayList<InstitutionPO> InstitutionList) {
 		
 		for(InstitutionPO po:InstitutionList){
-			institution.saveInstitution(po);
+			 institution.saveInstitution(po);
 		}
 	}
 
@@ -383,6 +396,9 @@ public class financebl implements FinanceLogicService {
 			System.out.println("财务数据层查询失败");
 			e.printStackTrace();
 			return null;
+		} catch (DatabaseNULLException e) {
+			System.out.println("boss数据库访问失败");
+			e.printStackTrace();
 		}
 		return null;
 
@@ -469,7 +485,13 @@ public double getCourierMoney(String courier_ID);
 
 	@Override
 	public String getStaffSalaryName(String staffID) {
-		return institution.getStaffName(staffID);
+		try {
+			return institution.getStaffName(staffID);
+		} catch (RemoteException e) {
+			System.out.println("institution 协作出错");
+			e.printStackTrace();
+			return null;
+		}
 	}
 	@Override
 	public double calculateSalary(String staffID) {
@@ -486,7 +508,13 @@ public double getCourierMoney(String courier_ID);
 			return calculateDriverSalary(staffID);
 		}
 		//11位说明是普通员工
-		Post position=institution.getPosition(staffID);
+		Post position=null;
+		try {
+			position = institution.getPosition(staffID);
+		} catch (RemoteException e) {
+			System.out.println("与机构协作出错");
+			e.printStackTrace();
+		}
 		if(position==Post.COURIER){
 			return calculateCourierSalary(staffID);
 		}else{
@@ -495,11 +523,11 @@ public double getCourierMoney(String courier_ID);
 	}
 	
 	public double calculateCourierSalary(String staffID){
-		double base=institution.getBase(staffID);
-		double bonus=institution.getBonus(staffID);
-		double commision=institution.getPercentage(staffID);
-		double totalMoney;
 		try {
+			double base=institution.getBase(staffID);
+			double bonus=institution.getBonus(staffID);
+			double commision=institution.getPercentage(staffID);
+			double totalMoney;
 			totalMoney = collectionbl.getCourierMoney(staffID);
 			return base+bonus+commision*totalMoney;
 		} catch (RemoteException e) {
@@ -525,22 +553,44 @@ public double getCourierMoney(String courier_ID);
 	}
 	
 	public double calculateNormalSalary(String staffID){
+		try{
 		double base=institution.getBase(staffID);
 		double bonus=institution.getBonus(staffID);
 		return base+bonus;
+		}catch(RemoteException e){
+			System.out.println("与机构协作出错");
+			e.printStackTrace();
+			return 0;
+		}
 	}
 	
 	
 	public String getStaffName(){
-		return institution.getStaffName(staffID);
+		try {
+			return institution.getStaffName(staffID);
+		} catch (RemoteException e) {
+			System.out.println("与机构协作出错");
+			e.printStackTrace();
+			return null;
+		}
 	}
 	@Override
 	public void resetSalary() {
-		institution.resetSalary();
+		try {
+			institution.resetSalary();
+		} catch (RemoteException e) {
+			System.out.println("与机构协作出错");
+			e.printStackTrace();
+		}
 	}
 	@Override
 	public void resetRent() {
-		institution.resetRent();
+		try {
+			institution.resetRent();
+		} catch (RemoteException e) {
+			System.out.println("与机构协作出错");
+			e.printStackTrace();
+		}
 		
 	}
 	@Override
