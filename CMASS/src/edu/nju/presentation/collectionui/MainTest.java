@@ -19,24 +19,28 @@ public class MainTest {
 //		frame.getContentPane().add(new CollertionPanel());
 		
 		
-//		CollectionDataService collectionDataService = DataFactory.getCollectionDataService();
-//		try {
-//			System.out.println(collectionDataService.getSendDocPOByID("2002512345").getrAddress());
-//			
-//		} catch (RemoteException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-		TransferDataService transferDataService = DataFactory.getTransferDataService();
-		String[] aStrings = {"122","12","231","213","123","123"};
-		String[] bStrings = {"122","12","231","213","123","123"};
+		CollectionDataService collectionDataService = DataFactory.getCollectionDataService();
 		try {
-			OverDocPO po = new OverDocPO("134", aStrings, bStrings, new Date(), "12123");
-			transferDataService.saveOverDocPO(po);
+			System.out.println(collectionDataService.getSendDocPOByID("2002512345").getrAddress());
 			
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} 
+		}
+//		TransferDataService transferDataService = DataFactory.getTransferDataService();
+//		String[] aStrings = {"122","12","231","213","123","123"};
+//		String[] bStrings = {"122","12","231","213","123","123"};
+//		try {
+//			OverDocPO po = new OverDocPO("134", aStrings, bStrings, new Date(), "12123");
+//			transferDataService.saveOverDocPO(po);
+//			
+//		} catch (RemoteException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} 
+ catch (DatabaseNULLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
