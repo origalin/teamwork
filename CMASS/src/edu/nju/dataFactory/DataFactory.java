@@ -8,6 +8,7 @@ import java.rmi.RemoteException;
 import edu.nju.data.StorageDataServiceImpl.StorageDataServiceImpl;
 import edu.nju.data.SystemDataServiceImpl.SystemDataServiceImpl;
 import edu.nju.dataservice.collectiondataservice.CollectionDataService;
+import edu.nju.dataservice.financedataservice.FinanceDataService;
 import edu.nju.dataservice.infodataservice.CarDataService;
 import edu.nju.dataservice.infodataservice.DistanceDataService;
 import edu.nju.dataservice.infodataservice.DriverDataService;
@@ -18,6 +19,7 @@ import edu.nju.dataservice.systemdataservice.SystemDataService;
 import edu.nju.dataservice.transferdataservice.TransferDataService;
 
 public class DataFactory {
+	static FinanceDataService financeDataService=null;
 	static StorageDataService storageDataService = null;
 	static LogisticsDataService logisticsDataService = null;
 	static CarDataService carDataService=null;
@@ -146,6 +148,18 @@ public class DataFactory {
 			e.printStackTrace();
 		}
 		return collectionDataService;
+	}
+	
+	public  static FinanceDataService getFinanceDataService(){
+		try{
+			if(financeDataService==null){
+				financeDataService=(FinanceDataService)Naming.lookup("rmi://127.0.0.1:6600/FinanceDataService");
+			}
+		}catch(MalformedURLException|RemoteException|NotBoundException e){
+			e.printStackTrace();
+			
+		}
+		return financeDataService;
 	}
 
 }

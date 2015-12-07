@@ -14,6 +14,7 @@ import edu.nju.businesslogic.transferbl.TransferDoc;
 import edu.nju.businesslogic.transferbl.YLoadDoc;
 import edu.nju.businesslogic.transferbl.ZLoadDoc;
 import edu.nju.businesslogicservice.financelogicservice.FinanceLogicService;
+import edu.nju.dataFactory.DataFactory;
 import edu.nju.dataservice.financedataservice.FinanceDataService;
 import edu.nju.dataservice.logisticsqueryDataService.LogisticsDataService;
 import edu.nju.po.AccountPO;
@@ -85,29 +86,30 @@ public class financebl implements FinanceLogicService {
 	String staffID;
 	Collectionbl collectionbl=new Collectionbl();
 	Institution institution=new Institution();
-	TransferDoc transfer=new TransferDoc();
+	
+	TransferDoc transfer=null;//new TransferDoc();
+	
 	YLoadDoc YLoad=new YLoadDoc();
 	ZLoadDoc ZLoad=new ZLoadDoc();
 	FinanceDataService financeDataService;
 	Driver driver=new Driver();
-	public financebl(){
+	public static void main(String[]args){
+		financebl bl=new financebl();
 		try {
-			this.financeDataService = financeDataService=(FinanceDataService)Naming.lookup("rmi://127.0.0.1:6600/FinanceDataService");
-		} catch (MalformedURLException | RemoteException | NotBoundException e) {
+			System.out.println(bl.financeDataService.getTotalIncome());
+		} catch (RemoteException e) {
+			System.out.println("连接错误");
 			e.printStackTrace();
-		};
+		}
+	}
+	public financebl(){
+		this.financeDataService=DataFactory.getFinanceDataService();
 		
 	}
 	public financebl(String staffID) {
+		this.financeDataService=DataFactory.getFinanceDataService();
 		this.staffID=staffID;
-//		list= new ArrayList<PositionPO>();
-		try {
-			this.financeDataService = financeDataService=(FinanceDataService)Naming.lookup("rmi://127.0.0.1:6600/FinanceDataService");
-		} catch (MalformedURLException | RemoteException | NotBoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		};
-		
+
 	}
 	
 	@Override
@@ -182,13 +184,25 @@ public class financebl implements FinanceLogicService {
 	@Override
 	public ArrayList<YLoadDocPO> getUnpaidYLoadDocList() {
 		
-		return YLoad.getUnPaidYLoadDocPOs();
+		try {
+			return YLoad.getUnPaidYLoadDocPOs();
+		} catch (RemoteException e) {
+			System.out.println("财务数据层查询失败");
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	@Override
 	public ArrayList<ZLoadDocPO> getUnpaidZLoadDocList() {
 		
-		return ZLoad.getUnPaidZLoadDocPOs();
+		try {
+			return ZLoad.getUnPaidZLoadDocPOs();
+		} catch (RemoteException e) {
+			System.out.println("财务数据层查询失败");
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	@Override
@@ -268,7 +282,13 @@ public class financebl implements FinanceLogicService {
 
 	@Override
 	public ArrayList<TransferDocPO> getUnpaidCarTransferList() {
-		return transfer.getUnPaidTransferDocPOs();
+		try {
+			return transfer.getUnPaidTransferDocPOs();
+		} catch (RemoteException e) {
+			System.out.println("财务数据层查询失败");
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	
@@ -316,14 +336,24 @@ public class financebl implements FinanceLogicService {
 	@Override
 	public void setYLoadDocList(ArrayList<YLoadDocPO> YLoadDocList) {
 		for(YLoadDocPO po:YLoadDocList){
-			YLoad.saveYloadDocPO(po);
+			try {
+				YLoad.saveYloadDocPO(po);
+			} catch (RemoteException e) {
+				System.out.println("财务数据层查询失败");
+				e.printStackTrace();
+			}
 		}
 	}
 
 	@Override
 	public void setZLoadDocList(ArrayList<ZLoadDocPO> ZLoadDocList) {
 		for(ZLoadDocPO po:ZLoadDocList){
-			ZLoad.saveZloadDocPO(po);
+			try {
+				ZLoad.saveZloadDocPO(po);
+			} catch (RemoteException e) {
+				System.out.println("财务数据层查询失败");
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -339,13 +369,23 @@ public class financebl implements FinanceLogicService {
 	public GatheringDocVO reviewGatheringDoc(String GatheringDocID,
 			String courier_ID, String account) {
 		//double money=collectionbl.getCourierMoney(courier_ID);
-		ArrayList<String> SendDoclist=collectionbl.getSendDocsByID(courier_ID);
-		double money=0;
-		for(String itemID:SendDoclist){
-			SendDocPO po=collectionbl.getSendDocPOByID(itemID);
+		ArrayList<String> SendDoclist;
+		try {
+			SendDoclist = collectionbl.getSendDocsByID(courier_ID);	
+			double money=0;
+			for(String itemID:SendDoclist){
+			SendDocPO po;
+			po = collectionbl.getSendDocPOByID(itemID);
 			money+=po.getSumPrice();
+			return new GatheringDocVO(GatheringDocID,new Date(), money, courier_ID, SendDoclist, account);
+			}
+		} catch (RemoteException e) {
+			System.out.println("财务数据层查询失败");
+			e.printStackTrace();
+			return null;
 		}
-		return new GatheringDocVO(GatheringDocID,new Date(), money, courier_ID, SendDoclist, account);
+		return null;
+
 	}
 
 	@Override
@@ -389,7 +429,12 @@ public double getCourierMoney(String courier_ID);
 
 	@Override
 	public void setSendDocList(String courier_ID) {
-		collectionbl.saveSendDocCreateGatheringDoc(courier_ID);
+		try {
+			collectionbl.saveSendDocCreateGatheringDoc(courier_ID);
+		} catch (RemoteException e) {
+			System.out.println("财务数据层查询失败");
+			e.printStackTrace();
+		}
 	}
 	
 	@Override
@@ -453,14 +498,30 @@ public double getCourierMoney(String courier_ID);
 		double base=institution.getBase(staffID);
 		double bonus=institution.getBonus(staffID);
 		double commision=institution.getPercentage(staffID);
-		double totalMoney=collectionbl.getCourierMoney(staffID);
-		return base+bonus+commision*totalMoney;
+		double totalMoney;
+		try {
+			totalMoney = collectionbl.getCourierMoney(staffID);
+			return base+bonus+commision*totalMoney;
+		} catch (RemoteException e) {
+			System.out.println("财务数据层查询失败");
+			e.printStackTrace();
+			return 0;
+		}
+		
 	}
 	
 	public double calculateDriverSalary(String DriverID){
 		double oneTimeMoney=institution.getDriverCommision(DriverID);
-		int time=YLoad.getDriverTime(DriverID)+ZLoad.getDriverTime(DriverID);
-		return oneTimeMoney*time;
+		int time;
+		try {
+			time = YLoad.getDriverTime(DriverID)+ZLoad.getDriverTime(DriverID);
+			return oneTimeMoney*time;
+		} catch (RemoteException e) {
+			System.out.println("财务数据层查询失败");
+			e.printStackTrace();
+			return 0;
+		}
+		
 	}
 	
 	public double calculateNormalSalary(String staffID){

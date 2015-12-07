@@ -6,6 +6,7 @@ import java.rmi.registry.LocateRegistry;
 
 import com.mysql.jdbc.Driver;
 
+import edu.nju.data.FinanceDataServiceImpl.FinanceDataServiceImpl;
 import edu.nju.data.InfoDataServiceImpl.CarDataServiceImpl;
 import edu.nju.data.InfoDataServiceImpl.DistanceDataServiceImpl;
 import edu.nju.data.InfoDataServiceImpl.DriverDataServiceImpl;
@@ -17,6 +18,7 @@ import edu.nju.data.collectionDataServiceImpl.CollectionDataServiceImpl;
 import edu.nju.data.transferDataServiceImpl.TransferDataServiceImpl;
 import edu.nju.dataservice.approvedataservice.ApproveDataService;
 import edu.nju.dataservice.collectiondataservice.CollectionDataService;
+import edu.nju.dataservice.financedataservice.FinanceDataService;
 import edu.nju.dataservice.infodataservice.CarDataService;
 import edu.nju.dataservice.infodataservice.DistanceDataService;
 import edu.nju.dataservice.infodataservice.DriverDataService;
@@ -37,7 +39,7 @@ public class Start {
 		 try {				
 				LogisticsDataService logisticsDataService=new LogisticsDataServiceImpl();
 				StorageDataService storageDataService=new StorageDataServiceImpl();
-				
+				FinanceDataService financeDataService=new FinanceDataServiceImpl();
 				SystemDataService systemDataService=new SystemDataServiceImpl();
 				CarDataService carDataService=new CarDataServiceImpl();
 				DistanceDataService distanceDataService=new DistanceDataServiceImpl();
@@ -58,7 +60,7 @@ public class Start {
 				Naming.rebind("rmi://127.0.0.1:6600/DistanceDataService", distanceDataService);
 				Naming.rebind("rmi://127.0.0.1:6600/DriverDataService", driverDataService);
 //				Naming.rebind("rmi://127.0.0.1:6600/InstitutionDataService", institutionDataService);
-				
+				Naming.rebind("rmi://127.0.0.1:6600/FinanceDataService",financeDataService);
 				Naming.rebind("rmi://127.0.0.1:6600/collectionDataService", collectionDataService);
 				Naming.rebind("rmi://127.0.0.1:6600/transferDataService", transferDataService);
 				System.out.println("Service Start!");

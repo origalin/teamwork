@@ -24,6 +24,8 @@ import edu.nju.po.ZArrivalDocPO;
 import edu.nju.po.ZLoadDocPO;
 import edu.nju.presentation.mainui.CheckDialog;
 import edu.nju.vo.GatheringDocVO;
+import edu.nju.vo.InWareHouseDocVO;
+import edu.nju.vo.OutWareHouseDocVO;
 import edu.nju.vo.PayDocVO;
 import edu.nju.presentation.mainui.*;
 
@@ -78,7 +80,7 @@ public class checkMainUI extends JPanel{
 		
 		JComboBox comboBox = new JComboBox();
 		
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"\u6536\u6B3E\u5355", "\u5165\u5E93\u5355", "\u4E2D\u8F6C\u5355", "\u51FA\u5E93\u5355", "\u4E2D\u8F6C\u4E2D\u5FC3\u88C5\u8F66\u5355", "\u8425\u4E1A\u5385\u88C5\u8F66\u5355", "\u6536\u4EF6\u5355", "\u4ED8\u6B3E\u5355", "\u8425\u4E1A\u5385\u5230\u8FBE\u5355", "\u6D3E\u4EF6\u5355", "\u4E2D\u8F6C\u4E2D\u5FC3\u5230\u8FBE\u5355"}));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"\u6536\u6B3E\u5355", "\u5165\u5E93\u5355", "\u4E2D\u8F6C\u5355", "\u51FA\u5E93\u5355", "\u4E2D\u8F6C\u4E2D\u5FC3\u88C5\u8F66\u5355", "\u8425\u4E1A\u5385\u88C5\u8F66\u5355", "\u6536\u4EF6\u5355", "\u4ED8\u6B3E\u5355", "\u8425\u4E1A\u5385\u5230\u8FBE\u5355", "\u5BC4\u4EF6\u5355", "\u4E2D\u8F6C\u4E2D\u5FC3\u5230\u8FBE\u5355", "\u6D3E\u4EF6\u5355"}));
 		GridBagConstraints gbc_comboBox = new GridBagConstraints();
 		gbc_comboBox.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
@@ -94,6 +96,7 @@ public class checkMainUI extends JPanel{
 				String s=(String) comboBox.getSelectedItem();
 				switch(s){
 				case "收款单":
+					/*
 					ArrayList<String> uncheckedGatheringDocID=new ArrayList<String>();
 					uncheckedGatheringDocList=bl.getunchekedGatheringDocList();
 					for(GatheringDocPO GatheringDoc:uncheckedGatheringDocList){
@@ -102,8 +105,12 @@ public class checkMainUI extends JPanel{
 					table=initializeTable(uncheckedGatheringDocID);
 					scrollPane.setViewportView(table);
 					updateUI();
+					*/
+					uncheckedGatheringDocList=bl.getunchekedGatheringDocList();
+					showUncheckedDoc(uncheckedGatheringDocList);
 					break;
 				case "付款单":
+					/*
 					ArrayList<String> uncheckedPayDocID=new ArrayList<String>();
 					uncheckedPayDocList=bl.getunchekedPayDocList();
 					for(PayDocPO PayDoc:uncheckedPayDocList){
@@ -113,14 +120,63 @@ public class checkMainUI extends JPanel{
 					scrollPane.setViewportView(table);
 					updateUI();
 					break;
-					/*
-				case"入库单":
-				case"出库单"：
+					*/
+					uncheckedPayDocList=bl.getunchekedPayDocList();
+					showUncheckedDoc(uncheckedGatheringDocList);
+					break;
+				case "寄件单":
+					uncheckedSendDocList=bl.getuncheckedSendDocList();
+					showUncheckedDoc(uncheckedSendDocList);
+					break;
+				case "中转中心到达单":
+					uncheckedZArrivalDocList=bl.getunchekedZArrivalDocList();
+					showUncheckedDoc(uncheckedZArrivalDocList);
+					break;
+				case"营业厅到达单":
+					uncheckedYArrivalDocList=bl.getunchekedYArrivalDocList();
+					showUncheckedDoc(uncheckedYArrivalDocList);
+					break;
 				case"收件单":
-				case"付款单":
+					uncheckedOverDocList=bl.getunchekedOverDocList();
+					showUncheckedDoc(uncheckedOverDocList);
+					break;
 				case"营业厅装车单":
-				case"中转中心装车单"：
-				case"":
+					uncheckedYLoadDocList=bl.getunchekedYLoadDocList();
+					showUncheckedDoc(uncheckedYLoadDocList);
+					break;
+				case"中转中心装车单":
+					uncheckedZLoadDocList=bl.getunchekedZLoadDocList();
+					showUncheckedDoc(uncheckedZLoadDocList);
+					break;
+				case"派件单":
+					uncheckedYDeliverDocList=bl.getunchekedYDeliverDocList();
+					showUncheckedDoc(uncheckedYDeliverDocList);
+					break;
+				case"中转单":
+					uncheckedTransferDocList=bl.getunchekedTransferDocList();
+					showUncheckedDoc(uncheckedTransferDocList);
+					break;
+				case"入库单":
+					uncheckedInWareHouseDocList=bl.getunchekedInWareHouseDocList();
+					showUncheckedDoc(uncheckedInWareHouseDocList);
+					break;
+				case"出库单":
+					uncheckedOutWareHouseDocList=bl.getunchekedOutWareHouseDocList();
+					showUncheckedDoc(uncheckedOutWareHouseDocList);
+					break;
+					/*
+				收款单.
+				入库单
+				中转单
+				出库单
+				中转中心装车单.
+				营业厅装车单.
+				收件单.
+				付款单.
+				营业厅到达单.
+				寄件单.
+				中转中心到达单.
+				派件单.
 					*/
 				
 				}
@@ -152,19 +208,43 @@ public class checkMainUI extends JPanel{
 					String DocType=(String) comboBox.getSelectedItem();
 					switch(DocType){
 					case "收款单":
-						GatheringDocPO GatheringDocPO=getGatheringDocPOByID(inputID);
+						GatheringDocPO GatheringDocPO=getDocPOByID(inputID,uncheckedGatheringDocList);//getGatheringDocPOByID(inputID);
 						GatheringDocVO GatheringDocVO=GatheringDocVOToPO(GatheringDocPO);
 						CheckDialog GatheringDocdialog=new CheckDialog();
 			            checkGatheringDoc GatheringDocui=new checkGatheringDoc(GatheringDocVO);
 			            GatheringDocdialog.setCheckMode(GatheringDocui);
 						break;
 					case"付款单":
-						PayDocPO PayDocPO=getPayDocPOByID(inputID);
+						PayDocPO PayDocPO=getDocPOByID(inputID,uncheckedPayDocList);//getPayDocPOByID(inputID);
 						PayDocVO PayDocVO=PayDocVOToPO(PayDocPO);
 						CheckDialog PayDocdialog=new CheckDialog();
 			            checkPayDoc PayDocui=new checkPayDoc(PayDocVO);
 			            PayDocdialog.setCheckMode(PayDocui);
 						break;
+					case "入库单":
+						InWareHouseDocPO InWareHouseDocPO=getDocPOByID(inputID,uncheckedInWareHouseDocList);
+						InWareHouseDocVO InWareHouseDocVO=new InWareHouseDocVO(InWareHouseDocPO);
+						CheckDialog InWareHouseDocDialog=new CheckDialog();
+						CheckInWareHouseDoc InWareHouseDocui=new CheckInWareHouseDoc(InWareHouseDocVO);
+						InWareHouseDocDialog.setCheckMode(InWareHouseDocui);
+					case "出库单":
+						OutWareHouseDocPO OutWareHouseDocPO=getDocPOByID(inputID,uncheckedOutWareHouseDocList);
+						OutWareHouseDocVO OutWareHouseDocVO=new OutWareHouseDocVO(OutWareHouseDocPO);
+						
+					/*
+						收款单.
+						入库单
+						中转单
+						出库单
+						中转中心装车单.
+						营业厅装车单.
+						收件单.
+						付款单.
+						营业厅到达单.
+						寄件单.
+						中转中心到达单.
+						派件单.
+						*/
 					}
 				}
 			}
@@ -245,6 +325,7 @@ public class checkMainUI extends JPanel{
 					switch((String) comboBox.getSelectedItem()){
 					case "收款单":
 						//首先遍历JTable,改变ArrayList中的是否已经被审批的属性
+						/*
 						ArrayList<GatheringDocPO> checkedGatheringDocList=new ArrayList<GatheringDocPO>();
 						for(int i=0;i<table.getRowCount();i++){
 							if((boolean)table.getValueAt(i, 0)==true){
@@ -256,7 +337,12 @@ public class checkMainUI extends JPanel{
 						table=initializeTable(getEmptyList());
 						scrollPane.setViewportView(table);
 						updateUI();
+						*/
+						bl.setGatheringDocList(approveFinished(uncheckedGatheringDocList));
+						uncheckedGatheringDocList=null;
+						break;
 					case"付款单":
+						/*
 						ArrayList<PayDocPO> checkedPayDocList=new ArrayList<PayDocPO>();
 						for(int i=0;i<table.getRowCount();i++){
 							if((boolean)table.getValueAt(i, 0)==true){
@@ -268,6 +354,65 @@ public class checkMainUI extends JPanel{
 						table=initializeTable(getEmptyList());
 						scrollPane.setViewportView(table);
 						updateUI();
+						*/
+						bl.setPayDocList(approveFinished(uncheckedPayDocList));
+						uncheckedPayDocList=null;
+						break;
+					case"入库单":
+						bl.setInWareHouseDocList(approveFinished(uncheckedInWareHouseDocList));
+						uncheckedInWareHouseDocList=null;
+						break;
+					case"出库单":
+						bl.setOutWareHouseDocList(approveFinished(uncheckedOutWareHouseDocList));
+						uncheckedOutWareHouseDocList=null;
+						break;
+					case"中转单":
+						bl.setTransferDocList(approveBossFinished(uncheckedTransferDocList));
+						uncheckedTransferDocList=null;
+						break;
+					case"中转中心装车单":
+						bl.setZLoadDocList(approveBossFinished(uncheckedZLoadDocList));
+						uncheckedZLoadDocList=null;
+						break;
+					case"营业厅装车单":
+						bl.setYLoadDocList(approveBossFinished(uncheckedYLoadDocList));
+						uncheckedYLoadDocList=null;
+						break;
+					case"收件单":
+						bl.setOverDocList(approveBossFinished(uncheckedOverDocList));
+						uncheckedOverDocList=null;
+						break;
+					case "营业厅到达单":
+						bl.setYArrivalDocList(approveBossFinished(uncheckedYArrivalDocList));
+						uncheckedYArrivalDocList=null;
+						break;
+					case"寄件单":
+						bl.setSendDocList(approveBossFinished(uncheckedSendDocList));
+						uncheckedSendDocList=null;
+						break;
+					case "中转中心到达单":
+						bl.setZArrivalDocList(approveBossFinished(uncheckedZArrivalDocList));
+						uncheckedZArrivalDocList=null;
+						break;
+					case"派件单":
+						bl.setYDeliverDocList(approveBossFinished(uncheckedYDeliverDocList));
+						uncheckedYDeliverDocList=null;
+						break;
+					 /*
+				收款单.
+				入库单
+				中转单
+				出库单
+				中转中心装车单.
+				营业厅装车单.
+				收件单.
+				付款单.
+				营业厅到达单.
+				寄件单.
+				中转中心到达单.
+				派件单.
+					*/
+					 
 					}
 				}
 			}
@@ -333,5 +478,63 @@ public class checkMainUI extends JPanel{
 		}
 	}
 	
+	public void showUncheckedDoc(ArrayList<? extends Doc> docList){
+		ArrayList<String> uncheckedDocID=new ArrayList<String>();
+		for(Doc doc:docList){
+			uncheckedDocID.add(doc.getID());
+		}
+		table=initializeTable(uncheckedDocID);
+		scrollPane.setViewportView(table);
+		updateUI();
+	}
+	
+	public <T extends Doc> ArrayList<T> approveFinished(ArrayList<T> docList) {
+		/*
+		ArrayList<GatheringDocPO> checkedGatheringDocList=new ArrayList<GatheringDocPO>();
+		for(int i=0;i<table.getRowCount();i++){
+			if((boolean)table.getValueAt(i, 0)==true){
+				checkedGatheringDocList.add(uncheckedGatheringDocList.get(i));
+			}
+		}
+		bl.setGatheringDocList(checkedGatheringDocList);
+		uncheckedGatheringDocList=null;
+		table=initializeTable(getEmptyList());
+		scrollPane.setViewportView(table);
+		updateUI();
+		*/
+		ArrayList<T> checkedDocList=new ArrayList<T>();
+		for(int i=0;i<table.getRowCount();i++){
+			if((boolean)table.getValueAt(i, 0)==true){
+				checkedDocList.add(docList.get(i));
+			}
+		}
+		table=initializeTable(getEmptyList());
+		scrollPane.setViewportView(table);
+		updateUI();
+		return checkedDocList;
+	}
+	
+	public <T extends Doc> ArrayList<T> approveBossFinished(ArrayList<T> docList) {
+		ArrayList<T> checkedDocList=new ArrayList<T>();
+		for(int i=0;i<table.getRowCount();i++){
+			checkedDocList.add(docList.get(i));
+			if((boolean)table.getValueAt(i, 0)==true){
+				checkedDocList.get(i).setChecked(true);
+			}
+		}
+		table=initializeTable(getEmptyList());
+		scrollPane.setViewportView(table);
+		updateUI();
+		return checkedDocList;
+	}
+	
+	public <T extends Doc> T getDocPOByID(String ID,ArrayList<T> docList){
+		for(T Doc:docList){
+			if(Doc.getID().equals(ID)){
+				return Doc;
+			}
+		}
+		return null;
+	}
 
 }

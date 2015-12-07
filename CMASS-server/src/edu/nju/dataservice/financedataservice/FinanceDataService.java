@@ -1,10 +1,11 @@
 package edu.nju.dataservice.financedataservice;
 import edu.nju.po.*;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.Date;
 import java.util.ArrayList;
-public interface FinanceDataService{
+public interface FinanceDataService extends Remote{
 	//提供给审批单据的供接口
 	public ArrayList<PayDocPO> getunchekedPayDocList()throws RemoteException;
 	public ArrayList<GatheringDocPO> getunchekedGatheringDocList()throws RemoteException;
