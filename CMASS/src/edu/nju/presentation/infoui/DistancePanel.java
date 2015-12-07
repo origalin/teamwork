@@ -22,10 +22,11 @@ import javax.swing.JTextField;
 import edu.nju.businesslogic.infobl.Distance;
 import edu.nju.businesslogicservice.infologicservice.DistanceLogicService;
 import edu.nju.po.DistancePO;
+import edu.nju.presentation.UiFactory;
 
 public class DistancePanel extends JPanel {
 	private JTextField txtkm;
-	DistanceLogicService distanceBl=new Distance();
+	DistanceLogicService distanceBl=UiFactory.getDistanceLogicService();
 	/**
 	 * Create the panel.
 	 */
@@ -57,9 +58,9 @@ public class DistancePanel extends JPanel {
 		gbc_panel_1.gridy = 1;
 		add(panel_1, gbc_panel_1);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
-		gbl_panel_1.columnWidths = new int[]{0, 0, 0, 89, 51, 84, 0, 0, 0, 0};
+		gbl_panel_1.columnWidths = new int[]{0, 0, 0, 89, 51, 84, 0, 0, 0, 0, 0};
 		gbl_panel_1.rowHeights = new int[]{0, 0, 0, 0, 0};
-		gbl_panel_1.columnWeights = new double[]{0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_1.columnWeights = new double[]{0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel_1.setLayout(gbl_panel_1);
 		
@@ -113,7 +114,7 @@ public class DistancePanel extends JPanel {
 					e1.printStackTrace();
 				}
 				txtkm.setText(String.valueOf(distance));
-				txtkm.setEnabled(false);
+				txtkm.setEditable(false);
 		
 			}
 		});
@@ -121,7 +122,8 @@ public class DistancePanel extends JPanel {
 		
 		JButton btnNewButton = new JButton("\u65B0\u589E\u57CE\u5E02\r\n");
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
-		gbc_btnNewButton.insets = new Insets(0, 0, 5, 0);
+		gbc_btnNewButton.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnNewButton.insets = new Insets(0, 0, 5, 5);
 		gbc_btnNewButton.gridx = 8;
 		gbc_btnNewButton.gridy = 1;
 		panel_1.add(btnNewButton, gbc_btnNewButton);
@@ -169,7 +171,7 @@ public class DistancePanel extends JPanel {
 		//ÐÞ¸Ä
 		button_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				txtkm.setEnabled(true);
+				txtkm.setEditable(true);
 		
 			}
 		});
@@ -206,7 +208,7 @@ public class DistancePanel extends JPanel {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				txtkm.setEnabled(false);
+				txtkm.setEditable(false);
 				
 			}
 		});
@@ -229,7 +231,7 @@ public class DistancePanel extends JPanel {
 					e1.printStackTrace();
 				}
 				txtkm.setText(String.valueOf(distance));
-				txtkm.setEnabled(false);
+				txtkm.setEditable(false);
 		
 			}
 		});

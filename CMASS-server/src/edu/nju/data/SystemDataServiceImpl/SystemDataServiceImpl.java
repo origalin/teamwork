@@ -49,6 +49,40 @@ public class SystemDataServiceImpl extends UnicastRemoteObject implements System
 		SQL.closeDatabase();
 	}
 
+	@Override
+	public String[] getPasswordAndPower(String id) throws RemoteException {
+		// TODO Auto-generated method stub
+		String result[]={"",""};
+		String sql = "SELECT password,power FROM PASSWORD WHERE id='"+id+"';";
+		SQL.databaseQuery(sql);
+		try {
+			while (SQL.rs.next()) {
+				result[0]=SQL.rs.getString("password");
+			result[1]=SQL.rs.getString("power");
+			}
+		} catch (SQLException e) {
+			System.out.println("查找操作信息错误");
+			e.printStackTrace();
+		}
+		SQL.closeDatabase();
+		return result;
+	}
+
+	@Override
+	public void changePasswordAndPower(String[] str) throws RemoteException {
+		// TODO Auto-generated method stub
+		String sql = "UPDATE PASSWORD SET password='"+str[1]+"',"+"power='"+str[2]+"' where id='"
+	+str[0]+ "';";
+		SQL.databaseUpdate(sql);
+		SQL.closeDatabase();
+		
+		
+	}
+
+
+
+
+
 
 
 

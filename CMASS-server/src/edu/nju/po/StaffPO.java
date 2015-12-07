@@ -1,30 +1,25 @@
 package edu.nju.po;
 
-public class StaffPO {
+import java.io.Serializable;
+
+public class StaffPO implements Serializable{
 	String staffID;
 	String name;
-	Institutation institutation;
+	String sex;
+	String idenity;
+	String tel;
+	String institutation;
 	Post post;
-	Double baseSalary;
-	Double bonusSalary;
-	Double percentageSalary;
-	boolean isPaid;
-	String password;
-	Post power;
-	public StaffPO(String staffID, String name, Institutation institutation,
-			Post post, Double baseSalary, Double bonusSalary,
-			Double percentageSalary, boolean isPaid, String password, Post power) {
+	public StaffPO(String staffID, String name, String sex, String idenity,
+			String tel,String institutation, Post post) {
 		super();
 		this.staffID = staffID;
 		this.name = name;
+		this.sex = sex;
+		this.idenity = idenity;
+		this.tel = tel;
 		this.institutation = institutation;
 		this.post = post;
-		this.baseSalary = baseSalary;
-		this.bonusSalary = bonusSalary;
-		this.percentageSalary = percentageSalary;
-		this.isPaid = isPaid;
-		this.password = password;
-		this.power = power;
 	}
 	public String getStaffID() {
 		return staffID;
@@ -38,10 +33,28 @@ public class StaffPO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Institutation getInstitutation() {
+	public String getSex() {
+		return sex;
+	}
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
+	public String getIdenity() {
+		return idenity;
+	}
+	public void setIdenity(String idenity) {
+		this.idenity = idenity;
+	}
+	public String getTel() {
+		return tel;
+	}
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+	public String getInstitutation() {
 		return institutation;
 	}
-	public void setInstitutation(Institutation institutation) {
+	public void setInstitutation(String institutation) {
 		this.institutation = institutation;
 	}
 	public Post getPost() {
@@ -50,49 +63,4 @@ public class StaffPO {
 	public void setPost(Post post) {
 		this.post = post;
 	}
-	public Double getBaseSalary() {
-		return baseSalary;
-	}
-	public void setBaseSalary(Double baseSalary) {
-		this.baseSalary = baseSalary;
-	}
-	public Double getBonusSalary() {
-		return bonusSalary;
-	}
-	public void setBonusSalary(Double bonusSalary) {
-		this.bonusSalary = bonusSalary;
-	}
-	public Double getPercentageSalary() {
-		return percentageSalary;
-	}
-	public void setPercentageSalary(Double percentageSalary) {
-		this.percentageSalary = percentageSalary;
-	}
-	public boolean isPaid() {
-		return isPaid;
-	}
-	public void setPaid(boolean isPaid) {
-		this.isPaid = isPaid;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	public Post getPower() {
-		return power;
-	}
-	public void setPower(Post power) {
-		this.power = power;
-	}
-	@Override
-	public String toString() {
-		return "StaffPO [staffID=" + staffID + ", name=" + name
-				+ ", institutation=" + institutation + ", post=" + post
-				+ ", baseSalary=" + baseSalary + ", bonusSalary=" + bonusSalary
-				+ ", percentageSalary=" + percentageSalary + ", isPaid="
-				+ isPaid + ", password=" + password + ", power=" + power + "]";
-	}
-	
 }

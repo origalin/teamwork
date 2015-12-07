@@ -14,6 +14,9 @@ public interface SystemDataService extends Remote{
 	public ArrayList<OperationPO>  findOperationLog(Date beginTime,Date endTime)throws RemoteException;
 	public void saveOperationLog(OperationPO po)throws RemoteException;
 	
-	
+	public String[] getPasswordAndPower(String id)throws RemoteException;
+
+	public void changePasswordAndPower(String[] str)throws RemoteException;
+
 	
 }

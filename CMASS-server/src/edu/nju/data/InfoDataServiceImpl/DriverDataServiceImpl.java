@@ -86,4 +86,26 @@ public class DriverDataServiceImpl extends UnicastRemoteObject implements Driver
 		SQL.closeDatabase();
 		return flag;
 	}
+
+	@Override
+	public DriverPO getDriver(String id) throws RemoteException {
+		// TODO Auto-generated method stub
+		DriverPO driverPO = null;
+		String sql = "SELECT 司机编号,司机姓名,性别,出生日期,身份证号,联系方式,车辆单位,行驶证初始日期,行驶证失效日期,工资,是否付款 FROM DRIVER WHERE 司机编号='"+id+"';";
+		SQL.databaseQuery(sql);
+		try {
+			while (SQL.rs.next()) {
+			boolean flag=true;
+			if(SQL.rs.getInt("是否付款")==0){
+				flag=false;
+			}
+		driverPO=new DriverPO(SQL.rs.getString("司机编号"),SQL.rs.getString("司机姓名"),SQL.rs.getString("性别"),SQL.rs.getDate("出生日期"),SQL.rs.getString("身份证号"),SQL.rs.getString("联系方式"),SQL.rs.getString("车辆单位"),SQL.rs.getDate("行驶证初始日期"),SQL.rs.getDate("行驶证失效日期"),SQL.rs.getDouble("工资"),flag);
+			}
+		} catch (SQLException e) {
+			System.out.println("查找司机信息错误");
+			e.printStackTrace();
+		}
+		SQL.closeDatabase();
+		return driverPO;
+	}
 }

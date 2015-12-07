@@ -28,13 +28,14 @@ import javax.swing.JScrollPane;
 import edu.nju.businesslogic.infobl.Car;
 import edu.nju.businesslogicservice.infologicservice.CarLogicService;
 import edu.nju.po.CarPO;
+import edu.nju.presentation.UiFactory;
 import edu.nju.tools.Time;
 import edu.nju.vo.CarVO;
 
 public class CarPanel extends JPanel {
 	private JTable table;
 	DefaultTableModel model;
-	CarLogicService carBl = new Car();
+	CarLogicService carBl =UiFactory.getCarLogicService();
 
 	/**
 	 * Create the panel.

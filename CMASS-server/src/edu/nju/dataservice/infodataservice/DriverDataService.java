@@ -12,4 +12,5 @@ public interface DriverDataService extends Remote{
 	public void changeDriver(DriverPO po)throws RemoteException;
 	public void deleteDriver(DriverPO po)throws RemoteException;
 	public boolean isVaild(String id,String institutionName) throws RemoteException;
+	public DriverPO getDriver(String id)throws RemoteException;
 }

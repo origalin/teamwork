@@ -19,4 +19,7 @@ public interface SystemLogicService {
 	public ArrayList<OperationVO> getOperationVOList(Date beginTime,Date endTime) throws RemoteException;//获取操作记录VOList
 	public void saveOperation(OperationPO po) throws RemoteException;
 	
+	public String[] getPasswordAndPower(String id)throws RemoteException;
+	public void changePasswordAndPower(String[] str)throws RemoteException;
+	
 }

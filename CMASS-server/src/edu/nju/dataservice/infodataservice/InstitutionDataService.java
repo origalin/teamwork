@@ -1,6 +1,7 @@
 package edu.nju.dataservice.infodataservice;
 
 import java.rmi.Remote;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import edu.nju.po.InstitutionPO;
@@ -8,23 +9,19 @@ import edu.nju.po.StaffPO;
 
 public interface InstitutionDataService extends Remote{
 	
-	public ArrayList<StaffPO> findStaff(String institutionName);
-	public void addStaff(StaffPO po);
-	public void changeStaff(StaffPO po);
-	public void deleteStaff(StaffPO po);
+	public ArrayList<StaffPO> getStaffList(String institutionId)throws RemoteException;
+	public void addStaff(StaffPO po)throws RemoteException;
+	public void changeStaff(StaffPO po)throws RemoteException;
+	public void deleteStaff(StaffPO po)throws RemoteException;
 	
-	public ArrayList<StaffPO> getBusinessManList();
+
 	
-	public ArrayList<InstitutionPO> findInstitution();
-	public void saveInstitution (InstitutionPO po);
+	public ArrayList<InstitutionPO> findInstitution()throws RemoteException;
+	public void addInstitution (InstitutionPO po)throws RemoteException;
+	public void changeInstitution(InstitutionPO po)throws RemoteException;
 	
-	//账户密码权限管理
-	
-		public StaffPO getAccout(String staffID);
-		public void saveAccount(StaffPO po);
-	
-	
-	
+	public InstitutionPO getInstitution(String id)throws RemoteException;
+	public StaffPO getStaff(String id)throws RemoteException;
 
 
 }

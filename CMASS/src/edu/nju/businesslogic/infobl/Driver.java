@@ -59,5 +59,55 @@ public class Driver implements DriverLogicService{
 	}
 
 
+	@Override
+	public void saveDriverSalary(String id) throws RemoteException {
+		// TODO Auto-generated method stub
+		DriverPO po=driverDataService.getDriver(id);
+		po.setPaid(true);
+		driverDataService.changeDriver(po);
+		
+	}
+
+
+	@Override
+	public double getDriverCommision(String driverID) throws RemoteException {
+		// TODO Auto-generated method stub
+		return driverDataService.getDriver(driverID).getMoney();
+	}
+
+
+	@Override
+	public ArrayList<String> getDirverID(String institutionName)
+			throws RemoteException {
+		ArrayList<DriverPO> driverPOList=new ArrayList<DriverPO>();
+		
+		driverPOList=driverDataService.findDriver(institutionName);
+ArrayList<String>idList=new ArrayList<String>();
+	for(DriverPO po:driverPOList){
+		idList.add(po.getDriverID());
+		}	
+	return idList;
+	}
+
+	
+
+
+	@Override
+	public String getDirverName(String driverID,String institutionName) throws RemoteException {
+
+		ArrayList<DriverPO> driverPOList=new ArrayList<DriverPO>();
+	
+			driverPOList=driverDataService.findDriver(institutionName);
+	String result=null;
+		for(DriverPO po:driverPOList){
+			if(po.getDriverID().equals(driverID)){
+				result=po.getName();
+			}
+		}
+		
+		return result;
+	}
+
+
 
 }

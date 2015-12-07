@@ -53,6 +53,18 @@ public class SystemBl implements SystemLogicService{
 		return operationVOList;
 		
 	}
+	@Override
+	public String[] getPasswordAndPower(String id) throws RemoteException {
+		// TODO Auto-generated method stub
+		String[] str;
+		str=systemDataService.getPasswordAndPower(id);
+		return str;
+	}
+	@Override
+	public void changePasswordAndPower(String[] str) throws RemoteException {
+		// TODO Auto-generated method stub
+		systemDataService.changePasswordAndPower(str);
+	}
 
 	
 

@@ -32,6 +32,7 @@ import javax.swing.JTextField;
 
 import edu.nju.businesslogic.systembl.SystemBl;
 import edu.nju.businesslogicservice.systemlogicservice.SystemLogicService;
+import edu.nju.presentation.UiFactory;
 import edu.nju.tools.Time;
 import edu.nju.vo.CarVO;
 import edu.nju.vo.OperationVO;
@@ -42,7 +43,7 @@ public class OperationPanel extends JPanel {
 	private JTextField textField_1;	
 	DefaultTableModel model;
 	JScrollPane scrollPane = new JScrollPane();
-	SystemLogicService systemBl=new SystemBl();
+	SystemLogicService systemBl=UiFactory.getSystemLogicService();
 	
 
 	/**

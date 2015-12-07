@@ -22,6 +22,7 @@ import edu.nju.businesslogicservice.infologicservice.DriverLogicService;
 import edu.nju.dataservice.infodataservice.DriverDataService;
 import edu.nju.po.CarPO;
 import edu.nju.po.DriverPO;
+import edu.nju.presentation.UiFactory;
 import edu.nju.tools.Time;
 import edu.nju.vo.CarVO;
 import edu.nju.vo.DriverVO;
@@ -37,7 +38,7 @@ import java.util.Date;
 public class DriverPanel extends JPanel {
 	private JTable table;
 	DefaultTableModel model;
-	DriverLogicService driverLogicService=new Driver();
+	DriverLogicService driverLogicService=UiFactory.getDriverLogicService();
 	/**
 	 * Create the panel.
 	 */
