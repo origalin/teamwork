@@ -43,18 +43,18 @@ public class Driver implements DriverLogicService{
 	@Override
 	public void saveDriver(DriverPO po) throws RemoteException {
 		// TODO Auto-generated method stub
-		
+		if(driverDataService.isVaild(po.getDriverID(), po.getInstitution())){
+			driverDataService.changeDriver(po);
+		}else{
+			driverDataService.addDriver(po);
+		}
 	}
 
 
 	@Override
 	public void deleteDriver(DriverPO po) throws RemoteException {
 		// TODO Auto-generated method stub
-		if(driverDataService.isVaild(po.getDriverID(), po.getInstitution())){
-			driverDataService.changeDriver(po);
-		}else{
-			driverDataService.addDriver(po);
-		}
+		driverDataService.deleteDriver(po);
 
 	}
 

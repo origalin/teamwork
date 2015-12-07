@@ -207,7 +207,7 @@ public class DriverPanel extends JPanel {
 								} catch (ParseException e1) {
 									e1.printStackTrace();
 								}
-//								System.out.println(date);
+
 							DriverPO po= new DriverPO((String) table.getValueAt(i, 0),
 										(String) table.getValueAt(i,1), (String) table
 												.getValueAt(i, 2), brithday, (String) table
@@ -217,12 +217,13 @@ public class DriverPanel extends JPanel {
 									try {
 										driverLogicService.saveDriver(po);
 									} catch (RemoteException e1) {
-										// TODO Auto-generated catch block
 										e1.printStackTrace();
 									}
 						}		
 						
 					}
+					
+					
 				});
 		
 		JScrollPane scrollPane = new JScrollPane();

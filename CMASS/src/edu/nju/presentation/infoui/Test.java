@@ -17,8 +17,8 @@ frame.setSize(770, 500);
 //frame.add(new OperationPanel());
 //frame.add(new DistancePanel());
 
-//frame.add(new DriverPanel("南京市鼓楼营业厅"));
-frame.add(new InstitutionPanel());
+frame.add(new DriverPanel("南京市鼓楼营业厅"));
+//frame.add(new InstitutionPanel());
 //frame.add(new AccountPanel());
 
 
