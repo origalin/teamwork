@@ -21,9 +21,11 @@ public class PayDocPO extends Doc{
 		this.type = type;
 		this.back=back;
 	}
+	/*
 	public String getPayDocID() {
 		return ID;
 	}
+	*/
 	public void setPayDocID(String payDocID) {
 		ID = payDocID;
 	}
