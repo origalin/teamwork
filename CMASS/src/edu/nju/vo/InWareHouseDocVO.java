@@ -9,35 +9,36 @@ import edu.nju.po.InWareHouseDocLineItem;
 import edu.nju.po.InWareHouseDocPO;
 
 public class InWareHouseDocVO extends Doc {
-	String ID;
+	String inID;
 	String storageID;
 	ArrayList<InWareHouseDocLineItem> list;
 
 	public InWareHouseDocVO(InWareHouseDocPO po) {
 		super();
-		this.ID = po.getID();
+		this.inID = po.getID();
 		this.storageID = po.getStorageID();
 		this.list = po.getList();
 	}
-
+	
+	
 	@Override
 	public String toString() {
 		String lString = "";
 		for (InWareHouseDocLineItem temp : list)
 			lString += temp;
-		return "InWareHouseDocVO [ID=" + ID + ", storageID=" + storageID + ", list=" + lString + "]";
+		return "InWareHouseDocVO [ID=" + inID + ", storageID=" + storageID + ", list=" + lString + "]";
 	}
 
 	public InWareHouseDocVO(String iD, String storageID, ArrayList<InWareHouseDocLineItem> list) {
 		super();
-		ID = iD;
+		inID = iD;
 		this.storageID = storageID;
 		this.list = list;
 	}
 
 	public InWareHouseDocVO(String iD, ArrayList<InWareHouseDocLineItem> list) {
 		super();
-		ID = iD;
+		inID = iD;
 		this.list = list;
 	}
 
@@ -60,16 +61,16 @@ public class InWareHouseDocVO extends Doc {
 	}
 
 	public String getID() {
-		return ID;
+		return inID;
 	}
 
 	public void setID(String iD) {
-		ID = iD;
+		inID = iD;
 	}
 
 	public InWareHouseDocPO unpack() {
 
-		return new InWareHouseDocPO(this.ID, this.storageID, this.list);
+		return new InWareHouseDocPO(this.inID, this.storageID, this.list);
 	}
 
 }

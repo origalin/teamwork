@@ -55,11 +55,11 @@ public String toString(){
 	public void setList(ArrayList<InWareHouseDocLineItem> list) {
 		this.list = list;
 	}
-
+@Override
 	public String getID() {
 		return ID;
 	}
-
+@Override
 	public void setID(String iD) {
 		ID = iD;
 	}
