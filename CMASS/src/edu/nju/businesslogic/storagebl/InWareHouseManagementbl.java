@@ -13,6 +13,7 @@ import edu.nju.businesslogicservice.storagelogicservice.InWareHouseManagementSer
 import edu.nju.data.StorageDataServiceImpl.StorageLocation;
 import edu.nju.dataFactory.DataFactory;
 import edu.nju.dataservice.storagedataservice.StorageDataService;
+import edu.nju.exception.DatabaseNULLException;
 import edu.nju.po.InWareHouseDocLineItem;
 import edu.nju.po.InWareHouseDocPO;
 import edu.nju.po.TransferDocPO;
@@ -24,7 +25,7 @@ public class InWareHouseManagementbl implements InWareHouseManagementService {
 	InWareHouseDocPO inWareHouseDocPO;
 
 	@Override
-	public InWareHouseDocVO getInWareHouseDocVO_Transfer(String TransferDocID, String currInstitutionID) {
+	public InWareHouseDocVO getInWareHouseDocVO_Transfer(String TransferDocID, String currInstitutionID) throws DatabaseNULLException {
 		// 对运输模块有依赖，TransferDocPO getTransferPO(int TransferID)
 		// 根据单号确定特快还是经济
 		// 对数据层依赖：获取该次入库单的编号 获得对仓库的引用
@@ -92,7 +93,7 @@ public class InWareHouseManagementbl implements InWareHouseManagementService {
 	}
 
 	@Override
-	public InWareHouseDocVO getInWareHouseDocVO_YloadDoc(String YloadDocID, String currInstitutionID) {
+	public InWareHouseDocVO getInWareHouseDocVO_YloadDoc(String YloadDocID, String currInstitutionID) throws DatabaseNULLException {
 		StorageDataService storageDataService = DataFactory.getStorageImpl();
 		YLoadDoc yLoadDoc = null;// 注意这是逻辑层，不是PO
 		yLoadDoc = new YLoadDoc();

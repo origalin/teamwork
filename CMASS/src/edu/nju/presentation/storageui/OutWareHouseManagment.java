@@ -18,6 +18,7 @@ import javax.swing.table.TableModel;
 import edu.nju.businesslogic.storagebl.InWareHouseManagementbl;
 import edu.nju.businesslogic.storagebl.OutWareHouseManagementbl;
 import edu.nju.businesslogicservice.storagelogicservice.OutWareHouseManagementService;
+import edu.nju.exception.DatabaseNULLException;
 import edu.nju.po.InWareHouseDocLineItem;
 import edu.nju.presentation.UiFactory;
 import edu.nju.vo.OutWareHouseDocLineItem;
@@ -31,7 +32,10 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
+
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
@@ -45,6 +49,16 @@ public class OutWareHouseManagment extends JPanel{
 	private OutWareHouseDocVO outWareHouseDocVO;
 	String[] columnNames={"快递编号","目的地"};
 	private JTextField textField_2;
+	
+	public static void main(String[] args) {
+		OutWareHouseManagment outWareHouseManagment=new OutWareHouseManagment();
+		JFrame mainFrame = new JFrame();
+		mainFrame.getContentPane().add(outWareHouseManagment);
+		mainFrame.setVisible(true);
+		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		mainFrame.setLocationRelativeTo(null);
+		mainFrame.setSize(500, 300);
+	}
 	public OutWareHouseManagment() {
 		
 		
@@ -76,13 +90,10 @@ public class OutWareHouseManagment extends JPanel{
 		add(panel, gbc_panel);
 		panel.setLayout(new GridLayout(1, 0, 0, 0));
 		
-		JScrollPane scrollPane = new JScrollPane();
-		panel.add(scrollPane);
-		
 		JComboBox comboBox = new JComboBox();
+		panel.add(comboBox);
 		comboBox.addItem("中转单编号");
 		comboBox.addItem("装车单编号");
-		scrollPane.setViewportView(comboBox);
 		
 		textField = new JTextField();
 		GridBagConstraints gbc_textField = new GridBagConstraints();
@@ -139,10 +150,26 @@ public class OutWareHouseManagment extends JPanel{
 
 				outWareHouseManagement = UiFactory.getOutWareHouseManagementService();//与逻辑层建立联系以便调用
 				
-				if (selectedItem.equals("中转单编号"))//辨析是中转出库还是装车出库
-					outWareHouseDocVO = outWareHouseManagement.getOutWareHouseDocVO_Transfer(textField.getText(), currInstitution);
+				if (selectedItem.equals("中转单编号"))
+					try {
+						outWareHouseDocVO = outWareHouseManagement.getOutWareHouseDocVO_Transfer(textField.getText(), currInstitution);
+					} catch (RemoteException e1) {
+						System.out.println("远程连接异常，请检查网络环境");
+						e1.printStackTrace();
+					} catch (DatabaseNULLException e1) {
+						System.out.println("查询结果为空");
+						e1.printStackTrace();
+					}
 				else if (selectedItem.equals("装车单编号"))
-					outWareHouseDocVO = outWareHouseManagement.getOutWareHouseDocVO_ZloadDoc(textField.getText(), currInstitution);
+					try {
+						outWareHouseDocVO = outWareHouseManagement.getOutWareHouseDocVO_ZloadDoc(textField.getText(), currInstitution);
+					} catch (RemoteException e1) {
+						System.out.println("远程连接异常，请检查网络环境");
+						e1.printStackTrace();
+					} catch (DatabaseNULLException e1) {
+						System.out.println("查询结果为空");
+						e1.printStackTrace();
+					}
 				
 				outWareHouseDocVO.setTransferPattern((String)comboBox_1.getSelectedItem());//设置装运形式
 				textField_1.setText(outWareHouseDocVO.getID());//设置当前出库单编号
@@ -159,7 +186,7 @@ public class OutWareHouseManagment extends JPanel{
 				}
 
 				table = new JTable(data1, columnNames);
-				scrollPane.setViewportView(table);
+				scrollPane_1.setViewportView(table);
 			}
 		});
 		GridBagConstraints gbc_button = new GridBagConstraints();

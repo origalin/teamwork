@@ -439,6 +439,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println("errer");
+			e.printStackTrace();
 		}
 		SQL.closeDatabase();
 		throw new DatabaseNULLException();

@@ -18,6 +18,7 @@ import javax.swing.table.TableModel;
 import edu.nju.businesslogic.storagebl.InWareHouseManagementbl;
 import edu.nju.businesslogicservice.storagelogicservice.InWareHouseManagementService;
 import edu.nju.dataFactory.DataFactory;
+import edu.nju.exception.DatabaseNULLException;
 import edu.nju.presentation.UiFactory;
 import edu.nju.po.InWareHouseDocLineItem;
 import edu.nju.vo.InWareHouseDocVO;
@@ -139,9 +140,19 @@ public class InWareHouseManagment extends JPanel {
 
 				inWare = new InWareHouseManagementbl();
 				if (selectedItem.equals("中转单编号"))
-					inWareHouseDocVO = inWare.getInWareHouseDocVO_Transfer(textField_1.getText(), currInstitution);
+					try {
+						inWareHouseDocVO = inWare.getInWareHouseDocVO_Transfer(textField_1.getText(), currInstitution);
+					} catch (DatabaseNULLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				else if (selectedItem.equals("装车单编号"))
-					inWareHouseDocVO = inWare.getInWareHouseDocVO_YloadDoc(textField_1.getText(), currInstitution);
+					try {
+						inWareHouseDocVO = inWare.getInWareHouseDocVO_YloadDoc(textField_1.getText(), currInstitution);
+					} catch (DatabaseNULLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				
 				textField.setText(inWareHouseDocVO.getID());
 				// 该行以上没有问题

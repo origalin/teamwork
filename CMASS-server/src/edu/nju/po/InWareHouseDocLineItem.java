@@ -9,9 +9,13 @@ public class InWareHouseDocLineItem implements Serializable{
 	String destination;
 	String district;
 	String location;
-	public String toString(){
-		return SendDocID+" "+date+" "+destination+" "+district+" "+location+"\n";
+	
+	@Override
+	public String toString() {
+		return "InWareHouseDocLineItem [SendDocID=" + SendDocID + ", date=" + date + ", destination=" + destination
+				+ ", district=" + district + ", location=" + location + "]";
 	}
+
 	public InWareHouseDocLineItem(String sendDocID, Date date, String district) {
 		super();
 		SendDocID = sendDocID;
