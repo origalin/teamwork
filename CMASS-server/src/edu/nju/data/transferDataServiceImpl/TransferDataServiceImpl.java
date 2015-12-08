@@ -436,7 +436,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 				throw new DatabaseNULLException();
 			}
 			return new TransferDocPO(ID, date, planeNum, TrainNum, CarNum, tranceID, corriage, container, from, targetCity, itemIDs, price);
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			// TODO: handle exception
 			System.out.println("errer");
 			e.printStackTrace();
