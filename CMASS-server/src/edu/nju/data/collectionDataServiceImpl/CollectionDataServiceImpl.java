@@ -131,12 +131,13 @@ public class CollectionDataServiceImpl extends UnicastRemoteObject implements Co
 	}
 
 	@Override
-	public SendDocPO getSendDocPOByID(String ID) throws DatabaseNULLException {
+	public SendDocPO getSendDocPOByID(String itemID) throws DatabaseNULLException {
 		// TODO Auto-generated method stub
-		String sql = "select * from SendDoc where ID='" + ID + "';";
+		String sql = "select * from SendDoc where ID='" + itemID + "';";
 		SQL.databaseQuery(sql);
 		try {
 			while (SQL.rs.next()) {
+				itemID = SQL.rs.getString("ID"); 
 				sName = SQL.rs.getString("sName");
 				sCity = SQL.rs.getString("sCity");
 				sAddress = SQL.rs.getString("sAddress");
@@ -163,10 +164,10 @@ public class CollectionDataServiceImpl extends UnicastRemoteObject implements Co
 				
 			}
 			SQL.closeDatabase();
-			if (ID == null) {
+			if (itemID == null) {
 				throw new DatabaseNULLException();
 			}
-			return new SendDocPO(ID, sName, sAddress, sCity, sUnit, sTelePhone, sMobilePhone, rName, rAddress,
+			return new SendDocPO(itemID, sName, sAddress, sCity, sUnit, sTelePhone, sMobilePhone, rName, rAddress,
 					rCity, rUnit, rTelePhone, rMobilePhone, itemNum, weight, volume, item_type, packageType,
 					sumPrice, courier_Type, date, time);
 		} catch (SQLException e) {
