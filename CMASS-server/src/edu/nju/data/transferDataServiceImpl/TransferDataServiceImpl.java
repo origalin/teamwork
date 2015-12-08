@@ -846,14 +846,21 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 	public ArrayList<TransferDocPO> getunPaidTransferDocPO() {
 		// TODO Auto-generated method stub
 		ArrayList<TransferDocPO> transferDocPOs = new ArrayList<TransferDocPO>();
-		String sql = "select ID from TransferDoc where paid='0';";
+		ArrayList<String> id  = new ArrayList<>();
+		String sql = "select ID from TransferDoc where paid='0' and checked = '1';";
 		SQL.databaseQuery(sql);
 		try {
 			while (SQL.rs.next()) {
-				transferDocPOs.add(getTransferDocPO(SQL.rs.getString("ID"),true));
+				id.add(SQL.rs.getString("ID")); 
+				}
+			//SQL.closeDatabase();
+			for(String s : id) {
+				TransferDocPO po = getTransferDocPO(s,true);
+				transferDocPOs.add(po);
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
+			e.printStackTrace();
 		}
 		SQL.closeDatabase();
 		return transferDocPOs;
@@ -862,7 +869,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 	public ArrayList<YLoadDocPO> getunPaidYLoadDocPO() {
 		// TODO Auto-generated method stub
 		ArrayList<YLoadDocPO> yLoadDocPOs = new ArrayList<YLoadDocPO>();
-		String sql = "select ID from YLoadDoc where paid='0';";
+		String sql = "select ID from YLoadDoc where paid='0' and checked = '1';";
 		SQL.databaseQuery(sql);
 		try {
 			while (SQL.rs.next()) {
@@ -878,7 +885,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 	public ArrayList<ZLoadDocPO> getunPaidZLoadDocPO() {
 		// TODO Auto-generated method stub
 		ArrayList<ZLoadDocPO> zLoadDocPOs = new ArrayList<ZLoadDocPO>();
-		String sql = "select ID from ZLoadDoc where paid='0';";
+		String sql = "select ID from ZLoadDoc where paid='0' and checked = '1';";
 		SQL.databaseQuery(sql);
 		try {
 			while (SQL.rs.next()) {

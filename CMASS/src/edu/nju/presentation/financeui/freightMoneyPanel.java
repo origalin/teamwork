@@ -21,6 +21,10 @@ import java.awt.GridLayout;
 import java.util.ArrayList;
 
 public class freightMoneyPanel extends JPanel{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JTable table;
 	JScrollPane scrollPane;
 	public freightMoneyPanel() {
@@ -57,6 +61,10 @@ public class freightMoneyPanel extends JPanel{
 				"", "\u5355\u636E\u7C7B\u578B", "\u5355\u636E\u7F16\u53F7", "\u8FD0\u8D39"
 			}
 		) {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
 			Class[] columnTypes = new Class[] {
 				Boolean.class, String.class, String.class, Double.class
 			};
@@ -88,6 +96,10 @@ public class freightMoneyPanel extends JPanel{
 				"", "\u5355\u636E\u7C7B\u578B", "\u5355\u636E\u7F16\u53F7", "\u8FD0\u8D39"
 			}
 		) {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
 			Class[] columnTypes = new Class[] {
 				Boolean.class, Object.class, Object.class, Object.class
 			};
