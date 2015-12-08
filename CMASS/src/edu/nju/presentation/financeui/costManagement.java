@@ -74,6 +74,9 @@ public class costManagement extends JPanel{
 						panel=new rentMoneyPanel();
 						addPanel(panel);
 						institutionList=bl.getUnpaidInstitutionList();
+						if(institutionList==null){
+							System.out.println("error");
+						}
 						((rentMoneyPanel) panel).initializeTable(institutionList);
 						updateUI();
 						break;
@@ -205,12 +208,14 @@ public class costManagement extends JPanel{
 		            	public void actionPerformed(ActionEvent e){
 		            		bl.createPayDoc(salaryVo);
 		            		bl.minusMoney(salaryVo.getAccount(), salaryVo.getMoney());
+		            		/*
 		            		for(int i=0;i<salaryTableInfo.length;i++){
 								Object[] oneLine=salaryTableInfo[i];
 								if((boolean)oneLine[0]==true){
-									staffList.get(i).setPaid(true);
+									staffList.get(i).isPaid(true);
 								}
 							}
+							*/
 		            		bl.setStaffList(staffList);
 		            		//已经生成付款单后我们要把添加的面板清空并且让institutionList重新变为null,方便进行下一次成本管理
 		            		panel=null;
