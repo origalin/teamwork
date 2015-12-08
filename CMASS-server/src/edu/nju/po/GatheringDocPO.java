@@ -1,11 +1,12 @@
 package edu.nju.po;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
 //（收款日期、收款金额、收款快递员、对应的所有快递订单条形码号。）
 
-public class GatheringDocPO extends Doc {
+public class GatheringDocPO extends Doc implements Serializable{
 	Date date;
 	Double money;
 	String courier_ID;

@@ -1,11 +1,12 @@
 package edu.nju.po;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
 import javafx.beans.binding.StringBinding;
 
-public class OutWareHouseDocPO extends Doc{
+public class OutWareHouseDocPO extends Doc {
 //	int OutWareHouseDocID;
 	String outWareHouseDocID;
 	Date outDate;

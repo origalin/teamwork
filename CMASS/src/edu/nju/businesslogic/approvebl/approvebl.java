@@ -1,5 +1,6 @@
 package edu.nju.businesslogic.approvebl;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import edu.nju.businesslogic.collectionbl.Collectionbl;
@@ -62,7 +63,7 @@ public class approvebl implements ApproveLogicService{
 	Collectionbl collectionbl=new Collectionbl();
 	financebl fnc=new financebl();
 	StorageTools storageTools=new StorageTools();
-	TransferDoc transfer=new TransferDoc();
+	TransferDoc transfer;
 	ZLoadDoc ZLoad=new ZLoadDoc();
 	OverDoc over=new OverDoc();
 	YArrivalDoc YArrival=new YArrivalDoc();
@@ -70,7 +71,7 @@ public class approvebl implements ApproveLogicService{
 	YLoadDoc YLoad=new YLoadDoc();
 	ZArrivalDoc ZArrival=new ZArrivalDoc();
 	@Override
-	public ArrayList<SendDocPO> getuncheckedSendDocList() {
+	public ArrayList<SendDocPO> getuncheckedSendDocList() throws RemoteException {
 		return collectionbl.getAllSendDoc();
 	}
 
@@ -92,19 +93,19 @@ public class approvebl implements ApproveLogicService{
 	}
 
 	@Override
-	public ArrayList<TransferDocPO> getunchekedTransferDocList() {
+	public ArrayList<TransferDocPO> getunchekedTransferDocList() throws RemoteException {
 		// TODO Auto-generated method stub
 		return transfer.getUncheckedTransferDocPOs();
 	}
 
 	@Override
-	public ArrayList<ZLoadDocPO> getunchekedZLoadDocList() {
+	public ArrayList<ZLoadDocPO> getunchekedZLoadDocList() throws RemoteException {
 		// TODO Auto-generated method stub
 		return ZLoad.getUncheckedZLoadDocPOs();
 	}
 
 	@Override
-	public ArrayList<OverDocPO> getunchekedOverDocList() {
+	public ArrayList<OverDocPO> getunchekedOverDocList() throws RemoteException {
 		// TODO Auto-generated method stub
 		return over.getUncheckedOverDocPOs();
 	}
@@ -116,32 +117,32 @@ public class approvebl implements ApproveLogicService{
 	}
 
 	@Override
-	public ArrayList<YArrivalDocPO> getunchekedYArrivalDocList() {
+	public ArrayList<YArrivalDocPO> getunchekedYArrivalDocList() throws RemoteException {
 		// TODO Auto-generated method stub
 		return YArrival.getUncheckedYaArrivalDocPOs();
 	}
 
 	@Override
-	public ArrayList<YDeliverDocPO> getunchekedYDeliverDocList() {
+	public ArrayList<YDeliverDocPO> getunchekedYDeliverDocList() throws RemoteException {
 		// TODO Auto-generated method stub
 		return YDeliver.getUncheckedDeliverDocPOs();
 	}
 	
 	@Override
-	public ArrayList<YLoadDocPO> getunchekedYLoadDocList() {
+	public ArrayList<YLoadDocPO> getunchekedYLoadDocList() throws RemoteException {
 		// TODO Auto-generated method stub
 		return YLoad.getUncheckedyLoadDocPOs();
 	}
 
 	
 	@Override
-	public ArrayList<ZArrivalDocPO> getunchekedZArrivalDocList() {
+	public ArrayList<ZArrivalDocPO> getunchekedZArrivalDocList() throws RemoteException {
 		// TODO Auto-generated method stub
 		return ZArrival.getUncheckedZArrivalDocPOs();
 	}
 
 	@Override
-	public void setSendDocList(ArrayList<SendDocPO> sendDocList) {
+	public void setSendDocList(ArrayList<SendDocPO> sendDocList) throws RemoteException {
 		// TODO Auto-generated method stub
 		for(SendDocPO po:sendDocList){
 		collectionbl.saveSendDocPO(po);
@@ -175,7 +176,7 @@ public class approvebl implements ApproveLogicService{
 	}
 
 	@Override
-	public void setTransferDocList(ArrayList<TransferDocPO> TransferDocList) {
+	public void setTransferDocList(ArrayList<TransferDocPO> TransferDocList) throws RemoteException {
 		// TODO Auto-generated method stub
 		for(TransferDocPO po:TransferDocList){
 			transfer.saveTransferDocPO(po);
@@ -200,7 +201,7 @@ public class approvebl implements ApproveLogicService{
 	}
 
 	@Override
-	public void setYArrivalDocList(ArrayList<YArrivalDocPO> YArrivalDocList) {
+	public void setYArrivalDocList(ArrayList<YArrivalDocPO> YArrivalDocList) throws RemoteException {
 		// TODO Auto-generated method stub
 		for(YArrivalDocPO po:YArrivalDocList){
 			YArrival.saveYArrivalDocPO(po);
@@ -208,7 +209,7 @@ public class approvebl implements ApproveLogicService{
 	}
 
 	@Override
-	public void setYDeliverDocList(ArrayList<YDeliverDocPO> YDeliverDocList) {
+	public void setYDeliverDocList(ArrayList<YDeliverDocPO> YDeliverDocList) throws RemoteException {
 		// TODO Auto-generated method stub
 		for(YDeliverDocPO po:YDeliverDocList){
 			YDeliver.saveYDeliverDocPO(po);
@@ -217,7 +218,7 @@ public class approvebl implements ApproveLogicService{
 
 
 	@Override
-	public void setZArrivalDocList(ArrayList<ZArrivalDocPO> ZArrivalDocList) {
+	public void setZArrivalDocList(ArrayList<ZArrivalDocPO> ZArrivalDocList) throws RemoteException {
 		// TODO Auto-generated method stub
 		for(ZArrivalDocPO po:ZArrivalDocList){
 			ZArrival.saveZArrivalDocPO(po);
@@ -225,7 +226,7 @@ public class approvebl implements ApproveLogicService{
 	}
 
 	@Override
-	public void setYLoadDocList(ArrayList<YLoadDocPO> YLoadDocList) {
+	public void setYLoadDocList(ArrayList<YLoadDocPO> YLoadDocList) throws RemoteException {
 		// TODO Auto-generated method stub
 		for(YLoadDocPO po:YLoadDocList){
 			YLoad.saveYloadDocPO(po);
@@ -233,7 +234,7 @@ public class approvebl implements ApproveLogicService{
 	}
 
 	@Override
-	public void setZLoadDocList(ArrayList<ZLoadDocPO> ZLoadDocList) {
+	public void setZLoadDocList(ArrayList<ZLoadDocPO> ZLoadDocList) throws RemoteException {
 		// TODO Auto-generated method stub
 		for(ZLoadDocPO po:ZLoadDocList){
 			ZLoad.saveZloadDocPO(po);

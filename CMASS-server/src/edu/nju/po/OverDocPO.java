@@ -1,8 +1,9 @@
 package edu.nju.po;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class OverDocPO extends Doc{
+public class OverDocPO extends Doc implements Serializable{
 	Date date;
 	String[] itemIDs;//¿ìµÝid
 	String[] receiver;

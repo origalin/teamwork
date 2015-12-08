@@ -1,8 +1,9 @@
 package edu.nju.po;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class ZArrivalDocPO extends Doc{
+public class ZArrivalDocPO extends Doc {
 	Date date;
 	String fromID;
 	String from;

@@ -1,8 +1,9 @@
 package edu.nju.po;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class SendDocPO extends Doc{
+public class SendDocPO extends Doc {
 	String sName,aAddress,sCity,sUnit,sTelePhone,sMobilePhone;
 	String rName,rAddress,rCity,rUnit,rTelePhone,rMobilePhone;
 	int itemNum;

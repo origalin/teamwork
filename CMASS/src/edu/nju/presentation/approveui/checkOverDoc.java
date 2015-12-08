@@ -8,118 +8,124 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.Font;
 
+import java.awt.FlowLayout;
 import javax.swing.table.DefaultTableModel;
 public class checkOverDoc extends JPanel{
-	private JTextField Date;
-	private JTextField Courier;
-	private JTextField OverDocID;
+	private JTextField textField;
+	private JTextField textField_3;
+	private JTextField textField_1;
 	private JTable table;
-	private JScrollPane scrollPane;
-	public checkOverDoc(OverDocVO vo) {
+	public checkOverDoc() {
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{0, 0, 167, 146, 105, 0};
+		gridBagLayout.columnWidths = new int[]{48, 117, 0, 76, 0, 52, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 1.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
+
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
+		JPanel panel = new JPanel();
+		GridBagConstraints gbc_panel = new GridBagConstraints();
+		gbc_panel.gridwidth = 5;
+		gbc_panel.insets = new Insets(0, 0, 5, 0);
+		gbc_panel.fill = GridBagConstraints.BOTH;
+		gbc_panel.gridx = 1;
+		gbc_panel.gridy = 0;
+		add(panel, gbc_panel);
+		
 		JLabel label = new JLabel("\u6536\u4EF6\u5355");
-		GridBagConstraints gbc_label = new GridBagConstraints();
-		gbc_label.insets = new Insets(0, 0, 5, 5);
-		gbc_label.gridx = 0;
-		gbc_label.gridy = 0;
-		add(label, gbc_label);
+		label.setFont(new Font("黑体", Font.BOLD, 15));
+		panel.add(label);
 		
 		JLabel label_4 = new JLabel("\u6536\u4EF6\u5355\u7F16\u53F7");
-		label_4.setFont(new Font("黑体", Font.BOLD, 12));
 		GridBagConstraints gbc_label_4 = new GridBagConstraints();
 		gbc_label_4.insets = new Insets(0, 0, 5, 5);
 		gbc_label_4.gridx = 1;
 		gbc_label_4.gridy = 1;
 		add(label_4, gbc_label_4);
+		label_4.setFont(new Font("黑体", Font.BOLD, 15));
 		
-		OverDocID = new JTextField();
-		OverDocID.setEditable(false);
-		GridBagConstraints gbc_OverDocID = new GridBagConstraints();
-		gbc_OverDocID.insets = new Insets(0, 0, 5, 5);
-		gbc_OverDocID.fill = GridBagConstraints.HORIZONTAL;
-		gbc_OverDocID.gridx = 2;
-		gbc_OverDocID.gridy = 1;
-		add(OverDocID, gbc_OverDocID);
-		OverDocID.setColumns(10);
+		JPanel panel_1 = new JPanel();
+		FlowLayout flowLayout_1 = (FlowLayout) panel_1.getLayout();
+		flowLayout_1.setAlignment(FlowLayout.LEFT);
+		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
+		gbc_panel_1.insets = new Insets(0, 0, 5, 5);
+		gbc_panel_1.fill = GridBagConstraints.BOTH;
+		gbc_panel_1.gridx = 2;
+		gbc_panel_1.gridy = 1;
+		add(panel_1, gbc_panel_1);
+		
+
+		textField_3 = new JTextField();
+		panel_1.add(textField_3);
+		textField_3.setEditable(false);
+		textField_3.setColumns(20);
+		
+		JPanel panel_2 = new JPanel();
+		FlowLayout flowLayout = (FlowLayout) panel_2.getLayout();
+		flowLayout.setAlignment(FlowLayout.LEFT);
+		GridBagConstraints gbc_panel_2 = new GridBagConstraints();
+		gbc_panel_2.gridwidth = 2;
+		gbc_panel_2.insets = new Insets(0, 0, 5, 5);
+		gbc_panel_2.fill = GridBagConstraints.BOTH;
+		gbc_panel_2.gridx = 3;
+		gbc_panel_2.gridy = 1;
+		add(panel_2, gbc_panel_2);
 		
 		JLabel label_1 = new JLabel("\u6536\u4EF6\u65E5\u671F");
-		label_1.setFont(new Font("黑体", Font.BOLD, 12));
-		GridBagConstraints gbc_label_1 = new GridBagConstraints();
-		gbc_label_1.insets = new Insets(0, 0, 5, 5);
-		gbc_label_1.gridx = 3;
-		gbc_label_1.gridy = 1;
-		add(label_1, gbc_label_1);
+		panel_2.add(label_1);
+		label_1.setFont(new Font("黑体", Font.BOLD, 15));
 		
-		Date = new JTextField();
-		Date.setEditable(false);
-		GridBagConstraints gbc_Date = new GridBagConstraints();
-		gbc_Date.insets = new Insets(0, 0, 5, 0);
-		gbc_Date.fill = GridBagConstraints.HORIZONTAL;
-		gbc_Date.gridx = 4;
-		gbc_Date.gridy = 1;
-		add(Date, gbc_Date);
-		Date.setColumns(10);
+		textField = new JTextField();
+		panel_2.add(textField);
+		textField.setEditable(false);
+		textField.setColumns(20);
 		
-		JLabel label1 = new JLabel("\u5FEB\u9012\u5458");
-		label1.setFont(new Font("黑体", Font.BOLD, 12));
-		GridBagConstraints gbc_label1 = new GridBagConstraints();
-		gbc_label1.insets = new Insets(0, 0, 5, 5);
-		gbc_label1.gridx = 1;
-		gbc_label1.gridy = 2;
-		add(label1, gbc_label1);
+		JLabel label_2 = new JLabel("\u5FEB\u9012\u5458");
+		GridBagConstraints gbc_label_2 = new GridBagConstraints();
+		gbc_label_2.insets = new Insets(0, 0, 5, 5);
+		gbc_label_2.gridx = 1;
+		gbc_label_2.gridy = 2;
+		add(label_2, gbc_label_2);
+		label_2.setFont(new Font("黑体", Font.BOLD, 15));
 		
-		Courier = new JTextField();
-		Courier.setEditable(false);
-		GridBagConstraints gbc_Courier = new GridBagConstraints();
-		gbc_Courier.insets = new Insets(0, 0, 5, 5);
-		gbc_Courier.fill = GridBagConstraints.HORIZONTAL;
-		gbc_Courier.gridx = 2;
-		gbc_Courier.gridy = 2;
-		add(Courier, gbc_Courier);
-		Courier.setColumns(10);
+		JPanel panel_3 = new JPanel();
+		FlowLayout flowLayout_2 = (FlowLayout) panel_3.getLayout();
+		flowLayout_2.setAlignment(FlowLayout.LEFT);
+		GridBagConstraints gbc_panel_3 = new GridBagConstraints();
+		gbc_panel_3.insets = new Insets(0, 0, 5, 5);
+		gbc_panel_3.fill = GridBagConstraints.BOTH;
+		gbc_panel_3.gridx = 2;
+		gbc_panel_3.gridy = 2;
+		add(panel_3, gbc_panel_3);
 		
+		textField_1 = new JTextField();
+		panel_3.add(textField_1);
+		textField_1.setEditable(false);
+		textField_1.setColumns(10);
 		
-		scrollPane = new JScrollPane();
+		JScrollPane scrollPane = new JScrollPane();
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
-		gbc_scrollPane.fill = GridBagConstraints.BOTH;
+		gbc_scrollPane.gridwidth = 4;
 		gbc_scrollPane.insets = new Insets(0, 0, 0, 5);
-		gbc_scrollPane.gridx = 2;
+		gbc_scrollPane.fill = GridBagConstraints.BOTH;
+		gbc_scrollPane.gridx = 1;
 		gbc_scrollPane.gridy = 3;
 		add(scrollPane, gbc_scrollPane);
 		
-		
-		Object[][] tableInfo=new Object[vo.getReceiver().length][2];
-		String[]Receiver=vo.getReceiver();
-		String[] ItemIDs=vo.getItemID();
-		for(int i=0;i<vo.getReceiver().length;i++){
-			Object[] oneLine={Receiver[i],ItemIDs[i]};
-			tableInfo[i]=oneLine;
-		}
 		table = new JTable();
-		scrollPane.setViewportView(table);
 		table.setModel(new DefaultTableModel(
-			tableInfo,
+			new Object[][] {
+			},
 			new String[] {
-				"\u6536\u4EF6\u4EBA", "\u6536\u4EF6\u7F16\u53F7"
+				"\u5FEB\u4EF6\u5355\u53F7", "\u6536\u4EF6\u4EBA"
 			}
-		) {
-			Class[] columnTypes = new Class[] {
-				String.class, String.class
-			};
-			public Class getColumnClass(int columnIndex) {
-				return columnTypes[columnIndex];
-			}
-		});
-		
-		OverDocID.setText(vo.getID());
-		Date.setText(vo.getDate());
-		Courier.setText(vo.getCourier());
+		));
+		scrollPane.setViewportView(table);
+	}
+	public checkOverDoc(OverDocVO vo) {
+		// TODO Auto-generated constructor stub
+
 	}
 	
 

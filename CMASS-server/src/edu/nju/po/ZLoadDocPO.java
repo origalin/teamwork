@@ -1,8 +1,9 @@
 package edu.nju.po;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class ZLoadDocPO extends Doc{
+public class ZLoadDocPO extends Doc {
 	Date date;
 	String tranceID;
 	String targetBusinessHall;

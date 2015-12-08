@@ -97,7 +97,7 @@ public class checkCostIncomDocPO extends JPanel{
 		
 		textField_2 = new JTextField();
 		double profit=bl.getTotalIncome()-bl.getTotalPayment();
-		textField_1.setText(profit+"");
+		textField_2.setText(profit+"");
 		textField_2.setEditable(false);
 		GridBagConstraints gbc_textField_2 = new GridBagConstraints();
 		gbc_textField_2.insets = new Insets(0, 0, 0, 5);

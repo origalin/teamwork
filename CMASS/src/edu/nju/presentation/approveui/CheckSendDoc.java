@@ -34,6 +34,8 @@ public class CheckSendDoc extends JPanel{
 	private JTextField priceField;
 	private JTextField sUnitField;
 	private JTextField rUnitField;
+	private JTextField scityField;
+	private JTextField rcityField;
 	public CheckSendDoc(SendDocVO vo) {
 		setBorder(null);
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -161,6 +163,15 @@ public class CheckSendDoc extends JPanel{
 		gbc_panel_2.gridy = 4;
 		add(panel_2, gbc_panel_2);
 		
+		JLabel label_25 = new JLabel("\u57CE\u5E02");
+		label_25.setFont(new Font("黑体", Font.BOLD, 15));
+		panel_2.add(label_25);
+		
+		scityField = new JTextField();
+		scityField.setEditable(false);
+		panel_2.add(scityField);
+		scityField.setColumns(10);
+		
 		JLabel label_4 = new JLabel("\u5730\u5740");
 		label_4.setFont(new Font("黑体", Font.BOLD, 15));
 		panel_2.add(label_4);
@@ -168,7 +179,7 @@ public class CheckSendDoc extends JPanel{
 		sAddressField = new JTextField();
 		sAddressField.setEnabled(false);
 		panel_2.add(sAddressField);
-		sAddressField.setColumns(40);
+		sAddressField.setColumns(30);
 		
 		JPanel panel_17 = new JPanel();
 		GridBagConstraints gbc_panel_17 = new GridBagConstraints();
@@ -256,13 +267,22 @@ public class CheckSendDoc extends JPanel{
 		gbc_panel_5.gridy = 7;
 		add(panel_5, gbc_panel_5);
 		
+		JLabel label_26 = new JLabel("\u57CE\u5E02");
+		label_26.setFont(new Font("黑体", Font.BOLD, 15));
+		panel_5.add(label_26);
+		
+		rcityField = new JTextField();
+		rcityField.setEditable(false);
+		panel_5.add(rcityField);
+		rcityField.setColumns(10);
+		
 		JLabel label_9 = new JLabel("\u5730\u5740");
 		label_9.setFont(new Font("黑体", Font.BOLD, 15));
 		panel_5.add(label_9);
 		
 		rAddressField = new JTextField();
 		rAddressField.setEnabled(false);
-		rAddressField.setColumns(40);
+		rAddressField.setColumns(30);
 		panel_5.add(rAddressField);
 		
 		JPanel panel_18 = new JPanel();
@@ -428,11 +448,13 @@ public class CheckSendDoc extends JPanel{
 		dateField.setText(vo.getDate());
 		IDField.setText(vo.getID());
 		sNameField.setText(vo.getsName());
+		scityField.setText(vo.getsCity());
 		sAddressField.setText(vo.getsAddress());
 		sTelePhoneField.setText(vo.getsTelePhone());
 		sMobilePhoneField.setText(vo.getsMobilePhone());
 		sUnitField.setText(vo.getsUnit());
 		rNameField.setText(vo.getrName());
+		rcityField.setText(vo.getrCity());
 		rAddressField.setText(vo.getrAddress());
 		rTelephoneField.setText(vo.getrTelePhone());
 		rMobilePhoneField.setText(vo.getrMobilePhone());

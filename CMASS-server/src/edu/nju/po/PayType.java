@@ -1,5 +1,7 @@
 package edu.nju.po;
 
-public enum PayType {
+import java.io.Serializable;
+
+public enum PayType implements Serializable{
 	RENT,SALARY,FREIGHT,BOUNES
 }

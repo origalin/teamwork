@@ -180,14 +180,17 @@ public class accountManagement extends JPanel{
 			}
 		});
 		*/
-		//测试代码
+		/*
 		ArrayList<AccountVO> list=new ArrayList<AccountVO>();
 		for(int i=0;i<5;i++){
 			AccountVO vo=new AccountVO("账户名"+i,i*1000.0);
 			list.add(vo);
 		}
-		
-		//ArrayList<AccountVO> list=bl.getAccountList();
+		*/
+		ArrayList<AccountVO> list=bl.getAccountList();
+		if(list==null){
+			System.out.println("一定是搞错了");
+		}
 		scrollPane.setViewportView(initializeTable(list));
 		
 	}

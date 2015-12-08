@@ -1,8 +1,9 @@
 package edu.nju.po;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class TransferDocPO extends Doc{
+public class TransferDocPO extends Doc implements Serializable{
 	//long TransferDocID;
 	Date date;
 	String planeNum;

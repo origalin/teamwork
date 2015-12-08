@@ -154,8 +154,10 @@ public class DataFactory {
 		try{
 			if(financeDataService==null){
 				financeDataService=(FinanceDataService)Naming.lookup("rmi://127.0.0.1:6600/FinanceDataService");
+				System.out.println("连接应该没有问题");
 			}
 		}catch(MalformedURLException|RemoteException|NotBoundException e){
+			System.out.println("连接错误");
 			e.printStackTrace();
 			
 		}
