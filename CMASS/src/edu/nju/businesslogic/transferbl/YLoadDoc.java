@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Date;
 
+import edu.nju.businesslogic.infobl.Driver;
 import edu.nju.businesslogic.infobl.Institution;
 import edu.nju.businesslogic.logispicsquerybl.Logisticsquerybl;
 import edu.nju.businesslogic.systembl.SystemBl;
@@ -24,6 +25,7 @@ public class YLoadDoc implements YLoadDocService{
 	private Institution institution;
 	private Logisticsquerybl logisticsquerybl;
 	SystemBl systemBl;
+	Driver driver;
 
 	public YLoadDoc(String staffID) throws RemoteException {
 		super();
@@ -34,6 +36,7 @@ public class YLoadDoc implements YLoadDocService{
 		transferDataService = DataFactory.getTransferDataService();
 		transferDataService.setInstitutionID(institutionID);
 		systemBl = new SystemBl();
+		driver = new Driver();
 	}
 	public YLoadDoc() {
 		// TODO Auto-generated constructor stub
@@ -100,17 +103,17 @@ public class YLoadDoc implements YLoadDocService{
 		return transferDataService.getYLoadDocPO(ID, true);
 	}
 	@Override
-	public String getTransferCenter() {
+	public String getTransferCenter() throws RemoteException {
 		// TODO Auto-generated method stub
-		return institution.getInstitutionName(institution.getTransferCenterID(institutionID));
+		return institution.getInstitutionName(institution.getInstitutionName(institution.getTransferCenterID(institutionID)));
 	}
 	@Override
 	public String[][] getDrivers() {
 		// TODO Auto-generated method stub
-		ArrayList<String> driverIDs = institution.getDirverID(institutionID);
+		ArrayList<String> driverIDs = driver.getDirverID(institutionID);
 		ArrayList<String> driverNames = new ArrayList<String>();
 		for(String ID : driverIDs) {
-			driverNames.add(institution.getDirverName(ID));
+			driverNames.add(driver.getDirverName(ID));
 		}
 		String[][] drivers = new String[driverIDs.size()][2];
 		for(int i = 0;i < driverIDs.size();i++) {

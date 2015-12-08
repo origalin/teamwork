@@ -9,6 +9,7 @@ import edu.nju.dataFactory.DataFactory;
 import edu.nju.dataservice.collectiondataservice.CollectionDataService;
 import edu.nju.dataservice.transferdataservice.TransferDataService;
 import edu.nju.exception.DatabaseNULLException;
+import edu.nju.po.CourierMoneyPO;
 import edu.nju.po.OverDocPO;
 
 public class MainTest {
@@ -21,24 +22,12 @@ public class MainTest {
 		
 		CollectionDataService collectionDataService = DataFactory.getCollectionDataService();
 		try {
-			System.out.println(collectionDataService.getSendDocPOByID("2002512345").getrAddress());
+			//System.out.println(collectionDataService.getSendDocPOByID("2002512345").getrAddress());
+			CourierMoneyPO po = collectionDataService.getCourierMoneyPO("00252123315");
+			po.appendMoney("00252123315", "12123132", 12);
+			collectionDataService.saveCourierMoneyPO(po);
 			
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-//		TransferDataService transferDataService = DataFactory.getTransferDataService();
-//		String[] aStrings = {"122","12","231","213","123","123"};
-//		String[] bStrings = {"122","12","231","213","123","123"};
-//		try {
-//			OverDocPO po = new OverDocPO("134", aStrings, bStrings, new Date(), "12123");
-//			transferDataService.saveOverDocPO(po);
-//			
-//		} catch (RemoteException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} 
- catch (DatabaseNULLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

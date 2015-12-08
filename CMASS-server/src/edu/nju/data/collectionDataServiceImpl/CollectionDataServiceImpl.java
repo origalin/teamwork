@@ -240,7 +240,7 @@ public class CollectionDataServiceImpl extends UnicastRemoteObject implements
 			for (String s : str) {
 				itemIDs += s + " ";
 			}
-			String cmd = "replace into CourieMoney(courierID,money,itemIDs) values('"
+			String cmd = "replace into CourierMoney(courierID,money,itemIDs) values('"
 					+ courierID + "','" + money + "','" + itemIDs + "')";
 			SQL.databaseUpdate(cmd);
 			SQL.closeDatabase();
@@ -253,7 +253,7 @@ public class CollectionDataServiceImpl extends UnicastRemoteObject implements
 		// TODO Auto-generated method stub
 		ArrayList<CourierMessage> courierMessages = new ArrayList<CourierMessage>();
 		String[] itemIDs;
-		double money;
+		double money = 0;
 		String string = "select * from CourierMoney where courierID = '"
 				+ courierID + "';";
 		SQL.databaseQuery(string);
@@ -271,6 +271,9 @@ public class CollectionDataServiceImpl extends UnicastRemoteObject implements
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+		if(money==0) {
+			return new CourierMoneyPO();
 		}
 		CourierMoneyPO courierMoney = new CourierMoneyPO();
 		courierMoney.setCourierList(courierMessages);

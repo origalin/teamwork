@@ -16,6 +16,6 @@ public interface YArrivalDocService {
 	public ArrayList<YArrivalDocPO> getUncheckedYaArrivalDocPOs()throws RemoteException;
 	public YArrivalDocVO createYArrivalDocVO(String fromDocID, String[][] changeStates)throws RemoteException, DatabaseNULLException;
 	public String getAddressByID(String itemID)throws RemoteException, DatabaseNULLException;
-	public String[] getCouriers();
+	public String[] getCouriers() throws RemoteException;
 	public void  confirmSave()throws RemoteException;
 }

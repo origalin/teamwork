@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class CourierMoneyPO implements Serializable{
-	ArrayList<CourierMessage> courierList;
+	ArrayList<CourierMessage> courierList = new ArrayList<>();
 	public ArrayList<CourierMessage> getCourierList() {
 		return courierList;
 	}

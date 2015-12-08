@@ -59,6 +59,7 @@ public class Collectionbl implements CollectionLogicService{
 	public void  confirmSave() throws RemoteException {
 		saveSendDocPO(po);
 		changeSequence();
+		appendCourierMoney();
 		logisticsquerybl.createPosition(po.getID(),institution.getCity(institutionID)+institution.getInstitutionName(institutionID)+"已揽件",po.getrCity()+po.getrAddress());
 	}
 
@@ -100,8 +101,10 @@ public class Collectionbl implements CollectionLogicService{
 		// TODO 自动生成的方法存根
 		return collectionData.getCourierMoneyPO(courier).getCourierMoney(courier);
 	}
-	private void appendCourierMoney(String courierID) throws RemoteException{
-		collectionData.getCourierMoneyPO(courierID).appendMoney(staffID, po.getID(), po.getSumPrice());
+	private void appendCourierMoney() throws RemoteException{
+		CourierMoneyPO po1 = collectionData.getCourierMoneyPO(staffID);
+		po1.appendMoney(staffID, po.getID(), po.getSumPrice());
+		collectionData.saveCourierMoneyPO(po1);
 	}
 
 
@@ -208,7 +211,9 @@ public class Collectionbl implements CollectionLogicService{
 	@Override
 	public void saveSendDocCreateGatheringDoc(String courierID) throws RemoteException {
 		// TODO Auto-generated method stub
-		collectionData.getCourierMoneyPO(courierID).cleanCourierMessage(courierID);
+		CourierMoneyPO po2 = collectionData.getCourierMoneyPO(courierID);
+		po2.cleanCourierMessage(courierID);
+		collectionData.saveCourierMoneyPO(po2);
 	}
 	
 }
