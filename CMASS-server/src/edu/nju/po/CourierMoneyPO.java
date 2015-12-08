@@ -1,8 +1,9 @@
 package edu.nju.po;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class CourierMoneyPO {
+public class CourierMoneyPO implements Serializable{
 	ArrayList<CourierMessage> courierList;
 	public ArrayList<CourierMessage> getCourierList() {
 		return courierList;
@@ -10,7 +11,7 @@ public class CourierMoneyPO {
 	public void setCourierList(ArrayList<CourierMessage> courierList) {
 		this.courierList = courierList;
 	}
-	public class CourierMessage{
+	public class CourierMessage implements Serializable{
 		public CourierMessage(String courierID,String itemID,double money) {
 			// TODO Auto-generated constructor stub
 			this.courierID = courierID;

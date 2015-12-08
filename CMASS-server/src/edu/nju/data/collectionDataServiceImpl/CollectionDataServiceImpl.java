@@ -13,7 +13,8 @@ import edu.nju.po.CourierMoneyPO.CourierMessage;
 import edu.nju.po.SendDocPO;
 import edu.nju.tools.Time;
 
-public class CollectionDataServiceImpl extends UnicastRemoteObject implements CollectionDataService {
+public class CollectionDataServiceImpl extends UnicastRemoteObject implements
+		CollectionDataService {
 	String ID;
 	String sName, sCity, sAddress, sUnit, sTelePhone, sMobilePhone;
 	String rName, rCity, rAddress, rUnit, rTelePhone, rMobilePhone;
@@ -57,9 +58,9 @@ public class CollectionDataServiceImpl extends UnicastRemoteObject implements Co
 		volume = po.getVolume();
 		item_type = po.getItem_type();
 
-		if(po.isChecked()) {
+		if (po.isChecked()) {
 			checked = 1;
-		}else {
+		} else {
 			checked = 0;
 		}
 		packageType = po.getPackageType();
@@ -69,12 +70,62 @@ public class CollectionDataServiceImpl extends UnicastRemoteObject implements Co
 		String sql = "replace into sendDoc (id,sName, sAddress, sCity, sUnit, "
 				+ "sTelePhone, sMobilePhone, rName, rAddress, rCity, rUnit, "
 				+ "rTelePhone, rMobilePhone, itemNum, weight, lehgth,wideth,height, item_type, "
-				+ "packageType, sumPrice, courier_Type, date, time, checked) " + "values('" + ID + "','" + sName + "','"
-				+ sAddress + "','" + sCity + "','" + sUnit + "'," + "'" + sTelePhone + "','" + sMobilePhone + "','"
-				+ rName + "','" + rAddress + "'," + "'" + rCity + "','" + rUnit + "','" + rTelePhone + "','"
-				+ rMobilePhone + "','" + itemNum + "'," + "'" + weight + "','" + volume[0] + "','" + volume[1] + "','"
-				+ volume[2] + "','" + item_type + "'," + "'" + packageType + "','" + sumPrice + "','" + courier_Type
-				+ "','" + Time.toDaysTime(date) + "','" + time + "'," + "'" + checked + "');";
+				+ "packageType, sumPrice, courier_Type, date, time, checked) "
+				+ "values('"
+				+ ID
+				+ "','"
+				+ sName
+				+ "','"
+				+ sAddress
+				+ "','"
+				+ sCity
+				+ "','"
+				+ sUnit
+				+ "',"
+				+ "'"
+				+ sTelePhone
+				+ "','"
+				+ sMobilePhone
+				+ "','"
+				+ rName
+				+ "','"
+				+ rAddress
+				+ "',"
+				+ "'"
+				+ rCity
+				+ "','"
+				+ rUnit
+				+ "','"
+				+ rTelePhone
+				+ "','"
+				+ rMobilePhone
+				+ "','"
+				+ itemNum
+				+ "',"
+				+ "'"
+				+ weight
+				+ "','"
+				+ volume[0]
+				+ "','"
+				+ volume[1]
+				+ "','"
+				+ volume[2]
+				+ "','"
+				+ item_type
+				+ "',"
+				+ "'"
+				+ packageType
+				+ "','"
+				+ sumPrice
+				+ "','"
+				+ courier_Type
+				+ "','"
+				+ Time.toDaysTime(date)
+				+ "','"
+				+ time
+				+ "',"
+				+ "'"
+				+ checked + "');";
 		System.out.println(sql);
 		SQL.databaseUpdate(sql);
 		SQL.closeDatabase();
@@ -102,7 +153,8 @@ public class CollectionDataServiceImpl extends UnicastRemoteObject implements Co
 	@Override
 	public void changeSequence(String sequence) {
 		// TODO Auto-generated method stub
-		String sql = "UPDATE SequenceTable SET Sequence='" + sequence + "'where Kind='SendDoc';";
+		String sql = "UPDATE SequenceTable SET Sequence='" + sequence
+				+ "'where Kind='SendDoc';";
 		SQL.databaseUpdate(sql);
 		SQL.closeDatabase();
 	}
@@ -125,13 +177,14 @@ public class CollectionDataServiceImpl extends UnicastRemoteObject implements Co
 	}
 
 	@Override
-	public SendDocPO getSendDocPOByID(String itemID) throws DatabaseNULLException {
+	public SendDocPO getSendDocPOByID(String itemID)
+			throws DatabaseNULLException {
 		// TODO Auto-generated method stub
 		String sql = "select * from SendDoc where ID='" + itemID + "';";
 		SQL.databaseQuery(sql);
 		try {
 			while (SQL.rs.next()) {
-				itemID = SQL.rs.getString("ID"); 
+				itemID = SQL.rs.getString("ID");
 				sName = SQL.rs.getString("sName");
 				sCity = SQL.rs.getString("sCity");
 				sAddress = SQL.rs.getString("sAddress");
@@ -155,15 +208,16 @@ public class CollectionDataServiceImpl extends UnicastRemoteObject implements Co
 				courier_Type = SQL.rs.getInt("courier_Type");
 				time = SQL.rs.getInt("time");
 				date = SQL.rs.getDate("date");
-				
+
 			}
 			SQL.closeDatabase();
 			if (itemID == null) {
 				throw new DatabaseNULLException();
 			}
-			return new SendDocPO(itemID, sName, sAddress, sCity, sUnit, sTelePhone, sMobilePhone, rName, rAddress,
-					rCity, rUnit, rTelePhone, rMobilePhone, itemNum, weight, volume, item_type, packageType,
-					sumPrice, courier_Type, date, time);
+			return new SendDocPO(itemID, sName, sAddress, sCity, sUnit,
+					sTelePhone, sMobilePhone, rName, rAddress, rCity, rUnit,
+					rTelePhone, rMobilePhone, itemNum, weight, volume,
+					item_type, packageType, sumPrice, courier_Type, date, time);
 		} catch (SQLException e) {
 			System.out.println("´íÎó");
 			e.printStackTrace();
@@ -178,19 +232,20 @@ public class CollectionDataServiceImpl extends UnicastRemoteObject implements Co
 		Double money = 0.0;
 		String itemIDs = "";
 		ArrayList<CourierMessage> courierList = po.getCourierList();
-		for(CourierMessage cm : courierList) {
+		for (CourierMessage cm : courierList) {
 			itemIDs = "";
 			courierID = cm.getCourierID();
 			money = cm.getMoney();
 			ArrayList<String> str = cm.getItemIDs();
-			for(String s : str) {
-				itemIDs+=s+" ";
+			for (String s : str) {
+				itemIDs += s + " ";
 			}
-			String cmd = "replace into CourieMoney(courierID,money,itemIDs) values('"+courierID+"','"+money+"','"+itemIDs+"')";
+			String cmd = "replace into CourieMoney(courierID,money,itemIDs) values('"
+					+ courierID + "','" + money + "','" + itemIDs + "')";
 			SQL.databaseUpdate(cmd);
 			SQL.closeDatabase();
 		}
-		
+
 	}
 
 	@Override
@@ -199,22 +254,25 @@ public class CollectionDataServiceImpl extends UnicastRemoteObject implements Co
 		ArrayList<CourierMessage> courierMessages = new ArrayList<CourierMessage>();
 		String[] itemIDs;
 		double money;
-		String string = "select * from CourierMoney where courierID = '"+courierID+"';";
+		String string = "select * from CourierMoney where courierID = '"
+				+ courierID + "';";
 		SQL.databaseQuery(string);
 		try {
 			while (SQL.rs.next()) {
 				money = SQL.rs.getDouble("money");
 				itemIDs = SQL.rs.getString("itemIDs").split(" ");
 				ArrayList<String> items = new ArrayList<String>();
-				for(String s : itemIDs) {
+				for (String s : itemIDs) {
 					items.add(s);
 				}
-				courierMessages.add(new CourierMoneyPO().new CourierMessage(courierID, items, money));			}
+				courierMessages.add(new CourierMoneyPO().new CourierMessage(
+						courierID, items, money));
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		CourierMoneyPO courierMoney= new CourierMoneyPO();
+		CourierMoneyPO courierMoney = new CourierMoneyPO();
 		courierMoney.setCourierList(courierMessages);
 		SQL.closeDatabase();
 		return courierMoney;

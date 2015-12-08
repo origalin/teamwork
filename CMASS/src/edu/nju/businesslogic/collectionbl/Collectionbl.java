@@ -20,6 +20,7 @@ import edu.nju.dataFactory.DataFactory;
 import edu.nju.dataservice.collectiondataservice.CollectionDataService;
 import edu.nju.dataservice.transferdataservice.TransferDataService;
 import edu.nju.exception.DatabaseNULLException;
+import edu.nju.po.CourierMoneyPO;
 import edu.nju.po.HistoryTimePO;
 import edu.nju.po.PositionPO;
 import edu.nju.po.SendDocPO;
@@ -48,9 +49,12 @@ public class Collectionbl implements CollectionLogicService{
 		distance = new Distance();
 	}
 	
-	public Collectionbl(){
+	public Collectionbl() throws RemoteException{
 		this.institutionID=null;
 		this.staffID=null;
+		collectionData = DataFactory.getCollectionDataService();
+		transferData = DataFactory.getTransferDataService();
+		transferData.setInstitutionID(institutionID);
 	}
 	public void  confirmSave() throws RemoteException {
 		saveSendDocPO(po);
@@ -197,7 +201,8 @@ public class Collectionbl implements CollectionLogicService{
 	@Override
 	public ArrayList<String> getSendDocsByID(String courier_ID) throws RemoteException {
 		// TODO Auto-generated method stub
-		return collectionData.getCourierMoneyPO(courier_ID).getCourierSendDoc(courier_ID);
+		CourierMoneyPO po = collectionData.getCourierMoneyPO(courier_ID);
+		return po.getCourierSendDoc(courier_ID);
 	}
 
 	@Override
