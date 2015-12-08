@@ -557,9 +557,9 @@ public class financebl implements FinanceLogicService {
 
 	}
 
-	private double getCourierMoney(String staffID2) {
-
-		return 0;
+	private double getCourierMoney(String staffID) throws RemoteException {
+		return financeDataService.getCourierMoney(staffID);
+		
 	}
 
 	public double calculateDriverSalary(String DriverID) {
