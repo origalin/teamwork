@@ -50,6 +50,7 @@ public class YLoadDocPanel extends JPanel{
 		this.staffID = staffID;
 		try {
 			yLoadDoc = new YLoadDoc(staffID);
+			driverNameAndIDs = yLoadDoc.getDrivers();
 		} catch (RemoteException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -103,7 +104,7 @@ public class YLoadDocPanel extends JPanel{
 		JLabel label_12 = new JLabel("\u53F8\u673A");
 		panel_8.add(label_12);
 		
-		driverNameAndIDs = yLoadDoc.getDrivers();
+		
 		drivers = new String[driverNameAndIDs.length];
 		for(int i = 0;i<driverNameAndIDs.length;i++) {
 			drivers[i] = driverNameAndIDs[i][1];

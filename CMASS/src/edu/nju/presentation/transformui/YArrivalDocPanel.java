@@ -55,6 +55,7 @@ public class YArrivalDocPanel extends JPanel{
 		try {
 			yArrivalDoc = new YArrivalDoc(staffID);
 			yDeliverDoc = new YDeliverDoc(staffID);
+			courier = yArrivalDoc.getCouriers();
 		} catch (RemoteException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -272,7 +273,7 @@ public class YArrivalDocPanel extends JPanel{
 				"\u5FEB\u9012\u5355\u53F7", "\u5730\u5740", "\u5FEB\u9012\u5458"
 			}
 		));
-		courier = yArrivalDoc.getCouriers();
+		
 		JComboBox<String> courierBox = new JComboBox<String>();
 		courierBox.setModel(new DefaultComboBoxModel<String>(courier));//´ý¸ü¸Ä
 		TableColumnModel tcm = table_1.getColumnModel();

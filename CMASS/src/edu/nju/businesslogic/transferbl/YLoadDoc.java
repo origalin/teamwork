@@ -108,12 +108,12 @@ public class YLoadDoc implements YLoadDocService{
 		return institution.getInstitutionName(institution.getInstitutionName(institution.getTransferCenterID(institutionID)));
 	}
 	@Override
-	public String[][] getDrivers() {
+	public String[][] getDrivers() throws RemoteException {
 		// TODO Auto-generated method stub
 		ArrayList<String> driverIDs = driver.getDirverID(institutionID);
 		ArrayList<String> driverNames = new ArrayList<String>();
 		for(String ID : driverIDs) {
-			driverNames.add(driver.getDirverName(ID));
+			driverNames.add(driver.getDirverName(ID,institutionID));
 		}
 		String[][] drivers = new String[driverIDs.size()][2];
 		for(int i = 0;i < driverIDs.size();i++) {
