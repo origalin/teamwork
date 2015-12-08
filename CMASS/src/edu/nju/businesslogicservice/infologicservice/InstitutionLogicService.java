@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import edu.nju.po.InstitutionPO;
 import edu.nju.po.Post;
+import edu.nju.po.SalaryPO;
 import edu.nju.po.StaffPO;
 import edu.nju.vo.InstitutionVO;
 import edu.nju.vo.StaffVO;
@@ -12,17 +13,16 @@ import edu.nju.vo.StaffVO;
 public interface InstitutionLogicService {
 	
 	
+	public ArrayList<StaffVO> getStaffVOList(String institutionName)throws RemoteException;//获得staff的列表
+	public ArrayList<InstitutionVO> getInstitutionVOList()throws RemoteException;//获得机构列表
+
+	public void saveSalary (SalaryPO po)throws RemoteException;//保存薪资PO
+	public void saveStaff(StaffPO po)throws RemoteException;//保存员工信息
+	public void saveInstitution (InstitutionPO po)throws RemoteException;//保存机构信息
 	
+	public void deleteInstitution(InstitutionPO po)throws RemoteException;
+	public void deleteStaff(StaffPO po)throws RemoteException;
 	
-//	public int getSalary(int id);//获得人员的工资
-//	public ArrayList<StaffVO> getStaffVO();//获得staff的列表
-//	public ArrayList<InstitutionVO> getInstitutionVOList();//获得机构列表
-//
-//	
-//	
-//	public void saveSalary (StaffPO po);//保存薪资PO
-//	public void saveStaff(StaffPO po);//保存员工信息
-//	public void saveInstitution (InstitutionPO po);//保存机构信息
 	//collection依赖我
 	
 	

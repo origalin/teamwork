@@ -5,6 +5,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import edu.nju.po.InstitutionPO;
+import edu.nju.po.SalaryPO;
 import edu.nju.po.StaffPO;
 
 public interface InstitutionDataService extends Remote{
@@ -22,6 +23,12 @@ public interface InstitutionDataService extends Remote{
 	
 	public InstitutionPO getInstitution(String id)throws RemoteException;
 	public StaffPO getStaff(String id)throws RemoteException;
+	
+	
+	public ArrayList<SalaryPO> getSalaryPOs()throws RemoteException;
+	
+	public SalaryPO getSalaryPO(String staffID)throws RemoteException;
+	public void changeSalary(SalaryPO po)throws RemoteException;
 
 
 }

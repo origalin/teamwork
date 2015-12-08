@@ -13,6 +13,7 @@ import edu.nju.po.DriverPO;
 import edu.nju.po.Institutation;
 import edu.nju.po.InstitutionPO;
 import edu.nju.po.Post;
+import edu.nju.po.SalaryPO;
 import edu.nju.po.StaffPO;
 
 public class InstitutionDataServiceImpl extends UnicastRemoteObject implements
@@ -26,7 +27,7 @@ public class InstitutionDataServiceImpl extends UnicastRemoteObject implements
 	@Override
 	public ArrayList<StaffPO> getStaffList(String institutionId)
 			throws RemoteException {
-		// TODO Auto-generated method stub
+
 		ArrayList<StaffPO> staffList = new ArrayList<StaffPO>();
 		String sql = "SELECT 工号,姓名,性别,身份证号,联系电话,所属机构,职位 FROM STAFF WHERE 所属机构='"
 				+ institutionId + "';";
@@ -70,7 +71,7 @@ public class InstitutionDataServiceImpl extends UnicastRemoteObject implements
 
 	@Override
 	public ArrayList<InstitutionPO> findInstitution() throws RemoteException {
-		// TODO Auto-generated method stub
+
 		InstitutionPO po = null;
 		ArrayList<InstitutionPO>institutionList=new ArrayList<InstitutionPO>();
 		String sql = "SELECT 机构编号,机构类型,机构名称,所在城市,上级机构,租金,是否付款 FROM INSTITUTION;";
@@ -122,7 +123,7 @@ public class InstitutionDataServiceImpl extends UnicastRemoteObject implements
 
 	@Override
 	public InstitutionPO getInstitution(String id) throws RemoteException {
-		// TODO Auto-generated method stub
+
 		InstitutionPO po = null;
 		String sql = "SELECT 机构编号,机构类型,机构名称,所在城市,上级机构,租金,是否付款 FROM INSTITUTION WHERE 机构编号='"
 				+ id + "';";
@@ -149,7 +150,6 @@ public class InstitutionDataServiceImpl extends UnicastRemoteObject implements
 
 	@Override
 	public StaffPO getStaff(String id) throws RemoteException {
-		// TODO Auto-generated method stub
 		StaffPO po = null;
 		String sql = "SELECT 工号,姓名,性别,身份证号,联系电话,所属机构,职位 FROM STAFF WHERE 工号='"
 				+ id + "';";
@@ -161,6 +161,67 @@ public class InstitutionDataServiceImpl extends UnicastRemoteObject implements
 						SQL.rs.getString("身份证号"), SQL.rs.getString("联系电话"),
 						SQL.rs.getString("所属机构"), Post.valueOf(SQL.rs
 								.getString("职位")));
+			}
+		} catch (SQLException e) {
+			System.out.println("查找信息错误");
+			e.printStackTrace();
+		}
+		SQL.closeDatabase();
+		return po;
+	}
+
+	@Override
+	public ArrayList<SalaryPO> getSalaryPOs() throws RemoteException {
+		SalaryPO po = null;
+		ArrayList<SalaryPO> salaryPOs=new ArrayList<SalaryPO>();
+		String sql = "SELECT 工号,基础工资,提成,奖金,是否付款 FROM SALARY ;";
+		SQL.databaseQuery(sql);
+		
+		try {
+			while (SQL.rs.next()) {
+				boolean flag=true;
+				if(SQL.rs.getInt("是否付款")==0){
+					flag=false;
+				}
+				po = new SalaryPO(SQL.rs.getString("工号"),SQL.rs.getDouble("基础工资"),SQL.rs.getDouble("提成"),SQL.rs.getDouble("奖金"),flag);
+		salaryPOs.add(po);
+			}
+		} catch (SQLException e) {
+			System.out.println("查找信息错误");
+			e.printStackTrace();
+		}
+		SQL.closeDatabase();
+		return salaryPOs;
+	}
+
+	
+
+	@Override
+	public void changeSalary(SalaryPO po) throws RemoteException {
+		int flag=0;
+		if(po.isPaid()){
+			flag=1;
+		}
+		String sql = "UPDATE SALARY SET 基础工资='"+po.getBaseSalary()+"',"+"提成='"+po.getBonusSalary()+"',奖金='"+po.getPercentageSalary()+"',"+"是否付款='"+flag+"' where 工号='"
+				+ po.getId() + "';";
+					SQL.databaseUpdate(sql);
+					SQL.closeDatabase();
+		
+	}
+	@Override
+	public SalaryPO getSalaryPO(String staffID) throws RemoteException {
+		SalaryPO po = null;
+		String sql = "SELECT 工号,基础工资,提成,奖金,是否付款 FROM SALARY WHERE 工号='"
+				+ staffID + "';";
+		SQL.databaseQuery(sql);
+		
+		try {
+			while (SQL.rs.next()) {
+				boolean flag=true;
+				if(SQL.rs.getInt("是否付款")==0){
+					flag=false;
+				}
+				po = new SalaryPO(SQL.rs.getString("工号"),SQL.rs.getDouble("基础工资"),SQL.rs.getDouble("提成"),SQL.rs.getDouble("奖金"),flag);
 			}
 		} catch (SQLException e) {
 			System.out.println("查找信息错误");

@@ -44,7 +44,7 @@ public class DriverDataServiceImpl extends UnicastRemoteObject implements Driver
 	public void changeDriver(DriverPO po) throws RemoteException{
 		// TODO Auto-generated method stub
 		DateFormat df=DateFormat.getDateInstance();
-		String sql = "UPDATE DRIVER SET 司机姓名='"+po.getName()+"',"+"性别='"+po.getSex()+"',出生日期='"+df.format(po.getBirthday())+"',"+"身份证号='"+po.getIdentity()+"',"+"联系方式='"+po.getTel()+"',"+"车辆单位='"+po.getInstitution()+"',"+"行驶证初始日期='"+df.format(po.getBeginLimit())+"',"+"行驶证失效日期='"+df.format(po.getEndLimit())+"' where 司机编号='"
+		String sql = "UPDATE DRIVER SET 司机姓名='"+po.getName()+"',"+" 性别='"+po.getSex()+"',出生日期='"+df.format(po.getBirthday())+"',"+"身份证号='"+po.getIdentity()+"',"+"联系方式='"+po.getTel()+"',"+"车辆单位='"+po.getInstitution()+"',"+"行驶证初始日期='"+df.format(po.getBeginLimit())+"',"+"行驶证失效日期='"+df.format(po.getEndLimit())+"' where 司机编号='"
 	+ po.getDriverID() + "';";
 		SQL.databaseUpdate(sql);
 		SQL.closeDatabase();
