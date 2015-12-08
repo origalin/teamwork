@@ -30,4 +30,5 @@ public interface FinanceDataService extends Remote{
 	public ArrayList<AccountPO> getAccountList()throws RemoteException;
 	public void addMoney(String accountName, double money)throws RemoteException;
 	public void minusMoney(String accountName, double money)throws RemoteException;
+	public double getCourierMoney(String staffID, Date date)throws RemoteException;
 }

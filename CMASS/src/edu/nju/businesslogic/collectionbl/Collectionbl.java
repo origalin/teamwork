@@ -20,6 +20,7 @@ import edu.nju.dataFactory.DataFactory;
 import edu.nju.dataservice.collectiondataservice.CollectionDataService;
 import edu.nju.dataservice.transferdataservice.TransferDataService;
 import edu.nju.exception.DatabaseNULLException;
+import edu.nju.po.CourierMoneyPO;
 import edu.nju.po.HistoryTimePO;
 import edu.nju.po.PositionPO;
 import edu.nju.po.SendDocPO;
@@ -48,13 +49,17 @@ public class Collectionbl implements CollectionLogicService{
 		distance = new Distance();
 	}
 	
-	public Collectionbl(){
+	public Collectionbl() throws RemoteException{
 		this.institutionID=null;
 		this.staffID=null;
+		collectionData = DataFactory.getCollectionDataService();
+		transferData = DataFactory.getTransferDataService();
+		transferData.setInstitutionID(institutionID);
 	}
 	public void  confirmSave() throws RemoteException {
 		saveSendDocPO(po);
 		changeSequence();
+		appendCourierMoney();
 		logisticsquerybl.createPosition(po.getID(),institution.getCity(institutionID)+institution.getInstitutionName(institutionID)+"已揽件",po.getrCity()+po.getrAddress());
 	}
 
@@ -96,8 +101,10 @@ public class Collectionbl implements CollectionLogicService{
 		// TODO 自动生成的方法存根
 		return collectionData.getCourierMoneyPO(courier).getCourierMoney(courier);
 	}
-	private void appendCourierMoney(String courierID) throws RemoteException{
-		collectionData.getCourierMoneyPO(courierID).appendMoney(staffID, po.getID(), po.getSumPrice());
+	private void appendCourierMoney() throws RemoteException{
+		CourierMoneyPO po1 = collectionData.getCourierMoneyPO(staffID);
+		po1.appendMoney(staffID, po.getID(), po.getSumPrice());
+		collectionData.saveCourierMoneyPO(po1);
 	}
 
 
@@ -197,13 +204,16 @@ public class Collectionbl implements CollectionLogicService{
 	@Override
 	public ArrayList<String> getSendDocsByID(String courier_ID) throws RemoteException {
 		// TODO Auto-generated method stub
-		return collectionData.getCourierMoneyPO(courier_ID).getCourierSendDoc(courier_ID);
+		CourierMoneyPO po = collectionData.getCourierMoneyPO(courier_ID);
+		return po.getCourierSendDoc(courier_ID);
 	}
 
 	@Override
 	public void saveSendDocCreateGatheringDoc(String courierID) throws RemoteException {
 		// TODO Auto-generated method stub
-		collectionData.getCourierMoneyPO(courierID).cleanCourierMessage(courierID);
+		CourierMoneyPO po2 = collectionData.getCourierMoneyPO(courierID);
+		po2.cleanCourierMessage(courierID);
+		collectionData.saveCourierMoneyPO(po2);
 	}
 	
 }

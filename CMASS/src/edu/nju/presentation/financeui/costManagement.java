@@ -22,6 +22,7 @@ import java.awt.Insets;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 public class costManagement extends JPanel{
 	public static void main(String args[]){
@@ -39,7 +40,7 @@ public class costManagement extends JPanel{
 	private ArrayList<AccountVO>accountList;
 	private ArrayList<InstitutionPO> institutionList;
 	private JComboBox accountComboBox ;
-	private financebl bl=new financebl();
+	private financebl bl;
 	private JPanel thisPanel=this;
 	private JPanel panel;
 	private JComboBox comboBox;
@@ -47,6 +48,12 @@ public class costManagement extends JPanel{
 	private JTextField back;
 	private JTextField currentWorker;
 	public costManagement() {
+		try {
+			bl=new financebl();
+		} catch (RemoteException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 13, 68, 389, 0, 0, 0, 73, 44, 0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0};
@@ -84,8 +91,11 @@ public class costManagement extends JPanel{
 						panel=new freightMoneyPanel();
 						addPanel(panel);
 						transferDoc=bl.getUnpaidCarTransferList();
+						System.out.println(transferDoc.size());
 						YLoadDoc=bl.getUnpaidYLoadDocList();
+						System.out.println(transferDoc.size());
 						ZLoadDoc=bl.getUnpaidZLoadDocList();
+						System.out.println(transferDoc.size());
 						((freightMoneyPanel)panel).initializeTable(transferDoc, YLoadDoc, ZLoadDoc);
 						updateUI();
 						break;
@@ -208,14 +218,14 @@ public class costManagement extends JPanel{
 		            	public void actionPerformed(ActionEvent e){
 		            		bl.createPayDoc(salaryVo);
 		            		bl.minusMoney(salaryVo.getAccount(), salaryVo.getMoney());
-		            		/*
+		            		
 		            		for(int i=0;i<salaryTableInfo.length;i++){
 								Object[] oneLine=salaryTableInfo[i];
 								if((boolean)oneLine[0]==true){
 									staffList.get(i).isPaid(true);
 								}
 							}
-							*/
+							
 		            		bl.setStaffList(staffList);
 		            		//已经生成付款单后我们要把添加的面板清空并且让institutionList重新变为null,方便进行下一次成本管理
 		            		panel=null;

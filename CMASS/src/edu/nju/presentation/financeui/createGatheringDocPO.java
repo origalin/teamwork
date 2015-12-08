@@ -7,6 +7,7 @@ import java.awt.Insets;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import javax.swing.table.DefaultTableModel;
@@ -18,7 +19,7 @@ import edu.nju.presentation.mainui.CheckDialog;
 import edu.nju.vo.AccountVO;
 import edu.nju.vo.GatheringDocVO;
 public class createGatheringDocPO extends JPanel{
-		financebl bl=new financebl();
+		private financebl bl;
 		private JTextField courier_ID;
 		private JTextField textField_1;
 		private JButton button;
@@ -34,6 +35,12 @@ public class createGatheringDocPO extends JPanel{
 		}
  
 		public createGatheringDocPO() {
+			try {
+				bl=new financebl();
+			} catch (RemoteException e1) {
+				
+				e1.printStackTrace();
+			}
 			GridBagLayout gridBagLayout = new GridBagLayout();
 			gridBagLayout.columnWidths = new int[]{115, 102, 65, 62, 76, 0};
 			gridBagLayout.rowHeights = new int[]{30, 0, 0, 19, 77, 0, 0, 0};

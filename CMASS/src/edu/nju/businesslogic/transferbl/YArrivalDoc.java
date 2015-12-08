@@ -114,7 +114,7 @@ public class YArrivalDoc implements YArrivalDocService {
 	}
 
 	@Override
-	public String[] getCouriers() {
+	public String[] getCouriers() throws RemoteException {
 		// TODO Auto-generated method stub
 		return (String[]) institution.getCourierID(institutionID).toArray();
 	}

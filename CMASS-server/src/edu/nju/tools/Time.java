@@ -6,13 +6,23 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Time {
-	
+	public static void main(String args[]){
+		System.out.println(toDaysTime(new Date()));
+		System.out.println(toFirstDayTime(new Date()));
+	}
 	public static String toDaysTime(Date date) {
 		SimpleDateFormat sdm = new SimpleDateFormat("yyyy-MM-dd");	
 		String result = sdm.format(date);
 		return result;
 		
 	}
+	
+	public static String toFirstDayTime(Date date){
+		String currentDay=toDaysTime(date);
+		currentDay=currentDay.substring(0,8);
+		return currentDay+"01";
+	}
+	
 	public static String toSecondTime(Date date) {
 		SimpleDateFormat sdm = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss");	
 		String result = sdm.format(date);

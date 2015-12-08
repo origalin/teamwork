@@ -17,8 +17,8 @@ public interface YLoadDocService {
 	public ArrayList<YLoadDocPO> getUncheckedyLoadDocPOs() throws RemoteException;
 	public double[] getPriceToday();
 	public YLoadDocPO getYloadDocPOByID(String ID) throws RemoteException, DatabaseNULLException;
-	public String getTransferCenter();
-	public String[][] getDrivers();
+	public String getTransferCenter() throws RemoteException;
+	public String[][] getDrivers() throws RemoteException;
 	public int getDriverTime(String drrverID) throws RemoteException;
 	public void  confirmSave() throws RemoteException;
 }
