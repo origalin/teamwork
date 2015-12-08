@@ -81,8 +81,7 @@ public class CollectionDataServiceImpl extends UnicastRemoteObject implements
 				+ sCity
 				+ "','"
 				+ sUnit
-				+ "',"
-				+ "'"
+				+ "','"
 				+ sTelePhone
 				+ "','"
 				+ sMobilePhone

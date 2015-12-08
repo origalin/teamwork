@@ -42,7 +42,7 @@ public class YLoadDocPanel extends JPanel{
 	String[] itemIDs;
 	YLoadDoc yLoadDoc;
 	YLoadDocVO vo;
-	private JComboBox driverBox;
+	private JComboBox<String> driverBox;
 	String[][] driverNameAndIDs;
 	String[] drivers;
 
@@ -109,7 +109,7 @@ public class YLoadDocPanel extends JPanel{
 		for(int i = 0;i<driverNameAndIDs.length;i++) {
 			drivers[i] = driverNameAndIDs[i][1];
 		}
-		driverBox = new JComboBox();
+		driverBox = new JComboBox<String>();
 		driverBox.setModel(new DefaultComboBoxModel<String>(drivers));
 		panel_8.add(driverBox);
 		
