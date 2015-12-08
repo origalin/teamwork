@@ -91,8 +91,11 @@ public class costManagement extends JPanel{
 						panel=new freightMoneyPanel();
 						addPanel(panel);
 						transferDoc=bl.getUnpaidCarTransferList();
+						System.out.println(transferDoc.size());
 						YLoadDoc=bl.getUnpaidYLoadDocList();
+						System.out.println(transferDoc.size());
 						ZLoadDoc=bl.getUnpaidZLoadDocList();
+						System.out.println(transferDoc.size());
 						((freightMoneyPanel)panel).initializeTable(transferDoc, YLoadDoc, ZLoadDoc);
 						updateUI();
 						break;

@@ -111,6 +111,7 @@ public class financebl implements FinanceLogicService {
 
 	public financebl() throws RemoteException {
 		collectionbl = new Collectionbl();
+		this.transfer=new TransferDoc();
 		this.financeDataService = DataFactory.getFinanceDataService();
 
 	}

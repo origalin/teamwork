@@ -37,9 +37,8 @@ public class ZLoadDoc implements ZLoadDocService{
 		logisticsquerybl = new Logisticsquerybl();
 		systemBl = new SystemBl();
 	}
-	public ZLoadDoc(){
-		this.institutionID=null;
-		this.staffID=null;
+	public ZLoadDoc() throws RemoteException{
+		this(null);
 	}
 	public void confirmSave() throws RemoteException {
 		saveZloadDocPO(po);

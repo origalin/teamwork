@@ -38,8 +38,9 @@ public class YLoadDoc implements YLoadDocService{
 		systemBl = new SystemBl();
 		driver = new Driver();
 	}
-	public YLoadDoc() {
+	public YLoadDoc() throws RemoteException {
 		// TODO Auto-generated constructor stub
+		this(null);
 	}
 	public void confirmSave() throws RemoteException {
 		saveYloadDocPO(po);
