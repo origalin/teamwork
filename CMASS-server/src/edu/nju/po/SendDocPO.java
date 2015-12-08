@@ -1,6 +1,5 @@
 package edu.nju.po;
 
-import java.io.Serializable;
 import java.util.Date;
 
 public class SendDocPO extends Doc {
