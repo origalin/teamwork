@@ -1,8 +1,9 @@
 package edu.nju.po;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class YLoadDocPO extends Doc{
+public class YLoadDocPO extends Doc {
 	Date date;
 	String tranceID;
 	String target;

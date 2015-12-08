@@ -16,7 +16,7 @@ public class SQL {
 	public static Connection conn = null;
 	public static Statement stmt = null;
 	public static ResultSet rs = null;
-	public static String url ="jdbc:mysql://192.168.4.27/cmass";	
+	public static String url ="jdbc:mysql://172.26.4.27:3306/cmass";	
 	public static String user = "root";
 	public static String password = "1314..zJ";
 

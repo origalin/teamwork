@@ -25,7 +25,7 @@ public class Time {
 	}
 	
 	public static Date stringToDate(String s){
-		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd"); 
 	    try {
 			Date d = df.parse(s);
 			return d;

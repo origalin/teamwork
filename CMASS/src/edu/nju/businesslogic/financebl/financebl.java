@@ -603,6 +603,7 @@ public double getCourierMoney(String courier_ID);
 		}
 		return VOList;	
 		}catch(RemoteException e){
+			e.printStackTrace();
 			return null;
 		}
 	}

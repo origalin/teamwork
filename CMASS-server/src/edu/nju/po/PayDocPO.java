@@ -1,8 +1,9 @@
 package edu.nju.po;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class PayDocPO extends Doc{
+public class PayDocPO extends Doc implements Serializable{
 //	int ID;
 	Date date;
 	double money;

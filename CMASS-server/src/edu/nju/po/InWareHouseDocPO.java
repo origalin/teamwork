@@ -1,11 +1,12 @@
 package edu.nju.po;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
 
 
-public class InWareHouseDocPO extends Doc{
+public class InWareHouseDocPO extends Doc implements Serializable{
 	String ID;
 	String storageID;
 	ArrayList<InWareHouseDocLineItem> list;

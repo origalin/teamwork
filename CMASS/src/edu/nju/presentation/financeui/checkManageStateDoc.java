@@ -100,12 +100,12 @@ public class checkManageStateDoc extends JPanel{
 		JButton checkButton = new JButton("\u67E5\u8BE2");
 		checkButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//String startDate=textField.getText().trim();
-				//String endDate=textField_1.getText().trim();
-				/*
+				String startDate=textField.getText().trim();
+				String endDate=textField_1.getText().trim();
+				
 				PayDocVOList=bl.getPayDoc(startDate, endDate);
 				GatheringDocVOList=bl.getGatheringDoc(startDate, endDate);
-				*/
+				/*
 				//≤‚ ‘¥˙¬Î
 				PayDocVOList=new ArrayList<PayDocVO>();
 				for(int i=0;i<5;i++){
@@ -119,6 +119,7 @@ public class checkManageStateDoc extends JPanel{
 					}
 					GatheringDocVOList.add(new GatheringDocVO(110000+i+"",new Date(),(double) (1000+i*10),"øÏµ›‘±"+i+"",itemIDs,"∏∂øÓ’À∫≈"+i+""));
 				}
+				*/
 				PayDocTable=initializeTable(PayDocVOList);
 				GatheringDocTable=initializeTable_1(GatheringDocVOList);
 				scrollPane.setViewportView(PayDocTable);
@@ -141,10 +142,10 @@ public class checkManageStateDoc extends JPanel{
 		gbc_scrollPane.gridx = 3;
 		gbc_scrollPane.gridy = 4;
 		add(scrollPane, gbc_scrollPane);
-		/*
-		table = new JTable();
-		scrollPane.setViewportView(table);
-		table.setModel(new DefaultTableModel(
+		
+		PayDocTable = new JTable();
+		scrollPane.setViewportView(PayDocTable);
+		PayDocTable.setModel(new DefaultTableModel(
 			new Object[][] {
 				{null},
 				{null},
@@ -156,13 +157,14 @@ public class checkManageStateDoc extends JPanel{
 				"\u4ED8\u6B3E\u5355"
 			}
 		));
-		*/
+		
+		/*
 		ArrayList<PayDocVO> tempPayDocList=new ArrayList<PayDocVO>();
 		for(int i=0;i<5;i++){
 			tempPayDocList.add(null);
 		}
 		scrollPane.setViewportView(initializeTable(tempPayDocList));
-		
+		*/
 		
 		scrollPane_1 = new JScrollPane();
 		GridBagConstraints gbc_scrollPane_1 = new GridBagConstraints();
@@ -171,10 +173,10 @@ public class checkManageStateDoc extends JPanel{
 		gbc_scrollPane_1.gridx = 3;
 		gbc_scrollPane_1.gridy = 5;
 		add(scrollPane_1, gbc_scrollPane_1);
-		/*
-		table_1 = new JTable();
-		scrollPane_1.setViewportView(table_1);
-		table_1.setModel(new DefaultTableModel(
+		
+		GatheringDocTable = new JTable();
+		scrollPane_1.setViewportView(GatheringDocTable);
+		GatheringDocTable.setModel(new DefaultTableModel(
 			new Object[][] {
 				{null},
 				{null},
@@ -186,12 +188,14 @@ public class checkManageStateDoc extends JPanel{
 				"\u6536\u6B3E\u5355"
 			}
 		));
-		*/
+		
+		/*
 		ArrayList<GatheringDocVO> tempGatheringDocList=new ArrayList<GatheringDocVO>();
 		for(int i=0;i<5;i++){
 			tempGatheringDocList.add(null);
 		}
 		scrollPane_1.setViewportView(initializeTable_1(tempGatheringDocList));
+		*/
 	}
 
 	public JTable initializeTable(ArrayList<PayDocVO> vo ){
@@ -257,10 +261,20 @@ public class checkManageStateDoc extends JPanel{
 			Object[] oneLine={vo.get(i).getID()};
 			GatheringDocList[i]=oneLine;
 			}else{
-				GatheringDocList[i]=null;
+				Object[] oneLine={null};
+				GatheringDocList[i]=oneLine;
 			}
+			/*
+			 *if(vo.get(i)!=null){
+			Object[] oneLine={vo.get(i).getID()};
+			PayDocList[i]=oneLine;
+			}else{
+				PayDocList[i]=null;
+			}
+			 */
+			
 		}
-		GatheringDocTable.setModel(new DefaultTableModel(
+		table.setModel(new DefaultTableModel(
 				GatheringDocList,
 			new String[] {
 						"\u6536\u6B3E\u5355"

@@ -1,5 +1,6 @@
 package edu.nju.businesslogicservice.approvelogicservice;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import edu.nju.businesslogic.transferbl.ZLoadDoc;
@@ -31,31 +32,31 @@ import edu.nju.vo.ZLoadDocVO;
 public interface ApproveLogicService {
 	
 	//获取各类单据
-	public ArrayList<SendDocPO> getuncheckedSendDocList();
+	public ArrayList<SendDocPO> getuncheckedSendDocList() throws RemoteException;
 	public ArrayList<GatheringDocPO> getunchekedGatheringDocList();
 	public ArrayList<InWareHouseDocPO> getunchekedInWareHouseDocList();
 	public ArrayList<OutWareHouseDocPO> getunchekedOutWareHouseDocList();
-	public ArrayList<TransferDocPO> getunchekedTransferDocList();
-	public ArrayList<ZLoadDocPO> getunchekedZLoadDocList();
-	public ArrayList<OverDocPO> getunchekedOverDocList();
+	public ArrayList<TransferDocPO> getunchekedTransferDocList() throws RemoteException;
+	public ArrayList<ZLoadDocPO> getunchekedZLoadDocList() throws RemoteException;
+	public ArrayList<OverDocPO> getunchekedOverDocList() throws RemoteException;
 	public ArrayList<PayDocPO> getunchekedPayDocList();
-	public ArrayList<YArrivalDocPO> getunchekedYArrivalDocList();
-	public ArrayList<YDeliverDocPO> getunchekedYDeliverDocList();
-	ArrayList<YLoadDocPO> getunchekedYLoadDocList();
-	ArrayList<ZArrivalDocPO> getunchekedZArrivalDocList();
+	public ArrayList<YArrivalDocPO> getunchekedYArrivalDocList() throws RemoteException;
+	public ArrayList<YDeliverDocPO> getunchekedYDeliverDocList() throws RemoteException;
+	ArrayList<YLoadDocPO> getunchekedYLoadDocList() throws RemoteException;
+	ArrayList<ZArrivalDocPO> getunchekedZArrivalDocList() throws RemoteException;
 	//每次审批完一部分后要修改单据的是否被审批的属性
-	public void setSendDocList(ArrayList<SendDocPO> sendDocList);
+	public void setSendDocList(ArrayList<SendDocPO> sendDocList) throws RemoteException;
 	public void setGatheringDocList(ArrayList<GatheringDocPO> GatheringDocList);
 	public void setInWareHouseDocList(ArrayList<InWareHouseDocPO> InWareHouseDocList);
 	public void setOutWareHouseDocList(ArrayList<OutWareHouseDocPO> OutWareHouseDocList);
-	public void setTransferDocList(ArrayList<TransferDocPO> TransferDocList);
-	public void setZLoadDocList(ArrayList<ZLoadDocPO>ZLoadDocList);
+	public void setTransferDocList(ArrayList<TransferDocPO> TransferDocList) throws RemoteException;
+	public void setZLoadDocList(ArrayList<ZLoadDocPO>ZLoadDocList) throws RemoteException;
 	public void setOverDocList(ArrayList<OverDocPO> OverDocList);
 	public void setPayDocList(ArrayList<PayDocPO> PayDocList);
-	public void setYArrivalDocList(ArrayList<YArrivalDocPO> YArrivalDocList);
-	public void setYDeliverDocList(ArrayList<YDeliverDocPO> YDeliverDocList);
-	public void setZArrivalDocList(ArrayList<ZArrivalDocPO> ZArrivalDocList);
-	public void setYLoadDocList(ArrayList<YLoadDocPO>YLoadDocList);
+	public void setYArrivalDocList(ArrayList<YArrivalDocPO> YArrivalDocList) throws RemoteException;
+	public void setYDeliverDocList(ArrayList<YDeliverDocPO> YDeliverDocList) throws RemoteException;
+	public void setZArrivalDocList(ArrayList<ZArrivalDocPO> ZArrivalDocList) throws RemoteException;
+	public void setYLoadDocList(ArrayList<YLoadDocPO>YLoadDocList) throws RemoteException;
 	/*
 	//寄件单部分
 	public SendDocVO getSendDoc(Integer SendDocNumber);
