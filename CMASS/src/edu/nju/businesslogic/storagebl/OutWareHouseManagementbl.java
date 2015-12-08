@@ -100,11 +100,15 @@ public class OutWareHouseManagementbl implements OutWareHouseManagementService {
 
 		StorageDataService storageDataService = DataFactory.getStorageImpl();
 		try {
-			storageDataService.updateOutWareHouseDoc(out.unpack());
+			OutWareHouseDocPO po=out.unpack();
+			System.out.println(po);
+			storageDataService.updateOutWareHouseDoc(po);
 		} catch (RemoteException e) {
 			JOptionPane.showMessageDialog(null, "更新出库单时与服务器连接异常");
 			e.printStackTrace();
 		}
+		
+		System.out.println(out);
 
 	}
 

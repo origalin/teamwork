@@ -81,6 +81,12 @@ public class OutWareHouseDocPO extends Doc {
 	public void setOutRecords(ArrayList<OutRecord> outRecords) {
 		this.outRecords = outRecords;
 	}
+	@Override
+	public String toString() {
+		return "OutWareHouseDocPO [outWareHouseDocID=" + outWareHouseDocID + ", outDate=" + outDate
+				+ ", transferPattern=" + transferPattern + ", storageID=" + storageID + ", outRecords=" + outRecords
+				+ "]";
+	}
 	
 	
 }

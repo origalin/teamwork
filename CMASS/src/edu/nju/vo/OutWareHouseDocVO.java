@@ -79,6 +79,13 @@ public class OutWareHouseDocVO extends Doc{
 	
 	
 	
+	
+	
+	@Override
+	public String toString() {
+		return "OutWareHouseDocVO [list=" + list + ", outWareHouseDocID=" + outWareHouseDocID + ", storageID="
+				+ storageID + ", transferPattern=" + transferPattern + ", date=" + date + "]";
+	}
 	public ArrayList<OutWareHouseDocLineItem> getLineItemList() {
 		return list;
 	}

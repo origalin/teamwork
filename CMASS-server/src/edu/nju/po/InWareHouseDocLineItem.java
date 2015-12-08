@@ -3,7 +3,7 @@ package edu.nju.po;
 import java.io.Serializable;
 import java.util.Date;
 
-public class InWareHouseDocLineItem {
+public class InWareHouseDocLineItem implements Serializable{
 	String SendDocID;
 	Date date;
 	String destination;

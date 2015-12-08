@@ -50,8 +50,15 @@ public class OutWareHouseManagment extends JPanel{
 	String[] columnNames={"快递编号","目的地"};
 	private JTextField textField_2;
 	
+	
+	
+	public OutWareHouseManagment(String currInstitution) {
+		this();
+		
+		this.currInstitution = currInstitution; 
+	}
 	public static void main(String[] args) {
-		OutWareHouseManagment outWareHouseManagment=new OutWareHouseManagment();
+		OutWareHouseManagment outWareHouseManagment=new OutWareHouseManagment("001000");
 		JFrame mainFrame = new JFrame();
 		mainFrame.getContentPane().add(outWareHouseManagment);
 		mainFrame.setVisible(true);
@@ -172,6 +179,7 @@ public class OutWareHouseManagment extends JPanel{
 					}
 				
 				outWareHouseDocVO.setTransferPattern((String)comboBox_1.getSelectedItem());//设置装运形式
+				outWareHouseDocVO.setStorageID(currInstitution);
 				textField_1.setText(outWareHouseDocVO.getID());//设置当前出库单编号
 				textField_2.setText(outWareHouseDocVO.getDate().toString());
 				//以下对vo进行解析在界面上显示出来

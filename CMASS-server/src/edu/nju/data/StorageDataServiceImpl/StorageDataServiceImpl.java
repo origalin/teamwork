@@ -178,7 +178,7 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 				+ transferPattern + "','" + storageID + "');";
 		SQL.databaseUpdate(sql);
 		for (OutRecord temp : list) {
-			sql = "INSERT INTO 出库items VALUES('" + temp.getItemID() + "','" + temp.getDestination() + "','" + iD
+			sql = "INSERT INTO 出库单items VALUES('" + temp.getItemID() + "','" + temp.getDestination() + "','" + iD
 					+ "');";
 
 			SQL.databaseUpdate(sql);
@@ -192,11 +192,11 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 	public static void main(String[] args) throws RemoteException {
 		StorageDataServiceImpl serviceImpl = new StorageDataServiceImpl();
 		
-//		ArrayList<OutRecord> list = new ArrayList<OutRecord>();//这是测试更新出库单
-//		OutRecord outRecord=new OutRecord("0025010010", "北京", "09000010");
-//		list.add(outRecord);		
-//		OutWareHouseDocPO outWareHouseDocPO=new OutWareHouseDocPO("09000010", new Date(), "航运", "001000", list);		
-//		serviceImpl.updateOutWareHouseDoc(outWareHouseDocPO);
+		ArrayList<OutRecord> list = new ArrayList<OutRecord>();//这是测试更新出库单
+		OutRecord outRecord=new OutRecord("0025010250", "北京", "09000001");
+		list.add(outRecord);		
+		OutWareHouseDocPO outWareHouseDocPO=new OutWareHouseDocPO("09000001", new Date(), "航运", "001000", list);		
+		serviceImpl.updateOutWareHouseDoc(outWareHouseDocPO);
 		
 //		ArrayList<InWareHouseDocLineItem> list=new ArrayList<InWareHouseDocLineItem>();
 //		InWareHouseDocLineItem in=new InWareHouseDocLineItem("08000010", new Date(), "南京市栖霞区", "航运区","");
@@ -205,11 +205,11 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 		
 		
 //		serviceImpl.clear();
-		ArrayList<OutRecord> outRecords=new ArrayList<OutRecord>();
-		outRecords.add(new OutRecord("0025010010", "", "09000010"));
-		outRecords.add(new OutRecord("0025010011", "", "09000010"));
-		OutWareHouseDocPO outWareHouseDocPO=new OutWareHouseDocPO("09000010", new Date(), "航运", "001000", outRecords);
-		serviceImpl.saveOutWareHouseDoc(outWareHouseDocPO);
+//		ArrayList<OutRecord> outRecords=new ArrayList<OutRecord>();
+//		outRecords.add(new OutRecord("0025010010", "", "09000010"));
+//		outRecords.add(new OutRecord("0025010011", "", "09000010"));
+//		OutWareHouseDocPO outWareHouseDocPO=new OutWareHouseDocPO("09000010", new Date(), "航运", "001000", outRecords);
+//		serviceImpl.saveOutWareHouseDoc(outWareHouseDocPO);
 
 	}
 

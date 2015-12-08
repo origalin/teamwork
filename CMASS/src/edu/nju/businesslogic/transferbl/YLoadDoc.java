@@ -35,8 +35,8 @@ public class YLoadDoc implements YLoadDocService{
 		transferDataService.setInstitutionID(institutionID);
 		systemBl = new SystemBl();
 	}
-	public YLoadDoc() {
-		// TODO Auto-generated constructor stub
+	public YLoadDoc() throws RemoteException {
+		this(null);
 	}
 	public void confirmSave() throws RemoteException {
 		saveYloadDocPO(po);

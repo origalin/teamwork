@@ -1,6 +1,8 @@
 package edu.nju.po;
 
-public class OutRecord {
+import java.io.Serializable;
+
+public class OutRecord implements Serializable{
 	String itemID;
 
 	String destination;
@@ -35,6 +37,12 @@ public class OutRecord {
 
 	public void setOutWareHouseDocID(String outWareHouseDocID) {
 		this.outWareHouseDocID = outWareHouseDocID;
+	}
+
+	@Override
+	public String toString() {
+		return "OutRecord [itemID=" + itemID + ", destination=" + destination + ", outWareHouseDocID="
+				+ outWareHouseDocID + "]";
 	}
 
 }

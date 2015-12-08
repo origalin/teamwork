@@ -1002,9 +1002,9 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 		double price = 0;
 		String str;
 		if (normal) {
-			 str = "select * from ZLoadDoc where ID = '"+YLoadDocID+"' and checked = '1';";
+			 str = "select * from yLoadDoc where ID = '"+YLoadDocID+"' and checked = '1';";
 		} else {
-			 str = "select * from ZLoadDoc where ID = '"+YLoadDocID+"';";
+			 str = "select * from yLoadDoc where ID = '"+YLoadDocID+"';";
 		}
 	
 		SQL.databaseQuery(str);
@@ -1013,7 +1013,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 				ID = SQL.rs.getString("ID");
 				date = SQL.rs.getDate("date");
 				tranceID = SQL.rs.getString("tranceID");
-				targetBusinessHall = SQL.rs.getString("targetBusinessHall");
+				targetBusinessHall = SQL.rs.getString("target");
 				CarID = SQL.rs.getString("CarID");
 				watcher = SQL.rs.getString("watcher");
 				driver = SQL.rs.getString("driver");

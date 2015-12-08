@@ -31,6 +31,7 @@ import javax.swing.JOptionPane;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -150,6 +151,9 @@ public class InWareHouseManagment extends JPanel {
 					try {
 						inWareHouseDocVO = inWare.getInWareHouseDocVO_YloadDoc(textField_1.getText(), currInstitution);
 					} catch (DatabaseNULLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (RemoteException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}

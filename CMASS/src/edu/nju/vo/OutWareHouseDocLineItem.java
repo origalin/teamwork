@@ -46,6 +46,10 @@ public class OutWareHouseDocLineItem {
 	
 	
 	
+	@Override
+	public String toString() {
+		return "OutWareHouseDocLineItem [SendDocID=" + SendDocID + ", destination=" + destination + "]";
+	}
 	public boolean equals(OutWareHouseDocLineItem ou){
 		return this.toString().equals(ou.toString());
 	}

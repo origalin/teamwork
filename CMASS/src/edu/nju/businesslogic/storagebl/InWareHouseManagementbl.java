@@ -93,10 +93,9 @@ public class InWareHouseManagementbl implements InWareHouseManagementService {
 	}
 
 	@Override
-	public InWareHouseDocVO getInWareHouseDocVO_YloadDoc(String YloadDocID, String currInstitutionID) throws DatabaseNULLException {
+	public InWareHouseDocVO getInWareHouseDocVO_YloadDoc(String YloadDocID, String currInstitutionID) throws DatabaseNULLException, RemoteException {
 		StorageDataService storageDataService = DataFactory.getStorageImpl();
-		YLoadDoc yLoadDoc = null;// 注意这是逻辑层，不是PO
-		yLoadDoc = new YLoadDoc();
+		YLoadDoc yLoadDoc  = new YLoadDoc();
 
 		YLoadDocPO yLoadDocPO = null;
 		try {
