@@ -2,6 +2,7 @@ package edu.nju.presentation.financeui;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
@@ -15,10 +16,16 @@ import edu.nju.po.InstitutionPO;
 import edu.nju.po.StaffPO;
 
 public class salaryPanel extends JPanel{
-	financebl bl=new financebl();
+	financebl bl;
 	private JTable table;
 	private JScrollPane scrollPane;
 	public salaryPanel() {
+		try {
+			bl=new financebl();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{266, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0};

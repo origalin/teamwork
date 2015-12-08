@@ -84,7 +84,7 @@ public class financebl implements FinanceLogicService {
 	Collectionbl collectionbl;
 	Institution institution = new Institution();
 
-	TransferDoc transfer = null;// new TransferDoc();
+	TransferDoc transfer;// new TransferDoc();
 
 	YLoadDoc YLoad = new YLoadDoc();
 	ZLoadDoc ZLoad = new ZLoadDoc();
@@ -117,6 +117,7 @@ public class financebl implements FinanceLogicService {
 
 	public financebl(String staffID) throws RemoteException {
 		collectionbl = new Collectionbl();
+		this.transfer=new TransferDoc();
 		this.financeDataService = DataFactory.getFinanceDataService();
 		this.staffID = staffID;
 
@@ -310,6 +311,9 @@ public class financebl implements FinanceLogicService {
 	@Override
 	public ArrayList<TransferDocPO> getUnpaidCarTransferList() {
 		try {
+			if(transfer==null){
+				System.out.println("宝宝报警了");
+			}
 			return transfer.getUnPaidTransferDocPOs();
 		} catch (RemoteException e) {
 			System.out.println("财务数据层查询失败");
