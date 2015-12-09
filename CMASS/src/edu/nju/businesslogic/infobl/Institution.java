@@ -186,11 +186,8 @@ public Institution() {
 	@Override
 	public void saveRent(String id) throws RemoteException {
 		InstitutionPO po=institutionDataService.getInstitution(id);
-		
 			po.setPaid(true);
 			institutionDataService.changeInstitution(po);
-		
-		
 	}
 
 	@Override
