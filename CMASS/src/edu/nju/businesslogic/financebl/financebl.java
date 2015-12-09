@@ -348,7 +348,8 @@ public class financebl implements FinanceLogicService {
 
 		for (InstitutionPO po : InstitutionList) {
 			try {
-				institution.saveInstitution(po);
+				//institution.saveInstitution(po);
+				institution.saveRent(po.getId());
 			} catch (RemoteException e) {
 				System.out.println("与机构协作出错");
 				e.printStackTrace();

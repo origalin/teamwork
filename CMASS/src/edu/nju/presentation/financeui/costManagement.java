@@ -144,7 +144,7 @@ public class costManagement extends JPanel{
 			            		for(int i=0;i<rentTableInfo.length;i++){
 									Object[] oneLine=rentTableInfo[i];
 									if((boolean)oneLine[0]==true){
-										//institutionList.get(i).setPaid(true);
+										institutionList.get(i).setPaid(true);
 									}
 								}
 			            		bl.setInstitutionList(institutionList);

@@ -15,8 +15,13 @@ import edu.nju.dataFactory.DataFactory;
 import edu.nju.po.Post;
 import edu.nju.presentation.UiFactory;
 import edu.nju.presentation.collectionui.CollertionPanel;
+import edu.nju.presentation.financeui.accountManagement;
+import edu.nju.presentation.financeui.checkCostIncomDocPO;
+import edu.nju.presentation.financeui.checkManageStateDoc;
+import edu.nju.presentation.financeui.costManagement;
 import edu.nju.presentation.logispicqueryui.QueryFrame;
 import edu.nju.presentation.mainui.GuidePanel_Courier;
+import edu.nju.presentation.mainui.GuidePanel_Finance;
 import edu.nju.presentation.mainui.MainFrame;
 import edu.nju.presentation.transformui.SendPanel;
 
@@ -151,7 +156,14 @@ public class LoginFrame extends JFrame {
 			
 			break;
 		case "高级财务":
-
+			/*
+			 * accountManagement accountManagement;
+	checkCostIncomDocPO checkCostIncomDocPO;
+	checkManageStateDoc checkManageStateDoc;
+	costManagement costManagement;
+			 */
+			mainFrame.setFunctionPanel(new accountManagement(account));
+			mainFrame.setGuidePanel(new GuidePanel_Finance(mainFrame, account));
 			break;
 		case "会计":
 
@@ -167,8 +179,7 @@ public class LoginFrame extends JFrame {
 			break;
 		case "快递员":
 			mainFrame.setFunctionPanel(new CollertionPanel(account));
-			mainFrame
-					.setGuidePanel(new GuidePanel_Courier(mainFrame, account));
+			mainFrame.setGuidePanel(new GuidePanel_Courier(mainFrame, account));
 			break;
 
 		default:

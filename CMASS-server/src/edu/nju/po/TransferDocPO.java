@@ -6,12 +6,12 @@ import java.util.Date;
 public class TransferDocPO extends Doc implements Serializable{
 	//long TransferDocID;
 	Date date;
-	String planeNum;
-	String TrainNum;
-	String CarNum;
+	String planeNum= "1";
+	String TrainNum= "1";
+	String CarNum= "1";
 	String tranceID;
-	String corriage;
-	String container;
+	String corriage= "1";
+	String container= "1";
 	String from;
 	String targetCity;
 	String watcher;
