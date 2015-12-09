@@ -26,6 +26,9 @@ import edu.nju.presentation.mainui.GuidePanel_Finance;
 import edu.nju.presentation.mainui.GuidePanel_Storage;
 import edu.nju.presentation.mainui.GuidePanel_TransferCenter;
 import edu.nju.presentation.mainui.MainFrame;
+import edu.nju.presentation.storageui.InWareHouseManagment;
+import edu.nju.presentation.storageui.OutWareHouseManagment;
+import edu.nju.presentation.storageui.StorageQuery;
 import edu.nju.presentation.transformui.SendPanel;
 import edu.nju.presentation.transformui.ZArrivalDocPanel;
 
@@ -178,6 +181,8 @@ public class LoginFrame extends JFrame {
 			mainFrame.setGuidePanel(new GuidePanel_TransferCenter(mainFrame, account));
 			break;
 		case "仓库管理人员":
+			mainFrame.setFunctionPanel(new InWareHouseManagment());
+			
 			mainFrame.setGuidePanel(new GuidePanel_Storage(mainFrame, account));
 			break;
 		case "营业厅业务员":
