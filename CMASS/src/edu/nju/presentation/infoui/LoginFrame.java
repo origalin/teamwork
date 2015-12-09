@@ -23,6 +23,7 @@ import edu.nju.presentation.logispicqueryui.QueryFrame;
 import edu.nju.presentation.mainui.GuidePanel_BusinessHall;
 import edu.nju.presentation.mainui.GuidePanel_Courier;
 import edu.nju.presentation.mainui.GuidePanel_Finance;
+import edu.nju.presentation.mainui.GuidePanel_Storage;
 import edu.nju.presentation.mainui.GuidePanel_TransferCenter;
 import edu.nju.presentation.mainui.MainFrame;
 import edu.nju.presentation.transformui.SendPanel;
@@ -108,7 +109,7 @@ public class LoginFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
 				loginAction(account.getText(),
-						new String(password.getPassword()));
+						String.valueOf(password.getPassword()));
 			}
 		});
 		GridBagConstraints gbc_confirm = new GridBagConstraints();
@@ -147,7 +148,7 @@ public class LoginFrame extends JFrame {
 			e.printStackTrace();
 		}
 		
-		if(str[0]!=password){
+		if(!str[0].equals(password)){
 			
 			
 			JOptionPane.showMessageDialog(null,"密码错误");
@@ -177,7 +178,7 @@ public class LoginFrame extends JFrame {
 			mainFrame.setGuidePanel(new GuidePanel_TransferCenter(mainFrame, account));
 			break;
 		case "仓库管理人员":
-
+			mainFrame.setGuidePanel(new GuidePanel_Storage(mainFrame, account));
 			break;
 		case "营业厅业务员":
 			mainFrame.setFunctionPanel(new SendPanel(account));

@@ -17,6 +17,7 @@ import edu.nju.po.OperationPO;
 import edu.nju.po.TransferDocPO;
 import edu.nju.po.YArrivalDocPO;
 import edu.nju.tools.SequenceCalc;
+import edu.nju.tools.StringTools;
 import edu.nju.vo.YArrivalDocVO;
 
 public class YArrivalDoc implements YArrivalDocService {
@@ -116,7 +117,7 @@ public class YArrivalDoc implements YArrivalDocService {
 	@Override
 	public String[] getCouriers() throws RemoteException {
 		// TODO Auto-generated method stub
-		return (String[]) institution.getCourierID(institutionID).toArray();
+		return StringTools.toGroup( institution.getCourierID(institutionID));
 	}
 
 
