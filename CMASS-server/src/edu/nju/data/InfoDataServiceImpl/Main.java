@@ -61,8 +61,8 @@ public class Main {
 //		System.out.println(carList);
 	
 		
-		DistanceDataServiceImpl d=new DistanceDataServiceImpl();
-		System.out.println(d.getDistance("南京", "北京"));
+//		DistanceDataServiceImpl d=new DistanceDataServiceImpl();
+//		System.out.println(d.getDistance("南京", "北京"));
 		
 	}
 

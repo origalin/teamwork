@@ -103,14 +103,21 @@ public class InstitutionPanel extends JPanel {
 				{
 					DefaultMutableTreeNode node_1;
 					DefaultMutableTreeNode node_2;
+					DefaultMutableTreeNode node_3;
+					DefaultMutableTreeNode node_4;
 					node_1 = new DefaultMutableTreeNode("中转中心");
-					
+					node_3=new DefaultMutableTreeNode("仓库");
+					node_4=new DefaultMutableTreeNode("营业厅");
 					for(InstitutionVO vo:institutionList){
 						if(vo.getParentInstitution().equals("0")){
 							node_2=new DefaultMutableTreeNode(vo.getName());
+							node_2.add(node_3);
+							node_2.add(node_4);
 							for(InstitutionVO vo1:institutionList){
-								if(vo1.getParentInstitution().equals(vo.getName())){
-									node_2.add(new DefaultMutableTreeNode(vo1.getName()));
+								if(vo1.getParentInstitution().equals(vo.getId())&&vo1.getId().toString().length()==6){
+									node_3.add(new DefaultMutableTreeNode(vo1.getName()));
+								}else if(vo1.getParentInstitution().equals(vo.getId())&&vo1.getId().toString().length()==7){
+									node_4.add(new DefaultMutableTreeNode(vo1.getName()));
 								}
 							}
 							node_1.add(node_2);				

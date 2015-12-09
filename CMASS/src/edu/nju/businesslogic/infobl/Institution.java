@@ -6,12 +6,10 @@ import java.util.ArrayList;
 import edu.nju.businesslogicservice.infologicservice.InstitutionLogicService;
 import edu.nju.dataFactory.DataFactory;
 import edu.nju.dataservice.infodataservice.InstitutionDataService;
-import edu.nju.po.CarPO;
 import edu.nju.po.InstitutionPO;
 import edu.nju.po.Post;
 import edu.nju.po.SalaryPO;
 import edu.nju.po.StaffPO;
-import edu.nju.vo.CarVO;
 import edu.nju.vo.InstitutionVO;
 import edu.nju.vo.StaffVO;
 
