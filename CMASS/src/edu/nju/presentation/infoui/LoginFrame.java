@@ -20,10 +20,13 @@ import edu.nju.presentation.financeui.checkCostIncomDocPO;
 import edu.nju.presentation.financeui.checkManageStateDoc;
 import edu.nju.presentation.financeui.costManagement;
 import edu.nju.presentation.logispicqueryui.QueryFrame;
+import edu.nju.presentation.mainui.GuidePanel_BusinessHall;
 import edu.nju.presentation.mainui.GuidePanel_Courier;
 import edu.nju.presentation.mainui.GuidePanel_Finance;
+import edu.nju.presentation.mainui.GuidePanel_TransferCenter;
 import edu.nju.presentation.mainui.MainFrame;
 import edu.nju.presentation.transformui.SendPanel;
+import edu.nju.presentation.transformui.ZArrivalDocPanel;
 
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
@@ -44,7 +47,7 @@ public class LoginFrame extends JFrame {
 		pn1 = new JPanel();
 		pn2 = new JPanel();
 		pn3 = new JPanel();
-		this.setSize(350, 200);
+		this.setSize(450, 222);
 		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		getContentPane().setLayout(new GridLayout(3, 1));
@@ -81,9 +84,9 @@ public class LoginFrame extends JFrame {
 		gbc_password.gridy = 0;
 		pn2.add(password, gbc_password);
 		GridBagLayout gbl_pn3 = new GridBagLayout();
-		gbl_pn3.columnWidths = new int[] { 86, 57, 0, 81, 0 };
+		gbl_pn3.columnWidths = new int[] { 19, 57, 0, 81, 0, 0 };
 		gbl_pn3.rowHeights = new int[] { 55, 0 };
-		gbl_pn3.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0,
+		gbl_pn3.columnWeights = new double[] { 1.0, 0.0, 0.0, 0.0, 1.0,
 				Double.MIN_VALUE };
 		gbl_pn3.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
 		pn3.setLayout(gbl_pn3);
@@ -115,6 +118,7 @@ public class LoginFrame extends JFrame {
 		gbc_confirm.gridy = 0;
 		pn3.add(confirm, gbc_confirm);
 		GridBagConstraints gbc_query = new GridBagConstraints();
+		gbc_query.insets = new Insets(0, 0, 0, 5);
 		gbc_query.anchor = GridBagConstraints.EAST;
 		gbc_query.gridx = 3;
 		gbc_query.gridy = 0;
@@ -169,13 +173,15 @@ public class LoginFrame extends JFrame {
 
 			break;
 		case "中转中心业务员":
-
+			mainFrame.setFunctionPanel(new ZArrivalDocPanel(account));
+			mainFrame.setGuidePanel(new GuidePanel_TransferCenter(mainFrame, account));
 			break;
 		case "仓库管理人员":
 
 			break;
 		case "营业厅业务员":
-
+			mainFrame.setFunctionPanel(new SendPanel(account));
+			mainFrame.setGuidePanel(new GuidePanel_BusinessHall(mainFrame, account));
 			break;
 		case "快递员":
 			mainFrame.setFunctionPanel(new CollertionPanel(account));

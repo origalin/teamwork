@@ -602,7 +602,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 		String[] itemIDs = null;
 		String str;
 		if (normal) {
-			str = "select * from YDeliverDoc where id = '"+YDeliverDocID+"' and checked = '1';";
+			str = "select * from YDeliverDoc where id = '"+YDeliverDocID+"' && checked = '1';";
 		} else {
 			str = "select * from YDeliverDoc where id = '"+YDeliverDocID+"';";
 		}
@@ -1143,7 +1143,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 	public ArrayList<YDeliverDocPO> getYDeliverDocPOByCourier(String courierID) throws RemoteException{
 		// TODO Auto-generated method stub
 		ArrayList<YDeliverDocPO> yDeliverDocPOs = new ArrayList<>();
-		String str = "select ID from YDeliverDoc where courier = '"+courierID+"' && dealed = '0';";	
+		String str = "select ID from YDeliverDoc where courier = '"+courierID+"' && dealed = '0' && checked = '1';";	
 		SQL.databaseQuery(str);
 		ArrayList<String> ids = new ArrayList<>();
 		try {
