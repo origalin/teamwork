@@ -117,7 +117,9 @@ public Institution() {
 
 	@Override
 	public String getInstitutionID(String id) throws RemoteException {
-	
+		if(id==null){
+			return null;
+		}
 		return institutionDataService.getStaff(id).getInstitutation();
 	}
 
