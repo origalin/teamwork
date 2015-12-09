@@ -16,7 +16,7 @@ public interface ZLoadDocService {
 	public ZLoadDocPO getZLoadDocPO(String ID) throws RemoteException, DatabaseNULLException;
 	public ArrayList<ZLoadDocPO> getUncheckedZLoadDocPOs() throws RemoteException;
 	public double[] getPriceToday();
-	public String[] getSubBusinessHall();
+	public String[] getSubBusinessHall() throws RemoteException;
 	public String[][] getDrivers() throws RemoteException;
 	public int getDriverTime(String drrverID) throws RemoteException;
 	public void  confirmSave() throws RemoteException;

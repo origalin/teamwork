@@ -79,7 +79,7 @@ public class GuidePanel_Storage extends JPanel{
 			}
 		});
 		
-		JButton StorageQuery = new JButton("\u5E93\u5B58\u76D8\u70B9");
+		JButton StorageQuery = new JButton("ø‚¥Ê≈Ãµ„");
 		StorageQuery.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.setFunctionPanel(storageQueryPanel);

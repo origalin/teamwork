@@ -45,12 +45,13 @@ public class ZLoadDocPanel extends JPanel{
 	String carID,watcher,driver,target;
 	String[] itemIDs;
 	ZLoadDocVO vo;
-	private JComboBox targetBox;
-	private JComboBox driverBox;
+	private JComboBox<String> targetBox;
+	private JComboBox<String> driverBox;
 	public ZLoadDocPanel(String staffID) {
 		this.staffID = staffID;
 		try {
 			zLoadDoc = new ZLoadDoc(staffID);
+			subBusinessHall = zLoadDoc.getSubBusinessHall();
 		} catch (RemoteException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -96,8 +97,8 @@ public class ZLoadDocPanel extends JPanel{
 		JLabel label_2 = new JLabel("\u5230\u8FBE\u5730");
 		panel_8.add(label_2);
 		
-		subBusinessHall = zLoadDoc.getSubBusinessHall();
-		targetBox = new JComboBox();
+		
+		targetBox = new JComboBox<String>();
 		targetBox.setModel(new DefaultComboBoxModel<>(subBusinessHall));
 		panel_8.add(targetBox);
 		
@@ -122,7 +123,7 @@ public class ZLoadDocPanel extends JPanel{
 		for(int i = 0;i<driverNameAndIDs.length;i++) {
 			drivers[i] = driverNameAndIDs[i][0];
 		}
-		driverBox = new JComboBox();
+		driverBox = new JComboBox<String>();
 		driverBox.setModel(new DefaultComboBoxModel<String>(drivers));
 		panel_8.add(driverBox);
 		

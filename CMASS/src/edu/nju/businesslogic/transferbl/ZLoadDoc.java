@@ -16,6 +16,7 @@ import edu.nju.exception.DatabaseNULLException;
 import edu.nju.po.OperationPO;
 import edu.nju.po.ZLoadDocPO;
 import edu.nju.tools.SequenceCalc;
+import edu.nju.tools.StringTools;
 import edu.nju.vo.ZLoadDocVO;
 
 public class ZLoadDoc implements ZLoadDocService{
@@ -88,9 +89,9 @@ public class ZLoadDoc implements ZLoadDocService{
 	}
 
 	@Override
-	public String[] getSubBusinessHall() {
+	public String[] getSubBusinessHall() throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		return StringTools.toGroup(institution.getSubInstitutionID(institutionID));
 	}
 
 	@Override
