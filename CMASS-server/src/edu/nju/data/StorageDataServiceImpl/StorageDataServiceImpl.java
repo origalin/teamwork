@@ -73,6 +73,8 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		SQL.closeDatabase();
 		return list;
 		
 		
@@ -572,6 +574,34 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 
 		}
 		return list;
+	}
+	@Override
+	public void storageModify(String to,String storageID) throws RemoteException{
+		assert(to.equals("航运区")||to.equals("货运区")||to.equals("汽运区")):"调整目标区域错误";
+		int i1=-1,i2=-1;
+		String sql="SELECT * FROM 仓库存储货物 WHERE 仓库ID='"+storageID+"'&&区='"+to+"';";
+		SQL.databaseQuery(sql);
+		try {
+			i1=SQL.rs.getRow();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		sql="UPDATE 仓库存储货物 SET 区='机动区' WHERE 区='"+to+"'&&被入库单占用='0'&&被快递占用='0'&&仓库ID='"+storageID+"' LIMIT 10;";//以10为单位来将机动区暂时划分到其他区
+		SQL.databaseUpdate(sql);
+		
+		sql="SELECT * FROM 仓库存储货物 WHERE 仓库ID='"+storageID+"'&&区='"+to+"';";
+		SQL.databaseQuery(sql);
+		try {
+			i2=SQL.rs.getRow();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		SQL.closeDatabase();
+		assert(i2==(i1+10)):"库区调整失败";
+		return;
 	}
 
 }

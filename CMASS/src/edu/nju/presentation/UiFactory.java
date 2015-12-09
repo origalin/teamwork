@@ -7,6 +7,7 @@ import edu.nju.businesslogic.infobl.Institution;
 import edu.nju.businesslogic.logispicsquerybl.Logisticsquerybl;
 import edu.nju.businesslogic.storagebl.InWareHouseManagementbl;
 import edu.nju.businesslogic.storagebl.OutWareHouseManagementbl;
+import edu.nju.businesslogic.storagebl.StorageModifybl;
 import edu.nju.businesslogic.storagebl.StorageQuerybl;
 import edu.nju.businesslogic.systembl.SystemBl;
 import edu.nju.businesslogicservice.infologicservice.CarLogicService;
@@ -17,6 +18,7 @@ import edu.nju.businesslogicservice.logispicsquerylogicservice.LogispicsQueryLog
 import edu.nju.businesslogicservice.storagelogicservice.InWareHouseManagementService;
 import edu.nju.businesslogicservice.storagelogicservice.OutWareHouseManagementService;
 import edu.nju.businesslogicservice.storagelogicservice.StorageLogicService;
+import edu.nju.businesslogicservice.storagelogicservice.StorageModifyService;
 import edu.nju.businesslogicservice.storagelogicservice.StorageQueryService;
 import edu.nju.businesslogicservice.systemlogicservice.SystemLogicService;
 import edu.nju.data.LogisticsDataServiceImpl.LogisticsDataServiceImpl;
@@ -28,6 +30,7 @@ public class UiFactory {
 	static StorageQueryService storageQueryService=null;
    static OutWareHouseManagementService outWareHouseManagementService=null;
 
+   static StorageModifyService storageModifyService=null;
 
 	static SystemLogicService systemLogicService=null;
 	static CarLogicService carLogicService=null;
@@ -39,6 +42,11 @@ public class UiFactory {
 		// TODO Auto-generated constructor stub
 	}
 
+	public static StorageModifyService getStorageModifyService(){
+		if(storageModifyService==null)
+			storageModifyService=new StorageModifybl();
+		return storageModifyService;
+	}
 	public static StorageQueryService getStorageQueryService(){
 		if(storageQueryService==null)
 			storageQueryService=new StorageQuerybl();

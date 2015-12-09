@@ -10,9 +10,15 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.border.TitledBorder;
 
+import edu.nju.businesslogicservice.storagelogicservice.StorageModifyService;
+import edu.nju.presentation.UiFactory;
+
+import javax.swing.JComboBox;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
 public class StorageModify extends JPanel{
-	private JTextField textField;
-	private JTextField textField_1;
+	String currStorageID;
 	public StorageModify() {
 		setBorder(new TitledBorder(null, "\u5E93\u533A\u8C03\u6574", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		setLayout(new GridLayout(0, 1, 0, 0));
@@ -20,42 +26,22 @@ public class StorageModify extends JPanel{
 		JPanel panel = new JPanel();
 		add(panel);
 		GridBagLayout gbl_panel = new GridBagLayout();
-		gbl_panel.columnWidths = new int[]{0, 0, 0, 0, 0, 119, 0};
+		gbl_panel.columnWidths = new int[]{0, 0, 0, 147, 0, 119, 0};
 		gbl_panel.rowHeights = new int[]{32, 35, 28, 0};
-		gbl_panel.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_panel.columnWeights = new double[]{0.0, 0.0, 1.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		gbl_panel.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel.setLayout(gbl_panel);
 		
-		JLabel lblNewLabel = new JLabel("\u9884\u8B66\u9600\u503C");
-		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
-		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel.gridx = 3;
-		gbc_lblNewLabel.gridy = 1;
-		panel.add(lblNewLabel, gbc_lblNewLabel);
-		
-		textField_1 = new JTextField();
-		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
-		gbc_textField_1.insets = new Insets(0, 0, 5, 0);
-		gbc_textField_1.fill = GridBagConstraints.BOTH;
-		gbc_textField_1.gridx = 5;
-		gbc_textField_1.gridy = 1;
-		panel.add(textField_1, gbc_textField_1);
-		textField_1.setColumns(10);
-		
-		JLabel label = new JLabel("\u5212\u5206\u673A\u52A8\u533A\u767E\u5206\u6BD4");
-		GridBagConstraints gbc_label = new GridBagConstraints();
-		gbc_label.insets = new Insets(0, 0, 0, 5);
-		gbc_label.gridx = 3;
-		gbc_label.gridy = 2;
-		panel.add(label, gbc_label);
-		
-		textField = new JTextField();
-		GridBagConstraints gbc_textField = new GridBagConstraints();
-		gbc_textField.fill = GridBagConstraints.BOTH;
-		gbc_textField.gridx = 5;
-		gbc_textField.gridy = 2;
-		panel.add(textField, gbc_textField);
-		textField.setColumns(10);
+		JComboBox comboBox = new JComboBox();
+		comboBox.addItem("航运区");
+		comboBox.addItem("货运区");
+		comboBox.addItem("汽运区");
+		GridBagConstraints gbc_comboBox = new GridBagConstraints();
+		gbc_comboBox.insets = new Insets(0, 0, 0, 5);
+		gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBox.gridx = 3;
+		gbc_comboBox.gridy = 2;
+		panel.add(comboBox, gbc_comboBox);
 		
 		JPanel panel_1 = new JPanel();
 		add(panel_1);
@@ -67,17 +53,17 @@ public class StorageModify extends JPanel{
 		panel_1.setLayout(gbl_panel_1);
 		
 		JButton button = new JButton("\u786E\u8BA4");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				StorageModifyService storageModifyService=UiFactory.getStorageModifyService();
+				storageModifyService.storageModify((String)comboBox.getSelectedItem(),currStorageID);
+			}
+		});
 		GridBagConstraints gbc_button = new GridBagConstraints();
 		gbc_button.insets = new Insets(0, 0, 5, 0);
 		gbc_button.gridx = 11;
 		gbc_button.gridy = 2;
 		panel_1.add(button, gbc_button);
-		
-		JButton button_1 = new JButton("\u8C03\u6574\u9884\u8B66\u9608\u503C");
-		GridBagConstraints gbc_button_1 = new GridBagConstraints();
-		gbc_button_1.gridx = 11;
-		gbc_button_1.gridy = 3;
-		panel_1.add(button_1, gbc_button_1);
 	}
 	
 
