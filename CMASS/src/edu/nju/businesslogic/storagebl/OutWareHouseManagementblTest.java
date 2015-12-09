@@ -9,6 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import edu.nju.businesslogic.transferbl.MockTransferDoc;
+import edu.nju.exception.DatabaseNULLException;
 import edu.nju.po.TransferDocPO;
 import edu.nju.vo.OutWareHouseDocLineItem;
 import edu.nju.vo.OutWareHouseDocVO;
@@ -35,7 +36,16 @@ public class OutWareHouseManagementblTest {
 		}
 		ou.tran=mockTransferDoc.getTransferDocPO("0250201511160000008");
 		
-		OutWareHouseDocVO outWareHouseDocVO=ou.getOutWareHouseDocVO_Transfer("0250201511160000008", null);
+		OutWareHouseDocVO outWareHouseDocVO = null;
+		try {
+			outWareHouseDocVO = ou.getOutWareHouseDocVO_Transfer("0250201511160000008", null);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (DatabaseNULLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	
 		ArrayList<OutWareHouseDocLineItem> arrayList = null;
 		arrayList.add(new OutWareHouseDocLineItem("0231212212","º½ÔË","ÄÏ¾©"));
