@@ -5,6 +5,8 @@ import java.util.Date;
 
 import javax.swing.JFrame;
 
+import edu.nju.businesslogic.collectionbl.Collectionbl;
+import edu.nju.data.collectionDataServiceImpl.CollectionDataServiceImpl;
 import edu.nju.data.transferDataServiceImpl.TransferDataServiceImpl;
 import edu.nju.dataFactory.DataFactory;
 import edu.nju.dataservice.collectiondataservice.CollectionDataService;
@@ -21,5 +23,16 @@ public class MainTest {
 		
 		frame.getContentPane().add(new CollertionPanel("00251001100"));
 		frame.setVisible(true);
+//		try {
+//			TransferDataServiceImpl transferDataServiceImpl = new TransferDataServiceImpl();
+//			CollectionDataService collectionDataService = new CollectionDataServiceImpl();
+//			System.out.println(transferDataServiceImpl.getHistoryTimePO("12", "121").size());
+//			Collectionbl collertionPanel = new Collectionbl("00251001100");
+//			System.out.println(collertionPanel.timeEstimate("12", "1212"));
+//		} catch (RemoteException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		
 	}
 }

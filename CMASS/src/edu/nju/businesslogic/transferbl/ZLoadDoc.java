@@ -44,7 +44,7 @@ public class ZLoadDoc implements ZLoadDocService{
 		saveZloadDocPO(po);
 		changeTranceID();
 		for(int i = 0;i < po.getItemIDs().length;i++) {
-			logisticsquerybl.changePosition(po.getItemIDs()[i], "快递已装车，将送往"+institution.getInstitutionName(po.getTargetBusinessHall()));
+			logisticsquerybl.changePosition(po.getItemIDs()[i], "快递已装车，将送往"+institution.getName(po.getTargetBusinessHall()));
 		}
 		systemBl.saveOperation(new OperationPO(new Date(), staffID, institution.getStaffName(staffID), "生成中转中心装车单"));
 	}

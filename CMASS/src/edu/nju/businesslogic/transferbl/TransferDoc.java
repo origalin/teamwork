@@ -57,7 +57,7 @@ public class TransferDoc implements TransferDocService{
 		changeTransferID();
 		String[] itemIDs = po.getItemIDs();
 		for(String itemID : itemIDs) {
-			logisticsquerybl.changePosition(itemID, "快件已由"+institution.getCity(institutionID)+institution.getInstitutionName(institutionID)+"送出，目的地"+po.getTargetCity());
+			logisticsquerybl.changePosition(itemID, "快件已由"+institution.getCity(institutionID)+institution.getInstitutionName(staffID)+"送出，目的地"+po.getTargetCity());
 		}
 		systemBl.saveOperation(new OperationPO(new Date(), staffID, institution.getStaffName(staffID), "生成中转单"));
 
@@ -68,7 +68,7 @@ public class TransferDoc implements TransferDocService{
 		changeTransferID_Train();
 		String[] itemIDs = po.getItemIDs();
 		for(String itemID : itemIDs) {
-			logisticsquerybl.changePosition(itemID, "快件已由"+institution.getCity(institutionID)+institution.getInstitutionName(institutionID)+"送出，目的地"+po.getTargetCity());
+			logisticsquerybl.changePosition(itemID, "快件已由"+institution.getCity(institutionID)+institution.getInstitutionName(staffID)+"送出，目的地"+po.getTargetCity());
 		}
 		systemBl.saveOperation(new OperationPO(new Date(), staffID, institution.getStaffName(staffID), "生成中转单"));
 	}
@@ -78,7 +78,7 @@ public class TransferDoc implements TransferDocService{
 		changeTransferID_Plain();
 		String[] itemIDs = po.getItemIDs();
 		for(String itemID : itemIDs) {
-			logisticsquerybl.changePosition(itemID, "快件已由"+institution.getCity(institutionID)+institution.getInstitutionName(institutionID)+"送出，目的地"+po.getTargetCity());
+			logisticsquerybl.changePosition(itemID, "快件已由"+institution.getCity(institutionID)+institution.getInstitutionName(staffID)+"送出，目的地"+po.getTargetCity());
 		}
 		systemBl.saveOperation(new OperationPO(new Date(), staffID, institution.getStaffName(staffID), "生成中转单"));
 	}

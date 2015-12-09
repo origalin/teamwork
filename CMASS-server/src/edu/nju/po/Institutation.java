@@ -1,5 +1,5 @@
 package edu.nju.po;
 
 public enum Institutation {
-	HQ/*总部*/,TRANSFER_CENTER,WAREHOUSE,BUSINESS_HALL
+	总部,中转中心,营业厅,仓库;
 }

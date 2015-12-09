@@ -52,7 +52,7 @@ public class ZArrivalDoc implements ZArrivalDocService{
 		saveZArrivalDocPO(po);
 		changeZArrivalSequence();
 		for(int i = 0;i < po.getItemAndState().length;i++) {
-			logisticsquerybl.changePosition(po.getItemAndState()[i][0], "快递已到达"+institution.getCity(institutionID)+institution.getInstitutionName(institutionID));	
+			logisticsquerybl.changePosition(po.getItemAndState()[i][0], "快递已到达"+institution.getCity(institutionID)+institution.getInstitutionName(staffID));	
 		}
 		systemBl.saveOperation(new OperationPO(new Date(), staffID, institution.getStaffName(staffID), "生成中转中心到达单"));
 	}

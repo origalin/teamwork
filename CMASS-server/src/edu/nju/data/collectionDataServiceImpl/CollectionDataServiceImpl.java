@@ -69,7 +69,7 @@ public class CollectionDataServiceImpl extends UnicastRemoteObject implements
 		time = po.getTime();
 		String sql = "replace into sendDoc (id,sName, sAddress, sCity, sUnit, "
 				+ "sTelePhone, sMobilePhone, rName, rAddress, rCity, rUnit, "
-				+ "rTelePhone, rMobilePhone, itemNum, weight, lehgth,wideth,height, item_type, "
+				+ "rTelePhone, rMobilePhone, itemNum, weight, length,wideth,height, item_type, "
 				+ "packageType, sumPrice, courier_Type, date, time, checked) "
 				+ "values('"
 				+ ID

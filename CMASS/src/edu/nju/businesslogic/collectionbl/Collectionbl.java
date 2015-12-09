@@ -60,7 +60,7 @@ public class Collectionbl implements CollectionLogicService{
 		saveSendDocPO(po);
 		changeSequence();
 		appendCourierMoney();
-		logisticsquerybl.createPosition(po.getID(),institution.getCity(institutionID)+institution.getInstitutionName(institutionID)+"已揽件",po.getrCity()+po.getrAddress());
+		logisticsquerybl.createPosition(po.getID(),institution.getCity(institutionID)+institution.getInstitutionName(staffID)+"已揽件",po.getrCity()+po.getrAddress());
 	}
 
 	@Override
