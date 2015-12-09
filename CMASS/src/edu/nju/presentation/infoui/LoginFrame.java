@@ -10,14 +10,19 @@ import java.awt.event.MouseListener;
 
 import javax.swing.*;
 
+import edu.nju.businesslogicservice.systemlogicservice.SystemLogicService;
+import edu.nju.dataFactory.DataFactory;
+import edu.nju.presentation.UiFactory;
 import edu.nju.presentation.collectionui.CollertionPanel;
 import edu.nju.presentation.logispicqueryui.QueryFrame;
 import edu.nju.presentation.mainui.GuidePanel_Courier;
 import edu.nju.presentation.mainui.MainFrame;
 import edu.nju.presentation.transformui.SendPanel;
+
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.rmi.RemoteException;
 
 @SuppressWarnings("serial")
 public class LoginFrame extends JFrame{
@@ -118,6 +123,13 @@ public class LoginFrame extends JFrame{
 		this.setVisible(true);
 	}
 	 private void loginAction(String account, String password){//»¹ÒªÍêÉÆ
+		 SystemLogicService systemLogicService=UiFactory.getSystemLogicService();
+		 try {
+			systemLogicService.getPasswordAndPower(account);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		 mainFrame = new MainFrame();
 		 
 		 mainFrame.comeout();

@@ -109,5 +109,11 @@ ArrayList<String>idList=new ArrayList<String>();
 	}
 
 
+	@Override
+	public DriverPO getDriver(String driverID) throws RemoteException {
+		return driverDataService.getDriver(driverID);
+	}
+
+
 
 }

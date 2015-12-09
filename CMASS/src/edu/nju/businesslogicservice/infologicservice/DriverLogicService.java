@@ -15,5 +15,6 @@ public interface DriverLogicService {
 	double getDriverCommision(String driverID)throws RemoteException;//根据ID查找这个司机每次的钱数
 	public ArrayList<String> getDirverID(String institutionName)throws RemoteException;//
 	public String getDirverName(String driverID, String institutionName)throws RemoteException;
+	public DriverPO getDriver(String driverID)throws RemoteException;
 
 }

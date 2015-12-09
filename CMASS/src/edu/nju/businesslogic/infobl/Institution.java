@@ -223,6 +223,10 @@ public Institution() {
 	public double getPercentage(String staffID) throws RemoteException {
 		return institutionDataService.getSalaryPO(staffID).getPercentageSalary();
 	}
+	@Override
+	public SalaryPO getSalary(String staffID) throws RemoteException {
+		return institutionDataService.getSalaryPO(staffID);
+	}
 
 
 
