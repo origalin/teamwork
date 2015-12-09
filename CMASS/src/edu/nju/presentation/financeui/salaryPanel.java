@@ -45,15 +45,15 @@ public class salaryPanel extends JPanel{
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
 				{Boolean.FALSE, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
+				{Boolean.FALSE, null, null, null},
+				{Boolean.FALSE, null, null, null},
+				{Boolean.FALSE, null, null, null},
+				{Boolean.FALSE, null, null, null},
+				{Boolean.FALSE, null, null, null},
+				{Boolean.FALSE, null, null, null},
+				{Boolean.FALSE, null, null, null},
+				{Boolean.FALSE, null, null, null},
+				{Boolean.FALSE, null, null, null},
 			},
 			new String[] {
 				"", "\u5DE5\u53F7", "\u59D3\u540D", "\u5DE5\u8D44"
@@ -74,7 +74,7 @@ public class salaryPanel extends JPanel{
 		Object[][]tableInfo=new Object[staffList.size()][];
 		for(int i=0;i<staffList.size();i++){
 			String staffID=staffList.get(i).getStaffID();
-			Object[]oneLine={null,staffID,bl.getStaffSalaryName(staffID),bl.calculateSalary(staffID)};
+			Object[]oneLine={false,staffID,bl.getStaffSalaryName(staffID),bl.calculateSalary(staffID)};
 			tableInfo[i]=oneLine;
 		}
 		table.setModel(new DefaultTableModel(
@@ -90,7 +90,7 @@ public class salaryPanel extends JPanel{
 				return columnTypes[columnIndex];
 			}
 		});
-		
+		this.table=table;
 		return table;
 		
 	}

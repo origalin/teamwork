@@ -71,7 +71,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 			checked = 0;
 		}
 
-		String str = "replace into TransferID(ID,Date,PlaneNum,TrainNum,CarNum,tranceID,corriage,container,from,targetCity,watcher,itemIDs,price,checked,paid) "
+		String str = "replace into Transferdoc(ID,Date,PlaneNum,TrainNum,CarNum,tranceID,corriage,container,from,targetCity,watcher,itemIDs,price,checked,paid) "
 		+ "values('"+ID+"','"+Time.toDaysTime(date)+"','"+planeNum+"','"+TrainNum+"','"+CarNum+"',"
 		+ "'"+tranceID+"','"+corriage+"','"+container+"','"+from+"','"+targetCity+"','"+watcher+"',"
 		+ "'"+itemIDs+"','"+price+"','"+checked+"','"+paid+"');";

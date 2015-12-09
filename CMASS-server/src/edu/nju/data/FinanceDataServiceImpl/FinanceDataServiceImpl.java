@@ -23,7 +23,7 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements
 
 	public static void main(String[] args) throws RemoteException {
 		FinanceDataServiceImpl financeDataServiceImpl = new FinanceDataServiceImpl();
-		System.out.println(financeDataServiceImpl.getCourierMoney("00252123314", new Date()));
+		financeDataServiceImpl.minusMoney("linqing",50);
 	}
 
 	public FinanceDataServiceImpl() throws RemoteException {

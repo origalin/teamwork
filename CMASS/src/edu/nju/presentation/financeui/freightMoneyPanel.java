@@ -46,16 +46,16 @@ public class freightMoneyPanel extends JPanel{
 		scrollPane.setViewportView(table);
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
+				{Boolean.FALSE, null, null, null},
+				{Boolean.FALSE, null, null, null},
+				{Boolean.FALSE, null, null, null},
+				{Boolean.FALSE, null, null, null},
+				{Boolean.FALSE, null, null, null},
+				{Boolean.FALSE, null, null, null},
+				{Boolean.FALSE, null, null, null},
+				{Boolean.FALSE, null, null, null},
+				{Boolean.FALSE, null, null, null},
+				{Boolean.FALSE, null, null, null},
 			},
 			new String[] {
 				"", "\u5355\u636E\u7C7B\u578B", "\u5355\u636E\u7F16\u53F7", "\u8FD0\u8D39"
@@ -75,15 +75,15 @@ public class freightMoneyPanel extends JPanel{
 		scrollPane.setViewportView(table);
 		Object[][]tableInfo=new Object[transferDoc.size()+YLoadDoc.size()+ZLoadDoc.size()][];
 		for(int i=0;i<transferDoc.size();i++){
-			Object[]oneLine={null,"TransferDoc",transferDoc.get(i).getID(),transferDoc.get(i).getPrice()};
+			Object[]oneLine={false,"TransferDoc",transferDoc.get(i).getID(),transferDoc.get(i).getPrice()};
 			tableInfo[i]=oneLine;
 		}
 		for(int i=0;i<YLoadDoc.size();i++){
-			Object[]oneLine={null,"YLoadDoc",YLoadDoc.get(i).getID(),YLoadDoc.get(i).getPrice()};
+			Object[]oneLine={false,"YLoadDoc",YLoadDoc.get(i).getID(),YLoadDoc.get(i).getPrice()};
 			tableInfo[i+transferDoc.size()]=oneLine;
 		}
 		for(int i=0;i<ZLoadDoc.size();i++){
-			Object[]oneLine={null,"ZLoadDoc",ZLoadDoc.get(i).getID(),ZLoadDoc.get(i).getPrice()};
+			Object[]oneLine={false,"ZLoadDoc",ZLoadDoc.get(i).getID(),ZLoadDoc.get(i).getPrice()};
 			tableInfo[i+transferDoc.size()+YLoadDoc.size()]=oneLine;
 		}
 		table.setModel(new DefaultTableModel(
@@ -103,6 +103,7 @@ public class freightMoneyPanel extends JPanel{
 				return columnTypes[columnIndex];
 			}
 		});
+		this.table=table;
 		return table;
 	}
 	public JTable getTable() {

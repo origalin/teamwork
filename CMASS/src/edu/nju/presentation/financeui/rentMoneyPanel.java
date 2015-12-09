@@ -35,16 +35,16 @@ public class rentMoneyPanel extends JPanel{
 		scrollPane.setViewportView(table);
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null, null, null},
-				{null, null, null},
 				{Boolean.FALSE, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
+				{Boolean.FALSE, null, null},
+				{Boolean.FALSE, null, null},
+				{Boolean.FALSE, null, null},
+				{Boolean.FALSE, null, null},
+				{Boolean.FALSE, null, null},
+				{Boolean.FALSE, null, null},
+				{Boolean.FALSE, null, null},
+				{Boolean.FALSE, null, null},
+				{Boolean.FALSE, null, null},
 			},
 			new String[] {
 				"", "\u673A\u6784", "\u79DF\u91D1"
@@ -63,7 +63,7 @@ public class rentMoneyPanel extends JPanel{
 		scrollPane.setViewportView(table);
 		Object[][] tableInfo=new Object[institutionList.size()][3];
 		for(int i=0;i<institutionList.size();i++){
-			Object[] oneLine={null,institutionList.get(i).getName(),institutionList.get(i).getRent()};
+			Object[] oneLine={false,institutionList.get(i).getName(),institutionList.get(i).getRent()};
 			tableInfo[i]=oneLine;
 		}
 		table.setModel(new DefaultTableModel(
@@ -79,6 +79,7 @@ public class rentMoneyPanel extends JPanel{
 				return columnTypes[columnIndex];
 			}
 		});
+		this.table=table;
 		return table;
 	}
 	public JTable getTable() {
