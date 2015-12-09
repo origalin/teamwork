@@ -15,30 +15,11 @@ import edu.nju.po.OverDocPO;
 
 public class MainTest {
 	public static void main(String[] args) {
-//		JFrame frame = new JFrame();
-//		frame.setSize(1280, 800);
-//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		frame.getContentPane().add(new CollertionPanel());
+		JFrame frame = new JFrame();
+		frame.setSize(1280, 800);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		
-		CollectionDataService collectionDataService = DataFactory.getCollectionDataService();
-		TransferDataService transferDataService = null;
-		try {
-			transferDataService = new TransferDataServiceImpl();
-		} catch (RemoteException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		try {
-			//System.out.println(collectionDataService.getSendDocPOByID("2002512345").getrAddress());
-//			CourierMoneyPO po = collectionDataService.getCourierMoneyPO("00252123315");
-//			po.appendMoney("00252123315", "12123132", 12);
-//			collectionDataService.saveCourierMoneyPO(po);
-			System.out.println(transferDataService.getunPaidTransferDocPO().size());
-			
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		frame.getContentPane().add(new CollertionPanel("00251001100"));
+		frame.setVisible(true);
 	}
 }

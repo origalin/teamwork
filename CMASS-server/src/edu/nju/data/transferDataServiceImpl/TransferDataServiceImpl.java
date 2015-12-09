@@ -988,6 +988,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 		// TODO Auto-generated method stub
 		ArrayList<HistoryTimePO> historyTimePOs = new ArrayList<HistoryTimePO>();
 		String str = "select * from HistoryTime where start = '"+sCity+"' and end = '"+rCity+"';";
+		SQL.databaseQuery(str);
 		String start;
 		String end;
 		int days;
