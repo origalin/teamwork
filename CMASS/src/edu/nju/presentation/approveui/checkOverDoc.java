@@ -7,15 +7,15 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.Font;
-
 import java.awt.FlowLayout;
+
 import javax.swing.table.DefaultTableModel;
 public class checkOverDoc extends JPanel{
-	private JTextField textField;
-	private JTextField textField_3;
-	private JTextField textField_1;
+	private JTextField date;
+	private JTextField OverDocID;
+	private JTextField courier;
 	private JTable table;
-	public checkOverDoc() {
+	public checkOverDoc(OverDocVO vo) {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{48, 117, 0, 76, 0, 52, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0};
@@ -56,10 +56,10 @@ public class checkOverDoc extends JPanel{
 		add(panel_1, gbc_panel_1);
 		
 
-		textField_3 = new JTextField();
-		panel_1.add(textField_3);
-		textField_3.setEditable(false);
-		textField_3.setColumns(20);
+		OverDocID = new JTextField();
+		panel_1.add(OverDocID);
+		OverDocID.setEditable(false);
+		OverDocID.setColumns(20);
 		
 		JPanel panel_2 = new JPanel();
 		FlowLayout flowLayout = (FlowLayout) panel_2.getLayout();
@@ -76,10 +76,10 @@ public class checkOverDoc extends JPanel{
 		panel_2.add(label_1);
 		label_1.setFont(new Font("ºÚÌå", Font.BOLD, 15));
 		
-		textField = new JTextField();
-		panel_2.add(textField);
-		textField.setEditable(false);
-		textField.setColumns(20);
+		date = new JTextField();
+		panel_2.add(date);
+		date.setEditable(false);
+		date.setColumns(20);
 		
 		JLabel label_2 = new JLabel("\u5FEB\u9012\u5458");
 		GridBagConstraints gbc_label_2 = new GridBagConstraints();
@@ -99,10 +99,10 @@ public class checkOverDoc extends JPanel{
 		gbc_panel_3.gridy = 2;
 		add(panel_3, gbc_panel_3);
 		
-		textField_1 = new JTextField();
-		panel_3.add(textField_1);
-		textField_1.setEditable(false);
-		textField_1.setColumns(10);
+		courier = new JTextField();
+		panel_3.add(courier);
+		courier.setEditable(false);
+		courier.setColumns(10);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
@@ -113,20 +113,26 @@ public class checkOverDoc extends JPanel{
 		gbc_scrollPane.gridy = 3;
 		add(scrollPane, gbc_scrollPane);
 		
+		String[] itemID=vo.getItemID();
+		String[] reciever=vo.getReceiver();
+		Object[][]tableInfo=new Object[itemID.length][2];
+		for(int i=0;i<tableInfo.length;i++){
+			Object[]oneLine={itemID[i],reciever[i]};
+			tableInfo[i]=oneLine;
+		}
 		table = new JTable();
 		table.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
+			tableInfo,
 			new String[] {
 				"\u5FEB\u4EF6\u5355\u53F7", "\u6536\u4EF6\u4EBA"
 			}
 		));
 		scrollPane.setViewportView(table);
+		OverDocID.setText(vo.getID());
+		date.setText(vo.getDate());
+		courier.setText(vo.getCourier());
 	}
-	public checkOverDoc(OverDocVO vo) {
-		// TODO Auto-generated constructor stub
-
-	}
+	
 	
 
 }

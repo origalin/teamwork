@@ -27,13 +27,14 @@ import java.util.ArrayList;
 public class costManagement extends JPanel{
 	public static void main(String args[]){
 		JFrame frame=new JFrame();
-		costManagement ui=new costManagement();
+		costManagement ui=new costManagement("12000003");
 		ui.setVisible(true);
 		frame.getContentPane().add(ui);
 		frame.setSize(700,400);
 		frame.setVisible(true);
 	}
 	private ArrayList<StaffPO>staffList;
+	private String staffID;
 	private ArrayList<ZLoadDocPO>ZLoadDoc;
 	private ArrayList<YLoadDocPO> YLoadDoc;
 	private ArrayList<TransferDocPO> transferDoc;
@@ -47,7 +48,8 @@ public class costManagement extends JPanel{
 	private JTextField PayDocID;
 	private JTextField back;
 	private JTextField currentWorker;
-	public costManagement() {
+	public costManagement(String staffID) {
+		this.staffID=staffID;
 		try {
 			bl=new financebl();
 		} catch (RemoteException e1) {
@@ -91,11 +93,8 @@ public class costManagement extends JPanel{
 						panel=new freightMoneyPanel();
 						addPanel(panel);
 						transferDoc=bl.getUnpaidCarTransferList();
-						System.out.println(transferDoc.size());
 						YLoadDoc=bl.getUnpaidYLoadDocList();
-						System.out.println(transferDoc.size());
 						ZLoadDoc=bl.getUnpaidZLoadDocList();
-						System.out.println(transferDoc.size());
 						((freightMoneyPanel)panel).initializeTable(transferDoc, YLoadDoc, ZLoadDoc);
 						updateUI();
 						break;

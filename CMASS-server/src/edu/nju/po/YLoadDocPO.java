@@ -10,6 +10,13 @@ public class YLoadDocPO extends Doc {
 	String CarID;
 	String watcher;
 	String driver;
+	String businessHallID;
+	public String getBusinessHallID() {
+		return businessHallID;
+	}
+	public void setBusinessHallID(String businessHallID) {
+		this.businessHallID = businessHallID;
+	}
 	String[] itemIDs;
 	double price;
 	boolean paid;
@@ -21,7 +28,7 @@ public class YLoadDocPO extends Doc {
 	}
 	public YLoadDocPO(String id,Date date, String tranceID,
 			String targetBusinessHall, String carID, String watcher,
-			String driver, String[] itemIDs, double price) {
+			String driver,String businssHallID, String[] itemIDs, double price) {
 		super();
 		this.ID = id;
 		this.date = date;
@@ -30,6 +37,7 @@ public class YLoadDocPO extends Doc {
 		CarID = carID;
 		this.watcher = watcher;
 		this.driver = driver;
+		this.businessHallID = businssHallID;
 		this.itemIDs = itemIDs;
 		this.price = price;
 	}

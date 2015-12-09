@@ -12,6 +12,19 @@ public class YLoadDocVO extends Doc{
 	String CarID;
 	String watcher;
 	String driver;
+	String businessHallID;
+	public String getTarget() {
+		return target;
+	}
+	public void setTarget(String target) {
+		this.target = target;
+	}
+	public String getBusinessHallID() {
+		return businessHallID;
+	}
+	public void setBusinessHallID(String businessHallID) {
+		this.businessHallID = businessHallID;
+	}
 	String[] itemIDs;
 	String price;
 	public YLoadDocVO(YLoadDocPO po) {
@@ -22,6 +35,7 @@ public class YLoadDocVO extends Doc{
 		this.CarID = po.getCarID();
 		this.watcher = po.getWatcher();
 		this.driver = po.getDriver();
+		this.businessHallID = po.getBusinessHallID();
 		this.itemIDs = po.getItemIDs();
 		this.price = String.valueOf(po.getPrice());
 	}

@@ -41,6 +41,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.rmi.RemoteException;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -59,7 +60,7 @@ public class checkMainUI extends JPanel{
 	ArrayList<YDeliverDocPO> uncheckedYDeliverDocList;
 	ArrayList<YLoadDocPO> uncheckedYLoadDocList;
 	ArrayList<ZArrivalDocPO> uncheckedZArrivalDocList;
-	approvebl bl=new approvebl();
+	approvebl bl;
 	private JTable table;
 	private JScrollPane scrollPane;
 	private JTextField textField;
@@ -72,6 +73,12 @@ public class checkMainUI extends JPanel{
 		frame.setVisible(true);
 	}
 	public checkMainUI() {
+		try {
+			bl=new approvebl();
+		} catch (RemoteException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{157, 261, 104, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 208, 0, 0};
@@ -133,35 +140,75 @@ public class checkMainUI extends JPanel{
 					showUncheckedDoc(uncheckedGatheringDocList);
 					break;
 				case "寄件单":
-					uncheckedSendDocList=bl.getuncheckedSendDocList();
+					try {
+						uncheckedSendDocList=bl.getuncheckedSendDocList();
+					} catch (RemoteException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 					showUncheckedDoc(uncheckedSendDocList);
 					break;
 				case "中转中心到达单":
-					uncheckedZArrivalDocList=bl.getunchekedZArrivalDocList();
+					try {
+						uncheckedZArrivalDocList=bl.getunchekedZArrivalDocList();
+					} catch (RemoteException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 					showUncheckedDoc(uncheckedZArrivalDocList);
 					break;
 				case"营业厅到达单":
-					uncheckedYArrivalDocList=bl.getunchekedYArrivalDocList();
+					try {
+						uncheckedYArrivalDocList=bl.getunchekedYArrivalDocList();
+					} catch (RemoteException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 					showUncheckedDoc(uncheckedYArrivalDocList);
 					break;
 				case"收件单":
-					uncheckedOverDocList=bl.getunchekedOverDocList();
+					try {
+						uncheckedOverDocList=bl.getunchekedOverDocList();
+					} catch (RemoteException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 					showUncheckedDoc(uncheckedOverDocList);
 					break;
 				case"营业厅装车单":
-					uncheckedYLoadDocList=bl.getunchekedYLoadDocList();
+					try {
+						uncheckedYLoadDocList=bl.getunchekedYLoadDocList();
+					} catch (RemoteException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 					showUncheckedDoc(uncheckedYLoadDocList);
 					break;
 				case"中转中心装车单":
-					uncheckedZLoadDocList=bl.getunchekedZLoadDocList();
+					try {
+						uncheckedZLoadDocList=bl.getunchekedZLoadDocList();
+					} catch (RemoteException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 					showUncheckedDoc(uncheckedZLoadDocList);
 					break;
 				case"派件单":
-					uncheckedYDeliverDocList=bl.getunchekedYDeliverDocList();
+					try {
+						uncheckedYDeliverDocList=bl.getunchekedYDeliverDocList();
+					} catch (RemoteException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 					showUncheckedDoc(uncheckedYDeliverDocList);
 					break;
 				case"中转单":
-					uncheckedTransferDocList=bl.getunchekedTransferDocList();
+					try {
+						uncheckedTransferDocList=bl.getunchekedTransferDocList();
+					} catch (RemoteException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 					showUncheckedDoc(uncheckedTransferDocList);
 					break;
 				case"入库单":
@@ -434,15 +481,30 @@ public class checkMainUI extends JPanel{
 						uncheckedOutWareHouseDocList=null;
 						break;
 					case"中转单":
-						bl.setTransferDocList(approveBossFinished(uncheckedTransferDocList));
+						try {
+							bl.setTransferDocList(approveBossFinished(uncheckedTransferDocList));
+						} catch (RemoteException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
 						uncheckedTransferDocList=null;
 						break;
 					case"中转中心装车单":
-						bl.setZLoadDocList(approveBossFinished(uncheckedZLoadDocList));
+						try {
+							bl.setZLoadDocList(approveBossFinished(uncheckedZLoadDocList));
+						} catch (RemoteException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
 						uncheckedZLoadDocList=null;
 						break;
 					case"营业厅装车单":
-						bl.setYLoadDocList(approveBossFinished(uncheckedYLoadDocList));
+						try {
+							bl.setYLoadDocList(approveBossFinished(uncheckedYLoadDocList));
+						} catch (RemoteException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
 						uncheckedYLoadDocList=null;
 						break;
 					case"收件单":
@@ -450,19 +512,39 @@ public class checkMainUI extends JPanel{
 						uncheckedOverDocList=null;
 						break;
 					case "营业厅到达单":
-						bl.setYArrivalDocList(approveBossFinished(uncheckedYArrivalDocList));
+						try {
+							bl.setYArrivalDocList(approveBossFinished(uncheckedYArrivalDocList));
+						} catch (RemoteException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
 						uncheckedYArrivalDocList=null;
 						break;
 					case"寄件单":
-						bl.setSendDocList(approveBossFinished(uncheckedSendDocList));
+						try {
+							bl.setSendDocList(approveBossFinished(uncheckedSendDocList));
+						} catch (RemoteException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
 						uncheckedSendDocList=null;
 						break;
 					case "中转中心到达单":
-						bl.setZArrivalDocList(approveBossFinished(uncheckedZArrivalDocList));
+						try {
+							bl.setZArrivalDocList(approveBossFinished(uncheckedZArrivalDocList));
+						} catch (RemoteException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
 						uncheckedZArrivalDocList=null;
 						break;
 					case"派件单":
-						bl.setYDeliverDocList(approveBossFinished(uncheckedYDeliverDocList));
+						try {
+							bl.setYDeliverDocList(approveBossFinished(uncheckedYDeliverDocList));
+						} catch (RemoteException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
 						uncheckedYDeliverDocList=null;
 						break;
 					 /*

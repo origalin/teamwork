@@ -14,6 +14,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.table.DefaultTableModel;
 
+import edu.nju.vo.TransferDocVO;
 import edu.nju.vo.TransferDoc_CarVO;
 import edu.nju.vo.TransferDoc_TrainVO;
 
@@ -32,7 +33,7 @@ public class CheckTransferDoc_Car extends JPanel{
 	private JTextField Date;
 	private JTextField Money;
 	private JTextField carTransportID;
-	public CheckTransferDoc_Car(TransferDoc_CarVO vo) {
+	public CheckTransferDoc_Car(TransferDocVO vo) {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{418, 0};
 		gridBagLayout.rowHeights = new int[]{248, 0};
@@ -247,11 +248,17 @@ public class CheckTransferDoc_Car extends JPanel{
 		scrollPane.setViewportView(panel_14);
 		panel_14.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
+		String[]itemID=vo.getItemIDs();
+		Object[][]tableInfo=new Object[itemID.length][1];
+		for(int i=0;i<itemID.length;i++){
+			Object[]oneLine={itemID[i]};
+			tableInfo[i]=oneLine;
+		}
+		
 		table = new JTable();
 		table.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 		table.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
+			tableInfo,
 			new String[] {
 				"\u8FD0\u5355\u53F7"
 			}
@@ -259,14 +266,16 @@ public class CheckTransferDoc_Car extends JPanel{
 		DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
 		table.getColumnModel().getColumn(0).setPreferredWidth(130);
 		panel_14.add(table);
-		/*
+		
 		TransferDocID.setText(vo.getID());
 		startPlace.setText(vo.getFrom());
 		endPlace.setText(vo.getTargetCity());
 		Money.setText(vo.getPrice());
 		Date.setText(vo.getDate());
-		carTransportID.setText(vo.get);
-		*/
+		carTransportID.setText(vo.getTranceID());
+		carIDField.setText(vo.getCarNum());
+		watcherField.setText(vo.getWatcher());
+		
 
 	}
 }

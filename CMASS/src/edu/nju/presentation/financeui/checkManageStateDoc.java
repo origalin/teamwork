@@ -21,12 +21,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Date;
 public class checkManageStateDoc extends JPanel{
 	public static void main(String[]args){
 		JFrame frame=new JFrame();
-		checkManageStateDoc ui=new checkManageStateDoc();
+		checkManageStateDoc ui=new checkManageStateDoc("12000003");
 		ui.setVisible(true);
 		frame.getContentPane().add(ui);
 		frame.setSize(500,500);
@@ -34,14 +35,22 @@ public class checkManageStateDoc extends JPanel{
 	}
 	ArrayList<PayDocVO> PayDocVOList=new ArrayList<PayDocVO>();
 	ArrayList<GatheringDocVO> GatheringDocVOList=new ArrayList<GatheringDocVO>();
-	financebl bl=new financebl();
+	financebl bl;
+	private String staffID;
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTable PayDocTable;
 	private JTable GatheringDocTable;
 	private JScrollPane scrollPane;
 	private JScrollPane scrollPane_1;
-	public checkManageStateDoc() {
+	public checkManageStateDoc(String staffID) {
+		this.staffID=staffID;
+		try {
+			bl=new financebl();
+		} catch (RemoteException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 34, 58, 92, 0, 80, 0};
 		gridBagLayout.rowHeights = new int[]{43, -10, 0, 12, 126, 151, 0, 0};

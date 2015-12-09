@@ -25,14 +25,14 @@ import java.awt.Font;
 
 public class CheckZLoadDoc extends JPanel{
 	private JTextField transferCenterField;
-	private JTextField carIDField;
+	private JTextField carID;
 	private JTextField watcherField;
-	private JTextField daliverField;
-	private JTextField targetField;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
+	private JTextField Driver;
+	private JTextField endPlace;
+	private JTextField ZLoadID;
+	private JTextField date;
+	private JTextField carTransportID;
+	private JTextField money;
 	private JTable table;
 	public CheckZLoadDoc(ZLoadDocVO vo) {
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -71,14 +71,14 @@ public class CheckZLoadDoc extends JPanel{
 		label.setFont(new Font("黑体", Font.BOLD, 15));
 		panel.add(label);
 		
-		JLabel label_2 = new JLabel("\u88C5\u8F66\u5355\u7F16\u53F7");
-		label_2.setFont(new Font("黑体", Font.BOLD, 15));
-		GridBagConstraints gbc_label_2 = new GridBagConstraints();
-		gbc_label_2.anchor = GridBagConstraints.WEST;
-		gbc_label_2.insets = new Insets(0, 0, 5, 5);
-		gbc_label_2.gridx = 1;
-		gbc_label_2.gridy = 1;
-		panel_11.add(label_2, gbc_label_2);
+		JLabel textField = new JLabel("\u88C5\u8F66\u5355\u7F16\u53F7");
+		textField.setFont(new Font("黑体", Font.BOLD, 15));
+		GridBagConstraints gbc_textField = new GridBagConstraints();
+		gbc_textField.anchor = GridBagConstraints.WEST;
+		gbc_textField.insets = new Insets(0, 0, 5, 5);
+		gbc_textField.gridx = 1;
+		gbc_textField.gridy = 1;
+		panel_11.add(textField, gbc_textField);
 		
 		JPanel panel_1 = new JPanel();
 		FlowLayout flowLayout_5 = (FlowLayout) panel_1.getLayout();
@@ -90,10 +90,10 @@ public class CheckZLoadDoc extends JPanel{
 		gbc_panel_1.gridy = 1;
 		panel_11.add(panel_1, gbc_panel_1);
 		
-		textField = new JTextField();
-		textField.setEditable(false);
-		panel_1.add(textField);
-		textField.setColumns(20);
+		ZLoadID = new JTextField();
+		ZLoadID.setEditable(false);
+		panel_1.add(ZLoadID);
+		ZLoadID.setColumns(20);
 		
 		JLabel label_3 = new JLabel("\u65E5\u671F");
 		label_3.setFont(new Font("黑体", Font.BOLD, 15));
@@ -114,10 +114,10 @@ public class CheckZLoadDoc extends JPanel{
 		gbc_panel_3.gridy = 1;
 		panel_11.add(panel_3, gbc_panel_3);
 		
-		textField_1 = new JTextField();
-		textField_1.setEditable(false);
-		panel_3.add(textField_1);
-		textField_1.setColumns(15);
+		date = new JTextField();
+		date.setEditable(false);
+		panel_3.add(date);
+		date.setColumns(15);
 		
 		JLabel label_4 = new JLabel("\u4E2D\u8F6C\u4E2D\u5FC3\u7F16\u53F7");
 		label_4.setFont(new Font("黑体", Font.BOLD, 15));
@@ -162,10 +162,10 @@ public class CheckZLoadDoc extends JPanel{
 		gbc_panel_4.gridy = 2;
 		panel_11.add(panel_4, gbc_panel_4);
 		
-		textField_2 = new JTextField();
-		textField_2.setEditable(false);
-		panel_4.add(textField_2);
-		textField_2.setColumns(15);
+		carTransportID = new JTextField();
+		carTransportID.setEditable(false);
+		panel_4.add(carTransportID);
+		carTransportID.setColumns(15);
 		
 		JLabel label_10 = new JLabel("\u5230\u8FBE\u5730      ");
 		label_10.setFont(new Font("黑体", Font.BOLD, 15));
@@ -186,10 +186,10 @@ public class CheckZLoadDoc extends JPanel{
 		FlowLayout flowLayout_6 = (FlowLayout) panel_6.getLayout();
 		flowLayout_6.setAlignment(FlowLayout.LEFT);
 		
-		targetField = new JTextField();
-		targetField.setEditable(false);
-		panel_6.add(targetField);
-		targetField.setColumns(20);
+		endPlace = new JTextField();
+		endPlace.setEditable(false);
+		panel_6.add(endPlace);
+		endPlace.setColumns(20);
 		
 		JLabel label_6 = new JLabel("\u8FD0\u8D39");
 		label_6.setFont(new Font("黑体", Font.BOLD, 15));
@@ -210,10 +210,10 @@ public class CheckZLoadDoc extends JPanel{
 		gbc_panel_5.gridy = 3;
 		panel_11.add(panel_5, gbc_panel_5);
 		
-		textField_3 = new JTextField();
-		textField_3.setEditable(false);
-		panel_5.add(textField_3);
-		textField_3.setColumns(10);
+		money = new JTextField();
+		money.setEditable(false);
+		panel_5.add(money);
+		money.setColumns(10);
 		
 		JLabel label_11 = new JLabel("\u8F66\u8F86\u4EE3\u53F7    ");
 		label_11.setFont(new Font("黑体", Font.BOLD, 15));
@@ -234,10 +234,10 @@ public class CheckZLoadDoc extends JPanel{
 		FlowLayout flowLayout_7 = (FlowLayout) panel_8.getLayout();
 		flowLayout_7.setAlignment(FlowLayout.LEFT);
 		
-		carIDField = new JTextField();
-		carIDField.setEditable(false);
-		panel_8.add(carIDField);
-		carIDField.setColumns(10);
+		carID = new JTextField();
+		carID.setEditable(false);
+		panel_8.add(carID);
+		carID.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("\u76D1\u88C5\u5458");
 		lblNewLabel.setFont(new Font("黑体", Font.BOLD, 15));
@@ -267,10 +267,10 @@ public class CheckZLoadDoc extends JPanel{
 		gbc_panel_7.gridy = 4;
 		panel_11.add(panel_7, gbc_panel_7);
 		
-		daliverField = new JTextField();
-		panel_7.add(daliverField);
-		daliverField.setEditable(false);
-		daliverField.setColumns(10);
+		Driver = new JTextField();
+		panel_7.add(Driver);
+		Driver.setEditable(false);
+		Driver.setColumns(10);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
@@ -283,6 +283,12 @@ public class CheckZLoadDoc extends JPanel{
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		
+		String[]itemID=vo.getItemIDs();
+		Object[][]tableInfo=new Object[itemID.length][1];
+		for(int i=0;i<itemID.length;i++){
+			Object[]oneLine={itemID[i]};
+			tableInfo[i]=oneLine;
+		}
 		table = new JTable();
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
@@ -292,6 +298,14 @@ public class CheckZLoadDoc extends JPanel{
 			}
 		));
 		scrollPane.setViewportView(table);
+		ZLoadID.setText(vo.getID());
+		date.setText(vo.getDate());
+		carTransportID.setText(vo.getTranceID());
+		endPlace.setText(vo.getTargetBusinessHall());
+		Driver.setText(vo.getDriver());
+		money.setText(vo.getPrice());
+		watcherField.setText(vo.getWatcher());
+		//transferCenterField.setText(vo.get);
 		
 
 	}

@@ -1,29 +1,32 @@
 package edu.nju.presentation.approveui;
 import javax.swing.*;
+
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.Font;
+
 import javax.swing.table.DefaultTableModel;
 
 import edu.nju.vo.ZArrivalDocVO;
+
 import java.awt.FlowLayout;
 public class checkZArrivalDoc extends JPanel{
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField date;
+	private JTextField startPlace;
 	private JLabel label_2;
-	private JTextField textField_3;
+	private JTextField transferID;
 	private JLabel label_3;
 	private JTable table;
 	private JScrollPane scrollPane;
 	private JLabel label_4;
-	private JTextField textField_5;
+	private JTextField ZArrivalID;
 	private JPanel panel;
 	private JPanel panel_1;
 	private JPanel panel_2;
 	private JPanel panel_4;
 	private JPanel panel_5;
-	public checkZArrivalDoc() {
+	public checkZArrivalDoc(ZArrivalDocVO vo) {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, -30, 47, 88, 0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0};
@@ -62,10 +65,10 @@ public class checkZArrivalDoc extends JPanel{
 		gbc_panel_2.gridy = 1;
 		add(panel_2, gbc_panel_2);
 		
-		textField_5 = new JTextField();
-		panel_2.add(textField_5);
-		textField_5.setEditable(false);
-		textField_5.setColumns(15);
+		ZArrivalID = new JTextField();
+		panel_2.add(ZArrivalID);
+		ZArrivalID.setEditable(false);
+		ZArrivalID.setColumns(15);
 		
 		label_2 = new JLabel("\u4E2D\u8F6C\u5355\u7F16\u53F7");
 		label_2.setFont(new Font("ºÚÌå", Font.BOLD, 15));
@@ -86,10 +89,10 @@ public class checkZArrivalDoc extends JPanel{
 		gbc_panel.gridy = 1;
 		add(panel, gbc_panel);
 		
-		textField_3 = new JTextField();
-		panel.add(textField_3);
-		textField_3.setEditable(false);
-		textField_3.setColumns(20);
+		transferID = new JTextField();
+		panel.add(transferID);
+		transferID.setEditable(false);
+		transferID.setColumns(20);
 		
 		JLabel label = new JLabel("\u5230\u8FBE\u65E5\u671F");
 		label.setFont(new Font("ºÚÌå", Font.BOLD, 15));
@@ -110,10 +113,10 @@ public class checkZArrivalDoc extends JPanel{
 		gbc_panel_1.gridy = 2;
 		add(panel_1, gbc_panel_1);
 		
-		textField = new JTextField();
-		panel_1.add(textField);
-		textField.setEditable(false);
-		textField.setColumns(15);
+		date = new JTextField();
+		panel_1.add(date);
+		date.setEditable(false);
+		date.setColumns(15);
 		
 		JLabel label_1 = new JLabel("\u51FA\u53D1\u5730");
 		label_1.setFont(new Font("ºÚÌå", Font.BOLD, 15));
@@ -134,10 +137,10 @@ public class checkZArrivalDoc extends JPanel{
 		gbc_panel_4.gridy = 2;
 		add(panel_4, gbc_panel_4);
 		
-		textField_1 = new JTextField();
-		panel_4.add(textField_1);
-		textField_1.setEditable(false);
-		textField_1.setColumns(10);
+		startPlace = new JTextField();
+		panel_4.add(startPlace);
+		startPlace.setEditable(false);
+		startPlace.setColumns(10);
 		
 		scrollPane = new JScrollPane();
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -149,18 +152,25 @@ public class checkZArrivalDoc extends JPanel{
 		gbc_scrollPane.gridy = 3;
 		add(scrollPane, gbc_scrollPane);
 		
+		String[][]itemAndState=vo.getItemAndState();
+		Object[][]tableInfo=new Object[itemAndState.length][2];
+		for(int i=0;i<tableInfo.length;i++){
+			Object[]oneLine={itemAndState[i][0],itemAndState[i][1]};
+			tableInfo[i]=oneLine;
+		}
 		table = new JTable();
 		scrollPane.setViewportView(table);
 		table.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
+			tableInfo,
 			new String[] {
 				"\u5BC4\u4EF6\u5355\u53F7", "\u5230\u8FBE\u72B6\u6001"
 			}
 		));
+		ZArrivalID.setText(vo.getID());
+		transferID.setText(vo.getTransferDocID());
+		date.setText(vo.getDate());
+		startPlace.setText(vo.getFrom());
 	}
-	public checkZArrivalDoc(ZArrivalDocVO vo) {
-		// TODO Auto-generated constructor stub
-	}
+	
 
 }

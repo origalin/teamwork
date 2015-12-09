@@ -1,24 +1,29 @@
 package edu.nju.presentation.approveui;
 import javax.swing.*;
+
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.Font;
+
 import javax.swing.table.DefaultTableModel;
+
+import edu.nju.vo.YDeliverDocVO;
+
 import java.awt.FlowLayout;
 public class checkYDeliverDoc extends JPanel{
-	private JTextField textField;
-	private JTextField textField_2;
+	private JTextField date;
+	private JTextField courier;
 	private JLabel label_1;
 	private JLabel label_2;
-	private JTextField textField_3;
+	private JTextField YDeliverID;
 	private JPanel panel;
 	private JPanel panel_1;
 	private JPanel panel_2;
 	private JPanel panel_3;
 	private JScrollPane scrollPane;
 	private JTable table;
-	public checkYDeliverDoc() {
+	public checkYDeliverDoc(YDeliverDocVO vo) {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 3, 11, 0, 0, 0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0};
@@ -58,10 +63,10 @@ public class checkYDeliverDoc extends JPanel{
 		gbc_panel_1.gridy = 1;
 		add(panel_1, gbc_panel_1);
 		
-		textField_3 = new JTextField();
-		panel_1.add(textField_3);
-		textField_3.setEditable(false);
-		textField_3.setColumns(15);
+		YDeliverID = new JTextField();
+		panel_1.add(YDeliverID);
+		YDeliverID.setEditable(false);
+		YDeliverID.setColumns(15);
 		
 		JLabel label = new JLabel("\u5FEB\u9012\u5458");
 		label.setFont(new Font("ºÚÌå", Font.BOLD, 15));
@@ -81,10 +86,10 @@ public class checkYDeliverDoc extends JPanel{
 		gbc_panel_2.gridy = 1;
 		add(panel_2, gbc_panel_2);
 		
-		textField_2 = new JTextField();
-		panel_2.add(textField_2);
-		textField_2.setEditable(false);
-		textField_2.setColumns(10);
+		courier = new JTextField();
+		panel_2.add(courier);
+		courier.setEditable(false);
+		courier.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("\u5230\u8FBE\u65E5\u671F");
 		lblNewLabel.setFont(new Font("ºÚÌå", Font.BOLD, 15));
@@ -105,10 +110,10 @@ public class checkYDeliverDoc extends JPanel{
 		gbc_panel_3.gridy = 2;
 		add(panel_3, gbc_panel_3);
 		
-		textField = new JTextField();
-		panel_3.add(textField);
-		textField.setEditable(false);
-		textField.setColumns(15);
+		date = new JTextField();
+		panel_3.add(date);
+		date.setEditable(false);
+		date.setColumns(15);
 		
 		scrollPane = new JScrollPane();
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
@@ -120,6 +125,12 @@ public class checkYDeliverDoc extends JPanel{
 		add(scrollPane, gbc_scrollPane);
 		
 		table = new JTable();
+		String[]itemIDs=vo.getItemIDs();
+		Object[][]tableInfo=new Object[itemIDs.length][1];
+		for(int i=0;i<itemIDs.length;i++){
+			Object[]oneLine={itemIDs[i]};
+			tableInfo[i]=oneLine;
+		}
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
 			},
@@ -128,6 +139,9 @@ public class checkYDeliverDoc extends JPanel{
 			}
 		));
 		scrollPane.setViewportView(table);
+		YDeliverID.setText(vo.getID());
+		date.setText(vo.getDate());
+		courier.setText(vo.getCourier());
 	}
 
 }

@@ -61,12 +61,8 @@ public class freightMoneyPanel extends JPanel{
 				"", "\u5355\u636E\u7C7B\u578B", "\u5355\u636E\u7F16\u53F7", "\u8FD0\u8D39"
 			}
 		) {
-			/**
-			 * 
-			 */
-			private static final long serialVersionUID = 1L;
 			Class[] columnTypes = new Class[] {
-				Boolean.class, String.class, String.class, Double.class
+				Boolean.class, Object.class, Object.class, Object.class
 			};
 			public Class getColumnClass(int columnIndex) {
 				return columnTypes[columnIndex];

@@ -60,16 +60,23 @@ public class approvebl implements ApproveLogicService{
 	 */
 	
 
-	Collectionbl collectionbl=new Collectionbl();
-	financebl fnc=new financebl();
-	StorageTools storageTools=new StorageTools();
+	Collectionbl collectionbl;
+	financebl fnc;
+	StorageTools storageTools;
 	TransferDoc transfer;
-	ZLoadDoc ZLoad=new ZLoadDoc();
+	ZLoadDoc ZLoad;
 	OverDoc over=new OverDoc();
 	YArrivalDoc YArrival=new YArrivalDoc();
 	YDeliverDoc YDeliver=new YDeliverDoc();
-	YLoadDoc YLoad=new YLoadDoc();
-	ZArrivalDoc ZArrival=new ZArrivalDoc();
+	YLoadDoc YLoad;
+	ZArrivalDoc ZArrival;
+	
+	public approvebl() throws RemoteException{
+		collectionbl=new Collectionbl();
+		fnc=new financebl();
+		ZLoad=new ZLoadDoc();
+		YLoad=new YLoadDoc();
+	}
 	@Override
 	public ArrayList<SendDocPO> getuncheckedSendDocList() throws RemoteException {
 		return collectionbl.getAllSendDoc();

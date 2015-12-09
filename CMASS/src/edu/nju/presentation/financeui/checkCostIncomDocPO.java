@@ -1,26 +1,37 @@
 package edu.nju.presentation.financeui;
 import javax.swing.*;
 
+import org.omg.CosNaming.NamingContextExtPackage.StringNameHelper;
+
 import edu.nju.businesslogic.financebl.financebl;
 
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.Font;
+import java.rmi.RemoteException;
 public class checkCostIncomDocPO extends JPanel{
 	public static void main(String[]args){
 		JFrame frame=new JFrame();
-		checkCostIncomDocPO ui=new checkCostIncomDocPO();
+		checkCostIncomDocPO ui=new checkCostIncomDocPO("1200003");
 		ui.setVisible(true);
 		frame.getContentPane().add(ui);
 		frame.setSize(500,500);
 		frame.setVisible(true);
 	}
-	financebl bl=new financebl();
+	financebl bl;
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
-	public checkCostIncomDocPO() {
+	private String staffID;
+	public checkCostIncomDocPO(String staffID) {
+		this.staffID=staffID;
+		try {
+			bl=new financebl();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 22, 0, 0, 0, 0};

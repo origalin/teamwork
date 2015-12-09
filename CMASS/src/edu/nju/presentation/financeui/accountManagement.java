@@ -12,24 +12,32 @@ import edu.nju.presentation.approveui.checkMainUI;
 import edu.nju.vo.AccountVO;
 
 import java.awt.Font;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 public class accountManagement extends JPanel{
-	financebl bl=new financebl();
+	financebl bl;
 	private JTextField textField;
 	private JTable table;
 	private JPanel thisPanel=this;
-	
+	private String staffID;
 	public static void main(String[]args){
 		JFrame frame=new JFrame();
-		accountManagement ui=new accountManagement();
+		accountManagement ui=new accountManagement("120003");
 		ui.setVisible(true);
 		frame.getContentPane().add(ui);
 		frame.setSize(500,500);
 		frame.setVisible(true);
 	}
-	public accountManagement() {
+	public accountManagement(String staffID) {
+		this.staffID=staffID;
+		try {
+			bl=new financebl();
+		} catch (RemoteException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 302, 0, 0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 140, 0, 0};

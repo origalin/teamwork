@@ -1,20 +1,23 @@
 package edu.nju.presentation.approveui;
 import javax.swing.*;
+
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.Font;
+
 import javax.swing.table.DefaultTableModel;
 
 import edu.nju.vo.YArrivalDocVO;
 import edu.nju.vo.YDeliverDocVO;
+
 import java.awt.FlowLayout;
 public class checkYArrivalDoc extends JPanel{
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private JTextField date;
+	private JTextField transferID;
+	private JTextField startPlace;
 	private JTable table;
-	private JTextField textField_4;
+	private JTextField YArrivalID;
 	public checkYArrivalDoc(YArrivalDocVO vo) {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 13, 123, 51, 0, 0};
@@ -56,10 +59,10 @@ public class checkYArrivalDoc extends JPanel{
 		gbc_panel_2.gridy = 1;
 		add(panel_2, gbc_panel_2);
 		
-		textField_4 = new JTextField();
-		panel_2.add(textField_4);
-		textField_4.setEditable(false);
-		textField_4.setColumns(10);
+		YArrivalID = new JTextField();
+		panel_2.add(YArrivalID);
+		YArrivalID.setEditable(false);
+		YArrivalID.setColumns(10);
 		
 		JLabel label = new JLabel("\u5230\u8FBE\u65E5\u671F");
 		label.setFont(new Font("ºÚÌå", Font.BOLD, 15));
@@ -80,10 +83,10 @@ public class checkYArrivalDoc extends JPanel{
 		gbc_panel_1.gridy = 2;
 		add(panel_1, gbc_panel_1);
 		
-		textField = new JTextField();
-		panel_1.add(textField);
-		textField.setEditable(false);
-		textField.setColumns(10);
+		date = new JTextField();
+		panel_1.add(date);
+		date.setEditable(false);
+		date.setColumns(10);
 		
 		JLabel label_1 = new JLabel("\u4E2D\u8F6C\u5355\u7F16\u53F7");
 		label_1.setFont(new Font("ºÚÌå", Font.BOLD, 15));
@@ -93,15 +96,15 @@ public class checkYArrivalDoc extends JPanel{
 		gbc_label_1.gridy = 2;
 		add(label_1, gbc_label_1);
 		
-		textField_1 = new JTextField();
-		textField_1.setEditable(false);
-		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
-		gbc_textField_1.insets = new Insets(0, 0, 5, 5);
-		gbc_textField_1.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_1.gridx = 4;
-		gbc_textField_1.gridy = 2;
-		add(textField_1, gbc_textField_1);
-		textField_1.setColumns(10);
+		transferID = new JTextField();
+		transferID.setEditable(false);
+		GridBagConstraints gbc_transferID = new GridBagConstraints();
+		gbc_transferID.insets = new Insets(0, 0, 5, 5);
+		gbc_transferID.fill = GridBagConstraints.HORIZONTAL;
+		gbc_transferID.gridx = 4;
+		gbc_transferID.gridy = 2;
+		add(transferID, gbc_transferID);
+		transferID.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("\u51FA\u53D1\u5730");
 		lblNewLabel.setFont(new Font("ºÚÌå", Font.BOLD, 15));
@@ -122,10 +125,10 @@ public class checkYArrivalDoc extends JPanel{
 		gbc_panel_3.gridy = 3;
 		add(panel_3, gbc_panel_3);
 		
-		textField_2 = new JTextField();
-		panel_3.add(textField_2);
-		textField_2.setEditable(false);
-		textField_2.setColumns(15);
+		startPlace = new JTextField();
+		panel_3.add(startPlace);
+		startPlace.setEditable(false);
+		startPlace.setColumns(15);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -138,6 +141,12 @@ public class checkYArrivalDoc extends JPanel{
 		gbc_scrollPane.gridy = 4;
 		add(scrollPane, gbc_scrollPane);
 		
+		String[][]itemAndState=vo.getItemAndState();
+		Object[][]tableInfo=new Object[itemAndState.length][2];
+		for(int i=0;i<tableInfo.length;i++){
+			Object[]oneLine={itemAndState[i][0],itemAndState[i][1]};
+			tableInfo[i]=oneLine;
+		}
 		table = new JTable();
 		table.setFont(new Font("SimSun", Font.PLAIN, 12));
 		scrollPane.setViewportView(table);
@@ -148,6 +157,10 @@ public class checkYArrivalDoc extends JPanel{
 				"\u5BC4\u4EF6\u5355\u53F7", "\u72B6\u6001"
 			}
 		));
+		YArrivalID.setText(vo.getID());
+		transferID.setText(vo.getTransferDocID());
+		date.setText(vo.getDate());
+		startPlace.setText(vo.getFrom());
 	}
 
 }

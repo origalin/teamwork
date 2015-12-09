@@ -344,10 +344,15 @@ public class financebl implements FinanceLogicService {
 	}
 
 	@Override
-	public void setInstitutionList(ArrayList<InstitutionPO> InstitutionList) {
+	public void setInstitutionList(ArrayList<InstitutionPO> InstitutionList)  {
 
 		for (InstitutionPO po : InstitutionList) {
-			institution.saveInstitution(po);
+			try {
+				institution.saveInstitution(po);
+			} catch (RemoteException e) {
+				System.out.println("与机构协作出错");
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -390,7 +395,12 @@ public class financebl implements FinanceLogicService {
 	@Override
 	public void setStaffList(ArrayList<StaffPO> staffList) {
 		for (StaffPO po : staffList) {
-			institution.saveStaff(po);
+			try {
+				institution.saveStaff(po);
+			} catch (RemoteException e) {
+				System.out.println("与机构协作出错");
+				e.printStackTrace();
+			}
 		}
 
 	}
@@ -563,7 +573,7 @@ public class financebl implements FinanceLogicService {
 	}
 
 	private double getCourierMoney(String staffID) throws RemoteException {
-		return financeDataService.getCourierMoney(staffID);
+		return financeDataService.getCourierMoney(staffID,new Date());
 		
 	}
 
