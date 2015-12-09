@@ -1,6 +1,10 @@
 package edu.nju.po;
+
+import java.awt.SecondaryLoop;
+import java.io.Serializable;
+
 //´ý¶¨
-public class HistoryTimePO {
+public class HistoryTimePO implements Serializable{
 	String start;
 	String end;
 	int days;

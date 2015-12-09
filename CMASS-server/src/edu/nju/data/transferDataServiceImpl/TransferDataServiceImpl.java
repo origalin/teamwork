@@ -82,7 +82,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 	@Override
 	public String getTransferSequence() {
 		// TODO Auto-generated method stub
-		String str = "get Sequence from SequenceTable where Kind = 'TransferDoc';";
+		String str = "select Sequence from SequenceTable where Kind = 'TransferDoc';";
 		String ret = "";
 		SQL.databaseQuery(str);
 		try {
@@ -152,10 +152,11 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 	@Override
 	public String getZLoadSequence() {
 		// TODO Auto-generated method stub
-		String str = "get Sequence from SequenceTable where Kind = 'ZLoadDoc';";
+		String str = "select Sequence from SequenceTable where Kind = 'ZLoadDoc';";
 		String ret = "";
 		SQL.databaseQuery(str);
 		try {
+			SQL.rs.next();
 			ret =  SQL.rs.getString("Sequence");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -211,10 +212,11 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 	@Override
 	public String getZArrivalSequence() {
 		// TODO Auto-generated method stub
-		String str = "get Sequence from SequenceTable where Kind = 'ZArrivalDoc';";
+		String str = "select Sequence from SequenceTable where Kind = 'ZArrivalDoc';";
 		String ret = "";
 		SQL.databaseQuery(str);
 		try {
+			SQL.rs.next();
 			ret =  SQL.rs.getString("Sequence");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -270,10 +272,11 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 	@Override
 	public String getYArrivalSequence() {
 		// TODO Auto-generated method stub
-		String str = "get Sequence from SequenceTable where Kind = 'YArrivalDoc';";
+		String str = "select Sequence from SequenceTable where Kind = 'YArrivalDoc';";
 		String ret = "";
 		SQL.databaseQuery(str);
 		try {
+			SQL.rs.next();
 			ret =  SQL.rs.getString("Sequence");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -324,10 +327,11 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 	@Override
 	public String getYDeliverSequence() {
 		// TODO Auto-generated method stub
-		String str = "get Sequence from SequenceTable where Kind = 'YDeliverDoc';";
+		String str = "select Sequence from SequenceTable where Kind = 'YDeliverDoc';";
 		String ret = "";
 		SQL.databaseQuery(str);
 		try {
+			SQL.rs.next();
 			ret =  SQL.rs.getString("Sequence");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -374,10 +378,11 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 	@Override
 	public String getOverSequence() {
 		// TODO Auto-generated method stub
-		String str = "get Sequence from SequenceTable where Kind = 'OverDoc';";
+		String str = "select Sequence from SequenceTable where Kind = 'OverDoc';";
 		String ret = "";
 		SQL.databaseQuery(str);
 		try {
+			SQL.rs.next();
 			ret =  SQL.rs.getString("Sequence");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -810,10 +815,11 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 	@Override
 	public String getTransferID() {
 		// TODO Auto-generated method stub
-		String str = "get Sequence from SequenceTable where Kind = 'TransferID';";
+		String str = "select Sequence from SequenceTable where Kind = 'TransferID';";
 		String ret = "";
 		SQL.databaseQuery(str);
 		try {
+			SQL.rs.next();
 			ret =  SQL.rs.getString("Sequence");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -826,10 +832,11 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 	@Override
 	public String getTransferID_Plain() {
 		// TODO Auto-generated method stub
-		String str = "get Sequence from SequenceTable where Kind = 'TransferID_Plain';";
+		String str = "select Sequence from SequenceTable where Kind = 'TransferID_Plain';";
 		String ret = "";
 		SQL.databaseQuery(str);
 		try {
+			SQL.rs.next();
 			ret =  SQL.rs.getString("Sequence");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -842,10 +849,11 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 	@Override
 	public String getTransferID_Train() {
 		// TODO Auto-generated method stub
-		String str = "get Sequence from SequenceTable where Kind = 'TransferID_Train';";
+		String str = "select Sequence from SequenceTable where Kind = 'TransferID_Train';";
 		String ret = "";
 		SQL.databaseQuery(str);
 		try {
+			SQL.rs.next();
 			ret =  SQL.rs.getString("Sequence");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -988,10 +996,11 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 	@Override
 	public String getYLoadSequence() {
 		// TODO Auto-generated method stub
-		String str = "get Sequence from SequenceTable where Kind = 'TLoadDoc';";
+		String str = "select Sequence from SequenceTable where Kind = 'TLoadDoc';";
 		String ret = "";
 		SQL.databaseQuery(str);
 		try {
+			SQL.rs.next();
 			ret =  SQL.rs.getString("Sequence");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

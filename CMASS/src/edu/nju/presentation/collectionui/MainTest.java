@@ -18,20 +18,20 @@ import edu.nju.presentation.transformui.SendPanel;
 
 public class MainTest {
 	public static void main(String[] args) {
-//		JFrame frame = new JFrame();
-//		frame.setSize(1280, 800);
-//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		
-//		frame.getContentPane().add(new SendPanel("00251001100"));
-//		frame.setVisible(true);
-		try {
-			TransferDataServiceImpl transferDataServiceImpl = new TransferDataServiceImpl();
-			CollectionDataService collectionDataService = new CollectionDataServiceImpl();
-			System.out.println(transferDataServiceImpl.getYDeliverDocPOByCourier("00251001100").size());
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		JFrame frame = new JFrame();
+		frame.setSize(1280, 800);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		frame.getContentPane().add(new SendPanel("00251001100"));
+		frame.setVisible(true);
+//		try {
+//			TransferDataServiceImpl transferDataServiceImpl = new TransferDataServiceImpl();
+//			CollectionDataService collectionDataService = new CollectionDataServiceImpl();
+//			System.out.println(transferDataServiceImpl.getOverSequence());
+//		} catch (RemoteException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		
 	}
 }

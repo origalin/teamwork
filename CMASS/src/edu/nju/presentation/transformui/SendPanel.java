@@ -143,6 +143,14 @@ public class SendPanel extends JPanel{
 		scrollPane_1.setViewportView(toOverTable);
 		
 		JButton createButtom = new JButton("\u751F\u6210\u6536\u4EF6\u5355");
+		createButtom.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				createOverDoc();
+			}
+		});
 		GridBagConstraints gbc_createButtom = new GridBagConstraints();
 		gbc_createButtom.anchor = GridBagConstraints.NORTH;
 		gbc_createButtom.gridx = 4;
