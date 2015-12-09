@@ -13,9 +13,12 @@ import edu.nju.businesslogicservice.storagelogicservice.StorageInitializeService
 import edu.nju.po.InWareHouseDocLineItem;
 import edu.nju.po.RecordPO;
 import edu.nju.presentation.UiFactory;
+import edu.nju.tools.Time;
 
 import java.awt.event.ActionListener;
 import java.awt.font.TextLayout;
+import java.rmi.RemoteException;
+import java.util.Date;
 import java.awt.event.ActionEvent;
 
 public class StorageInitialize extends JPanel{
@@ -164,10 +167,15 @@ public class StorageInitialize extends JPanel{
 		btnNewButton = new JButton("\u65B0\u5EFA\u5E93\u5B58\u8BB0\u5F55");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				RecordPO lineItem=new RecordPO(textSendDoc_ID.getText(), date, textDestination.getText(),
+				RecordPO lineItem=new RecordPO(textSendDoc_ID.getText(),Time.stringToDate(textInWareDate.getText()), textDestination.getText(),
 						textDistrict.getText(), textPosition.getText(), currStorageID);
 				StorageInitializeService storageInitialize=UiFactory.getStorageInitialize();
-				storageInitialize.addNewStorageItem(lineItem);
+				try {
+					storageInitialize.addNewStorageItem(lineItem);
+				} catch (RemoteException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				
 			}
 		});
