@@ -8,6 +8,7 @@ import edu.nju.po.InWareHouseDocPO;
 import edu.nju.po.InstitutionPO;
 import edu.nju.po.PayDocPO;
 import edu.nju.po.PayType;
+import edu.nju.po.SalaryPO;
 import edu.nju.po.SendDocPO;
 import edu.nju.po.StaffPO;
 import edu.nju.po.TransferDocPO;
@@ -71,6 +72,8 @@ public interface FinanceLogicService {
 	public PayDocVO getPayDocVO(String PayDocID);//支持预览收款单
 	public void resetSalary();
 	public void resetRent();
+	public SalaryPO getSalaryPO(String staffID);
+	public void saveSalaryPO(SalaryPO po);
 	//生成收款单部分
 		public void createGatheringDoc(GatheringDocVO vo);//实现的时候需要先得到SendDocPOList
 		public GatheringDocVO reviewGatheringDoc(String GatheringDocID,String courier_ID,String account);

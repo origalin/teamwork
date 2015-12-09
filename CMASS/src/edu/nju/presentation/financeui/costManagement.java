@@ -3,9 +3,11 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 import edu.nju.businesslogic.financebl.financebl;
+import edu.nju.businesslogicservice.infologicservice.InstitutionLogicService;
 import edu.nju.po.InstitutionPO;
 import edu.nju.po.PayDocPO;
 import edu.nju.po.PayType;
+import edu.nju.po.SalaryPO;
 import edu.nju.po.StaffPO;
 import edu.nju.po.TransferDocPO;
 import edu.nju.po.YLoadDocPO;
@@ -33,6 +35,7 @@ public class costManagement extends JPanel{
 		frame.setSize(700,400);
 		frame.setVisible(true);
 	}
+
 	private ArrayList<StaffPO>staffList;
 	private String staffID;
 	private ArrayList<ZLoadDocPO>ZLoadDoc;
@@ -139,15 +142,16 @@ public class costManagement extends JPanel{
 			        dialog.getConfirmButton().addActionListener(new ActionListener(){
 			            	@Override
 			            	public void actionPerformed(ActionEvent e){
+			            		ArrayList<InstitutionPO> tempList=new ArrayList<InstitutionPO>();
 			            		bl.createPayDoc(vo);
 			            		bl.minusMoney(vo.getAccount(), vo.getMoney());
 			            		for(int i=0;i<rentTableInfo.length;i++){
 									Object[] oneLine=rentTableInfo[i];
 									if((boolean)oneLine[0]==true){
-										institutionList.get(i).setPaid(true);
+										tempList.add(institutionList.get(i));
 									}
 								}
-			            		bl.setInstitutionList(institutionList);
+			            		bl.setInstitutionList(tempList);
 			            		//已经生成付款单后我们要把添加的面板清空并且让institutionList重新变为null,方便进行下一次成本管理
 			            		panel=null;
 			            		updateUI();
@@ -221,7 +225,10 @@ public class costManagement extends JPanel{
 		            		for(int i=0;i<salaryTableInfo.length;i++){
 								Object[] oneLine=salaryTableInfo[i];
 								if((boolean)oneLine[0]==true){
-									staffList.get(i).isPaid(true);
+									StaffPO staff=staffList.get(i);
+									SalaryPO po=bl.getSalaryPO(staff.getStaffID());
+									po.setPaid(true);
+									bl.saveSalaryPO(po);
 								}
 							}
 							

@@ -25,6 +25,7 @@ import edu.nju.po.OverDocPO;
 import edu.nju.po.PayDocPO;
 import edu.nju.po.PayType;
 import edu.nju.po.Post;
+import edu.nju.po.SalaryPO;
 import edu.nju.po.SendDocPO;
 import edu.nju.po.StaffPO;
 import edu.nju.po.TransferDocPO;
@@ -348,7 +349,6 @@ public class financebl implements FinanceLogicService {
 
 		for (InstitutionPO po : InstitutionList) {
 			try {
-				//institution.saveInstitution(po);
 				institution.saveRent(po.getId());
 			} catch (RemoteException e) {
 				System.out.println("与机构协作出错");
@@ -540,7 +540,12 @@ public class financebl implements FinanceLogicService {
 		// StaffPO staff=institution.getStaff(staffID);
 		// 10位说明是司机
 		if (staffID.length() == 10) {
-			return calculateDriverSalary(staffID);
+			try {
+				return calculateDriverSalary(staffID);
+			} catch (RemoteException e) {
+				e.printStackTrace();
+				return 0;
+			}
 		}
 		// 11位说明是普通员工
 		Post position = null;
@@ -550,7 +555,7 @@ public class financebl implements FinanceLogicService {
 			System.out.println("与机构协作出错");
 			e.printStackTrace();
 		}
-		if (position == Post.COURIER) {
+		if (position == Post.快递员) {
 			return calculateCourierSalary(staffID);
 		} else {
 			return calculateNormalSalary(staffID);
@@ -578,8 +583,8 @@ public class financebl implements FinanceLogicService {
 		
 	}
 
-	public double calculateDriverSalary(String DriverID) {
-		double oneTimeMoney = institution.getDriverCommision(DriverID);
+	public double calculateDriverSalary(String DriverID) throws RemoteException {
+		double oneTimeMoney = driver.getDriverCommision(DriverID);
 		int time;
 		try {
 			time = YLoad.getDriverTime(DriverID)
@@ -671,6 +676,29 @@ public class financebl implements FinanceLogicService {
 			e.printStackTrace();
 		}
 
+	}
+
+	@Override
+	public SalaryPO getSalaryPO(String staffID)  {
+		SalaryPO po=null;
+		try {
+			po = institution.getSalary(staffID);
+		} catch (RemoteException e) {
+			System.out.println("与机构协作出错");		
+			e.printStackTrace();
+		}
+		return po;
+	}
+
+	@Override
+	public void saveSalaryPO(SalaryPO po) {
+		try {
+			institution.saveSalary(po);
+		} catch (RemoteException e) {
+			System.out.println("与机构协作出错");
+			e.printStackTrace();
+		}
+		
 	}
 
 }
