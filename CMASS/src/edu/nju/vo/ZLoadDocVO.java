@@ -13,6 +13,7 @@ public class ZLoadDocVO extends Doc{
 	String CarID;
 	String watcher;
 	String driver;
+	String transferCenterID;
 	String[] itemIDs;
 	String price;
 	public ZLoadDocVO(ZLoadDocPO po) {
@@ -23,8 +24,21 @@ public class ZLoadDocVO extends Doc{
 		this.CarID = po.getCarID();
 		this.watcher = po.getWatcher();
 		this.driver = po.getDriver();
+		this.transferCenterID = po.gettransferCenterID();
 		this.itemIDs = po.getItemIDs();
 		this.price = String.valueOf(po.getPrice());
+	}
+	public String getTarget() {
+		return target;
+	}
+	public void setTarget(String target) {
+		this.target = target;
+	}
+	public String getTransferCenterID() {
+		return transferCenterID;
+	}
+	public void setTransferCenterID(String transferCenterID) {
+		this.transferCenterID = transferCenterID;
 	}
 	public String getDate() {
 		return date;

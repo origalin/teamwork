@@ -42,6 +42,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 		String container;
 		String from;
 		String targetCity;
+		String watcher;
 		String itemIDs;
 		double price;
 		int checked;
@@ -56,6 +57,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 		container = po.getContainer();
 		from = po.getFrom();
 		targetCity = po.getTargetCity();
+		watcher = po.getWatcher();
 		itemIDs = StringTools.toAString(po.getItemIDs());
 		price = po.getPrice();
 		if (po.isPaid()) {
@@ -71,7 +73,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 
 		String str = "replace into TransferID(ID,Date,PlaneNum,TrainNum,CarNum,tranceID,corriage,container,from,targetCity,itemIDs,price,checked,paid) "
 		+ "values('"+ID+"','"+Time.toDaysTime(date)+"','"+planeNum+"','"+TrainNum+"','"+CarNum+"',"
-		+ "'"+tranceID+"','"+corriage+"','"+container+"','"+from+"','"+targetCity+"',"
+		+ "'"+tranceID+"','"+corriage+"','"+container+"','"+from+"','"+targetCity+"','"+watcher+"',"
 		+ "'"+itemIDs+"','"+price+"','"+checked+"','"+paid+"');";
 		SQL.databaseUpdate(str);
 		SQL.closeDatabase();
@@ -113,6 +115,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 		String CarID;
 		String watcher;
 		String driver;
+		String tranceferCenterID;
 		String itemIDs;
 		double price;
 		int checked;
@@ -124,6 +127,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 		CarID = po.getCarID();
 		watcher = po.getWatcher();
 		driver = po.getDriver();
+		tranceferCenterID = po.gettransferCenterID();
 		itemIDs = StringTools.toAString(po.getItemIDs());
 		price = po.getPrice();
 		if(po.isChecked()) {
@@ -137,9 +141,9 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 			paid = 0;
 		}
 		String str = "replace into ZLoadDoc (ID,date,tranceid,targetbusinesshall,"
-		+ "carid,watcher,driver,itemids,price,checked,paid) values("
+		+ "carid,watcher,driver,tranceferCenterID,itemids,price,checked,paid) values("
 		+ "'"+ID+"','"+Time.toDaysTime(date)+"','"+tranceID+"','"+targetBusinessHall+"','"+CarID+"',"
-		+ "'"+watcher+"','"+driver+"','"+itemIDs+"','"+price+"','"+checked+"',"
+		+ "'"+watcher+"','"+driver+"','"+tranceferCenterID+"','"+itemIDs+"','"+price+"','"+checked+"',"
 		+"'"+paid+"');";
 		SQL.databaseUpdate(str);
 		SQL.closeDatabase();
@@ -457,6 +461,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 		String CarID= null;
 		String watcher= null;
 		String driver= null;
+		String tranceferCenterID = null;
 		String[] itemIDs= null;
 		double price = 0;
 		String str;
@@ -476,6 +481,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 				CarID = SQL.rs.getString("CarID");
 				watcher = SQL.rs.getString("watcher");
 				driver = SQL.rs.getString("driver");
+				tranceferCenterID = SQL.rs.getString("tranceferCenterID");
 				itemIDs = SQL.rs.getString("itemIDs").split(" ");
 				price = SQL.rs.getDouble("price");
 				
@@ -484,7 +490,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 			if(ID == null) {
 				throw new DatabaseNULLException();
 			}
-			return new ZLoadDocPO(ID, date, tranceID, targetBusinessHall, CarID, watcher, driver, itemIDs, price);
+			return new ZLoadDocPO(ID, date, tranceID, targetBusinessHall, CarID, watcher, driver,tranceferCenterID, itemIDs, price);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -909,6 +915,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 		String CarID;
 		String watcher;
 		String driver;
+		String businessHallID;
 		String itemIDs;
 		double price;
 		int checked;
@@ -920,6 +927,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 		CarID = po.getCarID();
 		watcher = po.getWatcher();
 		driver = po.getDriver();
+		businessHallID = po.getBusinessHallID();
 		itemIDs = StringTools.toAString(po.getItemIDs());
 		price = po.getPrice();
 		if(po.isChecked()) {
@@ -935,7 +943,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 		String str = "replace into ZLoadDoc (ID,date,tranceid,targetbusinesshall,"
 		+ "carid,watcher,driver,itemids,price,checked,paid) values("
 		+ "'"+ID+"','"+Time.toDaysTime(date)+"','"+tranceID+"','"+target+"','"+CarID+"',"
-		+ "'"+watcher+"','"+driver+"','"+itemIDs+"','"+price+"','"+checked+"',"
+		+ "'"+watcher+"','"+driver+"','"+businessHallID+"','"+itemIDs+"','"+price+"','"+checked+"',"
 		+"'"+paid+"',);";
 		SQL.databaseUpdate(str);
 		SQL.closeDatabase();
@@ -1007,6 +1015,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 		String CarID= null;
 		String watcher= null;
 		String driver= null;
+		String businessHallID = null;
 		String[] itemIDs= null;
 		double price = 0;
 		String str;
@@ -1026,6 +1035,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 				CarID = SQL.rs.getString("CarID");
 				watcher = SQL.rs.getString("watcher");
 				driver = SQL.rs.getString("driver");
+				businessHallID = SQL.rs.getString("businessHallID");
 				itemIDs = SQL.rs.getString("itemIDs").split(" ");
 				price = SQL.rs.getDouble("price");
 				
@@ -1034,7 +1044,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 			if (ID == null) {
 				throw new DatabaseNULLException();
 			}
-			return new YLoadDocPO(ID, date, tranceID, targetBusinessHall, CarID, watcher, driver, itemIDs, price);
+			return new YLoadDocPO(ID, date, tranceID, targetBusinessHall, CarID, watcher, driver,businessHallID, itemIDs, price);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -121,7 +121,7 @@ public class ZLoadDoc implements ZLoadDocService{
 	@Override
 	public ZLoadDocVO createZLoadDocVO(String carID, String target, String watcher, String driver, String[] itemIDs) throws RemoteException {
 		// TODO Auto-generated method stub
-		po = new ZLoadDocPO("05"+getZloadSequence(), new Date(), getTranceID(), target, carID, watcher, driver, itemIDs, priceCalc(target));
+		po = new ZLoadDocPO("05"+getZloadSequence(), new Date(), getTranceID(), target, carID, watcher, driver,institutionID, itemIDs, priceCalc(target));
 		return new ZLoadDocVO(po);
 	}
 	private String getTranceID() throws RemoteException {

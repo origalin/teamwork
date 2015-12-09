@@ -76,7 +76,7 @@ public class YLoadDoc implements YLoadDocService{
 	public YLoadDocVO createYLoadDocVO(String carID, String target,
 			String watcher,String driver, String[] itemIDs) throws RemoteException {
 		// TODO 自动生成的方法存根
-		po = new YLoadDocPO("00"+getYloadSequence(), new Date(), getTranceID(), target, carID, watcher, driver, itemIDs, priceCalc(target));
+		po = new YLoadDocPO("00"+getYloadSequence(), new Date(), getTranceID(), target, carID, watcher, driver,institutionID, itemIDs, priceCalc(target));
 		return new YLoadDocVO(po);
 	}
 

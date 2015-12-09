@@ -291,8 +291,7 @@ public class CheckZLoadDoc extends JPanel{
 		}
 		table = new JTable();
 		table.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
+			tableInfo,
 			new String[] {
 				"\u8FD0\u5355\u53F7"
 			}
