@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 
 import java.awt.GridBagLayout;
 
+import javax.swing.JOptionPane;
 import javax.swing.JScrollBar;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
@@ -28,7 +29,11 @@ import javax.swing.JTabbedPane;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -36,14 +41,21 @@ import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
 import edu.nju.businesslogicservice.infologicservice.InstitutionLogicService;
+import edu.nju.po.CarPO;
+import edu.nju.po.InstitutionPO;
+import edu.nju.po.Post;
+import edu.nju.po.StaffPO;
 import edu.nju.presentation.UiFactory;
 import edu.nju.tools.Time;
 import edu.nju.vo.CarVO;
+import edu.nju.vo.InstitutionVO;
 import edu.nju.vo.StaffVO;
 
 public class InstitutionPanel extends JPanel {
 	private JTable table;
 	DefaultTableModel model;
+	private JTree tree ;
+	ArrayList<InstitutionVO> institutionList = null;
 	InstitutionLogicService institutionLogicService=UiFactory.getInstitutionLogicService();
 	/**
 	 * Create the panel.
@@ -77,31 +89,35 @@ public class InstitutionPanel extends JPanel {
 		gbc_scrollPane_1.gridy = 1;
 		add(scrollPane_1, gbc_scrollPane_1);
 		
-		JTree tree = new JTree();
+		tree = new JTree();
+	
+		try {
+			institutionList = institutionLogicService.getInstitutionVOList();
+		} catch (RemoteException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+		
 		tree.setModel(new DefaultTreeModel(
-			new DefaultMutableTreeNode("JTree") {
+			new DefaultMutableTreeNode("总部") {
 				{
 					DefaultMutableTreeNode node_1;
-					node_1 = new DefaultMutableTreeNode("colors");
-						node_1.add(new DefaultMutableTreeNode("blue"));
-						node_1.add(new DefaultMutableTreeNode("violet"));
-						node_1.add(new DefaultMutableTreeNode("red"));
-						node_1.add(new DefaultMutableTreeNode("yellow"));
+					DefaultMutableTreeNode node_2;
+					node_1 = new DefaultMutableTreeNode("中转中心");
+					
+					for(InstitutionVO vo:institutionList){
+						if(vo.getParentInstitution().equals("0")){
+							node_2=new DefaultMutableTreeNode(vo.getName());
+							for(InstitutionVO vo1:institutionList){
+								if(vo1.getParentInstitution().equals(vo.getName())){
+									node_2.add(new DefaultMutableTreeNode(vo1.getName()));
+								}
+							}
+							node_1.add(node_2);				
+						}
+					}
 					add(node_1);
-					node_1 = new DefaultMutableTreeNode("sports");
-						node_1.add(new DefaultMutableTreeNode("basketball"));
-						node_1.add(new DefaultMutableTreeNode("soccer"));
-						node_1.add(new DefaultMutableTreeNode("football"));
-						node_1.add(new DefaultMutableTreeNode("hockey"));
-					add(node_1);
-					node_1 = new DefaultMutableTreeNode("food");
-						node_1.add(new DefaultMutableTreeNode("hot dogs"));
-						node_1.add(new DefaultMutableTreeNode("pizza"));
-						node_1.add(new DefaultMutableTreeNode("ravioli"));
-						node_1.add(new DefaultMutableTreeNode("bananas"));
-					add(node_1);
-				}
-			}
+				}}
 		));
 		scrollPane_1.setViewportView(tree);
 		
@@ -126,6 +142,11 @@ public class InstitutionPanel extends JPanel {
 		gbc_btnNewButton.gridx = 0;
 		gbc_btnNewButton.gridy = 0;
 		panel_1.add(btnNewButton, gbc_btnNewButton);
+		
+		
+		//增加机构
+		
+		
 		
 		JButton button = new JButton("\u5220\u9664\u673A\u6784");
 		GridBagConstraints gbc_button = new GridBagConstraints();
@@ -191,9 +212,43 @@ public class InstitutionPanel extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				
-			}
+					String str = JOptionPane.showInputDialog(null, "Find:", "Find",
+							JOptionPane.QUESTION_MESSAGE);
+					
+					if (str != null) {
+						findInTable(str);
+					}
+
+					int row = table.getSelectedRow();
+					if (row >= 0) {
+					
+						StaffPO po = null;
+						try {
+							po = new StaffPO((String) table.getValueAt(row, 0),
+									(String) table.getValueAt(row,1), (String) table
+											.getValueAt(row, 2), (String) table
+											.getValueAt(row, 3), (String) table
+											.getValueAt(row, 4),institutionLogicService.getID(tree.getSelectionPath().toString()),Post.valueOf((String)table.getValueAt(row, 5)));
+						} catch (RemoteException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+						
+			
+								try {
+									institutionLogicService.deleteStaff(po);
+								} catch (RemoteException e1) {
+									// TODO Auto-generated catch block
+									e1.printStackTrace();
+								}
+					
+						model.removeRow(row);
+					}
+					table.revalidate();
+				}
+				
+			
 		});
 		
 		JButton button_5 = new JButton("\u4FEE\u6539\u4EBA\u5458");
@@ -203,6 +258,16 @@ public class InstitutionPanel extends JPanel {
 		gbc_button_5.gridy = 1;
 		panel_1.add(button_5, gbc_button_5);
 		
+		//修改人员
+		button_5.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				table.setEnabled(true);
+				
+			}
+		});
+		
 		JButton button_2 = new JButton("\u67E5\u8BE2\u4EBA\u5458");
 		GridBagConstraints gbc_button_2 = new GridBagConstraints();
 		gbc_button_2.anchor = GridBagConstraints.NORTH;
@@ -211,6 +276,21 @@ public class InstitutionPanel extends JPanel {
 		gbc_button_2.gridy = 1;
 		panel_1.add(button_2, gbc_button_2);
 		
+		//查询人员
+		button_2.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String str = JOptionPane.showInputDialog(null, "Find:", "Find",
+						JOptionPane.QUESTION_MESSAGE);
+				System.out.println("S");
+				if (str != null) {
+					findInTable(str);
+				}
+				
+			}
+		});
+		
 		JButton button_6 = new JButton("\u53D6\u6D88");
 		GridBagConstraints gbc_button_6 = new GridBagConstraints();
 		gbc_button_6.anchor = GridBagConstraints.EAST;
@@ -218,6 +298,15 @@ public class InstitutionPanel extends JPanel {
 		gbc_button_6.gridx = 4;
 		gbc_button_6.gridy = 1;
 		panel_1.add(button_6, gbc_button_6);
+		
+		//取消
+		button_6.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}
+		});
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
