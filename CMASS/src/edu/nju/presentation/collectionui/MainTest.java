@@ -17,13 +17,13 @@ import edu.nju.po.OverDocPO;
 import edu.nju.presentation.transformui.SendPanel;
 
 public class MainTest {
-	public static void main(String[] args) {
-		JFrame frame = new JFrame();
-		frame.setSize(1280, 800);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		frame.getContentPane().add(new SendPanel("00251001100"));
-		frame.setVisible(true);
+//	public static void main(String[] args) {
+//		JFrame frame = new JFrame();
+//		frame.setSize(1280, 800);
+//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		
+//		frame.getContentPane().add(new SendPanel("00251001100"));
+//		frame.setVisible(true);
 //		try {
 //			TransferDataServiceImpl transferDataServiceImpl = new TransferDataServiceImpl();
 //			CollectionDataService collectionDataService = new CollectionDataServiceImpl();
@@ -33,5 +33,5 @@ public class MainTest {
 //			e.printStackTrace();
 //		}
 		
-	}
+//	}
 }
