@@ -181,7 +181,7 @@ public class LoginFrame extends JFrame {
 			mainFrame.setGuidePanel(new GuidePanel_TransferCenter(mainFrame, account));
 			break;
 		case "仓库管理人员":
-			mainFrame.setFunctionPanel(new InWareHouseManagment());
+			mainFrame.setFunctionPanel(new InWareHouseManagment(account));
 			
 			mainFrame.setGuidePanel(new GuidePanel_Storage(mainFrame, account));
 			break;
