@@ -12,6 +12,7 @@ public class TransferDoc_CarVO extends TransferDocVO{
 		this.from = po.getFrom();
 		this.itemIDs = po.getItemIDs();
 		this.targetCity = po.getTargetCity();
+		this.watcher = po.getWatcher();
 		this.price = String.valueOf(po.getPrice());
 	}
 }

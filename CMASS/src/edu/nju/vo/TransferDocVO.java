@@ -15,6 +15,13 @@ public class TransferDocVO extends Doc{
 	String container;
 	String from;
 	String targetCity;
+	String watcher;
+	public String getWatcher() {
+		return watcher;
+	}
+	public void setWatcher(String watcher) {
+		this.watcher = watcher;
+	}
 	String[] itemIDs;
 	String price;
 	public TransferDocVO(TransferDocPO PO) {
