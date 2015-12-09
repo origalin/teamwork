@@ -38,10 +38,10 @@ public class GuidePanel_Storage extends JPanel{
 		collertionPanel = new CollertionPanel(staffID);
 		sendPanel = new SendPanel(staffID);
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{450, 0};
-		gridBagLayout.rowHeights = new int[]{60, 60, 60, 60, 60, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.columnWeights = new double[]{1.0};
+		gridBagLayout.columnWidths = new int[]{5};
+		gridBagLayout.rowHeights = new int[]{60, 60, 60, 60, 60, 0, 0};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
 		JButton OutWareHouseManagement = new JButton("\u51FA\u5E93\u7BA1\u7406");
@@ -105,6 +105,7 @@ public class GuidePanel_Storage extends JPanel{
 			}
 		});
 		GridBagConstraints gbc_StorageMidify = new GridBagConstraints();
+		gbc_StorageMidify.insets = new Insets(0, 0, 5, 0);
 		gbc_StorageMidify.fill = GridBagConstraints.BOTH;
 		gbc_StorageMidify.gridx = 0;
 		gbc_StorageMidify.gridy = 4;
