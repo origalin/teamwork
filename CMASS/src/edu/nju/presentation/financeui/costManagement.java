@@ -105,6 +105,7 @@ public class costManagement extends JPanel{
 						panel=new salaryPanel();
 						addPanel(panel);
 						staffList=bl.getUnpaidStaffList();
+						System.out.println(staffList.size());
 						((salaryPanel)panel).initializeTable(staffList);
 						updateUI();
 						break;
@@ -153,7 +154,7 @@ public class costManagement extends JPanel{
 								}
 			            		bl.setInstitutionList(tempList);
 			            		//已经生成付款单后我们要把添加的面板清空并且让institutionList重新变为null,方便进行下一次成本管理
-			            		panel=null;
+			            		panel.removeAll();
 			            		updateUI();
 			            		institutionList=null;
 			            	}
@@ -194,7 +195,7 @@ public class costManagement extends JPanel{
 		            		bl.setYLoadDocList(YLoadDoc);
 		            		bl.setZLoadDocList(ZLoadDoc);
 		            		//已经生成付款单后我们要把添加的面板清空并且让institutionList重新变为null,方便进行下一次成本管理
-		            		panel=null;
+		            		panel.removeAll();
 		            		updateUI();
 		            		ZLoadDoc=null;
 		            		YLoadDoc=null;
@@ -209,7 +210,7 @@ public class costManagement extends JPanel{
 					for(int i=0;i<salaryTableInfo.length;i++){
 						Object[] oneLine=salaryTableInfo[i];
 						if((boolean)oneLine[0]==true){
-							salaryPayMent+=(double)oneLine[2];
+							salaryPayMent+=(double)oneLine[3];
 						}
 					}
 					PayDocVO salaryVo=bl.reviewPayDoc(PayDocID.getText(), salaryPayMent,currentWorker.getText(), (String) account, stringToType(type), back.getText());
@@ -234,7 +235,7 @@ public class costManagement extends JPanel{
 							
 		            		bl.setStaffList(staffList);
 		            		//已经生成付款单后我们要把添加的面板清空并且让institutionList重新变为null,方便进行下一次成本管理
-		            		panel=null;
+		            		panel.removeAll();
 		            		updateUI();
 		            		staffList=null;
 		            	}
