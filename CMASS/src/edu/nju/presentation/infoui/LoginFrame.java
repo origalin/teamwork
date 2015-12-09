@@ -198,6 +198,6 @@ public class LoginFrame extends JFrame {
 			break;
 		}
 		}
-		this.setVisible(true);
+		this.setVisible(false);
 	}
 }
