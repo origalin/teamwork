@@ -11,15 +11,15 @@ public class InstitutionVO {
 	Institutation type;
 	String name;
 	String city;
-	InstitutionPO parentInstitution;
+	String  parentInstitution;
 	double rent;
 	boolean isPaid;
 	ArrayList<StaffPO> staffList;
 	
 
 	public InstitutionVO(String id, Institutation type, String name,
-			String city, InstitutionPO parentInstitution, double rent,
-			boolean isPaid, ArrayList<StaffPO> staffList) {
+			String city, String parentInstitution, double rent,
+			boolean isPaid) {
 		super();
 		this.id = id;
 		this.type = type;
@@ -28,10 +28,11 @@ public class InstitutionVO {
 		this.parentInstitution = parentInstitution;
 		this.rent = rent;
 		this.isPaid = isPaid;
-		this.staffList = staffList;
+	
 	}
 	
-	
+
+
 	public String getId() {
 		return id;
 	}
@@ -72,12 +73,12 @@ public class InstitutionVO {
 	}
 
 
-	public InstitutionPO getParentInstitution() {
+	public String getParentInstitution() {
 		return parentInstitution;
 	}
 
 
-	public void setParentInstitution(InstitutionPO parentInstitution) {
+	public void setParentInstitution(String parentInstitution) {
 		this.parentInstitution = parentInstitution;
 	}
 

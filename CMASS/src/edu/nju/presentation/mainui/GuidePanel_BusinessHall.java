@@ -8,10 +8,15 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 
 import javax.swing.JButton;
 
+import edu.nju.businesslogicservice.infologicservice.InstitutionLogicService;
+import edu.nju.presentation.UiFactory;
 import edu.nju.presentation.collectionui.CollertionPanel;
+import edu.nju.presentation.infoui.CarPanel;
+import edu.nju.presentation.infoui.DriverPanel;
 import edu.nju.presentation.transformui.SendPanel;
 import edu.nju.presentation.transformui.YArrivalDocPanel;
 import edu.nju.presentation.transformui.YLoadDocPanel;
@@ -24,14 +29,30 @@ public class GuidePanel_BusinessHall extends JPanel{
 	MainFrame frame;
 	YArrivalDocPanel yArrivalDocPanel;
 	YLoadDocPanel yLoadDocPanel;
+	CarPanel carPanel;
+	DriverPanel driverPanel;
+	InstitutionLogicService institutionLogicService=UiFactory.getInstitutionLogicService();
 	public GuidePanel_BusinessHall(MainFrame frame,String staffID) {
 		this.staffID = staffID;
 		this.frame = frame;
 		yArrivalDocPanel = new YArrivalDocPanel(staffID);
 		yLoadDocPanel = new YLoadDocPanel(staffID);
+		
+			try {
+				carPanel=new CarPanel(institutionLogicService.getInstitutionID(staffID));
+			} catch (RemoteException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			try {
+				driverPanel=new DriverPanel(institutionLogicService.getInstitutionID(staffID));
+			} catch (RemoteException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0};
-		gridBagLayout.rowHeights = new int[]{66, 64, 66, 0, 0, 0};
+		gridBagLayout.rowHeights = new int[]{66, 64, 66, 64, 0, 0};
 		gridBagLayout.columnWeights = new double[]{1.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
@@ -68,18 +89,51 @@ public class GuidePanel_BusinessHall extends JPanel{
 		gbc_sendButtom.gridy = 1;
 		add(sendButtom, gbc_sendButtom);
 		
-		JButton btnNewButton = new JButton("New button");
+		JButton carButton = new JButton("\u8F66\u8F86\u4FE1\u606F\u7BA1\u7406");
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
 		gbc_btnNewButton.fill = GridBagConstraints.BOTH;
 		gbc_btnNewButton.insets = new Insets(0, 0, 5, 0);
 		gbc_btnNewButton.gridx = 0;
 		gbc_btnNewButton.gridy = 2;
-		add(btnNewButton, gbc_btnNewButton);
+		add(carButton, gbc_btnNewButton);
+		
+		carButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+			carFunc();
+				
+			}
+		});
+		
+		JButton button = new JButton("\u53F8\u673A\u4FE1\u606F\u7BA1\u7406");
+		GridBagConstraints gbc_button = new GridBagConstraints();
+		gbc_button.fill = GridBagConstraints.BOTH;
+		gbc_button.insets = new Insets(0, 0, 5, 0);
+		gbc_button.gridx = 0;
+		gbc_button.gridy = 3;
+		add(button, gbc_button);
+		
+		
+		button.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				driverFunc();
+				
+			}
+		});
 	}
 	void collectFunc(){
 		frame.setFunctionPanel(yLoadDocPanel);
 	}
 	void sendFunc() {
 		frame.setFunctionPanel(yArrivalDocPanel);
+	}
+	void carFunc(){
+		frame.setFunctionPanel(carPanel);
+	}
+	void driverFunc(){
+		frame.setFunctionPanel(driverPanel);
 	}
 }

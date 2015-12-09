@@ -6,10 +6,12 @@ import java.util.ArrayList;
 import edu.nju.businesslogicservice.infologicservice.InstitutionLogicService;
 import edu.nju.dataFactory.DataFactory;
 import edu.nju.dataservice.infodataservice.InstitutionDataService;
+import edu.nju.po.CarPO;
 import edu.nju.po.InstitutionPO;
 import edu.nju.po.Post;
 import edu.nju.po.SalaryPO;
 import edu.nju.po.StaffPO;
+import edu.nju.vo.CarVO;
 import edu.nju.vo.InstitutionVO;
 import edu.nju.vo.StaffVO;
 
@@ -24,15 +26,31 @@ public Institution() {
 	@Override
 	public ArrayList<StaffVO> getStaffVOList(String institutionName)
 			throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<StaffVO> staffVOList=new ArrayList<StaffVO>();
+		ArrayList<StaffPO> staffPOList=new ArrayList<StaffPO>();
+	
+		staffPOList=institutionDataService.getStaffList(getID(institutionName));
+	
+		for(StaffPO po:staffPOList){
+			staffVOList.add(new StaffVO(po.getStaffID(),po.getName(),po.getSex(),po.getIdenity(),po.getTel(),po.getInstitutation(),po.getPost()));
+		}
+		
+		return staffVOList;
 	}
 
 	@Override
 	public ArrayList<InstitutionVO> getInstitutionVOList()
 			throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<InstitutionVO> institutionVOList=new ArrayList<InstitutionVO>();
+		ArrayList<InstitutionPO> institutionPOList=new ArrayList<InstitutionPO>();
+	
+		institutionPOList=institutionDataService.findInstitution();
+	
+		for(InstitutionPO po:institutionPOList){
+			institutionVOList.add(new InstitutionVO(po.getId(),po.getType(),po.getName(),po.getCity(),po.getParentInstitution(),po.getRent(),po.isPaid()));
+		}
+		
+		return institutionVOList;
 	}
 
 	@Override
@@ -223,6 +241,18 @@ public Institution() {
 	@Override
 	public SalaryPO getSalary(String staffID) throws RemoteException {
 		return institutionDataService.getSalaryPO(staffID);
+	}
+	@Override
+	public String getID(String institutionName) throws RemoteException {
+		
+		for(InstitutionPO po: institutionDataService.findInstitution()){
+			if(po.getName().equals(institutionName)){
+				return po.getId();
+			}
+			
+		}
+		 return null;
+		 
 	}
 
 
