@@ -71,7 +71,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 			checked = 0;
 		}
 
-		String str = "replace into TransferID(ID,Date,PlaneNum,TrainNum,CarNum,tranceID,corriage,container,from,targetCity,itemIDs,price,checked,paid) "
+		String str = "replace into TransferID(ID,Date,PlaneNum,TrainNum,CarNum,tranceID,corriage,container,from,targetCity,watcher,itemIDs,price,checked,paid) "
 		+ "values('"+ID+"','"+Time.toDaysTime(date)+"','"+planeNum+"','"+TrainNum+"','"+CarNum+"',"
 		+ "'"+tranceID+"','"+corriage+"','"+container+"','"+from+"','"+targetCity+"','"+watcher+"',"
 		+ "'"+itemIDs+"','"+price+"','"+checked+"','"+paid+"');";
@@ -1097,7 +1097,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 	public ArrayList<YDeliverDocPO> getYDeliverDocPOByCourier(String courierID) throws RemoteException{
 		// TODO Auto-generated method stub
 		ArrayList<YDeliverDocPO> yDeliverDocPOs = new ArrayList<>();
-		String str = "select ID from YDeliverDoc where courier = '"+courierID+"' and dealed = '1';";	
+		String str = "select ID from YDeliverDoc where courier = '"+courierID+"' and dealed = '0';";	
 		SQL.databaseQuery(str);
 		try {
 			while (SQL.rs.next()) {

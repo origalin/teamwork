@@ -11,6 +11,7 @@ import javax.tools.Tool;
 import edu.nju.businesslogic.infobl.Distance;
 import edu.nju.businesslogic.infobl.Institution;
 import edu.nju.businesslogic.logispicsquerybl.Logisticsquerybl;
+import edu.nju.businesslogic.systembl.SystemBl;
 import edu.nju.businesslogic.transferbl.OverDoc;
 import edu.nju.businesslogicservice.collectionlogicservice.CollectionLogicService;
 import edu.nju.businesslogicservice.logispicsquerylogicservice.LogispicsQueryLogicService;
@@ -22,6 +23,7 @@ import edu.nju.dataservice.transferdataservice.TransferDataService;
 import edu.nju.exception.DatabaseNULLException;
 import edu.nju.po.CourierMoneyPO;
 import edu.nju.po.HistoryTimePO;
+import edu.nju.po.OperationPO;
 import edu.nju.po.PositionPO;
 import edu.nju.po.SendDocPO;
 import edu.nju.tools.SequenceCalc;
@@ -36,6 +38,7 @@ public class Collectionbl implements CollectionLogicService{
 	Institution institution;
 	Distance distance;
 	Logisticsquerybl logisticsquerybl;
+	SystemBl systemBl;
 
 	public Collectionbl( String staffID) throws RemoteException {
 		super();
@@ -47,6 +50,7 @@ public class Collectionbl implements CollectionLogicService{
 		transferData.setInstitutionID(institutionID);
 		logisticsquerybl = new Logisticsquerybl();
 		distance = new Distance();
+		systemBl = new SystemBl();
 	}
 	
 	public Collectionbl() throws RemoteException{
@@ -61,6 +65,7 @@ public class Collectionbl implements CollectionLogicService{
 		changeSequence();
 		appendCourierMoney();
 		logisticsquerybl.createPosition(po.getID(),institution.getCity(institutionID)+institution.getInstitutionName(staffID)+"已揽件",po.getrCity()+po.getrAddress());
+		systemBl.saveOperation(new OperationPO(new Date(), staffID, institution.getStaffName(staffID), "创建寄件单"));
 	}
 
 	@Override

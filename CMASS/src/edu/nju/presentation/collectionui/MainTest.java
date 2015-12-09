@@ -14,6 +14,7 @@ import edu.nju.dataservice.transferdataservice.TransferDataService;
 import edu.nju.exception.DatabaseNULLException;
 import edu.nju.po.CourierMoneyPO;
 import edu.nju.po.OverDocPO;
+import edu.nju.presentation.transformui.SendPanel;
 
 public class MainTest {
 	public static void main(String[] args) {
@@ -21,7 +22,7 @@ public class MainTest {
 		frame.setSize(1280, 800);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		frame.getContentPane().add(new CollertionPanel("00251001100"));
+		frame.getContentPane().add(new SendPanel("00251001100"));
 		frame.setVisible(true);
 //		try {
 //			TransferDataServiceImpl transferDataServiceImpl = new TransferDataServiceImpl();
