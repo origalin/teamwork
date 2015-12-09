@@ -414,7 +414,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 
 		String str;
 		if (normal) {
-			str = "select * from TransferDoc where ID = '"+TransferDocID+"' and checked = '1';";
+			str = "select * from TransferDoc where ID = '"+TransferDocID+"' && checked = '1';";
 		} else {
 			str = "select * from TransferDoc where ID = '"+TransferDocID+"';";
 		}
@@ -466,7 +466,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 		double price = 0;
 		String str;
 		if (normal) {
-			 str = "select * from ZLoadDoc where ID = '"+ZLoadDocID+"' and checked = '1';";
+			 str = "select * from ZLoadDoc where ID = '"+ZLoadDocID+"' && checked = '1';";
 		} else {
 			 str = "select * from ZLoadDoc where ID = '"+ZLoadDocID+"';";
 		}
@@ -509,7 +509,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 		String[][] itemAndState = null;
 		String str;
 		if (normal) {
-			str = "select * from ZArrivalDoc where id = '"+ZArrivalDocID+"' and checked = '1';";
+			str = "select * from ZArrivalDoc where id = '"+ZArrivalDocID+"' && checked = '1';";
 		} else {
 			str = "select * from ZArrivalDoc where id = '"+ZArrivalDocID+"';";
 		}
@@ -554,7 +554,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 		String[][] itemAndState = null;
 		String str;
 		if (normal) {
-			str = "select * from YArrivalDoc where id = '"+YArrivalDocID+"' and checked = '1';";
+			str = "select * from YArrivalDoc where id = '"+YArrivalDocID+"' && checked = '1';";
 		} else {
 			str = "select * from YArrivalDoc where id = '"+YArrivalDocID+"';";
 		}
@@ -633,7 +633,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 		String courier = null;
 		String str;
 		if (normal) {
-			str = "select * from OverDoc where id = '"+OverDocID+"' and checked = '1';";
+			str = "select * from OverDoc where id = '"+OverDocID+"' && checked = '1';";
 		} else {
 			str = "select * from OverDoc where id = '"+OverDocID+"';";
 		}
@@ -666,9 +666,13 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 		ArrayList<YDeliverDocPO> yDeliverDocPOs = new ArrayList<YDeliverDocPO>();
 		String sql = "select ID from YDeliverDoc where checked='0';";
 		SQL.databaseQuery(sql);
+		ArrayList<String> ids =new ArrayList<>();
 		try {
 			while (SQL.rs.next()) {
-				yDeliverDocPOs.add(getYDeliverDocPO(SQL.rs.getString("ID"),false));
+				ids.add(SQL.rs.getString("ID"));
+			}
+			for(String s : ids) {
+				yDeliverDocPOs.add(getYDeliverDocPO(s,true));	
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -683,9 +687,13 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 		ArrayList<YArrivalDocPO> yArrivalDocPOs = new ArrayList<YArrivalDocPO>();
 		String sql = "select ID from YArrivalDoc where checked='0';";
 		SQL.databaseQuery(sql);
+		ArrayList<String> ids =new ArrayList<>();
 		try {
 			while (SQL.rs.next()) {
-				yArrivalDocPOs.add(getYArrivalDocPO(SQL.rs.getString("ID"),false));
+				ids.add(SQL.rs.getString("ID"));
+			}
+			for(String s : ids) {
+				yArrivalDocPOs.add(getYArrivalDocPO(s,true));	
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -700,9 +708,13 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 		ArrayList<ZArrivalDocPO> zArrivalDocPOs = new ArrayList<ZArrivalDocPO>();
 		String sql = "select ID from ZArrivalDoc where checked='0';";
 		SQL.databaseQuery(sql);
+		ArrayList<String> ids =new ArrayList<>();
 		try {
 			while (SQL.rs.next()) {
-				zArrivalDocPOs.add(getZArrivalDocPO(SQL.rs.getString("ID"),false));
+				ids.add(SQL.rs.getString("ID"));
+			}
+			for(String s : ids) {
+				zArrivalDocPOs.add(getZArrivalDocPO(s,true));	
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -717,9 +729,13 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 		ArrayList<TransferDocPO> transferDocPOs = new ArrayList<TransferDocPO>();
 		String sql = "select ID from TransferDoc where checked='0';";
 		SQL.databaseQuery(sql);
+		ArrayList<String> ids =new ArrayList<>();
 		try {
 			while (SQL.rs.next()) {
-				transferDocPOs.add(getTransferDocPO(SQL.rs.getString("ID"),false));
+				ids.add(SQL.rs.getString("ID"));
+			}
+			for(String s : ids) {
+				transferDocPOs.add(getTransferDocPO(s,true));	
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -734,9 +750,13 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 		ArrayList<YLoadDocPO> yLoadDocPOs = new ArrayList<YLoadDocPO>();
 		String sql = "select ID from YLoadDoc where checked='0';";
 		SQL.databaseQuery(sql);
+		ArrayList<String> ids =new ArrayList<>();
 		try {
 			while (SQL.rs.next()) {
-				yLoadDocPOs.add(getYLoadDocPO(SQL.rs.getString("ID"),false));
+				ids.add(SQL.rs.getString("ID"));
+			}
+			for(String s : ids) {
+				yLoadDocPOs.add(getYLoadDocPO(s,true));	
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -751,9 +771,13 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 		ArrayList<ZLoadDocPO> zLoadDocPOs = new ArrayList<ZLoadDocPO>();
 		String sql = "select ID from ZLoadDoc where checked='0';";
 		SQL.databaseQuery(sql);
+		ArrayList<String> ids =new ArrayList<>();
 		try {
 			while (SQL.rs.next()) {
-				zLoadDocPOs.add(getZLoadDocPO(SQL.rs.getString("ID"),false));
+				ids.add(SQL.rs.getString("ID"));
+			}
+			for(String s : ids) {
+				zLoadDocPOs.add(getZLoadDocPO(s,true));	
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -768,9 +792,13 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 		ArrayList<OverDocPO> overDocPOs = new ArrayList<OverDocPO>();
 		String sql = "select ID from YLoadDoc where checked='0';";
 		SQL.databaseQuery(sql);
+		ArrayList<String> ids =new ArrayList<>();
 		try {
 			while (SQL.rs.next()) {
-				overDocPOs.add(getOverDocPO(SQL.rs.getString("ID"),false));
+				ids.add(SQL.rs.getString("ID"));
+			}
+			for(String s : ids) {
+				overDocPOs.add(getOverDocPO(s,true));	
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -855,7 +883,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 		// TODO Auto-generated method stub
 		ArrayList<TransferDocPO> transferDocPOs = new ArrayList<TransferDocPO>();
 		ArrayList<String> id  = new ArrayList<>();
-		String sql = "select ID from TransferDoc where paid='0' and checked = '1';";
+		String sql = "select ID from TransferDoc where paid='0' && checked = '1';";
 		SQL.databaseQuery(sql);
 		try {
 			while (SQL.rs.next()) {
@@ -877,11 +905,15 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 	public ArrayList<YLoadDocPO> getunPaidYLoadDocPO() {
 		// TODO Auto-generated method stub
 		ArrayList<YLoadDocPO> yLoadDocPOs = new ArrayList<YLoadDocPO>();
-		String sql = "select ID from YLoadDoc where paid='0' and checked = '1';";
+		String sql = "select ID from YLoadDoc where paid='0' && checked = '1';";
 		SQL.databaseQuery(sql);
+		ArrayList<String> ids =new ArrayList<>();
 		try {
 			while (SQL.rs.next()) {
-				yLoadDocPOs.add(getYLoadDocPO(SQL.rs.getString("ID"),true));
+				ids.add(SQL.rs.getString("ID"));
+			}
+			for(String s : ids) {
+				yLoadDocPOs.add(getYLoadDocPO(s,true));	
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -893,12 +925,17 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 	public ArrayList<ZLoadDocPO> getunPaidZLoadDocPO() {
 		// TODO Auto-generated method stub
 		ArrayList<ZLoadDocPO> zLoadDocPOs = new ArrayList<ZLoadDocPO>();
-		String sql = "select ID from ZLoadDoc where paid='0' and checked = '1';";
+		String sql = "select ID from ZLoadDoc where paid='0' && checked = '1';";
 		SQL.databaseQuery(sql);
+		ArrayList<String> ids =new ArrayList<>();
 		try {
 			while (SQL.rs.next()) {
-				zLoadDocPOs.add(getZLoadDocPO(SQL.rs.getString("ID"),true));
+				ids.add(SQL.rs.getString("ID"));
 			}
+			for(String s : ids) {
+				zLoadDocPOs.add(getZLoadDocPO(s,true));	
+			}
+			
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -987,7 +1024,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 	public ArrayList<HistoryTimePO> getHistoryTimePO(String sCity, String rCity) {
 		// TODO Auto-generated method stub
 		ArrayList<HistoryTimePO> historyTimePOs = new ArrayList<HistoryTimePO>();
-		String str = "select * from HistoryTime where start = '"+sCity+"' and end = '"+rCity+"';";
+		String str = "select * from HistoryTime where start = '"+sCity+"' && end = '"+rCity+"';";
 		SQL.databaseQuery(str);
 		String start;
 		String end;
@@ -1021,7 +1058,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 		double price = 0;
 		String str;
 		if (normal) {
-			 str = "select * from yLoadDoc where ID = '"+YLoadDocID+"' and checked = '1';";
+			 str = "select * from yLoadDoc where ID = '"+YLoadDocID+"' && checked = '1';";
 		} else {
 			 str = "select * from yLoadDoc where ID = '"+YLoadDocID+"';";
 		}
@@ -1097,16 +1134,22 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 	public ArrayList<YDeliverDocPO> getYDeliverDocPOByCourier(String courierID) throws RemoteException{
 		// TODO Auto-generated method stub
 		ArrayList<YDeliverDocPO> yDeliverDocPOs = new ArrayList<>();
-		String str = "select ID from YDeliverDoc where courier = '"+courierID+"' and dealed = '0';";	
+		String str = "select ID from YDeliverDoc where courier = '"+courierID+"' && dealed = '0';";	
 		SQL.databaseQuery(str);
+		ArrayList<String> ids = new ArrayList<>();
 		try {
 			while (SQL.rs.next()) {
-				yDeliverDocPOs.add(getYDeliverDocPO(SQL.rs.getString("ID"), true));
+				ids.add(SQL.rs.getString("ID"));
 			}
+			for(String s : ids) {
+				yDeliverDocPOs.add(getYDeliverDocPO(s, true));	
+			}
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		SQL.closeDatabase();
 		return yDeliverDocPOs;
 	}
 
