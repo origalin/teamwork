@@ -22,6 +22,7 @@ public class accountManagement extends JPanel{
 	private JTable table;
 	private JPanel thisPanel=this;
 	private String staffID;
+	/*
 	public static void main(String[]args){
 		JFrame frame=new JFrame();
 		accountManagement ui=new accountManagement("120003");
@@ -30,6 +31,7 @@ public class accountManagement extends JPanel{
 		frame.setSize(500,500);
 		frame.setVisible(true);
 	}
+	*/
 	public accountManagement(String staffID) {
 		this.staffID=staffID;
 		try {

@@ -91,7 +91,7 @@ public class financebl implements FinanceLogicService {
 	ZLoadDoc ZLoad = new ZLoadDoc();
 	FinanceDataService financeDataService;
 	Driver driver = new Driver();
-
+/*
 	public static void main(String[] args) {
 		financebl bl;
 		try {
@@ -109,7 +109,7 @@ public class financebl implements FinanceLogicService {
 			e.printStackTrace();
 		}
 	}
-
+*/
 	public financebl() throws RemoteException {
 		collectionbl = new Collectionbl();
 		this.transfer=new TransferDoc();

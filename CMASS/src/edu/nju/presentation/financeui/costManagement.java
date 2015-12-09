@@ -27,6 +27,7 @@ import java.awt.event.ActionEvent;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 public class costManagement extends JPanel{
+	/*
 	public static void main(String args[]){
 		JFrame frame=new JFrame();
 		costManagement ui=new costManagement("12000003");
@@ -35,7 +36,7 @@ public class costManagement extends JPanel{
 		frame.setSize(700,400);
 		frame.setVisible(true);
 	}
-
+*/
 	private ArrayList<StaffPO>staffList;
 	private String staffID;
 	private ArrayList<ZLoadDocPO>ZLoadDoc;

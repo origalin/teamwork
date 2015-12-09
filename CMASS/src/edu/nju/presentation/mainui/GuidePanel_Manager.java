@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
+import edu.nju.presentation.approveui.checkMainUI;
 import edu.nju.presentation.collectionui.CollertionPanel;
 import edu.nju.presentation.transformui.SendPanel;
 
@@ -18,12 +19,12 @@ public class GuidePanel_Manager extends JPanel{
 	String institutionID;
 	String staffID;
 	MainFrame frame;
-	CollertionPanel collertionPanel;
+	checkMainUI checkMainUI;
 	SendPanel sendPanel;
 	public GuidePanel_Manager(MainFrame frame,String staffID) {
 		this.staffID = staffID;
 		this.frame = frame;
-		collertionPanel = new CollertionPanel(staffID);
+		checkMainUI=new checkMainUI(staffID);
 		sendPanel = new SendPanel(staffID);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0};
@@ -32,7 +33,7 @@ public class GuidePanel_Manager extends JPanel{
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 1.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
-		JButton collectButtom = new JButton("\u63FD\u4EF6");
+		JButton collectButtom = new JButton("\u5BA1\u6279\u5355\u636E");
 		collectButtom.addActionListener(new ActionListener() {
 			
 			@Override
@@ -65,7 +66,7 @@ public class GuidePanel_Manager extends JPanel{
 		add(sendButtom, gbc_sendButtom);
 	}
 	void collectFunc(){
-		frame.setFunctionPanel(collertionPanel);
+		frame.setFunctionPanel(checkMainUI);
 	}
 	void sendFunc() {
 		frame.setFunctionPanel(sendPanel);

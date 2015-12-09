@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 import edu.nju.presentation.collectionui.CollertionPanel;
+import edu.nju.presentation.financeui.createGatheringDocPO;
 import edu.nju.presentation.transformui.SendPanel;
 import edu.nju.presentation.transformui.YArrivalDocPanel;
 import edu.nju.presentation.transformui.YLoadDocPanel;
@@ -22,11 +23,13 @@ public class GuidePanel_BusinessHall extends JPanel{
 	String institutionID;
 	String staffID;
 	MainFrame frame;
+	createGatheringDocPO createGatheringDocPO;
 	YArrivalDocPanel yArrivalDocPanel;
 	YLoadDocPanel yLoadDocPanel;
 	public GuidePanel_BusinessHall(MainFrame frame,String staffID) {
 		this.staffID = staffID;
 		this.frame = frame;
+		createGatheringDocPO=new createGatheringDocPO(staffID);
 		yArrivalDocPanel = new YArrivalDocPanel(staffID);
 		yLoadDocPanel = new YLoadDocPanel(staffID);
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -68,7 +71,12 @@ public class GuidePanel_BusinessHall extends JPanel{
 		gbc_sendButtom.gridy = 1;
 		add(sendButtom, gbc_sendButtom);
 		
-		JButton btnNewButton = new JButton("New button");
+		JButton btnNewButton = new JButton("\u65B0\u5EFA\u6536\u6B3E\u5355");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				createGatheringDocfunc();
+			}
+		});
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
 		gbc_btnNewButton.fill = GridBagConstraints.BOTH;
 		gbc_btnNewButton.insets = new Insets(0, 0, 5, 0);
@@ -81,5 +89,8 @@ public class GuidePanel_BusinessHall extends JPanel{
 	}
 	void sendFunc() {
 		frame.setFunctionPanel(yArrivalDocPanel);
+	}
+	void createGatheringDocfunc(){
+		frame.setFunctionPanel(createGatheringDocPO);
 	}
 }

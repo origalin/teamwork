@@ -20,12 +20,12 @@ import edu.nju.tools.Time;
 
 public class FinanceDataServiceImpl extends UnicastRemoteObject implements
 		FinanceDataService {
-
+/*
 	public static void main(String[] args) throws RemoteException {
 		FinanceDataServiceImpl financeDataServiceImpl = new FinanceDataServiceImpl();
 		financeDataServiceImpl.minusMoney("linqing",50);
 	}
-
+*/
 	public FinanceDataServiceImpl() throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub

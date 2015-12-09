@@ -14,6 +14,7 @@ import edu.nju.businesslogicservice.systemlogicservice.SystemLogicService;
 import edu.nju.dataFactory.DataFactory;
 import edu.nju.po.Post;
 import edu.nju.presentation.UiFactory;
+import edu.nju.presentation.approveui.checkMainUI;
 import edu.nju.presentation.collectionui.CollertionPanel;
 import edu.nju.presentation.financeui.accountManagement;
 import edu.nju.presentation.financeui.checkCostIncomDocPO;
@@ -23,6 +24,7 @@ import edu.nju.presentation.logispicqueryui.QueryFrame;
 import edu.nju.presentation.mainui.GuidePanel_BusinessHall;
 import edu.nju.presentation.mainui.GuidePanel_Courier;
 import edu.nju.presentation.mainui.GuidePanel_Finance;
+import edu.nju.presentation.mainui.GuidePanel_Manager;
 import edu.nju.presentation.mainui.GuidePanel_Storage;
 import edu.nju.presentation.mainui.GuidePanel_TransferCenter;
 import edu.nju.presentation.mainui.MainFrame;
@@ -161,7 +163,8 @@ public class LoginFrame extends JFrame {
 			mainFrame.comeout();
 		switch (str[1]) {
 		case "总经理":
-			
+			mainFrame.setFunctionPanel(new checkMainUI(account));
+			mainFrame.setGuidePanel(new GuidePanel_Manager(mainFrame, account));
 			break;
 		case "高级财务":
 			/*

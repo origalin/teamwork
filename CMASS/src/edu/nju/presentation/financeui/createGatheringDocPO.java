@@ -19,22 +19,25 @@ import edu.nju.presentation.mainui.CheckDialog;
 import edu.nju.vo.AccountVO;
 import edu.nju.vo.GatheringDocVO;
 public class createGatheringDocPO extends JPanel{
+		private String staffID;
 		private financebl bl;
 		private JTextField courier_ID;
 		private JTextField textField_1;
 		private JButton button;
 		private JComboBox comboBox;
 		private ArrayList<AccountVO>accountList;
+		/*
 		public static void main(String[]args){
 			JFrame frame=new JFrame();
-			createGatheringDocPO ui=new createGatheringDocPO();
+			createGatheringDocPO ui=new createGatheringDocPO("120004");
 			ui.setVisible(true);
 			frame.getContentPane().add(ui);
 			frame.setSize(500,500);
 			frame.setVisible(true);
 		}
- 
-		public createGatheringDocPO() {
+ */
+		public createGatheringDocPO(String staffID) {
+			this.staffID=staffID;
 			try {
 				bl=new financebl();
 			} catch (RemoteException e1) {

@@ -11,6 +11,7 @@ import java.awt.Insets;
 import java.awt.Font;
 import java.rmi.RemoteException;
 public class checkCostIncomDocPO extends JPanel{
+	/*
 	public static void main(String[]args){
 		JFrame frame=new JFrame();
 		checkCostIncomDocPO ui=new checkCostIncomDocPO("1200003");
@@ -19,6 +20,7 @@ public class checkCostIncomDocPO extends JPanel{
 		frame.setSize(500,500);
 		frame.setVisible(true);
 	}
+	*/
 	financebl bl;
 	private JTextField textField;
 	private JTextField textField_1;

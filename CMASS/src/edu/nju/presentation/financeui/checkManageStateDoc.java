@@ -25,6 +25,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Date;
 public class checkManageStateDoc extends JPanel{
+	/*
 	public static void main(String[]args){
 		JFrame frame=new JFrame();
 		checkManageStateDoc ui=new checkManageStateDoc("12000003");
@@ -33,6 +34,7 @@ public class checkManageStateDoc extends JPanel{
 		frame.setSize(500,500);
 		frame.setVisible(true);
 	}
+	*/
 	ArrayList<PayDocVO> PayDocVOList=new ArrayList<PayDocVO>();
 	ArrayList<GatheringDocVO> GatheringDocVOList=new ArrayList<GatheringDocVO>();
 	financebl bl;

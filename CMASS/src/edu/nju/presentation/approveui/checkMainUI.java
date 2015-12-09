@@ -61,18 +61,22 @@ public class checkMainUI extends JPanel{
 	ArrayList<YLoadDocPO> uncheckedYLoadDocList;
 	ArrayList<ZArrivalDocPO> uncheckedZArrivalDocList;
 	approvebl bl;
+	private String staffID;
 	private JTable table;
 	private JScrollPane scrollPane;
 	private JTextField textField;
+	/*
 	public static void main(String args[]){
 		JFrame frame=new JFrame();
-		checkMainUI ui=new checkMainUI();
+		checkMainUI ui=new checkMainUI("12034");
 		ui.setVisible(true);
 		frame.getContentPane().add(ui);
 		frame.setSize(500,500);
 		frame.setVisible(true);
 	}
-	public checkMainUI() {
+	*/
+	public checkMainUI(String staffID) {
+		this.staffID=staffID;
 		try {
 			bl=new approvebl();
 		} catch (RemoteException e2) {
