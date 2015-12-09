@@ -57,15 +57,15 @@ public class OutWareHouseManagment extends JPanel{
 		
 		this.currInstitution = currInstitution; 
 	}
-	public static void main(String[] args) {
-		OutWareHouseManagment outWareHouseManagment=new OutWareHouseManagment("001000");
-		JFrame mainFrame = new JFrame();
-		mainFrame.getContentPane().add(outWareHouseManagment);
-		mainFrame.setVisible(true);
-		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		mainFrame.setLocationRelativeTo(null);
-		mainFrame.setSize(500, 300);
-	}
+//	public static void main(String[] args) {
+//		OutWareHouseManagment outWareHouseManagment=new OutWareHouseManagment("001000");
+//		JFrame mainFrame = new JFrame();
+//		mainFrame.getContentPane().add(outWareHouseManagment);
+//		mainFrame.setVisible(true);
+//		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		mainFrame.setLocationRelativeTo(null);
+//		mainFrame.setSize(500, 300);
+//	}
 	public OutWareHouseManagment() {
 		
 		

@@ -25,15 +25,15 @@ public class StorageModify extends JPanel{
 	String currStorageID;
 	
 	
-	public static void main(String[] args) {
-		StorageModify storageModify=new StorageModify("001000");
-		JFrame mainFrame = new JFrame();
-		mainFrame.getContentPane().add(storageModify);
-		mainFrame.setVisible(true);
-		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		mainFrame.setLocationRelativeTo(null);
-		mainFrame.setSize(500, 300);
-	}
+//	public static void main(String[] args) {
+//		StorageModify storageModify=new StorageModify("001000");
+//		JFrame mainFrame = new JFrame();
+//		mainFrame.getContentPane().add(storageModify);
+//		mainFrame.setVisible(true);
+//		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		mainFrame.setLocationRelativeTo(null);
+//		mainFrame.setSize(500, 300);
+//	}
 	
 	public StorageModify(String currStorageID){
 		this();

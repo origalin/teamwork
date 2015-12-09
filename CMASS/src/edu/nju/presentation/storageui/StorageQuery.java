@@ -54,15 +54,15 @@ public class StorageQuery extends JPanel {
 		this.currStorageID = currInstitutionID;
 	}
 
-	public static void main(String[] args) {
-		StorageQuery storageQuery=new StorageQuery("001000");
-		JFrame mainFrame = new JFrame();
-		mainFrame.getContentPane().add(storageQuery);
-		mainFrame.setVisible(true);
-		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		mainFrame.setLocationRelativeTo(null);
-		mainFrame.setSize(500, 300);
-	}
+//	public static void main(String[] args) {
+//		StorageQuery storageQuery=new StorageQuery("001000");
+//		JFrame mainFrame = new JFrame();
+//		mainFrame.getContentPane().add(storageQuery);
+//		mainFrame.setVisible(true);
+//		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		mainFrame.setLocationRelativeTo(null);
+//		mainFrame.setSize(500, 300);
+//	}
 	public StorageQuery() {
 		setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "\u5E93\u5B58\u76D8\u70B9",
 				TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));

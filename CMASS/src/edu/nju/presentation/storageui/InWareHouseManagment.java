@@ -54,15 +54,15 @@ public class InWareHouseManagment extends JPanel {
 	private String currPersonID;
 	private JComboBox comboBox;
 
-	public static void main(String[] args) {
-		InWareHouseManagment in = new InWareHouseManagment();
-		JFrame mainFrame = new JFrame();
-		mainFrame.getContentPane().add(in);
-		mainFrame.setVisible(true);
-		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		mainFrame.setLocationRelativeTo(null);
-		mainFrame.setSize(500, 300);
-	}
+//	public static void main(String[] args) {
+//		InWareHouseManagment in = new InWareHouseManagment();
+//		JFrame mainFrame = new JFrame();
+//		mainFrame.getContentPane().add(in);
+//		mainFrame.setVisible(true);
+//		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		mainFrame.setLocationRelativeTo(null);
+//		mainFrame.setSize(500, 300);
+//	}
 
 	public InWareHouseManagment(String currInstitution, String currPersonID) {
 		this();
