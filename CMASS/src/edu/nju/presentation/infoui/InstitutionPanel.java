@@ -2,28 +2,49 @@ package edu.nju.presentation.infoui;
 
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
 import java.awt.GridLayout;
+
 import javax.swing.JLabel;
+
 import java.awt.GridBagLayout;
+
 import javax.swing.JScrollBar;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JTree;
+
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.Rectangle;
+
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.TreeModel;
+import javax.swing.tree.TreePath;
 import javax.swing.JButton;
 import javax.swing.JTabbedPane;
+
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
+import edu.nju.businesslogicservice.infologicservice.InstitutionLogicService;
+import edu.nju.presentation.UiFactory;
+import edu.nju.tools.Time;
+import edu.nju.vo.CarVO;
+import edu.nju.vo.StaffVO;
+
 public class InstitutionPanel extends JPanel {
 	private JTable table;
-
+	DefaultTableModel model;
+	InstitutionLogicService institutionLogicService=UiFactory.getInstitutionLogicService();
 	/**
 	 * Create the panel.
 	 */
@@ -145,12 +166,35 @@ public class InstitutionPanel extends JPanel {
 		gbc_button_3.gridy = 1;
 		panel_1.add(button_3, gbc_button_3);
 		
+		
+		//新增人员
+		button_3.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				model.addRow(new Object[]{"","","","","",""});
+				
+				table.setEnabled(true);
+			}
+		});
+		
 		JButton button_4 = new JButton("\u5220\u9664\u4EBA\u5458");
 		GridBagConstraints gbc_button_4 = new GridBagConstraints();
 		gbc_button_4.insets = new Insets(0, 0, 5, 5);
 		gbc_button_4.gridx = 1;
 		gbc_button_4.gridy = 1;
 		panel_1.add(button_4, gbc_button_4);
+		
+		//删除人员
+		button_4.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 		
 		JButton button_5 = new JButton("\u4FEE\u6539\u4EBA\u5458");
 		GridBagConstraints gbc_button_5 = new GridBagConstraints();
@@ -192,12 +236,90 @@ public class InstitutionPanel extends JPanel {
 			new Object[][] {
 			},
 			new String[] {
-				"\u673A\u6784\u7F16\u53F7", "\u673A\u6784\u540D\u79F0", "\u5458\u5DE5\u5DE5\u53F7", "\u5458\u5DE5\u59D3\u540D", "\u6027\u522B", "\u8EAB\u4EFD\u8BC1\u53F7", "\u8054\u7CFB\u7535\u8BDD", "\u804C\u4F4D"
+			"\u5458\u5DE5\u5DE5\u53F7", "\u5458\u5DE5\u59D3\u540D", "\u6027\u522B", "\u8EAB\u4EFD\u8BC1\u53F7", "\u8054\u7CFB\u7535\u8BDD", "\u804C\u4F4D"
 			}
 		));
 		table.getColumnModel().getColumn(0).setPreferredWidth(139);
 		table.getColumnModel().getColumn(2).setPreferredWidth(103);
 		table.getColumnModel().getColumn(5).setPreferredWidth(179);
+		
+		table.setEnabled(false);
+
+		model = (DefaultTableModel) table.getModel();
+
+		ArrayList<StaffVO> staffList=new ArrayList<StaffVO>();
+		for (StaffVO vo:staffList) {
+			model.addRow(new Object[] { vo.getStaffID(),vo.getName(),vo.getSex(),vo.getIdenity(),vo.getTel(),String.valueOf(vo.getPost())});
+		}
 
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	private void findInTree(JTree tree,String str)
+	{
+	Object root = tree.getModel().getRoot();
+	TreePath treePath = new TreePath(root);
+	treePath = findInPath(tree,treePath, str);
+	if (treePath != null) {
+	tree.setSelectionPath(treePath);
+	tree.scrollPathToVisible(treePath);
+	}
+	}
+
+	private TreePath findInPath(JTree tree,TreePath treePath, String str)
+	{
+	Object object = treePath.getLastPathComponent();
+	if (object == null) {
+	return null;
+	}
+
+	String value = object.toString();
+	if (str.equals(value)) {
+	return treePath;
+	}
+	else {
+	TreeModel model = tree.getModel();
+	int n = model.getChildCount(object);
+	for (int i = 0; i < n; i++) {
+	Object child = model.getChild(object, i);
+	TreePath path = treePath.pathByAddingChild(child);
+
+	path = findInPath(tree,path, str);
+	if (path != null) {
+	return path;
+	}
+	}
+	return null;
+	}
+	}
+
+	private void findInTable(String str)
+	{
+	int rowCount = table.getRowCount();
+	int columnCount = table.getColumnCount();
+	for (int i = 0; i < rowCount; i++) {
+	for (int k = 0; k < columnCount; k++) {
+	Object value = table.getValueAt(i, k);
+	if (str.equals(value)) {
+	table.getSelectionModel().setSelectionInterval(i, i);
+	Rectangle cellRect = table.getCellRect(i, k, true);
+	table.scrollRectToVisible(cellRect);
+	return;
+	}
+	}
+	}
+	}
+	
+	
+	
+	
 }

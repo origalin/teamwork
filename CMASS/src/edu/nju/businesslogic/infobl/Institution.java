@@ -185,11 +185,11 @@ public Institution() {
 
 	@Override
 	public void saveRent(String id) throws RemoteException {
-		ArrayList<InstitutionPO> institutionPOs=institutionDataService.findInstitution();
-		for(InstitutionPO po:institutionPOs){
+		InstitutionPO po=institutionDataService.getInstitution(id);
+		
 			po.setPaid(true);
 			institutionDataService.changeInstitution(po);
-		}
+		
 		
 	}
 
