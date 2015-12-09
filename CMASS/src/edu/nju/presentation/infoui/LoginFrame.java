@@ -26,11 +26,13 @@ import edu.nju.presentation.mainui.GuidePanel_Courier;
 import edu.nju.presentation.mainui.GuidePanel_Finance;
 import edu.nju.presentation.mainui.GuidePanel_Manager;
 import edu.nju.presentation.mainui.GuidePanel_Storage;
+import edu.nju.presentation.mainui.GuidePanel_System;
 import edu.nju.presentation.mainui.GuidePanel_TransferCenter;
 import edu.nju.presentation.mainui.MainFrame;
 import edu.nju.presentation.storageui.InWareHouseManagment;
 import edu.nju.presentation.storageui.OutWareHouseManagment;
 import edu.nju.presentation.storageui.StorageQuery;
+import edu.nju.presentation.systemui.OperationPanel;
 import edu.nju.presentation.transformui.SendPanel;
 import edu.nju.presentation.transformui.ZArrivalDocPanel;
 
@@ -38,6 +40,7 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.rmi.RemoteException;
+import java.text.ParseException;
 
 @SuppressWarnings("serial")
 public class LoginFrame extends JFrame {
@@ -195,6 +198,19 @@ public class LoginFrame extends JFrame {
 		case "快递员":
 			mainFrame.setFunctionPanel(new CollertionPanel(account));
 			mainFrame.setGuidePanel(new GuidePanel_Courier(mainFrame, account));
+			break;
+		case "管理员":
+			try {
+				mainFrame.setFunctionPanel(new OperationPanel());
+			} catch (RemoteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			mainFrame.setGuidePanel(new GuidePanel_System(mainFrame, account));
+			
 			break;
 
 		default:

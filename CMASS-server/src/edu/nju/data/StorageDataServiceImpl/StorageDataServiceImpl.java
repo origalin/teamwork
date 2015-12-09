@@ -193,11 +193,11 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 
 	}
 
-	public static void main(String[] args) throws RemoteException {
-		StorageDataServiceImpl serviceImpl = new StorageDataServiceImpl();
-		
-		RecordPO recordPO=new RecordPO("0025033965", new Date(), "南京市", "航运区", "000005", "001000");
-		serviceImpl.addNewStorageItem(recordPO);
+//	public static void main(String[] args) throws RemoteException {
+//		StorageDataServiceImpl serviceImpl = new StorageDataServiceImpl();
+//		
+//		RecordPO recordPO=new RecordPO("0025033965", new Date(), "南京市", "航运区", "000005", "001000");
+//		serviceImpl.addNewStorageItem(recordPO);
 		
 //		serviceImpl.getValidLocation( "001000","航运区");
 		
@@ -220,8 +220,8 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 //		outRecords.add(new OutRecord("0025010011", "", "09000010"));
 //		OutWareHouseDocPO outWareHouseDocPO=new OutWareHouseDocPO("09000010", new Date(), "航运", "001000", outRecords);
 //		serviceImpl.saveOutWareHouseDoc(outWareHouseDocPO);
-
-	}
+//
+//	}
 
 	/**
 	 * 这个方法用来保存入库单文件，但此时并未对仓库进行事实上的变动
