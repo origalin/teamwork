@@ -12,6 +12,7 @@ import javax.swing.*;
 
 import edu.nju.businesslogicservice.systemlogicservice.SystemLogicService;
 import edu.nju.dataFactory.DataFactory;
+import edu.nju.po.Post;
 import edu.nju.presentation.UiFactory;
 import edu.nju.presentation.collectionui.CollertionPanel;
 import edu.nju.presentation.logispicqueryui.QueryFrame;
@@ -25,14 +26,15 @@ import java.awt.Insets;
 import java.rmi.RemoteException;
 
 @SuppressWarnings("serial")
-public class LoginFrame extends JFrame{
-	JPanel pn1,pn2,pn3;
+public class LoginFrame extends JFrame {
+	JPanel pn1, pn2, pn3;
 	JTextField account;
 	JPasswordField password;
-	JButton confirm,query;
+	JButton confirm, query;
 	MainFrame mainFrame;
 	QueryFrame queryFrame;
-	 public LoginFrame() {
+
+	public LoginFrame() {
 		this.setTitle("登陆");
 		pn1 = new JPanel();
 		pn2 = new JPanel();
@@ -40,12 +42,12 @@ public class LoginFrame extends JFrame{
 		this.setSize(350, 200);
 		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
-		getContentPane().setLayout(new GridLayout(3,1));
+		getContentPane().setLayout(new GridLayout(3, 1));
 		GridBagLayout gbl_pn1 = new GridBagLayout();
-		gbl_pn1.columnWidths = new int[]{94, 24, 126, 0};
-		gbl_pn1.rowHeights = new int[]{53, 0};
-		gbl_pn1.columnWeights = new double[]{0.0, 0.0, 1.0, Double.MIN_VALUE};
-		gbl_pn1.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+		gbl_pn1.columnWidths = new int[] { 94, 24, 126, 0 };
+		gbl_pn1.rowHeights = new int[] { 53, 0 };
+		gbl_pn1.columnWeights = new double[] { 0.0, 0.0, 1.0, Double.MIN_VALUE };
+		gbl_pn1.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
 		pn1.setLayout(gbl_pn1);
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.anchor = GridBagConstraints.WEST;
@@ -55,10 +57,10 @@ public class LoginFrame extends JFrame{
 		JLabel label = new JLabel("\u5DE5\u53F7");
 		pn1.add(label, gbc);
 		GridBagLayout gbl_pn2 = new GridBagLayout();
-		gbl_pn2.columnWidths = new int[]{94, 24, 126, 0};
-		gbl_pn2.rowHeights = new int[]{57, 0};
-		gbl_pn2.columnWeights = new double[]{0.0, 0.0, 1.0, Double.MIN_VALUE};
-		gbl_pn2.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+		gbl_pn2.columnWidths = new int[] { 94, 24, 126, 0 };
+		gbl_pn2.rowHeights = new int[] { 57, 0 };
+		gbl_pn2.columnWeights = new double[] { 0.0, 0.0, 1.0, Double.MIN_VALUE };
+		gbl_pn2.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
 		pn2.setLayout(gbl_pn2);
 		GridBagConstraints gbc_1 = new GridBagConstraints();
 		gbc_1.anchor = GridBagConstraints.WEST;
@@ -74,14 +76,15 @@ public class LoginFrame extends JFrame{
 		gbc_password.gridy = 0;
 		pn2.add(password, gbc_password);
 		GridBagLayout gbl_pn3 = new GridBagLayout();
-		gbl_pn3.columnWidths = new int[]{86, 57, 0, 81, 0};
-		gbl_pn3.rowHeights = new int[]{55, 0};
-		gbl_pn3.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gbl_pn3.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+		gbl_pn3.columnWidths = new int[] { 86, 57, 0, 81, 0 };
+		gbl_pn3.rowHeights = new int[] { 55, 0 };
+		gbl_pn3.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0,
+				Double.MIN_VALUE };
+		gbl_pn3.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
 		pn3.setLayout(gbl_pn3);
 		query = new JButton("快递查询");
 		query.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO 自动生成的方法存根
@@ -92,11 +95,12 @@ public class LoginFrame extends JFrame{
 		});
 		confirm = new JButton("确认");
 		confirm.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
-				loginAction(account.getText(),new String(password.getPassword()));
+				loginAction(account.getText(),
+						new String(password.getPassword()));
 			}
 		});
 		GridBagConstraints gbc_confirm = new GridBagConstraints();
@@ -122,20 +126,55 @@ public class LoginFrame extends JFrame{
 		this.setResizable(false);
 		this.setVisible(true);
 	}
-	 private void loginAction(String account, String password){//还要完善
-		 SystemLogicService systemLogicService=UiFactory.getSystemLogicService();
-		 try {
-			systemLogicService.getPasswordAndPower(account);
+
+	private void loginAction(String account, String password) {// 还要完善
+		SystemLogicService systemLogicService = UiFactory
+				.getSystemLogicService();
+		
+		String str[] = null;
+		try {
+			str = systemLogicService.getPasswordAndPower(account);
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		 mainFrame = new MainFrame();
-		 
-		 mainFrame.comeout();
-		 mainFrame.setFunctionPanel(new CollertionPanel("10010101010"));
-		 mainFrame.setGuidePanel(new GuidePanel_Courier(mainFrame, "1010101010"));
-		 
-		 this.setVisible(false);
-	 }
+		
+		if(str[0]!=password){
+			
+			
+			JOptionPane.showMessageDialog(null,"密码错误");
+		}else{
+			mainFrame = new MainFrame();
+
+			mainFrame.comeout();
+		switch (str[1]) {
+		case "总经理":
+			
+			break;
+		case "高级财务":
+
+			break;
+		case "会计":
+
+			break;
+		case "中转中心业务员":
+
+			break;
+		case "仓库管理人员":
+
+			break;
+		case "营业厅业务员":
+
+			break;
+		case "快递员":
+			mainFrame.setFunctionPanel(new CollertionPanel(account));
+			mainFrame
+					.setGuidePanel(new GuidePanel_Courier(mainFrame, account));
+			break;
+
+		default:
+			break;
+		}
+		}
+		this.setVisible(true);
+	}
 }

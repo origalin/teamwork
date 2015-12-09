@@ -52,4 +52,5 @@ public interface InstitutionLogicService {
 	double getBonus(String staffID)throws RemoteException;//根据ID查找到这个人的奖金
 	double getPercentage(String staffID)throws RemoteException;//根据ID查找这个快递员的提成比例
 	
+	
 }

@@ -37,7 +37,7 @@ public Institution() {
 
 	@Override
 	public void saveSalary(SalaryPO po) throws RemoteException {
-		// TODO Auto-generated method stub
+		institutionDataService.changeSalary(po);
 		
 	}
 

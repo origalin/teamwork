@@ -14,4 +14,5 @@ public interface DriverDataService extends Remote{
 	public boolean isVaild(String id,String institutionName) throws RemoteException;
 	public DriverPO getDriver(String id)throws RemoteException;
 	
+	public void saveMoney(Double money,String id)throws RemoteException;
 }

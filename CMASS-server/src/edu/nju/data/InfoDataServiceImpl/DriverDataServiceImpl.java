@@ -109,4 +109,14 @@ public class DriverDataServiceImpl extends UnicastRemoteObject implements Driver
 		SQL.closeDatabase();
 		return driverPO;
 	}
+
+	@Override
+	public void saveMoney(Double money,String id) throws RemoteException {
+		
+		String sql = "UPDATE DRIVER SET 工资='"+money+"' where 司机编号='"
+	+id+ "';";
+		SQL.databaseUpdate(sql);
+		SQL.closeDatabase();
+		
+	}
 }

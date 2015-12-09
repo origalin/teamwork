@@ -115,5 +115,12 @@ ArrayList<String>idList=new ArrayList<String>();
 	}
 
 
+	@Override
+	public void saveMoney(Double money,String id) throws RemoteException {
+		driverDataService.saveMoney(money, id);
+		
+	}
+
+
 
 }

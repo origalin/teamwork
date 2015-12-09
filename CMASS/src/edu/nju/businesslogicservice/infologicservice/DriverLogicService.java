@@ -16,5 +16,7 @@ public interface DriverLogicService {
 	public ArrayList<String> getDirverID(String institutionName)throws RemoteException;//
 	public String getDirverName(String driverID, String institutionName)throws RemoteException;
 	public DriverPO getDriver(String driverID)throws RemoteException;
+	
+	public void saveMoney(Double money,String id)throws RemoteException;
 
 }

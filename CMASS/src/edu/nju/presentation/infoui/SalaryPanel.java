@@ -134,20 +134,15 @@ public class SalaryPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(textField.getText().toString().length()==10){
-					DriverPO po = null;
-					try {
-						po = driverLogicService.getDriver(textField.getText());
-					} catch (RemoteException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-					po.setMoney(Double.valueOf(textField_8.getText().toString()));
-					try {
-						driverLogicService.saveDriver(po);
-					} catch (RemoteException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
+				try {
+					driverLogicService.saveMoney(Double.valueOf(textField_8.getText()), textField.getText().toString());
+				} catch (NumberFormatException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (RemoteException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 					
 					textField_8.setEditable(false);
 		
@@ -193,10 +188,13 @@ public class SalaryPanel extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				if(textField.getText().toString().length()==10){
+					textField_8.setEditable(false);
+				}else{
 				textField_1.setEditable(false);
 				textField_2.setEditable(false);
 				textField_3.setEditable(false);
-				textField_8.setEditable(false);
+				}
 			}
 		});
 		
@@ -368,7 +366,7 @@ public class SalaryPanel extends JPanel {
 					
 					textField_2 = new JTextField();
 					try {
-						textField_1.setText(String.valueOf(institutionLogicService.getBonus(textField.getText())));
+						textField_2.setText(String.valueOf(institutionLogicService.getBonus(textField.getText())));
 					} catch (RemoteException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -407,7 +405,7 @@ public class SalaryPanel extends JPanel {
 					
 					textField_3 = new JTextField();
 					try {
-						textField_1.setText(String.valueOf(institutionLogicService.getPercentage(textField.getText())));
+						textField_3.setText(String.valueOf(institutionLogicService.getPercentage(textField.getText())));
 					} catch (RemoteException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
