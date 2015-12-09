@@ -46,16 +46,7 @@ public class CheckDialog extends JDialog{
 		confirmButton = new JButton("\u786E\u8BA4");
 		panel_1.add(confirmButton);
 		
-		JButton cancelButton = new JButton("\u53D6\u6D88");
-		cancelButton.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO 自动生成的方法存根
-				dispose();
-			}
-		});
-		panel_1.add(cancelButton);
+		
 	}
 	public JPanel getDocPanel(){
 		return docPanel;
@@ -110,6 +101,16 @@ public class CheckDialog extends JDialog{
 		getDocPanel().add(panel);
 		setSize(600,900);
 		setVisible(true);
+		JButton cancelButton = new JButton("\u53D6\u6D88");
+		cancelButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO 自动生成的方法存根
+				dispose();
+			}
+		});
+		panel_1.add(cancelButton);
 		getConfirmButton().addActionListener(new ActionListener() {
 			
 			@Override

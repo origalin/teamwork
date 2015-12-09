@@ -586,7 +586,7 @@ public class checkMainUI extends JPanel{
 		table = new JTable();
 		Object[][] tableInfo=new Object[uncheckedDocID.size()][2];
 		for(int i=0;i<uncheckedDocID.size();i++){
-			Object[] oneLine={null,uncheckedDocID.get(i)};
+			Object[] oneLine={false,uncheckedDocID.get(i)};
 			tableInfo[i]=oneLine;
 		}
 		table.setModel(new DefaultTableModel(
