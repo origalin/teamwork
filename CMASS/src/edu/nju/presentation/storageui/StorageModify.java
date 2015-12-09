@@ -6,6 +6,7 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.border.TitledBorder;
@@ -14,11 +15,30 @@ import edu.nju.businesslogicservice.storagelogicservice.StorageModifyService;
 import edu.nju.presentation.UiFactory;
 
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
+
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 import java.awt.event.ActionEvent;
 
 public class StorageModify extends JPanel{
 	String currStorageID;
+	
+	
+	public static void main(String[] args) {
+		StorageModify storageModify=new StorageModify("001000");
+		JFrame mainFrame = new JFrame();
+		mainFrame.getContentPane().add(storageModify);
+		mainFrame.setVisible(true);
+		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		mainFrame.setLocationRelativeTo(null);
+		mainFrame.setSize(500, 300);
+	}
+	
+	public StorageModify(String currStorageID){
+		this();
+		this.currStorageID=currStorageID;
+	}
 	public StorageModify() {
 		setBorder(new TitledBorder(null, "\u5E93\u533A\u8C03\u6574", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		setLayout(new GridLayout(0, 1, 0, 0));
@@ -56,7 +76,14 @@ public class StorageModify extends JPanel{
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				StorageModifyService storageModifyService=UiFactory.getStorageModifyService();
-				storageModifyService.storageModify((String)comboBox.getSelectedItem(),currStorageID);
+				try {
+					storageModifyService.storageModify((String)comboBox.getSelectedItem(),currStorageID);
+				} catch (RemoteException e1) {
+					JOptionPane.showMessageDialog(null, "远程连接异常，请检查网络之后重新进行操作");
+					e1.printStackTrace();
+				}
+				JOptionPane.showMessageDialog(null, "调整成功");
+				
 			}
 		});
 		GridBagConstraints gbc_button = new GridBagConstraints();

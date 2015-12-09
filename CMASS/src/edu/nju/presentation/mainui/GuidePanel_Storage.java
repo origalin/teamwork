@@ -13,6 +13,8 @@ import javax.swing.JButton;
 
 import edu.nju.presentation.collectionui.CollertionPanel;
 import edu.nju.presentation.transformui.SendPanel;
+import java.awt.CardLayout;
+import javax.swing.JLabel;
 
 public class GuidePanel_Storage extends JPanel{
 	String institutionID;
@@ -25,49 +27,41 @@ public class GuidePanel_Storage extends JPanel{
 		this.frame = frame;
 		collertionPanel = new CollertionPanel(staffID);
 		sendPanel = new SendPanel(staffID);
-		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{0, 0};
-		gridBagLayout.rowHeights = new int[]{66, 64, 0, 0};
-		gridBagLayout.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 1.0, Double.MIN_VALUE};
-		setLayout(gridBagLayout);
 		
-		JButton collectButtom = new JButton("\u63FD\u4EF6");
-		collectButtom.addActionListener(new ActionListener() {
-			
-			@Override
+		JButton InWareHouseManagement = new JButton("\u5165\u5E93\u7BA1\u7406");
+		InWareHouseManagement.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// TODO 自动生成的方法存根
-				collectFunc();
 			}
 		});
-		GridBagConstraints gbc_collectButtom = new GridBagConstraints();
-		gbc_collectButtom.fill = GridBagConstraints.BOTH;
-		gbc_collectButtom.insets = new Insets(0, 0, 5, 0);
-		gbc_collectButtom.gridx = 0;
-		gbc_collectButtom.gridy = 0;
-		add(collectButtom, gbc_collectButtom);
+		setLayout(new GridLayout(5, 1, 0, 0));
+		add(InWareHouseManagement);
 		
-		JButton sendButtom = new JButton("\u6D3E\u4EF6");
-		sendButtom.addActionListener(new ActionListener() {
-			
-			@Override
+		JButton OutWareHouseManagement = new JButton("\u51FA\u5E93\u7BA1\u7406");
+		OutWareHouseManagement.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// TODO 自动生成的方法存根
-				sendFunc();
 			}
 		});
-		GridBagConstraints gbc_sendButtom = new GridBagConstraints();
-		gbc_sendButtom.fill = GridBagConstraints.BOTH;
-		gbc_sendButtom.insets = new Insets(0, 0, 5, 0);
-		gbc_sendButtom.gridx = 0;
-		gbc_sendButtom.gridy = 1;
-		add(sendButtom, gbc_sendButtom);
-	}
-	void collectFunc(){
-		frame.setFunctionPanel(collertionPanel);
-	}
-	void sendFunc() {
-		frame.setFunctionPanel(sendPanel);
+		add(OutWareHouseManagement);
+		
+		JButton StorageQuery = new JButton("\u5E93\u5B58\u76D8\u70B9");
+		StorageQuery.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		add(StorageQuery);
+		
+		JButton StorageInitialize = new JButton("\u5E93\u5B58\u4FE1\u606F\u521D\u59CB\u5316");
+		StorageInitialize.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		add(StorageInitialize);
+		
+		JButton StorageMidify = new JButton("\u5E93\u533A\u8C03\u6574");
+		StorageMidify.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		add(StorageMidify);
 	}
 }

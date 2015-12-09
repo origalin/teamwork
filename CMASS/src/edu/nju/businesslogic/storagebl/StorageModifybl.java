@@ -1,5 +1,6 @@
 package edu.nju.businesslogic.storagebl;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import edu.nju.businesslogicservice.storagelogicservice.StorageModifyService;
@@ -11,7 +12,7 @@ import edu.nju.po.WareHousePO;
 public class StorageModifybl implements StorageModifyService
 {
 
-	public void storageModify(String district,String storageID){
+	public void storageModify(String district,String storageID) throws RemoteException{
 		StorageDataService storageDataService=DataFactory.getStorageImpl();
 		storageDataService.storageModify(district,storageID);
 	}

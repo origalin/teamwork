@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.swing.JOptionPane;
+
 import com.mysql.fabric.xmlrpc.base.Array;
 import com.sun.crypto.provider.RSACipher;
 import com.sun.org.apache.xalan.internal.xsltc.compiler.Template;
@@ -194,12 +196,18 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 	public static void main(String[] args) throws RemoteException {
 		StorageDataServiceImpl serviceImpl = new StorageDataServiceImpl();
 		
-		ArrayList<OutRecord> list = new ArrayList<OutRecord>();//这是测试更新出库单
-		OutRecord outRecord=new OutRecord("0025010250", "北京", "09000001");
-		list.add(outRecord);		
-		OutWareHouseDocPO outWareHouseDocPO=new OutWareHouseDocPO("09000001", new Date(), "航运", "001000", list);		
-		serviceImpl.updateOutWareHouseDoc(outWareHouseDocPO);
+		RecordPO recordPO=new RecordPO("0025033965", new Date(), "南京市", "航运区", "000005", "001000");
+		serviceImpl.addNewStorageItem(recordPO);
 		
+//		serviceImpl.getValidLocation( "001000","航运区");
+		
+		
+//		ArrayList<OutRecord> list = new ArrayList<OutRecord>();//这是测试更新出库单
+//		OutRecord outRecord=new OutRecord("0025010250", "北京", "09000001");
+//		list.add(outRecord);		
+//		OutWareHouseDocPO outWareHouseDocPO=new OutWareHouseDocPO("09000001", new Date(), "航运", "001000", list);		
+//		serviceImpl.updateOutWareHouseDoc(outWareHouseDocPO);
+//		
 //		ArrayList<InWareHouseDocLineItem> list=new ArrayList<InWareHouseDocLineItem>();
 //		InWareHouseDocLineItem in=new InWareHouseDocLineItem("08000010", new Date(), "南京市栖霞区", "航运区","");
 		
@@ -271,8 +279,8 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 		String date = Time.toDaysTime(recordPO.getDate());
 		String distriction = recordPO.getDistrict();
 		String storageID = recordPO.getStorageID();
-		String sql = "UPDATE 仓库存储货物 SET StorageItem_ID='" + recordPO.getItemID() + "',入库日期='" + date + "',目的地='"
-				+ recordPO.getDestination() + "' WHERE StorageItem_ID IS NULL && 区='" + distriction + "'&&仓库ID='"
+		String sql = "UPDATE 仓库存储货物 SET 被快递占用='1',StorageItem_ID='" + recordPO.getItemID() + "',入库日期='" + date + "',目的地='"
+				+ recordPO.getDestination() + "' WHERE 被快递占用='0'&&被入库单占用='0' && 区='" + distriction + "'&&仓库ID='"
 				+ storageID + "' LIMIT 1;";
 		SQL.databaseUpdate(sql);
 		SQL.closeDatabase();
@@ -441,10 +449,25 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 
 	@Override
 	public StorageLocation getValidLocation(String sID, String distriction) throws RemoteException {
+		int i=-1;
+		String sql="SELECT * FROM 仓库存储货物 WHERE 仓库ID='"+sID+"'&&区='"+distriction+"'&&(被快递占用='1'||被入库单占用='1');";
+		SQL.databaseQuery(sql);
+		try {
+			SQL.rs.last();
+			i=SQL.rs.getRow();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		if(i>=200)
+			JOptionPane.showMessageDialog(null, distriction+" 库存告警，请立即进行库区调整");
+		
+		
 		System.out.println("sID:" + sID + ";distriction:" + distriction);
 		StorageLocation storageLocation = null;
 		String location = null;
-		String sql = "SELECT 位置 FROM 仓库存储货物 WHERE 被快递占用='"+'0'+"'&&仓库ID='" + sID + "'&&被入库单占用!=1&&区='"
+		sql = "SELECT 位置 FROM 仓库存储货物 WHERE 被快递占用='"+'0'+"'&&仓库ID='" + sID + "'&&被入库单占用!=1&&区='"
 				+ distriction + "'LIMIT 1;";
 		SQL.databaseQuery(sql);
 		try {
@@ -576,32 +599,39 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 		return list;
 	}
 	@Override
-	public void storageModify(String to,String storageID) throws RemoteException{
-		assert(to.equals("航运区")||to.equals("货运区")||to.equals("汽运区")):"调整目标区域错误";
-		int i1=-1,i2=-1;
-		String sql="SELECT * FROM 仓库存储货物 WHERE 仓库ID='"+storageID+"'&&区='"+to+"';";
-		SQL.databaseQuery(sql);
-		try {
-			i1=SQL.rs.getRow();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		sql="UPDATE 仓库存储货物 SET 区='机动区' WHERE 区='"+to+"'&&被入库单占用='0'&&被快递占用='0'&&仓库ID='"+storageID+"' LIMIT 10;";//以10为单位来将机动区暂时划分到其他区
-		SQL.databaseUpdate(sql);
+	public void storageModify(String to,String storageID) throws RemoteException {
 		
-		sql="SELECT * FROM 仓库存储货物 WHERE 仓库ID='"+storageID+"'&&区='"+to+"';";
-		SQL.databaseQuery(sql);
-		try {
-			i2=SQL.rs.getRow();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			assert(to.equals("航运区")||to.equals("货运区")||to.equals("汽运区")):"调整目标区域错误";
+			int i1=-1,i2=-1;
+			String sql="SELECT * FROM 仓库存储货物 WHERE 仓库ID='"+storageID+"'&&区='"+to+"';";
+			SQL.databaseQuery(sql);
+			try {
+				SQL.rs.last();
+				i1=SQL.rs.getRow();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+			
+			
+			sql="UPDATE 仓库存储货物 SET 区='"+to+"' WHERE 区='机动区'&&被入库单占用='0'&&被快递占用='0'&&仓库ID='"+storageID+"' LIMIT 10;";//以10为单位来将机动区暂时划分到其他区
+			SQL.databaseUpdate(sql);
+			
+			sql="SELECT * FROM 仓库存储货物 WHERE 仓库ID='"+storageID+"'&&区='"+to+"';";
+			SQL.databaseQuery(sql);
+			try {
+				SQL.rs.last();
+				i2=SQL.rs.getRow();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			SQL.closeDatabase();
+			assert(i2==(i1+10)):"库区调整失败";
+			return;
 		
-		SQL.closeDatabase();
-		assert(i2==(i1+10)):"库区调整失败";
-		return;
-	}
+	
 
-}
+}}

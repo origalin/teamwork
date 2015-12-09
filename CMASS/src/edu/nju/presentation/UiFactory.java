@@ -7,6 +7,7 @@ import edu.nju.businesslogic.infobl.Institution;
 import edu.nju.businesslogic.logispicsquerybl.Logisticsquerybl;
 import edu.nju.businesslogic.storagebl.InWareHouseManagementbl;
 import edu.nju.businesslogic.storagebl.OutWareHouseManagementbl;
+import edu.nju.businesslogic.storagebl.StorageInitializebl;
 import edu.nju.businesslogic.storagebl.StorageModifybl;
 import edu.nju.businesslogic.storagebl.StorageQuerybl;
 import edu.nju.businesslogic.systembl.SystemBl;
@@ -17,39 +18,48 @@ import edu.nju.businesslogicservice.infologicservice.InstitutionLogicService;
 import edu.nju.businesslogicservice.logispicsquerylogicservice.LogispicsQueryLogicService;
 import edu.nju.businesslogicservice.storagelogicservice.InWareHouseManagementService;
 import edu.nju.businesslogicservice.storagelogicservice.OutWareHouseManagementService;
+import edu.nju.businesslogicservice.storagelogicservice.StorageInitializeService;
 import edu.nju.businesslogicservice.storagelogicservice.StorageLogicService;
 import edu.nju.businesslogicservice.storagelogicservice.StorageModifyService;
 import edu.nju.businesslogicservice.storagelogicservice.StorageQueryService;
 import edu.nju.businesslogicservice.systemlogicservice.SystemLogicService;
 import edu.nju.data.LogisticsDataServiceImpl.LogisticsDataServiceImpl;
+import edu.nju.presentation.storageui.StorageInitialize;
 
 public class UiFactory {
 
 	static InWareHouseManagementService inWareHouseManagementService = null;
 	static LogispicsQueryLogicService logispicsQueryLogicService = null;
-	static StorageQueryService storageQueryService=null;
-   static OutWareHouseManagementService outWareHouseManagementService=null;
+	static StorageQueryService storageQueryService = null;
+	static OutWareHouseManagementService outWareHouseManagementService = null;
+	static StorageInitializeService storageInitialize = null;
+	static StorageModifyService storageModifyService = null;
 
-   static StorageModifyService storageModifyService=null;
+	static SystemLogicService systemLogicService = null;
+	static CarLogicService carLogicService = null;
+	static DriverLogicService driverLogicService = null;
+	static DistanceLogicService distanceLogicService = null;
+	static InstitutionLogicService institutionLogicService = null;
 
-	static SystemLogicService systemLogicService=null;
-	static CarLogicService carLogicService=null;
-	static DriverLogicService driverLogicService=null;
-	static DistanceLogicService distanceLogicService=null;
-	static InstitutionLogicService institutionLogicService=null;
-	
 	public UiFactory() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public static StorageModifyService getStorageModifyService(){
-		if(storageModifyService==null)
-			storageModifyService=new StorageModifybl();
+	public static StorageInitializeService getStorageInitialize() {
+		if (storageInitialize == null)
+			storageInitialize = new StorageInitializebl();
+		return storageInitialize;
+	}
+
+	public static StorageModifyService getStorageModifyService() {
+		if (storageModifyService == null)
+			storageModifyService = new StorageModifybl();
 		return storageModifyService;
 	}
-	public static StorageQueryService getStorageQueryService(){
-		if(storageQueryService==null)
-			storageQueryService=new StorageQuerybl();
+
+	public static StorageQueryService getStorageQueryService() {
+		if (storageQueryService == null)
+			storageQueryService = new StorageQuerybl();
 		return storageQueryService;
 	}
 
@@ -65,33 +75,39 @@ public class UiFactory {
 		return logispicsQueryLogicService;
 	}
 
-	public static OutWareHouseManagementService getOutWareHouseManagementService(){
-		if(outWareHouseManagementService==null)
-			outWareHouseManagementService=new OutWareHouseManagementbl();
-		return outWareHouseManagementService;}
-	
-	public static SystemLogicService getSystemLogicService(){
-		if(systemLogicService==null)
-			systemLogicService=new SystemBl();
-		return systemLogicService;}
-	
-	public static CarLogicService getCarLogicService(){
-		if(carLogicService==null)
-			carLogicService=new Car();
-		return carLogicService;}
+	public static OutWareHouseManagementService getOutWareHouseManagementService() {
+		if (outWareHouseManagementService == null)
+			outWareHouseManagementService = new OutWareHouseManagementbl();
+		return outWareHouseManagementService;
+	}
 
-	public static DriverLogicService getDriverLogicService(){
-		if(driverLogicService==null)
-			driverLogicService=new Driver();
-		return driverLogicService;}
-	
-	public static DistanceLogicService getDistanceLogicService(){
-		if(distanceLogicService==null)
-			distanceLogicService=new Distance();
-		return distanceLogicService;}
-	
-	public static InstitutionLogicService getInstitutionLogicService(){
-		if(institutionLogicService==null)
-			institutionLogicService=new Institution();
-		return institutionLogicService;}
+	public static SystemLogicService getSystemLogicService() {
+		if (systemLogicService == null)
+			systemLogicService = new SystemBl();
+		return systemLogicService;
+	}
+
+	public static CarLogicService getCarLogicService() {
+		if (carLogicService == null)
+			carLogicService = new Car();
+		return carLogicService;
+	}
+
+	public static DriverLogicService getDriverLogicService() {
+		if (driverLogicService == null)
+			driverLogicService = new Driver();
+		return driverLogicService;
+	}
+
+	public static DistanceLogicService getDistanceLogicService() {
+		if (distanceLogicService == null)
+			distanceLogicService = new Distance();
+		return distanceLogicService;
+	}
+
+	public static InstitutionLogicService getInstitutionLogicService() {
+		if (institutionLogicService == null)
+			institutionLogicService = new Institution();
+		return institutionLogicService;
+	}
 }
