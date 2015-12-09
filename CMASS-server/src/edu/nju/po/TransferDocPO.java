@@ -14,6 +14,7 @@ public class TransferDocPO extends Doc implements Serializable{
 	String container;
 	String from;
 	String targetCity;
+	String watcher;
 	String[] itemIDs;
 	double price;
 	boolean paid;
@@ -24,7 +25,7 @@ public class TransferDocPO extends Doc implements Serializable{
 	}
 	public TransferDocPO() {};
 	public TransferDocPO(String ID,Date date, String planeNum, String trainNum, String carNum, String tranceID, String corriage,
-			String container, String from, String targetCity, String[] itemIDs, double price) {
+			String container, String from, String targetCity,String watcher, String[] itemIDs, double price) {
 		super();
 		this.ID = ID;
 		this.date = date;
@@ -38,6 +39,13 @@ public class TransferDocPO extends Doc implements Serializable{
 		this.targetCity = targetCity;
 		this.itemIDs = itemIDs;
 		this.price = price;
+		this.watcher = watcher;
+	}
+	public String getWatcher() {
+		return watcher;
+	}
+	public void setWatcher(String watcher) {
+		this.watcher = watcher;
 	}
 	public boolean isPaid() {
 		return paid;

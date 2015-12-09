@@ -403,6 +403,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 		String container= null;
 		String from= null;
 		String targetCity= null;
+		String watcher = null;
 		String[] itemIDs= null;
 		double price = 0;
 
@@ -428,6 +429,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 				container = SQL.rs.getString("container");
 				from = SQL.rs.getString("from");
 				targetCity = SQL.rs.getString("targetCity");
+				watcher = SQL.rs.getString("watcher");
 				itemIDs = SQL.rs.getString("itemIDs").split(" ");
 				price = SQL.rs.getDouble("price");
 			}
@@ -435,7 +437,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 			if(ID == null) {
 				throw new DatabaseNULLException();
 			}
-			return new TransferDocPO(ID, date, planeNum, TrainNum, CarNum, tranceID, corriage, container, from, targetCity, itemIDs, price);
+			return new TransferDocPO(ID, date, planeNum, TrainNum, CarNum, tranceID, corriage, container, from, targetCity,watcher, itemIDs, price);
 		} catch (SQLException e) {
 			// TODO: handle exception
 			System.out.println("errer");
