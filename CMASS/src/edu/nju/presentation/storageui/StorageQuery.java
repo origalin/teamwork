@@ -6,6 +6,7 @@ import javax.swing.JTable;
 import org.omg.CORBA.PRIVATE_MEMBER;
 
 import edu.nju.businesslogicservice.storagelogicservice.StorageQueryService;
+import edu.nju.dataFactory.DataFactory;
 import edu.nju.po.RecordPO;
 import edu.nju.presentation.UiFactory;
 
@@ -26,6 +27,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.ScrollPaneConstants;
@@ -33,6 +35,7 @@ import javax.swing.ScrollPaneConstants;
 public class StorageQuery extends JPanel {
 	String[] columnNames = { "快递编号", "入库日期", "区", "排号", "架号", "位号" };
 	private String currStorageID;
+	private String currPersonID;
 	private DefaultTableModel model;
 	private DefaultTableModel model_1;
 	private DefaultTableModel model_2;
@@ -49,9 +52,15 @@ public class StorageQuery extends JPanel {
 	private JTable table_1;
 	private JTable table_2;
 
-	public StorageQuery(String currInstitutionID) {
+	public StorageQuery(String staffID) {
 		this();
-		this.currStorageID = currInstitutionID;
+		this.currPersonID= staffID;
+		try {
+			currStorageID=UiFactory.getInstitutionLogicService().getInstitutionID(currPersonID);
+		} catch (RemoteException e) {
+			System.out.println("根据人员id初始化机构id出错");
+			e.printStackTrace();
+		}
 	}
 
 //	public static void main(String[] args) {

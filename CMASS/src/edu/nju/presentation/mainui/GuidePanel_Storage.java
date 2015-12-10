@@ -22,17 +22,27 @@ import java.awt.CardLayout;
 import javax.swing.JLabel;
 
 public class GuidePanel_Storage extends JPanel{
-	InWareHouseManagment inWareHousePanel=new InWareHouseManagment();
-	OutWareHouseManagment outWareHousePanel=new OutWareHouseManagment();
-	StorageInitialize storageInitializePanel=new StorageInitialize();
-	StorageQuery storageQueryPanel=new StorageQuery();
-	StorageModify storageModifyPanel=new StorageModify();
+	InWareHouseManagment inWareHousePanel;
+//	=new InWareHouseManagment();
+	OutWareHouseManagment outWareHousePanel;
+//	=new OutWareHouseManagment();
+	StorageInitialize storageInitializePanel;
+//	=new StorageInitialize();
+	StorageQuery storageQueryPanel;
+//	=new StorageQuery();
+	StorageModify storageModifyPanel;
+//	=new StorageModify();
 	String institutionID;
 	String staffID;
 	MainFrame frame;
 	CollertionPanel collertionPanel;
 	SendPanel sendPanel;
 	public GuidePanel_Storage(MainFrame frame,String staffID) {
+		inWareHousePanel=new InWareHouseManagment(staffID);
+		outWareHousePanel=new OutWareHouseManagment(staffID);
+		storageInitializePanel=new StorageInitialize(staffID);
+		storageModifyPanel=new StorageModify(staffID);
+		storageQueryPanel=new StorageQuery(staffID);
 		this.staffID = staffID;
 		this.frame = frame;
 		collertionPanel = new CollertionPanel(staffID);

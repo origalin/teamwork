@@ -50,7 +50,7 @@ public class InWareHouseManagment extends JPanel {
 	private JLabel lblNewLabel;
 	private JTextField textField;
 	private JButton btnNewButton_1;
-	private String currInstitution = "001000";
+	private String currInstitution ;
 	private String currPersonID;
 	private JComboBox comboBox;
 
@@ -70,9 +70,15 @@ public class InWareHouseManagment extends JPanel {
 		this.currPersonID = currPersonID;
 	}
 
-	public InWareHouseManagment(String accout){
+	public InWareHouseManagment(String staffID){
 		this();
-		this.currPersonID = currPersonID;
+		this.currPersonID = staffID;
+		try {
+			currInstitution=UiFactory.getInstitutionLogicService().getInstitutionID(currPersonID);
+		} catch (RemoteException e) {
+			System.out.println("根据人员id初始化机构id出错");
+			e.printStackTrace();
+		}
 	}
 	public InWareHouseManagment() {
 
@@ -221,7 +227,7 @@ public class InWareHouseManagment extends JPanel {
 				}
 				inWareHouseDocVO.setList(line);
 				inWare = UiFactory.getInWareHouseManagementService();
-				inWare.updateInWareHouseDoc(inWareHouseDocVO);
+				inWare.updateInWareHouseDoc(inWareHouseDocVO,currPersonID);
 
 			}
 		});

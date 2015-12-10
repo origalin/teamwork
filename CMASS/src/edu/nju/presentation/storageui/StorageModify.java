@@ -23,7 +23,7 @@ import java.awt.event.ActionEvent;
 
 public class StorageModify extends JPanel{
 	String currStorageID;
-	
+	String currPersonID;
 	
 //	public static void main(String[] args) {
 //		StorageModify storageModify=new StorageModify("001000");
@@ -35,9 +35,15 @@ public class StorageModify extends JPanel{
 //		mainFrame.setSize(500, 300);
 //	}
 	
-	public StorageModify(String currStorageID){
+	public StorageModify(String staffID){
 		this();
-		this.currStorageID=currStorageID;
+		this.currPersonID=staffID;
+		try {
+			currStorageID=UiFactory.getInstitutionLogicService().getInstitutionID(currPersonID);
+		} catch (RemoteException e) {
+			System.out.println("根据人员id初始化机构id出错");
+			e.printStackTrace();
+		}
 	}
 	public StorageModify() {
 		setBorder(new TitledBorder(null, "\u5E93\u533A\u8C03\u6574", TitledBorder.LEADING, TitledBorder.TOP, null, null));

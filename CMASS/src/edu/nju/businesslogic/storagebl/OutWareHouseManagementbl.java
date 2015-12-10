@@ -6,14 +6,18 @@ import java.util.Date;
 
 import javax.swing.JOptionPane;
 
+import edu.nju.businesslogic.infobl.Institution;
+import edu.nju.businesslogic.systembl.SystemBl;
 import edu.nju.businesslogic.transferbl.TransferDoc;
 import edu.nju.businesslogic.transferbl.ZLoadDoc;
+import edu.nju.businesslogicservice.infologicservice.InstitutionLogicService;
 import edu.nju.businesslogicservice.storagelogicservice.OutWareHouseManagementService;
 import edu.nju.data.StorageDataServiceImpl.StorageLocation;
 import edu.nju.dataFactory.DataFactory;
 import edu.nju.dataservice.storagedataservice.StorageDataService;
 import edu.nju.exception.DatabaseNULLException;
 import edu.nju.po.InWareHouseDocLineItem;
+import edu.nju.po.OperationPO;
 import edu.nju.po.OutWareHouseDocPO;
 import edu.nju.po.TransferDocPO;
 import edu.nju.po.ZLoadDocPO;
@@ -95,13 +99,21 @@ public class OutWareHouseManagementbl implements OutWareHouseManagementService {
 	}
 
 	@Override
-	public void updateOutWareHouseDoc(OutWareHouseDocVO out) {
+	public void updateOutWareHouseDoc(OutWareHouseDocVO out,String currPersonID) {
 		// 对数据层依赖：void updateOutWareHouseDoc(OutWareHouseDocPO out)
 
 		StorageDataService storageDataService = DataFactory.getStorageImpl();
 		try {
+//			System.out.println("逻辑层的VO in:" + in);
+			InstitutionLogicService institutionLogicService=new Institution();
+			String staffName=institutionLogicService.getStaffName(currPersonID);
+
+
+			OperationPO operationPO=new OperationPO(new Date(), currPersonID, staffName, "新建了"+out.getID()+"出库单");
+			SystemBl systemBl=new SystemBl();
+			systemBl.saveOperation(operationPO);
 			OutWareHouseDocPO po=out.unpack();
-			System.out.println(po);
+//			System.out.println(po);
 			storageDataService.updateOutWareHouseDoc(po);
 		} catch (RemoteException e) {
 			JOptionPane.showMessageDialog(null, "更新出库单时与服务器连接异常");

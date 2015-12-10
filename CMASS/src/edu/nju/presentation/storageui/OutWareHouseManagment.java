@@ -41,6 +41,7 @@ import java.awt.event.ActionEvent;
 
 public class OutWareHouseManagment extends JPanel{
 	private OutWareHouseManagementService outWareHouseManagement;
+	private String currPersonID;
 	private String currInstitution;
 	private JTextField textField;
 	private JTable table;
@@ -52,10 +53,16 @@ public class OutWareHouseManagment extends JPanel{
 	
 	
 	
-	public OutWareHouseManagment(String currInstitution) {
+	public OutWareHouseManagment(String staffID) {
 		this();
 		
-		this.currInstitution = currInstitution; 
+		this.currPersonID = staffID; 
+		try {
+			currInstitution=UiFactory.getInstitutionLogicService().getInstitutionID(currPersonID);
+		} catch (RemoteException e) {
+			System.out.println("根据人员id初始化机构id出错");
+			e.printStackTrace();
+		}
 	}
 //	public static void main(String[] args) {
 //		OutWareHouseManagment outWareHouseManagment=new OutWareHouseManagment("001000");
@@ -230,7 +237,7 @@ public class OutWareHouseManagment extends JPanel{
 				
 				outWareHouseDocVO.setLineItemList(lines);
 				outWareHouseManagement = UiFactory.getOutWareHouseManagementService();
-				outWareHouseManagement.updateOutWareHouseDoc(outWareHouseDocVO);
+				outWareHouseManagement.updateOutWareHouseDoc(outWareHouseDocVO,currPersonID);
 				//根据新的vo去更新调用逻辑层更新数据层
 			}
 		});

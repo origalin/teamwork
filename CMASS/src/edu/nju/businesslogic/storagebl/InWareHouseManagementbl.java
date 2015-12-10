@@ -6,9 +6,11 @@ import java.util.Date;
 
 import javax.swing.JOptionPane;
 
+import edu.nju.businesslogic.infobl.Institution;
+import edu.nju.businesslogic.systembl.SystemBl;
 import edu.nju.businesslogic.transferbl.TransferDoc;
 import edu.nju.businesslogic.transferbl.YLoadDoc;
-
+import edu.nju.businesslogicservice.infologicservice.InstitutionLogicService;
 import edu.nju.businesslogicservice.storagelogicservice.InWareHouseManagementService;
 import edu.nju.data.StorageDataServiceImpl.StorageLocation;
 import edu.nju.dataFactory.DataFactory;
@@ -16,6 +18,7 @@ import edu.nju.dataservice.storagedataservice.StorageDataService;
 import edu.nju.exception.DatabaseNULLException;
 import edu.nju.po.InWareHouseDocLineItem;
 import edu.nju.po.InWareHouseDocPO;
+import edu.nju.po.OperationPO;
 import edu.nju.po.TransferDocPO;
 import edu.nju.po.YLoadDocPO;
 import edu.nju.vo.InWareHouseDocVO;
@@ -151,12 +154,19 @@ public class InWareHouseManagementbl implements InWareHouseManagementService {
 	}
 
 	@Override
-	public void updateInWareHouseDoc(InWareHouseDocVO in) {
+	public void updateInWareHouseDoc(InWareHouseDocVO in,String currPersonID) {
 		// 对数据层依赖：void updateInWareHouseDoc(InWareHouseDocPO out)
 
 		StorageDataService storageDataService = DataFactory.getStorageImpl();
 		try {
 			System.out.println("逻辑层的VO in:" + in);
+			InstitutionLogicService institutionLogicService=new Institution();
+			String staffName=institutionLogicService.getStaffName(currPersonID);
+
+
+			OperationPO operationPO=new OperationPO(new Date(), currPersonID, staffName, "新建了"+in.getID()+"入库单");
+			SystemBl systemBl=new SystemBl();
+			systemBl.saveOperation(operationPO);
 			storageDataService.updateInWareHouseDoc(in.unpack());
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block

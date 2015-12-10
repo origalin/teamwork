@@ -8,7 +8,7 @@ import edu.nju.vo.InWareHouseDocVO;
 public interface InWareHouseManagementService {
 	public InWareHouseDocVO getInWareHouseDocVO_Transfer(String TransferDocID,String currInstitutionID) throws DatabaseNULLException ;
 	public InWareHouseDocVO getInWareHouseDocVO_YloadDoc(String YloadDocID,String currInstitution) throws DatabaseNULLException, RemoteException ;
-	public void updateInWareHouseDoc(InWareHouseDocVO out);
+	public void updateInWareHouseDoc(InWareHouseDocVO out,String currPerson);
 	
 
 }

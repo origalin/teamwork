@@ -23,6 +23,7 @@ import java.awt.event.ActionEvent;
 
 public class StorageInitialize extends JPanel{
 	private String currStorageID;
+	private String currPersonID;
 	private JTextField textSendDoc_ID;
 	private JTextField textDestination;
 	private JTextField textDistrict;
@@ -35,6 +36,16 @@ public class StorageInitialize extends JPanel{
 	private JLabel lblNewLabel_6;
 	private JTextField textInWareDate;
 	private JButton button;
+	public StorageInitialize(String staffID){
+		this();
+		this.currPersonID=staffID;
+		try {
+			currStorageID=UiFactory.getInstitutionLogicService().getInstitutionID(currPersonID);
+		} catch (RemoteException e) {
+			System.out.println("根据人员id初始化机构id出错");
+			e.printStackTrace();
+		}
+	}
 	public StorageInitialize() {
 		setBorder(new TitledBorder(null, "\u5E93\u5B58\u4FE1\u606F\u521D\u59CB\u5316", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		GridBagLayout gridBagLayout = new GridBagLayout();
