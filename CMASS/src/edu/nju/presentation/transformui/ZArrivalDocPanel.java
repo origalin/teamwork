@@ -18,7 +18,11 @@ import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.table.DefaultTableModel;
 
+import edu.nju.businesslogic.transferbl.TransferDoc;
+import edu.nju.businesslogic.transferbl.YLoadDoc;
 import edu.nju.businesslogic.transferbl.ZArrivalDoc;
+import edu.nju.exception.DatabaseNULLException;
+import edu.nju.po.Doc;
 import edu.nju.presentation.approveui.checkOverDoc;
 import edu.nju.presentation.approveui.checkZArrivalDoc;
 import edu.nju.presentation.mainui.CheckDialog;
@@ -39,12 +43,16 @@ public class ZArrivalDocPanel extends JPanel {
 	ZArrivalDocVO vo;
 	DefaultTableModel tableModel;
 	String[][] str;
+	TransferDoc transferDoc;
+	YLoadDoc yLoadDoc;
 	int docType = -1;//0-中转单1-装车单
 
 	public ZArrivalDocPanel( String staffID) {
 		this.staffID = staffID;
 		try {
 			zArrivalDoc = new ZArrivalDoc( staffID);
+			transferDoc = new TransferDoc(staffID);
+			yLoadDoc = new YLoadDoc(staffID);
 		} catch (RemoteException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -252,16 +260,28 @@ public class ZArrivalDocPanel extends JPanel {
 
 	private void intializeWithFromDoc() {
 		if (intializable()) {
-			switch ((String)docTypeBox.getSelectedItem()) {
-			case "中转单编号":
-				docType = 0;
-				break;
-			case "营业厅装车单编号":
-				docType = 1;
-				break;
-			default:
-				break;
+			Doc po ;
+			try{
+				switch ((String)docTypeBox.getSelectedItem()) {
+				case "中转单编号":
+					docType = 0;
+					po = transferDoc.geTransferDocPOByID(transferDocIDField.getText());
+					break;
+				case "营业厅装车单编号":
+					docType = 1;
+					po = yLoadDoc.getYloadDocPOByID(transferDocIDField.getText());
+					break;
+				default:
+					break;
+				}
+			}catch(DatabaseNULLException e){
+				warning("null");
+			} catch (RemoteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
+			
+			
 				
 		} else {
 			warning("lost");
@@ -278,7 +298,10 @@ public class ZArrivalDocPanel extends JPanel {
 		case "lost":
 			warningDialog.setLostMode();
 			break;
-
+		case "null":
+			warningDialog.setLostMode();
+			warningDialog.getDocPanel().removeAll();
+			warningDialog.getDocPanel().add(new JLabel("找不到单据"));
 		default:
 			break;
 		}
@@ -327,9 +350,13 @@ public class ZArrivalDocPanel extends JPanel {
 						saveDoc();
 					}
 				});
-			} catch (Exception e) {
+			} catch (RemoteException e) {
 				// TODO: handle exception
 				warning("net");
+			} catch (DatabaseNULLException e1) {
+				// TODO Auto-generated catch block
+				warning("null");
+				e1.printStackTrace();
 			}
 			
 			CheckDialog cDialog = new CheckDialog();

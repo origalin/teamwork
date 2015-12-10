@@ -284,6 +284,7 @@ public class YArrivalDocPanel extends JPanel{
 		JButton confirmButton = new JButton("\u786E\u8BA4\u5206\u914D");
 		confirmButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				saveYArrivalDoc();
 				createYDeliverDoc();
 			}
 		});
@@ -297,7 +298,7 @@ public class YArrivalDocPanel extends JPanel{
 	}
 	private void intializeWithFromDoc() {
 		if (intializable()) {
-				
+			
 		} else {
 			warning("lost");
 		}
@@ -313,7 +314,10 @@ public class YArrivalDocPanel extends JPanel{
 		case "lost":
 			warningDialog.setLostMode();
 			break;
-
+		case "null":
+			warningDialog.setLostMode();
+			warningDialog.getDocPanel().removeAll();
+			warningDialog.getDocPanel().add(new JLabel("找不到单据"));
 		default:
 			break;
 		}
@@ -328,11 +332,9 @@ public class YArrivalDocPanel extends JPanel{
 	}
 
 	private boolean creatable() {
-		if (tableModel.getRowCount() == 0) {
-			return false;
-		} else {
+		
 			return true;
-		}
+		
 	}
 
 	private void createZArrivalDoc() {
@@ -351,7 +353,7 @@ public class YArrivalDocPanel extends JPanel{
 						@Override
 						public void actionPerformed(ActionEvent e) {
 							// TODO Auto-generated method stub
-							saveDoc();
+							intializeYDeliver();
 						}
 					});
 				} catch (RemoteException e1) {
@@ -360,6 +362,7 @@ public class YArrivalDocPanel extends JPanel{
 					warning("net");
 				} catch (DatabaseNULLException e1) {
 					// TODO Auto-generated catch block
+					warning("null");
 					e1.printStackTrace();
 				}
 			

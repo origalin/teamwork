@@ -57,7 +57,7 @@ public class CheckDialog extends JDialog{
 	public void setLostMode() {
 		setTitle("提示！");
 		getDocPanel().add(new JLabel("请检查输入信息完整性"));
-		setSize(300, 100);
+		setSize(300, 150);
 		setVisible(true);
 		getConfirmButton().addActionListener(new ActionListener() {
 			
@@ -71,7 +71,7 @@ public class CheckDialog extends JDialog{
 	public void setNetMode() {
 		setTitle("提示！");
 		getDocPanel().add(new JLabel("网络连接错误！请检查网络连接并重启本软件"));
-		setSize(300, 100);
+		setSize(300, 150);
 		setVisible(true);
 		getConfirmButton().addActionListener(new ActionListener() {
 			
