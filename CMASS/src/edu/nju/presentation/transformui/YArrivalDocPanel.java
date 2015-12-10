@@ -286,6 +286,7 @@ public class YArrivalDocPanel extends JPanel{
 			public void actionPerformed(ActionEvent arg0) {
 				saveYArrivalDoc();
 				createYDeliverDoc();
+				saveDoc();
 			}
 		});
 		GridBagConstraints gbc_confirmButton = new GridBagConstraints();
@@ -344,6 +345,7 @@ public class YArrivalDocPanel extends JPanel{
 			for (int i = 0; i < tableModel.getRowCount(); i++) {
 				IDAndState[i][0] = (String) tableModel.getValueAt(i, 0);
 				IDAndState[i][0] = (String) tableModel.getValueAt(i, 1);
+			}
 				try {
 					vo = yArrivalDoc.createYArrivalDocVO(zLoadDocIDField.getText(), IDAndState);
 					CheckDialog cDialog = new CheckDialog();
@@ -366,7 +368,7 @@ public class YArrivalDocPanel extends JPanel{
 					e1.printStackTrace();
 				}
 			
-			}
+			
 		}
 	}
 	private void  saveYArrivalDoc() {
@@ -401,21 +403,21 @@ public class YArrivalDocPanel extends JPanel{
 		String[][] table = new String[DeliverModel.getRowCount()][2];
 		for(int i = 0;i<DeliverModel.getRowCount();i++) {
 			table[i][0] = (String) DeliverModel.getValueAt(i, 0);
-			table[i][2] = (String) DeliverModel.getValueAt(i, 2);
+			table[i][1] = (String) DeliverModel.getValueAt(i, 2);
 		}
 		YDeliverDocVO vo;
 		try {
 			vo = yDeliverDoc.createYDeliverDoc(table);
-			CheckDialog cDialog = new CheckDialog();
-			
-			cDialog.getConfirmButton().addActionListener(new ActionListener() {
-				
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					// TODO Auto-generated method stub
-					saveDoc();
-				}
-			});
+//			CheckDialog cDialog = new CheckDialog();
+//			
+//			cDialog.getConfirmButton().addActionListener(new ActionListener() {
+//				
+//				@Override
+//				public void actionPerformed(ActionEvent e) {
+//					// TODO Auto-generated method stub
+//					saveDoc();
+//				}
+//			});
 		} catch (RemoteException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

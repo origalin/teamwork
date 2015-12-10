@@ -261,7 +261,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 		}else {
 			checked = 0;
 		}
-		String str = "replace into YArricalDoc  values("
+		String str = "replace into YArrivalDoc  values("
 		+ "'"+ID+"','"+Time.toDaysTime(date)+"','"+transferDocID+"','"+from+"','"+itemAndState+"',"
 		+ "'"+checked+"');";
 		SQL.databaseUpdate(str);
@@ -485,7 +485,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 				CarID = SQL.rs.getString("CarID");
 				watcher = SQL.rs.getString("watcher");
 				driver = SQL.rs.getString("driver");
-				tranceferCenterID = SQL.rs.getString("tranceferCenterID");
+				tranceferCenterID = SQL.rs.getString("transferCenterID");
 				itemIDs = SQL.rs.getString("itemIDs").split(" ");
 				price = SQL.rs.getDouble("price");
 				

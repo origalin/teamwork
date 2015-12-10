@@ -15,6 +15,7 @@ import edu.nju.exception.DatabaseNULLException;
 import edu.nju.po.OperationPO;
 import edu.nju.po.YDeliverDocPO;
 import edu.nju.tools.SequenceCalc;
+import edu.nju.tools.StringTools;
 import edu.nju.vo.YDeliverDocVO;
 
 public class YDeliverDoc implements YDeliverDocService{
@@ -72,6 +73,7 @@ public class YDeliverDoc implements YDeliverDocService{
 	@Override
 	public YDeliverDocVO createYDeliverDoc(String[][] IDAndCourier) throws RemoteException {
 		// TODO 自动生成的方法存根
+		pos = new ArrayList<>();
 		ArrayList<String> couriers = new ArrayList<String>();
 		for(int i = 0;i<IDAndCourier.length;i++) {
 			if(!couriers.contains(IDAndCourier[i][1])) {
@@ -85,7 +87,7 @@ public class YDeliverDoc implements YDeliverDocService{
 					item.add(IDAndCourier[i][0]);
 				}
 			}
-			String[] itemIDs = (String[]) item.toArray();
+			String[] itemIDs = StringTools.toGroup(item);
 			pos.add(new YDeliverDocPO("10"+getYDeliverSequence(), new Date(), staffID, itemIDs));
 			return null;
 		}

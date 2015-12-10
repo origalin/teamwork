@@ -16,6 +16,7 @@ import edu.nju.exception.DatabaseNULLException;
 import edu.nju.po.OperationPO;
 import edu.nju.po.TransferDocPO;
 import edu.nju.po.YArrivalDocPO;
+import edu.nju.po.ZLoadDocPO;
 import edu.nju.tools.SequenceCalc;
 import edu.nju.tools.StringTools;
 import edu.nju.vo.YArrivalDocVO;
@@ -24,7 +25,7 @@ public class YArrivalDoc implements YArrivalDocService {
 	String institutionID, staffID;
 	private YArrivalDocPO po;
 	private Collectionbl collectionbl;
-	private TransferDoc transferDoc;
+	private ZLoadDoc zLoadDoc;
 	private Institution institution;
 	private TransferDataService transferDataService; 
 	Logisticsquerybl logisticsquerybl;
@@ -33,7 +34,7 @@ public class YArrivalDoc implements YArrivalDocService {
 	public YArrivalDoc( String staffID) throws RemoteException {
 		super();
 		this.staffID = staffID;
-		transferDoc = new TransferDoc( staffID);
+		zLoadDoc = new ZLoadDoc( staffID);
 		institution = new Institution();
 		this.institutionID = institution.getInstitutionID(staffID);
 		transferDataService = DataFactory.getTransferDataService();
@@ -91,20 +92,20 @@ public class YArrivalDoc implements YArrivalDocService {
 	@Override
 	public YArrivalDocVO createYArrivalDocVO(String fromDocID, String[][] changeStates) throws RemoteException, DatabaseNULLException {
 		// TODO Auto-generated method stub
-		TransferDocPO transferDocPO = transferDoc.geTransferDocPOByID(fromDocID);
-		String[][] itemAndState = new String[transferDocPO.getItemIDs().length][2];
-		for(int i = 0;i<transferDocPO.getItemIDs().length;i++) {
-			itemAndState[i][0] = transferDocPO.getItemIDs()[i];
+		ZLoadDocPO zLoadDocPO = zLoadDoc.getZLoadDocPO(fromDocID);
+		String[][] itemAndState = new String[zLoadDocPO.getItemIDs().length][2];
+		for(int i = 0;i<zLoadDocPO.getItemIDs().length;i++) {
+			itemAndState[i][0] = zLoadDocPO.getItemIDs()[i];
 			itemAndState[i][1] = "0";
 		}
 		for(int i = 0;i<changeStates.length;i++) {
-			for(int j = 0;j<transferDocPO.getItemIDs().length;j++) {
+			for(int j = 0;j<zLoadDocPO.getItemIDs().length;j++) {
 				if(changeStates[i][0].equals(itemAndState[j][0])) {
 					itemAndState[j][1] = changeStates[i][1];
 				}
 			}
 		}
-		po = new YArrivalDocPO("02"+getYArrivalSequence(), new Date(), fromDocID, transferDocPO.getFrom(), itemAndState);
+		po = new YArrivalDocPO("02"+getYArrivalSequence(), new Date(), fromDocID, institution.getCity(zLoadDocPO.gettransferCenterID()), itemAndState);
 		return new YArrivalDocVO(po);
 	}
 
