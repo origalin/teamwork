@@ -14,24 +14,27 @@ import edu.nju.dataservice.transferdataservice.TransferDataService;
 import edu.nju.exception.DatabaseNULLException;
 import edu.nju.po.CourierMoneyPO;
 import edu.nju.po.OverDocPO;
+import edu.nju.po.ZArrivalDocPO;
 import edu.nju.presentation.transformui.SendPanel;
 
 public class MainTest {
-//	public static void main(String[] args) {
+	public static void main(String[] args) {
 //		JFrame frame = new JFrame();
 //		frame.setSize(1280, 800);
 //		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 //		
 //		frame.getContentPane().add(new SendPanel("00251001100"));
 //		frame.setVisible(true);
-//		try {
-//			TransferDataServiceImpl transferDataServiceImpl = new TransferDataServiceImpl();
-//			CollectionDataService collectionDataService = new CollectionDataServiceImpl();
-//			System.out.println(transferDataServiceImpl.getOverSequence());
-//		} catch (RemoteException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		try {
+			TransferDataServiceImpl transferDataServiceImpl = new TransferDataServiceImpl();
+			CollectionDataService collectionDataService = new CollectionDataServiceImpl();
+			String[][] itemAndState = {{"2121","1"},{"231231","1"}};
+			ZArrivalDocPO po = new ZArrivalDocPO("12000120", new Date(),"123123", "ÄÏ¾©", itemAndState);
+			transferDataServiceImpl.saveZArrivalDocPO(po);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
-//	}
+	}
 }

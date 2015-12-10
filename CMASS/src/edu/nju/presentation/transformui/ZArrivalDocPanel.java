@@ -253,10 +253,10 @@ public class ZArrivalDocPanel extends JPanel {
 	private void intializeWithFromDoc() {
 		if (intializable()) {
 			switch ((String)docTypeBox.getSelectedItem()) {
-			case "中转单":
+			case "中转单编号":
 				docType = 0;
 				break;
-			case "营业厅装车单":
+			case "营业厅装车单编号":
 				docType = 1;
 				break;
 			default:
@@ -285,7 +285,7 @@ public class ZArrivalDocPanel extends JPanel {
 	}
 
 	private boolean intializable() {
-		if (transferDocIDField.getText().equals("")||docType==-1) {
+		if (transferDocIDField.getText().equals("")) {
 			return false;
 		} else {
 			return true;
@@ -301,7 +301,7 @@ public class ZArrivalDocPanel extends JPanel {
 	}
 
 	private void createZArrivalDoc() {
-		if (creatable()&&intializable()) {
+		if (intializable()) {
 			intializeWithFromDoc();
 			str = new String[tableModel.getRowCount()][2];
 			for (int i = 0; i < tableModel.getRowCount(); i++) {

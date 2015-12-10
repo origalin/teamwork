@@ -71,7 +71,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 			checked = 0;
 		}
 
-		String str = "replace into Transferdoc(ID,Date,PlaneNum,TrainNum,CarNum,tranceID,corriage,container,from,targetCity,watcher,itemIDs,price,checked,paid) "
+		String str = "replace into Transferdoc "
 		+ "values('"+ID+"','"+Time.toDaysTime(date)+"','"+planeNum+"','"+TrainNum+"','"+CarNum+"',"
 		+ "'"+tranceID+"','"+corriage+"','"+container+"','"+from+"','"+targetCity+"','"+watcher+"',"
 		+ "'"+itemIDs+"','"+price+"','"+checked+"','"+paid+"');";
@@ -140,8 +140,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 		} else {
 			paid = 0;
 		}
-		String str = "replace into ZLoadDoc (ID,date,tranceid,targetbusinesshall,"
-		+ "carid,watcher,driver,tranceferCenterID,itemids,price,checked,paid) values("
+		String str = "replace into ZLoadDoc  values("
 		+ "'"+ID+"','"+Time.toDaysTime(date)+"','"+tranceID+"','"+targetBusinessHall+"','"+CarID+"',"
 		+ "'"+watcher+"','"+driver+"','"+tranceferCenterID+"','"+itemIDs+"','"+price+"','"+checked+"',"
 		+"'"+paid+"');";
@@ -202,7 +201,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 		}else {
 			checked = 0;
 		}
-		String str = "replace into ZArricalDoc (ID,date,fromID,from,itemandstate,checked) values("
+		String str = "replace into ZArrivalDoc  values("
 		+ "'"+ID+"','"+Time.toDaysTime(date)+"','"+fromID+"','"+from+"','"+itemAndState+"',"
 		+ "'"+checked+"');";
 		SQL.databaseUpdate(str);
@@ -262,7 +261,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 		}else {
 			checked = 0;
 		}
-		String str = "replace into YArricalDoc (ID,date,transferDocID,from,itemandstate,checked) values("
+		String str = "replace into YArricalDoc  values("
 		+ "'"+ID+"','"+Time.toDaysTime(date)+"','"+transferDocID+"','"+from+"','"+itemAndState+"',"
 		+ "'"+checked+"');";
 		SQL.databaseUpdate(str);
@@ -317,7 +316,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 		}else {
 			dealed = 0;
 		}
-		String str = "replace into YDeliverDoc (ID,date,courier,itemIDs,checked,dealed) values("
+		String str = "replace into YDeliverDoc  values("
 		+ "'"+ID+"','"+Time.toDaysTime(date)+"','"+courier+"','"+itemIDs+"',"
 		+ "'"+checked+"','"+dealed+"');";
 		SQL.databaseUpdate(str);
@@ -368,7 +367,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 		}else {
 			checked = 0;
 		}
-		String str = "replace into OverDoc (ID,date,itemIDs,receiver,courier,checked) values("
+		String str = "replace into OverDoc  values("
 		+ "'"+ID+"','"+Time.toDaysTime(date)+"','"+itemIDs+"','"+receiver+"','"+courier+"',"
 		+ "'"+checked+"');";
 		SQL.databaseUpdate(str);
@@ -985,8 +984,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 		} else {
 			paid = 0;
 		}
-		String str = "replace into ZLoadDoc (ID,date,tranceid,targetbusinesshall,"
-		+ "carid,watcher,driver,itemids,price,checked,paid) values("
+		String str = "replace into ZLoadDoc  values("
 		+ "'"+ID+"','"+Time.toDaysTime(date)+"','"+tranceID+"','"+target+"','"+CarID+"',"
 		+ "'"+watcher+"','"+driver+"','"+businessHallID+"','"+itemIDs+"','"+price+"','"+checked+"',"
 		+"'"+paid+"',);";
