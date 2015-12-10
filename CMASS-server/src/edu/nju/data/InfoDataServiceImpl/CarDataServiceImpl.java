@@ -15,12 +15,10 @@ public class CarDataServiceImpl extends UnicastRemoteObject implements CarDataSe
 
 	public CarDataServiceImpl() throws RemoteException {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public ArrayList<CarPO> findCar(String institutionName) throws RemoteException{
-		// TODO Auto-generated method stub
 		ArrayList<CarPO> carList = new ArrayList<CarPO>();
 		String sql = "SELECT 车辆代号,发动机号,车牌号,底盘号,车辆单位,购买时间,服役时间 FROM CAR WHERE 车辆单位='"+institutionName+"';";
 		SQL.databaseQuery(sql);
@@ -39,7 +37,6 @@ public class CarDataServiceImpl extends UnicastRemoteObject implements CarDataSe
 
 	@Override
 	public void addCar(CarPO po) throws RemoteException{
-		// TODO Auto-generated method stub
 		DateFormat df=DateFormat.getDateInstance();
 		String sql = "INSERT INTO CAR VALUES('"+po.getCarID()+"','"+po.getEngineID()+"','"+po.getPlateID()+"','"+po.getUnderpanID()+"','"+po.getInstitutionName()+"','"+df.format(po.getBuyTime())+"','"+po.getYears()+"');";
 		SQL.databaseUpdate(sql);
@@ -48,7 +45,6 @@ public class CarDataServiceImpl extends UnicastRemoteObject implements CarDataSe
 
 	@Override
 	public void changeCar(CarPO po) throws RemoteException{
-		// TODO Auto-generated method stub
 		DateFormat df=DateFormat.getDateInstance();
 		String sql = "UPDATE CAR SET 发动机号='"+po.getEngineID()+"',"+"车牌号='"+po.getPlateID()+"',底盘号='"+po.getUnderpanID()+"',"+"车辆单位='"+po.getInstitutionName()+"',"+"购买时间='"+df.format(po.getBuyTime())+"',"+"服役时间='"+po.getYears()+"' where 车辆代号='"
 	+ po.getCarID() + "';";
@@ -58,7 +54,6 @@ public class CarDataServiceImpl extends UnicastRemoteObject implements CarDataSe
 
 	@Override
 	public void deleteCar(CarPO po) throws RemoteException{
-		// TODO Auto-generated method stub
 		String sql ="DELETE FROM CAR WHERE 车辆代号='"+po.getCarID()+"';" ;
 		SQL.databaseUpdate(sql);
 		SQL.closeDatabase();

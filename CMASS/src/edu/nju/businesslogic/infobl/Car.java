@@ -35,7 +35,6 @@ public class Car implements CarLogicService{
 	}
 	@Override
 	public void saveCar(CarPO po) throws RemoteException {
-		// TODO Auto-generated method stub
 	
 			if(carDataService.isVaild(po.getCarID(), po.getInstitutionName())){
 				carDataService.changeCar(po);
@@ -47,7 +46,6 @@ public class Car implements CarLogicService{
 	}
 	@Override
 	public void deleteCar(CarPO po) throws RemoteException {
-		// TODO Auto-generated method stub
 	
 			carDataService.deleteCar(po);
 	

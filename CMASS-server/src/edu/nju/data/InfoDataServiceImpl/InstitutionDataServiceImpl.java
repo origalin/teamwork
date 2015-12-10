@@ -21,7 +21,6 @@ public class InstitutionDataServiceImpl extends UnicastRemoteObject implements
 
 	public InstitutionDataServiceImpl() throws RemoteException {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -55,17 +54,31 @@ public class InstitutionDataServiceImpl extends UnicastRemoteObject implements
 		String sql = "INSERT INTO STAFF VALUES('"+po.getStaffID()+"','"+po.getName()+"','"+po.getSex()+"','"+po.getIdenity()+"','"+po.getTel()+"','"+po.getInstitutation()+"','"+po.getPost().toString()+"');";
 		SQL.databaseUpdate(sql);
 		SQL.closeDatabase();
-	}
-
-	@Override
-	public void changeStaff(StaffPO po) throws RemoteException {
-		// TODO Auto-generated method stub
+		
+		String sql1 = "INSERT INTO PASSWORD('id','power') VALUES('"+po.getStaffID()+"','"+po.getPost().toString()+"');";
+		SQL.databaseUpdate(sql1);
+		SQL.closeDatabase();
+		
+		String sql2 = "INSERT INTO SALARY  VALUES('"+po.getStaffID()+"','"+5000+"','"+0+"','"+0+"','"+0+"');";
+		SQL.databaseUpdate(sql2);
+		SQL.closeDatabase();
+		
 		
 	}
 
 	@Override
+	public void changeStaff(StaffPO po) throws RemoteException {
+		String sql = "UPDATE STAFF SET 姓名='"+po.getName()+"',"+"性别='"+po.getSex()+"',身份证号='"+po.getIdenity()+"',"+"联系电话='"+po.getTel()+"',"+"所属机构='"+po.getInstitutation()+"',"+"职位='"+String.valueOf(po.getPost())+"' where 工号='"
+	+ po.getStaffID() + "';";
+		SQL.databaseUpdate(sql);
+		SQL.closeDatabase();
+	}
+
+	@Override
 	public void deleteStaff(StaffPO po) throws RemoteException {
-		// TODO Auto-generated method stub
+		String sql ="DELETE FROM STAFF WHERE 工号='"+po.getStaffID()+"';" ;
+		SQL.databaseUpdate(sql);
+		SQL.closeDatabase();
 
 	}
 
@@ -229,6 +242,58 @@ public class InstitutionDataServiceImpl extends UnicastRemoteObject implements
 		}
 		SQL.closeDatabase();
 		return po;
+	}
+
+	@Override
+	public boolean isStaffVaild(StaffPO po) throws RemoteException {
+		boolean flag=false;
+		String sql = "SELECT 工号 FROM STAFF ;";
+		SQL.databaseQuery(sql);
+		try {
+			while (SQL.rs.next()) {
+				String ID=SQL.rs.getString("工号");
+				if(ID.equals(po.getStaffID())){
+					return true;
+				}
+			}
+		} catch (SQLException e) {
+			System.out.println("判断错误");
+			e.printStackTrace();
+		}
+		SQL.closeDatabase();
+		return flag;
+	}
+
+	@Override
+	public boolean isInstitutionVaild(InstitutionPO po) throws RemoteException {
+		boolean flag=false;
+		String sql = "SELECT 机构编号 FROM INSTITUTION ;";
+		SQL.databaseQuery(sql);
+		try {
+			while (SQL.rs.next()) {
+				String ID=SQL.rs.getString("机构编号");
+				if(ID.equals(po.getId())){
+					return true;
+				}
+			}
+		} catch (SQLException e) {
+			System.out.println("判断错误");
+			e.printStackTrace();
+		}
+		SQL.closeDatabase();
+		return flag;
+	}
+
+	@Override
+	public void deleteInstitution(InstitutionPO po) throws RemoteException {
+			String sql ="DELETE FROM INSTITUTION WHERE 机构编号='"+po.getId()+"';" ;
+		SQL.databaseUpdate(sql);
+		SQL.closeDatabase();
+		
+		for(StaffPO staffPO:getStaffList(po.getId())){
+			deleteStaff(staffPO);
+		}
+		
 	}
 
 }

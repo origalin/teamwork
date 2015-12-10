@@ -20,6 +20,7 @@ public interface InstitutionDataService extends Remote{
 	public ArrayList<InstitutionPO> findInstitution()throws RemoteException;
 	public void addInstitution (InstitutionPO po)throws RemoteException;
 	public void changeInstitution(InstitutionPO po)throws RemoteException;
+	public void deleteInstitution(InstitutionPO po)throws RemoteException;
 	
 	public InstitutionPO getInstitution(String id)throws RemoteException;
 	public StaffPO getStaff(String id)throws RemoteException;
@@ -29,6 +30,8 @@ public interface InstitutionDataService extends Remote{
 	
 	public SalaryPO getSalaryPO(String staffID)throws RemoteException;
 	public void changeSalary(SalaryPO po)throws RemoteException;
-
-
+	
+	public boolean isStaffVaild(StaffPO po)throws RemoteException;
+	public boolean isInstitutionVaild(InstitutionPO po)throws RemoteException;
+	
 }

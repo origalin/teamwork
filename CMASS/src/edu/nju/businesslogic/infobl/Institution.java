@@ -16,8 +16,6 @@ import edu.nju.vo.StaffVO;
 public class Institution implements InstitutionLogicService{
 	InstitutionDataService institutionDataService;
 public Institution() {
-		// TODO Auto-generated constructor stub
-		
 		super();
 		this.institutionDataService=DataFactory.getInstitutionDataService();
 	}
@@ -59,25 +57,33 @@ public Institution() {
 
 	@Override
 	public void saveStaff(StaffPO po) throws RemoteException {
-		// TODO Auto-generated method stub
+	if(institutionDataService.isStaffVaild(po)){
+		institutionDataService.changeStaff(po);
+	}else{
+		institutionDataService.addStaff(po);
+	}
 		
 	}
 
 	@Override
 	public void saveInstitution(InstitutionPO po) throws RemoteException {
-		// TODO Auto-generated method stub
+		if(institutionDataService.isInstitutionVaild(po)){
+			institutionDataService.changeInstitution(po);
+		}else{
+			institutionDataService.addInstitution(po);
+		}
 		
 	}
 
 	@Override
 	public void deleteInstitution(InstitutionPO po) throws RemoteException {
-		// TODO Auto-generated method stub
+		institutionDataService.deleteInstitution(po);
 		
 	}
 
 	@Override
 	public void deleteStaff(StaffPO po) throws RemoteException {
-		// TODO Auto-generated method stub
+		institutionDataService.deleteStaff(po);
 		
 	}
 

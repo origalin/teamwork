@@ -32,7 +32,7 @@ public interface InstitutionLogicService {
 	public String getTransferCenterID(String institutionID)throws RemoteException;//
 	public ArrayList<String> getSubInstitutionID(String institutionID)throws RemoteException;//
 	
-	public String getID(String institutionName)throws RemoteException;
+	public String getID(String institutionName)throws RemoteException;//根据机构名称返回id
 	public String getName(String institutionId)throws RemoteException;//根据机构id返回name  
 	public String getStaffName(String staffid)throws RemoteException;//根据人员ID返回人员姓名
 	public String getInstitutionName(String staffid)throws RemoteException;//根据人员ID返回机构姓名
