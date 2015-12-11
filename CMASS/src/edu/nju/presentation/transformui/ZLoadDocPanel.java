@@ -191,6 +191,7 @@ public class ZLoadDocPanel extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
 				tableModel.addRow(new Object[] {itemIDField.getText()});
+				itemIDField.setText("");
 			}
 		});
 		GridBagConstraints gbc_addButton = new GridBagConstraints();

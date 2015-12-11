@@ -167,11 +167,13 @@ public class SendPanel extends JPanel{
 		}
 	}
 	private void  intialize() throws RemoteException {
-		for(int i = toSendModel.getRowCount();i>0;i--) {
+		int i = toSendModel.getRowCount();
+		int j = toOverModel.getRowCount();
+		for(;i>0;i--) {
 			toSendModel.removeRow(i);
 		}
-		for(int i = toOverModel.getRowCount();i>0;i--) {
-			toOverModel.removeRow(i);
+		for(;j>0;j--) {
+			toOverModel.removeRow(j);
 		}
 		collectionbl = new Collectionbl(staffID);
 		yDeliverDocVOs = yDeliverDoc.findYDeliverDocVOs(staffID);
@@ -214,6 +216,13 @@ public class SendPanel extends JPanel{
 				public void actionPerformed(ActionEvent e) {
 					// TODO Auto-generated method stub
 					saveDoc();
+					try {
+						intialize();
+					} catch (RemoteException e1) {
+						// TODO Auto-generated catch block
+						warning();
+						e1.printStackTrace();
+					}
 				}
 			});
 		} catch (RemoteException e1) {
@@ -245,4 +254,15 @@ public class SendPanel extends JPanel{
 			warningDialog.setNetMode();
 		
 	}
+//	private void refresh() {
+//		int i = toSendModel.getRowCount();
+//		int j = toOverModel.getRowCount();
+//		for(;i>0;i--) {
+//			toSendModel.removeRow(i);
+//		}
+//		for(;j>0;j--) {
+//			toOverModel.removeRow(i);
+//		}
+//		
+//	}
 }

@@ -28,9 +28,7 @@ public class MainTest {
 		try {
 			TransferDataServiceImpl transferDataServiceImpl = new TransferDataServiceImpl();
 			CollectionDataService collectionDataService = new CollectionDataServiceImpl();
-			String[][] itemAndState = {{"2121","1"},{"231231","1"}};
-			ZArrivalDocPO po = new ZArrivalDocPO("12000120", new Date(),"123123", "ÄÏ¾©", itemAndState);
-			transferDataServiceImpl.saveZArrivalDocPO(po);
+			System.out.println(transferDataServiceImpl.getAllYArrivalDoc().size());
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

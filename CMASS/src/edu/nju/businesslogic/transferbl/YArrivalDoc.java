@@ -96,7 +96,7 @@ public class YArrivalDoc implements YArrivalDocService {
 		String[][] itemAndState = new String[zLoadDocPO.getItemIDs().length][2];
 		for(int i = 0;i<zLoadDocPO.getItemIDs().length;i++) {
 			itemAndState[i][0] = zLoadDocPO.getItemIDs()[i];
-			itemAndState[i][1] = "0";
+			itemAndState[i][1] = "อ๊บร";
 		}
 		for(int i = 0;i<changeStates.length;i++) {
 			for(int j = 0;j<zLoadDocPO.getItemIDs().length;j++) {

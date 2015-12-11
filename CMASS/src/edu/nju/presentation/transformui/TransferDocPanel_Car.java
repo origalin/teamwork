@@ -51,9 +51,9 @@ public class TransferDocPanel_Car extends JPanel {
 			warning("net");
 		}
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[] { 418, 168, 0 };
+		gridBagLayout.columnWidths = new int[] { -59, 168, 0 };
 		gridBagLayout.rowHeights = new int[] { 248, 0 };
-		gridBagLayout.columnWeights = new double[] { 0.0, 1.0, Double.MIN_VALUE };
+		gridBagLayout.columnWeights = new double[] { 1.0, 1.0, Double.MIN_VALUE };
 		gridBagLayout.rowWeights = new double[] { 1.0, Double.MIN_VALUE };
 		setLayout(gridBagLayout);
 
@@ -66,9 +66,9 @@ public class TransferDocPanel_Car extends JPanel {
 		add(panel_11, gbc_panel_11);
 		panel_11.setBorder(null);
 		GridBagLayout gbl_panel_11 = new GridBagLayout();
-		gbl_panel_11.columnWidths = new int[] { 413, 0 };
+		gbl_panel_11.columnWidths = new int[] { 114, 0 };
 		gbl_panel_11.rowHeights = new int[] { 42, 42, 42, 42, 0, 0, 0, 0 };
-		gbl_panel_11.columnWeights = new double[] { 0.0, Double.MIN_VALUE };
+		gbl_panel_11.columnWeights = new double[] { 1.0, Double.MIN_VALUE };
 		gbl_panel_11.rowWeights = new double[] { 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		panel_11.setLayout(gbl_panel_11);
 

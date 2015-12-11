@@ -97,7 +97,7 @@ public class YArrivalDocPanel extends JPanel{
 		panel_6.add(label_10);
 		
 		JPanel panel_2 = new JPanel();
-		FlowLayout flowLayout_1 = (FlowLayout) panel_2.getLayout();
+		panel_2.getLayout();
 		panel_11.add(panel_2);
 		
 		zLoadDocIDField = new JTextField();
@@ -108,17 +108,6 @@ public class YArrivalDocPanel extends JPanel{
 		panel_11.add(panel_8);
 		FlowLayout flowLayout_7 = (FlowLayout) panel_8.getLayout();
 		flowLayout_7.setAlignment(FlowLayout.RIGHT);
-		
-		JButton confirmbutton = new JButton("\u786E\u8BA4");
-		confirmbutton.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-				intializeWithFromDoc();
-			}
-		});
-		panel_8.add(confirmbutton);
 		
 		JPanel panel_3 = new JPanel();
 		panel_11.add(panel_3);
@@ -220,6 +209,7 @@ public class YArrivalDocPanel extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
 				tableModel.addRow(new Object[] {itemIDField.getText(),comboBox.getSelectedItem()});
+				itemIDField.setText("");
 			}
 		});
 		GridBagConstraints gbc_addButton = new GridBagConstraints();
@@ -236,7 +226,10 @@ public class YArrivalDocPanel extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				createZArrivalDoc();
+				if (intializable()) {
+					createZArrivalDoc();
+				}
+				
 			}
 		});
 		GridBagConstraints gbc_creatButton = new GridBagConstraints();
@@ -297,14 +290,6 @@ public class YArrivalDocPanel extends JPanel{
 		
 
 	}
-	private void intializeWithFromDoc() {
-		if (intializable()) {
-			
-		} else {
-			warning("lost");
-		}
-
-	}
 
 	private void warning(String type) {
 		CheckDialog warningDialog = new CheckDialog();
@@ -332,15 +317,7 @@ public class YArrivalDocPanel extends JPanel{
 		}
 	}
 
-	private boolean creatable() {
-		
-			return true;
-		
-	}
-
 	private void createZArrivalDoc() {
-		if (creatable()) {
-
 			IDAndState = new String[tableModel.getRowCount()][2];
 			for (int i = 0; i < tableModel.getRowCount(); i++) {
 				IDAndState[i][0] = (String) tableModel.getValueAt(i, 0);
@@ -369,7 +346,6 @@ public class YArrivalDocPanel extends JPanel{
 				}
 			
 			
-		}
 	}
 	private void  saveYArrivalDoc() {
 		try {
@@ -405,19 +381,8 @@ public class YArrivalDocPanel extends JPanel{
 			table[i][0] = (String) DeliverModel.getValueAt(i, 0);
 			table[i][1] = (String) DeliverModel.getValueAt(i, 2);
 		}
-		YDeliverDocVO vo;
 		try {
-			vo = yDeliverDoc.createYDeliverDoc(table);
-//			CheckDialog cDialog = new CheckDialog();
-//			
-//			cDialog.getConfirmButton().addActionListener(new ActionListener() {
-//				
-//				@Override
-//				public void actionPerformed(ActionEvent e) {
-//					// TODO Auto-generated method stub
-//					saveDoc();
-//				}
-//			});
+			yDeliverDoc.createYDeliverDoc(table);
 		} catch (RemoteException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

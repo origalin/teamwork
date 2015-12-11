@@ -676,7 +676,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 				ids.add(SQL.rs.getString("ID"));
 			}
 			for(String s : ids) {
-				yDeliverDocPOs.add(getYDeliverDocPO(s,true));	
+				yDeliverDocPOs.add(getYDeliverDocPO(s,false));	
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -697,7 +697,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 				ids.add(SQL.rs.getString("ID"));
 			}
 			for(String s : ids) {
-				yArrivalDocPOs.add(getYArrivalDocPO(s,true));	
+				yArrivalDocPOs.add(getYArrivalDocPO(s,false));	
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -718,7 +718,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 				ids.add(SQL.rs.getString("ID"));
 			}
 			for(String s : ids) {
-				zArrivalDocPOs.add(getZArrivalDocPO(s,true));	
+				zArrivalDocPOs.add(getZArrivalDocPO(s,false));	
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -739,7 +739,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 				ids.add(SQL.rs.getString("ID"));
 			}
 			for(String s : ids) {
-				transferDocPOs.add(getTransferDocPO(s,true));	
+				transferDocPOs.add(getTransferDocPO(s,false));	
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -760,7 +760,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 				ids.add(SQL.rs.getString("ID"));
 			}
 			for(String s : ids) {
-				yLoadDocPOs.add(getYLoadDocPO(s,true));	
+				yLoadDocPOs.add(getYLoadDocPO(s,false));	
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -781,7 +781,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 				ids.add(SQL.rs.getString("ID"));
 			}
 			for(String s : ids) {
-				zLoadDocPOs.add(getZLoadDocPO(s,true));	
+				zLoadDocPOs.add(getZLoadDocPO(s,false));	
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -802,7 +802,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 				ids.add(SQL.rs.getString("ID"));
 			}
 			for(String s : ids) {
-				overDocPOs.add(getOverDocPO(s,true));	
+				overDocPOs.add(getOverDocPO(s,false));	
 			}
 		} catch (Exception e) {
 			// TODO: handle exception

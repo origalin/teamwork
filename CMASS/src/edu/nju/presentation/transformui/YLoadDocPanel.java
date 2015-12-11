@@ -35,7 +35,6 @@ public class YLoadDocPanel extends JPanel{
 	private JTextField carIDField;
 	private JTextField watcherField;
 	private JTextField itemIDField;
-	private JTable table;
 	protected DefaultTableModel tableModel;
 	String carID,watcher,institutionID,staffID;
 	String driver;
@@ -45,6 +44,7 @@ public class YLoadDocPanel extends JPanel{
 	private JComboBox<String> driverBox;
 	String[][] driverNameAndIDs;
 	String[] drivers;
+	private JTable table;
 
 	public YLoadDocPanel(String staffID) {
 		this.staffID = staffID;
@@ -129,6 +129,16 @@ public class YLoadDocPanel extends JPanel{
 		gbl_panel_1.rowWeights = new double[]{1.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel_1.setLayout(gbl_panel_1);
 		
+		table = new JTable();
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"\u5FEB\u4EF6\u5355\u53F7"
+			}
+		));
+		tableModel = (DefaultTableModel) table.getModel();
+		
 		JButton addButton = new JButton("\u6DFB\u52A0");
 		addButton.addActionListener(new ActionListener() {
 			
@@ -136,6 +146,7 @@ public class YLoadDocPanel extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
 				tableModel.addRow(new Object[] {itemIDField.getText()});
+				itemIDField.setText("");
 			}
 		});
 		
@@ -149,28 +160,9 @@ public class YLoadDocPanel extends JPanel{
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		
-		JPanel panel_13 = new JPanel();
-		scrollPane.setColumnHeaderView(panel_13);
 		
-		JLabel label_1 = new JLabel("\u8FD0\u5355\u53F7");
-		panel_13.add(label_1);
-		
-		JPanel panel_14 = new JPanel();
-		scrollPane.setViewportView(panel_14);
-		panel_14.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		
-		table = new JTable();
 		table.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-				"\u8FD0\u5355\u53F7"
-			}
-		));
-		DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
-		table.getColumnModel().getColumn(0).setPreferredWidth(130);
-		panel_14.add(table);
+		scrollPane.setViewportView(table);
 		
 		itemIDField = new JTextField();
 		itemIDField.setColumns(30);

@@ -52,9 +52,9 @@ public class TransferDocPanel_Train extends JPanel{
 			warning("net");
 		}
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{418, 168, 0};
+		gridBagLayout.columnWidths = new int[]{259, 168, 0};
 		gridBagLayout.rowHeights = new int[]{248, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.columnWeights = new double[]{1.0, 1.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{1.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		

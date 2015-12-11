@@ -122,22 +122,6 @@ public class ZArrivalDocPanel extends JPanel {
 		panel_2.add(transferDocIDField);
 		transferDocIDField.setColumns(20);
 
-		JButton confirmButton = new JButton("\u786E\u8BA4");
-		confirmButton.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				intializeWithFromDoc();
-			}
-		});
-		GridBagConstraints gbc_confirmButton = new GridBagConstraints();
-		gbc_confirmButton.anchor = GridBagConstraints.EAST;
-		gbc_confirmButton.insets = new Insets(0, 0, 5, 0);
-		gbc_confirmButton.gridx = 0;
-		gbc_confirmButton.gridy = 3;
-		panel_11.add(confirmButton, gbc_confirmButton);
-
 		JPanel panel_8 = new JPanel();
 		GridBagConstraints gbc_panel_8 = new GridBagConstraints();
 		gbc_panel_8.fill = GridBagConstraints.BOTH;
