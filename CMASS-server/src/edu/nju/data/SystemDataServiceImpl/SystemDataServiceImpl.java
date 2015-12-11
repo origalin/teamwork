@@ -44,7 +44,7 @@ public class SystemDataServiceImpl extends UnicastRemoteObject implements System
 	public void saveOperationLog(OperationPO po) throws RemoteException{
 		// TODO Auto-generated method stub
 		DateFormat df=DateFormat.getDateTimeInstance();
-		String sql = "INSERT INTO OPERATION VALUES('"+df.format(po.getDate())+"','"+po.getStaffID()+"','"+po.getStaffName()+"','"+po.getDescribration()+"');";
+		String sql = "INSERT INTO OPERATION (操作时间,工号,操作人,操作描述) VALUES('"+df.format(po.getDate())+"','"+po.getStaffID()+"','"+po.getStaffName()+"','"+po.getDescribration()+"');";
 		SQL.databaseUpdate(sql);
 		SQL.closeDatabase();
 	}

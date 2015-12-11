@@ -121,7 +121,7 @@ public class ZLoadDocPanel extends JPanel{
 		}
 		drivers = new String[driverNameAndIDs.length];
 		for(int i = 0;i<driverNameAndIDs.length;i++) {
-			drivers[i] = driverNameAndIDs[i][0];
+			drivers[i] = driverNameAndIDs[i][1];
 		}
 		driverBox = new JComboBox<String>();
 		driverBox.setModel(new DefaultComboBoxModel<String>(drivers));
@@ -250,7 +250,7 @@ public class ZLoadDocPanel extends JPanel{
 		carID = carIDField.getText();
 		watcher = watcherField.getText();
 		target = (String) targetBox.getSelectedItem();
-		driver = driverNameAndIDs[driverBox.getSelectedIndex()][1];
+		driver = driverNameAndIDs[driverBox.getSelectedIndex()][0];
 		if(tableModel.getRowCount()>0) {
 			itemIDs = new String[tableModel.getRowCount()];
 			for(int i = 0;i<tableModel.getRowCount();i++) {

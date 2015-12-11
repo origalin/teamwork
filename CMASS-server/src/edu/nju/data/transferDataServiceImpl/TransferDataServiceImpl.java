@@ -343,7 +343,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 	@Override
 	public void changeYDeliverSequence(String YDeliverSequence) {
 		// TODO Auto-generated method stub
-		String str = "update SequenceTable set Sequence = '"+YDeliverSequence+"' where Kind = 'TDeliverDoc'";
+		String str = "update SequenceTable set Sequence = '"+YDeliverSequence+"' where Kind = 'yDeliverDoc'";
 		SQL.databaseUpdate(str);
 		SQL.closeDatabase();
 	}

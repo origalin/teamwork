@@ -91,7 +91,12 @@ public class ZLoadDoc implements ZLoadDocService{
 	@Override
 	public String[] getSubBusinessHall() throws RemoteException {
 		// TODO Auto-generated method stub
-		return StringTools.toGroup(institution.getSubInstitutionID(institutionID));
+		String[] subID =  StringTools.toGroup(institution.getSubInstitutionID(institutionID));
+		String[] subName = new String[subID.length];
+		for(int i = 0;i< subID.length;i++) {
+			subName[i]=institution.getName(subID[i]);
+		}
+		return subName;
 	}
 
 	@Override
@@ -112,7 +117,7 @@ public class ZLoadDoc implements ZLoadDocService{
 		for(String[][] s : subDrivers) {
 			for(int i = 0;i<s.length;i++) {
 				allDrivers[j+i][0] = s[i][0];
-				allDrivers[j+i][0] = s[i][1];
+				allDrivers[j+i][1] = s[i][1];
 			}
 			j+=s.length;
 		}

@@ -43,7 +43,6 @@ public class YDeliverDoc implements YDeliverDocService{
 	public void confirmSave() throws RemoteException {
 		for(YDeliverDocPO po : pos) {
 			saveYDeliverDocPO(po);
-			changeYDeliverDocSequence();
 			for(int i = 0;i< po.getItemIDs().length;i++) {
 				logisticsquerybl.changePosition(po.getItemIDs()[i], "派件中，快递员为"+institution.getStaffName(po.getCourier()));
 			}
@@ -83,13 +82,13 @@ public class YDeliverDoc implements YDeliverDocService{
 		for(int i = 0;i<couriers.size();i++) {
 			ArrayList<String> item = new ArrayList<String>();
 			for(int j = 0;j<IDAndCourier.length;j++) {
-				if(IDAndCourier[i][1].equals(couriers.get(i))) {
-					item.add(IDAndCourier[i][0]);
+				if(IDAndCourier[j][1].equals(couriers.get(i))) {
+					item.add(IDAndCourier[j][0]);
 				}
 			}
 			String[] itemIDs = StringTools.toGroup(item);
-			pos.add(new YDeliverDocPO("10"+getYDeliverSequence(), new Date(), staffID, itemIDs));
-			return null;
+			pos.add(new YDeliverDocPO("10"+getYDeliverSequence(), new Date(), couriers.get(i), itemIDs));
+			changeYDeliverDocSequence();
 		}
 		return null;
 	}

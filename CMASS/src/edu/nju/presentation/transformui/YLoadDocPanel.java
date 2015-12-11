@@ -207,7 +207,7 @@ public class YLoadDocPanel extends JPanel{
 	private void createYLoadDoc() {
 		if(creatable()) {
 			try {
-				vo = yLoadDoc.createYLoadDocVO(carID,"…œº∂", watcher, driver,itemIDs);
+				vo = yLoadDoc.createYLoadDocVO(carID, watcher, driver,itemIDs);
 				CheckDialog cDialog = new CheckDialog();
 				cDialog.setPreviewMode(new checkYLoadDoc(vo));
 				cDialog.getConfirmButton().addActionListener(new ActionListener() {

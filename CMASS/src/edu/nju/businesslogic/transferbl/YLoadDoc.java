@@ -73,10 +73,10 @@ public class YLoadDoc implements YLoadDocService{
 	}
 
 	@Override
-	public YLoadDocVO createYLoadDocVO(String carID, String target,
+	public YLoadDocVO createYLoadDocVO(String carID, 
 			String watcher,String driver, String[] itemIDs) throws RemoteException {
 		// TODO 自动生成的方法存根
-		po = new YLoadDocPO("00"+getYloadSequence(), new Date(), getTranceID(), target, carID, watcher, driver,institutionID, itemIDs, priceCalc(target));
+		po = new YLoadDocPO("00"+getYloadSequence(), new Date(), getTranceID(), institution.getTransferCenterID(institutionID), carID, watcher, driver,institutionID, itemIDs, priceCalc());
 		return new YLoadDocVO(po);
 	}
 
@@ -136,7 +136,7 @@ public class YLoadDoc implements YLoadDocService{
 		String next = SequenceCalc.calcNextSequence6(getTranceID());
 		transferDataService.changeTransferID(next);
 	}
-	private double priceCalc(String target) {
+	private double priceCalc() {
 		return 600;
 	}
 	public ArrayList<YLoadDocPO> getUnPaidYLoadDocPOs() throws RemoteException {
