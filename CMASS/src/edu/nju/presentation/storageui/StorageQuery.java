@@ -222,6 +222,7 @@ public class StorageQuery extends JPanel {
 			}
 		});
 		GridBagConstraints gbc_button = new GridBagConstraints();
+		gbc_button.anchor = GridBagConstraints.EAST;
 		gbc_button.insets = new Insets(0, 0, 0, 5);
 		gbc_button.gridx = 11;
 		gbc_button.gridy = 0;
@@ -229,6 +230,7 @@ public class StorageQuery extends JPanel {
 
 		JButton btnNewButton = new JButton("\u5BFC\u51FA");
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
+		gbc_btnNewButton.anchor = GridBagConstraints.EAST;
 		gbc_btnNewButton.insets = new Insets(0, 0, 0, 5);
 		gbc_btnNewButton.gridx = 12;
 		gbc_btnNewButton.gridy = 0;
