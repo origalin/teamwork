@@ -25,6 +25,7 @@ import javax.swing.UIManager;
 import java.awt.Color;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
@@ -143,6 +144,7 @@ public class StorageQuery extends JPanel {
 		scrollPane_2.setViewportView(table_2);
 
 		JPanel panel_3 = new JPanel();
+		
 		GridBagConstraints gbc_panel_3 = new GridBagConstraints();
 		gbc_panel_3.fill = GridBagConstraints.BOTH;
 		gbc_panel_3.gridx = 0;
@@ -156,8 +158,8 @@ public class StorageQuery extends JPanel {
 		gbl_panel_3.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
 		panel_3.setLayout(gbl_panel_3);
 
-		JButton button = new JButton("\u67E5\u8BE2");
-		button.addActionListener(new ActionListener() {
+		JButton query = new JButton("\u67E5\u8BE2");
+		query.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				StorageQueryService storageQueryService = UiFactory.getStorageQueryService();
 				ArrayList<RecordPO> list = new ArrayList<RecordPO>();
@@ -221,20 +223,38 @@ public class StorageQuery extends JPanel {
 				scrollPane_2.setViewportView(table);
 			}
 		});
-		GridBagConstraints gbc_button = new GridBagConstraints();
-		gbc_button.anchor = GridBagConstraints.EAST;
-		gbc_button.insets = new Insets(0, 0, 0, 5);
-		gbc_button.gridx = 11;
-		gbc_button.gridy = 0;
-		panel_3.add(button, gbc_button);
+		GridBagConstraints gbc_query = new GridBagConstraints();
+		gbc_query.anchor = GridBagConstraints.EAST;
+		gbc_query.insets = new Insets(0, 0, 0, 5);
+		gbc_query.gridx = 11;
+		gbc_query.gridy = 0;
+		gbc_query.weightx = 0;
+		panel_3.add(query, gbc_query);
+		gbl_panel_3.setConstraints(query, gbc_query);
+		
+		JLabel label =new JLabel();
+//		label.setOpaque(true);
+//		label.setBackground(Color.BLACK);
+		
+		
+		gbc_query.anchor = GridBagConstraints.EAST;
+		gbc_query.insets = new Insets(0, 0, 0, 5);
+		gbc_query.gridx = 10;
+		gbc_query.gridy = 0;
+		gbc_query.weightx = 1;
+		panel_3.add(label, gbc_query);
+		gbl_panel_3.setConstraints(label, gbc_query);
 
-		JButton btnNewButton = new JButton("\u5BFC\u51FA");
-		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
-		gbc_btnNewButton.anchor = GridBagConstraints.EAST;
-		gbc_btnNewButton.insets = new Insets(0, 0, 0, 5);
-		gbc_btnNewButton.gridx = 12;
-		gbc_btnNewButton.gridy = 0;
-		panel_3.add(btnNewButton, gbc_btnNewButton);
+		JButton export = new JButton("\u5BFC\u51FA");
+		GridBagConstraints gbc_export = new GridBagConstraints();
+		gbc_export.anchor = GridBagConstraints.EAST;
+		gbc_export.insets = new Insets(0, 0, 0, 5);
+		gbc_export.gridx = 12;
+		gbc_export.gridy = 0;
+		gbc_export.weightx = 0;
+		panel_3.add(export, gbc_export);
+		gbl_panel_3.setConstraints(export, gbc_export);
+		//repaint();
 	}
 
 }
