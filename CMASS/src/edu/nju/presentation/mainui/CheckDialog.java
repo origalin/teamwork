@@ -45,7 +45,8 @@ public class CheckDialog extends JDialog{
 		
 		confirmButton = new JButton("\u786E\u8BA4");
 		panel_1.add(confirmButton);
-		
+		setAlwaysOnTop(true);
+		//setModal(true);
 		
 	}
 	public JPanel getDocPanel(){
@@ -58,7 +59,6 @@ public class CheckDialog extends JDialog{
 		setTitle("提示！");
 		getDocPanel().add(new JLabel("请检查输入信息完整性"));
 		setSize(300, 150);
-		setVisible(true);
 		getConfirmButton().addActionListener(new ActionListener() {
 			
 			@Override
@@ -67,12 +67,13 @@ public class CheckDialog extends JDialog{
 				dispose();
 			}
 		});
+		setVisible(true);
+		setVisible(true);
 	}
 	public void setNetMode() {
 		setTitle("提示！");
 		getDocPanel().add(new JLabel("网络连接错误！请检查网络连接并重启本软件"));
 		setSize(300, 150);
-		setVisible(true);
 		getConfirmButton().addActionListener(new ActionListener() {
 			
 			@Override
@@ -81,12 +82,14 @@ public class CheckDialog extends JDialog{
 				dispose();
 			}
 		});
+		setVisible(true);
+		setVisible(true);
 	}
 	public void setCheckMode(JPanel panel) {
 		setTitle("详情");
 		getDocPanel().add(panel);
-		setSize(600,900);
-		setVisible(true);
+		setSize(600,700);
+		
 		getConfirmButton().addActionListener(new ActionListener() {
 			
 			@Override
@@ -95,12 +98,13 @@ public class CheckDialog extends JDialog{
 				dispose();
 			}
 		});
+		setVisible(true);
+		setVisible(true);
 	}
 	public void setPreviewMode(JPanel panel) {
 		setTitle("预览");
 		getDocPanel().add(panel);
-		setSize(600,900);
-		setVisible(true);
+		setSize(600,700);
 		JButton cancelButton = new JButton("\u53D6\u6D88");
 		cancelButton.addActionListener(new ActionListener() {
 			
@@ -119,5 +123,7 @@ public class CheckDialog extends JDialog{
 				dispose();
 			}
 		});
+		setVisible(true);
+		setModal(true);
 	}
 }
