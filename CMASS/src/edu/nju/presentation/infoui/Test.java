@@ -13,7 +13,7 @@ public static void main(String[] args) throws RemoteException, ParseException {
 
 
 
-//frame.add(new CarPanel("南京市鼓楼营业厅"));
+
 //frame.add(new OperationPanel());
 //frame.add(new DistancePanel());
 
@@ -26,6 +26,7 @@ public static void main(String[] args) throws RemoteException, ParseException {
 	
 	JFrame frame = new JFrame();
 frame.add(new InstitutionPanel());
+//frame.add(new CarPanel("南京市鼓楼营业厅"));
 frame.setVisible(true);
 }
 }

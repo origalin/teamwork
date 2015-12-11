@@ -43,13 +43,13 @@ public class GuidePanel_BusinessHall extends JPanel{
 		yLoadDocPanel = new YLoadDocPanel(staffID);
 		
 			try {
-				carPanel=new CarPanel(institutionLogicService.getInstitutionID(staffID));
+				carPanel=new CarPanel(institutionLogicService.getInstitutionName(staffID));
 			} catch (RemoteException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 			try {
-				driverPanel=new DriverPanel(institutionLogicService.getInstitutionID(staffID));
+				driverPanel=new DriverPanel(institutionLogicService.getInstitutionName(staffID));
 			} catch (RemoteException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
