@@ -23,8 +23,9 @@ public static void main(String[] args) throws RemoteException, ParseException {
 //frame.add(new SalaryPanel());
 	
 	
-//	JFrame frame = new JFrame();
-//frame.add(new InstitutionPanel());
-//frame.setVisible(true);
+	
+	JFrame frame = new JFrame();
+frame.add(new InstitutionPanel());
+frame.setVisible(true);
 }
 }

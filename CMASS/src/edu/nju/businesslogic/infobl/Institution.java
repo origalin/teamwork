@@ -93,6 +93,7 @@ public Institution() {
 		ArrayList<String> courierList=new ArrayList<String>();
 		ArrayList<StaffPO>staffPOs=institutionDataService.getStaffList(institutionID);
 		for(StaffPO po:staffPOs){
+			if(po.getPost().equals(Post.¿ìµÝÔ±))
 			courierList.add(po.getStaffID());
 		}
 		return courierList;
@@ -112,7 +113,7 @@ public Institution() {
 		ArrayList<InstitutionPO>institutionPOs=new ArrayList<InstitutionPO>();
 		institutionPOs=institutionDataService.findInstitution();
 		for(InstitutionPO po:institutionPOs){
-			if(po.getParentInstitution().equals(institutionID)){
+			if(po.getParentInstitution().equals(institutionID)&&(po.getId().toString().length()==7)){
 				subInstitutionList.add(po.getId());
 			}
 		}
