@@ -26,8 +26,10 @@ import edu.nju.tools.Time;
 public class StorageDataServiceImpl extends UnicastRemoteObject implements StorageDataService {
 
 	public StorageDataServiceImpl() throws RemoteException {
-		// TODO Auto-generated constructor stub
+		
 	}
+	
+	
 
 	@Override
 	public void update(ArrayList<RecordPO> recordPO) throws RemoteException {
@@ -193,9 +195,9 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 
 	}
 
-//	public static void main(String[] args) throws RemoteException {
-//		StorageDataServiceImpl serviceImpl = new StorageDataServiceImpl();
-//		
+	public static void main(String[] args) throws RemoteException {
+		StorageDataServiceImpl serviceImpl = new StorageDataServiceImpl();
+		serviceImpl.exportToExcel("001000");
 //		RecordPO recordPO=new RecordPO("0025033965", new Date(), "南京市", "航运区", "000005", "001000");
 //		serviceImpl.addNewStorageItem(recordPO);
 		
@@ -221,7 +223,7 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 //		OutWareHouseDocPO outWareHouseDocPO=new OutWareHouseDocPO("09000010", new Date(), "航运", "001000", outRecords);
 //		serviceImpl.saveOutWareHouseDoc(outWareHouseDocPO);
 //
-//	}
+	}
 
 	/**
 	 * 这个方法用来保存入库单文件，但此时并未对仓库进行事实上的变动
@@ -634,4 +636,15 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 		
 	
 
-}}
+}
+
+	@Override
+	public void exportToExcel(String storageID) throws RemoteException {
+		String sql="grant file on *.* to root@114.212.42.72;";
+
+		SQL.databaseQuery(sql);
+		sql="select * from 仓库存储货物  into outfile  'D:/1212.xls'";
+		SQL.databaseQuery(sql);
+		SQL.closeDatabase();
+		
+	}}
