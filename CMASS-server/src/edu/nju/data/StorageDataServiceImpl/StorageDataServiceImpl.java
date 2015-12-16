@@ -197,7 +197,7 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 
 	public static void main(String[] args) throws RemoteException {
 		StorageDataServiceImpl serviceImpl = new StorageDataServiceImpl();
-		System.out.println(serviceImpl.getInWarehouseDoc());
+		System.out.println(serviceImpl.getOutWareHouseDoc_unchecked());
 //		serviceImpl.exportToExcel("001000");
 //		RecordPO recordPO=new RecordPO("0025033965", new Date(), "南京市", "航运区", "000005", "001000");
 //		serviceImpl.addNewStorageItem(recordPO);
@@ -557,7 +557,7 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 	@Override
 	public ArrayList<OutWareHouseDocPO> getOutWareHouseDoc_unchecked() throws RemoteException {
 		ArrayList<OutWareHouseDocPO> list = new ArrayList<OutWareHouseDocPO>();
-		String sql = "SELECT ID,出库日期,装运形式,仓库ID,快递编号,目的地 FROM 出库单,出库items WHERE 已审批='0'&&出库单.ID=出库items.出库单ID ORDER BY 出库单.ID;";
+		String sql = "SELECT ID,出库日期,装运形式,仓库ID,快递编号,目的地 FROM 出库单,出库单items WHERE 已审批='0'&&出库单.ID=出库单items.出库单ID ORDER BY 出库单.ID;";
 		SQL.databaseQuery(sql);
 		OutWareHouseDocPO element = null;
 		String curroutWareHouseDoc_ID = "";
