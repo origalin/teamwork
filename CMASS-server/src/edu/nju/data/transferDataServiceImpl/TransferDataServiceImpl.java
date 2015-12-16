@@ -568,6 +568,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 				ID = SQL.rs.getString("id");
 				date = SQL.rs.getDate("date");
 				TransferDocID = SQL.rs.getString("fromid");
+				from = SQL.rs.getString("from");
 				String[] strings = SQL.rs.getString("itemandstate").split(" ");
 				itemAndState = new String[strings.length/2][2];
 				for(int i = 0;i<strings.length;i++) {
