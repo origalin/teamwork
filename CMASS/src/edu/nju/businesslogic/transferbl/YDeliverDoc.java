@@ -37,8 +37,9 @@ public class YDeliverDoc implements YDeliverDocService{
 		systemBl = new SystemBl();
 	}
 
-	public YDeliverDoc() {
+	public YDeliverDoc() throws RemoteException {
 		// TODO Auto-generated constructor stub
+		this(null);
 	}
 	public void confirmSave() throws RemoteException {
 		for(YDeliverDocPO po : pos) {

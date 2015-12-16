@@ -45,8 +45,9 @@ public class ZArrivalDoc implements ZArrivalDocService{
 	}
 	
 
-	public ZArrivalDoc() {
+	public ZArrivalDoc() throws RemoteException {
 		// TODO Auto-generated constructor stub
+		this(null);
 	}
 	public void confirmSave() throws RemoteException {
 		saveZArrivalDocPO(po);

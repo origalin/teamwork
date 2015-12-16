@@ -42,8 +42,9 @@ public class OverDoc implements OverDocService{
 		systemBl = new SystemBl();
 	}
 
-	public OverDoc() {
+	public OverDoc() throws RemoteException {
 		// TODO Auto-generated constructor stub
+		this(null);
 	}
 
 	@Override
