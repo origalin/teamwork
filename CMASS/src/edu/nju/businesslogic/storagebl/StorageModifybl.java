@@ -17,7 +17,7 @@ import edu.nju.po.WareHousePO;
 public class StorageModifybl implements StorageModifyService
 {
 
-	public void storageModify(String district,String storageID,String currPersonID) throws RemoteException{
+	public void storageModify(String district,String currPersonID,String storageID) throws RemoteException{
 		
 		
 		InstitutionLogicService institutionLogicService=new Institution();
