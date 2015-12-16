@@ -21,13 +21,12 @@ public String getStorageID() {
 		this.storageID = storageID;
 	}
 
-public String toString(){
-	String reString=ID;
-	for(InWareHouseDocLineItem temp:list)
-		reString+=temp.toString();
-	return reString;
-}
+
 	
+	@Override
+	public String toString() {
+		return "InWareHouseDocPO [ID=" + ID + ", storageID=" + storageID + ", list=" + list + "]";
+	}
 	public InWareHouseDocPO(String iD, String storageID, ArrayList<InWareHouseDocLineItem> list) {
 	super();
 	ID = iD;

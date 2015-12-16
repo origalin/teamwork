@@ -197,7 +197,8 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 
 	public static void main(String[] args) throws RemoteException {
 		StorageDataServiceImpl serviceImpl = new StorageDataServiceImpl();
-		serviceImpl.exportToExcel("001000");
+		System.out.println(serviceImpl.getInWarehouseDoc());
+//		serviceImpl.exportToExcel("001000");
 //		RecordPO recordPO=new RecordPO("0025033965", new Date(), "南京市", "航运区", "000005", "001000");
 //		serviceImpl.addNewStorageItem(recordPO);
 		
@@ -366,13 +367,13 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 		ArrayList<String> district = new ArrayList<String>();
 		try {
 			while (SQL.rs.next()) {
-				iDs.add(SQL.rs.getString(0));
-				dates.add(SQL.rs.getDate(1));
-				storageIDs.add(SQL.rs.getString(2));
-				SendDocID.add(SQL.rs.getString(3));
-				destination.add(SQL.rs.getString(4));
-				location.add(SQL.rs.getString(5));
-				district.add(SQL.rs.getString(6));
+				iDs.add(SQL.rs.getString("ID"));
+				dates.add(SQL.rs.getDate("入库日期"));
+				storageIDs.add(SQL.rs.getString("仓库ID"));
+				SendDocID.add(SQL.rs.getString("快递编号"));
+				destination.add(SQL.rs.getString("目的地"));
+				location.add(SQL.rs.getString("位置"));
+				district.add(SQL.rs.getString("区"));
 			}
 		} catch (SQLException e) {
 			System.out.println("未审批入库单读取错误");
@@ -394,6 +395,8 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 			element.listAppend(lineItem);
 
 		}
+		
+		list.add(element);
 		return list;
 	}
 
@@ -598,6 +601,7 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 			element.listAppend(lineItem);
 
 		}
+		list.add(element);
 		return list;
 	}
 	@Override
