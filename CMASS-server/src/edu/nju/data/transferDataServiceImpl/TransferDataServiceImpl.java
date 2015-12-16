@@ -794,7 +794,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 	public ArrayList<OverDocPO> getAllOverDoc() {
 		// TODO Auto-generated method stub
 		ArrayList<OverDocPO> overDocPOs = new ArrayList<OverDocPO>();
-		String sql = "select ID from YLoadDoc where checked='0';";
+		String sql = "select ID from OverDoc where checked='0';";
 		SQL.databaseQuery(sql);
 		ArrayList<String> ids =new ArrayList<>();
 		try {
