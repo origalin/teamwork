@@ -44,8 +44,9 @@ public class YArrivalDoc implements YArrivalDocService {
 		systemBl = new SystemBl();
 	}
 
-	public YArrivalDoc() {
+	public YArrivalDoc() throws RemoteException {
 		// TODO Auto-generated constructor stub
+		this(null);
 	}
 
 	public void confirmSave() throws RemoteException {

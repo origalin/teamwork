@@ -164,6 +164,7 @@ public class checkMainUI extends JPanel{
 				case"营业厅到达单":
 					try {
 						uncheckedYArrivalDocList=bl.getunchekedYArrivalDocList();
+						System.out.println(uncheckedYArrivalDocList.size());
 					} catch (RemoteException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();

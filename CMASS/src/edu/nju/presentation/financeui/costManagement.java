@@ -52,6 +52,7 @@ public class costManagement extends JPanel{
 	private JTextField PayDocID;
 	private JTextField back;
 	private JTextField currentWorker;
+	private GridBagConstraints gbc_panel ;
 	public costManagement(String staffID) {
 		this.staffID=staffID;
 		try {
@@ -60,6 +61,12 @@ public class costManagement extends JPanel{
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+		gbc_panel = new GridBagConstraints();
+		gbc_panel.insets = new Insets(0, 0, 0, 5);
+		gbc_panel.fill = GridBagConstraints.BOTH;
+		gbc_panel.gridx = 4;
+		gbc_panel.gridy = 4;
+		
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 13, 68, 389, 0, 0, 0, 73, 44, 0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0};
@@ -74,6 +81,7 @@ public class costManagement extends JPanel{
 		gbc_label_3.gridy = 0;
 		add(label_3, gbc_label_3);
 		
+		
 		JButton button = new JButton("\u83B7\u53D6\u5217\u8868");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -84,6 +92,9 @@ public class costManagement extends JPanel{
 					String type=(String) comboBox.getSelectedItem();
 					switch(type){
 					case "租金":
+						if(panel!=null){
+							remove(panel);
+						}
 						panel=new rentMoneyPanel();
 						addPanel(panel);
 						institutionList=bl.getUnpaidInstitutionList();
@@ -94,6 +105,9 @@ public class costManagement extends JPanel{
 						updateUI();
 						break;
 					case"运费":
+						if(panel!=null){
+							remove(panel);
+						}
 						panel=new freightMoneyPanel();
 						addPanel(panel);
 						transferDoc=bl.getUnpaidCarTransferList();
@@ -103,10 +117,12 @@ public class costManagement extends JPanel{
 						updateUI();
 						break;
 					case "工资":
+						if(panel!=null){
+							remove(panel);
+						}
 						panel=new salaryPanel();
 						addPanel(panel);
 						staffList=bl.getUnpaidStaffList();
-						System.out.println(staffList.size());
 						((salaryPanel)panel).initializeTable(staffList);
 						updateUI();
 						break;
@@ -369,11 +385,13 @@ public class costManagement extends JPanel{
 		*/
 	}
 	public void addPanel(JPanel panel){
+		/*
 		GridBagConstraints gbc_panel = new GridBagConstraints();
 		gbc_panel.insets = new Insets(0, 0, 0, 5);
 		gbc_panel.fill = GridBagConstraints.BOTH;
 		gbc_panel.gridx = 4;
 		gbc_panel.gridy = 4;
+		*/
 		thisPanel.add(panel, gbc_panel);
 	}
 	

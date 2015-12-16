@@ -76,6 +76,8 @@ public class approvebl implements ApproveLogicService{
 		fnc=new financebl();
 		ZLoad=new ZLoadDoc();
 		YLoad=new YLoadDoc();
+		transfer=new TransferDoc();
+		ZArrival=new ZArrivalDoc();
 	}
 	@Override
 	public ArrayList<SendDocPO> getuncheckedSendDocList() throws RemoteException {
