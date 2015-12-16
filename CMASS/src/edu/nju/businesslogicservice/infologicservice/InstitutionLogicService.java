@@ -22,7 +22,7 @@ public interface InstitutionLogicService {
 	public void saveStaff(StaffPO po)throws RemoteException;//保存员工信息
 	public void saveInstitution (InstitutionPO po)throws RemoteException;//保存机构信息
 	
-	public void deleteInstitution(InstitutionPO po)throws RemoteException;
+	public void deleteInstitution(String Institution)throws RemoteException;
 	public void deleteStaff(StaffPO po)throws RemoteException;
 	
 	//collection依赖我

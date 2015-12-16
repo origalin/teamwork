@@ -76,8 +76,8 @@ public Institution() {
 	}
 
 	@Override
-	public void deleteInstitution(InstitutionPO po) throws RemoteException {
-		institutionDataService.deleteInstitution(po);
+	public void deleteInstitution(String institutionName) throws RemoteException {
+		institutionDataService.deleteInstitution(institutionDataService.getInstitution(getID(institutionName)));
 		
 	}
 

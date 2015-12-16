@@ -9,7 +9,7 @@ import edu.nju.presentation.systemui.AccountPanel;
 import edu.nju.presentation.systemui.OperationPanel;
 
 public class Test {
-public static void main(String[] args) throws RemoteException, ParseException {
+//public static void main(String[] args) throws RemoteException, ParseException {
 
 
 
@@ -24,9 +24,9 @@ public static void main(String[] args) throws RemoteException, ParseException {
 	
 	
 	
-	JFrame frame = new JFrame();
-frame.add(new InstitutionPanel());
+//	JFrame frame = new JFrame();
+//frame.add(new InstitutionPanel());
 //frame.add(new CarPanel("南京市鼓楼营业厅"));
-frame.setVisible(true);
-}
+//frame.setVisible(true);
+//}
 }

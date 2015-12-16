@@ -35,6 +35,11 @@ public class GuidePanel_Manager extends JPanel{
 		checkMainUI=new checkMainUI(staffID);
 		collertionPanel = new CollertionPanel(staffID);
 		sendPanel = new SendPanel(staffID);
+		institutionPanel=new InstitutionPanel();
+		salaryPanel=new SalaryPanel();
+		distancePanel=new DistancePanel();
+		
+		
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0};
 		gridBagLayout.rowHeights = new int[]{66, 64, 66, 86, 0};
@@ -81,6 +86,14 @@ public class GuidePanel_Manager extends JPanel{
 		gbc_checkButton.gridx = 0;
 		gbc_checkButton.gridy = 2;
 		add(distanceButton, gbc_checkButton);
+		
+		distanceButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				distanceFunc();
+			}
+		});
 		
 		JButton checkButton = new JButton("\u5BA1\u6279\u5355\u636E");
 		checkButton.addActionListener(new ActionListener() {

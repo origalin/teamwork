@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 
 import java.awt.GridBagLayout;
 
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollBar;
 import javax.swing.JMenuBar;
@@ -19,6 +20,9 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.Rectangle;
 
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
+import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreeModel;
@@ -98,6 +102,38 @@ public class InstitutionPanel extends JPanel {
 			e2.printStackTrace();
 		}
 		
+		//tree的监听
+		DefaultTreeCellRenderer render=new DefaultTreeCellRenderer();
+		tree.setCellRenderer(render);
+		tree.addTreeSelectionListener(new TreeSelectionListener() {
+			ArrayList<StaffVO> staffVOs=new ArrayList<StaffVO>();
+			@Override
+			public void valueChanged(TreeSelectionEvent arg0) {
+				
+				model=(DefaultTableModel)table.getModel();
+				int row=model.getRowCount();
+				for(int i=0;i<row;i++){
+					System.out.println(model.getRowCount());
+						model.removeRow(0);
+				}
+				
+				  DefaultMutableTreeNode note = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
+		
+				try {
+				 staffVOs=institutionLogicService.getStaffVOList(note.toString());
+				} catch (RemoteException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				model = (DefaultTableModel) table.getModel();
+				for (StaffVO vo:staffVOs) {
+					model.addRow(new Object[] { vo.getStaffID(),vo.getName(),vo.getSex(),vo.getIdenity(),vo.getTel(),String.valueOf(vo.getPost())});
+				}
+				updateUI();
+				
+			}
+		});
+		
 		tree.setModel(new DefaultTreeModel(
 			new DefaultMutableTreeNode("总部") {
 				{
@@ -111,6 +147,9 @@ public class InstitutionPanel extends JPanel {
 					for(InstitutionVO vo:institutionList){
 						if(vo.getParentInstitution().equals("0")){
 							node_2=new DefaultMutableTreeNode(vo.getName());
+							
+						
+							
 							node_2.add(node_3);
 							node_2.add(node_4);
 							for(InstitutionVO vo1:institutionList){
@@ -126,6 +165,11 @@ public class InstitutionPanel extends JPanel {
 					add(node_1);
 				}}
 		));
+		
+		
+		
+		
+		
 		scrollPane_1.setViewportView(tree);
 		
 		JPanel panel_1 = new JPanel();
@@ -152,7 +196,13 @@ public class InstitutionPanel extends JPanel {
 		
 		
 		//增加机构
-		
+		btnNewButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				InstitutionAdd addInstitution=new InstitutionAdd();
+			}
+		});
 		
 		
 		JButton button = new JButton("\u5220\u9664\u673A\u6784");
@@ -163,6 +213,40 @@ public class InstitutionPanel extends JPanel {
 		gbc_button.gridy = 0;
 		panel_1.add(button, gbc_button);
 		
+		//delete
+		button.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+					String str = JOptionPane.showInputDialog(null, "Find:", "Find",
+							JOptionPane.QUESTION_MESSAGE);
+					
+					if (str != null) {
+						findInTree(tree,str);
+					}
+					  DefaultMutableTreeNode note = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
+					int option = JOptionPane.showConfirmDialog(null,
+						       "是否确认删除？", "删除", JOptionPane.YES_NO_OPTION,
+						       JOptionPane.WARNING_MESSAGE, null);
+						     switch (option) {
+						     case JOptionPane.YES_NO_OPTION: {
+						    	 try {
+									institutionLogicService.deleteInstitution(note.toString());
+								} catch (RemoteException e1) {
+									// TODO Auto-generated catch block
+									e1.printStackTrace();
+								}
+						      break;
+						     }
+						     case JOptionPane.NO_OPTION:
+						      System.exit(0);
+
+						     }
+				
+				}
+		});
+		
 		JButton button_1 = new JButton("\u4FEE\u6539\u673A\u6784");
 		GridBagConstraints gbc_button_1 = new GridBagConstraints();
 		gbc_button_1.anchor = GridBagConstraints.NORTH;
@@ -171,6 +255,16 @@ public class InstitutionPanel extends JPanel {
 		gbc_button_1.gridy = 0;
 		panel_1.add(button_1, gbc_button_1);
 		
+		//change
+	
+		button_1.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				InstitutionAdd addInstitution=new InstitutionAdd();
+			}
+		});
+		
 		JButton button_7 = new JButton("\u67E5\u8BE2\u673A\u6784");
 		GridBagConstraints gbc_button_7 = new GridBagConstraints();
 		gbc_button_7.insets = new Insets(0, 0, 5, 5);
@@ -178,6 +272,20 @@ public class InstitutionPanel extends JPanel {
 		gbc_button_7.gridy = 0;
 		panel_1.add(button_7, gbc_button_7);
 		
+		button_7.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				String str = JOptionPane.showInputDialog(null, "Find:", "Find",
+						JOptionPane.QUESTION_MESSAGE);
+				
+				if (str != null) {
+					findInTree(tree,str);
+				}
+			}
+		});
+	
 		JButton button_8 = new JButton("\u4FDD\u5B58");
 		GridBagConstraints gbc_button_8 = new GridBagConstraints();
 		gbc_button_8.anchor = GridBagConstraints.EAST;
@@ -185,6 +293,42 @@ public class InstitutionPanel extends JPanel {
 		gbc_button_8.gridx = 4;
 		gbc_button_8.gridy = 0;
 		panel_1.add(button_8, gbc_button_8);
+		
+		
+		//保存
+		button_8.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				table.setEnabled(false);
+				StaffPO po = null;
+				for (int row = 0; row < table.getRowCount();row++) {
+				
+					
+			
+				
+				
+					try {
+						po = new StaffPO((String) table.getValueAt(row, 0),
+								(String) table.getValueAt(row,1), (String) table
+										.getValueAt(row, 2), (String) table
+										.getValueAt(row, 3), (String) table
+										.getValueAt(row, 4),institutionLogicService.getID(((DefaultMutableTreeNode) tree.getLastSelectedPathComponent()).toString()),Post.valueOf((String)table.getValueAt(row, 5)));
+					} catch (RemoteException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+							try {
+								institutionLogicService.saveStaff(po);
+							} catch (RemoteException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
+				}		
+				
+			}
+		});
 		
 		JButton button_3 = new JButton("\u65B0\u589E\u4EBA\u5458");
 		GridBagConstraints gbc_button_3 = new GridBagConstraints();
@@ -311,7 +455,7 @@ public class InstitutionPanel extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				
+				table.setEnabled(false);
 			}
 		});
 		
