@@ -291,15 +291,15 @@ public class checkMainUI extends JPanel{
 						InWareHouseDocPO InWareHouseDocPO=getDocPOByID(inputID,uncheckedInWareHouseDocList);
 						InWareHouseDocVO InWareHouseDocVO=new InWareHouseDocVO(InWareHouseDocPO);
 						CheckDialog InWareHouseDocDialog=new CheckDialog();
-						//CheckInWareHouseDoc InWareHouseDocui=new CheckInWareHouseDoc(InWareHouseDocVO);
-						//InWareHouseDocDialog.setCheckMode(InWareHouseDocui);
+						CheckInWareHouseDoc InWareHouseDocui=new CheckInWareHouseDoc(InWareHouseDocVO);
+						InWareHouseDocDialog.setCheckMode(InWareHouseDocui);
 						break;
 					case "出库单":
 						OutWareHouseDocPO OutWareHouseDocPO=getDocPOByID(inputID,uncheckedOutWareHouseDocList);
 						OutWareHouseDocVO OutWareHouseDocVO=new OutWareHouseDocVO(OutWareHouseDocPO);
 						CheckDialog OutWareHouseDocDialog=new CheckDialog();
-						//CheckWareHouseDoc OutWareHouseDocui=new CheckWareHouseDoc(OutWareHouseDocVO);
-						//OutWareHouseDocDialog.setCheckMode(OutWareHouseDocui);
+						CheckWareHouseDoc OutWareHouseDocui=new CheckWareHouseDoc(OutWareHouseDocVO);
+						OutWareHouseDocDialog.setCheckMode(OutWareHouseDocui);
 						break;
 						
 					case"中转单":
