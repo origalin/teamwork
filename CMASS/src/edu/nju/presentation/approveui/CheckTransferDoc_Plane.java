@@ -29,7 +29,7 @@ public class CheckTransferDoc_Plane extends JPanel{
 	private JTextField startPlace;
 	private JTextField transferDocID;
 	private JTextField date;
-	private JTextField textField_3;
+	private JTextField money;
 	private JTextField plane_trance;
 	private JTextField container;
 	public CheckTransferDoc_Plane(TransferDoc_PlaneVO vo) {
@@ -50,7 +50,7 @@ public class CheckTransferDoc_Plane extends JPanel{
 		GridBagLayout gbl_panel_11 = new GridBagLayout();
 		gbl_panel_11.columnWidths = new int[]{0, 245, 0, 0, 0};
 		gbl_panel_11.rowHeights = new int[]{42, 0, 42, 42, 42, 0};
-		gbl_panel_11.columnWeights = new double[]{0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_panel_11.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gbl_panel_11.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		panel_11.setLayout(gbl_panel_11);
 				
@@ -230,10 +230,10 @@ public class CheckTransferDoc_Plane extends JPanel{
 		label_5.setFont(new Font("ºÚÌå", Font.BOLD, 15));
 		panel_3.add(label_5);
 		
-		textField_3 = new JTextField();
-		textField_3.setEditable(false);
-		panel_3.add(textField_3);
-		textField_3.setColumns(10);
+		money = new JTextField();
+		money.setEditable(false);
+		panel_3.add(money);
+		money.setColumns(10);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
@@ -281,6 +281,7 @@ public class CheckTransferDoc_Plane extends JPanel{
 		plane_num.setText(vo.getPlaneNum());
 		watcherField.setText(vo.getWatcher());
 		container.setText(vo.getContainer());
+		money.setText(vo.getPrice());
 	}
 	
 }

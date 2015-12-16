@@ -62,7 +62,7 @@ public class approvebl implements ApproveLogicService{
 
 	Collectionbl collectionbl;
 	financebl fnc;
-	StorageTools storageTools;
+	StorageTools storageTools=new StorageTools();
 	TransferDoc transfer;
 	ZLoadDoc ZLoad;
 	OverDoc over=new OverDoc();

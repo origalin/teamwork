@@ -30,6 +30,9 @@ import edu.nju.vo.OverDocVO;
 import edu.nju.vo.PayDocVO;
 import edu.nju.vo.SendDocVO;
 import edu.nju.vo.TransferDocVO;
+import edu.nju.vo.TransferDoc_CarVO;
+import edu.nju.vo.TransferDoc_PlaneVO;
+import edu.nju.vo.TransferDoc_TrainVO;
 import edu.nju.vo.YArrivalDocVO;
 import edu.nju.vo.YDeliverDocVO;
 import edu.nju.vo.YLoadDocVO;
@@ -220,6 +223,7 @@ public class checkMainUI extends JPanel{
 					break;
 				case"入库单":
 					uncheckedInWareHouseDocList=bl.getunchekedInWareHouseDocList();
+					System.out.println(uncheckedInWareHouseDocList.size());
 					showUncheckedDoc(uncheckedInWareHouseDocList);
 					break;
 				case"出库单":
@@ -300,8 +304,27 @@ public class checkMainUI extends JPanel{
 						
 					case"中转单":
 						TransferDocPO TransferDocPO=getDocPOByID(inputID,uncheckedTransferDocList);
-						TransferDocVO TransferDocVO=new TransferDocVO(TransferDocPO);						
-						 
+						String carNum=TransferDocPO.getCarNum();
+						String trainNum=TransferDocPO.getTrainNum();
+						String planeNum=TransferDocPO.getPlaneNum();
+						
+						if(!carNum.equals("1")){
+							TransferDoc_CarVO vo=new TransferDoc_CarVO(TransferDocPO);
+							CheckDialog carDialog=new CheckDialog();
+							CheckTransferDoc_Car carui=new CheckTransferDoc_Car(vo);
+							carDialog.setCheckMode(carui);
+						}else if(!trainNum.equals("1")){
+							TransferDoc_TrainVO vo=new TransferDoc_TrainVO(TransferDocPO);
+							CheckDialog trainDialog=new CheckDialog();
+							CheckTransferDoc_Train trainui=new CheckTransferDoc_Train(vo);
+							trainDialog.setCheckMode(trainui);
+						}else{
+							TransferDoc_PlaneVO vo=new TransferDoc_PlaneVO(TransferDocPO);
+							CheckDialog planeDialog=new CheckDialog();
+							CheckTransferDoc_Plane planeui=new CheckTransferDoc_Plane(vo);
+							planeDialog.setCheckMode(planeui);
+						}
+						 break;
 					case "中转中心装车单":
 						ZLoadDocPO ZLoadDocPO=getDocPOByID(inputID,uncheckedZLoadDocList);
 						ZLoadDocVO ZLoadDocVO=new ZLoadDocVO(ZLoadDocPO);
