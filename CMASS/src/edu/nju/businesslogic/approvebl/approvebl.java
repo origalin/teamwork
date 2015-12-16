@@ -92,13 +92,25 @@ public class approvebl implements ApproveLogicService{
 	@Override
 	public ArrayList<InWareHouseDocPO> getunchekedInWareHouseDocList() {
 		// TODO Auto-generated method stub
-		return storageTools.getInWareHouseDocList();
+		try {
+			return storageTools.getInWareHouseDocList();
+		} catch (RemoteException e) {
+			System.out.println("与张健协作出错");
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	@Override
 	public ArrayList<OutWareHouseDocPO> getunchekedOutWareHouseDocList() {
 		// TODO Auto-generated method stub
-		return storageTools.getOutWareHouseDocList();
+		try {
+			return storageTools.getOutWareHouseDocList();
+		} catch (RemoteException e) {
+			System.out.println("与张健协作出错");
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	@Override
@@ -171,7 +183,12 @@ public class approvebl implements ApproveLogicService{
 			ArrayList<InWareHouseDocPO> InWareHouseDocList) {
 		// TODO Auto-generated method stub
 		for(InWareHouseDocPO po:InWareHouseDocList){
-			storageTools.saveInWareHouseDocPO(po);
+			try {
+				storageTools.saveInWareHouseDocPO(po);
+			} catch (RemoteException e) {
+				System.out.println("与张健协作出错");
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -179,7 +196,12 @@ public class approvebl implements ApproveLogicService{
 	public void setOutWareHouseDocList(
 			ArrayList<OutWareHouseDocPO> OutWareHouseDocList) {
 		for(OutWareHouseDocPO po:OutWareHouseDocList){
-			storageTools.saveOutWareHouseDocPO(po);
+			try {
+				storageTools.saveOutWareHouseDocPO(po);
+			} catch (RemoteException e) {
+				System.out.println("与张健协作出错");
+				e.printStackTrace();
+			}
 		}
 		
 	}

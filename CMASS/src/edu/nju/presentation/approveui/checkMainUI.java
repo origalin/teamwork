@@ -223,7 +223,7 @@ public class checkMainUI extends JPanel{
 					break;
 				case"入库单":
 					uncheckedInWareHouseDocList=bl.getunchekedInWareHouseDocList();
-					System.out.println(uncheckedInWareHouseDocList.size());
+					System.out.println("uncheckedInWareHouseDocList"+uncheckedInWareHouseDocList.size());
 					showUncheckedDoc(uncheckedInWareHouseDocList);
 					break;
 				case"出库单":
