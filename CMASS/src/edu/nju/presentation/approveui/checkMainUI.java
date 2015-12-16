@@ -155,6 +155,7 @@ public class checkMainUI extends JPanel{
 				case "中转中心到达单":
 					try {
 						uncheckedZArrivalDocList=bl.getunchekedZArrivalDocList();
+						System.out.println(uncheckedZArrivalDocList.size());
 					} catch (RemoteException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -164,7 +165,6 @@ public class checkMainUI extends JPanel{
 				case"营业厅到达单":
 					try {
 						uncheckedYArrivalDocList=bl.getunchekedYArrivalDocList();
-						System.out.println(uncheckedYArrivalDocList.size());
 					} catch (RemoteException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -183,6 +183,7 @@ public class checkMainUI extends JPanel{
 				case"营业厅装车单":
 					try {
 						uncheckedYLoadDocList=bl.getunchekedYLoadDocList();
+						System.out.println(uncheckedYLoadDocList.size());
 					} catch (RemoteException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();

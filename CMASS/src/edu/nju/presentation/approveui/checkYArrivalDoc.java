@@ -151,8 +151,7 @@ public class checkYArrivalDoc extends JPanel{
 		table.setFont(new Font("SimSun", Font.PLAIN, 12));
 		scrollPane.setViewportView(table);
 		table.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
+			tableInfo,
 			new String[] {
 				"\u5BC4\u4EF6\u5355\u53F7", "\u72B6\u6001"
 			}
