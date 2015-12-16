@@ -237,6 +237,7 @@ public class SendPanel extends JPanel{
 			for(YDeliverDocVO vo : yDeliverDocVOs) {
 				YDeliverDocPO po = yDeliverDoc.getDeliverDocPOsByID(vo.getID());
 				po.setDealed(true);
+				po.setChecked(true);
 				yDeliverDoc.saveYDeliverDocPO(po);
 			}
 			overDoc.confirmSave();

@@ -163,10 +163,14 @@ public class CollectionDataServiceImpl extends UnicastRemoteObject implements
 		// TODO Auto-generated method stub
 		String sql = "select ID from SendDoc where checked='0';";
 		SQL.databaseQuery(sql);
+		ArrayList<String> iDStrings = new ArrayList<>();
 		ArrayList<SendDocPO> sendDocPOs = new ArrayList<SendDocPO>();
 		try {
 			while (SQL.rs.next()) {
-				sendDocPOs.add(getSendDocPOByID(SQL.rs.getString(ID)));
+				iDStrings.add(SQL.rs.getString("ID"));
+			}
+			for(String s : iDStrings) {
+				sendDocPOs.add(getSendDocPOByID(s));
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
