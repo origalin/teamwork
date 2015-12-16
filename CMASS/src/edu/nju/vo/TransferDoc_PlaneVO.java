@@ -16,5 +16,6 @@ public class TransferDoc_PlaneVO extends TransferDocVO{
 		this.watcher = po.getWatcher();
 		this.price = String.valueOf(po.getPrice());
 		this.container = po.getContainer();
+		this.tranceID = po.getTranceID();
 	}
 }

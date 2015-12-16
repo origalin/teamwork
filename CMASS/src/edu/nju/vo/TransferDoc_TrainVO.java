@@ -16,5 +16,6 @@ public class TransferDoc_TrainVO extends TransferDocVO{
 		this.watcher = po.getWatcher();
 		this.price = String.valueOf(po.getPrice());
 		this.corriage = po.getCorriage();
+		this.tranceID = po.getTranceID();
 	}
 }
