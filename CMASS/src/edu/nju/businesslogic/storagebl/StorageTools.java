@@ -1,8 +1,11 @@
 package edu.nju.businesslogic.storagebl;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import edu.nju.businesslogicservice.storagelogicservice.StorageLogicService;
+import edu.nju.dataFactory.DataFactory;
+import edu.nju.dataservice.storagedataservice.StorageDataService;
 import edu.nju.po.InWareHouseDocPO;
 import edu.nju.po.OutWareHouseDocPO;
 import edu.nju.po.RecordPO;
@@ -10,12 +13,16 @@ import edu.nju.vo.InWareHouseDocVO;
 import edu.nju.vo.OutWareHouseDocVO;
 
 public class StorageTools {
-	public ArrayList<OutWareHouseDocPO> getOutWareHouseDocList(){
-		return null;
+	public ArrayList<OutWareHouseDocPO> getOutWareHouseDocList() throws RemoteException{
+		StorageDataService storageDataService=DataFactory.getStorageImpl();
+		
+		return storageDataService.getOutWareHouseDoc_unchecked();
 	}
 	
-	public ArrayList<InWareHouseDocPO> getInWareHouseDocList(){
-		return null;
+	public ArrayList<InWareHouseDocPO> getInWareHouseDocList() throws RemoteException{
+StorageDataService storageDataService=DataFactory.getStorageImpl();
+		
+		return storageDataService.getInWarehouseDoc();
 	}
 	
 	boolean hasItem(long SendDocID){
@@ -44,13 +51,17 @@ public class StorageTools {
 		return null;
 	}
 
-	public void saveInWareHouseDocPO(InWareHouseDocPO po) {
-		// TODO Auto-generated method stub
+	public void saveInWareHouseDocPO(InWareHouseDocPO in) throws RemoteException {
+StorageDataService storageDataService=DataFactory.getStorageImpl();
+		
+		storageDataService.saveInWareHouseDoc(in);
 		
 	}
 
-	public void saveOutWareHouseDocPO(OutWareHouseDocPO po) {
-		// TODO Auto-generated method stub
+	public void saveOutWareHouseDocPO(OutWareHouseDocPO out) throws RemoteException {
+StorageDataService storageDataService=DataFactory.getStorageImpl();
+		
+		storageDataService.saveOutWareHouseDoc(out);
 		
 	}
 
