@@ -9,7 +9,7 @@ public class TransferDoc_PlaneVO extends TransferDocVO{
 		super(po);
 		this.date = Time.toDaysTime(po.getDate());
 		this.ID = po.getTransferDocID();
-		this.CarNum = po.getCarNum();
+		this.planeNum = po.getPlaneNum();
 		this.from = po.getFrom();
 		this.itemIDs = po.getItemIDs();
 		this.targetCity = po.getTargetCity();

@@ -9,7 +9,7 @@ public class TransferDoc_TrainVO extends TransferDocVO{
 		super(po);
 		this.date = Time.toDaysTime(po.getDate());
 		this.ID = po.getTransferDocID();
-		this.CarNum = po.getCarNum();
+		this.TrainNum = po.getTrainNum();
 		this.from = po.getFrom();
 		this.itemIDs = po.getItemIDs();
 		this.targetCity = po.getTargetCity();
