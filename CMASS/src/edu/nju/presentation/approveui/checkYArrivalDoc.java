@@ -88,7 +88,7 @@ public class checkYArrivalDoc extends JPanel{
 		date.setEditable(false);
 		date.setColumns(10);
 		
-		JLabel label_1 = new JLabel("\u4E2D\u8F6C\u5355\u7F16\u53F7");
+		JLabel label_1 = new JLabel("\u4E2D\u8F6C\u4E2D\u5FC3\u88C5\u8F66\u5355\u7F16\u53F7");
 		label_1.setFont(new Font("ºÚÌå", Font.BOLD, 15));
 		GridBagConstraints gbc_label_1 = new GridBagConstraints();
 		gbc_label_1.insets = new Insets(0, 0, 5, 5);

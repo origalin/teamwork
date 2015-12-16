@@ -132,8 +132,7 @@ public class checkYDeliverDoc extends JPanel{
 			tableInfo[i]=oneLine;
 		}
 		table.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
+			tableInfo,
 			new String[] {
 				"\u5FEB\u9012\u5355\u53F7"
 			}

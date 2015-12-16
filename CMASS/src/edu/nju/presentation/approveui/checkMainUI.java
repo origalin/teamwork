@@ -141,7 +141,7 @@ public class checkMainUI extends JPanel{
 					break;
 					*/
 					uncheckedPayDocList=bl.getunchekedPayDocList();
-					showUncheckedDoc(uncheckedGatheringDocList);
+					showUncheckedDoc(uncheckedPayDocList);
 					break;
 				case "寄件单":
 					try {
@@ -174,6 +174,7 @@ public class checkMainUI extends JPanel{
 				case"收件单":
 					try {
 						uncheckedOverDocList=bl.getunchekedOverDocList();
+						System.out.println("uncheckedOverDocList"+uncheckedOverDocList.size());
 					} catch (RemoteException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -296,11 +297,11 @@ public class checkMainUI extends JPanel{
 						//CheckWareHouseDoc OutWareHouseDocui=new CheckWareHouseDoc(OutWareHouseDocVO);
 						//OutWareHouseDocDialog.setCheckMode(OutWareHouseDocui);
 						break;
-						/*
+						
 					case"中转单":
 						TransferDocPO TransferDocPO=getDocPOByID(inputID,uncheckedTransferDocList);
 						TransferDocVO TransferDocVO=new TransferDocVO(TransferDocPO);						
-						 */
+						 
 					case "中转中心装车单":
 						ZLoadDocPO ZLoadDocPO=getDocPOByID(inputID,uncheckedZLoadDocList);
 						ZLoadDocVO ZLoadDocVO=new ZLoadDocVO(ZLoadDocPO);
@@ -347,8 +348,8 @@ public class checkMainUI extends JPanel{
 						YDeliverDocPO YDeliverDocPO=getDocPOByID(inputID,uncheckedYDeliverDocList);
 						YDeliverDocVO YDeliverDocVO=new YDeliverDocVO(YDeliverDocPO);
 						CheckDialog YDeliverDocDialog=new CheckDialog();
-						//checkYDeliverDoc YDeliverDocui=new checkYDeliverDoc(YDeliverDocVO);
-						//YDeliverDocDialog.setCheckMode(YDeliverDocui);
+						checkYDeliverDoc YDeliverDocui=new checkYDeliverDoc(YDeliverDocVO);
+						YDeliverDocDialog.setCheckMode(YDeliverDocui);
 						break;
 						
 					/*

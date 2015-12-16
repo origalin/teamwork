@@ -1,10 +1,11 @@
 package edu.nju.vo;
 
+import edu.nju.po.TransferDocPO;
 import edu.nju.po.TransferDoc_CarPO;
 import edu.nju.tools.Time;
 
 public class TransferDoc_CarVO extends TransferDocVO{
-	public TransferDoc_CarVO(TransferDoc_CarPO po) {
+	public TransferDoc_CarVO(TransferDocPO po) {
 		super(po);
 		this.date = Time.toDaysTime(po.getDate());
 		this.ID = po.getTransferDocID();
