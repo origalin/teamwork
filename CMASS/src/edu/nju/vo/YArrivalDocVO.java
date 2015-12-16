@@ -15,7 +15,7 @@ public class YArrivalDocVO extends Doc{
 
 	public YArrivalDocVO(YArrivalDocPO po) {
 		this.date = Time.toDaysTime(po.getDate());
-		this.TransferDocID = po.getID();
+		this.TransferDocID = po.getTransferDocID();
 		this.ID = po.getID();
 		this.from = po.getFrom();
 		this.itemAndState = po.getItemAndState();
