@@ -511,7 +511,7 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 		SQL.databaseUpdate(sql);
 		for (InWareHouseDocLineItem temp : list) {
 			sql = "UPDATE 仓库存储货物 SET StorageItem_ID='" + temp.getSendDocID() + "',入库日期='"
-					+ Time.toDaysTime(temp.getDate()) + "',目的地='" + temp.getDestination() + "',被快递占用='"+0+"' WHERE 仓库ID='"
+					+ Time.toDaysTime(temp.getDate()) + "',目的地='" + temp.getDestination() + "',被快递占用='1',被入库单占用='0'  WHERE 仓库ID='"
 					+ in.getStorageID() + "'&&位置='" + temp.getLocation() + "';";
 			SQL.databaseUpdate(sql);
 		}
