@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import javax.swing.JOptionPane;
+import javax.xml.crypto.Data;
 
 import edu.nju.businesslogic.infobl.Institution;
 import edu.nju.businesslogic.systembl.SystemBl;
@@ -160,13 +161,13 @@ public class InWareHouseManagementbl implements InWareHouseManagementService {
 		StorageDataService storageDataService = DataFactory.getStorageImpl();
 		try {
 			System.out.println("逻辑层的VO in:" + in);
+			
 			InstitutionLogicService institutionLogicService=new Institution();
 			String staffName=institutionLogicService.getStaffName(currPersonID);
-
-
 			OperationPO operationPO=new OperationPO(new Date(), currPersonID, staffName, "新建了"+in.getID()+"入库单");
 			SystemBl systemBl=new SystemBl();
 			systemBl.saveOperation(operationPO);
+			
 			storageDataService.updateInWareHouseDoc(in.unpack());
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
@@ -178,6 +179,12 @@ public class InWareHouseManagementbl implements InWareHouseManagementService {
 	public String getAddressDatail(String ItemID) {
 		// 依赖运输层
 		return null;
+	}
+	
+	public void saveInWareHouseDoc(InWareHouseDocPO in) throws RemoteException{
+		StorageDataService storageDataService=DataFactory.getStorageImpl();
+		
+		storageDataService.saveInWareHouseDoc(in);
 	}
 
 }

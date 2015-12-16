@@ -12,7 +12,7 @@ public interface StorageModifyService {
 	public ArrayList<RecordPO> getInWareHouseDocVO_Fly() ;
 
 	
-	public void storageModify(String district,String storageID) throws RemoteException;
+	public void storageModify(String district,String storageID,String currPersonID) throws RemoteException;
 
 	
 	public ArrayList<RecordPO> getInWareHouseDocVO_Car();

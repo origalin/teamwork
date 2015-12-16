@@ -17,6 +17,7 @@ import edu.nju.dataFactory.DataFactory;
 import edu.nju.dataservice.storagedataservice.StorageDataService;
 import edu.nju.exception.DatabaseNULLException;
 import edu.nju.po.InWareHouseDocLineItem;
+import edu.nju.po.InWareHouseDocPO;
 import edu.nju.po.OperationPO;
 import edu.nju.po.OutWareHouseDocPO;
 import edu.nju.po.TransferDocPO;
@@ -122,6 +123,12 @@ public class OutWareHouseManagementbl implements OutWareHouseManagementService {
 		
 		System.out.println(out);
 
+	}
+	
+	public void saveInWareHouseDoc(OutWareHouseDocPO out) throws RemoteException{
+		StorageDataService storageDataService=DataFactory.getStorageImpl();
+		
+		storageDataService.saveOutWareHouseDoc(out);
 	}
 
 }

@@ -164,7 +164,12 @@ public class StorageQuery extends JPanel {
 				StorageQueryService storageQueryService = UiFactory.getStorageQueryService();
 				ArrayList<RecordPO> list = new ArrayList<RecordPO>();
 
-				list = storageQueryService.getInWareHouseDocVO_Fly(currStorageID);
+				try {
+					list = storageQueryService.getInWareHouseDocVO_Fly(currPersonID,currStorageID);
+				} catch (RemoteException e2) {
+					System.out.println("查询航运区库存情况失败，请检查网络情况后再试");
+					e2.printStackTrace();
+				}
 				int rows = list.size();
 				int columns = 6;
 				String[][] data1 = new String[rows][columns];
@@ -187,7 +192,13 @@ public class StorageQuery extends JPanel {
 				
 				
 
-				ArrayList<RecordPO> list_1 = storageQueryService.getInWareHouseDocVO_Train(currStorageID);
+				ArrayList<RecordPO> list_1 = null;
+				try {
+					list_1 = storageQueryService.getInWareHouseDocVO_Train(currPersonID,currStorageID);
+				} catch (RemoteException e1) {
+					System.out.println("查询货运区库存情况失败，请检查网络情况后再试");
+					e1.printStackTrace();
+				}
 				rows = list_1.size();
 				String[][] data2 = new String[rows][columns];
 				i = 0;
@@ -206,7 +217,13 @@ public class StorageQuery extends JPanel {
 					model_1.addRow(new Object[]{data2[i][0],data2[i][1],data2[i][2],data2[i][3],data2[i][4],data2[i][5]});
 				}
 
-				ArrayList<RecordPO> list_2 = storageQueryService.getInWareHouseDocVO_Car(currStorageID);
+				ArrayList<RecordPO> list_2 = null;
+				try {
+					list_2 = storageQueryService.getInWareHouseDocVO_Car(currPersonID,currStorageID);
+				} catch (RemoteException e1) {
+					System.out.println("查询汽运区库存情况失败，请检查网络情况后再试");
+					e1.printStackTrace();
+				}
 				rows = list_2.size();
 				String[][] data3 = new String[rows][columns];
 				i = 0;

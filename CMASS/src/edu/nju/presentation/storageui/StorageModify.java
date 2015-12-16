@@ -83,7 +83,7 @@ public class StorageModify extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				StorageModifyService storageModifyService=UiFactory.getStorageModifyService();
 				try {
-					storageModifyService.storageModify((String)comboBox.getSelectedItem(),currStorageID);
+					storageModifyService.storageModify((String)comboBox.getSelectedItem(),currPersonID,currStorageID);
 				} catch (RemoteException e1) {
 					JOptionPane.showMessageDialog(null, "远程连接异常，请检查网络之后重新进行操作");
 					e1.printStackTrace();
