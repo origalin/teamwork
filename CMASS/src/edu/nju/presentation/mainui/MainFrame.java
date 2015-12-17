@@ -2,31 +2,51 @@ package edu.nju.presentation.mainui;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.Image;
 
 import javax.swing.*;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.FlowLayout;
+import java.awt.Graphics;
 import javax.swing.border.BevelBorder;
 
 public class MainFrame extends JFrame{
 	public GridBagConstraints functionConstraints;
 	private JScrollPane scrollPane;
-	JScrollPane scrollPane_1;
+	JPanel panel_2;
+	ImageIcon background = new ImageIcon("images/background.png");
 	public MainFrame(){
-		setSize(833, 600);
+		setSize(1000, 650);
+		
+		try {
+			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedLookAndFeelException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{139, 580, 50, 43, 0};
+		gridBagLayout.columnWidths = new int[]{229, 580, 50, 43, 0};
 		gridBagLayout.rowHeights = new int[]{38, 0, 469, 20, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
 		getContentPane().setLayout(gridBagLayout);
 		
 		JPanel panel = new JPanel();
+		panel.setOpaque(false);
 		FlowLayout flowLayout = (FlowLayout) panel.getLayout();
 		flowLayout.setAlignment(FlowLayout.LEFT);
 		GridBagConstraints gbc_panel = new GridBagConstraints();
@@ -50,7 +70,8 @@ public class MainFrame extends JFrame{
 		lblCmass.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(lblCmass);
 		
-		JPanel panel_2 = new JPanel();
+		panel_2 = new JPanel();
+		panel_2.setOpaque(false);
 		GridBagConstraints gbc_panel_2 = new GridBagConstraints();
 		gbc_panel_2.gridheight = 2;
 		gbc_panel_2.insets = new Insets(0, 0, 0, 5);
@@ -65,25 +86,6 @@ public class MainFrame extends JFrame{
 		gbl_panel_2.rowWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
 		panel_2.setLayout(gbl_panel_2);
 		
-		JPanel panel_1 = new JPanel();
-		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
-		gbc_panel_1.fill = GridBagConstraints.BOTH;
-		gbc_panel_1.insets = new Insets(0, 0, 5, 0);
-		gbc_panel_1.gridx = 0;
-		gbc_panel_1.gridy = 0;
-		panel_2.add(panel_1, gbc_panel_1);
-		
-		JLabel label_1 = new JLabel("\u529F\u80FD\u5BFC\u822A");
-		panel_1.add(label_1);
-		
-		scrollPane_1 = new JScrollPane();
-		scrollPane_1.setViewportBorder(null);
-		GridBagConstraints gbc_scrollPane_1 = new GridBagConstraints();
-		gbc_scrollPane_1.fill = GridBagConstraints.BOTH;
-		gbc_scrollPane_1.gridx = 0;
-		gbc_scrollPane_1.gridy = 1;
-		panel_2.add(scrollPane_1, gbc_scrollPane_1);
-		
 		JLabel label = new JLabel("\u674E\u96F7");
 		GridBagConstraints gbc_label = new GridBagConstraints();
 		gbc_label.insets = new Insets(0, 0, 5, 5);
@@ -92,6 +94,8 @@ public class MainFrame extends JFrame{
 		getContentPane().add(label, gbc_label);
 		
 		scrollPane = new JScrollPane();
+		scrollPane.setOpaque(false);
+		scrollPane.getViewport().setOpaque(false);
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.gridwidth = 3;
 		gbc_scrollPane.insets = new Insets(0, 0, 5, 5);
@@ -101,6 +105,7 @@ public class MainFrame extends JFrame{
 		getContentPane().add(scrollPane, gbc_scrollPane);
 		
 		JPanel panel_3 = new JPanel();
+		panel_3.setOpaque(false);
 		FlowLayout flowLayout_1 = (FlowLayout) panel_3.getLayout();
 		flowLayout_1.setAlignment(FlowLayout.LEFT);
 		GridBagConstraints gbc_panel_3 = new GridBagConstraints();
@@ -113,7 +118,16 @@ public class MainFrame extends JFrame{
 		JLabel label_2 = new JLabel("\u4FDD\u6301\u4E2D\u3002\u3002\u3002");
 		label_2.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_3.add(label_2);
+		
+		JPanel content = (JPanel) getContentPane();
+		content.setOpaque(false);
+		
+		JLabel backlabel = new JLabel(background);
+		backlabel.setSize(background.getIconWidth(), background.getIconHeight());
+		getLayeredPane().setLayout(null);
+		getLayeredPane().add(backlabel,new Integer(Integer.MIN_VALUE));
 	}
+	
 	public void comeout() {
 		this.setVisible(true);
 	}
@@ -121,6 +135,7 @@ public class MainFrame extends JFrame{
 		this.scrollPane.setViewportView(panel);
 	}
 	public void setGuidePanel(JPanel panel) {
-		this.scrollPane_1.setViewportView(panel);
+		panel_2.removeAll();
+		panel_2.add(panel);
 	}
 }

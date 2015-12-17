@@ -32,11 +32,9 @@ public class CollertionPanel extends JPanel{
 	CollectionLogicService collection;
 	private JTextField sNameField;
 	private JTextField sMobilePhoneField;
-	private JTextField sTelePhoneField;
 	private JTextField sAddressField;
 	private JTextField rNameField;
 	private JTextField rMobilePhoneField;
-	private JTextField rTelePhoneField;
 	private JTextField rAddressField;
 	private JTextField ItemkindField;
 	private JTextField priceField;
@@ -48,8 +46,10 @@ public class CollertionPanel extends JPanel{
 	private JTextField LengthField;
 	private JTextField WidethField;
 	private JTextField HeighthField;
+	private JTextField rTelePhoneField;
+	private JTextField rUnitField;
+	private JTextField sTelePhoneField;
 	private JTextField sUnitField;
-	private JTextField rUnitField_1;
 	public CollertionPanel(String staffID) {
 		this.staffID = staffID;
 		sendType = -1;
@@ -70,7 +70,7 @@ public class CollertionPanel extends JPanel{
 		JPanel panel_11 = new JPanel();
 		panel_11.setBorder(null);
 		add(panel_11, BorderLayout.NORTH);
-		panel_11.setLayout(new GridLayout(13, 0, 0, 0));
+		panel_11.setLayout(new GridLayout(14, 0, 0, 0));
 		
 		JPanel panel = new JPanel();
 		panel_11.add(panel);
@@ -107,23 +107,28 @@ public class CollertionPanel extends JPanel{
 		label_25.setForeground(Color.RED);
 		panel_1.add(label_25);
 		
+		JPanel panel_14 = new JPanel();
+		FlowLayout flowLayout_11 = (FlowLayout) panel_14.getLayout();
+		flowLayout_11.setAlignment(FlowLayout.LEFT);
+		panel_11.add(panel_14);
+		
 		JLabel label_2 = new JLabel("\u7535\u8BDD");
-		panel_1.add(label_2);
+		panel_14.add(label_2);
 		
 		sTelePhoneField = new JTextField();
-		panel_1.add(sTelePhoneField);
 		sTelePhoneField.setColumns(20);
+		panel_14.add(sTelePhoneField);
 		
-		JLabel label_34 = new JLabel("\u5355\u4F4D");
-		panel_1.add(label_34);
+		JLabel label_19 = new JLabel("\u5355\u4F4D");
+		panel_14.add(label_19);
 		
 		sUnitField = new JTextField();
-		panel_1.add(sUnitField);
 		sUnitField.setColumns(10);
+		panel_14.add(sUnitField);
 		
 		JLabel label_24 = new JLabel("*");
 		label_24.setForeground(Color.RED);
-		panel_1.add(label_24);
+		panel_14.add(label_24);
 		
 		JPanel panel_2 = new JPanel();
 		panel_11.add(panel_2);
@@ -183,23 +188,28 @@ public class CollertionPanel extends JPanel{
 		label_27.setForeground(Color.RED);
 		panel_4.add(label_27);
 		
+		JPanel panel_8 = new JPanel();
+		FlowLayout flowLayout_7 = (FlowLayout) panel_8.getLayout();
+		flowLayout_7.setAlignment(FlowLayout.LEFT);
+		panel_11.add(panel_8);
+		
 		JLabel label_7 = new JLabel("\u7535\u8BDD");
-		panel_4.add(label_7);
+		panel_8.add(label_7);
 		
 		rTelePhoneField = new JTextField();
 		rTelePhoneField.setColumns(20);
-		panel_4.add(rTelePhoneField);
+		panel_8.add(rTelePhoneField);
 		
-		JLabel label_35 = new JLabel("\u5355\u4F4D");
-		panel_4.add(label_35);
+		JLabel label_11 = new JLabel("\u5355\u4F4D");
+		panel_8.add(label_11);
 		
-		rUnitField_1 = new JTextField();
-		panel_4.add(rUnitField_1);
-		rUnitField_1.setColumns(10);
+		rUnitField = new JTextField();
+		rUnitField.setColumns(10);
+		panel_8.add(rUnitField);
 		
-		JLabel label_28 = new JLabel("*");
-		label_28.setForeground(Color.RED);
-		panel_4.add(label_28);
+		JLabel label_12 = new JLabel("*");
+		label_12.setForeground(Color.RED);
+		panel_8.add(label_12);
 		
 		JPanel panel_5 = new JPanel();
 		panel_11.add(panel_5);
@@ -510,7 +520,7 @@ public class CollertionPanel extends JPanel{
 		this.rcity = RcityField.getText();
 		this.rTelePhone = rTelePhoneField.getText();
 		this.rMobilePhone = rMobilePhoneField.getText();
-		this.rUnit = rUnitField_1.getText();
+		this.rUnit = rUnitField.getText();
 		this.itemKind = ItemkindField.getText();
 		if(!ItemNumField.getText().equals("")&&!WeightField.getText().equals("")&&!LengthField.getText().equals("")&&!WidethField.getText().equals("")&&!HeighthField.getText().equals("")) {
 			this.itemNum = Integer.parseInt(ItemNumField.getText());

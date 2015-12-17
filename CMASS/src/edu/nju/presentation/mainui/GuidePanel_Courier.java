@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
+import edu.nju.presentation.button.BigButton;
 import edu.nju.presentation.collectionui.CollertionPanel;
 import edu.nju.presentation.transformui.SendPanel;
 
@@ -32,7 +33,7 @@ public class GuidePanel_Courier extends JPanel{
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 1.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
-		JButton collectButtom = new JButton("\u63FD\u4EF6");
+		BigButton collectButtom = new BigButton("\u63FD\u4EF6");
 		collectButtom.addActionListener(new ActionListener() {
 			
 			@Override
@@ -43,12 +44,12 @@ public class GuidePanel_Courier extends JPanel{
 		});
 		GridBagConstraints gbc_collectButtom = new GridBagConstraints();
 		gbc_collectButtom.fill = GridBagConstraints.BOTH;
-		gbc_collectButtom.insets = new Insets(0, 0, 5, 0);
+		gbc_collectButtom.insets = new Insets(5, 0, 0, 0);
 		gbc_collectButtom.gridx = 0;
 		gbc_collectButtom.gridy = 0;
 		add(collectButtom, gbc_collectButtom);
 		
-		JButton sendButtom = new JButton("\u6D3E\u4EF6");
+		BigButton sendButtom = new BigButton("\u6D3E\u4EF6");
 		sendButtom.addActionListener(new ActionListener() {
 			
 			@Override
@@ -59,10 +60,11 @@ public class GuidePanel_Courier extends JPanel{
 		});
 		GridBagConstraints gbc_sendButtom = new GridBagConstraints();
 		gbc_sendButtom.fill = GridBagConstraints.BOTH;
-		gbc_sendButtom.insets = new Insets(0, 0, 5, 0);
+		gbc_sendButtom.insets = new Insets(0, 0, 0, 0);
 		gbc_sendButtom.gridx = 0;
 		gbc_sendButtom.gridy = 1;
 		add(sendButtom, gbc_sendButtom);
+		setOpaque(false);
 	}
 	void collectFunc(){
 		frame.setFunctionPanel(collertionPanel);
