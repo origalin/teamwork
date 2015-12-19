@@ -103,9 +103,13 @@ public class accountManagement extends JPanel{
 					int selectedRow = table.getSelectedRow();
 					String newAccountName=textField.getText().trim();
 					if(selectedRow!=-1){
+						if(!textField.getText().equals("")){
 						bl.modifyAccountPO((String) (table.getModel()).getValueAt(selectedRow, 0), newAccountName);
 						 ((DefaultTableModel) table.getModel()).setValueAt(newAccountName, selectedRow, 0);
 						 textField.setText("");
+						}else{
+							JOptionPane.showMessageDialog(thisPanel,"…–Œ¥ ‰»Î–¬’Àªß√˚≥∆","¥ÌŒÛ",JOptionPane.ERROR_MESSAGE);
+						}
 					}else{
 						JOptionPane.showMessageDialog(thisPanel,"…–Œ¥—°‘Ò’Àªß","¥ÌŒÛ",JOptionPane.ERROR_MESSAGE);
 					}

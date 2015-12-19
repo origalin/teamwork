@@ -658,12 +658,28 @@ public class checkMainUI extends JPanel{
 	}
 	
 	public void showUncheckedDoc(ArrayList<? extends Doc> docList){
+		if(docList.size()!=0){
 		ArrayList<String> uncheckedDocID=new ArrayList<String>();
 		for(Doc doc:docList){
 			uncheckedDocID.add(doc.getID());
 		}
 		table=initializeTable(uncheckedDocID);
 		scrollPane.setViewportView(table);
+		}else{
+			table.setModel(new DefaultTableModel(
+					new Object[1][],
+						new String[] {
+							"", "\u5355\u636E\u7F16\u53F7"
+						}
+					) {
+						Class[] columnTypes = new Class[] {
+							Boolean.class,String.class
+						};
+						public Class getColumnClass(int columnIndex) {
+							return columnTypes[columnIndex];
+						}
+					});
+		}
 		updateUI();
 	}
 	

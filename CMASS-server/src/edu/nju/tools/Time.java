@@ -5,6 +5,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.swing.JOptionPane;
+
 public class Time {
 	public static void main(String args[]){
 		System.out.println(toDaysTime(new Date()));
@@ -41,7 +43,7 @@ public class Time {
 			return d;
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
-			System.out.println("不符合日期格式，请重新输入");
+			JOptionPane.showMessageDialog(null,"日期格式不正确","错误",JOptionPane.WARNING_MESSAGE);
 			e.printStackTrace();
 		}  
 	    return null;
