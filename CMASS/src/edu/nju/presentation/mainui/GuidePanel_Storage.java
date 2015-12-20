@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
+import edu.nju.presentation.button.BigButton;
 import edu.nju.presentation.collectionui.CollertionPanel;
 import edu.nju.presentation.storageui.InWareHouseManagment;
 import edu.nju.presentation.storageui.OutWareHouseManagment;
@@ -38,6 +39,7 @@ public class GuidePanel_Storage extends JPanel{
 	CollertionPanel collertionPanel;
 	SendPanel sendPanel;
 	public GuidePanel_Storage(MainFrame frame,String staffID) {
+		setOpaque(false);
 		inWareHousePanel=new InWareHouseManagment(staffID);
 		outWareHousePanel=new OutWareHouseManagment(staffID);
 		storageInitializePanel=new StorageInitialize(staffID);
@@ -54,14 +56,14 @@ public class GuidePanel_Storage extends JPanel{
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
-		JButton OutWareHouseManagement = new JButton("\u51FA\u5E93\u7BA1\u7406");
+		JButton OutWareHouseManagement = new BigButton("\u51FA\u5E93\u7BA1\u7406");
 		OutWareHouseManagement.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.setFunctionPanel(outWareHousePanel);
 			}
 		});
 		
-		JButton InWareHouseManagement = new JButton("\u5165\u5E93\u7BA1\u7406");
+		JButton InWareHouseManagement = new BigButton("\u5165\u5E93\u7BA1\u7406");
 		InWareHouseManagement.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -82,14 +84,14 @@ public class GuidePanel_Storage extends JPanel{
 		gbc_OutWareHouseManagement.gridy = 1;
 		add(OutWareHouseManagement, gbc_OutWareHouseManagement);
 		
-		JButton StorageInitialize = new JButton("\u5E93\u5B58\u4FE1\u606F\u521D\u59CB\u5316");
+		JButton StorageInitialize = new BigButton("\u5E93\u5B58\u4FE1\u606F\u521D\u59CB\u5316");
 		StorageInitialize.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.setFunctionPanel(storageInitializePanel);
 			}
 		});
 		
-		JButton StorageQuery = new JButton("ø‚¥Ê≈Ãµ„");
+		JButton StorageQuery = new BigButton("ø‚¥Ê≈Ãµ„");
 		StorageQuery.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.setFunctionPanel(storageQueryPanel);
@@ -108,7 +110,7 @@ public class GuidePanel_Storage extends JPanel{
 		gbc_StorageInitialize.gridy = 3;
 		add(StorageInitialize, gbc_StorageInitialize);
 		
-		JButton StorageMidify = new JButton("\u5E93\u533A\u8C03\u6574");
+		JButton StorageMidify = new BigButton("\u5E93\u533A\u8C03\u6574");
 		StorageMidify.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.setFunctionPanel(storageModifyPanel);

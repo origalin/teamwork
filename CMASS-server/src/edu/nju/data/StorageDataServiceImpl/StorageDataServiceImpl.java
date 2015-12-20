@@ -197,7 +197,7 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 
 	public static void main(String[] args) throws RemoteException {
 		StorageDataServiceImpl serviceImpl = new StorageDataServiceImpl();
-		System.out.println(serviceImpl.getCurrInWare_ID());
+		serviceImpl.storageRealease("001000");;
 		// serviceImpl.exportToExcel("001000");
 		// RecordPO recordPO=new RecordPO("0025033965", new Date(), "南京市",
 		// "航运区", "000005", "001000");
@@ -614,7 +614,7 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 	}
 
 	@Override
-	public void storageModify(String to, String storageID) throws RemoteException {
+	public void storageModify(String to, String storageID,int quantity) throws RemoteException {
 
 		assert (to.equals("航运区") || to.equals("货运区") || to.equals("汽运区")) : "调整目标区域错误";
 		int i1 = -1, i2 = -1;
@@ -629,7 +629,7 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 		}
 
 		sql = "UPDATE 仓库存储货物 SET 区='" + to + "' WHERE 区='机动区'&&被入库单占用='0'&&被快递占用='0'&&仓库ID='" + storageID
-				+ "' LIMIT 10;";// 以10为单位来将机动区暂时划分到其他区
+				+ "' LIMIT "+quantity+";";// 以10为单位来将机动区暂时划分到其他区
 		SQL.databaseUpdate(sql);
 
 		sql = "SELECT * FROM 仓库存储货物 WHERE 仓库ID='" + storageID + "'&&区='" + to + "';";
@@ -657,5 +657,13 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 		SQL.databaseQuery(sql);
 		SQL.closeDatabase();
 
+	}
+
+	@Override
+	public void storageRealease(String storageID) {
+		String sql = "UPDATE 仓库存储货物  SET 区='机动区'  WHERE 被入库单占用='0'&& 是否机动='1'&&被快递占用='0'&&仓库ID='" + storageID
+				+ "' ;";
+		SQL.databaseUpdate(sql);
+		SQL.closeDatabase();
 	}
 }

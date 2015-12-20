@@ -20,6 +20,7 @@ import edu.nju.businesslogicservice.storagelogicservice.InWareHouseManagementSer
 import edu.nju.dataFactory.DataFactory;
 import edu.nju.exception.DatabaseNULLException;
 import edu.nju.presentation.UiFactory;
+import edu.nju.tools.Time;
 import edu.nju.po.InWareHouseDocLineItem;
 import edu.nju.vo.InWareHouseDocVO;
 
@@ -50,19 +51,19 @@ public class InWareHouseManagment extends JPanel {
 	private JLabel lblNewLabel;
 	private JTextField textField;
 	private JButton btnNewButton_1;
-	private String currInstitution ;
+	private String currInstitution;
 	private String currPersonID;
 	private JComboBox comboBox;
 
-//	public static void main(String[] args) {
-//		InWareHouseManagment in = new InWareHouseManagment();
-//		JFrame mainFrame = new JFrame();
-//		mainFrame.getContentPane().add(in);
-//		mainFrame.setVisible(true);
-//		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		mainFrame.setLocationRelativeTo(null);
-//		mainFrame.setSize(500, 300);
-//	}
+	// public static void main(String[] args) {
+	// InWareHouseManagment in = new InWareHouseManagment();
+	// JFrame mainFrame = new JFrame();
+	// mainFrame.getContentPane().add(in);
+	// mainFrame.setVisible(true);
+	// mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	// mainFrame.setLocationRelativeTo(null);
+	// mainFrame.setSize(500, 300);
+	// }
 
 	public InWareHouseManagment(String currInstitution, String currPersonID) {
 		this();
@@ -70,29 +71,30 @@ public class InWareHouseManagment extends JPanel {
 		this.currPersonID = currPersonID;
 	}
 
-	public InWareHouseManagment(String staffID){
+	public InWareHouseManagment(String staffID) {
 		this();
 		this.currPersonID = staffID;
 		try {
-			currInstitution=UiFactory.getInstitutionLogicService().getInstitutionID(currPersonID);
+			currInstitution = UiFactory.getInstitutionLogicService().getInstitutionID(currPersonID);
 		} catch (RemoteException e) {
 			System.out.println("根据人员id初始化机构id出错");
 			e.printStackTrace();
 		}
 	}
+
 	public InWareHouseManagment() {
 
 		String[] columnNames = { "快递编号", "入库日期", "目的地", "区号", "排号", "架号", "位号" };
 
-		String data[][]=new String[0][0];
-		table=new JTable(data,columnNames);
+		String data[][] = new String[0][0];
+		table = new JTable(data, columnNames);
 		setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "\u5165\u5E93\u7BA1\u7406",
 				TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] { 134, 114, 0, 87, 0, 0 };
-		gridBagLayout.rowHeights = new int[] { 39, 217, 32, 0, 0 };
+		gridBagLayout.rowHeights = new int[] { 39, 164, 32, 0, 0 };
 		gridBagLayout.columnWeights = new double[] { 1.0, 0.0, 1.0, 1.0, 0.0, Double.MIN_VALUE };
-		gridBagLayout.rowWeights = new double[] { 0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE };
+		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		setLayout(gridBagLayout);
 
 		panel = new JPanel();
@@ -147,30 +149,32 @@ public class InWareHouseManagment extends JPanel {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				if(textField_1.getText().equals(""))
+				if (textField_1.getText().equals(""))
 					JOptionPane.showMessageDialog(null, "请输入中转单号或装车单号");
-				else{
+				else {
 					String selectedItem = (String) comboBox.getSelectedItem();
 
 					inWare = new InWareHouseManagementbl();
 					if (selectedItem.equals("中转单编号"))
 						try {
-							inWareHouseDocVO = inWare.getInWareHouseDocVO_Transfer(textField_1.getText(), currInstitution);
+							inWareHouseDocVO = inWare.getInWareHouseDocVO_Transfer(textField_1.getText(),
+									currInstitution);
 						} catch (DatabaseNULLException e1) {
-							// TODO Auto-generated catch block
+							JOptionPane.showMessageDialog(null, "请输入合法有效的中转单号");
 							e1.printStackTrace();
 						}
 					else if (selectedItem.equals("装车单编号"))
 						try {
-							inWareHouseDocVO = inWare.getInWareHouseDocVO_YloadDoc(textField_1.getText(), currInstitution);
+							inWareHouseDocVO = inWare.getInWareHouseDocVO_YloadDoc(textField_1.getText(),
+									currInstitution);
 						} catch (DatabaseNULLException e1) {
-							// TODO Auto-generated catch block
+							JOptionPane.showMessageDialog(null, "请输入合法有效的装车单号");
 							e1.printStackTrace();
 						} catch (RemoteException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
-					
+
 					textField.setText(inWareHouseDocVO.getID());
 					// 该行以上没有问题
 					ArrayList<InWareHouseDocLineItem> list = inWareHouseDocVO.getList();
@@ -179,7 +183,7 @@ public class InWareHouseManagment extends JPanel {
 					int i = 0;
 					for (InWareHouseDocLineItem temp : list) {
 						data1[i][0] = temp.getSendDocID();// 快递编号
-						data1[i][1] = temp.getDate().toString();// 入库日期
+						data1[i][1] = Time.toDaysTime(temp.getDate());// 入库日期
 						data1[i][2] = temp.getDestination();// 目的地
 						data1[i][3] = temp.getDistrict();// 区
 						data1[i][4] = temp.getLocation().substring(0, 2);// 排
@@ -191,8 +195,7 @@ public class InWareHouseManagment extends JPanel {
 					table = new JTable(data1, columnNames);
 					scrollPane.setViewportView(table);
 				}
-				
-				
+
 			}
 		});
 		btnNewButton.addMouseListener(new MouseAdapter() {
@@ -217,7 +220,14 @@ public class InWareHouseManagment extends JPanel {
 				int columnNum = table.getColumnCount();
 				model = (table.getModel());
 				ArrayList<InWareHouseDocLineItem> line = inWareHouseDocVO.getList();
-				int i = 0, j = 2;
+				boolean check = true;
+				
+				for(int i=0,j=2;i<line.size();i++){
+					String object = (String) model.getValueAt(i, j);
+					if(object==null||object.equals(""))
+						check = false;
+				}
+				int i=0,j=2;
 				for (InWareHouseDocLineItem temp : line)
 
 				{
@@ -225,16 +235,17 @@ public class InWareHouseManagment extends JPanel {
 					temp.setDestination(object);
 					i++;
 				}
+				
+				
+				if (check) {
+					inWareHouseDocVO.setList(line);
+					inWare = UiFactory.getInWareHouseManagementService();
+					inWare.updateInWareHouseDoc(inWareHouseDocVO, currPersonID);
 
-				for (InWareHouseDocLineItem temp : line) {
-					if (temp.getDestination() == null)
-						JOptionPane.showMessageDialog(null, "请输入完整的信息");
-				}
-				inWareHouseDocVO.setList(line);
-				inWare = UiFactory.getInWareHouseManagementService();
-				inWare.updateInWareHouseDoc(inWareHouseDocVO,currPersonID);
+					JOptionPane.showMessageDialog(null, "入库单已保存成功");
+				} else
+					JOptionPane.showMessageDialog(null, "请输入完整的信息");
 
-				JOptionPane.showMessageDialog(null, "入库单已保存成功");
 			}
 		});
 		GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();

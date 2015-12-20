@@ -17,14 +17,14 @@ import edu.nju.po.WareHousePO;
 public class StorageModifybl implements StorageModifyService
 {
 
-	public void storageModify(String district,String currPersonID,String storageID) throws RemoteException{
+	public void storageModify(String district,String currPersonID,String storageID,int quantity) throws RemoteException{
 		
 		
 		InstitutionLogicService institutionLogicService=new Institution();
 		String staffName=institutionLogicService.getStaffName(currPersonID);
 
 		StorageDataService storageDataService=DataFactory.getStorageImpl();
-		storageDataService.storageModify(district,storageID);
+		storageDataService.storageModify(district,storageID,quantity);
 
 		OperationPO operationPO=new OperationPO(new Date(), currPersonID, staffName, "调整了"+storageID+"库存"+",机动区到"+district);
 		SystemBl systemBl=new SystemBl();
@@ -47,6 +47,11 @@ public class StorageModifybl implements StorageModifyService
 	public ArrayList<RecordPO> getInWareHouseDocVO_Car() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public void storageRealease(String storageID) throws RemoteException{
+		StorageDataService storageDataService=DataFactory.getStorageImpl();
+		storageDataService.storageRealease(storageID);
 	}
 
 }

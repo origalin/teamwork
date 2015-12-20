@@ -21,6 +21,7 @@ import edu.nju.businesslogicservice.storagelogicservice.OutWareHouseManagementSe
 import edu.nju.exception.DatabaseNULLException;
 import edu.nju.po.InWareHouseDocLineItem;
 import edu.nju.presentation.UiFactory;
+import edu.nju.tools.Time;
 import edu.nju.vo.OutWareHouseDocLineItem;
 import edu.nju.vo.OutWareHouseDocVO;
 
@@ -150,8 +151,8 @@ public class OutWareHouseManagment extends JPanel{
 		
 		textField_1 = new JTextField();
 		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
-		gbc_textField_1.insets = new Insets(0, 0, 5, 5);
 		gbc_textField_1.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textField_1.insets = new Insets(0, 0, 5, 5);
 		gbc_textField_1.gridx = 1;
 		gbc_textField_1.gridy = 2;
 		add(textField_1, gbc_textField_1);
@@ -160,7 +161,7 @@ public class OutWareHouseManagment extends JPanel{
 		JButton button = new JButton("\u786E\u8BA4");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(textField_1.getText().equals(""))
+				if(textField.getText().equals(""))
 					JOptionPane.showMessageDialog(null, "请输入中转单号或装车单号");
 				else{
 					String selectedItem = (String) comboBox.getSelectedItem();
@@ -169,29 +170,31 @@ public class OutWareHouseManagment extends JPanel{
 					
 					if (selectedItem.equals("中转单编号"))
 						try {
-							outWareHouseDocVO = outWareHouseManagement.getOutWareHouseDocVO_Transfer(textField.getText(), currInstitution);
+							outWareHouseDocVO = outWareHouseManagement.
+									getOutWareHouseDocVO_Transfer(textField.getText(), currInstitution);
 						} catch (RemoteException e1) {
-							System.out.println("远程连接异常，请检查网络环境");
+							System.out.println("远程连接异常，请检查网络环境后重启客户端");
 							e1.printStackTrace();
 						} catch (DatabaseNULLException e1) {
-							System.out.println("查询结果为空");
+							JOptionPane.showMessageDialog(null, "请输入合法有效的中转单号");
 							e1.printStackTrace();
 						}
 					else if (selectedItem.equals("装车单编号"))
 						try {
-							outWareHouseDocVO = outWareHouseManagement.getOutWareHouseDocVO_ZloadDoc(textField.getText(), currInstitution);
+							outWareHouseDocVO = outWareHouseManagement.
+									getOutWareHouseDocVO_ZloadDoc(textField.getText(), currInstitution);
 						} catch (RemoteException e1) {
-							System.out.println("远程连接异常，请检查网络环境");
+							System.out.println("远程连接异常，请检查网络环境后重启客户端");
 							e1.printStackTrace();
 						} catch (DatabaseNULLException e1) {
-							System.out.println("查询结果为空");
+							JOptionPane.showMessageDialog(null, "请输入合法有效的装车单号");
 							e1.printStackTrace();
 						}
 					
 					outWareHouseDocVO.setTransferPattern((String)comboBox_1.getSelectedItem());//设置装运形式
 					outWareHouseDocVO.setStorageID(currInstitution);
 					textField_1.setText(outWareHouseDocVO.getID());//设置当前出库单编号
-					textField_2.setText(outWareHouseDocVO.getDate().toString());
+					textField_2.setText(Time.toDaysTime(outWareHouseDocVO.getDate()));
 					//以下对vo进行解析在界面上显示出来
 					ArrayList<OutWareHouseDocLineItem> list = outWareHouseDocVO.getLineItemList();
 
@@ -218,10 +221,18 @@ public class OutWareHouseManagment extends JPanel{
 		JButton btnNewButton = new JButton("\u751F\u6210\u51FA\u5E93\u5355");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String selectedItem = (String) comboBox.getSelectedItem();
-
+				boolean check=true;
 				int rowNum = table.getRowCount();
 				int columnNum = table.getColumnCount();
+				model = (table.getModel());
+				for(int i=0,j=1;i<rowNum;i++){
+					String object = (String) model.getValueAt(i, j);
+					if(object==null||object.equals(""))
+						check = false;
+				}
+				String selectedItem = (String) comboBox.getSelectedItem();
+
+				
 				model = (table.getModel());
 				ArrayList<OutWareHouseDocLineItem> lines = outWareHouseDocVO.getLineItemList();
 				int i = 0, j = 1;
@@ -239,12 +250,17 @@ public class OutWareHouseManagment extends JPanel{
 						JOptionPane.showMessageDialog(null, "请输入完整的信息");
 				}
 				//check是否有某行目的地没有填写
+				if(check){
+					outWareHouseDocVO.setLineItemList(lines);
+					outWareHouseManagement = UiFactory.getOutWareHouseManagementService();
+					outWareHouseManagement.updateOutWareHouseDoc(outWareHouseDocVO,currPersonID);
+					//根据新的vo去更新调用逻辑层更新数据层
+					JOptionPane.showMessageDialog(null, "出库单已保存成功");
+				}
+				else{
+					JOptionPane.showMessageDialog(null, "请输入完整的信息");
+				}
 				
-				outWareHouseDocVO.setLineItemList(lines);
-				outWareHouseManagement = UiFactory.getOutWareHouseManagementService();
-				outWareHouseManagement.updateOutWareHouseDoc(outWareHouseDocVO,currPersonID);
-				//根据新的vo去更新调用逻辑层更新数据层
-				JOptionPane.showMessageDialog(null, "出库单已保存成功");
 			}
 		});
 		
@@ -257,8 +273,8 @@ public class OutWareHouseManagment extends JPanel{
 		
 		textField_2 = new JTextField();
 		GridBagConstraints gbc_textField_2 = new GridBagConstraints();
-		gbc_textField_2.insets = new Insets(0, 0, 5, 5);
 		gbc_textField_2.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textField_2.insets = new Insets(0, 0, 5, 5);
 		gbc_textField_2.gridx = 1;
 		gbc_textField_2.gridy = 3;
 		add(textField_2, gbc_textField_2);
