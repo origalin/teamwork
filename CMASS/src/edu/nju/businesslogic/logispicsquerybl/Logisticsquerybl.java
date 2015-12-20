@@ -29,7 +29,8 @@ public class Logisticsquerybl implements LogispicsQueryLogicService {
 		try {
 
 			PositionPO po = logisticsDataService.positionQuery(SendDocID);
-			vo = new PositionVO(po);
+			if(po!=null)
+				vo = new PositionVO(po);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			System.out.println("Âß¼­²ã¿ìµÝ²éÑ¯Ê§°Ü");

@@ -160,48 +160,53 @@ public class OutWareHouseManagment extends JPanel{
 		JButton button = new JButton("\u786E\u8BA4");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String selectedItem = (String) comboBox.getSelectedItem();
+				if(textField_1.getText().equals(""))
+					JOptionPane.showMessageDialog(null, "请输入中转单号或装车单号");
+				else{
+					String selectedItem = (String) comboBox.getSelectedItem();
 
-				outWareHouseManagement = UiFactory.getOutWareHouseManagementService();//与逻辑层建立联系以便调用
-				
-				if (selectedItem.equals("中转单编号"))
-					try {
-						outWareHouseDocVO = outWareHouseManagement.getOutWareHouseDocVO_Transfer(textField.getText(), currInstitution);
-					} catch (RemoteException e1) {
-						System.out.println("远程连接异常，请检查网络环境");
-						e1.printStackTrace();
-					} catch (DatabaseNULLException e1) {
-						System.out.println("查询结果为空");
-						e1.printStackTrace();
-					}
-				else if (selectedItem.equals("装车单编号"))
-					try {
-						outWareHouseDocVO = outWareHouseManagement.getOutWareHouseDocVO_ZloadDoc(textField.getText(), currInstitution);
-					} catch (RemoteException e1) {
-						System.out.println("远程连接异常，请检查网络环境");
-						e1.printStackTrace();
-					} catch (DatabaseNULLException e1) {
-						System.out.println("查询结果为空");
-						e1.printStackTrace();
-					}
-				
-				outWareHouseDocVO.setTransferPattern((String)comboBox_1.getSelectedItem());//设置装运形式
-				outWareHouseDocVO.setStorageID(currInstitution);
-				textField_1.setText(outWareHouseDocVO.getID());//设置当前出库单编号
-				textField_2.setText(outWareHouseDocVO.getDate().toString());
-				//以下对vo进行解析在界面上显示出来
-				ArrayList<OutWareHouseDocLineItem> list = outWareHouseDocVO.getLineItemList();
+					outWareHouseManagement = UiFactory.getOutWareHouseManagementService();//与逻辑层建立联系以便调用
+					
+					if (selectedItem.equals("中转单编号"))
+						try {
+							outWareHouseDocVO = outWareHouseManagement.getOutWareHouseDocVO_Transfer(textField.getText(), currInstitution);
+						} catch (RemoteException e1) {
+							System.out.println("远程连接异常，请检查网络环境");
+							e1.printStackTrace();
+						} catch (DatabaseNULLException e1) {
+							System.out.println("查询结果为空");
+							e1.printStackTrace();
+						}
+					else if (selectedItem.equals("装车单编号"))
+						try {
+							outWareHouseDocVO = outWareHouseManagement.getOutWareHouseDocVO_ZloadDoc(textField.getText(), currInstitution);
+						} catch (RemoteException e1) {
+							System.out.println("远程连接异常，请检查网络环境");
+							e1.printStackTrace();
+						} catch (DatabaseNULLException e1) {
+							System.out.println("查询结果为空");
+							e1.printStackTrace();
+						}
+					
+					outWareHouseDocVO.setTransferPattern((String)comboBox_1.getSelectedItem());//设置装运形式
+					outWareHouseDocVO.setStorageID(currInstitution);
+					textField_1.setText(outWareHouseDocVO.getID());//设置当前出库单编号
+					textField_2.setText(outWareHouseDocVO.getDate().toString());
+					//以下对vo进行解析在界面上显示出来
+					ArrayList<OutWareHouseDocLineItem> list = outWareHouseDocVO.getLineItemList();
 
-				String[][] data1 = new String[list.size()][4];
-				int i = 0;
-				for (OutWareHouseDocLineItem temp : list) {
-					data1[i][0] = temp.getSendDocID();// 快递编号
-							
-					i++;
+					String[][] data1 = new String[list.size()][4];
+					int i = 0;
+					for (OutWareHouseDocLineItem temp : list) {
+						data1[i][0] = temp.getSendDocID();// 快递编号
+								
+						i++;
+					}
+
+					table = new JTable(data1, columnNames);
+					scrollPane_1.setViewportView(table);
 				}
-
-				table = new JTable(data1, columnNames);
-				scrollPane_1.setViewportView(table);
+				
 			}
 		});
 		GridBagConstraints gbc_button = new GridBagConstraints();
@@ -239,6 +244,7 @@ public class OutWareHouseManagment extends JPanel{
 				outWareHouseManagement = UiFactory.getOutWareHouseManagementService();
 				outWareHouseManagement.updateOutWareHouseDoc(outWareHouseDocVO,currPersonID);
 				//根据新的vo去更新调用逻辑层更新数据层
+				JOptionPane.showMessageDialog(null, "出库单已保存成功");
 			}
 		});
 		

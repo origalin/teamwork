@@ -147,46 +147,51 @@ public class InWareHouseManagment extends JPanel {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				String selectedItem = (String) comboBox.getSelectedItem();
+				if(textField_1.getText().equals(""))
+					JOptionPane.showMessageDialog(null, "请输入中转单号或装车单号");
+				else{
+					String selectedItem = (String) comboBox.getSelectedItem();
 
-				inWare = new InWareHouseManagementbl();
-				if (selectedItem.equals("中转单编号"))
-					try {
-						inWareHouseDocVO = inWare.getInWareHouseDocVO_Transfer(textField_1.getText(), currInstitution);
-					} catch (DatabaseNULLException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-				else if (selectedItem.equals("装车单编号"))
-					try {
-						inWareHouseDocVO = inWare.getInWareHouseDocVO_YloadDoc(textField_1.getText(), currInstitution);
-					} catch (DatabaseNULLException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					} catch (RemoteException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-				
-				textField.setText(inWareHouseDocVO.getID());
-				// 该行以上没有问题
-				ArrayList<InWareHouseDocLineItem> list = inWareHouseDocVO.getList();
+					inWare = new InWareHouseManagementbl();
+					if (selectedItem.equals("中转单编号"))
+						try {
+							inWareHouseDocVO = inWare.getInWareHouseDocVO_Transfer(textField_1.getText(), currInstitution);
+						} catch (DatabaseNULLException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+					else if (selectedItem.equals("装车单编号"))
+						try {
+							inWareHouseDocVO = inWare.getInWareHouseDocVO_YloadDoc(textField_1.getText(), currInstitution);
+						} catch (DatabaseNULLException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						} catch (RemoteException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+					
+					textField.setText(inWareHouseDocVO.getID());
+					// 该行以上没有问题
+					ArrayList<InWareHouseDocLineItem> list = inWareHouseDocVO.getList();
 
-				String[][] data1 = new String[list.size()][7];
-				int i = 0;
-				for (InWareHouseDocLineItem temp : list) {
-					data1[i][0] = temp.getSendDocID();// 快递编号
-					data1[i][1] = temp.getDate().toString();// 入库日期
-					data1[i][2] = temp.getDestination();// 目的地
-					data1[i][3] = temp.getDistrict();// 区
-					data1[i][4] = temp.getLocation().substring(0, 2);// 排
-					data1[i][5] = temp.getLocation().substring(2, 4);// 架
-					data1[i][6] = temp.getLocation().substring(4);// 位
-					i++;
+					String[][] data1 = new String[list.size()][7];
+					int i = 0;
+					for (InWareHouseDocLineItem temp : list) {
+						data1[i][0] = temp.getSendDocID();// 快递编号
+						data1[i][1] = temp.getDate().toString();// 入库日期
+						data1[i][2] = temp.getDestination();// 目的地
+						data1[i][3] = temp.getDistrict();// 区
+						data1[i][4] = temp.getLocation().substring(0, 2);// 排
+						data1[i][5] = temp.getLocation().substring(2, 4);// 架
+						data1[i][6] = temp.getLocation().substring(4);// 位
+						i++;
+					}
+
+					table = new JTable(data1, columnNames);
+					scrollPane.setViewportView(table);
 				}
-
-				table = new JTable(data1, columnNames);
-				scrollPane.setViewportView(table);
+				
 				
 			}
 		});
@@ -229,6 +234,7 @@ public class InWareHouseManagment extends JPanel {
 				inWare = UiFactory.getInWareHouseManagementService();
 				inWare.updateInWareHouseDoc(inWareHouseDocVO,currPersonID);
 
+				JOptionPane.showMessageDialog(null, "入库单已保存成功");
 			}
 		});
 		GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();

@@ -42,18 +42,22 @@ public class LogisticsDataServiceImpl  extends UnicastRemoteObject implements Lo
 	public PositionPO positionQuery(String ItemID)throws RemoteException  {
 		String string = "SELECT his from history where itemId=" + ItemID + ";";
 		SQL.databaseQuery(string);
-		String temp = "";
+		String temp ="";
 		String[] pos=null;
 		try {
 			while(SQL.rs.next()){
 				temp += SQL.rs.getString("his");
 			}
 			
-			if(temp!=null)
-				pos = temp.split(",");
+			
 		} catch (SQLException e) {
 			System.out.println("物流历史轨迹查询错误");
 			e.printStackTrace();
+		}
+		if(temp!="")
+			pos = temp.split(",");
+		else {
+			return null;
 		}
 		ArrayList<String>  history = new ArrayList<String>();
 		for(String tmp2:pos)

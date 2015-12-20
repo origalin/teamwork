@@ -197,7 +197,7 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 
 	public static void main(String[] args) throws RemoteException {
 		StorageDataServiceImpl serviceImpl = new StorageDataServiceImpl();
-		System.out.println(serviceImpl.getOutWareHouseDoc_unchecked());
+		System.out.println(serviceImpl.getCurrInWare_ID());
 		// serviceImpl.exportToExcel("001000");
 		// RecordPO recordPO=new RecordPO("0025033965", new Date(), "南京市",
 		// "航运区", "000005", "001000");
@@ -412,9 +412,10 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 	}
 
 	public String getCurrDoc_ID(int ctrl) throws RemoteException {
-		String[] sqls = { "SELECT currID from currid where Name='入库单';",
+		String[] sqls1 = { "SELECT currID from currid where Name='入库单';",
 				"SELECT currID from currid where Name='出库单';" };
-		String sql = sqls[ctrl];
+
+		String sql = sqls1[ctrl];
 		SQL.databaseQuery(sql);
 		String currID = "";
 		try {
@@ -425,7 +426,10 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 			e.printStackTrace();
 		}
 		String newCurrID = String.format("%08d", Integer.parseUnsignedInt(currID) + 1);
-		sql = "UPDATE currid SET currID='" + newCurrID + "' WHERE Name='入库单';";
+		if (ctrl == 0)
+			sql = "UPDATE currid SET currID='" + newCurrID + "' WHERE Name='入库单';";
+		else
+			sql = "UPDATE currid SET currID='" + newCurrID + "' WHERE Name='出库单';";
 		SQL.databaseUpdate(sql);
 		SQL.closeDatabase();
 		return currID;
@@ -604,8 +608,8 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 			element.listAppend(lineItem);
 
 		}
-		if(element!=null)
-		list.add(element);
+		if (element != null)
+			list.add(element);
 		return list;
 	}
 

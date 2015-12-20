@@ -23,13 +23,13 @@ public class PositionPO implements Serializable{
 	public void setHistory(ArrayList<String> history) {
 		this.history = history;
 	}
-	public String toString(){
-		String string="";
-		string+=itemID+" ";
-		for(String temp:history)
-			string+=temp+",";
-		string=string.substring(0,string.length()-1);
-		return string;
-	}
+//	public String toString(){
+//		String string="";
+//		string+=itemID+" ";
+//		for(String temp:history)
+//			string+=temp+",";
+//		string=string.substring(0,string.length()-1);
+//		return string;
+//	}
 	
 }

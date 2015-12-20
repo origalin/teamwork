@@ -42,7 +42,7 @@ public class InWareHouseManagementbl implements InWareHouseManagementService {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		System.out.println("linqing");
+		
 		TransferDocPO transferDocPO = null;
 		try {
 			transferDocPO = transferDoc.geTransferDocPOByID(TransferDocID);
