@@ -122,6 +122,12 @@ public class YArrivalDoc implements YArrivalDocService {
 		return StringTools.toGroup( institution.getCourierID(institutionID));
 	}
 
+	@Override
+	public String getcoutierName(String id) throws RemoteException {
+		// TODO Auto-generated method stub
+		return institution.getStaffName(id);
+	}
+
 
 
 }

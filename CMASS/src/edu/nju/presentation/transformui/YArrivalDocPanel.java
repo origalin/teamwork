@@ -42,7 +42,6 @@ public class YArrivalDocPanel extends JPanel{
 	private JTextField zLoadDocIDField;
 	private JTextField itemIDField;
 	private JTable table;
-	private JTable table_1;
 	DefaultTableModel tableModel,DeliverModel;
 	String institutionID, staffID;
 	YArrivalDoc yArrivalDoc;
@@ -50,12 +49,18 @@ public class YArrivalDocPanel extends JPanel{
 	YArrivalDocVO vo;
 	String[][] IDAndState;
 	String[] courier;
+	String[] courierName;
+	private JTable table_1;
 	public YArrivalDocPanel( String staffID) {
 		this.staffID = staffID;
 		try {
 			yArrivalDoc = new YArrivalDoc(staffID);
 			yDeliverDoc = new YDeliverDoc(staffID);
 			courier = yArrivalDoc.getCouriers();
+			courierName = new String[courier.length];
+			for(int i = 0;i<courier.length;i++) {
+				courierName[i] = yArrivalDoc.getcoutierName(courier[i]);
+			}
 		} catch (RemoteException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -63,9 +68,9 @@ public class YArrivalDocPanel extends JPanel{
 		}
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{202, 295, 0};
+		gridBagLayout.columnWidths = new int[]{202, 295, 0, 0};
 		gridBagLayout.rowHeights = new int[]{248, 0, 0, 0, 0, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.columnWeights = new double[]{0.0, 1.0, 0.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 1.0, 1.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
@@ -121,7 +126,7 @@ public class YArrivalDocPanel extends JPanel{
 		
 		JPanel panel_1 = new JPanel();
 		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
-		gbc_panel_1.insets = new Insets(0, 0, 5, 0);
+		gbc_panel_1.insets = new Insets(0, 0, 5, 5);
 		gbc_panel_1.fill = GridBagConstraints.BOTH;
 		gbc_panel_1.gridx = 1;
 		gbc_panel_1.gridy = 0;
@@ -139,7 +144,7 @@ public class YArrivalDocPanel extends JPanel{
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
 		gbc_scrollPane.insets = new Insets(0, 0, 5, 0);
-		gbc_scrollPane.gridwidth = 4;
+		gbc_scrollPane.gridwidth = 5;
 		gbc_scrollPane.gridx = 0;
 		gbc_scrollPane.gridy = 0;
 		panel_1.add(scrollPane, gbc_scrollPane);
@@ -215,7 +220,6 @@ public class YArrivalDocPanel extends JPanel{
 		GridBagConstraints gbc_addButton = new GridBagConstraints();
 		gbc_addButton.fill = GridBagConstraints.HORIZONTAL;
 		gbc_addButton.anchor = GridBagConstraints.NORTH;
-		gbc_addButton.gridwidth = 2;
 		gbc_addButton.gridx = 3;
 		gbc_addButton.gridy = 2;
 		panel_1.add(addButton, gbc_addButton);
@@ -233,8 +237,9 @@ public class YArrivalDocPanel extends JPanel{
 			}
 		});
 		GridBagConstraints gbc_creatButton = new GridBagConstraints();
+		gbc_creatButton.anchor = GridBagConstraints.EAST;
 		gbc_creatButton.gridwidth = 2;
-		gbc_creatButton.insets = new Insets(0, 0, 5, 0);
+		gbc_creatButton.insets = new Insets(0, 0, 5, 5);
 		gbc_creatButton.gridx = 0;
 		gbc_creatButton.gridy = 1;
 		add(creatButton, gbc_creatButton);
@@ -242,21 +247,12 @@ public class YArrivalDocPanel extends JPanel{
 		JScrollPane scrollPane_1 = new JScrollPane();
 		GridBagConstraints gbc_scrollPane_1 = new GridBagConstraints();
 		gbc_scrollPane_1.gridheight = 2;
-		gbc_scrollPane_1.insets = new Insets(0, 0, 5, 0);
+		gbc_scrollPane_1.insets = new Insets(0, 0, 5, 5);
 		gbc_scrollPane_1.gridwidth = 2;
 		gbc_scrollPane_1.fill = GridBagConstraints.BOTH;
 		gbc_scrollPane_1.gridx = 0;
 		gbc_scrollPane_1.gridy = 2;
 		add(scrollPane_1, gbc_scrollPane_1);
-		
-		JPanel panel_4 = new JPanel();
-		scrollPane_1.setColumnHeaderView(panel_4);
-		
-		JLabel label_4 = new JLabel("\u6D3E\u4EF6\u5206\u914D");
-		panel_4.add(label_4);
-		
-		JPanel panel_5 = new JPanel();
-		scrollPane_1.setViewportView(panel_5);
 		
 		table_1 = new JTable();
 		table_1.setModel(new DefaultTableModel(
@@ -266,13 +262,15 @@ public class YArrivalDocPanel extends JPanel{
 				"\u5FEB\u9012\u5355\u53F7", "\u5730\u5740", "\u5FEB\u9012\u5458"
 			}
 		));
+		scrollPane_1.setViewportView(table_1);
 		
 		JComboBox<String> courierBox = new JComboBox<String>();
-		courierBox.setModel(new DefaultComboBoxModel<String>(courier));//´ý¸ü¸Ä
+		courierBox.setModel(new DefaultComboBoxModel<String>(courierName));
 		TableColumnModel tcm = table_1.getColumnModel();
 		tcm.getColumn(2).setCellEditor(new DefaultCellEditor(courierBox));
 		DeliverModel = (DefaultTableModel) table_1.getModel();
-		panel_5.add(table_1);
+	
+		
 		
 		JButton confirmButton = new JButton("\u786E\u8BA4\u5206\u914D");
 		confirmButton.addActionListener(new ActionListener() {
@@ -283,6 +281,7 @@ public class YArrivalDocPanel extends JPanel{
 			}
 		});
 		GridBagConstraints gbc_confirmButton = new GridBagConstraints();
+		gbc_confirmButton.insets = new Insets(0, 0, 0, 5);
 		gbc_confirmButton.anchor = GridBagConstraints.EAST;
 		gbc_confirmButton.gridx = 1;
 		gbc_confirmButton.gridy = 4;
@@ -379,7 +378,14 @@ public class YArrivalDocPanel extends JPanel{
 		String[][] table = new String[DeliverModel.getRowCount()][2];
 		for(int i = 0;i<DeliverModel.getRowCount();i++) {
 			table[i][0] = (String) DeliverModel.getValueAt(i, 0);
-			table[i][1] = (String) DeliverModel.getValueAt(i, 2);
+			String name = (String) DeliverModel.getValueAt(i, 2);
+			for(int j = 0;j<courier.length;j++) {
+				if(courierName[j].equals(name)) {
+					table[i][1] = courier[j];
+					break;
+				}
+			}
+			
 		}
 		try {
 			yDeliverDoc.createYDeliverDoc(table);
