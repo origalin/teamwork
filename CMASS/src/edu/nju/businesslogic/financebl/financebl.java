@@ -410,7 +410,7 @@ public class financebl implements FinanceLogicService {
 	}
 
 	@Override
-	public GatheringDocVO reviewGatheringDoc(String GatheringDocID,
+	public GatheringDocVO reviewGatheringDoc(
 			String courier_ID, String account) {
 		// double money=collectionbl.getCourierMoney(courier_ID);
 		ArrayList<String> SendDoclist;
@@ -429,6 +429,7 @@ public class financebl implements FinanceLogicService {
 				po = collectionbl.getSendDocPOByID(itemID);
 				money += po.getSumPrice();
 			}
+			String  GatheringDocID=financeDataService.getNewGatheringDocID()+"";
 			return new GatheringDocVO(GatheringDocID, new Date(), money,
 					courier_ID, SendDoclist, account);
 		} catch (RemoteException e) {
@@ -461,7 +462,7 @@ public class financebl implements FinanceLogicService {
 		 * 其中第二个方法需要根据ID把一个用来检查该寄件单是否生成收款单的bool变量置为true
 		 */
 		try {
-			financeDataService.createGatheringDoc(vo.getID(), vo.getDate(),
+			financeDataService.createGatheringDoc(vo.getDate(),
 					vo.getMoney(), vo.getCourier_ID(), vo.getItemIDs(),
 					vo.getAccount());
 		} catch (RemoteException e) {
@@ -495,16 +496,25 @@ public class financebl implements FinanceLogicService {
 	}
 
 	@Override
-	public PayDocVO reviewPayDoc(String payDocID, double money, String payMen,
+	public PayDocVO reviewPayDoc(double money, String payMen,
 			String account, PayType type, String back) {
-		return new PayDocVO(payDocID, new Date(), money, payMen, account, type,
-				back);
+		String payDocID;
+		try {
+			payDocID = financeDataService.getNewPayDocID()+"";
+			return new PayDocVO(payDocID, new Date(), money, payMen, account, type,
+					back);
+		} catch (RemoteException e) {
+			System.out.println("连接失败");
+			e.printStackTrace();
+			return null;
+		}
+		
 	}
 
 	@Override
 	public void createPayDoc(PayDocVO vo) {
 		try {
-			financeDataService.createPayDoc(vo.getID(), vo.getDate(),
+			financeDataService.createPayDoc(vo.getDate(),
 					vo.getMoney(), vo.getPayer(), vo.getAccount(),
 					vo.getType(), vo.getBack());
 		} catch (RemoteException e) {

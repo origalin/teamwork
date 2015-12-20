@@ -328,7 +328,7 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements
 
 	// 生成付款单
 	@Override
-	public void createPayDoc(String payDocID, Date date, double money,
+	public void createPayDoc(Date date, double money,
 			String payMen, String account, PayType type, String back)
 			throws RemoteException {
 
@@ -340,7 +340,7 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements
 		} else {
 			payType = "工资";
 		}
-		String sql = "INSERT INTO PayDocPOList VALUES('" + payDocID + "','"
+		String sql = "INSERT INTO PayDocPOList VALUES('" + getNewPayDocID() + "','"
 				+ Time.toDaysTime(date) + "','" + money + "','" + payMen
 				+ "','" + account + "','" + payType + "','" + back
 				+ "','false');";
@@ -383,7 +383,7 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements
 
 	// 生成收款单
 	@Override
-	public void createGatheringDoc(String GatheringDocID, Date date,
+	public void createGatheringDoc(Date date,
 			Double money, String courier_ID, ArrayList<String> itemIDs,
 			String account) throws RemoteException {
 		DateFormat df1 = DateFormat.getDateInstance();// 日期格式，精确到日
@@ -392,7 +392,7 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements
 			items += temp + ",";
 		}
 		items = items.substring(0, items.length() - 1);// 删除最后一个逗号
-		String sql = "INSERT INTO GatheringDocPOList VALUES('" + GatheringDocID
+		String sql = "INSERT INTO GatheringDocPOList VALUES('" + getNewGatheringDocID()
 				+ "','" + Time.toDaysTime(date) + "','" + money + "','"
 				+ courier_ID + "','" + items + "','" + account + "','false');";
 		System.out.println(sql);
@@ -523,6 +523,48 @@ public class FinanceDataServiceImpl extends UnicastRemoteObject implements
 		}
 		
 		return money;
+	}
+	
+	public int getNewGatheringDocID(){
+		String sql = "SELECT 收款单号 FROM GatheringdocPOList;";
+		String lastID=null;
+		int answer;
+		SQL.databaseQuery(sql);
+		try {
+			while (SQL.rs.next()) {
+				lastID= SQL.rs.getString("收款单号");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		if(lastID!=null){
+		answer=Integer.parseInt(lastID);
+		answer++;
+		return answer;
+		}else{
+		return -1;
+		}
+	}
+	
+	public int getNewPayDocID(){
+		String sql = "SELECT 付款单号 FROM PayDocPOList;";
+		String lastID=null;
+		int answer;
+		SQL.databaseQuery(sql);
+		try {
+			while (SQL.rs.next()) {
+				lastID= SQL.rs.getString("付款单号");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		if(lastID!=null){
+		answer=Integer.parseInt(lastID);
+		answer++;
+		return answer;
+		}else{
+		return -1;
+		}
 	}
 
 }

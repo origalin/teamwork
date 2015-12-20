@@ -49,7 +49,6 @@ public class costManagement extends JPanel{
 	private JPanel thisPanel=this;
 	private JPanel panel;
 	private JComboBox comboBox;
-	private JTextField PayDocID;
 	private JTextField back;
 	private JTextField currentWorker;
 	private GridBagConstraints gbc_panel ;
@@ -157,7 +156,7 @@ public class costManagement extends JPanel{
 						}
 					}
 					if(rentPayMent!=0){
-					PayDocVO vo=bl.reviewPayDoc(PayDocID.getText(), rentPayMent,currentWorker.getText(), (String) account, stringToType(type), back.getText());
+					PayDocVO vo=bl.reviewPayDoc(rentPayMent,currentWorker.getText(), (String) account, stringToType(type), back.getText());
 					CheckDialog dialog=new CheckDialog();
 					checkPayDoc ui=new checkPayDoc(vo);
 					dialog.setPreviewMode(ui);
@@ -195,7 +194,7 @@ public class costManagement extends JPanel{
 						}
 					}
 					if(freightPayMent!=0){
-					PayDocVO freightVo=bl.reviewPayDoc(PayDocID.getText(), freightPayMent,currentWorker.getText(), (String) account, stringToType(type), back.getText());
+					PayDocVO freightVo=bl.reviewPayDoc(freightPayMent,currentWorker.getText(), (String) account, stringToType(type), back.getText());
 					CheckDialog freightDialog=new CheckDialog();
 					checkPayDoc freightUi=new checkPayDoc(freightVo);
 					freightDialog.setPreviewMode(freightUi);
@@ -242,7 +241,7 @@ public class costManagement extends JPanel{
 						}
 					}
 					if(salaryPayMent!=0){
-					PayDocVO salaryVo=bl.reviewPayDoc(PayDocID.getText(), salaryPayMent,currentWorker.getText(), (String) account, stringToType(type), back.getText());
+					PayDocVO salaryVo=bl.reviewPayDoc(salaryPayMent,currentWorker.getText(), (String) account, stringToType(type), back.getText());
 					CheckDialog salaryDialog=new CheckDialog();
 					checkPayDoc salaryUi=new checkPayDoc(salaryVo);
 					salaryDialog.setPreviewMode(salaryUi);
@@ -282,15 +281,6 @@ public class costManagement extends JPanel{
 		gbc_button_1.gridy = 1;
 		add(button_1, gbc_button_1);
 		
-		currentWorker = new JTextField();
-		GridBagConstraints gbc_currentWorker = new GridBagConstraints();
-		gbc_currentWorker.insets = new Insets(0, 0, 5, 5);
-		gbc_currentWorker.fill = GridBagConstraints.HORIZONTAL;
-		gbc_currentWorker.gridx = 8;
-		gbc_currentWorker.gridy = 1;
-		add(currentWorker, gbc_currentWorker);
-		currentWorker.setColumns(10);
-		
 		JLabel label = new JLabel("\u6761\u76EE");
 		label.setFont(new Font("ËÎÌו", Font.PLAIN, 12));
 		GridBagConstraints gbc_label = new GridBagConstraints();
@@ -309,46 +299,39 @@ public class costManagement extends JPanel{
 		gbc_comboBox.gridx = 3;
 		gbc_comboBox.gridy = 2;
 		add(comboBox, gbc_comboBox);
-		
-		JLabel label_2 = new JLabel("\u4ED8\u6B3E\u8D26\u53F7");
-		label_2.setFont(new Font("ËÎÌו", Font.PLAIN, 12));
-		GridBagConstraints gbc_label_2 = new GridBagConstraints();
-		gbc_label_2.insets = new Insets(0, 0, 5, 5);
-		gbc_label_2.gridx = 6;
-		gbc_label_2.gridy = 2;
-		add(label_2, gbc_label_2);
-		
-		accountComboBox = new JComboBox();
 		accountList=bl.getAccountList();
 		String[]accountName=new String[accountList.size()];
 		for(int i=0;i<accountList.size();i++){
 			accountName[i]=accountList.get(i).getName();
 		}
+		
+		currentWorker = new JTextField();
+		GridBagConstraints gbc_currentWorker = new GridBagConstraints();
+		gbc_currentWorker.insets = new Insets(0, 0, 5, 5);
+		gbc_currentWorker.fill = GridBagConstraints.HORIZONTAL;
+		gbc_currentWorker.gridx = 8;
+		gbc_currentWorker.gridy = 2;
+		add(currentWorker, gbc_currentWorker);
+		currentWorker.setColumns(10);
+		
+		JLabel label_2 = new JLabel("\u4ED8\u6B3E\u8D26\u53F7");
+		label_2.setFont(new Font("ËÎÌו", Font.PLAIN, 12));
+		GridBagConstraints gbc_label_2 = new GridBagConstraints();
+		gbc_label_2.insets = new Insets(0, 0, 5, 5);
+		gbc_label_2.gridx = 1;
+		gbc_label_2.gridy = 3;
+		add(label_2, gbc_label_2);
+		
+		accountComboBox = new JComboBox();
 		accountComboBox.setEditable(true);
 		accountComboBox.setModel(new DefaultComboBoxModel(accountName));
 		accountComboBox.setSelectedIndex(0);
 		GridBagConstraints gbc_accountComboBox = new GridBagConstraints();
 		gbc_accountComboBox.insets = new Insets(0, 0, 5, 5);
 		gbc_accountComboBox.fill = GridBagConstraints.HORIZONTAL;
-		gbc_accountComboBox.gridx = 8;
-		gbc_accountComboBox.gridy = 2;
+		gbc_accountComboBox.gridx = 3;
+		gbc_accountComboBox.gridy = 3;
 		add(accountComboBox, gbc_accountComboBox);
-		
-		JLabel label_1 = new JLabel("\u4ED8\u6B3E\u5355\u7F16\u53F7");
-		GridBagConstraints gbc_label_1 = new GridBagConstraints();
-		gbc_label_1.insets = new Insets(0, 0, 5, 5);
-		gbc_label_1.gridx = 1;
-		gbc_label_1.gridy = 3;
-		add(label_1, gbc_label_1);
-		
-		PayDocID = new JTextField();
-		GridBagConstraints gbc_PayDocID = new GridBagConstraints();
-		gbc_PayDocID.insets = new Insets(0, 0, 5, 5);
-		gbc_PayDocID.fill = GridBagConstraints.HORIZONTAL;
-		gbc_PayDocID.gridx = 3;
-		gbc_PayDocID.gridy = 3;
-		add(PayDocID, gbc_PayDocID);
-		PayDocID.setColumns(10);
 		
 		JLabel label_4 = new JLabel("\u5907\u6CE8");
 		GridBagConstraints gbc_label_4 = new GridBagConstraints();

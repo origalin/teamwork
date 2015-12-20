@@ -21,14 +21,16 @@ public interface FinanceDataService extends Remote{
 	public double getTotalPayment()throws RemoteException;//生成总支出
 	public double getTotalIncome()throws RemoteException;//无参的是为了生成总收入
 	//生成付款单
-	public void createPayDoc(String payDocID,Date date, double money,String payMen,	String account, PayType type,String back)throws RemoteException;
+	public void createPayDoc(Date date, double money,String payMen,	String account, PayType type,String back)throws RemoteException;
 	public PayDocPO getPayDocPO(String PayDocID)throws RemoteException;//支持预览
 	//生成收款单
-	public void createGatheringDoc(String GatheringDocID,Date date,Double money, String courier_ID,ArrayList<String> itemIDs,String account)throws RemoteException;
+	public void createGatheringDoc(Date date,Double money, String courier_ID,ArrayList<String> itemIDs,String account)throws RemoteException;
 	public GatheringDocPO getGatheringDocPO(String GatheringDocID)throws RemoteException;//支持预览
 	//生成收款单与生成付款单都需要的操作
 	public ArrayList<AccountPO> getAccountList()throws RemoteException;
 	public void addMoney(String accountName, double money)throws RemoteException;
 	public void minusMoney(String accountName, double money)throws RemoteException;
 	public double getCourierMoney(String staffID, Date date)throws RemoteException;
+	public int getNewPayDocID()throws RemoteException;
+	public int getNewGatheringDocID()throws RemoteException;
 }
