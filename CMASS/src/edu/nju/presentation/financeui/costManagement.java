@@ -3,6 +3,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 import edu.nju.businesslogic.financebl.financebl;
+import edu.nju.businesslogic.infobl.Institution;
 import edu.nju.businesslogicservice.infologicservice.InstitutionLogicService;
 import edu.nju.po.InstitutionPO;
 import edu.nju.po.PayDocPO;
@@ -38,6 +39,7 @@ public class costManagement extends JPanel{
 	}
 */
 	private ArrayList<StaffPO>staffList;
+	private String staffName;
 	private String staffID;
 	private ArrayList<ZLoadDocPO>ZLoadDoc;
 	private ArrayList<YLoadDocPO> YLoadDoc;
@@ -50,11 +52,14 @@ public class costManagement extends JPanel{
 	private JPanel panel;
 	private JComboBox comboBox;
 	private JTextField back;
-	private JTextField currentWorker;
 	private GridBagConstraints gbc_panel ;
+	private Institution institution;
 	public costManagement(String staffID) {
 		this.staffID=staffID;
+		
 		try {
+			institution=new Institution();
+			this.staffName=institution.getStaffName(staffID);
 			bl=new financebl();
 		} catch (RemoteException e1) {
 			// TODO Auto-generated catch block
@@ -156,7 +161,7 @@ public class costManagement extends JPanel{
 						}
 					}
 					if(rentPayMent!=0){
-					PayDocVO vo=bl.reviewPayDoc(rentPayMent,currentWorker.getText(), (String) account, stringToType(type), back.getText());
+					PayDocVO vo=bl.reviewPayDoc(rentPayMent,staffName, (String) account, stringToType(type), back.getText());
 					CheckDialog dialog=new CheckDialog();
 					checkPayDoc ui=new checkPayDoc(vo);
 					dialog.setPreviewMode(ui);
@@ -194,7 +199,7 @@ public class costManagement extends JPanel{
 						}
 					}
 					if(freightPayMent!=0){
-					PayDocVO freightVo=bl.reviewPayDoc(freightPayMent,currentWorker.getText(), (String) account, stringToType(type), back.getText());
+					PayDocVO freightVo=bl.reviewPayDoc(freightPayMent,staffName, (String) account, stringToType(type), back.getText());
 					CheckDialog freightDialog=new CheckDialog();
 					checkPayDoc freightUi=new checkPayDoc(freightVo);
 					freightDialog.setPreviewMode(freightUi);
@@ -241,7 +246,7 @@ public class costManagement extends JPanel{
 						}
 					}
 					if(salaryPayMent!=0){
-					PayDocVO salaryVo=bl.reviewPayDoc(salaryPayMent,currentWorker.getText(), (String) account, stringToType(type), back.getText());
+					PayDocVO salaryVo=bl.reviewPayDoc(salaryPayMent,staffName, (String) account, stringToType(type), back.getText());
 					CheckDialog salaryDialog=new CheckDialog();
 					checkPayDoc salaryUi=new checkPayDoc(salaryVo);
 					salaryDialog.setPreviewMode(salaryUi);
@@ -304,15 +309,6 @@ public class costManagement extends JPanel{
 		for(int i=0;i<accountList.size();i++){
 			accountName[i]=accountList.get(i).getName();
 		}
-		
-		currentWorker = new JTextField();
-		GridBagConstraints gbc_currentWorker = new GridBagConstraints();
-		gbc_currentWorker.insets = new Insets(0, 0, 5, 5);
-		gbc_currentWorker.fill = GridBagConstraints.HORIZONTAL;
-		gbc_currentWorker.gridx = 8;
-		gbc_currentWorker.gridy = 2;
-		add(currentWorker, gbc_currentWorker);
-		currentWorker.setColumns(10);
 		
 		JLabel label_2 = new JLabel("\u4ED8\u6B3E\u8D26\u53F7");
 		label_2.setFont(new Font("ËÎÌו", Font.PLAIN, 12));
