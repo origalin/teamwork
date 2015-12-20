@@ -44,7 +44,7 @@ public class GuidePanel_Courier extends JPanel{
 		});
 		GridBagConstraints gbc_collectButtom = new GridBagConstraints();
 		gbc_collectButtom.fill = GridBagConstraints.BOTH;
-		gbc_collectButtom.insets = new Insets(5, 0, 0, 0);
+		gbc_collectButtom.insets = new Insets(0, 0, 0, 0);
 		gbc_collectButtom.gridx = 0;
 		gbc_collectButtom.gridy = 0;
 		add(collectButtom, gbc_collectButtom);

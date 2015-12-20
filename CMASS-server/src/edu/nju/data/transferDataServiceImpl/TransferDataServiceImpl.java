@@ -832,7 +832,7 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 	@Override
 	public String getTransferID_Plain() {
 		// TODO Auto-generated method stub
-		String str = "select Sequence from SequenceTable where Kind = 'TransferID_Plain';";
+		String str = "select Sequence from SequenceTable where Kind = 'TransferID_Plane';";
 		String ret = "";
 		SQL.databaseQuery(str);
 		try {
@@ -985,17 +985,17 @@ public class TransferDataServiceImpl extends UnicastRemoteObject  implements Tra
 		} else {
 			paid = 0;
 		}
-		String str = "replace into ZLoadDoc  values("
+		String str = "replace into YLoadDoc  values("
 		+ "'"+ID+"','"+Time.toDaysTime(date)+"','"+tranceID+"','"+target+"','"+CarID+"',"
 		+ "'"+watcher+"','"+driver+"','"+businessHallID+"','"+itemIDs+"','"+price+"','"+checked+"',"
-		+"'"+paid+"',);";
+		+"'"+paid+"');";
 		SQL.databaseUpdate(str);
 		SQL.closeDatabase();
 	}
 	@Override
 	public String getYLoadSequence() {
 		// TODO Auto-generated method stub
-		String str = "select Sequence from SequenceTable where Kind = 'TLoadDoc';";
+		String str = "select Sequence from SequenceTable where Kind = 'YLoadDoc';";
 		String ret = "";
 		SQL.databaseQuery(str);
 		try {

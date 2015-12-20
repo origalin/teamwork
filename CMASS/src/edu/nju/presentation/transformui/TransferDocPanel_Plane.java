@@ -52,6 +52,8 @@ public class TransferDocPanel_Plane extends JPanel{
 			e1.printStackTrace();
 			warning("net");
 		}
+		
+		
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{37, 168, 0};
 		gridBagLayout.rowHeights = new int[]{248, 0};
@@ -73,6 +75,9 @@ public class TransferDocPanel_Plane extends JPanel{
 		gbl_panel_11.columnWeights = new double[]{1.0, Double.MIN_VALUE};
 		gbl_panel_11.rowWeights = new double[]{0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel_11.setLayout(gbl_panel_11);
+		
+		
+		
 				
 				JPanel panel = new JPanel();
 				GridBagConstraints gbc_panel = new GridBagConstraints();
@@ -200,7 +205,7 @@ public class TransferDocPanel_Plane extends JPanel{
 				"\u8FD0\u5355\u53F7"
 			}
 		));
-		DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
+		tableModel = (DefaultTableModel) table.getModel();
 		table.getColumnModel().getColumn(0).setPreferredWidth(130);
 		panel_14.add(table);
 		

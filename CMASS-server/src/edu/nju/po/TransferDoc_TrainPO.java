@@ -13,6 +13,7 @@ public class TransferDoc_TrainPO extends TransferDocPO{
 		this.TrainNum = trainNum;
 		this.corriage = corriage;
 		this.itemIDs = itemIDs;
+		this.price = price;
 		// TODO 自动生成的构造函数存根
 	}
 }

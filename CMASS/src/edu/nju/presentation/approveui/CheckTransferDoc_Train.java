@@ -282,5 +282,6 @@ public class CheckTransferDoc_Train extends JPanel{
 		train_num.setText(vo.getTrainNum());
 		watcherField.setText(vo.getWatcher());
 		train_corridge.setText(vo.getCorriage());
+		textField_3.setText(vo.getPrice());
 	}
 }

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
-    <file url="PROJECT" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CMASS-server/src/edu/nju/po/Post.java" charset="GB2312" />
+    <file url="file://$PROJECT_DIR$/CMASS/src/edu/nju/businesslogic/financebl/financebl.java" charset="GB2312" />
+    <file url="file://$PROJECT_DIR$/CMASS/src/edu/nju/businesslogic/infobl/Institution.java" charset="GB2312" />
+    <file url="file://$PROJECT_DIR$/CMASS/src/edu/nju/presentation/approveui/CheckTransferDoc_Train.java" charset="GB2312" />
+    <file url="PROJECT" charset="GB2312" />
   </component>
 </project>

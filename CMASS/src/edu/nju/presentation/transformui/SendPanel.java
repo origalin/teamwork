@@ -170,10 +170,10 @@ public class SendPanel extends JPanel{
 		int i = toSendModel.getRowCount();
 		int j = toOverModel.getRowCount();
 		for(;i>0;i--) {
-			toSendModel.removeRow(i);
+			toSendModel.removeRow(i-1);
 		}
 		for(;j>0;j--) {
-			toOverModel.removeRow(j);
+			toOverModel.removeRow(j-1);
 		}
 		collectionbl = new Collectionbl(staffID);
 		yDeliverDocVOs = yDeliverDoc.findYDeliverDocVOs(staffID);

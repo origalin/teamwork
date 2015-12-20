@@ -140,7 +140,7 @@ public class TransferDoc implements TransferDocService{
 	public TransferDoc_PlaneVO createTransferDocVO_Plane(String city,
 			String carNum, String watcher, String container,String[] itemIDs) throws RemoteException {
 		// TODO 自动生成的方法存根
-		po = new TransferDoc_PlanePO(institutionID+Time.toDocTime(new Date())+getTransferSequence(), new Date(), carNum, getTransferID(),institution.getCity(institutionID), city,watcher, container, calcPrice_plain(city), itemIDs);
+		po = new TransferDoc_PlanePO(institutionID+Time.toDocTime(new Date())+getTransferSequence(), new Date(), carNum,container, getTransferID_Plain(),institution.getCity(institutionID), city,watcher,  calcPrice_plain(city), itemIDs);
 		return new TransferDoc_PlaneVO((TransferDoc_PlanePO) po);
 	}
 
@@ -148,7 +148,7 @@ public class TransferDoc implements TransferDocService{
 	public TransferDoc_TrainVO createTransferDocVO_Train(String city,
 			String carNum, String watcher, String carriage,String[] itemIDs) throws RemoteException {
 		// TODO 自动生成的方法存根
-		po = new TransferDoc_TrainPO(institutionID+Time.toDocTime(new Date())+getTransferSequence(), new Date(), carNum, getTransferID(), institution.getCity(institutionID), city, watcher,carriage, calcPrice_train(city), itemIDs);
+		po = new TransferDoc_TrainPO(institutionID+Time.toDocTime(new Date())+getTransferSequence(), new Date(), carNum,carriage, getTransferID_Train(), institution.getCity(institutionID), city, watcher, calcPrice_train(city), itemIDs);
 		return new TransferDoc_TrainVO((TransferDoc_TrainPO) po);
 	}
 

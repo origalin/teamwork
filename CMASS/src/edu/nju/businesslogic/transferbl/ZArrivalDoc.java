@@ -124,7 +124,7 @@ public class ZArrivalDoc implements ZArrivalDocService{
 				}
 			}
 		}
-		po = new ZArrivalDocPO("02"+getZArrivalSequence(), new Date(), fromDocID, "´ý¶¨", itemAndState);
+		po = new ZArrivalDocPO("02"+getZArrivalSequence(), new Date(), fromDocID, institution.getCity(yLoadDocPO.getBusinessHallID()), itemAndState);
 		return new ZArrivalDocVO(po);
 	}
 

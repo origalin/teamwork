@@ -13,8 +13,9 @@ public class TransferDoc_PlanePO extends TransferDocPO{
 		this.date = date;
 		this.watcher = watcher;
 		this.planeNum = planeNum;
-		this.corriage = corriage;
+		this.container = corriage;
 		this.itemIDs = itemIDs;
+		this.price = price;
 		// TODO 自动生成的构造函数存根
 	}
 }

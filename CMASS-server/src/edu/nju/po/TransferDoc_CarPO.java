@@ -14,6 +14,7 @@ public class TransferDoc_CarPO extends TransferDocPO {
 		this.date = date;
 		this.CarNum = carNum;
 		this.itemIDs = itemIDs;
+		this.price = price;
 		// TODO 自动生成的构造函数存根
 	}
 

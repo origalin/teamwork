@@ -68,11 +68,13 @@ public class CollertionPanel extends JPanel{
 		setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel_11 = new JPanel();
+		panel_11.setOpaque(false);
 		panel_11.setBorder(null);
 		add(panel_11, BorderLayout.NORTH);
 		panel_11.setLayout(new GridLayout(14, 0, 0, 0));
 		
 		JPanel panel = new JPanel();
+		panel.setOpaque(false);
 		panel_11.add(panel);
 		FlowLayout flowLayout = (FlowLayout) panel.getLayout();
 		flowLayout.setAlignment(FlowLayout.LEFT);
@@ -447,6 +449,9 @@ public class CollertionPanel extends JPanel{
 			}
 		});
 		panel_12.add(createButton);
+		
+		
+		setOpaque(false);
 	}
 	public void estimate() {
 		intialize();
