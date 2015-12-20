@@ -57,6 +57,7 @@ public class checkGatheringDoc extends JPanel{
 		add(label_4, gbc_label_4);
 		
 		GatheringDocID = new JTextField();
+		GatheringDocID.setEditable(false);
 		GridBagConstraints gbc_GatheringDocID = new GridBagConstraints();
 		gbc_GatheringDocID.insets = new Insets(0, 0, 5, 5);
 		gbc_GatheringDocID.fill = GridBagConstraints.HORIZONTAL;
@@ -75,6 +76,7 @@ public class checkGatheringDoc extends JPanel{
 		add(label, gbc_label);
 		
 		courier_ID = new JTextField();
+		courier_ID.setEditable(false);
 		GridBagConstraints gbc_courier_ID = new GridBagConstraints();
 		gbc_courier_ID.insets = new Insets(0, 0, 5, 5);
 		gbc_courier_ID.fill = GridBagConstraints.HORIZONTAL;
@@ -93,6 +95,7 @@ public class checkGatheringDoc extends JPanel{
 		add(label_1, gbc_label_1);
 		
 		GatheringDocDate = new JTextField();
+		GatheringDocDate.setEditable(false);
 		GridBagConstraints gbc_GatheringDocDate = new GridBagConstraints();
 		gbc_GatheringDocDate.insets = new Insets(0, 0, 5, 5);
 		gbc_GatheringDocDate.fill = GridBagConstraints.HORIZONTAL;
@@ -111,6 +114,7 @@ public class checkGatheringDoc extends JPanel{
 		add(label_3, gbc_label_3);
 		
 		money = new JTextField();
+		money.setEditable(false);
 		GridBagConstraints gbc_money = new GridBagConstraints();
 		gbc_money.insets = new Insets(0, 0, 5, 5);
 		gbc_money.fill = GridBagConstraints.HORIZONTAL;
@@ -128,6 +132,7 @@ public class checkGatheringDoc extends JPanel{
 		add(lblNewLabel, gbc_lblNewLabel);
 		
 		account = new JTextField();
+		account.setEditable(false);
 		GridBagConstraints gbc_account = new GridBagConstraints();
 		gbc_account.insets = new Insets(0, 0, 5, 5);
 		gbc_account.fill = GridBagConstraints.HORIZONTAL;

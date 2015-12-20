@@ -109,8 +109,10 @@ public class createGatheringDocPO extends JPanel{
 				public void actionPerformed(ActionEvent arg0) {
 					String GatheringDocID=textField_1.getText().trim();
 					String courierID=courier_ID.getText().trim();
+					if(!courierID.equals("")){
 					String account=(String) comboBox.getSelectedItem();
 					GatheringDocVO GatheringDocVO=bl.reviewGatheringDoc(GatheringDocID, courierID, account);
+					if(GatheringDocVO.getMoney()!=0){
 					GatheringDocPO GatheringDocPO=new GatheringDocPO(GatheringDocVO.getID(), GatheringDocVO.getDate(),GatheringDocVO.getMoney(), GatheringDocVO.getAccount(), GatheringDocVO.getItemIDs(),GatheringDocVO.getAccount());
 					CheckDialog dialog=new CheckDialog();
 		            checkGatheringDoc ui=new checkGatheringDoc(GatheringDocVO);
@@ -123,6 +125,12 @@ public class createGatheringDocPO extends JPanel{
 		            		bl.addMoney(GatheringDocPO.getAccount(), GatheringDocPO.getMoney());
 		            	}
 		            });
+					}else{
+						JOptionPane.showMessageDialog(null, "该快递员还没有进行新的派件", "错误",JOptionPane.PLAIN_MESSAGE);
+					}
+					}else{
+					    JOptionPane.showMessageDialog(null, "未输入快递员编号", "错误",JOptionPane.PLAIN_MESSAGE);  
+					}
 		            
 					/*
 					 GatheringDocPO po=getGatheringDocPOByID(inputID);

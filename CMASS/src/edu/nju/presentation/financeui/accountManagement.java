@@ -58,12 +58,16 @@ public class accountManagement extends JPanel{
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource()==button){
+					if(!textField.getText().equals("")){
 					String newAccountName=textField.getText().trim();
 					//首先更新表格
 					Object[]rowValues={newAccountName,0};
 					((DefaultTableModel) table.getModel()).addRow(rowValues);
 					textField.setText("");
 					bl.addAccountPO(newAccountName);
+					}else{
+					    JOptionPane.showMessageDialog(null, "请输入新加账户名", "错误",JOptionPane.PLAIN_MESSAGE);  
+					}
 				}
 			}
 		});

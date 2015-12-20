@@ -56,9 +56,9 @@ public class GuidePanel_BusinessHall extends JPanel{
 			}
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0};
-		gridBagLayout.rowHeights = new int[]{66, 64, 66, 64, 0, 0};
+		gridBagLayout.rowHeights = new int[]{66, 64, 66, 64, 78, 0, 0};
 		gridBagLayout.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
 		JButton collectButtom = new JButton("\u88C5\u8F66\u7BA1\u7406");
@@ -92,14 +92,6 @@ public class GuidePanel_BusinessHall extends JPanel{
 		gbc_sendButtom.gridx = 0;
 		gbc_sendButtom.gridy = 1;
 		add(sendButtom, gbc_sendButtom);
-		
-
-		JButton btnNewButton = new JButton("\u65B0\u5EFA\u6536\u6B3E\u5355");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				createGatheringDocfunc();
-			}
-		});
 
 		JButton carButton = new JButton("\u8F66\u8F86\u4FE1\u606F\u7BA1\u7406");
 
@@ -126,6 +118,19 @@ public class GuidePanel_BusinessHall extends JPanel{
 		gbc_button.gridx = 0;
 		gbc_button.gridy = 3;
 		add(button, gbc_button);
+		
+		JButton btnNewButton = new JButton("\u65B0\u5EFA\u6536\u6B3E\u5355");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				createGatheringDocfunc();
+			}
+		});
+		GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();
+		gbc_btnNewButton_1.fill = GridBagConstraints.BOTH;
+		gbc_btnNewButton_1.insets = new Insets(0, 0, 5, 0);
+		gbc_btnNewButton_1.gridx = 0;
+		gbc_btnNewButton_1.gridy = 4;
+		add(btnNewButton, gbc_btnNewButton_1);
 		
 		
 		button.addActionListener(new ActionListener() {

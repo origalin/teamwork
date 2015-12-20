@@ -47,6 +47,7 @@ public class CheckInWareHouseDoc extends JPanel{
 		add(lblNewLabel, gbc_lblNewLabel);
 		
 		InWareHouseDocID = new JTextField();
+		InWareHouseDocID.setEditable(false);
 		GridBagConstraints gbc_InWareHouseDocID = new GridBagConstraints();
 		gbc_InWareHouseDocID.fill = GridBagConstraints.HORIZONTAL;
 		gbc_InWareHouseDocID.insets = new Insets(0, 0, 5, 5);

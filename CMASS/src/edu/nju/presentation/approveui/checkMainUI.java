@@ -116,6 +116,7 @@ public class checkMainUI extends JPanel{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				String s=(String) comboBox.getSelectedItem();
+				textField.setText("");
 				switch(s){
 				case "收款单":
 					/*
@@ -275,35 +276,44 @@ public class checkMainUI extends JPanel{
 					switch(DocType){
 					case "收款单":
 						GatheringDocPO GatheringDocPO=getDocPOByID(inputID,uncheckedGatheringDocList);//getGatheringDocPOByID(inputID);
+						if(GatheringDocPO!=null){
 						GatheringDocVO GatheringDocVO=GatheringDocVOToPO(GatheringDocPO);
 						CheckDialog GatheringDocdialog=new CheckDialog();
 			            checkGatheringDoc GatheringDocui=new checkGatheringDoc(GatheringDocVO);
 			            GatheringDocdialog.setCheckMode(GatheringDocui);
+						}
 						break;
 					case"付款单":
 						PayDocPO PayDocPO=getDocPOByID(inputID,uncheckedPayDocList);//getPayDocPOByID(inputID);
+						if(PayDocPO!=null){
 						PayDocVO PayDocVO=PayDocVOToPO(PayDocPO);
 						CheckDialog PayDocdialog=new CheckDialog();
 			            checkPayDoc PayDocui=new checkPayDoc(PayDocVO);
 			            PayDocdialog.setCheckMode(PayDocui);
+						}
 						break;
 					case "入库单":
 						InWareHouseDocPO InWareHouseDocPO=getDocPOByID(inputID,uncheckedInWareHouseDocList);
+						if(InWareHouseDocPO!=null){
 						InWareHouseDocVO InWareHouseDocVO=new InWareHouseDocVO(InWareHouseDocPO);
 						CheckDialog InWareHouseDocDialog=new CheckDialog();
 						CheckInWareHouseDoc InWareHouseDocui=new CheckInWareHouseDoc(InWareHouseDocVO);
 						InWareHouseDocDialog.setCheckMode(InWareHouseDocui);
+						}
 						break;
 					case "出库单":
 						OutWareHouseDocPO OutWareHouseDocPO=getDocPOByID(inputID,uncheckedOutWareHouseDocList);
+						if(OutWareHouseDocPO!=null){
 						OutWareHouseDocVO OutWareHouseDocVO=new OutWareHouseDocVO(OutWareHouseDocPO);
 						CheckDialog OutWareHouseDocDialog=new CheckDialog();
 						CheckWareHouseDoc OutWareHouseDocui=new CheckWareHouseDoc(OutWareHouseDocVO);
 						OutWareHouseDocDialog.setCheckMode(OutWareHouseDocui);
+						}
 						break;
 						
 					case"中转单":
 						TransferDocPO TransferDocPO=getDocPOByID(inputID,uncheckedTransferDocList);
+						if(TransferDocPO!=null){
 						String carNum=TransferDocPO.getCarNum();
 						String trainNum=TransferDocPO.getTrainNum();
 						String planeNum=TransferDocPO.getPlaneNum();
@@ -324,55 +334,70 @@ public class checkMainUI extends JPanel{
 							CheckTransferDoc_Plane planeui=new CheckTransferDoc_Plane(vo);
 							planeDialog.setCheckMode(planeui);
 						}
+						}
 						 break;
 					case "中转中心装车单":
 						ZLoadDocPO ZLoadDocPO=getDocPOByID(inputID,uncheckedZLoadDocList);
+						if(ZLoadDocPO!=null){
 						ZLoadDocVO ZLoadDocVO=new ZLoadDocVO(ZLoadDocPO);
 						CheckDialog ZLoadDocDialog=new CheckDialog();
 						CheckZLoadDoc ZLoadDocui=new CheckZLoadDoc(ZLoadDocVO);
 						ZLoadDocDialog.setCheckMode(ZLoadDocui);
+						}
 						break;
 					case"营业厅装车单":
 						YLoadDocPO YLoadDocPO=getDocPOByID(inputID,uncheckedYLoadDocList);
+						if(YLoadDocPO!=null){
 						YLoadDocVO YLoadDocVO=new YLoadDocVO(YLoadDocPO);
 						CheckDialog YLoadDocDialog=new CheckDialog();
 						checkYLoadDoc YLoadDocui=new checkYLoadDoc(YLoadDocVO);
 						YLoadDocDialog.setCheckMode(YLoadDocui);
+						}
 						break;
 					case"收件单":
 						OverDocPO OverDocPO=getDocPOByID(inputID,uncheckedOverDocList);
+						if(OverDocPO!=null){
 						OverDocVO OverDocVO=new OverDocVO(OverDocPO);
 						CheckDialog OverDocDialog=new CheckDialog();
 						checkOverDoc OverDocui=new checkOverDoc(OverDocVO);
 						OverDocDialog.setCheckMode(OverDocui);
+						}
 						break;
 					case"营业厅到达单":
 						YArrivalDocPO YArrivalDocPO=getDocPOByID(inputID,uncheckedYArrivalDocList);
+						if(YArrivalDocPO!=null){
 						YArrivalDocVO YArrivalDocVO=new YArrivalDocVO(YArrivalDocPO);
 						CheckDialog YArrivalDocDialog=new CheckDialog();
 						checkYArrivalDoc YArrivalDocui=new checkYArrivalDoc(YArrivalDocVO);
 						YArrivalDocDialog.setCheckMode(YArrivalDocui);
+						}
 						break;
 					case"寄件单":
 						SendDocPO SendDocPO=getDocPOByID(inputID,uncheckedSendDocList);
+						if(SendDocPO!=null){
 						SendDocVO SendDocVO=new SendDocVO(SendDocPO);
 						CheckDialog SendDocDialog=new CheckDialog();
 						CheckSendDoc SendDocui=new CheckSendDoc(SendDocVO);
 						SendDocDialog.setCheckMode(SendDocui);
+						}
 						break;
 					case"中转中心到达单":
 						ZArrivalDocPO ZArrivalDocPO=getDocPOByID(inputID,uncheckedZArrivalDocList);
+						if(ZArrivalDocPO!=null){
 						ZArrivalDocVO ZArrivalDocVO=new ZArrivalDocVO(ZArrivalDocPO);
 						CheckDialog ZArrivalDocDialog=new CheckDialog();
 						checkZArrivalDoc ZArrivalDocui=new checkZArrivalDoc(ZArrivalDocVO);
 						ZArrivalDocDialog.setCheckMode(ZArrivalDocui);
+						}
 						break;
 					case"派件单":
 						YDeliverDocPO YDeliverDocPO=getDocPOByID(inputID,uncheckedYDeliverDocList);
+						if(YDeliverDocPO!=null){
 						YDeliverDocVO YDeliverDocVO=new YDeliverDocVO(YDeliverDocPO);
 						CheckDialog YDeliverDocDialog=new CheckDialog();
 						checkYDeliverDoc YDeliverDocui=new checkYDeliverDoc(YDeliverDocVO);
 						YDeliverDocDialog.setCheckMode(YDeliverDocui);
+						}
 						break;
 						
 					/*
@@ -729,6 +754,8 @@ public class checkMainUI extends JPanel{
 				return Doc;
 			}
 		}
+		JOptionPane.showMessageDialog(null, "您输入的单号不存在", "错误",JOptionPane.PLAIN_MESSAGE); 
+		textField.setText("");
 		return null;
 	}
 

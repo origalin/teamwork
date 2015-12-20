@@ -111,8 +111,11 @@ public class costManagement extends JPanel{
 						panel=new freightMoneyPanel();
 						addPanel(panel);
 						transferDoc=bl.getUnpaidCarTransferList();
+						System.out.println("transferDoc:"+transferDoc.size());
 						YLoadDoc=bl.getUnpaidYLoadDocList();
+						System.out.println("YLoadDoc:"+YLoadDoc.size());
 						ZLoadDoc=bl.getUnpaidZLoadDocList();
+						System.out.println("ZLoadDoc:"+ZLoadDoc.size());
 						((freightMoneyPanel)panel).initializeTable(transferDoc, YLoadDoc, ZLoadDoc);
 						updateUI();
 						break;
@@ -153,6 +156,7 @@ public class costManagement extends JPanel{
 							rentPayMent+=(double)oneLine[2];
 						}
 					}
+					if(rentPayMent!=0){
 					PayDocVO vo=bl.reviewPayDoc(PayDocID.getText(), rentPayMent,currentWorker.getText(), (String) account, stringToType(type), back.getText());
 					CheckDialog dialog=new CheckDialog();
 					checkPayDoc ui=new checkPayDoc(vo);
@@ -176,6 +180,9 @@ public class costManagement extends JPanel{
 			            		institutionList=null;
 			            	}
 			            });
+					}else{
+					    JOptionPane.showMessageDialog(null, "没有付款项", "错误",JOptionPane.PLAIN_MESSAGE);  
+					}
 					break;
 				case"运费":
 					JTable freightTable=((freightMoneyPanel)panel).getTable();//每列分别为bool,单据类型，单据编号，运费
@@ -187,6 +194,7 @@ public class costManagement extends JPanel{
 							freightPayMent+=(double)oneLine[3];
 						}
 					}
+					if(freightPayMent!=0){
 					PayDocVO freightVo=bl.reviewPayDoc(PayDocID.getText(), freightPayMent,currentWorker.getText(), (String) account, stringToType(type), back.getText());
 					CheckDialog freightDialog=new CheckDialog();
 					checkPayDoc freightUi=new checkPayDoc(freightVo);
@@ -219,6 +227,9 @@ public class costManagement extends JPanel{
 		            		transferDoc=null;
 		            	}
 		            });
+					}else{
+						JOptionPane.showMessageDialog(null, "没有付款项", "错误",JOptionPane.PLAIN_MESSAGE);
+					}
 					break;
 				case"工资":
 					JTable salaryTable=((salaryPanel)panel).getTable();//每列分别为工号，姓名，工资
@@ -230,6 +241,7 @@ public class costManagement extends JPanel{
 							salaryPayMent+=(double)oneLine[3];
 						}
 					}
+					if(salaryPayMent!=0){
 					PayDocVO salaryVo=bl.reviewPayDoc(PayDocID.getText(), salaryPayMent,currentWorker.getText(), (String) account, stringToType(type), back.getText());
 					CheckDialog salaryDialog=new CheckDialog();
 					checkPayDoc salaryUi=new checkPayDoc(salaryVo);
@@ -257,6 +269,9 @@ public class costManagement extends JPanel{
 		            		staffList=null;
 		            	}
 		            });
+					}else{
+						JOptionPane.showMessageDialog(null, "没有付款项", "错误",JOptionPane.PLAIN_MESSAGE);
+					}
 					break;
 				}
 			}
@@ -354,6 +369,7 @@ public class costManagement extends JPanel{
 		JButton button_2 = new JButton("\u91CD\u7F6E\u5DE5\u8D44");
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+			    JOptionPane.showMessageDialog(null, "工资已被重置.", null,JOptionPane.PLAIN_MESSAGE);  
 				bl.resetSalary();
 			}
 		});
@@ -366,6 +382,7 @@ public class costManagement extends JPanel{
 		JButton button_3 = new JButton("\u91CD\u7F6E\u79DF\u91D1");
 		button_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				 JOptionPane.showMessageDialog(null, "租金已被重置.", null,JOptionPane.PLAIN_MESSAGE);  
 				bl.resetRent();
 			}
 		});

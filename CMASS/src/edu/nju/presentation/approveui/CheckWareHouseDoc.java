@@ -49,6 +49,7 @@ public class CheckWareHouseDoc extends JPanel{
 		add(label, gbc_label);
 		
 		OutWareHouseID = new JTextField();
+		OutWareHouseID.setEditable(false);
 		GridBagConstraints gbc_OutWareHouseID = new GridBagConstraints();
 		gbc_OutWareHouseID.insets = new Insets(0, 0, 5, 5);
 		gbc_OutWareHouseID.fill = GridBagConstraints.HORIZONTAL;
@@ -66,6 +67,7 @@ public class CheckWareHouseDoc extends JPanel{
 		add(label_1, gbc_label_1);
 		
 		Date = new JTextField();
+		Date.setEditable(false);
 		GridBagConstraints gbc_Date = new GridBagConstraints();
 		gbc_Date.insets = new Insets(0, 0, 5, 5);
 		gbc_Date.fill = GridBagConstraints.HORIZONTAL;
@@ -82,6 +84,7 @@ public class CheckWareHouseDoc extends JPanel{
 		add(label_2, gbc_label_2);
 		
 		type = new JTextField();
+		type.setEditable(false);
 		GridBagConstraints gbc_type = new GridBagConstraints();
 		gbc_type.insets = new Insets(0, 0, 5, 5);
 		gbc_type.fill = GridBagConstraints.HORIZONTAL;

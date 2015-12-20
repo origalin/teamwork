@@ -8,6 +8,8 @@ import java.text.ParseException;
 import java.util.Date;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import edu.nju.businesslogic.collectionbl.Collectionbl;
 import edu.nju.businesslogic.infobl.Driver;
 import edu.nju.businesslogic.infobl.Institution;
@@ -414,6 +416,13 @@ public class financebl implements FinanceLogicService {
 		ArrayList<String> SendDoclist;
 		try {
 			SendDoclist = collectionbl.getSendDocsByID(courier_ID);
+			
+			if(SendDoclist.size()==0){
+				System.out.println("没有派件");
+			}else{
+				System.out.println(SendDoclist.size());
+			}
+			
 			double money = 0;
 			for (String itemID : SendDoclist) {
 				SendDocPO po;
@@ -427,7 +436,7 @@ public class financebl implements FinanceLogicService {
 			e.printStackTrace();
 			return null;
 		} catch (DatabaseNULLException e) {
-			System.out.println("boss数据库访问失败");
+		    JOptionPane.showMessageDialog(null, "该快递员目前没有新的派件", "错误",JOptionPane.PLAIN_MESSAGE);  
 			e.printStackTrace();
 		}
 		return null;
