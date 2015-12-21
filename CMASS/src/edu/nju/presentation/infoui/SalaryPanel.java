@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
 
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
@@ -137,15 +138,13 @@ public class SalaryPanel extends JPanel {
 				try {
 					driverLogicService.saveMoney(Double.valueOf(textField_8.getText()), textField.getText().toString());
 				} catch (NumberFormatException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+						System.out.println("不是double");
+						JOptionPane.showMessageDialog(null, "输入薪水信息格式错误");  
 				} catch (RemoteException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
-				}
-					
-					textField_8.setEditable(false);
-		
+				}			
+					textField_8.setEditable(false);	
 				}else{
 					SalaryPO po = null;
 					try {
@@ -154,10 +153,14 @@ public class SalaryPanel extends JPanel {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
+					try{
 					po.setBaseSalary(Double.valueOf(textField_1.getText()));
 					po.setBonusSalary(Double.valueOf(textField_2.getText()));
 					po.setPercentageSalary(Double.valueOf(textField_3.getText()));
-					
+					}catch(NumberFormatException e1){
+						System.out.println("不是double");
+						JOptionPane.showMessageDialog(null, "输入距离信息格式错误");  
+					}
 					try {
 						institutionLogicService.saveSalary(po);
 					} catch (RemoteException e1) {

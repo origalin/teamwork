@@ -17,6 +17,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import edu.nju.businesslogic.infobl.Distance;
@@ -201,10 +202,13 @@ public class DistancePanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+			try{
 				DistancePO po=new DistancePO((String)comboBox.getSelectedItem(),(String)comboBox_1.getSelectedItem(),Double.valueOf(txtkm.getText()));
-				try {
-					distanceBl.changeDistance(po);
-				} catch (RemoteException e1) {
+				distanceBl.changeDistance(po);
+			}catch(NumberFormatException e1){
+				System.out.println("不是double");
+				JOptionPane.showMessageDialog(null, "输入距离信息格式错误");  
+			} catch (RemoteException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
