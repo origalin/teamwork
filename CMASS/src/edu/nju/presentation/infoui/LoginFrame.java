@@ -141,6 +141,7 @@ public class LoginFrame extends JFrame {
 		pn1.add(account, gbc_account);
 		getContentPane().add(pn2);
 		getContentPane().add(pn3);
+		getRootPane().setDefaultButton(confirm);
 		this.setResizable(false);
 		this.setVisible(true);
 	}

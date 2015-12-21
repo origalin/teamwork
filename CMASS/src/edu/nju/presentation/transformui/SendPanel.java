@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -249,10 +250,12 @@ public class SendPanel extends JPanel{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		JOptionPane.showMessageDialog(this, "保存完毕");
 	}
 	public void warning() {
-		CheckDialog warningDialog = new CheckDialog();
-			warningDialog.setNetMode();
+	
+		JOptionPane.showMessageDialog(this, "网络异常，请重启客户端！");
+		
 		
 	}
 //	private void refresh() {

@@ -21,14 +21,14 @@ public class CheckDialog extends JDialog{
 	JButton confirmButton;
 	JPanel docPanel;
 	public CheckDialog() {
-		setLocationRelativeTo(null);
+		setSize(900,800);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0};
 		gridBagLayout.columnWeights = new double[]{1.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{1.0, 0.0, Double.MIN_VALUE};
 		getContentPane().setLayout(gridBagLayout);
-		
+		setLocationRelativeTo(null);
 		
 		docPanel = new JPanel();
 		GridBagConstraints gbc_docPanel = new GridBagConstraints();
@@ -88,7 +88,7 @@ public class CheckDialog extends JDialog{
 	public void setCheckMode(JPanel panel) {
 		setTitle("œÍ«È");
 		getDocPanel().add(panel);
-		setSize(600,700);
+		
 		
 		getConfirmButton().addActionListener(new ActionListener() {
 			
@@ -104,7 +104,7 @@ public class CheckDialog extends JDialog{
 	public void setPreviewMode(JPanel panel) {
 		setTitle("‘§¿¿");
 		getDocPanel().add(panel);
-		setSize(600,700);
+		
 		JButton cancelButton = new JButton("\u53D6\u6D88");
 		cancelButton.addActionListener(new ActionListener() {
 			

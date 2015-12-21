@@ -10,6 +10,7 @@ import java.rmi.RemoteException;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -260,13 +261,13 @@ public class ZLoadDocPanel extends JPanel{
 		}
 	}
 	private void warning(String type) {
-		CheckDialog warningDialog = new CheckDialog();
+		
 		switch (type) {
 		case "net":
-			warningDialog.setNetMode();
+			JOptionPane.showMessageDialog(this, "网络异常，请重启客户端！");
 			break;	
 		case "lost":
-			warningDialog.setLostMode();
+			JOptionPane.showMessageDialog(this, "请检查信息完整性");
 			break;
 
 		default:

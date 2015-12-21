@@ -538,13 +538,13 @@ public class CollertionPanel extends JPanel{
 		
 	}
 	public void warning(String type) {
-		CheckDialog warningDialog = new CheckDialog();
+		
 		switch (type) {
 		case "net":
-			warningDialog.setNetMode();
+			JOptionPane.showMessageDialog(this, "网络异常，请重启客户端！");
 			break;	
 		case "lost":
-			warningDialog.setLostMode();
+			JOptionPane.showMessageDialog(this, "请检查信息完整性");
 			break;
 
 		default:
