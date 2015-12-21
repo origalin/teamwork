@@ -11,6 +11,7 @@ import java.awt.Insets;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
 import javax.swing.border.BevelBorder;
+import java.awt.Color;
 
 public class MainFrame extends JFrame{
 	public GridBagConstraints functionConstraints;
@@ -39,7 +40,7 @@ public class MainFrame extends JFrame{
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{229, 580, 50, 43, 0};
+		gridBagLayout.columnWidths = new int[]{183, 580, 50, 43, 0};
 		gridBagLayout.rowHeights = new int[]{38, 34, 469, 20, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
@@ -73,14 +74,13 @@ public class MainFrame extends JFrame{
 		panel_2 = new JPanel();
 		panel_2.setOpaque(false);
 		GridBagConstraints gbc_panel_2 = new GridBagConstraints();
-		gbc_panel_2.gridheight = 2;
 		gbc_panel_2.insets = new Insets(0, 0, 0, 5);
 		gbc_panel_2.fill = GridBagConstraints.BOTH;
 		gbc_panel_2.gridx = 0;
 		gbc_panel_2.gridy = 2;
 		getContentPane().add(panel_2, gbc_panel_2);
 		GridBagLayout gbl_panel_2 = new GridBagLayout();
-		gbl_panel_2.columnWidths = new int[]{135, 0};
+		gbl_panel_2.columnWidths = new int[]{198, 0};
 		gbl_panel_2.rowHeights = new int[]{48, 48, 0};
 		gbl_panel_2.columnWeights = new double[]{1.0, Double.MIN_VALUE};
 		gbl_panel_2.rowWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
@@ -98,26 +98,23 @@ public class MainFrame extends JFrame{
 		scrollPane.getViewport().setOpaque(false);
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.gridwidth = 3;
-		gbc_scrollPane.insets = new Insets(0, 0, 5, 5);
+		gbc_scrollPane.insets = new Insets(10, 0, 5, 5);
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
 		gbc_scrollPane.gridx = 1;
 		gbc_scrollPane.gridy = 2;
 		getContentPane().add(scrollPane, gbc_scrollPane);
 		
 		JPanel panel_3 = new JPanel();
-		panel_3.setOpaque(false);
+		panel_3.setBackground(Color.BLACK);
 		FlowLayout flowLayout_1 = (FlowLayout) panel_3.getLayout();
 		flowLayout_1.setAlignment(FlowLayout.LEFT);
 		GridBagConstraints gbc_panel_3 = new GridBagConstraints();
-		gbc_panel_3.insets = new Insets(0, 0, 0, 5);
+		gbc_panel_3.gridwidth = 4;
+		gbc_panel_3.insets = new Insets(0, 0, 0, 0);
 		gbc_panel_3.fill = GridBagConstraints.BOTH;
-		gbc_panel_3.gridx = 1;
+		gbc_panel_3.gridx = 0;
 		gbc_panel_3.gridy = 3;
 		getContentPane().add(panel_3, gbc_panel_3);
-		
-		JLabel label_2 = new JLabel("\u4FDD\u6301\u4E2D\u3002\u3002\u3002");
-		label_2.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_3.add(label_2);
 		
 		JPanel content = (JPanel) getContentPane();
 		content.setOpaque(false);

@@ -14,6 +14,8 @@ import javax.swing.JButton;
 import edu.nju.presentation.button.BigButton;
 import edu.nju.presentation.collectionui.CollertionPanel;
 import edu.nju.presentation.transformui.SendPanel;
+import java.awt.Color;
+import java.awt.Font;
 
 public class GuidePanel_Courier extends JPanel{
 	String institutionID;
@@ -34,6 +36,8 @@ public class GuidePanel_Courier extends JPanel{
 		setLayout(gridBagLayout);
 		
 		BigButton collectButtom = new BigButton("\u63FD\u4EF6");
+		collectButtom.setFont(new Font("ºÚÌå", Font.BOLD, 20));
+		collectButtom.setForeground(new Color(0, 196, 211));
 		collectButtom.addActionListener(new ActionListener() {
 			
 			@Override
@@ -50,6 +54,7 @@ public class GuidePanel_Courier extends JPanel{
 		add(collectButtom, gbc_collectButtom);
 		
 		BigButton sendButtom = new BigButton("\u6D3E\u4EF6");
+		sendButtom.setFont(new Font("ºÚÌå", Font.BOLD, 20));
 		sendButtom.addActionListener(new ActionListener() {
 			
 			@Override
@@ -59,6 +64,7 @@ public class GuidePanel_Courier extends JPanel{
 			}
 		});
 		GridBagConstraints gbc_sendButtom = new GridBagConstraints();
+		sendButtom.setForeground(new Color(0, 196, 211));
 		gbc_sendButtom.fill = GridBagConstraints.BOTH;
 		gbc_sendButtom.insets = new Insets(0, 0, 0, 0);
 		gbc_sendButtom.gridx = 0;
