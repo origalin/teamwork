@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 
+import edu.nju.businesslogic.collectionbl.Collectionbl;
 import edu.nju.businesslogic.infobl.Institution;
 import edu.nju.businesslogic.logispicsquerybl.Logisticsquerybl;
 import edu.nju.businesslogic.systembl.SystemBl;
@@ -26,6 +27,7 @@ public class ZLoadDoc implements ZLoadDocService{
 	private Institution institution;
 	private TransferDataService transferDataService;
 	private Logisticsquerybl logisticsquerybl;
+	private Collectionbl collectionbl;
 	private YLoadDoc yLoadDoc;
 	private SystemBl systemBl;
 	public ZLoadDoc( String staffID) throws RemoteException {
@@ -37,6 +39,7 @@ public class ZLoadDoc implements ZLoadDocService{
 		transferDataService.setInstitutionID(institutionID);
 		logisticsquerybl = new Logisticsquerybl();
 		systemBl = new SystemBl();
+		collectionbl = new Collectionbl(staffID);
 	}
 	public ZLoadDoc() throws RemoteException{
 		this(null);
@@ -153,5 +156,10 @@ public class ZLoadDoc implements ZLoadDocService{
 	public ZLoadDocPO getZLoadDocPO(String ID) throws RemoteException, DatabaseNULLException {
 		// TODO Auto-generated method stub
 		return transferDataService.getZLoadDocPO(ID, true);
+	}
+	@Override
+	public void checkHas(String id) throws RemoteException, DatabaseNULLException {
+		// TODO Auto-generated method stub
+		collectionbl.checkHas(id);
 	}
 }

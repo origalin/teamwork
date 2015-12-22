@@ -285,4 +285,19 @@ public class CollectionDataServiceImpl extends UnicastRemoteObject implements
 		return courierMoney;
 	}
 
+	@Override
+	public void checkHas(String ID) throws RemoteException, DatabaseNULLException {
+		// TODO Auto-generated method stub
+		String str = "select sname from senddoc where id = '"+ID+"';";
+		SQL.databaseQuery(str);
+		try {
+			if(!SQL.rs.next()) {
+				throw new DatabaseNULLException();
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 }

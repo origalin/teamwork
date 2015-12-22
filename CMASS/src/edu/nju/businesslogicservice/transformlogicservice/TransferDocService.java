@@ -23,4 +23,5 @@ public interface TransferDocService {
 	public double[] getPriceToday();
 	public TransferDocPO geTransferDocPOByID(String ID) throws RemoteException, DatabaseNULLException;
 	public void  confirmSave() throws RemoteException;
+	public void checkHas(String id)throws RemoteException,DatabaseNULLException;
 }

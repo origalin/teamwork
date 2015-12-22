@@ -241,6 +241,18 @@ public class ZArrivalDocPanel extends JPanel {
 		gbc_createButton.gridy = 1;
 		add(createButton, gbc_createButton);
 
+		
+		
+		setOpaque(false);
+		panel.setOpaque(false);
+		panel_11.setOpaque(false);
+		
+		panel_13.setOpaque(false);
+		panel_14.setOpaque(false);
+		panel_2.setOpaque(false);
+		
+		panel_6.setOpaque(false);
+		panel_8.setOpaque(false);
 	}
 
 	private void intializeWithFromDoc() {

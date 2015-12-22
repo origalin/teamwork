@@ -288,6 +288,17 @@ public class YArrivalDocPanel extends JPanel{
 		gbc_confirmButton.gridy = 4;
 		add(confirmButton, gbc_confirmButton);
 		
+		setOpaque(false);
+		panel.setOpaque(false);
+		panel.setOpaque(false);
+		panel_11.setOpaque(false);
+		panel_12.setOpaque(false);
+		panel_13.setOpaque(false);
+		panel_14.setOpaque(false);
+		panel_2.setOpaque(false);
+		panel_3.setOpaque(false);
+		panel_6.setOpaque(false);
+		panel_8.setOpaque(false);
 
 	}
 

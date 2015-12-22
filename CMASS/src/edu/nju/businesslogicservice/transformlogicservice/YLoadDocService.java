@@ -21,4 +21,5 @@ public interface YLoadDocService {
 	public String[][] getDrivers() throws RemoteException;
 	public int getDriverTime(String drrverID) throws RemoteException;
 	public void  confirmSave() throws RemoteException;
+	public void checkHas(String id)throws RemoteException,DatabaseNULLException;
 }

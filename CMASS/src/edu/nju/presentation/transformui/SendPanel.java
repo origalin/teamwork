@@ -55,18 +55,18 @@ public class SendPanel extends JPanel{
 		}
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{104, 1, 107, 93, 0, 0};
-		gridBagLayout.rowHeights = new int[]{35, 0, 0, 0, 0, 0, 0};
-		gridBagLayout.columnWeights = new double[]{1.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 1.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.columnWidths = new int[]{30, 100, 93, 87, 30, 0};
+		gridBagLayout.rowHeights = new int[]{35, 17, 0, 0, 20, 0, 0};
+		gridBagLayout.columnWeights = new double[]{0.0, 1.0, 1.0, 1.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 1.0, 0.0, 0.0, 0.5, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
 		JPanel panel_1 = new JPanel();
 		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
-		gbc_panel_1.gridwidth = 5;
-		gbc_panel_1.insets = new Insets(0, 0, 5, 0);
+		gbc_panel_1.gridwidth = 3;
+		gbc_panel_1.insets = new Insets(0, 0, 5, 5);
 		gbc_panel_1.fill = GridBagConstraints.BOTH;
-		gbc_panel_1.gridx = 0;
+		gbc_panel_1.gridx = 1;
 		gbc_panel_1.gridy = 0;
 		add(panel_1, gbc_panel_1);
 		
@@ -77,10 +77,10 @@ public class SendPanel extends JPanel{
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
-		gbc_scrollPane.gridwidth = 5;
-		gbc_scrollPane.insets = new Insets(0, 0, 5, 0);
+		gbc_scrollPane.gridwidth = 3;
+		gbc_scrollPane.insets = new Insets(0, 0, 5, 5);
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
-		gbc_scrollPane.gridx = 0;
+		gbc_scrollPane.gridx = 1;
 		gbc_scrollPane.gridy = 1;
 		add(scrollPane, gbc_scrollPane);
 		
@@ -105,17 +105,18 @@ public class SendPanel extends JPanel{
 			}
 		});
 		GridBagConstraints gbc_receiveButton = new GridBagConstraints();
-		gbc_receiveButton.insets = new Insets(0, 0, 5, 0);
-		gbc_receiveButton.gridx = 4;
+		gbc_receiveButton.anchor = GridBagConstraints.EAST;
+		gbc_receiveButton.insets = new Insets(0, 0, 5, 5);
+		gbc_receiveButton.gridx = 3;
 		gbc_receiveButton.gridy = 2;
 		add(receiveButton, gbc_receiveButton);
 		
 		JPanel panel = new JPanel();
 		GridBagConstraints gbc_panel = new GridBagConstraints();
-		gbc_panel.gridwidth = 5;
-		gbc_panel.insets = new Insets(0, 0, 5, 0);
+		gbc_panel.gridwidth = 3;
+		gbc_panel.insets = new Insets(0, 0, 5, 5);
 		gbc_panel.fill = GridBagConstraints.BOTH;
-		gbc_panel.gridx = 0;
+		gbc_panel.gridx = 1;
 		gbc_panel.gridy = 3;
 		add(panel, gbc_panel);
 		
@@ -125,10 +126,10 @@ public class SendPanel extends JPanel{
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		GridBagConstraints gbc_scrollPane_1 = new GridBagConstraints();
-		gbc_scrollPane_1.gridwidth = 5;
-		gbc_scrollPane_1.insets = new Insets(0, 0, 5, 0);
+		gbc_scrollPane_1.gridwidth = 3;
+		gbc_scrollPane_1.insets = new Insets(0, 0, 5, 5);
 		gbc_scrollPane_1.fill = GridBagConstraints.BOTH;
-		gbc_scrollPane_1.gridx = 0;
+		gbc_scrollPane_1.gridx = 1;
 		gbc_scrollPane_1.gridy = 4;
 		add(scrollPane_1, gbc_scrollPane_1);
 		
@@ -153,8 +154,9 @@ public class SendPanel extends JPanel{
 			}
 		});
 		GridBagConstraints gbc_createButtom = new GridBagConstraints();
-		gbc_createButtom.anchor = GridBagConstraints.NORTH;
-		gbc_createButtom.gridx = 4;
+		gbc_createButtom.insets = new Insets(0, 0, 0, 5);
+		gbc_createButtom.anchor = GridBagConstraints.NORTHEAST;
+		gbc_createButtom.gridx = 3;
 		gbc_createButtom.gridy = 5;
 		add(createButtom, gbc_createButtom);
 		
@@ -166,6 +168,13 @@ public class SendPanel extends JPanel{
 			e1.printStackTrace();
 			warning();
 		}
+		panel.setOpaque(false);
+		panel_1.setOpaque(false);
+		scrollPane.setOpaque(false);
+		scrollPane.getViewport().setOpaque(false);
+		scrollPane_1.setOpaque(false);
+		scrollPane_1.getViewport().setOpaque(false);
+		setOpaque(false);
 	}
 	private void  intialize() throws RemoteException {
 		int i = toSendModel.getRowCount();
@@ -195,43 +204,57 @@ public class SendPanel extends JPanel{
 		
 	}
 	private void createOverTable() {
+		if(toSendModel.getRowCount()==0) {
+			JOptionPane.showMessageDialog(this, "您没有可派件");
+		}
 		for(int i = 0;i<toSendModel.getRowCount();i++) {
 			toOverModel.addRow(new Object[] {toSendModel.getValueAt(i, 0),toSendModel.getValueAt(i, 1)});
 		}
 	}
 	private void createOverDoc() {
-		String[] itemIDs = new String[toOverModel.getRowCount()];
-		String[] receivers = new String[toOverModel.getRowCount()];
-		for(int i = 0;i<toSendModel.getRowCount();i++) {
-			itemIDs[i] = (String) toOverModel.getValueAt(i, 0);
-			receivers[i] = (String) toOverModel.getValueAt(i, 1);
-		}
-		OverDocVO vo = null;
-		try {
-			vo = overDoc.createOverDocVO(itemIDs, receivers);
-			CheckDialog cDialog = new CheckDialog();
-			cDialog.setPreviewMode(new checkOverDoc(vo));
-			cDialog.getConfirmButton().addActionListener(new ActionListener() {
-				
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					// TODO Auto-generated method stub
-					saveDoc();
-					try {
-						intialize();
-					} catch (RemoteException e1) {
-						// TODO Auto-generated catch block
-						warning();
-						e1.printStackTrace();
+		if(createable()) {
+			String[] itemIDs = new String[toOverModel.getRowCount()];
+			String[] receivers = new String[toOverModel.getRowCount()];
+			for(int i = 0;i<toSendModel.getRowCount();i++) {
+				itemIDs[i] = (String) toOverModel.getValueAt(i, 0);
+				receivers[i] = (String) toOverModel.getValueAt(i, 1);
+			}
+			OverDocVO vo = null;
+			try {
+				vo = overDoc.createOverDocVO(itemIDs, receivers);
+				CheckDialog cDialog = new CheckDialog();
+				cDialog.setPreviewMode(new checkOverDoc(vo));
+				cDialog.getConfirmButton().addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						// TODO Auto-generated method stub
+						saveDoc();
+						try {
+							intialize();
+						} catch (RemoteException e1) {
+							// TODO Auto-generated catch block
+							warning();
+							e1.printStackTrace();
+						}
 					}
-				}
-			});
-		} catch (RemoteException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-			warning();
+				});
+			} catch (RemoteException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+				warning();
+			}
+		}else {
+			JOptionPane.showMessageDialog(this, "没有可保存数据");
 		}
 		
+		
+	}
+	private boolean createable() {
+		// TODO Auto-generated method stub
+		if(toOverModel.getRowCount()==0)
+		return false;
+		return true;
 	}
 	private void saveDoc() {
 		try {

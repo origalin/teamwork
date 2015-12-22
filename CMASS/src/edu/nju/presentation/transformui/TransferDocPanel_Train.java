@@ -20,6 +20,7 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.table.DefaultTableModel;
 
 import edu.nju.businesslogic.transferbl.TransferDoc;
+import edu.nju.exception.DatabaseNULLException;
 import edu.nju.presentation.approveui.CheckTransferDoc_Car;
 import edu.nju.presentation.approveui.CheckTransferDoc_Train;
 import edu.nju.presentation.approveui.checkOverDoc;
@@ -33,7 +34,6 @@ public class TransferDocPanel_Train extends JPanel {
 	private JTextField watcherField;
 	private JTextField targetField;
 	private JTextField itemIDField;
-	private JTable table;
 	private JTextField carrriageField;
 	private TransferDoc transferDoc;
 	private String city, carNum, watcher, carriage;
@@ -42,6 +42,7 @@ public class TransferDocPanel_Train extends JPanel {
 	private TransferDoc_TrainVO vo;
 	DefaultTableModel tableModel;
 	private String institutionID, staffID;
+	private JTable table;
 
 	public TransferDocPanel_Train(String staffID) {
 		this.institutionID = institutionID;
@@ -54,8 +55,8 @@ public class TransferDocPanel_Train extends JPanel {
 			warning("net");
 		}
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[] { 259, 168, 0 };
-		gridBagLayout.rowHeights = new int[] { 248, 0 };
+		gridBagLayout.columnWidths = new int[] { 215, 58, 0 };
+		gridBagLayout.rowHeights = new int[] { 86, 0 };
 		gridBagLayout.columnWeights = new double[] { 1.0, 1.0, Double.MIN_VALUE };
 		gridBagLayout.rowWeights = new double[] { 1.0, Double.MIN_VALUE };
 		setLayout(gridBagLayout);
@@ -69,10 +70,10 @@ public class TransferDocPanel_Train extends JPanel {
 		add(panel_11, gbc_panel_11);
 		panel_11.setBorder(null);
 		GridBagLayout gbl_panel_11 = new GridBagLayout();
-		gbl_panel_11.columnWidths = new int[] { 413, 0 };
-		gbl_panel_11.rowHeights = new int[] { 42, 42, 42, 42, 0, 0, 0, 0 };
-		gbl_panel_11.columnWeights = new double[] { 0.0, Double.MIN_VALUE };
-		gbl_panel_11.rowWeights = new double[] { 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		gbl_panel_11.columnWidths = new int[] { 336, 0 };
+		gbl_panel_11.rowHeights = new int[] { 42, 42, 42, 78, 0, 0 };
+		gbl_panel_11.columnWeights = new double[] { 1.0, Double.MIN_VALUE };
+		gbl_panel_11.rowWeights = new double[] { 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
 		panel_11.setLayout(gbl_panel_11);
 
 		JPanel panel = new JPanel();
@@ -142,7 +143,7 @@ public class TransferDocPanel_Train extends JPanel {
 		GridBagConstraints gbc_panel_12 = new GridBagConstraints();
 		gbc_panel_12.fill = GridBagConstraints.BOTH;
 		gbc_panel_12.gridx = 0;
-		gbc_panel_12.gridy = 6;
+		gbc_panel_12.gridy = 4;
 		panel_11.add(panel_12, gbc_panel_12);
 
 		JButton createButton = new JButton("\u751F\u6210\u94C1\u8DEF\u4E2D\u8F6C\u5355");
@@ -164,7 +165,7 @@ public class TransferDocPanel_Train extends JPanel {
 		add(panel_1, gbc_panel_1);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
 		gbl_panel_1.columnWidths = new int[] { 168, 0 };
-		gbl_panel_1.rowHeights = new int[] { 170, 24, 27, 0 };
+		gbl_panel_1.rowHeights = new int[] { 56, 24, 27, 0 };
 		gbl_panel_1.columnWeights = new double[] { 1.0, Double.MIN_VALUE };
 		gbl_panel_1.rowWeights = new double[] { 1.0, 0.0, 0.0, Double.MIN_VALUE };
 		panel_1.setLayout(gbl_panel_1);
@@ -178,41 +179,43 @@ public class TransferDocPanel_Train extends JPanel {
 		gbc_scrollPane.gridx = 0;
 		gbc_scrollPane.gridy = 0;
 		panel_1.add(scrollPane, gbc_scrollPane);
-
-		JPanel panel_13 = new JPanel();
-		scrollPane.setColumnHeaderView(panel_13);
-
-		JLabel label_1 = new JLabel("\u8FD0\u5355\u53F7");
-		panel_13.add(label_1);
-
-		JPanel panel_14 = new JPanel();
-		scrollPane.setViewportView(panel_14);
-		panel_14.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-
+		
 		table = new JTable();
-		table.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-		table.setModel(new DefaultTableModel(new Object[][] {}, new String[] { "\u8FD0\u5355\u53F7" }));
-		tableModel = (DefaultTableModel) table.getModel();
-		table.getColumnModel().getColumn(0).setPreferredWidth(130);
-		panel_14.add(table);
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"\u5FEB\u4EF6\u5355\u53F7"
+			}
+		));
+		scrollPane.setViewportView(table);
 
 		itemIDField = new JTextField();
 		itemIDField.setColumns(15);
 		GridBagConstraints gbc_itemIDField = new GridBagConstraints();
-		gbc_itemIDField.anchor = GridBagConstraints.NORTH;
 		gbc_itemIDField.insets = new Insets(0, 0, 5, 0);
 		gbc_itemIDField.gridx = 0;
 		gbc_itemIDField.gridy = 1;
 		panel_1.add(itemIDField, gbc_itemIDField);
-
+		tableModel = (DefaultTableModel) table.getModel();
 		JButton addButton = new JButton("\u6DFB\u52A0");
 		addButton.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
-				tableModel.addRow(new Object[] { itemIDField.getText() });
-				itemIDField.setText("");
+				try {
+					transferDoc.checkHas(itemIDField.getText());
+					tableModel.addRow(new Object[] { itemIDField.getText() });
+					itemIDField.setText("");
+				} catch (RemoteException e1) {
+					// TODO Auto-generated catch block
+					warning("net");
+				} catch (DatabaseNULLException e1) {
+					// TODO Auto-generated catch block
+					warning("null");
+				}
+				
 			}
 		});
 		GridBagConstraints gbc_addButton = new GridBagConstraints();
@@ -221,6 +224,13 @@ public class TransferDocPanel_Train extends JPanel {
 		gbc_addButton.gridy = 2;
 		panel_1.add(addButton, gbc_addButton);
 
+		setOpaque(false);
+		panel.setOpaque(false);
+		panel_1.setOpaque(false);
+		panel_11.setOpaque(false);
+		panel_12.setOpaque(false);
+		panel_6.setOpaque(false);
+		panel_8.setOpaque(false);
 	}
 
 	private void createTransferDoc() {
@@ -289,6 +299,9 @@ public class TransferDocPanel_Train extends JPanel {
 			break;	
 		case "lost":
 			JOptionPane.showMessageDialog(this, "请检查信息完整性");
+			break;
+		case "null":
+			JOptionPane.showMessageDialog(this, "找不到单据");
 			break;
 
 		default:

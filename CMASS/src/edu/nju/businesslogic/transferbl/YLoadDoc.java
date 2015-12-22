@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Date;
 
+import edu.nju.businesslogic.collectionbl.Collectionbl;
 import edu.nju.businesslogic.infobl.Driver;
 import edu.nju.businesslogic.infobl.Institution;
 import edu.nju.businesslogic.logispicsquerybl.Logisticsquerybl;
@@ -24,6 +25,7 @@ public class YLoadDoc implements YLoadDocService{
 	private TransferDataService transferDataService;
 	private Institution institution;
 	private Logisticsquerybl logisticsquerybl;
+	Collectionbl collectionbl;
 	SystemBl systemBl;
 	Driver driver;
 
@@ -35,6 +37,7 @@ public class YLoadDoc implements YLoadDocService{
 		logisticsquerybl = new Logisticsquerybl();
 		transferDataService = DataFactory.getTransferDataService();
 		transferDataService.setInstitutionID(institutionID);
+		collectionbl = new Collectionbl(staffID);
 		systemBl = new SystemBl();
 		driver = new Driver();
 	}
@@ -147,5 +150,10 @@ public class YLoadDoc implements YLoadDocService{
 	public int getDriverTime(String driverID) throws RemoteException {
 		// TODO Auto-generated method stub
 		return transferDataService.getDriverTime_YLoad(driverID);
+	}
+	@Override
+	public void checkHas(String id) throws RemoteException, DatabaseNULLException {
+		// TODO Auto-generated method stub
+		collectionbl.checkHas(id);
 	}
 }

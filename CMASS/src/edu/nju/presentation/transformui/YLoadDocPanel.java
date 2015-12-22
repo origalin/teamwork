@@ -23,6 +23,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import edu.nju.businesslogic.transferbl.YLoadDoc;
+import edu.nju.exception.DatabaseNULLException;
 import edu.nju.presentation.approveui.checkOverDoc;
 import edu.nju.presentation.approveui.checkYLoadDoc;
 import edu.nju.presentation.mainui.CheckDialog;
@@ -146,8 +147,18 @@ public class YLoadDocPanel extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
-				tableModel.addRow(new Object[] {itemIDField.getText()});
-				itemIDField.setText("");
+				try {
+					yLoadDoc.checkHas(itemIDField.getText());
+					tableModel.addRow(new Object[] {itemIDField.getText()});
+					itemIDField.setText("");
+				} catch (RemoteException e1) {
+					// TODO Auto-generated catch block
+					warning("net");
+				} catch (DatabaseNULLException e1) {
+					// TODO Auto-generated catch block
+					warning("null");
+				}
+				
 			}
 		});
 		
@@ -195,7 +206,10 @@ public class YLoadDocPanel extends JPanel{
 		gbc_createButton.gridy = 5;
 		add(createButton, gbc_createButton);
 		
-
+		setOpaque(false);
+		panel.setOpaque(false);
+		panel_1.setOpaque(false);
+		panel_8.setOpaque(false);
 	}
 	private void createYLoadDoc() {
 		if(creatable()) {
@@ -248,6 +262,9 @@ public class YLoadDocPanel extends JPanel{
 			break;	
 		case "lost":
 			JOptionPane.showMessageDialog(this, "请检查信息完整性");
+			break;
+		case "null":
+			JOptionPane.showMessageDialog(this, "找不到单据");
 			break;
 
 		default:
