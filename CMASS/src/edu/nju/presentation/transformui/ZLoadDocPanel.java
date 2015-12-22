@@ -31,6 +31,7 @@ import edu.nju.vo.ZLoadDocVO;
 
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import java.awt.Dimension;
 
 @SuppressWarnings("serial")
 public class ZLoadDocPanel extends JPanel{
@@ -156,17 +157,13 @@ public class ZLoadDocPanel extends JPanel{
 		gbc_scrollPane.gridy = 0;
 		panel_1.add(scrollPane, gbc_scrollPane);
 		
-		JPanel panel_13 = new JPanel();
-		scrollPane.setColumnHeaderView(panel_13);
-		
-		JLabel label_1 = new JLabel("\u8FD0\u5355\u53F7");
-		panel_13.add(label_1);
-		
 		JPanel panel_14 = new JPanel();
-		scrollPane.setViewportView(panel_14);
+		
 		panel_14.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		table = new JTable();
+		scrollPane.setViewportView(table);
+		table.setPreferredScrollableViewportSize(new Dimension(200, 200));
 		table.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
@@ -177,7 +174,6 @@ public class ZLoadDocPanel extends JPanel{
 		));
 		table.getColumnModel().getColumn(0).setPreferredWidth(500);
 		tableModel = (DefaultTableModel) table.getModel();
-		panel_14.add(table);
 		
 		itemIDField = new JTextField();
 		itemIDField.setColumns(30);
@@ -231,7 +227,6 @@ public class ZLoadDocPanel extends JPanel{
 		panel.setOpaque(false);
 		setOpaque(false);
 		panel_1.setOpaque(false);
-		panel_13.setOpaque(false);
 		panel_14.setOpaque(false);
 		panel_8.setOpaque(false);
 	}

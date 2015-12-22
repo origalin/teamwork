@@ -30,6 +30,7 @@ import edu.nju.presentation.mainui.CheckDialog;
 import edu.nju.vo.OverDocVO;
 import edu.nju.vo.SendDocVO;
 import edu.nju.vo.YDeliverDocVO;
+import java.awt.Dimension;
 
 @SuppressWarnings("serial")
 public class SendPanel extends JPanel{
@@ -85,13 +86,21 @@ public class SendPanel extends JPanel{
 		add(scrollPane, gbc_scrollPane);
 		
 		toSendTable = new JTable();
+		toSendTable.setPreferredScrollableViewportSize(new Dimension(200, 200));
 		toSendTable.setModel(new DefaultTableModel(
 			new Object[][] {
 			},
 			new String[] {
 				"\u5FEB\u9012\u5355\u53F7", "\u5730\u5740", "\u6536\u4EF6\u4EBA"
 			}
-		));
+		) {
+			boolean[] columnEditables = new boolean[] {
+				false, false, false
+			};
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
+		});
 		toSendModel = (DefaultTableModel) toSendTable.getModel();
 		scrollPane.setViewportView(toSendTable);
 		
@@ -134,13 +143,21 @@ public class SendPanel extends JPanel{
 		add(scrollPane_1, gbc_scrollPane_1);
 		
 		toOverTable = new JTable();
+		toOverTable.setPreferredScrollableViewportSize(new Dimension(200, 200));
 		toOverTable.setModel(new DefaultTableModel(
 			new Object[][] {
 			},
 			new String[] {
 				"\u5FEB\u9012\u5355\u53F7", "\u6536\u4EF6\u4EBA"
 			}
-		));
+		) {
+			boolean[] columnEditables = new boolean[] {
+				false, true
+			};
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
+		});
 		toOverModel = (DefaultTableModel) toOverTable.getModel();
 		scrollPane_1.setViewportView(toOverTable);
 		

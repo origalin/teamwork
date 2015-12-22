@@ -134,7 +134,7 @@ public class YLoadDocPanel extends JPanel{
 		panel_1.setLayout(gbl_panel_1);
 		
 		table = new JTable();
-		table.setPreferredScrollableViewportSize(new Dimension(450, 300));
+		table.setPreferredScrollableViewportSize(new Dimension(450, 270));
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
 			},

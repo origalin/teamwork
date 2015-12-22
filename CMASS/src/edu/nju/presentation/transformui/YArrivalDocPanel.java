@@ -1,5 +1,6 @@
 package edu.nju.presentation.transformui;
 
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -149,17 +150,14 @@ public class YArrivalDocPanel extends JPanel{
 		gbc_scrollPane.gridy = 0;
 		panel_1.add(scrollPane, gbc_scrollPane);
 		
-		JPanel panel_13 = new JPanel();
-		scrollPane.setColumnHeaderView(panel_13);
 		
-		JLabel label_1 = new JLabel("\u8FD0\u5355\u53F7");
-		panel_13.add(label_1);
 		
 		JPanel panel_14 = new JPanel();
 		
 		panel_14.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		table = new JTable();
+		table.setPreferredScrollableViewportSize(new Dimension(200, 200));
 		table.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
@@ -167,8 +165,16 @@ public class YArrivalDocPanel extends JPanel{
 			new String[] {
 				"\u8FD0\u5355\u53F7", "\u72B6\u6001"
 			}
-		));
-		table.getColumnModel().getColumn(1).setPreferredWidth(130);
+		) {
+			boolean[] columnEditables = new boolean[] {
+				false, false
+			};
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
+		});
+		table.getColumnModel().getColumn(0).setPreferredWidth(123);
+		table.getColumnModel().getColumn(1).setPreferredWidth(54);
 		tableModel = (DefaultTableModel) table.getModel();
 		scrollPane.setViewportView(table);
 		
@@ -258,13 +264,21 @@ public class YArrivalDocPanel extends JPanel{
 		add(scrollPane_1, gbc_scrollPane_1);
 		
 		table_1 = new JTable();
+		table_1.setPreferredScrollableViewportSize(new Dimension(200, 200));
 		table_1.setModel(new DefaultTableModel(
 			new Object[][] {
 			},
 			new String[] {
 				"\u5FEB\u9012\u5355\u53F7", "\u5730\u5740", "\u5FEB\u9012\u5458"
 			}
-		));
+		) {
+			boolean[] columnEditables = new boolean[] {
+				false, false, true
+			};
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
+		});
 		scrollPane_1.setViewportView(table_1);
 		
 		JComboBox<String> courierBox = new JComboBox<String>();
@@ -295,7 +309,6 @@ public class YArrivalDocPanel extends JPanel{
 		panel.setOpaque(false);
 		panel_11.setOpaque(false);
 		panel_12.setOpaque(false);
-		panel_13.setOpaque(false);
 		panel_14.setOpaque(false);
 		panel_2.setOpaque(false);
 		panel_3.setOpaque(false);

@@ -27,6 +27,7 @@ import edu.nju.presentation.approveui.checkOverDoc;
 import edu.nju.presentation.mainui.CheckDialog;
 import edu.nju.vo.TransferDoc_CarVO;
 import edu.nju.vo.TransferDoc_TrainVO;
+import java.awt.Dimension;
 
 @SuppressWarnings("serial")
 public class TransferDocPanel_Train extends JPanel {
@@ -57,7 +58,7 @@ public class TransferDocPanel_Train extends JPanel {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] { 215, 58, 0 };
 		gridBagLayout.rowHeights = new int[] { 86, 0 };
-		gridBagLayout.columnWeights = new double[] { 1.0, 1.0, Double.MIN_VALUE };
+		gridBagLayout.columnWeights = new double[] { 0.0, 1.0, Double.MIN_VALUE };
 		gridBagLayout.rowWeights = new double[] { 1.0, Double.MIN_VALUE };
 		setLayout(gridBagLayout);
 
@@ -181,6 +182,7 @@ public class TransferDocPanel_Train extends JPanel {
 		panel_1.add(scrollPane, gbc_scrollPane);
 		
 		table = new JTable();
+		table.setPreferredScrollableViewportSize(new Dimension(200, 200));
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
 			},

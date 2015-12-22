@@ -32,6 +32,7 @@ import edu.nju.vo.ZArrivalDocVO;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.SwingConstants;
+import java.awt.Dimension;
 
 @SuppressWarnings("serial")
 public class ZArrivalDocPanel extends JPanel {
@@ -158,21 +159,30 @@ public class ZArrivalDocPanel extends JPanel {
 		gbc_scrollPane.gridy = 0;
 		panel_1.add(scrollPane, gbc_scrollPane);
 
-		JPanel panel_13 = new JPanel();
-		scrollPane.setColumnHeaderView(panel_13);
-
-		JLabel label_1 = new JLabel("\u8FD0\u5355\u53F7");
-		panel_13.add(label_1);
-
 		JPanel panel_14 = new JPanel();
-		scrollPane.setViewportView(panel_14);
+		
 		panel_14.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
 		table = new JTable();
+		table.setPreferredScrollableViewportSize(new Dimension(200, 200));
 		table.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-		table.setModel(new DefaultTableModel(new Object[][] {}, new String[] { "\u8FD0\u5355\u53F7", "\u72B6\u6001" }));
-		table.getColumnModel().getColumn(1).setPreferredWidth(130);
-		panel_14.add(table);
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"\u8FD0\u5355\u53F7", "\u72B6\u6001"
+			}
+		) {
+			boolean[] columnEditables = new boolean[] {
+				false, false
+			};
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
+		});
+		table.getColumnModel().getColumn(0).setPreferredWidth(136);
+		table.getColumnModel().getColumn(1).setPreferredWidth(48);
+		scrollPane.setViewportView(table);
 		tableModel = (DefaultTableModel) table.getModel();
 
 		JLabel label_2 = new JLabel("\u8FD0\u5355\u53F7");
@@ -248,8 +258,6 @@ public class ZArrivalDocPanel extends JPanel {
 		setOpaque(false);
 		panel.setOpaque(false);
 		panel_11.setOpaque(false);
-		
-		panel_13.setOpaque(false);
 		panel_14.setOpaque(false);
 		panel_2.setOpaque(false);
 		
