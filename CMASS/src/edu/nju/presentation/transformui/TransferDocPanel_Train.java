@@ -231,6 +231,8 @@ public class TransferDocPanel_Train extends JPanel {
 		panel_12.setOpaque(false);
 		panel_6.setOpaque(false);
 		panel_8.setOpaque(false);
+		scrollPane.setOpaque(false);
+		scrollPane.getViewport().setOpaque(false);
 	}
 
 	private void createTransferDoc() {

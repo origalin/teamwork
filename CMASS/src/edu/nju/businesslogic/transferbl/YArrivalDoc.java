@@ -128,6 +128,12 @@ public class YArrivalDoc implements YArrivalDocService {
 		return institution.getStaffName(id);
 	}
 
+	@Override
+	public void checkHas(String id) throws RemoteException, DatabaseNULLException {
+		// TODO Auto-generated method stub
+		collectionbl.checkHas(id);
+	}
+
 
 
 }

@@ -81,6 +81,7 @@ public class ZLoadDocPanel extends JPanel{
 		
 		JPanel panel_8 = new JPanel();
 		GridBagConstraints gbc_panel_8 = new GridBagConstraints();
+		gbc_panel_8.fill = GridBagConstraints.HORIZONTAL;
 		gbc_panel_8.gridwidth = 2;
 		gbc_panel_8.insets = new Insets(0, 0, 5, 5);
 		gbc_panel_8.gridx = 0;
@@ -101,6 +102,7 @@ public class ZLoadDocPanel extends JPanel{
 		
 		
 		targetBox = new JComboBox<String>();
+		targetBox.setOpaque(false);
 		targetBox.setModel(new DefaultComboBoxModel<>(subBusinessHall));
 		panel_8.add(targetBox);
 		

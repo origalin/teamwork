@@ -8,9 +8,11 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 
+import edu.nju.presentation.button.BigButton;
 import edu.nju.presentation.collectionui.CollertionPanel;
 import edu.nju.presentation.transformui.SendPanel;
 import edu.nju.presentation.transformui.TransferDocPanel_Car;
@@ -28,6 +30,7 @@ public class GuidePanel_TransferCenter extends JPanel{
 	TransferDocPanel_Car transferDocPanel_Car;
 	TransferDocPanel_Train transferDocPanel_Train;
 	TransferDocPanel_Plane transferDocPanel_Plane;
+	ArrayList<BigButton> buttons = new ArrayList<>();
 	public GuidePanel_TransferCenter(MainFrame frame,String staffID) {
 		this.staffID = staffID;
 		this.frame = frame;
@@ -43,85 +46,104 @@ public class GuidePanel_TransferCenter extends JPanel{
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
-		JButton collectButtom = new JButton("\u5230\u4EF6\u7BA1\u7406");
+		BigButton collectButtom = new BigButton("\u5230\u4EF6\u7BA1\u7406");
+		collectButtom.setPressed();
 		collectButtom.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
+				clean();
+				collectButtom.setPressed();
 				collectFunc();
 			}
 		});
 		GridBagConstraints gbc_collectButtom = new GridBagConstraints();
 		gbc_collectButtom.fill = GridBagConstraints.BOTH;
-		gbc_collectButtom.insets = new Insets(0, 0, 5, 0);
+		gbc_collectButtom.insets = new Insets(0, 0, 0, 0);
 		gbc_collectButtom.gridx = 0;
 		gbc_collectButtom.gridy = 0;
 		add(collectButtom, gbc_collectButtom);
 		
-		JButton sendButtom = new JButton("\u88C5\u8F66\u7BA1\u7406");
+		BigButton sendButtom = new BigButton("\u88C5\u8F66\u7BA1\u7406");
 		sendButtom.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
+				clean();
+				sendButtom.setPressed();
 				sendFunc();
 			}
 		});
 		GridBagConstraints gbc_sendButtom = new GridBagConstraints();
 		gbc_sendButtom.fill = GridBagConstraints.BOTH;
-		gbc_sendButtom.insets = new Insets(0, 0, 5, 0);
+		gbc_sendButtom.insets = new Insets(0, 0, 0, 0);
 		gbc_sendButtom.gridx = 0;
 		gbc_sendButtom.gridy = 1;
 		add(sendButtom, gbc_sendButtom);
 		
-		JButton button = new JButton("\u6C7D\u8FD0\u4E2D\u8F6C");
+		BigButton button = new BigButton("\u6C7D\u8FD0\u4E2D\u8F6C");
 		button.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				clean();
+				button.setPressed();
 				transFunc();
 			}
 		});
 		GridBagConstraints gbc_button = new GridBagConstraints();
 		gbc_button.fill = GridBagConstraints.BOTH;
-		gbc_button.insets = new Insets(0, 0, 5, 0);
+		gbc_button.insets = new Insets(0, 0, 0, 0);
 		gbc_button.gridx = 0;
 		gbc_button.gridy = 2;
 		add(button, gbc_button);
 		
-		JButton button_1 = new JButton("\u94C1\u8DEF\u4E2D\u8F6C");
+		BigButton button_1 = new BigButton("\u94C1\u8DEF\u4E2D\u8F6C");
 		button_1.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				clean();
+				button_1.setPressed();
 				transFunc1();
 			}
 		});
 		GridBagConstraints gbc_button_1 = new GridBagConstraints();
 		gbc_button_1.fill = GridBagConstraints.BOTH;
-		gbc_button_1.insets = new Insets(0, 0, 5, 0);
+		gbc_button_1.insets = new Insets(0, 0, 0, 0);
 		gbc_button_1.gridx = 0;
 		gbc_button_1.gridy = 3;
 		add(button_1, gbc_button_1);
 		
-		JButton button_2 = new JButton("\u822A\u8FD0\u4E2D\u8F6C");
+		BigButton button_2 = new BigButton("\u822A\u8FD0\u4E2D\u8F6C");
 		button_2.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				clean();
+				button_2.setPressed();
 				transFunc2();
 			}
 		});
 		GridBagConstraints gbc_button_2 = new GridBagConstraints();
 		gbc_button_2.fill = GridBagConstraints.BOTH;
-		gbc_button_2.insets = new Insets(0, 0, 5, 0);
+		gbc_button_2.insets = new Insets(0, 0, 0, 0);
 		gbc_button_2.gridx = 0;
 		gbc_button_2.gridy = 4;
 		add(button_2, gbc_button_2);
+		
+		setOpaque(false);
+		
+		buttons.add(sendButtom);
+		buttons.add(collectButtom);
+		buttons.add(button);
+		buttons.add(button_1);
+		buttons.add(button_2);
 	}
 	void collectFunc(){
 		frame.setFunctionPanel(zArrivalDocPanel);
@@ -137,5 +159,10 @@ public class GuidePanel_TransferCenter extends JPanel{
 	}
 	void transFunc2() {
 		frame.setFunctionPanel(transferDocPanel_Plane);
+	}
+	void clean() {
+		for(BigButton bt:buttons) {
+			bt.setNormal();
+		}
 	}
 }

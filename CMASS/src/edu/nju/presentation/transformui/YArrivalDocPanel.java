@@ -8,6 +8,7 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -140,8 +141,6 @@ public class YArrivalDocPanel extends JPanel{
 		panel_1.setLayout(gbl_panel_1);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
 		gbc_scrollPane.insets = new Insets(0, 0, 5, 0);
@@ -157,7 +156,7 @@ public class YArrivalDocPanel extends JPanel{
 		panel_13.add(label_1);
 		
 		JPanel panel_14 = new JPanel();
-		scrollPane.setViewportView(panel_14);
+		
 		panel_14.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		table = new JTable();
@@ -171,15 +170,7 @@ public class YArrivalDocPanel extends JPanel{
 		));
 		table.getColumnModel().getColumn(1).setPreferredWidth(130);
 		tableModel = (DefaultTableModel) table.getModel();
-		panel_14.add(table);
-		
-		JLabel label_2 = new JLabel("\u8FD0\u5355\u53F7");
-		GridBagConstraints gbc_label_2 = new GridBagConstraints();
-		gbc_label_2.anchor = GridBagConstraints.WEST;
-		gbc_label_2.insets = new Insets(0, 0, 5, 5);
-		gbc_label_2.gridx = 0;
-		gbc_label_2.gridy = 1;
-		panel_1.add(label_2, gbc_label_2);
+		scrollPane.setViewportView(table);
 		
 		itemIDField = new JTextField();
 		itemIDField.setColumns(15);
@@ -199,6 +190,7 @@ public class YArrivalDocPanel extends JPanel{
 		panel_1.add(label_3, gbc_label_3);
 		
 		JComboBox<String> comboBox = new JComboBox<String>();
+		comboBox.setOpaque(false);
 		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"\u635F\u574F", "\u4E22\u5931"}));
 		GridBagConstraints gbc_comboBox = new GridBagConstraints();
 		gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
@@ -214,8 +206,18 @@ public class YArrivalDocPanel extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
-				tableModel.addRow(new Object[] {itemIDField.getText(),comboBox.getSelectedItem()});
-				itemIDField.setText("");
+				try {
+					yArrivalDoc.checkHas(itemIDField.getText());
+					tableModel.addRow(new Object[] {itemIDField.getText(),comboBox.getSelectedItem()});
+					itemIDField.setText("");
+				} catch (RemoteException e1) {
+					// TODO Auto-generated catch block
+					warning("net");
+				} catch (DatabaseNULLException e1) {
+					// TODO Auto-generated catch block
+					warning("null");
+				}
+				
 			}
 		});
 		GridBagConstraints gbc_addButton = new GridBagConstraints();
@@ -231,9 +233,9 @@ public class YArrivalDocPanel extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				if (intializable()) {
+				
 					createZArrivalDoc();
-				}
+				
 				
 			}
 		});
@@ -278,7 +280,7 @@ public class YArrivalDocPanel extends JPanel{
 			public void actionPerformed(ActionEvent arg0) {
 				saveYArrivalDoc();
 				createYDeliverDoc();
-				saveDoc();
+				
 			}
 		});
 		GridBagConstraints gbc_confirmButton = new GridBagConstraints();
@@ -299,6 +301,10 @@ public class YArrivalDocPanel extends JPanel{
 		panel_3.setOpaque(false);
 		panel_6.setOpaque(false);
 		panel_8.setOpaque(false);
+		scrollPane.setOpaque(false);
+		scrollPane.getViewport().setOpaque(false);
+		scrollPane_1.setOpaque(false);
+		scrollPane_1.getViewport().setOpaque(false);
 
 	}
 
@@ -328,10 +334,11 @@ public class YArrivalDocPanel extends JPanel{
 	}
 
 	private void createZArrivalDoc() {
+		if(intializable()) {
 			IDAndState = new String[tableModel.getRowCount()][2];
 			for (int i = 0; i < tableModel.getRowCount(); i++) {
 				IDAndState[i][0] = (String) tableModel.getValueAt(i, 0);
-				IDAndState[i][0] = (String) tableModel.getValueAt(i, 1);
+				IDAndState[i][1] = (String) tableModel.getValueAt(i, 1);
 			}
 				try {
 					vo = yArrivalDoc.createYArrivalDocVO(zLoadDocIDField.getText(), IDAndState);
@@ -354,23 +361,30 @@ public class YArrivalDocPanel extends JPanel{
 					warning("null");
 					e1.printStackTrace();
 				}
+		}else {
+			warning("null");
+		}
+			
 			
 			
 	}
 	private void  saveYArrivalDoc() {
-		try {
-			yArrivalDoc.confirmSave();
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			warning("net");
-		}
+		
+			try {
+				yArrivalDoc.confirmSave();
+			} catch (RemoteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				warning("net");
+			}
+		
 	}
 	private void intializeYDeliver() {
 		String[][] itStrings = vo.getItemAndState();
-		String[] docs  = new String[itStrings.length];
+		ArrayList<String> docs  = new ArrayList<>();
 		for(int i = 0;i<itStrings.length;i++) {
-			docs[i] = itStrings[i][0];
+			if(itStrings[i][1].equals("完好"))
+			docs.add(itStrings[i][0]) ;
 		}
 		for(String str : docs) {
 			try {
@@ -386,27 +400,45 @@ public class YArrivalDocPanel extends JPanel{
 		}
 	}
 	private void createYDeliverDoc() {
-		String[][] table = new String[DeliverModel.getRowCount()][2];
-		for(int i = 0;i<DeliverModel.getRowCount();i++) {
-			table[i][0] = (String) DeliverModel.getValueAt(i, 0);
-			String name = (String) DeliverModel.getValueAt(i, 2);
-			for(int j = 0;j<courier.length;j++) {
-				if(courierName[j].equals(name)) {
-					table[i][1] = courier[j];
-					break;
+		if(DeliverModel.getRowCount()!=0&&createable()) {
+			String[][] table = new String[DeliverModel.getRowCount()][2];
+			for(int i = 0;i<DeliverModel.getRowCount();i++) {
+				table[i][0] = (String) DeliverModel.getValueAt(i, 0);
+				String name = (String) DeliverModel.getValueAt(i, 2);
+				for(int j = 0;j<courier.length;j++) {
+					if(courierName[j].equals(name)) {
+						table[i][1] = courier[j];
+						break;
+					}
 				}
+				
 			}
-			
-		}
-		try {
-			yDeliverDoc.createYDeliverDoc(table);
-		} catch (RemoteException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-			warning("net");
+			try {
+				yDeliverDoc.createYDeliverDoc(table);
+				saveYArrivalDoc();
+				saveDoc();
+				clean();
+			} catch (RemoteException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+				warning("net");
+			}
+		}else {
+			warning("lost");
 		}
 		
+		
 	}
+	private boolean createable() {
+		// TODO Auto-generated method stub
+		for(int i = 0;i<DeliverModel.getRowCount();i++) {
+			if (((String)DeliverModel.getValueAt(i, 2)).equals("")) {
+				return false;
+			}
+		}
+		return true;
+	}
+
 	private void saveDoc() {
 		try {
 			yDeliverDoc.confirmSave();
@@ -416,5 +448,14 @@ public class YArrivalDocPanel extends JPanel{
 			warning("net");
 		}
 		JOptionPane.showMessageDialog(this, "保存成功");
+	}
+	private void clean() {
+		for(int i = tableModel.getRowCount()-1;i>=0;i--) {
+			tableModel.removeRow(i);
+		}
+		for(int i = DeliverModel.getRowCount()-1;i>=0;i--) {
+			DeliverModel.removeRow(i);
+		}
+		
 	}
 }

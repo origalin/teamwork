@@ -112,6 +112,7 @@ public class YLoadDocPanel extends JPanel{
 			drivers[i] = driverNameAndIDs[i][1];
 		}
 		driverBox = new JComboBox<String>();
+		driverBox.setOpaque(false);
 		driverBox.setModel(new DefaultComboBoxModel<String>(drivers));
 		panel_8.add(driverBox);
 		
@@ -210,6 +211,8 @@ public class YLoadDocPanel extends JPanel{
 		panel.setOpaque(false);
 		panel_1.setOpaque(false);
 		panel_8.setOpaque(false);
+		scrollPane.setOpaque(false);
+		scrollPane.getViewport().setOpaque(false);
 	}
 	private void createYLoadDoc() {
 		if(creatable()) {

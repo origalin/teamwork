@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import edu.nju.exception.DatabaseNULLException;
 import edu.nju.po.YArrivalDocPO;
+import edu.nju.presentation.financeui.rentMoneyPanel;
 import edu.nju.vo.YArrivalDocVO;
 import edu.nju.vo.ZArrivalDocVO;
 
@@ -19,4 +20,5 @@ public interface YArrivalDocService {
 	public String[] getCouriers() throws RemoteException;
 	public String getcoutierName(String courierID)throws RemoteException;
 	public void  confirmSave()throws RemoteException;
+	public void checkHas(String id)throws RemoteException,DatabaseNULLException;
 }

@@ -109,6 +109,7 @@ public class ZArrivalDocPanel extends JPanel {
 		docTypeBox.setModel(new DefaultComboBoxModel(
 				new String[] { "\u4E2D\u8F6C\u5355\u7F16\u53F7", "\u8425\u4E1A\u5385\u88C5\u8F66\u5355\u7F16\u53F7" }));
 		panel_6.add(docTypeBox);
+		docTypeBox.setOpaque(false);
 
 		JPanel panel_2 = new JPanel();
 		FlowLayout flowLayout_1 = (FlowLayout) panel_2.getLayout();
@@ -201,6 +202,7 @@ public class ZArrivalDocPanel extends JPanel {
 		panel_1.add(label_3, gbc_label_3);
 
 		JComboBox comboBox = new JComboBox();
+		comboBox.setOpaque(false);
 		comboBox.setModel(new DefaultComboBoxModel(new String[] { "\u635F\u574F", "\u4E22\u5931" }));
 		GridBagConstraints gbc_comboBox = new GridBagConstraints();
 		gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
@@ -253,10 +255,13 @@ public class ZArrivalDocPanel extends JPanel {
 		
 		panel_6.setOpaque(false);
 		panel_8.setOpaque(false);
+		
+		scrollPane.setOpaque(false);
+		scrollPane.getViewport().setOpaque(false);
 	}
 
 	private void intializeWithFromDoc() {
-		if (intializable()) {
+		
 			Doc po ;
 			try{
 				switch ((String)docTypeBox.getSelectedItem()) {
@@ -280,9 +285,7 @@ public class ZArrivalDocPanel extends JPanel {
 			
 			
 				
-		} else {
-			warning("lost");
-		}
+		
 
 	}
 
@@ -355,16 +358,18 @@ public class ZArrivalDocPanel extends JPanel {
 				e1.printStackTrace();
 			}
 			
-			CheckDialog cDialog = new CheckDialog();
-			cDialog.getDocPanel().add(new checkZArrivalDoc(vo));
-			cDialog.getConfirmButton().addActionListener(new ActionListener() {
-				
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					// TODO Auto-generated method stub
-					saveDoc();
-				}
-			});
+//			CheckDialog cDialog = new CheckDialog();
+//			cDialog.getDocPanel().add(new checkZArrivalDoc(vo));
+//			cDialog.getConfirmButton().addActionListener(new ActionListener() {
+//				
+//				@Override
+//				public void actionPerformed(ActionEvent e) {
+//					// TODO Auto-generated method stub
+//					saveDoc();
+//				}
+//			});
+		}else {
+			warning("lost");
 		}
 	}
 	private void saveDoc() {
