@@ -27,4 +27,5 @@ public interface CollectionLogicService {
 	public void saveSendDocCreateGatheringDoc(String courierID) throws RemoteException;
 	ArrayList<HistoryTimePO> getHistoryPO(String sCity, String rCity) throws RemoteException;
 	public void  confirmSave() throws RemoteException;
+	public void checkHas(String id)throws DatabaseNULLException,RemoteException;
 }

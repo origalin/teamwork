@@ -96,7 +96,9 @@ public class MainFrame extends JFrame{
 		scrollPane = new JScrollPane();
 		scrollPane.setOpaque(false);
 		scrollPane.getViewport().setOpaque(false);
-		
+		scrollPane.setViewportBorder(null);
+		scrollPane.setBorder(null);
+
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.gridwidth = 3;
 		gbc_scrollPane.insets = new Insets(10, 0, 5, 5);

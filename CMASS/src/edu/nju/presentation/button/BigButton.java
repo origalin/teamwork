@@ -1,5 +1,7 @@
 package edu.nju.presentation.button;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Insets;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -23,5 +25,19 @@ public class BigButton extends JButton{
 		setPressedIcon(icon3);// 设置鼠标按下图片
 		setHorizontalTextPosition(JButton.CENTER);
 		setVerticalTextPosition(JButton.CENTER);
+		setFont(new Font("微软雅黑", Font.PLAIN, 20));
+		
+	}
+	public void setNormal() {
+		setIcon(icon1);// 设置默认图片
+		setRolloverIcon(icon2);// 设置鼠标经过图片
+		setPressedIcon(icon3);// 设置鼠标按下图片
+		setForeground(Color.black);
+	}
+	public void setPressed() {
+		setIcon(icon3);// 设置默认图片
+		setRolloverIcon(icon3);// 设置鼠标经过图片
+		setPressedIcon(icon3);// 设置鼠标按下图片
+		setForeground(new Color(0, 196, 211));
 	}
 }

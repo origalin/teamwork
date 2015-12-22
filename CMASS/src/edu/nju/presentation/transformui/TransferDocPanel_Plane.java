@@ -21,6 +21,7 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.table.DefaultTableModel;
 
 import edu.nju.businesslogic.transferbl.TransferDoc;
+import edu.nju.exception.DatabaseNULLException;
 import edu.nju.presentation.approveui.CheckTransferDoc_Car;
 import edu.nju.presentation.approveui.CheckTransferDoc_Plane;
 import edu.nju.presentation.approveui.checkOverDoc;
@@ -34,7 +35,6 @@ public class TransferDocPanel_Plane extends JPanel{
 	private JTextField watcherField;
 	private JTextField targetField;
 	private JTextField itemIDField;
-	private JTable table;
 	private JTextField boxField;
 	private TransferDoc transferDoc;
 	private String city,carNum,watcher,box;
@@ -44,6 +44,7 @@ public class TransferDocPanel_Plane extends JPanel{
 	DefaultTableModel tableModel;
 	private String institutionID, staffID;
 	private String container;
+	private JTable table;
 	public TransferDocPanel_Plane(String staffID) {
 		this.staffID = staffID;
 		try {
@@ -187,28 +188,16 @@ public class TransferDocPanel_Plane extends JPanel{
 		gbc_scrollPane.gridy = 0;
 		panel_1.add(scrollPane, gbc_scrollPane);
 		
-		JPanel panel_13 = new JPanel();
-		scrollPane.setColumnHeaderView(panel_13);
-		
-		JLabel label_1 = new JLabel("\u8FD0\u5355\u53F7");
-		panel_13.add(label_1);
-		
-		JPanel panel_14 = new JPanel();
-		scrollPane.setViewportView(panel_14);
-		panel_14.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		
 		table = new JTable();
-		table.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
 			},
 			new String[] {
-				"\u8FD0\u5355\u53F7"
+				"\u5FEB\u4EF6\u5355\u53F7"
 			}
 		));
-		tableModel = (DefaultTableModel) table.getModel();
-		table.getColumnModel().getColumn(0).setPreferredWidth(130);
-		panel_14.add(table);
+		table.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+		scrollPane.setViewportView(table);
 		
 		itemIDField = new JTextField();
 		itemIDField.setColumns(15);
@@ -220,13 +209,24 @@ public class TransferDocPanel_Plane extends JPanel{
 		panel_1.add(itemIDField, gbc_itemIDField);
 		
 		JButton addButton = new JButton("\u6DFB\u52A0");
+		tableModel = (DefaultTableModel) table.getModel();
 		addButton.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
-				tableModel.addRow(new Object[] {itemIDField.getText()});
-				itemIDField.setText("");
+				try {
+					transferDoc.checkHas(itemIDField.getText());
+					tableModel.addRow(new Object[] {itemIDField.getText()});
+					itemIDField.setText("");
+				} catch (RemoteException e1) {
+					// TODO Auto-generated catch block
+					warning("net");
+				} catch (DatabaseNULLException e1) {
+					// TODO Auto-generated catch block
+					warning("null");
+				}
+				
 			}
 		});
 		GridBagConstraints gbc_addButton = new GridBagConstraints();
@@ -235,7 +235,13 @@ public class TransferDocPanel_Plane extends JPanel{
 		gbc_addButton.gridy = 2;
 		panel_1.add(addButton, gbc_addButton);
 		
-
+		setOpaque(false);
+		panel.setOpaque(false);
+		panel_1.setOpaque(false);
+		panel_11.setOpaque(false);
+		panel_12.setOpaque(false);
+		panel_6.setOpaque(false);
+		panel_8.setOpaque(false);
 	}
 	private void createTransferDoc() {
 		intialize();
@@ -301,6 +307,9 @@ public class TransferDocPanel_Plane extends JPanel{
 			break;	
 		case "lost":
 			JOptionPane.showMessageDialog(this, "请检查信息完整性");
+			break;
+		case "null":
+			JOptionPane.showMessageDialog(this, "找不到单据");
 			break;
 
 		default:

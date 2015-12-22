@@ -1,7 +1,9 @@
 package edu.nju.dataservice.collectiondataservice;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import edu.nju.exception.DatabaseNULLException;
 import edu.nju.po.CourierMoneyPO;
 import edu.nju.po.HistoryTimePO;
 import edu.nju.po.PositionPO;
@@ -49,6 +51,12 @@ public class CollectionDataService_stub implements CollectionDataService {
 	public CourierMoneyPO getCourierMoneyPO(String courierID) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void checkHas(String ID) throws RemoteException, DatabaseNULLException {
+		// TODO Auto-generated method stub
+		
 	}
 
 	

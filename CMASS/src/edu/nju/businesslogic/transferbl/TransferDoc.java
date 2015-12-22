@@ -6,6 +6,7 @@ import java.util.TooManyListenersException;
 
 import javax.tools.Tool;
 
+import edu.nju.businesslogic.collectionbl.Collectionbl;
 import edu.nju.businesslogic.infobl.Distance;
 import edu.nju.businesslogic.infobl.Institution;
 import edu.nju.businesslogic.logispicsquerybl.Logisticsquerybl;
@@ -33,6 +34,7 @@ public class TransferDoc implements TransferDocService{
 	Institution institution;
 	Distance distance;
 	TransferDataService transferDataService ;
+	Collectionbl collectionbl;
 	Logisticsquerybl logisticsquerybl;
 	SystemBl systemBl;
 	public TransferDoc () throws RemoteException{
@@ -49,6 +51,7 @@ public class TransferDoc implements TransferDocService{
 		transferDataService.setInstitutionID(institutionID);
 		logisticsquerybl = new Logisticsquerybl();
 		systemBl = new SystemBl();
+		collectionbl = new Collectionbl( staffID);
 	}
 	
 	public void  confirmSave() throws RemoteException {
@@ -192,5 +195,8 @@ public class TransferDoc implements TransferDocService{
 	public ArrayList<TransferDocPO> getUnPaidTransferDocPOs() throws RemoteException {
 		// TODO Auto-generated method stub
 		return transferDataService.getunPaidTransferDocPO();
+	}
+	public void checkHas(String id) throws RemoteException,DatabaseNULLException{
+		collectionbl.checkHas(id);
 	}
 }

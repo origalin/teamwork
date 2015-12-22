@@ -22,4 +22,6 @@ public interface CollectionDataService extends Remote{
 	public void saveCourierMoneyPO(CourierMoneyPO po)throws RemoteException;
 	
 	public CourierMoneyPO getCourierMoneyPO(String courierID)throws RemoteException;
+	
+	public void checkHas(String ID)throws RemoteException,DatabaseNULLException;
 }

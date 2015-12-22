@@ -220,5 +220,11 @@ public class Collectionbl implements CollectionLogicService{
 		po2.cleanCourierMessage(courierID);
 		collectionData.saveCourierMoneyPO(po2);
 	}
+
+	@Override
+	public void checkHas(String id) throws DatabaseNULLException, RemoteException {
+		// TODO Auto-generated method stub
+		collectionData.checkHas(id);
+	}
 	
 }

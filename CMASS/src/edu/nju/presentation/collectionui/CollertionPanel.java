@@ -83,6 +83,7 @@ public class CollertionPanel extends JPanel{
 		panel.add(label);
 		
 		JPanel panel_1 = new JPanel();
+		panel_1.setOpaque(false);
 		panel_11.add(panel_1);
 		FlowLayout flowLayout_1 = (FlowLayout) panel_1.getLayout();
 		flowLayout_1.setAlignment(FlowLayout.LEFT);
@@ -110,6 +111,7 @@ public class CollertionPanel extends JPanel{
 		panel_1.add(label_25);
 		
 		JPanel panel_14 = new JPanel();
+		panel_14.setOpaque(false);
 		FlowLayout flowLayout_11 = (FlowLayout) panel_14.getLayout();
 		flowLayout_11.setAlignment(FlowLayout.LEFT);
 		panel_11.add(panel_14);
@@ -133,6 +135,7 @@ public class CollertionPanel extends JPanel{
 		panel_14.add(label_24);
 		
 		JPanel panel_2 = new JPanel();
+		panel_2.setOpaque(false);
 		panel_11.add(panel_2);
 		FlowLayout flowLayout_2 = (FlowLayout) panel_2.getLayout();
 		flowLayout_2.setAlignment(FlowLayout.LEFT);
@@ -156,6 +159,7 @@ public class CollertionPanel extends JPanel{
 		panel_2.add(label_23);
 		
 		JPanel panel_3 = new JPanel();
+		panel_3.setOpaque(false);
 		panel_11.add(panel_3);
 		FlowLayout flowLayout_3 = (FlowLayout) panel_3.getLayout();
 		flowLayout_3.setAlignment(FlowLayout.LEFT);
@@ -164,6 +168,7 @@ public class CollertionPanel extends JPanel{
 		panel_3.add(label_8);
 		
 		JPanel panel_4 = new JPanel();
+		panel_4.setOpaque(false);
 		panel_11.add(panel_4);
 		FlowLayout flowLayout_4 = (FlowLayout) panel_4.getLayout();
 		flowLayout_4.setAlignment(FlowLayout.LEFT);
@@ -191,6 +196,7 @@ public class CollertionPanel extends JPanel{
 		panel_4.add(label_27);
 		
 		JPanel panel_8 = new JPanel();
+		panel_8.setOpaque(false);
 		FlowLayout flowLayout_7 = (FlowLayout) panel_8.getLayout();
 		flowLayout_7.setAlignment(FlowLayout.LEFT);
 		panel_11.add(panel_8);
@@ -214,6 +220,7 @@ public class CollertionPanel extends JPanel{
 		panel_8.add(label_12);
 		
 		JPanel panel_5 = new JPanel();
+		panel_5.setOpaque(false);
 		panel_11.add(panel_5);
 		FlowLayout flowLayout_5 = (FlowLayout) panel_5.getLayout();
 		flowLayout_5.setAlignment(FlowLayout.LEFT);
@@ -237,6 +244,7 @@ public class CollertionPanel extends JPanel{
 		panel_5.add(label_31);
 		
 		JPanel panel_6 = new JPanel();
+		panel_6.setOpaque(false);
 		FlowLayout flowLayout_6 = (FlowLayout) panel_6.getLayout();
 		flowLayout_6.setAlignment(FlowLayout.LEFT);
 		panel_11.add(panel_6);
@@ -285,6 +293,7 @@ public class CollertionPanel extends JPanel{
 		panel_6.add(label_29);
 		
 		JPanel panel_9 = new JPanel();
+		panel_9.setOpaque(false);
 		panel_11.add(panel_9);
 		FlowLayout flowLayout_8 = (FlowLayout) panel_9.getLayout();
 		flowLayout_8.setAlignment(FlowLayout.LEFT);
@@ -293,6 +302,7 @@ public class CollertionPanel extends JPanel{
 		panel_9.add(label_15);
 		
 		JRadioButton woodradio = new JRadioButton("\u6728\u7BB1");
+		woodradio.setOpaque(false);
 		woodradio.addActionListener(new ActionListener() {
 			
 			@Override
@@ -304,6 +314,7 @@ public class CollertionPanel extends JPanel{
 		panel_9.add(woodradio);
 		
 		JRadioButton paperradio = new JRadioButton("\u7EB8\u7BB1");
+		paperradio.setOpaque(false);
 		paperradio.addActionListener(new ActionListener() {
 			
 			@Override
@@ -315,6 +326,7 @@ public class CollertionPanel extends JPanel{
 		panel_9.add(paperradio);
 		
 		JRadioButton bagradio = new JRadioButton("\u5FEB\u9012\u888B");
+		bagradio.setOpaque(false);
 		bagradio.addActionListener(new ActionListener() {
 			
 			@Override
@@ -326,6 +338,7 @@ public class CollertionPanel extends JPanel{
 		panel_9.add(bagradio);
 		
 		JRadioButton otherradio = new JRadioButton("\u5176\u4ED6");
+		otherradio.setOpaque(false);
 		otherradio.addActionListener(new ActionListener() {
 			
 			@Override
@@ -345,6 +358,7 @@ public class CollertionPanel extends JPanel{
 		panel_9.add(label_32);
 		
 		JPanel panel_10 = new JPanel();
+		panel_10.setOpaque(false);
 		panel_11.add(panel_10);
 		FlowLayout flowLayout_9 = (FlowLayout) panel_10.getLayout();
 		flowLayout_9.setAlignment(FlowLayout.LEFT);
@@ -353,6 +367,7 @@ public class CollertionPanel extends JPanel{
 		panel_10.add(label_16);
 		
 		JRadioButton superradio = new JRadioButton("\u7279\u5FEB\u5FEB\u9012");
+		superradio.setOpaque(false);
 		superradio.addActionListener(new ActionListener() {
 			
 			@Override
@@ -364,6 +379,7 @@ public class CollertionPanel extends JPanel{
 		panel_10.add(superradio);
 		
 		JRadioButton stantardradio = new JRadioButton("\u6807\u51C6\u5FEB\u9012");
+		stantardradio.setOpaque(false);
 		stantardradio.addActionListener(new ActionListener() {
 			
 			@Override
@@ -375,6 +391,7 @@ public class CollertionPanel extends JPanel{
 		panel_10.add(stantardradio);
 		
 		JRadioButton cheapradio = new JRadioButton("\u7ECF\u6D4E\u5FEB\u9012");
+		cheapradio.setOpaque(false);
 		cheapradio.addActionListener(new ActionListener() {
 			
 			@Override
@@ -393,6 +410,7 @@ public class CollertionPanel extends JPanel{
 		panel_10.add(label_33);
 		
 		JPanel panel_7 = new JPanel();
+		panel_7.setOpaque(false);
 		panel_11.add(panel_7);
 		FlowLayout flowLayout_10 = (FlowLayout) panel_7.getLayout();
 		flowLayout_10.setAlignment(FlowLayout.LEFT);
@@ -405,6 +423,7 @@ public class CollertionPanel extends JPanel{
 		ItemkindField.setColumns(10);
 		
 		JPanel panel_13 = new JPanel();
+		panel_13.setOpaque(false);
 		FlowLayout flowLayout_13 = (FlowLayout) panel_13.getLayout();
 		flowLayout_13.setAlignment(FlowLayout.LEFT);
 		panel_11.add(panel_13);
@@ -424,20 +443,10 @@ public class CollertionPanel extends JPanel{
 		panel_13.add(timeField);
 		
 		JPanel panel_12 = new JPanel();
+		panel_12.setOpaque(false);
 		FlowLayout flowLayout_12 = (FlowLayout) panel_12.getLayout();
 		flowLayout_12.setAlignment(FlowLayout.RIGHT);
 		panel_11.add(panel_12);
-		
-		JButton estimateButton = new JButton("\u62A5\u4EF7\u4E0E\u65F6\u95F4\u9884\u4F30");
-		estimateButton.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO 自动生成的方法存根
-				estimate();
-			}
-		});
-		panel_12.add(estimateButton);
 		
 		JButton createButton = new JButton("\u8BA2\u5355\u751F\u6210");
 		createButton.addActionListener(new ActionListener() {
@@ -448,6 +457,20 @@ public class CollertionPanel extends JPanel{
 				create();
 			}
 		});
+		
+		JButton estimateButton = new JButton("\u62A5\u4EF7\u4E0E\u65F6\u95F4\u9884\u4F30");
+		estimateButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO 自动生成的方法存根
+				estimate();
+				
+			}
+		});
+		panel_12.add(estimateButton);
+		
+		
 		panel_12.add(createButton);
 		
 		

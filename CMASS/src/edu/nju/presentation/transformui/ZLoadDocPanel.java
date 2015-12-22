@@ -21,6 +21,7 @@ import javax.swing.table.DefaultTableModel;
 
 import edu.nju.businesslogic.transferbl.YLoadDoc;
 import edu.nju.businesslogic.transferbl.ZLoadDoc;
+import edu.nju.exception.DatabaseNULLException;
 import edu.nju.presentation.approveui.CheckZLoadDoc;
 import edu.nju.presentation.approveui.checkOverDoc;
 import edu.nju.presentation.approveui.checkYLoadDoc;
@@ -191,8 +192,18 @@ public class ZLoadDocPanel extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
-				tableModel.addRow(new Object[] {itemIDField.getText()});
-				itemIDField.setText("");
+				try {
+					zLoadDoc.checkHas(itemIDField.getText());
+					tableModel.addRow(new Object[] {itemIDField.getText()});
+					itemIDField.setText("");
+				} catch (RemoteException e1) {
+					// TODO Auto-generated catch block
+					warning("net");
+				} catch (DatabaseNULLException e1) {
+					// TODO Auto-generated catch block
+					warning("null");
+				}
+				
 			}
 		});
 		GridBagConstraints gbc_addButton = new GridBagConstraints();
@@ -215,7 +226,12 @@ public class ZLoadDocPanel extends JPanel{
 		gbc_createButton.gridy = 3;
 		add(createButton, gbc_createButton);
 		
-
+		panel.setOpaque(false);
+		setOpaque(false);
+		panel_1.setOpaque(false);
+		panel_13.setOpaque(false);
+		panel_14.setOpaque(false);
+		panel_8.setOpaque(false);
 	}
 	private void createZLoadDoc() {
 		if(creatable()) {
@@ -268,6 +284,9 @@ public class ZLoadDocPanel extends JPanel{
 			break;	
 		case "lost":
 			JOptionPane.showMessageDialog(this, "请检查信息完整性");
+			break;
+		case "null":
+			JOptionPane.showMessageDialog(this, "找不到单据");
 			break;
 
 		default:
