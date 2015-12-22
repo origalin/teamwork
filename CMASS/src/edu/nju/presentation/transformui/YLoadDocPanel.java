@@ -31,6 +31,7 @@ import edu.nju.vo.YLoadDocVO;
 
 import javax.swing.ListSelectionModel;
 import javax.swing.JComboBox;
+import java.awt.Dimension;
 
 @SuppressWarnings("serial")
 public class YLoadDocPanel extends JPanel{
@@ -133,6 +134,7 @@ public class YLoadDocPanel extends JPanel{
 		panel_1.setLayout(gbl_panel_1);
 		
 		table = new JTable();
+		table.setPreferredScrollableViewportSize(new Dimension(450, 300));
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
 			},

@@ -175,8 +175,8 @@ public class ZLoadDocPanel extends JPanel{
 				"\u8FD0\u5355\u53F7"
 			}
 		));
+		table.getColumnModel().getColumn(0).setPreferredWidth(500);
 		tableModel = (DefaultTableModel) table.getModel();
-		table.getColumnModel().getColumn(0).setPreferredWidth(130);
 		panel_14.add(table);
 		
 		itemIDField = new JTextField();

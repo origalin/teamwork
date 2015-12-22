@@ -34,6 +34,7 @@ import edu.nju.presentation.storageui.OutWareHouseManagment;
 import edu.nju.presentation.storageui.StorageQuery;
 import edu.nju.presentation.systemui.OperationPanel;
 import edu.nju.presentation.transformui.SendPanel;
+import edu.nju.presentation.transformui.YLoadDocPanel;
 import edu.nju.presentation.transformui.ZArrivalDocPanel;
 
 import java.awt.GridBagLayout;
@@ -193,7 +194,7 @@ public class LoginFrame extends JFrame {
 			mainFrame.setGuidePanel(new GuidePanel_Storage(mainFrame, account));
 			break;
 		case "营业厅业务员":
-			mainFrame.setFunctionPanel(new SendPanel(account));
+			mainFrame.setFunctionPanel(new YLoadDocPanel(account));
 			mainFrame.setGuidePanel(new GuidePanel_BusinessHall(mainFrame, account));
 			break;
 		case "快递员":
