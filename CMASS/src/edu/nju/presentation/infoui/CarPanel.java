@@ -52,18 +52,20 @@ public class CarPanel extends JPanel {
 		setLayout(gridBagLayout);
 
 		JPanel panel = new JPanel();
+		panel.setOpaque(false);
 		GridBagConstraints gbc_panel = new GridBagConstraints();
 		gbc_panel.insets = new Insets(0, 0, 5, 0);
 		gbc_panel.fill = GridBagConstraints.HORIZONTAL;
 		gbc_panel.gridx = 0;
 		gbc_panel.gridy = 0;
 		add(panel, gbc_panel);
-
+		
 		JLabel label = new JLabel("\u8F66\u8F86\u4FE1\u606F\u7BA1\u7406");
 		label.setFont(new Font("ËÎÌו", Font.PLAIN, 22));
 		panel.add(label);
 
 		JPanel panel_1 = new JPanel();
+		panel_1.setOpaque(false);
 		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
 		gbc_panel_1.insets = new Insets(0, 0, 5, 0);
 		gbc_panel_1.fill = GridBagConstraints.BOTH;
@@ -227,7 +229,9 @@ public class CarPanel extends JPanel {
 		gbc_scrollPane.gridx = 0;
 		gbc_scrollPane.gridy = 2;
 		add(scrollPane, gbc_scrollPane);
-
+		scrollPane.setOpaque(false);
+		scrollPane.getViewport().setOpaque(false);
+		
 		table = new JTable();
 		scrollPane.setViewportView(table);
 		table.setModel(new DefaultTableModel(new Object[][] {}, new String[] {
