@@ -64,7 +64,7 @@ public class GuidePanel_BusinessHall extends JPanel{
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
-		BigButton collectButtom = new BigButton("\u88C5\u8F66\u7BA1\u7406");
+		BigButton collectButtom = new BigButton("\u88C5 \u8F66 \u7BA1 \u7406");
 		collectButtom.setPressed();
 		collectButtom.addActionListener(new ActionListener() {
 			
@@ -83,7 +83,7 @@ public class GuidePanel_BusinessHall extends JPanel{
 		gbc_collectButtom.gridy = 0;
 		add(collectButtom, gbc_collectButtom);
 		
-		BigButton sendButtom = new BigButton("\u5230\u4EF6\u7BA1\u7406");
+		BigButton sendButtom = new BigButton("\u5230 \u4EF6 \u7BA1 \u7406");
 		sendButtom.addActionListener(new ActionListener() {
 			
 			@Override

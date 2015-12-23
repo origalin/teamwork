@@ -46,7 +46,7 @@ public class GuidePanel_TransferCenter extends JPanel{
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
-		BigButton collectButtom = new BigButton("\u5230\u4EF6\u7BA1\u7406");
+		BigButton collectButtom = new BigButton("\u5230 \u4EF6 \u7BA1 \u7406");
 		collectButtom.setPressed();
 		collectButtom.addActionListener(new ActionListener() {
 			
@@ -65,7 +65,7 @@ public class GuidePanel_TransferCenter extends JPanel{
 		gbc_collectButtom.gridy = 0;
 		add(collectButtom, gbc_collectButtom);
 		
-		BigButton sendButtom = new BigButton("\u88C5\u8F66\u7BA1\u7406");
+		BigButton sendButtom = new BigButton("\u88C5 \u8F66 \u7BA1 \u7406");
 		sendButtom.addActionListener(new ActionListener() {
 			
 			@Override
@@ -83,7 +83,7 @@ public class GuidePanel_TransferCenter extends JPanel{
 		gbc_sendButtom.gridy = 1;
 		add(sendButtom, gbc_sendButtom);
 		
-		BigButton button = new BigButton("\u6C7D\u8FD0\u4E2D\u8F6C");
+		BigButton button = new BigButton("\u6C7D \u8FD0 \u4E2D \u8F6C");
 		button.addActionListener(new ActionListener() {
 			
 			@Override
@@ -101,7 +101,7 @@ public class GuidePanel_TransferCenter extends JPanel{
 		gbc_button.gridy = 2;
 		add(button, gbc_button);
 		
-		BigButton button_1 = new BigButton("\u94C1\u8DEF\u4E2D\u8F6C");
+		BigButton button_1 = new BigButton("\u94C1 \u8DEF \u4E2D \u8F6C");
 		button_1.addActionListener(new ActionListener() {
 			
 			@Override
@@ -119,7 +119,7 @@ public class GuidePanel_TransferCenter extends JPanel{
 		gbc_button_1.gridy = 3;
 		add(button_1, gbc_button_1);
 		
-		BigButton button_2 = new BigButton("\u822A\u8FD0\u4E2D\u8F6C");
+		BigButton button_2 = new BigButton("\u822A \u8FD0 \u4E2D \u8F6C");
 		button_2.addActionListener(new ActionListener() {
 			
 			@Override

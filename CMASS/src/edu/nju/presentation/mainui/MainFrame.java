@@ -48,7 +48,7 @@ public class MainFrame extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{183, 580, 50, 43, 0};
-		gridBagLayout.rowHeights = new int[]{38, 34, 472, 30, 0};
+		gridBagLayout.rowHeights = new int[]{38, 34, 472, 18, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
 		getContentPane().setLayout(gridBagLayout);
@@ -79,13 +79,13 @@ public class MainFrame extends JFrame{
 		panel.setLayout(gbl_panel);
 		
 		
-		JLabel lblCmass = new JLabel(" CMASS");
+		JLabel lblCmass = new JLabel("CMASS");
 		lblCmass.setForeground(Color.WHITE);
 		lblCmass.setVerticalAlignment(SwingConstants.BOTTOM);
 		lblCmass.setFont(new Font("ºÚÌå", Font.BOLD, 20));
 		lblCmass.setHorizontalAlignment(SwingConstants.CENTER);
 		GridBagConstraints gbc_lblCmass = new GridBagConstraints();
-		gbc_lblCmass.insets = new Insets(0, 0, 5, 0);
+		gbc_lblCmass.insets = new Insets(-5, 5, 0, 0);
 		gbc_lblCmass.anchor = GridBagConstraints.WEST;
 		gbc_lblCmass.gridx = 0;
 		gbc_lblCmass.gridy = 0;
@@ -95,6 +95,8 @@ public class MainFrame extends JFrame{
 		lblv.setForeground(Color.WHITE);
 		lblv.setFont(new Font("ºÚÌå", Font.BOLD, 20));
 		GridBagConstraints gbc_lblv = new GridBagConstraints();
+		gbc_lblv.insets = new Insets(-20, 5, 5, 0);
+		gbc_lblv.anchor = GridBagConstraints.WEST;
 		gbc_lblv.gridx = 0;
 		gbc_lblv.gridy = 1;
 		panel.add(lblv, gbc_lblv);
@@ -103,7 +105,7 @@ public class MainFrame extends JFrame{
 		panel_1.setOpaque(false);
 		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
 		gbc_panel_1.gridwidth = 3;
-		gbc_panel_1.insets = new Insets(10, 0, -5, 0);
+		gbc_panel_1.insets = new Insets(10, 0, 5, 0);
 		gbc_panel_1.fill = GridBagConstraints.BOTH;
 		gbc_panel_1.gridx = 1;
 		gbc_panel_1.gridy = 1;
@@ -179,9 +181,7 @@ public class MainFrame extends JFrame{
 		getContentPane().add(scrollPane, gbc_scrollPane);
 		
 		JPanel panel_3 = new JPanel();
-		panel_3.setBackground(Color.BLACK);
-		FlowLayout flowLayout_1 = (FlowLayout) panel_3.getLayout();
-		flowLayout_1.setAlignment(FlowLayout.LEFT);
+		panel_3.setBackground(new Color(27, 29, 37));
 		GridBagConstraints gbc_panel_3 = new GridBagConstraints();
 		gbc_panel_3.gridwidth = 4;
 		gbc_panel_3.insets = new Insets(0, 0, 0, 0);
@@ -189,11 +189,31 @@ public class MainFrame extends JFrame{
 		gbc_panel_3.gridx = 0;
 		gbc_panel_3.gridy = 3;
 		getContentPane().add(panel_3, gbc_panel_3);
+		GridBagLayout gbl_panel_3 = new GridBagLayout();
+		gbl_panel_3.columnWidths = new int[]{652, 248, 72, 0};
+		gbl_panel_3.rowHeights = new int[]{18, 0};
+		gbl_panel_3.columnWeights = new double[]{0.0, 1.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_3.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+		panel_3.setLayout(gbl_panel_3);
+		
+		JLabel label_1 = new JLabel("Powered By Open-Source Software");
+		label_1.setForeground(Color.WHITE);
+		label_1.setHorizontalAlignment(SwingConstants.LEFT);
+		GridBagConstraints gbc_label_1 = new GridBagConstraints();
+		gbc_label_1.anchor = GridBagConstraints.NORTHWEST;
+		gbc_label_1.insets = new Insets(0, 0, 0, 5);
+		gbc_label_1.gridx = 0;
+		gbc_label_1.gridy = 0;
+		panel_3.add(label_1, gbc_label_1);
 		
 		JLabel lblNewLabel_3 = new JLabel("New label");
 		lblNewLabel_3.setFont(new Font("ºÚÌå", Font.PLAIN, 15));
 		lblNewLabel_3.setForeground(Color.WHITE);
-		panel_3.add(lblNewLabel_3);
+		GridBagConstraints gbc_lblNewLabel_3 = new GridBagConstraints();
+		gbc_lblNewLabel_3.anchor = GridBagConstraints.NORTHWEST;
+		gbc_lblNewLabel_3.gridx = 2;
+		gbc_lblNewLabel_3.gridy = 0;
+		panel_3.add(lblNewLabel_3, gbc_lblNewLabel_3);
 		
 		JPanel content = (JPanel) getContentPane();
 		content.setOpaque(false);

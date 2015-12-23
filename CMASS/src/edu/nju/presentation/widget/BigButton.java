@@ -25,7 +25,7 @@ public class BigButton extends JButton{
 		setPressedIcon(icon3);// 设置鼠标按下图片
 		setHorizontalTextPosition(JButton.CENTER);
 		setVerticalTextPosition(JButton.CENTER);
-		setFont(new Font("幼圆", Font.PLAIN, 20));
+		setFont(new Font("幼圆", Font.PLAIN, 16));
 		
 	}
 	public void setNormal() {

@@ -38,7 +38,7 @@ public class GuidePanel_Courier extends JPanel{
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 1.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
-		BigButton collectButtom = new BigButton("\u63FD\u4EF6");
+		BigButton collectButtom = new BigButton("\u63FD  \u4EF6");
 		collectButtom.setForeground(Color.BLACK);
 		collectButtom.setPressed();
 		collectButtom.addActionListener(new ActionListener() {
@@ -59,7 +59,7 @@ public class GuidePanel_Courier extends JPanel{
 		gbc_collectButtom.gridy = 0;
 		add(collectButtom, gbc_collectButtom);
 		
-		BigButton sendButtom = new BigButton("\u6D3E\u4EF6");
+		BigButton sendButtom = new BigButton("\u6D3E  \u4EF6");
 		sendButtom.addActionListener(new ActionListener() {
 			
 			@Override
