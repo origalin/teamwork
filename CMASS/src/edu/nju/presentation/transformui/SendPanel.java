@@ -113,13 +113,14 @@ public class SendPanel extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				createOverTable();
 				try {
-					intialize2();
+					intialize();
 				} catch (RemoteException e1) {
 					// TODO Auto-generated catch block
 					warning();
 				}
+				createOverTable();
+				
 			}
 		});
 		GridBagConstraints gbc_receiveButton = new GridBagConstraints();
@@ -308,9 +309,9 @@ public class SendPanel extends JPanel{
 		
 	}
 	private void  intialize2() throws RemoteException {
-		int i = toSendModel.getRowCount();
+		int i = toOverModel.getRowCount();
 		for(;i>0;i--) {
-			toSendModel.removeRow(i-1);
+			toOverModel.removeRow(i-1);
 		}
 		
 		collectionbl = new Collectionbl(staffID);
