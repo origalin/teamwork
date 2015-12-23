@@ -56,9 +56,9 @@ public class TransferDocPanel_Train extends JPanel {
 			warning("net");
 		}
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[] { 215, 58, 0 };
+		gridBagLayout.columnWidths = new int[] { 215, 58, 30, 0 };
 		gridBagLayout.rowHeights = new int[] { 86, 0 };
-		gridBagLayout.columnWeights = new double[] { 0.0, 1.0, Double.MIN_VALUE };
+		gridBagLayout.columnWeights = new double[] { 0.0, 1.0, 0.0, Double.MIN_VALUE };
 		gridBagLayout.rowWeights = new double[] { 1.0, Double.MIN_VALUE };
 		setLayout(gridBagLayout);
 
@@ -160,6 +160,7 @@ public class TransferDocPanel_Train extends JPanel {
 
 		JPanel panel_1 = new JPanel();
 		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
+		gbc_panel_1.insets = new Insets(0, 0, 0, 5);
 		gbc_panel_1.fill = GridBagConstraints.BOTH;
 		gbc_panel_1.gridx = 1;
 		gbc_panel_1.gridy = 0;
@@ -172,8 +173,6 @@ public class TransferDocPanel_Train extends JPanel {
 		panel_1.setLayout(gbl_panel_1);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
 		gbc_scrollPane.insets = new Insets(0, 0, 5, 0);
@@ -182,6 +181,7 @@ public class TransferDocPanel_Train extends JPanel {
 		panel_1.add(scrollPane, gbc_scrollPane);
 		
 		table = new JTable();
+		table.setRowHeight(30);
 		table.setPreferredScrollableViewportSize(new Dimension(200, 200));
 		table.setModel(new DefaultTableModel(
 			new Object[][] {

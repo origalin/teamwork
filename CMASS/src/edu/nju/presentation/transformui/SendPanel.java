@@ -76,7 +76,6 @@ public class SendPanel extends JPanel{
 		label_3.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.gridwidth = 3;
 		gbc_scrollPane.insets = new Insets(0, 0, 5, 5);
@@ -86,12 +85,13 @@ public class SendPanel extends JPanel{
 		add(scrollPane, gbc_scrollPane);
 		
 		toSendTable = new JTable();
+		toSendTable.setRowHeight(30);
 		toSendTable.setPreferredScrollableViewportSize(new Dimension(200, 200));
 		toSendTable.setModel(new DefaultTableModel(
 			new Object[][] {
 			},
 			new String[] {
-				"\u5FEB\u9012\u5355\u53F7", "\u5730\u5740", "\u6536\u4EF6\u4EBA"
+				"\u5FEB\u9012\u5355\u53F7", "\u6536\u4EF6\u4EBA", "\u5730\u5740"
 			}
 		) {
 			boolean[] columnEditables = new boolean[] {
@@ -133,7 +133,6 @@ public class SendPanel extends JPanel{
 		panel.add(label);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		GridBagConstraints gbc_scrollPane_1 = new GridBagConstraints();
 		gbc_scrollPane_1.gridwidth = 3;
 		gbc_scrollPane_1.insets = new Insets(0, 0, 5, 5);
@@ -143,6 +142,7 @@ public class SendPanel extends JPanel{
 		add(scrollPane_1, gbc_scrollPane_1);
 		
 		toOverTable = new JTable();
+		toOverTable.setRowHeight(30);
 		toOverTable.setPreferredScrollableViewportSize(new Dimension(200, 200));
 		toOverTable.setModel(new DefaultTableModel(
 			new Object[][] {
@@ -290,7 +290,7 @@ public class SendPanel extends JPanel{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		JOptionPane.showMessageDialog(this, "±£´æÍê±Ï");
+		
 	}
 	public void warning() {
 	

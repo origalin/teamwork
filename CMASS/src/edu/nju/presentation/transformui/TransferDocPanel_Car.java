@@ -164,8 +164,6 @@ public class TransferDocPanel_Car extends JPanel {
 		panel_1.setLayout(gbl_panel_1);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
 		gbc_scrollPane.insets = new Insets(0, 0, 5, 0);
@@ -174,6 +172,7 @@ public class TransferDocPanel_Car extends JPanel {
 		panel_1.add(scrollPane, gbc_scrollPane);
 		
 		table = new JTable();
+		table.setRowHeight(30);
 		table.setPreferredScrollableViewportSize(new Dimension(200, 200));
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
@@ -186,7 +185,7 @@ public class TransferDocPanel_Car extends JPanel {
 		scrollPane.setViewportView(table);
 
 		itemIDField = new JTextField();
-		itemIDField.setColumns(15);
+		itemIDField.setColumns(25);
 		GridBagConstraints gbc_itemIDField = new GridBagConstraints();
 		gbc_itemIDField.anchor = GridBagConstraints.NORTH;
 		gbc_itemIDField.insets = new Insets(0, 0, 5, 0);

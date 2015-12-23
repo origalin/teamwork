@@ -17,7 +17,7 @@ public class BigButton extends JButton{
 		super(s);
 		setUI(new MyButtonUI());
 		this.setSize(icon2.getIconWidth(), icon2.getIconHeight());
-		setMargin(new Insets(0, 0, 0, 0));// 设置边距
+		setMargin(new Insets(0, -2, 0, 0));// 设置边距
 		setContentAreaFilled(false);// 不绘制按钮区域
 		setBorderPainted(false);// 不绘制边框
 		setIcon(icon1);// 设置默认图片

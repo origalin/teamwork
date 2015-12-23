@@ -157,6 +157,7 @@ public class YArrivalDocPanel extends JPanel{
 		panel_14.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		table = new JTable();
+		table.setRowHeight(30);
 		table.setPreferredScrollableViewportSize(new Dimension(200, 200));
 		table.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 		table.setModel(new DefaultTableModel(
@@ -264,6 +265,7 @@ public class YArrivalDocPanel extends JPanel{
 		add(scrollPane_1, gbc_scrollPane_1);
 		
 		table_1 = new JTable();
+		table_1.setRowHeight(30);
 		table_1.setPreferredScrollableViewportSize(new Dimension(200, 200));
 		table_1.setModel(new DefaultTableModel(
 			new Object[][] {

@@ -134,6 +134,7 @@ public class YLoadDocPanel extends JPanel{
 		panel_1.setLayout(gbl_panel_1);
 		
 		table = new JTable();
+		table.setRowHeight(30);
 		table.setPreferredScrollableViewportSize(new Dimension(450, 270));
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
@@ -172,8 +173,6 @@ public class YLoadDocPanel extends JPanel{
 		gbc_scrollPane.gridx = 0;
 		gbc_scrollPane.gridy = 0;
 		panel_1.add(scrollPane, gbc_scrollPane);
-		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		
 		
 		table.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);

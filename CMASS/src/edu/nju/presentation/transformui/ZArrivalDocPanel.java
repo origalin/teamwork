@@ -149,8 +149,6 @@ public class ZArrivalDocPanel extends JPanel {
 		panel_1.setLayout(gbl_panel_1);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
 		gbc_scrollPane.insets = new Insets(0, 0, 5, 0);
@@ -164,6 +162,7 @@ public class ZArrivalDocPanel extends JPanel {
 		panel_14.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
 		table = new JTable();
+		table.setRowHeight(30);
 		table.setPreferredScrollableViewportSize(new Dimension(200, 200));
 		table.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 		table.setModel(new DefaultTableModel(
@@ -260,7 +259,7 @@ public class ZArrivalDocPanel extends JPanel {
 		panel_11.setOpaque(false);
 		panel_14.setOpaque(false);
 		panel_2.setOpaque(false);
-		
+		panel_1.setOpaque(false);
 		panel_6.setOpaque(false);
 		panel_8.setOpaque(false);
 		
