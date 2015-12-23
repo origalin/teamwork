@@ -22,6 +22,8 @@ public class accountManagement extends JPanel{
 	private JTable table;
 	private JPanel thisPanel=this;
 	private String staffID;
+	
+	private String newAccountName;
 	/*
 	public static void main(String[]args){
 		JFrame frame=new JFrame();
@@ -41,10 +43,10 @@ public class accountManagement extends JPanel{
 			e1.printStackTrace();
 		}
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{0, 0, 302, 0, 0, 0};
-		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 140, 0, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.columnWidths = new int[]{0, 0, 55, 0, 0, 0, 0, 0};
+		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 140, 0, 0};
+		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
 		JLabel label = new JLabel("\u8D26\u6237\u7BA1\u7406");
@@ -53,11 +55,31 @@ public class accountManagement extends JPanel{
 		gbc_label.gridx = 0;
 		gbc_label.gridy = 0;
 		add(label, gbc_label);
+		
+		JLabel label_1 = new JLabel("\u8D26\u6237\u540D\u79F0");
+		label_1.setFont(new Font("宋体", Font.PLAIN, 12));
+		GridBagConstraints gbc_label_1 = new GridBagConstraints();
+		gbc_label_1.insets = new Insets(0, 0, 5, 5);
+		gbc_label_1.anchor = GridBagConstraints.EAST;
+		gbc_label_1.gridx = 1;
+		gbc_label_1.gridy = 3;
+		add(label_1, gbc_label_1);
+		
+		textField = new JTextField();
+		GridBagConstraints gbc_textField = new GridBagConstraints();
+		gbc_textField.gridwidth = 4;
+		gbc_textField.insets = new Insets(0, 0, 5, 5);
+		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textField.gridx = 2;
+		gbc_textField.gridy = 3;
+		add(textField, gbc_textField);
+		textField.setColumns(10);
 		//增加按钮
 		JButton button = new JButton("\u589E\u52A0");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource()==button){
+					
 					if(!textField.getText().equals("")){
 					String newAccountName=textField.getText().trim();
 					//首先更新表格
@@ -68,37 +90,43 @@ public class accountManagement extends JPanel{
 					}else{
 					    JOptionPane.showMessageDialog(null, "请输入新加账户名", "错误",JOptionPane.PLAIN_MESSAGE);  
 					}
+					
+					/*
+					Object[]rowValues={"",0};
+					((DefaultTableModel) table.getModel()).addRow(rowValues);
+					table.setRowSelectionInterval(table.getRowCount()-1, table.getRowCount()-1);
+					*/
 				}
 			}
 		});
+		//查询按钮
+		JButton button_3 = new JButton("\u67E5\u770B");
+		button_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource()==button_3){
+					String checkAccountName=textField.getText().trim();
+					int lineNumber=getRowCount(checkAccountName,getTableArray(table));
+					if(lineNumber!=-1){
+						table.setRowSelectionInterval(lineNumber,lineNumber);
+					}else{
+						JOptionPane.showMessageDialog(thisPanel,"查询账户不存在","错误",JOptionPane.ERROR_MESSAGE);
+					}
+					textField.setText("");
+				}
+			}
+		});
+		button_3.setFont(new Font("宋体", Font.PLAIN, 12));
+		GridBagConstraints gbc_button_3 = new GridBagConstraints();
+		gbc_button_3.insets = new Insets(0, 0, 5, 0);
+		gbc_button_3.gridx = 6;
+		gbc_button_3.gridy = 3;
+		add(button_3, gbc_button_3);
 		button.setFont(new Font("宋体", Font.PLAIN, 12));
 		GridBagConstraints gbc_button = new GridBagConstraints();
 		gbc_button.insets = new Insets(0, 0, 5, 5);
-		gbc_button.gridx = 1;
-		gbc_button.gridy = 1;
+		gbc_button.gridx = 2;
+		gbc_button.gridy = 4;
 		add(button, gbc_button);
-		//删除按钮
-		JButton button_1 = new JButton("\u5220\u9664");
-		button_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(e.getSource()==button_1){
-					int selectedRow = table.getSelectedRow();
-	                if(selectedRow!=-1)
-	                {
-	                	bl.deleteAccountPO((String) (table.getModel()).getValueAt(selectedRow, 0));
-	                    ((DefaultTableModel) table.getModel()).removeRow(selectedRow); 
-	                }else{
-	                	JOptionPane.showMessageDialog(thisPanel,"尚未选择账户","错误",JOptionPane.ERROR_MESSAGE);
-	                }
-				}
-			}
-		});
-		button_1.setFont(new Font("宋体", Font.PLAIN, 12));
-		GridBagConstraints gbc_button_1 = new GridBagConstraints();
-		gbc_button_1.insets = new Insets(0, 0, 5, 5);
-		gbc_button_1.gridx = 2;
-		gbc_button_1.gridy = 1;
-		add(button_1, gbc_button_1);
 		//修改按钮
 		JButton button_2 = new JButton("\u4FEE\u6539");
 		button_2.addActionListener(new ActionListener() {
@@ -120,60 +148,43 @@ public class accountManagement extends JPanel{
 				}
 			}
 		});
-		button_2.setFont(new Font("宋体", Font.PLAIN, 12));
-		GridBagConstraints gbc_button_2 = new GridBagConstraints();
-		gbc_button_2.insets = new Insets(0, 0, 5, 5);
-		gbc_button_2.gridx = 1;
-		gbc_button_2.gridy = 2;
-		add(button_2, gbc_button_2);
-		//查询按钮
-		JButton button_3 = new JButton("\u67E5\u770B");
-		button_3.addActionListener(new ActionListener() {
+		//删除按钮
+		JButton button_1 = new JButton("\u5220\u9664");
+		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(e.getSource()==button_3){
-					String checkAccountName=textField.getText().trim();
-					int lineNumber=getRowCount(checkAccountName,getTableArray(table));
-					if(lineNumber!=-1){
-						table.setRowSelectionInterval(lineNumber,lineNumber);
-					}else{
-						JOptionPane.showMessageDialog(thisPanel,"查询账户不存在","错误",JOptionPane.ERROR_MESSAGE);
-					}
-					textField.setText("");
+				if(e.getSource()==button_1){
+					int selectedRow = table.getSelectedRow();
+	                if(selectedRow!=-1)
+	                {
+	                	bl.deleteAccountPO((String) (table.getModel()).getValueAt(selectedRow, 0));
+	                    ((DefaultTableModel) table.getModel()).removeRow(selectedRow); 
+	                }else{
+	                	JOptionPane.showMessageDialog(thisPanel,"尚未选择账户","错误",JOptionPane.ERROR_MESSAGE);
+	                }
 				}
 			}
 		});
-		button_3.setFont(new Font("宋体", Font.PLAIN, 12));
-		GridBagConstraints gbc_button_3 = new GridBagConstraints();
-		gbc_button_3.insets = new Insets(0, 0, 5, 5);
-		gbc_button_3.gridx = 2;
-		gbc_button_3.gridy = 2;
-		add(button_3, gbc_button_3);
-		
-		JLabel label_1 = new JLabel("\u8D26\u6237\u540D\u79F0");
-		label_1.setFont(new Font("宋体", Font.PLAIN, 12));
-		GridBagConstraints gbc_label_1 = new GridBagConstraints();
-		gbc_label_1.insets = new Insets(0, 0, 5, 5);
-		gbc_label_1.anchor = GridBagConstraints.EAST;
-		gbc_label_1.gridx = 1;
-		gbc_label_1.gridy = 4;
-		add(label_1, gbc_label_1);
-		
-		textField = new JTextField();
-		GridBagConstraints gbc_textField = new GridBagConstraints();
-		gbc_textField.insets = new Insets(0, 0, 5, 5);
-		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField.gridx = 2;
-		gbc_textField.gridy = 4;
-		add(textField, gbc_textField);
-		textField.setColumns(10);
+		button_1.setFont(new Font("宋体", Font.PLAIN, 12));
+		GridBagConstraints gbc_button_1 = new GridBagConstraints();
+		gbc_button_1.insets = new Insets(0, 0, 5, 5);
+		gbc_button_1.gridx = 3;
+		gbc_button_1.gridy = 4;
+		add(button_1, gbc_button_1);
+		button_2.setFont(new Font("宋体", Font.PLAIN, 12));
+		GridBagConstraints gbc_button_2 = new GridBagConstraints();
+		gbc_button_2.insets = new Insets(0, 0, 5, 5);
+		gbc_button_2.gridx = 4;
+		gbc_button_2.gridy = 4;
+		add(button_2, gbc_button_2);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
+		gbc_scrollPane.gridwidth = 4;
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
 		gbc_scrollPane.insets = new Insets(0, 0, 5, 5);
 		gbc_scrollPane.gridx = 2;
-		gbc_scrollPane.gridy = 6;
+		gbc_scrollPane.gridy = 5;
 		add(scrollPane, gbc_scrollPane);
 		/*
 		table = new JTable();
@@ -210,6 +221,17 @@ public class accountManagement extends JPanel{
 			System.out.println("一定是搞错了");
 		}
 		scrollPane.setViewportView(initializeTable(list));
+		
+		JButton button_4 = new JButton("\u786E\u5B9A");
+		button_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		GridBagConstraints gbc_button_4 = new GridBagConstraints();
+		gbc_button_4.insets = new Insets(0, 0, 0, 5);
+		gbc_button_4.gridx = 3;
+		gbc_button_4.gridy = 6;
+		add(button_4, gbc_button_4);
 		
 	}
 	public JTable initializeTable(ArrayList<AccountVO> accountList){

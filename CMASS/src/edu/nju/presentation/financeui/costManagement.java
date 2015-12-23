@@ -68,14 +68,15 @@ public class costManagement extends JPanel{
 		gbc_panel = new GridBagConstraints();
 		gbc_panel.insets = new Insets(0, 0, 0, 5);
 		gbc_panel.fill = GridBagConstraints.BOTH;
-		gbc_panel.gridx = 4;
+		gbc_panel.gridx = 1;
+		gbc_panel.gridwidth=5;
 		gbc_panel.gridy = 4;
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{0, 0, 13, 68, 389, 0, 0, 0, 73, 44, 0, 0};
-		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.columnWidths = new int[]{0, 0, 13, 68, 100, 100, 0, 0, 0, 73, 44, 0, 0};
+		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 200, 0, 0, 0};
+		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
 		JLabel label_3 = new JLabel("\u6210\u672C\u7BA1\u7406");
@@ -84,6 +85,30 @@ public class costManagement extends JPanel{
 		gbc_label_3.gridx = 0;
 		gbc_label_3.gridy = 0;
 		add(label_3, gbc_label_3);
+		
+		JLabel label = new JLabel("\u6761\u76EE");
+		label.setFont(new Font("宋体", Font.PLAIN, 12));
+		GridBagConstraints gbc_label = new GridBagConstraints();
+		gbc_label.insets = new Insets(0, 0, 5, 5);
+		gbc_label.gridx = 1;
+		gbc_label.gridy = 2;
+		add(label, gbc_label);
+		
+		comboBox = new JComboBox();
+		comboBox.setEditable(true);
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"\u79DF\u91D1", "\u5DE5\u8D44", "\u8FD0\u8D39"}));
+		comboBox.setSelectedIndex(0);
+		GridBagConstraints gbc_comboBox = new GridBagConstraints();
+		gbc_comboBox.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBox.gridx = 3;
+		gbc_comboBox.gridy = 2;
+		add(comboBox, gbc_comboBox);
+		accountList=bl.getAccountList();
+		String[]accountName=new String[accountList.size()];
+		for(int i=0;i<accountList.size();i++){
+			accountName[i]=accountList.get(i).getName();
+		}
 		
 		
 		JButton button = new JButton("\u83B7\u53D6\u5217\u8868");
@@ -139,9 +164,44 @@ public class costManagement extends JPanel{
 		});
 		GridBagConstraints gbc_button = new GridBagConstraints();
 		gbc_button.insets = new Insets(0, 0, 5, 5);
-		gbc_button.gridx = 3;
-		gbc_button.gridy = 1;
+		gbc_button.gridx = 4;
+		gbc_button.gridy = 2;
 		add(button, gbc_button);
+		
+		JLabel label_2 = new JLabel("\u4ED8\u6B3E\u8D26\u53F7");
+		label_2.setFont(new Font("宋体", Font.PLAIN, 12));
+		GridBagConstraints gbc_label_2 = new GridBagConstraints();
+		gbc_label_2.insets = new Insets(0, 0, 5, 5);
+		gbc_label_2.gridx = 1;
+		gbc_label_2.gridy = 3;
+		add(label_2, gbc_label_2);
+		
+		accountComboBox = new JComboBox();
+		accountComboBox.setEditable(true);
+		accountComboBox.setModel(new DefaultComboBoxModel(accountName));
+		accountComboBox.setSelectedIndex(0);
+		GridBagConstraints gbc_accountComboBox = new GridBagConstraints();
+		gbc_accountComboBox.insets = new Insets(0, 0, 5, 5);
+		gbc_accountComboBox.fill = GridBagConstraints.HORIZONTAL;
+		gbc_accountComboBox.gridx = 3;
+		gbc_accountComboBox.gridy = 3;
+		add(accountComboBox, gbc_accountComboBox);
+		
+		JLabel label_4 = new JLabel("\u5907\u6CE8");
+		GridBagConstraints gbc_label_4 = new GridBagConstraints();
+		gbc_label_4.insets = new Insets(0, 0, 5, 5);
+		gbc_label_4.gridx = 4;
+		gbc_label_4.gridy = 3;
+		add(label_4, gbc_label_4);
+		
+		back = new JTextField();
+		GridBagConstraints gbc_back = new GridBagConstraints();
+		gbc_back.insets = new Insets(0, 0, 5, 5);
+		gbc_back.fill = GridBagConstraints.HORIZONTAL;
+		gbc_back.gridx = 5;
+		gbc_back.gridy = 3;
+		add(back, gbc_back);
+		back.setColumns(10);
 		
 		JButton button_1 = new JButton("\u65B0\u5EFA\u4ED8\u6B3E\u5355");
 		button_1.addActionListener(new ActionListener() {
@@ -282,68 +342,9 @@ public class costManagement extends JPanel{
 		});
 		GridBagConstraints gbc_button_1 = new GridBagConstraints();
 		gbc_button_1.insets = new Insets(0, 0, 5, 5);
-		gbc_button_1.gridx = 4;
-		gbc_button_1.gridy = 1;
+		gbc_button_1.gridx = 5;
+		gbc_button_1.gridy = 5;
 		add(button_1, gbc_button_1);
-		
-		JLabel label = new JLabel("\u6761\u76EE");
-		label.setFont(new Font("宋体", Font.PLAIN, 12));
-		GridBagConstraints gbc_label = new GridBagConstraints();
-		gbc_label.insets = new Insets(0, 0, 5, 5);
-		gbc_label.gridx = 1;
-		gbc_label.gridy = 2;
-		add(label, gbc_label);
-		
-		comboBox = new JComboBox();
-		comboBox.setEditable(true);
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"\u79DF\u91D1", "\u5DE5\u8D44", "\u8FD0\u8D39"}));
-		comboBox.setSelectedIndex(0);
-		GridBagConstraints gbc_comboBox = new GridBagConstraints();
-		gbc_comboBox.insets = new Insets(0, 0, 5, 5);
-		gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBox.gridx = 3;
-		gbc_comboBox.gridy = 2;
-		add(comboBox, gbc_comboBox);
-		accountList=bl.getAccountList();
-		String[]accountName=new String[accountList.size()];
-		for(int i=0;i<accountList.size();i++){
-			accountName[i]=accountList.get(i).getName();
-		}
-		
-		JLabel label_2 = new JLabel("\u4ED8\u6B3E\u8D26\u53F7");
-		label_2.setFont(new Font("宋体", Font.PLAIN, 12));
-		GridBagConstraints gbc_label_2 = new GridBagConstraints();
-		gbc_label_2.insets = new Insets(0, 0, 5, 5);
-		gbc_label_2.gridx = 1;
-		gbc_label_2.gridy = 3;
-		add(label_2, gbc_label_2);
-		
-		accountComboBox = new JComboBox();
-		accountComboBox.setEditable(true);
-		accountComboBox.setModel(new DefaultComboBoxModel(accountName));
-		accountComboBox.setSelectedIndex(0);
-		GridBagConstraints gbc_accountComboBox = new GridBagConstraints();
-		gbc_accountComboBox.insets = new Insets(0, 0, 5, 5);
-		gbc_accountComboBox.fill = GridBagConstraints.HORIZONTAL;
-		gbc_accountComboBox.gridx = 3;
-		gbc_accountComboBox.gridy = 3;
-		add(accountComboBox, gbc_accountComboBox);
-		
-		JLabel label_4 = new JLabel("\u5907\u6CE8");
-		GridBagConstraints gbc_label_4 = new GridBagConstraints();
-		gbc_label_4.insets = new Insets(0, 0, 5, 5);
-		gbc_label_4.gridx = 6;
-		gbc_label_4.gridy = 3;
-		add(label_4, gbc_label_4);
-		
-		back = new JTextField();
-		GridBagConstraints gbc_back = new GridBagConstraints();
-		gbc_back.insets = new Insets(0, 0, 5, 5);
-		gbc_back.fill = GridBagConstraints.HORIZONTAL;
-		gbc_back.gridx = 8;
-		gbc_back.gridy = 3;
-		add(back, gbc_back);
-		back.setColumns(10);
 		
 		JButton button_2 = new JButton("\u91CD\u7F6E\u5DE5\u8D44");
 		button_2.addActionListener(new ActionListener() {
@@ -354,8 +355,8 @@ public class costManagement extends JPanel{
 		});
 		GridBagConstraints gbc_button_2 = new GridBagConstraints();
 		gbc_button_2.insets = new Insets(0, 0, 0, 5);
-		gbc_button_2.gridx = 6;
-		gbc_button_2.gridy = 4;
+		gbc_button_2.gridx = 1;
+		gbc_button_2.gridy = 6;
 		add(button_2, gbc_button_2);
 		
 		JButton button_3 = new JButton("\u91CD\u7F6E\u79DF\u91D1");
@@ -367,8 +368,8 @@ public class costManagement extends JPanel{
 		});
 		GridBagConstraints gbc_button_3 = new GridBagConstraints();
 		gbc_button_3.insets = new Insets(0, 0, 0, 5);
-		gbc_button_3.gridx = 8;
-		gbc_button_3.gridy = 4;
+		gbc_button_3.gridx = 3;
+		gbc_button_3.gridy = 6;
 		add(button_3, gbc_button_3);
 		/*
 		panel = new JPanel();

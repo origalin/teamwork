@@ -8,6 +8,7 @@ import javax.swing.JScrollPane;
 import edu.nju.po.InstitutionPO;
 import edu.nju.vo.AccountVO;
 
+import java.awt.Dimension;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
@@ -79,6 +80,7 @@ public class rentMoneyPanel extends JPanel{
 				return columnTypes[columnIndex];
 			}
 		});
+		table.setPreferredScrollableViewportSize(new Dimension(200,200));
 		this.table=table;
 		return table;
 	}

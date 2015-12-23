@@ -24,6 +24,7 @@ import java.awt.event.MouseEvent;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.awt.Dimension;
 public class checkManageStateDoc extends JPanel{
 	/*
 	public static void main(String[]args){
@@ -54,10 +55,10 @@ public class checkManageStateDoc extends JPanel{
 			e1.printStackTrace();
 		}
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{0, 34, 58, 92, 0, 80, 0};
-		gridBagLayout.rowHeights = new int[]{43, -10, 0, 12, 126, 151, 0, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.columnWidths = new int[]{0, 34, 58, 92, 21, 66, 0, 0};
+		gridBagLayout.rowHeights = new int[]{43, -10, 0, 12, 97, 0, 0};
+		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
 		JLabel label = new JLabel("\u7ECF\u8425\u60C5\u51B5\u8868");
@@ -95,18 +96,27 @@ public class checkManageStateDoc extends JPanel{
 		label_3.setFont(new Font("ËÎÌו", Font.PLAIN, 12));
 		GridBagConstraints gbc_label_3 = new GridBagConstraints();
 		gbc_label_3.insets = new Insets(0, 0, 5, 5);
-		gbc_label_3.gridx = 4;
+		gbc_label_3.gridx = 3;
 		gbc_label_3.gridy = 2;
 		add(label_3, gbc_label_3);
 		
 		textField_1 = new JTextField();
 		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
-		gbc_textField_1.insets = new Insets(0, 0, 5, 0);
+		gbc_textField_1.gridwidth = 2;
+		gbc_textField_1.insets = new Insets(0, 0, 5, 5);
 		gbc_textField_1.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_1.gridx = 5;
+		gbc_textField_1.gridx = 4;
 		gbc_textField_1.gridy = 2;
 		add(textField_1, gbc_textField_1);
 		textField_1.setColumns(10);
+		
+		/*
+		ArrayList<PayDocVO> tempPayDocList=new ArrayList<PayDocVO>();
+		for(int i=0;i<5;i++){
+			tempPayDocList.add(null);
+		}
+		scrollPane.setViewportView(initializeTable(tempPayDocList));
+		*/
 		
 		JButton checkButton = new JButton("\u67E5\u8BE2");
 		checkButton.addActionListener(new ActionListener() {
@@ -132,29 +142,31 @@ public class checkManageStateDoc extends JPanel{
 				}
 				*/
 				PayDocTable=initializeTable(PayDocVOList);
+				PayDocTable.setPreferredScrollableViewportSize(new Dimension(200, 200));
 				GatheringDocTable=initializeTable_1(GatheringDocVOList);
+				GatheringDocTable.setPreferredScrollableViewportSize(new Dimension(200, 200));
 				scrollPane.setViewportView(PayDocTable);
 				scrollPane_1.setViewportView(GatheringDocTable);
 				updateUI();
 			}
 		});
 		GridBagConstraints gbc_checkButton = new GridBagConstraints();
-		gbc_checkButton.insets = new Insets(0, 0, 5, 5);
-		gbc_checkButton.gridx = 3;
-		gbc_checkButton.gridy = 3;
+		gbc_checkButton.insets = new Insets(0, 0, 5, 0);
+		gbc_checkButton.gridx = 6;
+		gbc_checkButton.gridy = 2;
 		add(checkButton, gbc_checkButton);
 		
 		scrollPane = new JScrollPane();
-		
-		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
+		gbc_scrollPane.gridwidth = 2;
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
 		gbc_scrollPane.insets = new Insets(0, 0, 5, 5);
-		gbc_scrollPane.gridx = 3;
+		gbc_scrollPane.gridx = 1;
 		gbc_scrollPane.gridy = 4;
 		add(scrollPane, gbc_scrollPane);
 		
 		PayDocTable = new JTable();
+		PayDocTable.setPreferredScrollableViewportSize(new Dimension(200, 200));
 		scrollPane.setViewportView(PayDocTable);
 		PayDocTable.setModel(new DefaultTableModel(
 			new Object[][] {
@@ -169,23 +181,17 @@ public class checkManageStateDoc extends JPanel{
 			}
 		));
 		
-		/*
-		ArrayList<PayDocVO> tempPayDocList=new ArrayList<PayDocVO>();
-		for(int i=0;i<5;i++){
-			tempPayDocList.add(null);
-		}
-		scrollPane.setViewportView(initializeTable(tempPayDocList));
-		*/
-		
 		scrollPane_1 = new JScrollPane();
 		GridBagConstraints gbc_scrollPane_1 = new GridBagConstraints();
+		gbc_scrollPane_1.gridwidth = 2;
 		gbc_scrollPane_1.fill = GridBagConstraints.BOTH;
 		gbc_scrollPane_1.insets = new Insets(0, 0, 5, 5);
-		gbc_scrollPane_1.gridx = 3;
-		gbc_scrollPane_1.gridy = 5;
+		gbc_scrollPane_1.gridx = 4;
+		gbc_scrollPane_1.gridy = 4;
 		add(scrollPane_1, gbc_scrollPane_1);
 		
 		GatheringDocTable = new JTable();
+		GatheringDocTable.setPreferredScrollableViewportSize(new Dimension(200, 200));
 		scrollPane_1.setViewportView(GatheringDocTable);
 		GatheringDocTable.setModel(new DefaultTableModel(
 			new Object[][] {
