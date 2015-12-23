@@ -204,6 +204,7 @@ public class CarPanel extends JPanel {
 							year=Integer.valueOf( (String) table.getValueAt(i, 6));
 						} catch (ParseException e1) {
 							e1.printStackTrace();
+							JOptionPane.showMessageDialog(null, "日期格式错误，应为yyyy-MM-dd，请检查");
 						}
 //						System.out.println(date);
 				

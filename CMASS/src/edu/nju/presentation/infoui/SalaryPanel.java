@@ -19,6 +19,7 @@ import javax.swing.JButton;
 
 import edu.nju.businesslogicservice.infologicservice.DriverLogicService;
 import edu.nju.businesslogicservice.infologicservice.InstitutionLogicService;
+import edu.nju.exception.DatabaseNULLException;
 import edu.nju.po.DriverPO;
 import edu.nju.po.SalaryPO;
 import edu.nju.presentation.UiFactory;
@@ -148,7 +149,12 @@ public class SalaryPanel extends JPanel {
 				}else{
 					SalaryPO po = null;
 					try {
-						po = institutionLogicService.getSalary(textField.getText());
+						try {
+							po = institutionLogicService.getSalary(textField.getText());
+						} catch (DatabaseNULLException e1) {
+							// TODO Auto-generated catch block
+							JOptionPane.showMessageDialog(null, "不能查询到此类信息");
+						}
 					} catch (RemoteException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -327,9 +333,15 @@ public class SalaryPanel extends JPanel {
 					panel_1.add(label_3, gbc_label_3);
 					
 					textField_1 = new JTextField();
-					try {
-						textField_1.setText(String.valueOf(institutionLogicService.getBase(textField.getText())));
-					} catch (RemoteException e1) {
+			
+						try {
+							textField_1.setText(String.valueOf(institutionLogicService.getBase(textField.getText())));
+						} catch (DatabaseNULLException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+							JOptionPane.showMessageDialog(null, "不能查询到此类信息");
+						}
+					 catch (RemoteException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
@@ -369,7 +381,13 @@ public class SalaryPanel extends JPanel {
 					
 					textField_2 = new JTextField();
 					try {
-						textField_2.setText(String.valueOf(institutionLogicService.getBonus(textField.getText())));
+						try {
+							textField_2.setText(String.valueOf(institutionLogicService.getBonus(textField.getText())));
+						} catch (DatabaseNULLException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+							JOptionPane.showMessageDialog(null, "不能查询到此类信息");
+						}
 					} catch (RemoteException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -408,7 +426,13 @@ public class SalaryPanel extends JPanel {
 					
 					textField_3 = new JTextField();
 					try {
-						textField_3.setText(String.valueOf(institutionLogicService.getPercentage(textField.getText())));
+						try {
+							textField_3.setText(String.valueOf(institutionLogicService.getPercentage(textField.getText())));
+						} catch (DatabaseNULLException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+							JOptionPane.showMessageDialog(null, "不能查询到此类信息");
+						}
 					} catch (RemoteException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();

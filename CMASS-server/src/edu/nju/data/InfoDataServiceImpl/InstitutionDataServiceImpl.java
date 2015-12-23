@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import edu.nju.data.database.SQL;
 import edu.nju.dataservice.infodataservice.InstitutionDataService;
+import edu.nju.exception.DatabaseNULLException;
 import edu.nju.po.CarPO;
 import edu.nju.po.DriverPO;
 import edu.nju.po.Institutation;
@@ -222,7 +223,7 @@ public class InstitutionDataServiceImpl extends UnicastRemoteObject implements
 		
 	}
 	@Override
-	public SalaryPO getSalaryPO(String staffID) throws RemoteException {
+	public SalaryPO getSalaryPO(String staffID) throws RemoteException, DatabaseNULLException {
 		SalaryPO po = null;
 		String sql = "SELECT 工号,基础工资,提成,奖金,是否付款 FROM SALARY WHERE 工号='"
 				+ staffID + "';";
@@ -241,6 +242,11 @@ public class InstitutionDataServiceImpl extends UnicastRemoteObject implements
 			e.printStackTrace();
 		}
 		SQL.closeDatabase();
+		
+		if(po==null){
+			throw new DatabaseNULLException();
+		}
+		
 		return po;
 	}
 

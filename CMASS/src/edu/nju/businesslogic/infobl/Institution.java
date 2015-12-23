@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import edu.nju.businesslogicservice.infologicservice.InstitutionLogicService;
 import edu.nju.dataFactory.DataFactory;
 import edu.nju.dataservice.infodataservice.InstitutionDataService;
+import edu.nju.exception.DatabaseNULLException;
 import edu.nju.po.InstitutionPO;
 import edu.nju.po.Post;
 import edu.nju.po.SalaryPO;
@@ -230,21 +231,24 @@ public Institution() {
 	}
 
 	@Override
-	public double getBase(String staffID) throws RemoteException {
-		return institutionDataService.getSalaryPO(staffID).getBaseSalary();
+	public double getBase(String staffID) throws RemoteException, DatabaseNULLException {
+		SalaryPO po= institutionDataService.getSalaryPO(staffID);
+		return po.getBaseSalary();
 	}
 
 	@Override
-	public double getBonus(String staffID) throws RemoteException {
-		return institutionDataService.getSalaryPO(staffID).getBonusSalary();
+	public double getBonus(String staffID) throws RemoteException, DatabaseNULLException {
+		SalaryPO po= institutionDataService.getSalaryPO(staffID);
+		 return po.getBonusSalary();
 	}
 
 	@Override
-	public double getPercentage(String staffID) throws RemoteException {
-		return institutionDataService.getSalaryPO(staffID).getPercentageSalary();
+	public double getPercentage(String staffID) throws RemoteException, DatabaseNULLException {
+		SalaryPO po=institutionDataService.getSalaryPO(staffID);
+		return po.getPercentageSalary();
 	}
 	@Override
-	public SalaryPO getSalary(String staffID) throws RemoteException {
+	public SalaryPO getSalary(String staffID) throws RemoteException, DatabaseNULLException {
 		return institutionDataService.getSalaryPO(staffID);
 	}
 	@Override

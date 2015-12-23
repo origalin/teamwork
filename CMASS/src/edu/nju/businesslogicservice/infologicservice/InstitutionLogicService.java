@@ -3,6 +3,7 @@ package edu.nju.businesslogicservice.infologicservice;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import edu.nju.exception.DatabaseNULLException;
 import edu.nju.po.InstitutionPO;
 import edu.nju.po.Post;
 import edu.nju.po.SalaryPO;
@@ -17,7 +18,7 @@ public interface InstitutionLogicService {
 	public ArrayList<InstitutionVO> getInstitutionVOList()throws RemoteException;//获得机构列表
 
 	public void saveSalary (SalaryPO po)throws RemoteException;//保存薪资PO
-	public SalaryPO getSalary(String staffID)throws RemoteException;
+	public SalaryPO getSalary(String staffID)throws RemoteException, DatabaseNULLException;
 	
 	public void saveStaff(StaffPO po)throws RemoteException;//保存员工信息
 	public void saveInstitution (InstitutionPO po)throws RemoteException;//保存机构信息
@@ -49,9 +50,9 @@ public interface InstitutionLogicService {
 	public void saveRent(String id)throws RemoteException;//根据机构id 设为已付款	
 	public void resetRent()throws RemoteException;   //把所有机构设为未付租金
 	Post getPosition(String staffID)throws RemoteException;//根据ID查找到这个人的职位
-	double getBase(String staffID)throws RemoteException;//根据ID查找到这个人的基础工资
-	double getBonus(String staffID)throws RemoteException;//根据ID查找到这个人的奖金
-	double getPercentage(String staffID)throws RemoteException;//根据ID查找这个快递员的提成比例
+	double getBase(String staffID)throws RemoteException, DatabaseNULLException;//根据ID查找到这个人的基础工资
+	double getBonus(String staffID)throws RemoteException, DatabaseNULLException;//根据ID查找到这个人的奖金
+	double getPercentage(String staffID)throws RemoteException, DatabaseNULLException;//根据ID查找这个快递员的提成比例
 	
 	
 }

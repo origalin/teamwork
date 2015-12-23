@@ -4,6 +4,7 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import edu.nju.exception.DatabaseNULLException;
 import edu.nju.po.InstitutionPO;
 import edu.nju.po.SalaryPO;
 import edu.nju.po.StaffPO;
@@ -28,7 +29,7 @@ public interface InstitutionDataService extends Remote{
 	
 	public ArrayList<SalaryPO> getSalaryPOs()throws RemoteException;
 	
-	public SalaryPO getSalaryPO(String staffID)throws RemoteException;
+	public SalaryPO getSalaryPO(String staffID)throws RemoteException, DatabaseNULLException;
 	public void changeSalary(SalaryPO po)throws RemoteException;
 	
 	public boolean isStaffVaild(StaffPO po)throws RemoteException;

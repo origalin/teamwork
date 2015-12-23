@@ -9,6 +9,9 @@ import javax.swing.JLabel;
 
 import java.awt.GridBagLayout;
 
+import javax.swing.DefaultCellEditor;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollBar;
@@ -41,6 +44,7 @@ import java.util.Date;
 
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
@@ -303,12 +307,20 @@ public class InstitutionPanel extends JPanel {
 				
 				table.setEnabled(false);
 				StaffPO po = null;
+				
+				boolean flag=false;
+		
+				
+				
 				for (int row = 0; row < table.getRowCount();row++) {
-				
-					
-			
-				
-				
+					if((String) table.getValueAt(row, 0)==null||
+							(String) table.getValueAt(row,1)==null||(String) table
+									.getValueAt(row, 2)==null|| (String) table
+									.getValueAt(row, 3)==null||(String) table
+									.getValueAt(row, 4)==null||(String)table.getValueAt(row, 5)==null){
+						JOptionPane.showMessageDialog(null,"信息未填完整，请检查");
+						continue;
+					}
 					try {
 						po = new StaffPO((String) table.getValueAt(row, 0),
 								(String) table.getValueAt(row,1), (String) table
@@ -471,6 +483,9 @@ public class InstitutionPanel extends JPanel {
 		panel_1.add(scrollPane, gbc_scrollPane);
 		
 		table = new JTable();
+		
+		
+		
 		scrollPane.setViewportView(table);
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
@@ -486,7 +501,11 @@ public class InstitutionPanel extends JPanel {
 		table.setEnabled(false);
 
 		model = (DefaultTableModel) table.getModel();
-
+		JComboBox<String> courierBox = new JComboBox<String>();
+		String[] post={"总经理","高级财务","会计","中转中心业务员","仓库管理人员","营业厅业务员","快递员","管理员"};
+		courierBox.setModel(new DefaultComboBoxModel<String>(post));
+		TableColumnModel tcm = table.getColumnModel();
+		tcm.getColumn(5).setCellEditor(new DefaultCellEditor(courierBox));
 		ArrayList<StaffVO> staffList=new ArrayList<StaffVO>();
 		for (StaffVO vo:staffList) {
 			model.addRow(new Object[] { vo.getStaffID(),vo.getName(),vo.getSex(),vo.getIdenity(),vo.getTel(),String.valueOf(vo.getPost())});
