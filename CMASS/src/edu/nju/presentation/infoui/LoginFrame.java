@@ -168,7 +168,7 @@ public class LoginFrame extends JFrame {
 			mainFrame.comeout();
 		switch (str[1]) {
 		case "总经理":
-			mainFrame.setFunctionPanel(new checkMainUI(account));
+			mainFrame.setFunctionPanel(new InstitutionPanel());
 			mainFrame.setGuidePanel(new GuidePanel_Manager(mainFrame, account));
 			break;
 		case "高级财务":

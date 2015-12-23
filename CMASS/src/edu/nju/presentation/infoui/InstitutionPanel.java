@@ -313,11 +313,11 @@ public class InstitutionPanel extends JPanel {
 				
 				
 				for (int row = 0; row < table.getRowCount();row++) {
-					if((String) table.getValueAt(row, 0)==null||
-							(String) table.getValueAt(row,1)==null||(String) table
-									.getValueAt(row, 2)==null|| (String) table
-									.getValueAt(row, 3)==null||(String) table
-									.getValueAt(row, 4)==null||(String)table.getValueAt(row, 5)==null){
+					if(((String) table.getValueAt(row, 0)).equals("")||
+							((String) table.getValueAt(row,1)).equals("")||((String) table
+									.getValueAt(row, 2)).equals("")||((String) table
+									.getValueAt(row, 3)).equals("")||((String) table
+									.getValueAt(row, 4)).equals("")||((String)table.getValueAt(row, 5)).equals("")){
 						JOptionPane.showMessageDialog(null,"信息未填完整，请检查");
 						continue;
 					}

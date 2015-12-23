@@ -8,8 +8,7 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
+import java.util.ArrayList;
 
 import edu.nju.presentation.approveui.checkMainUI;
 import edu.nju.presentation.collectionui.CollertionPanel;
@@ -17,6 +16,7 @@ import edu.nju.presentation.infoui.DistancePanel;
 import edu.nju.presentation.infoui.InstitutionPanel;
 import edu.nju.presentation.infoui.SalaryPanel;
 import edu.nju.presentation.transformui.SendPanel;
+import edu.nju.presentation.widget.BigButton;
 
 public class GuidePanel_Manager extends JPanel{
 	String institutionID;
@@ -28,14 +28,14 @@ public class GuidePanel_Manager extends JPanel{
 	DistancePanel distancePanel;
 	SalaryPanel salaryPanel;
 	checkMainUI checkMainUI;
-	
+	ArrayList<BigButton> bigButtons=new ArrayList<BigButton>();
 	public GuidePanel_Manager(MainFrame frame,String staffID) {
 		this.staffID = staffID;
 		this.frame = frame;
+		institutionPanel=new InstitutionPanel();
 		checkMainUI=new checkMainUI(staffID);
 		collertionPanel = new CollertionPanel(staffID);
 		sendPanel = new SendPanel(staffID);
-		institutionPanel=new InstitutionPanel();
 		salaryPanel=new SalaryPanel();
 		distancePanel=new DistancePanel();
 		
@@ -47,13 +47,15 @@ public class GuidePanel_Manager extends JPanel{
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
-		JButton institutionButton = new JButton("\u4EBA\u5458\u673A\u6784\u7BA1\u7406\r\n");
+		BigButton institutionButton = new BigButton("\u4EBA\u5458\u673A\u6784\u7BA1\u7406\r\n");
 		institutionButton.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
 			institutionFunc();
+			clean();
+			institutionButton.setPressed();
 			}
 		});
 		GridBagConstraints gbc_collectButtom = new GridBagConstraints();
@@ -63,13 +65,15 @@ public class GuidePanel_Manager extends JPanel{
 		gbc_collectButtom.gridy = 0;
 		add(institutionButton, gbc_collectButtom);
 		
-		JButton salaryButton = new JButton("\u85AA\u6C34\u7B56\u7565\u8BBE\u7F6E");
+		BigButton salaryButton = new BigButton("\u85AA\u6C34\u7B56\u7565\u8BBE\u7F6E");
 		salaryButton.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
 				salaryFunc();
+				clean();
+				salaryButton.setPressed();
 			}
 		});
 		GridBagConstraints gbc_sendButtom = new GridBagConstraints();
@@ -79,7 +83,7 @@ public class GuidePanel_Manager extends JPanel{
 		gbc_sendButtom.gridy = 1;
 		add(salaryButton, gbc_sendButtom);
 		
-		JButton distanceButton = new JButton("\u57CE\u5E02\u8DDD\u79BB\u8BBE\u7F6E");
+		BigButton distanceButton = new BigButton("\u57CE\u5E02\u8DDD\u79BB\u8BBE\u7F6E");
 		GridBagConstraints gbc_checkButton = new GridBagConstraints();
 		gbc_checkButton.fill = GridBagConstraints.BOTH;
 		gbc_checkButton.insets = new Insets(0, 0, 5, 0);
@@ -92,12 +96,18 @@ public class GuidePanel_Manager extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				distanceFunc();
+				clean();
+				distanceButton.setPressed();
 			}
 		});
 		
-		JButton checkButton = new JButton("\u5BA1\u6279\u5355\u636E");
+		BigButton checkButton = new BigButton("\u5BA1\u6279\u5355\u636E");
 		checkButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				clean();
+				checkButton.setPressed();
+				checkMainUIFunc();
 			}
 		});
 		GridBagConstraints aButton = new GridBagConstraints();
@@ -110,9 +120,18 @@ public class GuidePanel_Manager extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				distanceFunc();
-				
+				clean();
+				distanceButton.setPressed();
 			}
 		});
+		
+		bigButtons.add(checkButton);
+		bigButtons.add(distanceButton);
+		bigButtons.add(salaryButton);
+		bigButtons.add(institutionButton);
+		
+		
+		
 	}
 void institutionFunc(){
 	frame.setFunctionPanel(institutionPanel);
@@ -125,5 +144,11 @@ void distanceFunc(){
 }
 void checkMainUIFunc(){
 	frame.setFunctionPanel(checkMainUI);
+}
+
+void clean() {
+	for(BigButton bt:bigButtons) {
+		bt.setNormal();
+	}
 }
 }
