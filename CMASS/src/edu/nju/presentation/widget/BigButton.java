@@ -1,4 +1,4 @@
-package edu.nju.presentation.button;
+package edu.nju.presentation.widget;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -25,7 +25,7 @@ public class BigButton extends JButton{
 		setPressedIcon(icon3);// …Ë÷√ Û±Í∞¥œ¬Õº∆¨
 		setHorizontalTextPosition(JButton.CENTER);
 		setVerticalTextPosition(JButton.CENTER);
-		setFont(new Font("Œ¢»Ì—≈∫⁄", Font.PLAIN, 20));
+		setFont(new Font("”◊‘≤", Font.PLAIN, 20));
 		
 	}
 	public void setNormal() {

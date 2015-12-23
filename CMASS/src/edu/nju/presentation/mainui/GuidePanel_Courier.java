@@ -12,9 +12,10 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 
-import edu.nju.presentation.button.BigButton;
 import edu.nju.presentation.collectionui.CollertionPanel;
 import edu.nju.presentation.transformui.SendPanel;
+import edu.nju.presentation.widget.BigButton;
+
 import java.awt.Color;
 import java.awt.Font;
 
@@ -38,7 +39,6 @@ public class GuidePanel_Courier extends JPanel{
 		setLayout(gridBagLayout);
 		
 		BigButton collectButtom = new BigButton("\u63FD\u4EF6");
-		collectButtom.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 20));
 		collectButtom.setForeground(Color.BLACK);
 		collectButtom.setPressed();
 		collectButtom.addActionListener(new ActionListener() {
@@ -60,7 +60,6 @@ public class GuidePanel_Courier extends JPanel{
 		add(collectButtom, gbc_collectButtom);
 		
 		BigButton sendButtom = new BigButton("\u6D3E\u4EF6");
-		sendButtom.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 20));
 		sendButtom.addActionListener(new ActionListener() {
 			
 			@Override

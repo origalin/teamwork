@@ -12,7 +12,6 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 
-import edu.nju.presentation.button.BigButton;
 import edu.nju.presentation.collectionui.CollertionPanel;
 import edu.nju.presentation.transformui.SendPanel;
 import edu.nju.presentation.transformui.TransferDocPanel_Car;
@@ -20,6 +19,7 @@ import edu.nju.presentation.transformui.TransferDocPanel_Plane;
 import edu.nju.presentation.transformui.TransferDocPanel_Train;
 import edu.nju.presentation.transformui.ZArrivalDocPanel;
 import edu.nju.presentation.transformui.ZLoadDocPanel;
+import edu.nju.presentation.widget.BigButton;
 
 public class GuidePanel_TransferCenter extends JPanel{
 	String institutionID;

@@ -15,7 +15,6 @@ import javax.swing.JButton;
 
 import edu.nju.businesslogicservice.infologicservice.InstitutionLogicService;
 import edu.nju.presentation.UiFactory;
-import edu.nju.presentation.button.BigButton;
 import edu.nju.presentation.collectionui.CollertionPanel;
 
 import edu.nju.presentation.financeui.createGatheringDocPO;
@@ -26,6 +25,7 @@ import edu.nju.presentation.transformui.YArrivalDocPanel;
 import edu.nju.presentation.transformui.YLoadDocPanel;
 import edu.nju.presentation.transformui.ZArrivalDocPanel;
 import edu.nju.presentation.transformui.ZLoadDocPanel;
+import edu.nju.presentation.widget.BigButton;
 
 public class GuidePanel_BusinessHall extends JPanel{
 	String institutionID;

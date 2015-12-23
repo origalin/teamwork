@@ -27,10 +27,12 @@ import edu.nju.po.YDeliverDocPO;
 import edu.nju.presentation.approveui.checkOverDoc;
 import edu.nju.presentation.financeui.accountManagement;
 import edu.nju.presentation.mainui.CheckDialog;
+import edu.nju.presentation.widget.MyTable;
 import edu.nju.vo.OverDocVO;
 import edu.nju.vo.SendDocVO;
 import edu.nju.vo.YDeliverDocVO;
 import java.awt.Dimension;
+import java.awt.Color;
 
 @SuppressWarnings("serial")
 public class SendPanel extends JPanel{
@@ -84,7 +86,8 @@ public class SendPanel extends JPanel{
 		gbc_scrollPane.gridy = 1;
 		add(scrollPane, gbc_scrollPane);
 		
-		toSendTable = new JTable();
+		toSendTable = new MyTable();
+		toSendTable.setGridColor(Color.LIGHT_GRAY);
 		toSendTable.setRowHeight(30);
 		toSendTable.setPreferredScrollableViewportSize(new Dimension(200, 200));
 		toSendTable.setModel(new DefaultTableModel(
@@ -111,6 +114,12 @@ public class SendPanel extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				createOverTable();
+				try {
+					intialize2();
+				} catch (RemoteException e1) {
+					// TODO Auto-generated catch block
+					warning();
+				}
 			}
 		});
 		GridBagConstraints gbc_receiveButton = new GridBagConstraints();
@@ -141,7 +150,7 @@ public class SendPanel extends JPanel{
 		gbc_scrollPane_1.gridy = 4;
 		add(scrollPane_1, gbc_scrollPane_1);
 		
-		toOverTable = new JTable();
+		toOverTable = new MyTable();
 		toOverTable.setRowHeight(30);
 		toOverTable.setPreferredScrollableViewportSize(new Dimension(200, 200));
 		toOverTable.setModel(new DefaultTableModel(
@@ -296,6 +305,30 @@ public class SendPanel extends JPanel{
 	
 		JOptionPane.showMessageDialog(this, "网络异常，请重启客户端！");
 		
+		
+	}
+	private void  intialize2() throws RemoteException {
+		int i = toSendModel.getRowCount();
+		for(;i>0;i--) {
+			toSendModel.removeRow(i-1);
+		}
+		
+		collectionbl = new Collectionbl(staffID);
+		yDeliverDocVOs = yDeliverDoc.findYDeliverDocVOs(staffID);
+		SendDocVO sendDocVO = null ;
+		if(yDeliverDocVOs.size()!=0)
+		for(YDeliverDocVO vo:yDeliverDocVOs) {
+			String[] itemIDs = vo.getItemIDs();
+			for(String itemID : itemIDs) {
+				try {
+					sendDocVO = collectionbl.getSendDocVOByID(itemID);
+				} catch (DatabaseNULLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				toSendModel.addRow(new Object[] {itemID,sendDocVO.getrName(),sendDocVO.getrAddress()});		
+			}
+		}
 		
 	}
 //	private void refresh() {
