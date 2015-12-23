@@ -48,7 +48,6 @@ public class StorageInitialize extends JPanel{
 	}
 	public StorageInitialize() {
 		setOpaque(false);
-		setBorder(new TitledBorder(null, "\u5E93\u5B58\u4FE1\u606F\u521D\u59CB\u5316", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 291, 0, 0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};

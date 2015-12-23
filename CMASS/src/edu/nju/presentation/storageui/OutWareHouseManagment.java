@@ -105,7 +105,6 @@ public class OutWareHouseManagment extends JPanel{
 		));
 		table.getColumnModel().getColumn(0).setPreferredWidth(30);
 		table.getColumnModel().getColumn(1).setPreferredWidth(201);
-		setBorder(new TitledBorder(null, "\u51FA\u5E93\u7BA1\u7406", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{85, 153, 0, 0, 0, 0};
 		gridBagLayout.rowHeights = new int[]{20, 0, 171, 0, 0, 0, 0};

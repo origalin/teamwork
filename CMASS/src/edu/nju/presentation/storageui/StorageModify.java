@@ -49,7 +49,6 @@ public class StorageModify extends JPanel{
 	public StorageModify() {
 		setOpaque(false);
 		setSize(760,517);
-		setBorder(new TitledBorder(null, "\u5E93\u533A\u8C03\u6574", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		setLayout(new GridLayout(0, 1, 0, 0));
 		
 		JPanel panel = new JPanel();

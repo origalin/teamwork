@@ -77,8 +77,6 @@ public class StorageQuery extends JPanel {
 //	}
 	public StorageQuery() {
 		setOpaque(false);
-		setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "\u5E93\u5B58\u76D8\u70B9",
-				TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] { 584, 0, 0, 0 };
 		gridBagLayout.rowHeights = new int[] { 104, 106, 106, 45, 0, 0 };

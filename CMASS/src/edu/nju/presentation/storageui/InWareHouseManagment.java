@@ -104,9 +104,6 @@ public class InWareHouseManagment extends JPanel {
 		table.getColumnModel().getColumn(4).setPreferredWidth(40);
 		table.getColumnModel().getColumn(5).setPreferredWidth(40);
 		table.getColumnModel().getColumn(6).setPreferredWidth(40);
-		
-		setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "\u5165\u5E93\u7BA1\u7406",
-				TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] { 134, 114, 0, 87, 0, 0 };
 		gridBagLayout.rowHeights = new int[] { 39, 164, 32, 0, 0 };
