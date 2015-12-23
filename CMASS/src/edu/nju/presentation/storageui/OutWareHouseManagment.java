@@ -21,6 +21,7 @@ import edu.nju.businesslogicservice.storagelogicservice.OutWareHouseManagementSe
 import edu.nju.exception.DatabaseNULLException;
 import edu.nju.po.InWareHouseDocLineItem;
 import edu.nju.presentation.UiFactory;
+import edu.nju.presentation.widget.MyTable;
 import edu.nju.tools.Time;
 import edu.nju.vo.OutWareHouseDocLineItem;
 import edu.nju.vo.OutWareHouseDocVO;
@@ -39,6 +40,8 @@ import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import javax.swing.table.DefaultTableModel;
+import java.awt.Dimension;
 
 public class OutWareHouseManagment extends JPanel{
 	private OutWareHouseManagementService outWareHouseManagement;
@@ -75,6 +78,7 @@ public class OutWareHouseManagment extends JPanel{
 //		mainFrame.setSize(500, 300);
 //	}
 	public OutWareHouseManagment() {
+		setOpaque(false);
 		
 		
 //		String[][] data={
@@ -88,15 +92,29 @@ public class OutWareHouseManagment extends JPanel{
 //				{"10003672","20151031","航运","北京"},
 //		};
 		
+
+		String data[][] = new String[0][0];
+		table = new MyTable(data, columnNames);
+		table.setPreferredScrollableViewportSize(new Dimension(450, 200));
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"\u5FEB\u9012\u7F16\u53F7", "\u76EE\u7684\u5730"
+			}
+		));
+		table.getColumnModel().getColumn(0).setPreferredWidth(30);
+		table.getColumnModel().getColumn(1).setPreferredWidth(201);
 		setBorder(new TitledBorder(null, "\u51FA\u5E93\u7BA1\u7406", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{114, 223, 0, 0};
-		gridBagLayout.rowHeights = new int[]{20, 171, 0, 0, 0, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 1.0, 1.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.columnWidths = new int[]{85, 153, 0, 0, 0, 0};
+		gridBagLayout.rowHeights = new int[]{20, 0, 171, 0, 0, 0, 0};
+		gridBagLayout.columnWeights = new double[]{0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
 		JPanel panel = new JPanel();
+		panel.setOpaque(false);
 		GridBagConstraints gbc_panel = new GridBagConstraints();
 		gbc_panel.insets = new Insets(0, 0, 5, 5);
 		gbc_panel.fill = GridBagConstraints.BOTH;
@@ -124,39 +142,14 @@ public class OutWareHouseManagment extends JPanel{
 		comboBox_1.addItem("汽运");
 		comboBox_1.addItem("货运");
 		GridBagConstraints gbc_comboBox_1 = new GridBagConstraints();
-		gbc_comboBox_1.insets = new Insets(0, 0, 5, 0);
+		gbc_comboBox_1.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBox_1.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBox_1.gridx = 2;
+		gbc_comboBox_1.gridx = 3;
 		gbc_comboBox_1.gridy = 0;
 		add(comboBox_1, gbc_comboBox_1);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
-		GridBagConstraints gbc_scrollPane_1 = new GridBagConstraints();
-		gbc_scrollPane_1.fill = GridBagConstraints.BOTH;
-		gbc_scrollPane_1.gridwidth = 3;
-		gbc_scrollPane_1.insets = new Insets(0, 0, 5, 0);
-		gbc_scrollPane_1.gridx = 0;
-		gbc_scrollPane_1.gridy = 1;
-		add(scrollPane_1, gbc_scrollPane_1);
-		
-//		table = new JTable(data,columnNames);
-		scrollPane_1.setViewportView(table);
-		
-		JLabel lblNewLabel = new JLabel("\u51FA\u5E93\u5355\u7F16\u53F7");
-		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
-		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel.gridx = 0;
-		gbc_lblNewLabel.gridy = 2;
-		add(lblNewLabel, gbc_lblNewLabel);
-		
-		textField_1 = new JTextField();
-		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
-		gbc_textField_1.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_1.insets = new Insets(0, 0, 5, 5);
-		gbc_textField_1.gridx = 1;
-		gbc_textField_1.gridy = 2;
-		add(textField_1, gbc_textField_1);
-		textField_1.setColumns(10);
+		scrollPane_1.getViewport().setOpaque(false);
 		
 		JButton button = new JButton("\u786E\u8BA4");
 		button.addActionListener(new ActionListener() {
@@ -206,7 +199,7 @@ public class OutWareHouseManagment extends JPanel{
 						i++;
 					}
 
-					table = new JTable(data1, columnNames);
+					table = new MyTable(data1, columnNames);
 					scrollPane_1.setViewportView(table);
 				}
 				
@@ -214,9 +207,52 @@ public class OutWareHouseManagment extends JPanel{
 		});
 		GridBagConstraints gbc_button = new GridBagConstraints();
 		gbc_button.insets = new Insets(0, 0, 5, 0);
-		gbc_button.gridx = 2;
-		gbc_button.gridy = 2;
+		gbc_button.gridx = 4;
+		gbc_button.gridy = 0;
 		add(button, gbc_button);
+		
+		JLabel lblNewLabel = new JLabel("\u51FA\u5E93\u5355\u7F16\u53F7");
+		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
+		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel.gridx = 0;
+		gbc_lblNewLabel.gridy = 1;
+		add(lblNewLabel, gbc_lblNewLabel);
+		
+		textField_1 = new JTextField();
+		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
+		gbc_textField_1.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textField_1.insets = new Insets(0, 0, 5, 5);
+		gbc_textField_1.gridx = 1;
+		gbc_textField_1.gridy = 1;
+		add(textField_1, gbc_textField_1);
+		textField_1.setColumns(10);
+		
+		JLabel lblNewLabel_1 = new JLabel("\u51FA\u5E93\u65E5\u671F");
+		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
+		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel_1.gridx = 3;
+		gbc_lblNewLabel_1.gridy = 1;
+		add(lblNewLabel_1, gbc_lblNewLabel_1);
+		
+		textField_2 = new JTextField();
+		GridBagConstraints gbc_textField_2 = new GridBagConstraints();
+		gbc_textField_2.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textField_2.insets = new Insets(0, 0, 5, 0);
+		gbc_textField_2.gridx = 4;
+		gbc_textField_2.gridy = 1;
+		add(textField_2, gbc_textField_2);
+		textField_2.setColumns(10);
+		scrollPane_1.setOpaque(false);
+		GridBagConstraints gbc_scrollPane_1 = new GridBagConstraints();
+		gbc_scrollPane_1.fill = GridBagConstraints.BOTH;
+		gbc_scrollPane_1.gridwidth = 5;
+		gbc_scrollPane_1.insets = new Insets(0, 0, 5, 0);
+		gbc_scrollPane_1.gridx = 0;
+		gbc_scrollPane_1.gridy = 2;
+		add(scrollPane_1, gbc_scrollPane_1);
+		
+//		table = new JTable(data,columnNames);
+		scrollPane_1.setViewportView(table);
 		
 		JButton btnNewButton = new JButton("\u751F\u6210\u51FA\u5E93\u5355");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -263,24 +299,9 @@ public class OutWareHouseManagment extends JPanel{
 				
 			}
 		});
-		
-		JLabel lblNewLabel_1 = new JLabel("\u51FA\u5E93\u65E5\u671F");
-		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
-		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel_1.gridx = 0;
-		gbc_lblNewLabel_1.gridy = 3;
-		add(lblNewLabel_1, gbc_lblNewLabel_1);
-		
-		textField_2 = new JTextField();
-		GridBagConstraints gbc_textField_2 = new GridBagConstraints();
-		gbc_textField_2.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_2.insets = new Insets(0, 0, 5, 5);
-		gbc_textField_2.gridx = 1;
-		gbc_textField_2.gridy = 3;
-		add(textField_2, gbc_textField_2);
-		textField_2.setColumns(10);
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
-		gbc_btnNewButton.gridx = 2;
+		gbc_btnNewButton.insets = new Insets(0, 0, 5, 5);
+		gbc_btnNewButton.gridx = 3;
 		gbc_btnNewButton.gridy = 4;
 		add(btnNewButton, gbc_btnNewButton);
 	}

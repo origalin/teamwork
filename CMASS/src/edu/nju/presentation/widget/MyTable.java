@@ -10,4 +10,11 @@ public class MyTable extends JTable{
 		setRowHeight(30);
 		setGridColor(Color.LIGHT_GRAY);
 	}
+	
+	public MyTable(Object[][] arg0, Object[] arg1){
+		
+		super(arg0, arg1);
+		setRowHeight(30);
+		setGridColor(Color.LIGHT_GRAY);
+	}
 }

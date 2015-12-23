@@ -47,11 +47,13 @@ public class StorageModify extends JPanel{
 		}
 	}
 	public StorageModify() {
+		setOpaque(false);
 		setSize(760,517);
 		setBorder(new TitledBorder(null, "\u5E93\u533A\u8C03\u6574", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		setLayout(new GridLayout(0, 1, 0, 0));
 		
 		JPanel panel = new JPanel();
+		panel.setOpaque(false);
 		add(panel);
 		GridBagLayout gbl_panel = new GridBagLayout();
 		gbl_panel.columnWidths = new int[]{0, 0, 0, 147, 110, 119, 0};

@@ -8,6 +8,7 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 
@@ -24,6 +25,7 @@ import java.awt.CardLayout;
 import javax.swing.JLabel;
 
 public class GuidePanel_Storage extends JPanel{
+	ArrayList<BigButton> buttons;
 	InWareHouseManagment inWareHousePanel;
 //	=new InWareHouseManagment();
 	OutWareHouseManagment outWareHousePanel;
@@ -57,17 +59,21 @@ public class GuidePanel_Storage extends JPanel{
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
-		JButton OutWareHouseManagement = new BigButton("\u51FA\u5E93\u7BA1\u7406");
+		BigButton OutWareHouseManagement = new BigButton("\u51FA\u5E93\u7BA1\u7406");
 		OutWareHouseManagement.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				clean();
+				OutWareHouseManagement.setPressed();
 				frame.setFunctionPanel(outWareHousePanel);
 			}
 		});
 		
-		JButton InWareHouseManagement = new BigButton("\u5165\u5E93\u7BA1\u7406");
+		BigButton InWareHouseManagement = new BigButton("\u5165\u5E93\u7BA1\u7406");
+		InWareHouseManagement.setPressed();
 		InWareHouseManagement.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				clean();
+				InWareHouseManagement.setPressed();
 					frame.setFunctionPanel(inWareHousePanel);
 				
 			}
@@ -85,16 +91,21 @@ public class GuidePanel_Storage extends JPanel{
 		gbc_OutWareHouseManagement.gridy = 1;
 		add(OutWareHouseManagement, gbc_OutWareHouseManagement);
 		
-		JButton StorageInitialize = new BigButton("\u5E93\u5B58\u4FE1\u606F\u521D\u59CB\u5316");
+		BigButton StorageInitialize = new BigButton("\u5E93\u5B58\u4FE1\u606F\u521D\u59CB\u5316");
+		StorageInitialize.setText("\u521D\u59CB\u5316");
 		StorageInitialize.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				clean();
+				StorageInitialize.setPressed();
 				frame.setFunctionPanel(storageInitializePanel);
 			}
 		});
 		
-		JButton StorageQuery = new BigButton("ø‚¥Ê≈Ãµ„");
+		BigButton StorageQuery = new BigButton("ø‚¥Ê≈Ãµ„");
 		StorageQuery.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				clean();
+				StorageQuery.setPressed();
 				frame.setFunctionPanel(storageQueryPanel);
 			}
 		});
@@ -111,10 +122,13 @@ public class GuidePanel_Storage extends JPanel{
 		gbc_StorageInitialize.gridy = 3;
 		add(StorageInitialize, gbc_StorageInitialize);
 		
-		JButton StorageMidify = new BigButton("\u5E93\u533A\u8C03\u6574");
+		BigButton StorageMidify = new BigButton("\u5E93\u533A\u8C03\u6574");
 		StorageMidify.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				clean();
+				StorageMidify.setPressed();
 				frame.setFunctionPanel(storageModifyPanel);
+				
 			}
 		});
 		GridBagConstraints gbc_StorageMidify = new GridBagConstraints();
@@ -123,5 +137,17 @@ public class GuidePanel_Storage extends JPanel{
 		gbc_StorageMidify.gridx = 0;
 		gbc_StorageMidify.gridy = 4;
 		add(StorageMidify, gbc_StorageMidify);
+		buttons=new ArrayList<BigButton>();
+		buttons.add(StorageMidify);
+		buttons.add(StorageQuery);
+		buttons.add(StorageInitialize);
+		buttons.add(InWareHouseManagement);
+		buttons.add(OutWareHouseManagement);
+	}
+	
+	void clean() {
+		for(BigButton bt:buttons) {
+			bt.setNormal();
+		}
 	}
 }

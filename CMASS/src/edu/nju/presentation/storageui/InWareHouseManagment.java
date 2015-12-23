@@ -13,6 +13,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 
 import edu.nju.businesslogic.storagebl.InWareHouseManagementbl;
@@ -20,6 +21,7 @@ import edu.nju.businesslogicservice.storagelogicservice.InWareHouseManagementSer
 import edu.nju.dataFactory.DataFactory;
 import edu.nju.exception.DatabaseNULLException;
 import edu.nju.presentation.UiFactory;
+import edu.nju.presentation.widget.MyTable;
 import edu.nju.tools.Time;
 import edu.nju.po.InWareHouseDocLineItem;
 import edu.nju.vo.InWareHouseDocVO;
@@ -38,6 +40,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import java.awt.Dimension;
 
 public class InWareHouseManagment extends JPanel {
 	InWareHouseDocVO inWareHouseDocVO;
@@ -83,11 +86,25 @@ public class InWareHouseManagment extends JPanel {
 	}
 
 	public InWareHouseManagment() {
-
+		setOpaque(false);
 		String[] columnNames = { "快递编号", "入库日期", "目的地", "区号", "排号", "架号", "位号" };
 
 		String data[][] = new String[0][0];
-		table = new JTable(data, columnNames);
+		table = new MyTable(data, columnNames);
+		table.setPreferredScrollableViewportSize(new Dimension(450, 300));
+		table.setPreferredSize(new Dimension(525, 200));
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"\u5FEB\u9012\u7F16\u53F7", "\u5165\u5E93\u65E5\u671F", "\u76EE\u7684\u5730", "\u533A\u53F7", "\u6392\u53F7", "\u67B6\u53F7", "\u4F4D\u53F7"
+			}
+		));
+		table.getColumnModel().getColumn(2).setPreferredWidth(170);
+		table.getColumnModel().getColumn(4).setPreferredWidth(40);
+		table.getColumnModel().getColumn(5).setPreferredWidth(40);
+		table.getColumnModel().getColumn(6).setPreferredWidth(40);
+		
 		setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "\u5165\u5E93\u7BA1\u7406",
 				TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -137,6 +154,8 @@ public class InWareHouseManagment extends JPanel {
 		textField.setColumns(10);
 
 		scrollPane = new JScrollPane();
+		scrollPane.getViewport().setOpaque(false);
+		scrollPane.setOpaque(false);
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.insets = new Insets(0, 0, 5, 0);
 		gbc_scrollPane.gridwidth = 6;
@@ -192,7 +211,7 @@ public class InWareHouseManagment extends JPanel {
 						i++;
 					}
 
-					table = new JTable(data1, columnNames);
+					table = new MyTable(data1, columnNames);
 					scrollPane.setViewportView(table);
 				}
 
@@ -221,13 +240,13 @@ public class InWareHouseManagment extends JPanel {
 				model = (table.getModel());
 				ArrayList<InWareHouseDocLineItem> line = inWareHouseDocVO.getList();
 				boolean check = true;
-				
-				for(int i=0,j=2;i<line.size();i++){
+
+				for (int i = 0, j = 2; i < line.size(); i++) {
 					String object = (String) model.getValueAt(i, j);
-					if(object==null||object.equals(""))
+					if (object == null || object.equals(""))
 						check = false;
 				}
-				int i=0,j=2;
+				int i = 0, j = 2;
 				for (InWareHouseDocLineItem temp : line)
 
 				{
@@ -235,8 +254,7 @@ public class InWareHouseManagment extends JPanel {
 					temp.setDestination(object);
 					i++;
 				}
-				
-				
+
 				if (check) {
 					inWareHouseDocVO.setList(line);
 					inWare = UiFactory.getInWareHouseManagementService();

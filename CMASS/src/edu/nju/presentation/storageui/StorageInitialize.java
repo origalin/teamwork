@@ -47,11 +47,12 @@ public class StorageInitialize extends JPanel{
 		}
 	}
 	public StorageInitialize() {
+		setOpaque(false);
 		setBorder(new TitledBorder(null, "\u5E93\u5B58\u4FE1\u606F\u521D\u59CB\u5316", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{0, 0, 0, 291, 0};
+		gridBagLayout.columnWidths = new int[]{0, 0, 0, 291, 0, 0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
@@ -65,7 +66,8 @@ public class StorageInitialize extends JPanel{
 		
 		textSendDoc_ID = new JTextField();
 		GridBagConstraints gbc_textSendDoc_ID = new GridBagConstraints();
-		gbc_textSendDoc_ID.insets = new Insets(0, 0, 5, 0);
+		gbc_textSendDoc_ID.gridwidth = 2;
+		gbc_textSendDoc_ID.insets = new Insets(0, 0, 5, 5);
 		gbc_textSendDoc_ID.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textSendDoc_ID.gridx = 3;
 		gbc_textSendDoc_ID.gridy = 1;
@@ -81,7 +83,8 @@ public class StorageInitialize extends JPanel{
 		
 		textInWareDate = new JTextField();
 		GridBagConstraints gbc_textInWareDate = new GridBagConstraints();
-		gbc_textInWareDate.insets = new Insets(0, 0, 5, 0);
+		gbc_textInWareDate.gridwidth = 2;
+		gbc_textInWareDate.insets = new Insets(0, 0, 5, 5);
 		gbc_textInWareDate.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textInWareDate.gridx = 3;
 		gbc_textInWareDate.gridy = 2;
@@ -97,7 +100,8 @@ public class StorageInitialize extends JPanel{
 		
 		textDestination = new JTextField();
 		GridBagConstraints gbc_textDestination = new GridBagConstraints();
-		gbc_textDestination.insets = new Insets(0, 0, 5, 0);
+		gbc_textDestination.gridwidth = 2;
+		gbc_textDestination.insets = new Insets(0, 0, 5, 5);
 		gbc_textDestination.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textDestination.gridx = 3;
 		gbc_textDestination.gridy = 3;
@@ -113,7 +117,8 @@ public class StorageInitialize extends JPanel{
 		
 		textDistrict = new JTextField();
 		GridBagConstraints gbc_textDistrict = new GridBagConstraints();
-		gbc_textDistrict.insets = new Insets(0, 0, 5, 0);
+		gbc_textDistrict.gridwidth = 2;
+		gbc_textDistrict.insets = new Insets(0, 0, 5, 5);
 		gbc_textDistrict.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textDistrict.gridx = 3;
 		gbc_textDistrict.gridy = 4;
@@ -129,7 +134,8 @@ public class StorageInitialize extends JPanel{
 		
 		textRow = new JTextField();
 		GridBagConstraints gbc_textRow = new GridBagConstraints();
-		gbc_textRow.insets = new Insets(0, 0, 5, 0);
+		gbc_textRow.gridwidth = 2;
+		gbc_textRow.insets = new Insets(0, 0, 5, 5);
 		gbc_textRow.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textRow.gridx = 3;
 		gbc_textRow.gridy = 5;
@@ -145,7 +151,8 @@ public class StorageInitialize extends JPanel{
 		
 		textShelf = new JTextField();
 		GridBagConstraints gbc_textShelf = new GridBagConstraints();
-		gbc_textShelf.insets = new Insets(0, 0, 5, 0);
+		gbc_textShelf.gridwidth = 2;
+		gbc_textShelf.insets = new Insets(0, 0, 5, 5);
 		gbc_textShelf.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textShelf.gridx = 3;
 		gbc_textShelf.gridy = 6;
@@ -161,7 +168,8 @@ public class StorageInitialize extends JPanel{
 		
 		textPosition = new JTextField();
 		GridBagConstraints gbc_textPosition = new GridBagConstraints();
-		gbc_textPosition.insets = new Insets(0, 0, 5, 0);
+		gbc_textPosition.gridwidth = 2;
+		gbc_textPosition.insets = new Insets(0, 0, 5, 5);
 		gbc_textPosition.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textPosition.gridx = 3;
 		gbc_textPosition.gridy = 7;
@@ -170,9 +178,9 @@ public class StorageInitialize extends JPanel{
 		
 		button = new JButton("\u6E05\u96F6");
 		GridBagConstraints gbc_button = new GridBagConstraints();
-		gbc_button.insets = new Insets(0, 0, 0, 5);
-		gbc_button.gridx = 1;
-		gbc_button.gridy = 9;
+		gbc_button.insets = new Insets(0, 0, 5, 5);
+		gbc_button.gridx = 4;
+		gbc_button.gridy = 8;
 		add(button, gbc_button);
 		
 		btnNewButton = new JButton("\u65B0\u5EFA\u5E93\u5B58\u8BB0\u5F55");
@@ -191,7 +199,8 @@ public class StorageInitialize extends JPanel{
 			}
 		});
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
-		gbc_btnNewButton.gridx = 3;
+		gbc_btnNewButton.insets = new Insets(0, 0, 0, 5);
+		gbc_btnNewButton.gridx = 4;
 		gbc_btnNewButton.gridy = 9;
 		add(btnNewButton, gbc_btnNewButton);
 	}
