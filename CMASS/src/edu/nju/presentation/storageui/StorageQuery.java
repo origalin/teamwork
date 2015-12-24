@@ -31,6 +31,7 @@ import javax.swing.JLabel;
 import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.PrimitiveIterator.OfDouble;
 import java.awt.event.ActionEvent;
 import javax.swing.ScrollPaneConstants;
 import java.awt.Dimension;
@@ -57,24 +58,24 @@ public class StorageQuery extends JPanel {
 
 	public StorageQuery(String staffID) {
 		this();
-		this.currPersonID= staffID;
+		this.currPersonID = staffID;
 		try {
-			currStorageID=UiFactory.getInstitutionLogicService().getInstitutionID(currPersonID);
+			currStorageID = UiFactory.getInstitutionLogicService().getInstitutionID(currPersonID);
 		} catch (RemoteException e) {
 			System.out.println("根据人员id初始化机构id出错");
 			e.printStackTrace();
 		}
 	}
 
-//	public static void main(String[] args) {
-//		StorageQuery storageQuery=new StorageQuery("001000");
-//		JFrame mainFrame = new JFrame();
-//		mainFrame.getContentPane().add(storageQuery);
-//		mainFrame.setVisible(true);
-//		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		mainFrame.setLocationRelativeTo(null);
-//		mainFrame.setSize(500, 300);
-//	}
+	// public static void main(String[] args) {
+	// StorageQuery storageQuery=new StorageQuery("001000");
+	// JFrame mainFrame = new JFrame();
+	// mainFrame.getContentPane().add(storageQuery);
+	// mainFrame.setVisible(true);
+	// mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	// mainFrame.setLocationRelativeTo(null);
+	// mainFrame.setSize(500, 300);
+	// }
 	public StorageQuery() {
 		setOpaque(false);
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -103,14 +104,14 @@ public class StorageQuery extends JPanel {
 
 		table = new MyTable();
 		table.setPreferredScrollableViewportSize(new Dimension(450, 150));
-		table.setModel(new DefaultTableModel(rowData,columnNames));
-		model=(DefaultTableModel) table.getModel();
+		table.setModel(new DefaultTableModel(rowData, columnNames));
+		model = (DefaultTableModel) table.getModel();
 		scrollPane.setViewportView(table);
 
 		JPanel panel_1 = new JPanel();
 		panel_1.setOpaque(false);
-		panel_1.setBorder(
-				new TitledBorder(UIManager.getBorder("TitledBorder.border"), "\u8D27\u8FD0\u533A", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		panel_1.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "\u8D27\u8FD0\u533A",
+				TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
 		gbc_panel_1.gridwidth = 3;
 		gbc_panel_1.fill = GridBagConstraints.BOTH;
@@ -126,14 +127,14 @@ public class StorageQuery extends JPanel {
 
 		table_1 = new MyTable(rowData, columnNames);
 		table_1.setPreferredScrollableViewportSize(new Dimension(450, 150));
-		table_1.setModel(new DefaultTableModel(rowData,columnNames));
-		model_1=(DefaultTableModel) table_1.getModel();
+		table_1.setModel(new DefaultTableModel(rowData, columnNames));
+		model_1 = (DefaultTableModel) table_1.getModel();
 		scrollPane_1.setViewportView(table_1);
 
 		JPanel panel_2 = new JPanel();
 		panel_2.setOpaque(false);
-		panel_2.setBorder(
-				new TitledBorder(UIManager.getBorder("TitledBorder.border"), "\u6C7D\u8FD0\u533A", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		panel_2.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "\u6C7D\u8FD0\u533A",
+				TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		GridBagConstraints gbc_panel_2 = new GridBagConstraints();
 		gbc_panel_2.gridwidth = 3;
 		gbc_panel_2.fill = GridBagConstraints.BOTH;
@@ -149,13 +150,13 @@ public class StorageQuery extends JPanel {
 
 		table_2 = new MyTable(rowData, columnNames);
 		table_2.setPreferredScrollableViewportSize(new Dimension(450, 150));
-		table_2.setModel(new DefaultTableModel(rowData,columnNames));
-		model_2=(DefaultTableModel) table_2.getModel();
+		table_2.setModel(new DefaultTableModel(rowData, columnNames));
+		model_2 = (DefaultTableModel) table_2.getModel();
 		scrollPane_2.setViewportView(table_2);
 
 		JPanel panel_3 = new JPanel();
 		panel_3.setOpaque(false);
-		
+
 		GridBagConstraints gbc_panel_3 = new GridBagConstraints();
 		gbc_panel_3.insets = new Insets(0, 0, 5, 5);
 		gbc_panel_3.fill = GridBagConstraints.BOTH;
@@ -169,115 +170,127 @@ public class StorageQuery extends JPanel {
 				0.0, Double.MIN_VALUE };
 		gbl_panel_3.rowWeights = new double[] { 0.0, 0.0, Double.MIN_VALUE };
 		panel_3.setLayout(gbl_panel_3);
-		
-				JButton query = new JButton("\u67E5\u8BE2");
-				GridBagConstraints gbc_query = new GridBagConstraints();
-				gbc_query.insets = new Insets(0, 0, 5, 5);
-				gbc_query.gridx = 1;
-				gbc_query.gridy = 3;
-				add(query, gbc_query);
-				
-//		JLabel label =new JLabel();
-////		label.setOpaque(true);
-////		label.setBackground(Color.BLACK);
-//		
-//		
-//		gbc_query.anchor = GridBagConstraints.EAST;
-//		gbc_query.insets = new Insets(0, 0, 0, 5);
-//		gbc_query.gridx = 10;
-//		gbc_query.gridy = 0;
-//		gbc_query.weightx = 1;
-//		panel_3.add(label, gbc_query);
-//		gbl_panel_3.setConstraints(label, gbc_query);
 
-				JButton export = new JButton("\u5BFC\u51FA");
-				GridBagConstraints gbc_export = new GridBagConstraints();
-				gbc_export.insets = new Insets(0, 0, 0, 5);
-				gbc_export.gridx = 1;
-				gbc_export.gridy = 4;
-				add(export, gbc_export);
-				query.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						StorageQueryService storageQueryService = UiFactory.getStorageQueryService();
-						ArrayList<RecordPO> list = new ArrayList<RecordPO>();
+		JButton query = new JButton("\u67E5\u8BE2");
+		GridBagConstraints gbc_query = new GridBagConstraints();
+		gbc_query.insets = new Insets(0, 0, 5, 5);
+		gbc_query.gridx = 1;
+		gbc_query.gridy = 3;
+		add(query, gbc_query);
 
-						try {
-							list = storageQueryService.getInWareHouseDocVO_Fly(currPersonID,currStorageID);
-						} catch (RemoteException e2) {
-							System.out.println("查询航运区库存情况失败，请检查网络情况后再试");
-							e2.printStackTrace();
-						}
-						int rows = list.size();
-						int columns = 6;
-						String[][] data1 = new String[rows][columns];
-						int i = 0;
-						for (RecordPO temp : list) {
-							data1[i][0] = temp.getItemID();
-							data1[i][1] = temp.getDate().toString();
-							data1[i][2] = temp.getDistrict();
-							data1[i][3] = temp.getLocation().substring(0, 2);
-							data1[i][4] = temp.getLocation().substring(2, 4);
-							data1[i][5] = temp.getLocation().substring(4);
-							i++;
-						}
-//				table = new JTable(data1, columnNames);
-//				scrollPane.setViewportView(table);
-						for(i=0;i<rows;i++){
-							model.addRow(new Object[]{data1[i][0],data1[i][1],data1[i][2],data1[i][3],data1[i][4],data1[i][5]});
-						}
-						
-						
-						
+		// JLabel label =new JLabel();
+		//// label.setOpaque(true);
+		//// label.setBackground(Color.BLACK);
+		//
+		//
+		// gbc_query.anchor = GridBagConstraints.EAST;
+		// gbc_query.insets = new Insets(0, 0, 0, 5);
+		// gbc_query.gridx = 10;
+		// gbc_query.gridy = 0;
+		// gbc_query.weightx = 1;
+		// panel_3.add(label, gbc_query);
+		// gbl_panel_3.setConstraints(label, gbc_query);
 
-						ArrayList<RecordPO> list_1 = null;
-						try {
-							list_1 = storageQueryService.getInWareHouseDocVO_Train(currPersonID,currStorageID);
-						} catch (RemoteException e1) {
-							System.out.println("查询货运区库存情况失败，请检查网络情况后再试");
-							e1.printStackTrace();
-						}
-						rows = list_1.size();
-						String[][] data2 = new String[rows][columns];
-						i = 0;
-						for (RecordPO temp : list_1) {
-							data2[i][0] = temp.getItemID();
-							data2[i][1] = temp.getDate().toString();
-							data2[i][2] = temp.getDistrict();
-							data2[i][3] = temp.getLocation().substring(0, 2);
-							data2[i][4] = temp.getLocation().substring(2, 4);
-							data2[i][5] = temp.getLocation().substring(4);
-							i++;
-						}
-//				table_1 = new JTable(data2, columnNames);
-//				scrollPane_1.setViewportView(table);
-						for(i=0;i<rows;i++){
-							model_1.addRow(new Object[]{data2[i][0],data2[i][1],data2[i][2],data2[i][3],data2[i][4],data2[i][5]});
-						}
+		JButton export = new JButton("\u5BFC\u51FA");
+		GridBagConstraints gbc_export = new GridBagConstraints();
+		gbc_export.insets = new Insets(0, 0, 0, 5);
+		gbc_export.gridx = 1;
+		gbc_export.gridy = 4;
+		add(export, gbc_export);
+		query.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				boolean normal1 = true, normal2 = true, normal3 = true;
+				StorageQueryService storageQueryService = UiFactory.getStorageQueryService();
+				ArrayList<RecordPO> list = new ArrayList<RecordPO>();
 
-						ArrayList<RecordPO> list_2 = null;
-						try {
-							list_2 = storageQueryService.getInWareHouseDocVO_Car(currPersonID,currStorageID);
-						} catch (RemoteException e1) {
-							System.out.println("查询汽运区库存情况失败，请检查网络情况后再试");
-							e1.printStackTrace();
-						}
-						rows = list_2.size();
-						String[][] data3 = new String[rows][columns];
-						i = 0;
-						for (RecordPO temp : list_2) {
-							data3[i][0] = temp.getItemID();
-							data3[i][1] = temp.getDate().toString();
-							data3[i][2] = temp.getDistrict();
-							data3[i][3] = temp.getLocation().substring(0, 2);
-							data3[i][4] = temp.getLocation().substring(2, 4);
-							data3[i][5] = temp.getLocation().substring(4);
-							i++;
-						}
-						table = new JTable(data3, columnNames);
-						scrollPane_2.setViewportView(table);
+				try {
+					list = storageQueryService.getInWareHouseDocVO_Fly(currPersonID, currStorageID);
+				} catch (RemoteException e2) {
+					System.out.println("查询航运区库存情况失败，请检查网络情况后再试");
+					e2.printStackTrace();
+					normal1 = false;
+				}
+				if (normal1) {
+					int rows = list.size();
+					int columns = 6;
+					String[][] data1 = new String[rows][columns];
+					int i = 0;
+					for (RecordPO temp : list) {
+						data1[i][0] = temp.getItemID();
+						data1[i][1] = temp.getDate().toString();
+						data1[i][2] = temp.getDistrict();
+						data1[i][3] = temp.getLocation().substring(0, 2);
+						data1[i][4] = temp.getLocation().substring(2, 4);
+						data1[i][5] = temp.getLocation().substring(4);
+						i++;
 					}
-				});
-		//repaint();
+					// table = new JTable(data1, columnNames);
+					// scrollPane.setViewportView(table);
+					for (i = 0; i < rows; i++) {
+						model.addRow(new Object[] { data1[i][0], data1[i][1], data1[i][2], data1[i][3], data1[i][4],
+								data1[i][5] });
+					}
+				}
+
+				ArrayList<RecordPO> list_1 = null;
+				try {
+					list_1 = storageQueryService.getInWareHouseDocVO_Train(currPersonID, currStorageID);
+				} catch (RemoteException e1) {
+					System.out.println("查询货运区库存情况失败，请检查网络情况后再试");
+					e1.printStackTrace();
+					normal2 = false;
+				}
+
+				if (normal2) {
+					int rows = list_1.size();
+					int columns = 6;
+					String[][] data2 = new String[rows][columns];
+					int i = 0;
+					for (RecordPO temp : list_1) {
+						data2[i][0] = temp.getItemID();
+						data2[i][1] = temp.getDate().toString();
+						data2[i][2] = temp.getDistrict();
+						data2[i][3] = temp.getLocation().substring(0, 2);
+						data2[i][4] = temp.getLocation().substring(2, 4);
+						data2[i][5] = temp.getLocation().substring(4);
+						i++;
+					}
+					// table_1 = new JTable(data2, columnNames);
+					// scrollPane_1.setViewportView(table);
+					for (i = 0; i < rows; i++) {
+						model_1.addRow(new Object[] { data2[i][0], data2[i][1], data2[i][2], data2[i][3], data2[i][4],
+								data2[i][5] });
+					}
+				}
+
+				if (normal3) {
+					int columns = 6;
+					ArrayList<RecordPO> list_2 = null;
+					try {
+						list_2 = storageQueryService.getInWareHouseDocVO_Car(currPersonID, currStorageID);
+					} catch (RemoteException e1) {
+						System.out.println("查询汽运区库存情况失败，请检查网络情况后再试");
+						e1.printStackTrace();
+					}
+					int rows = list_2.size();
+					String[][] data3 = new String[rows][columns];
+					int i = 0;
+					for (RecordPO temp : list_2) {
+						data3[i][0] = temp.getItemID();
+						data3[i][1] = temp.getDate().toString();
+						data3[i][2] = temp.getDistrict();
+						data3[i][3] = temp.getLocation().substring(0, 2);
+						data3[i][4] = temp.getLocation().substring(2, 4);
+						data3[i][5] = temp.getLocation().substring(4);
+						i++;
+					}
+					table = new JTable(data3, columnNames);
+					scrollPane_2.setViewportView(table);
+				}
+
+			}
+		});
+		// repaint();
 	}
 
 }

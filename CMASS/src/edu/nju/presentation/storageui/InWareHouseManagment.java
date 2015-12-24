@@ -93,13 +93,9 @@ public class InWareHouseManagment extends JPanel {
 		table = new MyTable(data, columnNames);
 		table.setPreferredScrollableViewportSize(new Dimension(450, 300));
 		table.setPreferredSize(new Dimension(525, 200));
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-				"\u5FEB\u9012\u7F16\u53F7", "\u5165\u5E93\u65E5\u671F", "\u76EE\u7684\u5730", "\u533A\u53F7", "\u6392\u53F7", "\u67B6\u53F7", "\u4F4D\u53F7"
-			}
-		));
+		table.setModel(new DefaultTableModel(new Object[][] {},
+				new String[] { "\u5FEB\u9012\u7F16\u53F7", "\u5165\u5E93\u65E5\u671F", "\u76EE\u7684\u5730",
+						"\u533A\u53F7", "\u6392\u53F7", "\u67B6\u53F7", "\u4F4D\u53F7" }));
 		table.getColumnModel().getColumn(2).setPreferredWidth(170);
 		table.getColumnModel().getColumn(4).setPreferredWidth(40);
 		table.getColumnModel().getColumn(5).setPreferredWidth(40);
@@ -164,9 +160,11 @@ public class InWareHouseManagment extends JPanel {
 		btnNewButton = new JButton("\u786E\u8BA4");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				if (textField_1.getText().equals(""))
 					JOptionPane.showMessageDialog(null, "请输入中转单号或装车单号");
 				else {
+					boolean normal = true;
 					String selectedItem = (String) comboBox.getSelectedItem();
 					inWare = UiFactory.getInWareHouseManagementService();
 					if (selectedItem.equals("中转单编号"))
@@ -176,6 +174,7 @@ public class InWareHouseManagment extends JPanel {
 						} catch (DatabaseNULLException e1) {
 							JOptionPane.showMessageDialog(null, "请输入合法有效的中转单号");
 							e1.printStackTrace();
+							normal = false;
 						}
 					else if (selectedItem.equals("装车单编号"))
 						try {
@@ -184,29 +183,33 @@ public class InWareHouseManagment extends JPanel {
 						} catch (DatabaseNULLException e1) {
 							JOptionPane.showMessageDialog(null, "请输入合法有效的装车单号");
 							e1.printStackTrace();
+							normal = false;
 						} catch (RemoteException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
+							normal = false;
+						}
+					if (normal) {
+						textField.setText(inWareHouseDocVO.getID());
+						ArrayList<InWareHouseDocLineItem> list = inWareHouseDocVO.getList();
+
+						String[][] data1 = new String[list.size()][7];
+						int i = 0;
+						for (InWareHouseDocLineItem temp : list) {
+							data1[i][0] = temp.getSendDocID();// 快递编号
+							data1[i][1] = Time.toDaysTime(temp.getDate());// 入库日期
+							data1[i][2] = temp.getDestination();// 目的地
+							data1[i][3] = temp.getDistrict();// 区
+							data1[i][4] = temp.getLocation().substring(0, 2);// 排
+							data1[i][5] = temp.getLocation().substring(2, 4);// 架
+							data1[i][6] = temp.getLocation().substring(4);// 位
+							i++;
 						}
 
-					textField.setText(inWareHouseDocVO.getID());
-					ArrayList<InWareHouseDocLineItem> list = inWareHouseDocVO.getList();
-
-					String[][] data1 = new String[list.size()][7];
-					int i = 0;
-					for (InWareHouseDocLineItem temp : list) {
-						data1[i][0] = temp.getSendDocID();// 快递编号
-						data1[i][1] = Time.toDaysTime(temp.getDate());// 入库日期
-						data1[i][2] = temp.getDestination();// 目的地
-						data1[i][3] = temp.getDistrict();// 区
-						data1[i][4] = temp.getLocation().substring(0, 2);// 排
-						data1[i][5] = temp.getLocation().substring(2, 4);// 架
-						data1[i][6] = temp.getLocation().substring(4);// 位
-						i++;
+						table = new MyTable(data1, columnNames);
+						scrollPane.setViewportView(table);
 					}
 
-					table = new MyTable(data1, columnNames);
-					scrollPane.setViewportView(table);
 				}
 
 			}
