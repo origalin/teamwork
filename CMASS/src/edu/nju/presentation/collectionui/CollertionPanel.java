@@ -8,16 +8,21 @@ import javax.swing.table.DefaultTableModel;
 
 import java.awt.FlowLayout;
 import java.awt.BorderLayout;
+import java.awt.Button;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
 
 import javax.swing.border.BevelBorder;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 
 import edu.nju.businesslogic.collectionbl.Collectionbl;
 import edu.nju.businesslogicservice.collectionlogicservice.CollectionLogicService;
 import edu.nju.presentation.approveui.CheckSendDoc;
 import edu.nju.presentation.mainui.CheckDialog;
+import edu.nju.presentation.widget.BigButton;
+import edu.nju.presentation.widget.SmallButton;
 import edu.nju.vo.SendDocVO;
 
 import java.awt.Color;
@@ -458,7 +463,8 @@ public class CollertionPanel extends JPanel{
 			}
 		});
 		
-		JButton estimateButton = new JButton("\u62A5\u4EF7\u4E0E\u65F6\u95F4\u9884\u4F30");
+		JButton estimateButton = new SmallButton("\u62A5\u4EF7\u4E0E\u65F6\u95F4\u9884\u4F30");
+		
 		estimateButton.addActionListener(new ActionListener() {
 			
 			@Override
