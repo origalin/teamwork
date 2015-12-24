@@ -1,5 +1,13 @@
 package edu.nju.dataservice.Start;
 
+import java.awt.Image;
+import java.awt.MenuItem;
+import java.awt.PopupMenu;
+import java.awt.SystemTray;
+import java.awt.Toolkit;
+import java.awt.TrayIcon;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.rmi.Naming;
 import java.rmi.Remote;
 import java.rmi.registry.LocateRegistry;
@@ -67,10 +75,45 @@ public class Start {
 				Naming.rebind("rmi://127.0.0.1:6600/collectionDataService", collectionDataService);
 				Naming.rebind("rmi://127.0.0.1:6600/transferDataService", transferDataService);
 				System.out.println("Service Start!");
+				isTray();
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 	}
+	public static void isTray()   
+    {   
+		PopupMenu popupMenu1 = new PopupMenu();   
+		MenuItem menuItem1 = new MenuItem();
+		popupMenu1.setLabel("PopupMenu");   
+        menuItem1.setLabel("退出");   
+        menuItem1.addActionListener(new ActionListener()   
+        {   
+            public void actionPerformed(ActionEvent evt)   
+            {   
+            System.exit(0);
+            }   
+        });   
+        popupMenu1.add(menuItem1); 
+        try  
+        {   
+          if (SystemTray.isSupported())   
+          {// 判断当前平台是否支持系统托盘   
+            SystemTray st = SystemTray.getSystemTray();   
+            Image image = Toolkit.getDefaultToolkit().getImage(   
+               "images/smallIcon.png");//定义托盘图标的图片     
+           TrayIcon ti = new TrayIcon( image);   
+           ti.setToolTip ( "CMASS Server");   
+           ti.setPopupMenu ( popupMenu1);
+           st.add(ti);            
+          }   
+        }   
+        catch (Exception e)   
+        {   
+               
+        }   
+       
+  
+    }
 
 }

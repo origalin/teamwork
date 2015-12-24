@@ -1,6 +1,7 @@
 package edu.nju.presentation.logispicqueryui;
 
 import java.awt.GridLayout;
+import java.awt.Image;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -18,6 +19,7 @@ import edu.nju.vo.PositionVO;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
@@ -31,6 +33,11 @@ public class QueryFrame extends JFrame{
 	private JTextField textField;
 	JTextArea textArea ;
 	public QueryFrame() {
+		Image image = Toolkit.getDefaultToolkit().getImage(   
+	               "images/icon.png"); 
+
+     // 设置标题栏的图标为face.gif  
+     this.setIconImage(image);
 		textArea = new JTextArea();
 		setSize(500, 300);
 		setLocation(500, 200);

@@ -1,6 +1,7 @@
 package edu.nju.presentation.infoui;
 
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -38,72 +39,102 @@ import edu.nju.presentation.systemui.OperationPanel;
 import edu.nju.presentation.transformui.SendPanel;
 import edu.nju.presentation.transformui.YLoadDocPanel;
 import edu.nju.presentation.transformui.ZArrivalDocPanel;
+import edu.nju.presentation.widget.SmallButton;
 
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.Toolkit;
 import java.rmi.RemoteException;
 import java.text.ParseException;
+import java.awt.Font;
 
 @SuppressWarnings("serial")
 public class LoginFrame extends JFrame {
-	JPanel pn1, pn2, pn3;
 	JTextField account;
 	JPasswordField password;
 	JButton confirm, query;
 	MainFrame mainFrame;
 	QueryFrame queryFrame;
 	InstitutionLogicService institution;
-
+	ImageIcon background = new ImageIcon("images/loginbackground.png");
 	public LoginFrame() {
+		
+		JLabel backlabel = new JLabel(background);
+		backlabel.setSize(background.getIconWidth(), background.getIconHeight());
+		getLayeredPane().setLayout(null);
+		getLayeredPane().add(backlabel,new Integer(Integer.MIN_VALUE));
+		
+		Image image = Toolkit.getDefaultToolkit().getImage(   
+	               "images/icon.png"); 
+  
+        // 设置标题栏的图标为face.gif  
+        this.setIconImage(image);
 		this.setTitle("登陆");
-		pn1 = new JPanel();
-		pn2 = new JPanel();
-		pn3 = new JPanel();
-		this.setSize(450, 222);
+		this.setSize(450, 210);
 		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
-		getContentPane().setLayout(new GridLayout(3, 1));
-		GridBagLayout gbl_pn1 = new GridBagLayout();
-		gbl_pn1.columnWidths = new int[] { 94, 24, 126, 0 };
-		gbl_pn1.rowHeights = new int[] { 53, 0 };
-		gbl_pn1.columnWeights = new double[] { 0.0, 0.0, 1.0, Double.MIN_VALUE };
-		gbl_pn1.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
-		pn1.setLayout(gbl_pn1);
-		GridBagConstraints gbc = new GridBagConstraints();
-		gbc.anchor = GridBagConstraints.WEST;
-		gbc.insets = new Insets(0, 0, 0, 5);
-		gbc.gridx = 1;
-		gbc.gridy = 0;
+		((JPanel)getContentPane()).setOpaque(false);
+		GridBagLayout gridBagLayout = new GridBagLayout();
+		gridBagLayout.columnWidths = new int[]{30, 44, 273, 42, 0};
+		gridBagLayout.rowHeights = new int[]{20, 40, 40, 50, 0};
+		gridBagLayout.columnWeights = new double[]{0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		getContentPane().setLayout(gridBagLayout);
 		JLabel label = new JLabel("\u5DE5\u53F7");
-		pn1.add(label, gbc);
-		GridBagLayout gbl_pn2 = new GridBagLayout();
-		gbl_pn2.columnWidths = new int[] { 94, 24, 126, 0 };
-		gbl_pn2.rowHeights = new int[] { 57, 0 };
-		gbl_pn2.columnWeights = new double[] { 0.0, 0.0, 1.0, Double.MIN_VALUE };
-		gbl_pn2.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
-		pn2.setLayout(gbl_pn2);
-		GridBagConstraints gbc_1 = new GridBagConstraints();
-		gbc_1.anchor = GridBagConstraints.WEST;
-		gbc_1.insets = new Insets(0, 0, 0, 5);
-		gbc_1.gridx = 1;
-		gbc_1.gridy = 0;
+		label.setFont(new Font("黑体", Font.PLAIN, 15));
+		GridBagConstraints gbc_label = new GridBagConstraints();
+		gbc_label.anchor = GridBagConstraints.EAST;
+		gbc_label.insets = new Insets(0, 0, 5, 5);
+		gbc_label.gridx = 1;
+		gbc_label.gridy = 1;
+		getContentPane().add(label, gbc_label);
+		account = new JTextField(20);
+		GridBagConstraints gbc_account = new GridBagConstraints();
+		gbc_account.anchor = GridBagConstraints.WEST;
+		gbc_account.insets = new Insets(0, 0, 5, 5);
+		gbc_account.gridx = 2;
+		gbc_account.gridy = 1;
+		getContentPane().add(account, gbc_account);
 		JLabel label_1 = new JLabel("密码");
-		pn2.add(label_1, gbc_1);
+		label_1.setFont(new Font("黑体", Font.PLAIN, 15));
+		GridBagConstraints gbc_label_1 = new GridBagConstraints();
+		gbc_label_1.anchor = GridBagConstraints.EAST;
+		gbc_label_1.insets = new Insets(0, 0, 5, 5);
+		gbc_label_1.gridx = 1;
+		gbc_label_1.gridy = 2;
+		getContentPane().add(label_1, gbc_label_1);
 		password = new JPasswordField(20);
 		GridBagConstraints gbc_password = new GridBagConstraints();
 		gbc_password.anchor = GridBagConstraints.WEST;
+		gbc_password.insets = new Insets(0, 0, 5, 5);
 		gbc_password.gridx = 2;
-		gbc_password.gridy = 0;
-		pn2.add(password, gbc_password);
-		GridBagLayout gbl_pn3 = new GridBagLayout();
-		gbl_pn3.columnWidths = new int[] { 19, 57, 0, 81, 0, 0 };
-		gbl_pn3.rowHeights = new int[] { 55, 0 };
-		gbl_pn3.columnWeights = new double[] { 1.0, 0.0, 0.0, 0.0, 1.0,
-				Double.MIN_VALUE };
-		gbl_pn3.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
-		pn3.setLayout(gbl_pn3);
-		query = new JButton("快递查询");
+		gbc_password.gridy = 2;
+		getContentPane().add(password, gbc_password);
+		confirm = new SmallButton("确认");
+		GridBagConstraints gbc_confirm = new GridBagConstraints();
+		gbc_confirm.anchor = GridBagConstraints.SOUTHEAST;
+		gbc_confirm.insets = new Insets(0, 30, 0, -60);
+		gbc_confirm.gridx = 1;
+		gbc_confirm.gridy = 3;
+		getContentPane().add(confirm, gbc_confirm);
+		confirm.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO 自动生成的方法存根
+				loginAction(account.getText(),
+						String.valueOf(password.getPassword()));
+			}
+		});
+		getRootPane().setDefaultButton(confirm);
+		query = new SmallButton("快递查询");
+		GridBagConstraints gbc_query = new GridBagConstraints();
+		gbc_query.anchor = GridBagConstraints.SOUTHWEST;
+		gbc_query.insets = new Insets(0, 90, 0, -25);
+		gbc_query.gridx = 2;
+		gbc_query.gridy = 3;
+		getContentPane().add(query, gbc_query);
 		query.addActionListener(new ActionListener() {
 
 			@Override
@@ -114,38 +145,6 @@ public class LoginFrame extends JFrame {
 				queryFrame.comeout();
 			}
 		});
-		confirm = new JButton("确认");
-		confirm.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO 自动生成的方法存根
-				loginAction(account.getText(),
-						String.valueOf(password.getPassword()));
-			}
-		});
-		GridBagConstraints gbc_confirm = new GridBagConstraints();
-		gbc_confirm.anchor = GridBagConstraints.WEST;
-		gbc_confirm.insets = new Insets(0, 0, 0, 5);
-		gbc_confirm.gridx = 1;
-		gbc_confirm.gridy = 0;
-		pn3.add(confirm, gbc_confirm);
-		GridBagConstraints gbc_query = new GridBagConstraints();
-		gbc_query.insets = new Insets(0, 0, 0, 5);
-		gbc_query.anchor = GridBagConstraints.EAST;
-		gbc_query.gridx = 3;
-		gbc_query.gridy = 0;
-		pn3.add(query, gbc_query);
-		getContentPane().add(pn1);
-		account = new JTextField(20);
-		GridBagConstraints gbc_account = new GridBagConstraints();
-		gbc_account.anchor = GridBagConstraints.WEST;
-		gbc_account.gridx = 2;
-		gbc_account.gridy = 0;
-		pn1.add(account, gbc_account);
-		getContentPane().add(pn2);
-		getContentPane().add(pn3);
-		getRootPane().setDefaultButton(confirm);
 		this.setResizable(false);
 		institution = UiFactory.getInstitutionLogicService();
 		this.setVisible(true);

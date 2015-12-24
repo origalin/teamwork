@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.Toolkit;
 import java.util.Date;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
@@ -16,6 +17,7 @@ import javax.swing.border.BevelBorder;
 import edu.nju.tools.Time;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 
 public class MainFrame extends JFrame{
@@ -28,7 +30,13 @@ public class MainFrame extends JFrame{
 	ImageIcon small = new ImageIcon("images/small.png");
 	ImageIcon head = new ImageIcon("images/head.png");
 	public MainFrame(){
+		Image image = Toolkit.getDefaultToolkit().getImage(   
+	               "images/icon.png"); 
+
+     // 设置标题栏的图标为face.gif  
+     this.setIconImage(image);
 		setSize(1000, 650);
+		setMinimumSize(new Dimension(800,600));
 		
 		try {
 			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
@@ -192,9 +200,9 @@ public class MainFrame extends JFrame{
 		gbc_panel_3.gridy = 3;
 		getContentPane().add(panel_3, gbc_panel_3);
 		GridBagLayout gbl_panel_3 = new GridBagLayout();
-		gbl_panel_3.columnWidths = new int[]{652, 248, 72, 0};
+		gbl_panel_3.columnWidths = new int[]{776, 248, 134, 16, 0};
 		gbl_panel_3.rowHeights = new int[]{18, 0};
-		gbl_panel_3.columnWeights = new double[]{0.0, 1.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_3.columnWeights = new double[]{0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
 		gbl_panel_3.rowWeights = new double[]{0.0, Double.MIN_VALUE};
 		panel_3.setLayout(gbl_panel_3);
 		
@@ -212,7 +220,8 @@ public class MainFrame extends JFrame{
 		lblNewLabel_3.setFont(new Font("黑体", Font.PLAIN, 15));
 		lblNewLabel_3.setForeground(Color.WHITE);
 		GridBagConstraints gbc_lblNewLabel_3 = new GridBagConstraints();
-		gbc_lblNewLabel_3.anchor = GridBagConstraints.NORTHWEST;
+		gbc_lblNewLabel_3.insets = new Insets(0, 0, 0, 5);
+		gbc_lblNewLabel_3.anchor = GridBagConstraints.NORTHEAST;
 		gbc_lblNewLabel_3.gridx = 2;
 		gbc_lblNewLabel_3.gridy = 0;
 		panel_3.add(lblNewLabel_3, gbc_lblNewLabel_3);

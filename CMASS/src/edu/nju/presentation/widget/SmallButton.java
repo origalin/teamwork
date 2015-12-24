@@ -19,7 +19,7 @@ public class SmallButton extends JButton{
 		setBorderPainted(false);// ²»»æÖÆ±ß¿ò
 		setHorizontalTextPosition(JButton.CENTER);
 		setVerticalTextPosition(JButton.CENTER);
-		setFont(new Font("ºÚÌå", Font.BOLD, 17));
+		setFont(new Font("Ó×Ô²", Font.BOLD, 17));
 		setBackground(new Color(234, 234, 234));
 		setForeground(new Color(58, 140,187));
 		setOpaque(true);
