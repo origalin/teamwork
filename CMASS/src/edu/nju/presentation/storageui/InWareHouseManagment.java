@@ -164,13 +164,11 @@ public class InWareHouseManagment extends JPanel {
 		btnNewButton = new JButton("\u786E\u8BA4");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
 				if (textField_1.getText().equals(""))
 					JOptionPane.showMessageDialog(null, "请输入中转单号或装车单号");
 				else {
 					String selectedItem = (String) comboBox.getSelectedItem();
-
-					inWare = new InWareHouseManagementbl();
+					inWare = UiFactory.getInWareHouseManagementService();
 					if (selectedItem.equals("中转单编号"))
 						try {
 							inWareHouseDocVO = inWare.getInWareHouseDocVO_Transfer(textField_1.getText(),
@@ -192,7 +190,6 @@ public class InWareHouseManagment extends JPanel {
 						}
 
 					textField.setText(inWareHouseDocVO.getID());
-					// 该行以上没有问题
 					ArrayList<InWareHouseDocLineItem> list = inWareHouseDocVO.getList();
 
 					String[][] data1 = new String[list.size()][7];

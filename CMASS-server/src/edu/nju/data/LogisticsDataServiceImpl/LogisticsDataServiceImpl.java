@@ -47,9 +47,7 @@ public class LogisticsDataServiceImpl  extends UnicastRemoteObject implements Lo
 		try {
 			while(SQL.rs.next()){
 				temp += SQL.rs.getString("his");
-			}
-			
-			
+			}				
 		} catch (SQLException e) {
 			System.out.println("物流历史轨迹查询错误");
 			e.printStackTrace();

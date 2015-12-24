@@ -12,6 +12,7 @@ import javax.swing.JTextField;
 
 import edu.nju.businesslogic.logispicsquerybl.Logisticsquerybl;
 import edu.nju.businesslogicservice.logispicsquerylogicservice.LogispicsQueryLogicService;
+import edu.nju.presentation.UiFactory;
 import edu.nju.vo.PositionVO;
 
 import java.awt.GridBagLayout;
@@ -55,21 +56,18 @@ public class QueryFrame extends JFrame{
 				if(textField.getText().equals(""))
 					JOptionPane.showMessageDialog(null, "请先输入快递单号");
 				else{
-					System.out.println(textField.getText());
-					LogispicsQueryLogicService logicService=new Logisticsquerybl();
+					LogispicsQueryLogicService logicService=UiFactory.getLogisticsQueryService();
 					PositionVO vo=logicService.historyQuery(textField.getText());
 					if(vo==null)
 						JOptionPane.showMessageDialog(null, "不存在该快递单号，请查验重新输入");
 					else{
-						ArrayList<String> history=vo.getHistory();
-						
+						ArrayList<String> history=vo.getHistory();						
 						textArea.append(textField.getText()+":"+'\n');
 						String result="";
 						for(String temp:history)
 							result+=temp+"\n";
 						textArea.append(result);
-				}
-			
+				}			
 				}
 				
 			}

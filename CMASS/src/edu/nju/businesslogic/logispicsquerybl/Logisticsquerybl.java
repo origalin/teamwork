@@ -27,13 +27,10 @@ public class Logisticsquerybl implements LogispicsQueryLogicService {
 		// 对数据层有依赖，遍历持久化文件\
 		PositionVO vo = null;
 		try {
-
 			PositionPO po = logisticsDataService.positionQuery(SendDocID);
 			if(po!=null)
 				vo = new PositionVO(po);
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			System.out.println("逻辑层快递查询失败");
 			e.printStackTrace();
 		}
 		return vo;
