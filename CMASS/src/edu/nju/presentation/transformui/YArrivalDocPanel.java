@@ -71,9 +71,9 @@ public class YArrivalDocPanel extends JPanel{
 		}
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{202, 295, 0, 0};
+		gridBagLayout.columnWidths = new int[]{30, 202, 295, 30, 0};
 		gridBagLayout.rowHeights = new int[]{248, 0, 0, 0, 0, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 1.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 1.0, 1.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
@@ -81,19 +81,11 @@ public class YArrivalDocPanel extends JPanel{
 		GridBagConstraints gbc_panel_11 = new GridBagConstraints();
 		gbc_panel_11.fill = GridBagConstraints.BOTH;
 		gbc_panel_11.insets = new Insets(0, 0, 5, 5);
-		gbc_panel_11.gridx = 0;
+		gbc_panel_11.gridx = 1;
 		gbc_panel_11.gridy = 0;
 		add(panel_11, gbc_panel_11);
 		panel_11.setBorder(null);
 		panel_11.setLayout(new GridLayout(6, 0, 0, 0));
-		
-		JPanel panel = new JPanel();
-		panel_11.add(panel);
-		FlowLayout flowLayout = (FlowLayout) panel.getLayout();
-		flowLayout.setAlignment(FlowLayout.LEFT);
-		
-		JLabel label = new JLabel("\u8425\u4E1A\u5385\u5230\u8FBE\u5355");
-		panel.add(label);
 
 		
 		JPanel panel_6 = new JPanel();
@@ -132,21 +124,21 @@ public class YArrivalDocPanel extends JPanel{
 		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
 		gbc_panel_1.insets = new Insets(0, 0, 5, 5);
 		gbc_panel_1.fill = GridBagConstraints.BOTH;
-		gbc_panel_1.gridx = 1;
+		gbc_panel_1.gridx = 2;
 		gbc_panel_1.gridy = 0;
 		add(panel_1, gbc_panel_1);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
-		gbl_panel_1.columnWidths = new int[]{45, 126, 30, 71, 0};
-		gbl_panel_1.rowHeights = new int[]{170, 24, 27, 0};
-		gbl_panel_1.columnWeights = new double[]{1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
-		gbl_panel_1.rowWeights = new double[]{1.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_1.columnWidths = new int[]{45, 154, 30, 71, 0};
+		gbl_panel_1.rowHeights = new int[]{170, 24, 0};
+		gbl_panel_1.columnWeights = new double[]{0.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
+		gbl_panel_1.rowWeights = new double[]{1.0, 0.0, Double.MIN_VALUE};
 		panel_1.setLayout(gbl_panel_1);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
 		gbc_scrollPane.insets = new Insets(0, 0, 5, 0);
-		gbc_scrollPane.gridwidth = 5;
+		gbc_scrollPane.gridwidth = 6;
 		gbc_scrollPane.gridx = 0;
 		gbc_scrollPane.gridy = 0;
 		panel_1.add(scrollPane, gbc_scrollPane);
@@ -180,11 +172,19 @@ public class YArrivalDocPanel extends JPanel{
 		tableModel = (DefaultTableModel) table.getModel();
 		scrollPane.setViewportView(table);
 		
+		JLabel label_1 = new JLabel("\u5F02\u5E38\u5355\u636E");
+		GridBagConstraints gbc_label_1 = new GridBagConstraints();
+		gbc_label_1.insets = new Insets(0, 0, 0, 5);
+		gbc_label_1.anchor = GridBagConstraints.EAST;
+		gbc_label_1.gridx = 0;
+		gbc_label_1.gridy = 1;
+		panel_1.add(label_1, gbc_label_1);
+		
 		itemIDField = new JTextField();
 		itemIDField.setColumns(15);
 		GridBagConstraints gbc_itemIDField = new GridBagConstraints();
 		gbc_itemIDField.anchor = GridBagConstraints.NORTHWEST;
-		gbc_itemIDField.insets = new Insets(0, 0, 5, 5);
+		gbc_itemIDField.insets = new Insets(0, 0, 0, 5);
 		gbc_itemIDField.gridx = 1;
 		gbc_itemIDField.gridy = 1;
 		panel_1.add(itemIDField, gbc_itemIDField);
@@ -192,7 +192,7 @@ public class YArrivalDocPanel extends JPanel{
 		JLabel label_3 = new JLabel("\u72B6\u6001");
 		GridBagConstraints gbc_label_3 = new GridBagConstraints();
 		gbc_label_3.anchor = GridBagConstraints.WEST;
-		gbc_label_3.insets = new Insets(0, 0, 5, 5);
+		gbc_label_3.insets = new Insets(0, 0, 0, 5);
 		gbc_label_3.gridx = 2;
 		gbc_label_3.gridy = 1;
 		panel_1.add(label_3, gbc_label_3);
@@ -202,38 +202,10 @@ public class YArrivalDocPanel extends JPanel{
 		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"\u635F\u574F", "\u4E22\u5931"}));
 		GridBagConstraints gbc_comboBox = new GridBagConstraints();
 		gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBox.anchor = GridBagConstraints.NORTH;
-		gbc_comboBox.insets = new Insets(0, 0, 5, 0);
+		gbc_comboBox.insets = new Insets(0, 0, 0, 5);
 		gbc_comboBox.gridx = 3;
 		gbc_comboBox.gridy = 1;
 		panel_1.add(comboBox, gbc_comboBox);
-		
-		SmallButton addButton = new SmallButton("\u6DFB\u52A0");
-		addButton.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO 自动生成的方法存根
-				try {
-					yArrivalDoc.checkHas(itemIDField.getText());
-					tableModel.addRow(new Object[] {itemIDField.getText(),comboBox.getSelectedItem()});
-					itemIDField.setText("");
-				} catch (RemoteException e1) {
-					// TODO Auto-generated catch block
-					warning("net");
-				} catch (DatabaseNULLException e1) {
-					// TODO Auto-generated catch block
-					warning("null");
-				}
-				
-			}
-		});
-		GridBagConstraints gbc_addButton = new GridBagConstraints();
-		gbc_addButton.gridwidth = 2;
-		gbc_addButton.anchor = GridBagConstraints.NORTH;
-		gbc_addButton.gridx = 3;
-		gbc_addButton.gridy = 2;
-		panel_1.add(addButton, gbc_addButton);
 		
 		SmallButton creatButton = new SmallButton("\u751F\u6210\u5230\u8FBE\u5355");
 		creatButton.addActionListener(new ActionListener() {
@@ -251,7 +223,7 @@ public class YArrivalDocPanel extends JPanel{
 		gbc_creatButton.anchor = GridBagConstraints.EAST;
 		gbc_creatButton.gridwidth = 2;
 		gbc_creatButton.insets = new Insets(0, 0, 5, 5);
-		gbc_creatButton.gridx = 0;
+		gbc_creatButton.gridx = 1;
 		gbc_creatButton.gridy = 1;
 		add(creatButton, gbc_creatButton);
 		
@@ -261,7 +233,7 @@ public class YArrivalDocPanel extends JPanel{
 		gbc_scrollPane_1.insets = new Insets(0, 0, 5, 5);
 		gbc_scrollPane_1.gridwidth = 2;
 		gbc_scrollPane_1.fill = GridBagConstraints.BOTH;
-		gbc_scrollPane_1.gridx = 0;
+		gbc_scrollPane_1.gridx = 1;
 		gbc_scrollPane_1.gridy = 2;
 		add(scrollPane_1, gbc_scrollPane_1);
 		
@@ -303,13 +275,11 @@ public class YArrivalDocPanel extends JPanel{
 		GridBagConstraints gbc_confirmButton = new GridBagConstraints();
 		gbc_confirmButton.insets = new Insets(0, 0, 0, 5);
 		gbc_confirmButton.anchor = GridBagConstraints.EAST;
-		gbc_confirmButton.gridx = 1;
+		gbc_confirmButton.gridx = 2;
 		gbc_confirmButton.gridy = 4;
 		add(confirmButton, gbc_confirmButton);
 		
 		setOpaque(false);
-		panel.setOpaque(false);
-		panel.setOpaque(false);
 		panel_11.setOpaque(false);
 		panel_12.setOpaque(false);
 		panel_14.setOpaque(false);
@@ -318,6 +288,33 @@ public class YArrivalDocPanel extends JPanel{
 		panel_6.setOpaque(false);
 		panel_8.setOpaque(false);
 		scrollPane.setOpaque(false);
+		
+		SmallButton addButton = new SmallButton("\u6DFB\u52A0");
+		addButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO 自动生成的方法存根
+				try {
+					yArrivalDoc.checkHas(itemIDField.getText());
+					tableModel.addRow(new Object[] {itemIDField.getText(),comboBox.getSelectedItem()});
+					itemIDField.setText("");
+				} catch (RemoteException e1) {
+					// TODO Auto-generated catch block
+					warning("net");
+				} catch (DatabaseNULLException e1) {
+					// TODO Auto-generated catch block
+					warning("null");
+				}
+				
+			}
+		});
+		GridBagConstraints gbc_addButton = new GridBagConstraints();
+		gbc_addButton.gridwidth = 2;
+		gbc_addButton.anchor = GridBagConstraints.NORTH;
+		gbc_addButton.gridx = 4;
+		gbc_addButton.gridy = 1;
+		panel_1.add(addButton, gbc_addButton);
 		scrollPane.getViewport().setOpaque(false);
 		scrollPane_1.setOpaque(false);
 		scrollPane_1.getViewport().setOpaque(false);

@@ -10,6 +10,8 @@ import java.awt.event.MouseListener;
 
 import javax.swing.*;
 
+import edu.nju.businesslogic.infobl.Institution;
+import edu.nju.businesslogicservice.infologicservice.InstitutionLogicService;
 import edu.nju.businesslogicservice.systemlogicservice.SystemLogicService;
 import edu.nju.dataFactory.DataFactory;
 import edu.nju.po.Post;
@@ -51,6 +53,7 @@ public class LoginFrame extends JFrame {
 	JButton confirm, query;
 	MainFrame mainFrame;
 	QueryFrame queryFrame;
+	InstitutionLogicService institution;
 
 	public LoginFrame() {
 		this.setTitle("登陆");
@@ -144,17 +147,21 @@ public class LoginFrame extends JFrame {
 		getContentPane().add(pn3);
 		getRootPane().setDefaultButton(confirm);
 		this.setResizable(false);
+		institution = UiFactory.getInstitutionLogicService();
 		this.setVisible(true);
 	}
 
 	private void loginAction(String account, String password) {// 还要完善
 		SystemLogicService systemLogicService = UiFactory
 				.getSystemLogicService();
-		
+		String institutionstr = null;
+		String namestr = null;
 		String str[] = null;
 		try {
 			str = systemLogicService.getPasswordAndPower(account);
-		} catch (RemoteException e) {
+			institutionstr = institution.getInstitutionID(account)+" "+institution.getInstitutionName(account);
+			namestr = account+" "+institution.getStaffName(account);
+		} catch (RemoteException  e) {
 			e.printStackTrace();
 		}
 		
@@ -164,7 +171,8 @@ public class LoginFrame extends JFrame {
 			JOptionPane.showMessageDialog(null,"密码错误");
 		}else{
 			mainFrame = new MainFrame();
-
+			mainFrame.setInstitution(institutionstr);
+			mainFrame.setName(namestr);
 			mainFrame.comeout();
 		switch (str[1]) {
 		case "总经理":

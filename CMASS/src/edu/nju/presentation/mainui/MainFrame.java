@@ -22,6 +22,8 @@ public class MainFrame extends JFrame{
 	public GridBagConstraints functionConstraints;
 	private JScrollPane scrollPane;
 	JPanel panel_2;
+	JLabel label;
+	JLabel lblNewLabel_2;
 	ImageIcon background = new ImageIcon("images/background.png");
 	ImageIcon small = new ImageIcon("images/small.png");
 	ImageIcon head = new ImageIcon("images/head.png");
@@ -79,27 +81,27 @@ public class MainFrame extends JFrame{
 		panel.setLayout(gbl_panel);
 		
 		
-		JLabel lblCmass = new JLabel("CMASS");
-		lblCmass.setForeground(Color.WHITE);
-		lblCmass.setVerticalAlignment(SwingConstants.BOTTOM);
-		lblCmass.setFont(new Font("黑体", Font.BOLD, 20));
-		lblCmass.setHorizontalAlignment(SwingConstants.CENTER);
-		GridBagConstraints gbc_lblCmass = new GridBagConstraints();
-		gbc_lblCmass.insets = new Insets(-5, 5, 0, 0);
-		gbc_lblCmass.anchor = GridBagConstraints.WEST;
-		gbc_lblCmass.gridx = 0;
-		gbc_lblCmass.gridy = 0;
-		panel.add(lblCmass, gbc_lblCmass);
-		
-		JLabel lblv = new JLabel("\u7269\u6D41\u7BA1\u7406\u7CFB\u7EDFV1.0");
-		lblv.setForeground(Color.WHITE);
-		lblv.setFont(new Font("黑体", Font.BOLD, 20));
-		GridBagConstraints gbc_lblv = new GridBagConstraints();
-		gbc_lblv.insets = new Insets(-20, 5, 5, 0);
-		gbc_lblv.anchor = GridBagConstraints.WEST;
-		gbc_lblv.gridx = 0;
-		gbc_lblv.gridy = 1;
-		panel.add(lblv, gbc_lblv);
+//		JLabel lblCmass = new JLabel("CMASS");
+//		lblCmass.setForeground(Color.WHITE);
+//		lblCmass.setVerticalAlignment(SwingConstants.BOTTOM);
+//		lblCmass.setFont(new Font("黑体", Font.BOLD, 20));
+//		lblCmass.setHorizontalAlignment(SwingConstants.CENTER);
+//		GridBagConstraints gbc_lblCmass = new GridBagConstraints();
+//		gbc_lblCmass.insets = new Insets(-5, 5, 0, 0);
+//		gbc_lblCmass.anchor = GridBagConstraints.WEST;
+//		gbc_lblCmass.gridx = 0;
+//		gbc_lblCmass.gridy = 0;
+//		panel.add(lblCmass, gbc_lblCmass);
+//		
+//		JLabel lblv = new JLabel("\u7269\u6D41\u7BA1\u7406\u7CFB\u7EDFV1.0");
+//		lblv.setForeground(Color.WHITE);
+//		lblv.setFont(new Font("黑体", Font.BOLD, 20));
+//		GridBagConstraints gbc_lblv = new GridBagConstraints();
+//		gbc_lblv.insets = new Insets(-20, 5, 5, 0);
+//		gbc_lblv.anchor = GridBagConstraints.WEST;
+//		gbc_lblv.gridx = 0;
+//		gbc_lblv.gridy = 1;
+//		panel.add(lblv, gbc_lblv);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setOpaque(false);
@@ -125,7 +127,7 @@ public class MainFrame extends JFrame{
 		gbc_lblNewLabel.gridy = 0;
 		panel_1.add(lblNewLabel, gbc_lblNewLabel);
 		
-		JLabel label = new JLabel("\u673A\u6784");
+		label = new JLabel("\u673A\u6784");
 		label.setForeground(Color.GRAY);
 		label.setFont(new Font("黑体", Font.PLAIN, 15));
 		GridBagConstraints gbc_label = new GridBagConstraints();
@@ -142,7 +144,7 @@ public class MainFrame extends JFrame{
 		gbc_lblNewLabel_1.gridy = 0;
 		panel_1.add(lblNewLabel_1, gbc_lblNewLabel_1);
 		
-		JLabel lblNewLabel_2 = new JLabel("00251000000 \u5F20\u4E09\u4E09");
+		lblNewLabel_2 = new JLabel("00251000000 \u5F20\u4E09\u4E09");
 		lblNewLabel_2.setForeground(Color.GRAY);
 		lblNewLabel_2.setFont(new Font("黑体", Font.PLAIN, 15));
 		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
@@ -253,5 +255,11 @@ public class MainFrame extends JFrame{
 	public void setGuidePanel(JPanel panel) {
 		panel_2.removeAll();
 		panel_2.add(panel);
+	}
+	public void setInstitution(String institutionstr) {
+		label.setText(institutionstr);
+	}
+	public void setName(String namestr) {
+		lblNewLabel_2.setText(namestr);
 	}
 }

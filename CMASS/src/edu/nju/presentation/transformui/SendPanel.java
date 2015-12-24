@@ -65,19 +65,6 @@ public class SendPanel extends JPanel{
 		gridBagLayout.rowWeights = new double[]{0.0, 1.0, 0.0, 0.0, 0.5, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
-		JPanel panel_1 = new JPanel();
-		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
-		gbc_panel_1.gridwidth = 3;
-		gbc_panel_1.insets = new Insets(0, 0, 5, 5);
-		gbc_panel_1.fill = GridBagConstraints.BOTH;
-		gbc_panel_1.gridx = 1;
-		gbc_panel_1.gridy = 0;
-		add(panel_1, gbc_panel_1);
-		
-		JLabel label_3 = new JLabel("\u6D3E\u4EF6\u5355");
-		panel_1.add(label_3);
-		label_3.setHorizontalAlignment(SwingConstants.CENTER);
-		
 		JScrollPane scrollPane = new JScrollPane();
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.gridwidth = 3;
@@ -197,7 +184,6 @@ public class SendPanel extends JPanel{
 			warning();
 		}
 		panel.setOpaque(false);
-		panel_1.setOpaque(false);
 		scrollPane.setOpaque(false);
 		scrollPane.getViewport().setOpaque(false);
 		scrollPane_1.setOpaque(false);
