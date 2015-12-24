@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import javax.swing.JButton;
+import edu.nju.presentation.widget.SmallButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -128,6 +128,7 @@ public class YArrivalDocPanel extends JPanel{
 		panel_11.add(panel_12);
 		
 		JPanel panel_1 = new JPanel();
+		panel_1.setOpaque(false);
 		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
 		gbc_panel_1.insets = new Insets(0, 0, 5, 5);
 		gbc_panel_1.fill = GridBagConstraints.BOTH;
@@ -207,7 +208,7 @@ public class YArrivalDocPanel extends JPanel{
 		gbc_comboBox.gridy = 1;
 		panel_1.add(comboBox, gbc_comboBox);
 		
-		JButton addButton = new JButton("\u6DFB\u52A0");
+		SmallButton addButton = new SmallButton("\u6DFB\u52A0");
 		addButton.addActionListener(new ActionListener() {
 			
 			@Override
@@ -228,13 +229,13 @@ public class YArrivalDocPanel extends JPanel{
 			}
 		});
 		GridBagConstraints gbc_addButton = new GridBagConstraints();
-		gbc_addButton.fill = GridBagConstraints.HORIZONTAL;
+		gbc_addButton.gridwidth = 2;
 		gbc_addButton.anchor = GridBagConstraints.NORTH;
 		gbc_addButton.gridx = 3;
 		gbc_addButton.gridy = 2;
 		panel_1.add(addButton, gbc_addButton);
 		
-		JButton creatButton = new JButton("\u751F\u6210\u5230\u8FBE\u5355");
+		SmallButton creatButton = new SmallButton("\u751F\u6210\u5230\u8FBE\u5355");
 		creatButton.addActionListener(new ActionListener() {
 			
 			@Override
@@ -291,7 +292,7 @@ public class YArrivalDocPanel extends JPanel{
 	
 		
 		
-		JButton confirmButton = new JButton("\u786E\u8BA4\u5206\u914D");
+		SmallButton confirmButton = new SmallButton("\u786E\u8BA4\u5206\u914D");
 		confirmButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				saveYArrivalDoc();

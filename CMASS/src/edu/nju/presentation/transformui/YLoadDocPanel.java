@@ -3,7 +3,7 @@ package edu.nju.presentation.transformui;
 import java.awt.FlowLayout;
 
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JButton;
+import edu.nju.presentation.widget.SmallButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -145,7 +145,7 @@ public class YLoadDocPanel extends JPanel{
 		));
 		tableModel = (DefaultTableModel) table.getModel();
 		
-		JButton addButton = new JButton("\u6DFB\u52A0");
+		SmallButton addButton = new SmallButton("\u6DFB\u52A0");
 		addButton.addActionListener(new ActionListener() {
 			
 			@Override
@@ -192,7 +192,7 @@ public class YLoadDocPanel extends JPanel{
 		gbc_addButton.gridy = 2;
 		panel_1.add(addButton, gbc_addButton);
 		
-		JButton createButton = new JButton("\u751F\u6210\u8425\u4E1A\u5385\u88C5\u8F66\u5355");
+		SmallButton createButton = new SmallButton("\u751F\u6210\u8425\u4E1A\u5385\u88C5\u8F66\u5355");
 		createButton.addActionListener(new ActionListener() {
 			
 			@Override

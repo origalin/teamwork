@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
 
-import javax.swing.JButton;
+import edu.nju.presentation.widget.SmallButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -183,7 +183,7 @@ public class ZLoadDocPanel extends JPanel{
 		gbc_itemIDField.gridy = 1;
 		panel_1.add(itemIDField, gbc_itemIDField);
 		
-		JButton addButton = new JButton("\u6DFB\u52A0");
+		SmallButton addButton = new SmallButton("\u6DFB\u52A0");
 		addButton.addActionListener(new ActionListener() {
 			
 			@Override
@@ -209,7 +209,7 @@ public class ZLoadDocPanel extends JPanel{
 		gbc_addButton.gridy = 2;
 		panel_1.add(addButton, gbc_addButton);
 		
-		JButton createButton = new JButton("\u751F\u6210\u4E2D\u8F6C\u4E2D\u5FC3\u88C5\u8F66\u5355");
+		SmallButton createButton = new SmallButton("\u751F\u6210\u4E2D\u8F6C\u4E2D\u5FC3\u88C5\u8F66\u5355");
 		createButton.addActionListener(new ActionListener() {
 			
 			@Override

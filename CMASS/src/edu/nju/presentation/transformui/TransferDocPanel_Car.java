@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
 
-import javax.swing.JButton;
+import edu.nju.presentation.widget.SmallButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -138,7 +138,7 @@ public class TransferDocPanel_Car extends JPanel {
 		gbc_panel_12.gridy = 6;
 		panel_11.add(panel_12, gbc_panel_12);
 
-		JButton createButton = new JButton("\u751F\u6210\u9646\u8FD0\u4E2D\u8F6C\u5355");
+		SmallButton createButton = new SmallButton("\u751F\u6210\u9646\u8FD0\u4E2D\u8F6C\u5355");
 		createButton.addActionListener(new ActionListener() {
 
 			@Override
@@ -193,7 +193,7 @@ public class TransferDocPanel_Car extends JPanel {
 		gbc_itemIDField.gridy = 1;
 		panel_1.add(itemIDField, gbc_itemIDField);
 
-		JButton addButton = new JButton("\u6DFB\u52A0");
+		SmallButton addButton = new SmallButton("\u6DFB\u52A0");
 		tableModel = (DefaultTableModel) table.getModel();
 		addButton.addActionListener(new ActionListener() {
 

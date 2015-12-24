@@ -28,6 +28,7 @@ import edu.nju.presentation.approveui.checkOverDoc;
 import edu.nju.presentation.financeui.accountManagement;
 import edu.nju.presentation.mainui.CheckDialog;
 import edu.nju.presentation.widget.MyTable;
+import edu.nju.presentation.widget.SmallButton;
 import edu.nju.vo.OverDocVO;
 import edu.nju.vo.SendDocVO;
 import edu.nju.vo.YDeliverDocVO;
@@ -107,7 +108,7 @@ public class SendPanel extends JPanel{
 		toSendModel = (DefaultTableModel) toSendTable.getModel();
 		scrollPane.setViewportView(toSendTable);
 		
-		JButton receiveButton = new JButton("\u586B\u5199\u6536\u4EF6\u5355");
+		JButton receiveButton = new SmallButton("\u586B\u5199\u6536\u4EF6\u5355");
 		receiveButton.addActionListener(new ActionListener() {
 			
 			@Override
@@ -171,7 +172,7 @@ public class SendPanel extends JPanel{
 		toOverModel = (DefaultTableModel) toOverTable.getModel();
 		scrollPane_1.setViewportView(toOverTable);
 		
-		JButton createButtom = new JButton("\u751F\u6210\u6536\u4EF6\u5355");
+		JButton createButtom = new SmallButton("\u751F\u6210\u6536\u4EF6\u5355");
 		createButtom.addActionListener(new ActionListener() {
 			
 			@Override

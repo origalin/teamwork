@@ -26,6 +26,7 @@ import edu.nju.presentation.widget.SmallButton;
 import edu.nju.vo.SendDocVO;
 
 import java.awt.Color;
+import java.awt.Component;
 
 public class CollertionPanel extends JPanel{
 	String sName,rName,scity,rcity,sAddress,rAddress,sTelePhone,rTelePhone,sMobilePhone,rMobilePhone,itemKind,sUnit,rUnit;
@@ -453,7 +454,7 @@ public class CollertionPanel extends JPanel{
 		flowLayout_12.setAlignment(FlowLayout.RIGHT);
 		panel_11.add(panel_12);
 		
-		JButton createButton = new JButton("\u8BA2\u5355\u751F\u6210");
+		JButton createButton = new SmallButton("\u8BA2\u5355\u751F\u6210");
 		createButton.addActionListener(new ActionListener() {
 			
 			@Override

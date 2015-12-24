@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
 
-import javax.swing.JButton;
+import edu.nju.presentation.widget.SmallButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -147,7 +147,7 @@ public class TransferDocPanel_Train extends JPanel {
 		gbc_panel_12.gridy = 4;
 		panel_11.add(panel_12, gbc_panel_12);
 
-		JButton createButton = new JButton("\u751F\u6210\u94C1\u8DEF\u4E2D\u8F6C\u5355");
+		SmallButton createButton = new SmallButton("\u751F\u6210\u94C1\u8DEF\u4E2D\u8F6C\u5355");
 		createButton.addActionListener(new ActionListener() {
 
 			@Override
@@ -193,14 +193,14 @@ public class TransferDocPanel_Train extends JPanel {
 		scrollPane.setViewportView(table);
 
 		itemIDField = new JTextField();
-		itemIDField.setColumns(15);
+		itemIDField.setColumns(25);
 		GridBagConstraints gbc_itemIDField = new GridBagConstraints();
 		gbc_itemIDField.insets = new Insets(0, 0, 5, 0);
 		gbc_itemIDField.gridx = 0;
 		gbc_itemIDField.gridy = 1;
 		panel_1.add(itemIDField, gbc_itemIDField);
 		tableModel = (DefaultTableModel) table.getModel();
-		JButton addButton = new JButton("\u6DFB\u52A0");
+		SmallButton addButton = new SmallButton("\u6DFB\u52A0");
 		addButton.addActionListener(new ActionListener() {
 
 			@Override
