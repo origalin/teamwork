@@ -27,6 +27,7 @@ public class checkCostIncomDocPO extends JPanel{
 	private JTextField textField_2;
 	private String staffID;
 	public checkCostIncomDocPO(String staffID) {
+		setOpaque(false);
 		this.staffID=staffID;
 		try {
 			bl=new financebl();

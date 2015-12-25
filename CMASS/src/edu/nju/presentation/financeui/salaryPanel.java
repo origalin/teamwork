@@ -19,6 +19,7 @@ public class salaryPanel extends JPanel{
 	private MyTable table;
 	private JScrollPane scrollPane;
 	public salaryPanel() {
+		setOpaque(false);
 		try {
 			bl=new financebl();
 		} catch (RemoteException e) {
@@ -41,6 +42,8 @@ public class salaryPanel extends JPanel{
 		
 		table = new MyTable();
 		scrollPane.setViewportView(table);
+		scrollPane.setOpaque(false);
+		scrollPane.getViewport().setOpaque(false);
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
 				{Boolean.FALSE, null, null, null},

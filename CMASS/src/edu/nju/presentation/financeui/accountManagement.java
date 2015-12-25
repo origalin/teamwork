@@ -43,6 +43,7 @@ public class accountManagement extends JPanel{
 	}
 	*/
 	public accountManagement(String staffID) {
+		setOpaque(false);
 		institution=new Institution();
 		systembl=new SystemBl();
 		this.staffID=staffID;
@@ -220,6 +221,9 @@ public class accountManagement extends JPanel{
 		add(button_2, gbc_button_2);
 		
 		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setViewportView(table);
+		scrollPane.setOpaque(false);
+		scrollPane.getViewport().setOpaque(false);
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.gridwidth = 4;

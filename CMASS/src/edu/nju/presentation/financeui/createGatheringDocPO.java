@@ -44,6 +44,7 @@ public class createGatheringDocPO extends JPanel{
 		}
  */
 		public createGatheringDocPO(String staffID) {
+			setOpaque(false);
 			systembl=new SystemBl();
 			institution=new Institution();
 			this.staffID=staffID;

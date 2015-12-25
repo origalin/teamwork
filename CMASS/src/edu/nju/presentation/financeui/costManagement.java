@@ -62,7 +62,7 @@ public class costManagement extends JPanel{
 	private SystemBl systembl;
 	public costManagement(String staffID) {
 		this.staffID=staffID;
-		
+		setOpaque(false);
 		try {
 			systembl=new SystemBl();
 			institution=new Institution();

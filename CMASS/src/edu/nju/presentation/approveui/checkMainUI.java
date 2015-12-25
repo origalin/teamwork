@@ -87,6 +87,7 @@ public class checkMainUI extends JPanel{
 	}
 	*/
 	public checkMainUI(String staffID) {
+		setOpaque(false);
 		systembl=new SystemBl();
 		institution=new Institution();
 		this.staffID=staffID;
@@ -463,6 +464,9 @@ public class checkMainUI extends JPanel{
 		
 		
 		scrollPane = new JScrollPane();
+		scrollPane.setViewportView(table);
+		scrollPane.setOpaque(false);
+		scrollPane.getViewport().setOpaque(false);
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.insets = new Insets(0, 0, 5, 5);
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
@@ -639,8 +643,7 @@ public class checkMainUI extends JPanel{
 			}
 		});
 		GridBagConstraints gbc_button = new GridBagConstraints();
-		gbc_button.insets = new Insets(0, 0, 0, 5);
-		gbc_button.gridx = 0;
+		gbc_button.gridx = 2;
 		gbc_button.gridy = 4;
 		add(button, gbc_button);
 	}
@@ -769,6 +772,8 @@ public class checkMainUI extends JPanel{
 		}
 		table=initializeTable(getEmptyList());
 		scrollPane.setViewportView(table);
+		scrollPane.setOpaque(false);
+		scrollPane.getViewport().setOpaque(false);
 		updateUI();
 		String description="…Û≈˙µ•æ›";
 		OperationPO po=new OperationPO(new Date(), staffID, staffName, description);

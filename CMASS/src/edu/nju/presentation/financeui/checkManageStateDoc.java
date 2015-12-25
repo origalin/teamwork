@@ -48,6 +48,7 @@ public class checkManageStateDoc extends JPanel{
 	private JScrollPane scrollPane;
 	private JScrollPane scrollPane_1;
 	public checkManageStateDoc(String staffID) {
+		setOpaque(false);
 		this.staffID=staffID;
 		try {
 			bl=new financebl();
@@ -147,7 +148,11 @@ public class checkManageStateDoc extends JPanel{
 				GatheringDocTable=initializeTable_1(GatheringDocVOList);
 				GatheringDocTable.setPreferredScrollableViewportSize(new Dimension(200, 200));
 				scrollPane.setViewportView(PayDocTable);
+				scrollPane.setOpaque(false);
+				scrollPane.getViewport().setOpaque(false);
 				scrollPane_1.setViewportView(GatheringDocTable);
+				scrollPane_1.setOpaque(false);
+				scrollPane_1.getViewport().setOpaque(false);
 				updateUI();
 			}
 		});
@@ -158,6 +163,8 @@ public class checkManageStateDoc extends JPanel{
 		add(checkButton, gbc_checkButton);
 		
 		scrollPane = new JScrollPane();
+		scrollPane.setOpaque(false);
+		scrollPane.getViewport().setOpaque(false);
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.gridwidth = 2;
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
@@ -171,11 +178,7 @@ public class checkManageStateDoc extends JPanel{
 		scrollPane.setViewportView(PayDocTable);
 		PayDocTable.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null},
-				{null},
-				{null},
-				{null},
-				{null},
+				
 			},
 			new String[] {
 				"\u4ED8\u6B3E\u5355"
@@ -183,6 +186,8 @@ public class checkManageStateDoc extends JPanel{
 		));
 		
 		scrollPane_1 = new JScrollPane();
+		scrollPane_1.setOpaque(false);
+		scrollPane_1.getViewport().setOpaque(false);
 		GridBagConstraints gbc_scrollPane_1 = new GridBagConstraints();
 		gbc_scrollPane_1.gridwidth = 2;
 		gbc_scrollPane_1.fill = GridBagConstraints.BOTH;
@@ -196,11 +201,7 @@ public class checkManageStateDoc extends JPanel{
 		scrollPane_1.setViewportView(GatheringDocTable);
 		GatheringDocTable.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null},
-				{null},
-				{null},
-				{null},
-				{null},
+				
 			},
 			new String[] {
 				"\u6536\u6B3E\u5355"

@@ -29,6 +29,7 @@ public class freightMoneyPanel extends JPanel{
 	private MyTable table;
 	JScrollPane scrollPane;
 	public freightMoneyPanel() {
+		setOpaque(false);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{266, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0};
@@ -37,6 +38,8 @@ public class freightMoneyPanel extends JPanel{
 		setLayout(gridBagLayout);
 		
 		scrollPane = new JScrollPane();
+		scrollPane.setOpaque(false);
+		scrollPane.getViewport().setOpaque(false);
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
 		gbc_scrollPane.gridx = 0;
