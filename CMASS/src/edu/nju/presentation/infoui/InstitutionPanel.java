@@ -44,6 +44,7 @@ import java.util.Date;
 
 
 
+
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 import javax.swing.JScrollPane;
@@ -72,6 +73,7 @@ public class InstitutionPanel extends JPanel {
 	 * Create the panel.
 	 */
 	public InstitutionPanel() {
+		setOpaque(false);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{147, 527, 0};
 		gridBagLayout.rowHeights = new int[]{56, 501, 0};
@@ -87,7 +89,7 @@ public class InstitutionPanel extends JPanel {
 		gbc_panel_3.gridx = 0;
 		gbc_panel_3.gridy = 0;
 		add(panel_3, gbc_panel_3);
-		
+		panel_3.setOpaque(false);
 		JLabel label = new JLabel("\u4EBA\u5458\u4E0E\u673A\u6784\u7BA1\u7406");
 		label.setFont(new Font("宋体", Font.PLAIN, 23));
 		panel_3.add(label);
@@ -99,7 +101,8 @@ public class InstitutionPanel extends JPanel {
 		gbc_scrollPane_1.gridx = 0;
 		gbc_scrollPane_1.gridy = 1;
 		add(scrollPane_1, gbc_scrollPane_1);
-		
+		scrollPane_1.setOpaque(false);
+		scrollPane_1.getViewport().setOpaque(false);
 		tree = new JTree();
 	
 		try {
@@ -242,19 +245,12 @@ public class InstitutionPanel extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				if(check(table)){
 				table.setEnabled(false);
 				StaffPO po = null;
 
 				for (int row = 0; row < table.getRowCount();row++) {
-					if(((String) table.getValueAt(row, 0)).equals("")||
-							((String) table.getValueAt(row,1)).equals("")||((String) table
-									.getValueAt(row, 2)).equals("")||((String) table
-									.getValueAt(row, 3)).equals("")||((String) table
-									.getValueAt(row, 4)).equals("")||((String)table.getValueAt(row, 5)).equals("")){
-						JOptionPane.showMessageDialog(null,"信息未填完整，请检查");
-						continue;
-					}
+		
 					try {
 						po = new StaffPO((String) table.getValueAt(row, 0),
 								(String) table.getValueAt(row,1), (String) table
@@ -273,6 +269,7 @@ public class InstitutionPanel extends JPanel {
 							}
 				}		
 				
+			}
 			}
 		});
 		
@@ -585,5 +582,18 @@ public class InstitutionPanel extends JPanel {
 		));
 	}
 	
+	boolean check(MyTable table){
+		for (int row = 0; row < table.getRowCount();row++) {
+			for(int col=0;col<table.getColumnCount();col++){
+				if(((String)table.getValueAt(row, col)).equals("")){
+					JOptionPane.showMessageDialog(null,"信息不完整，请检查");
+					return false;
+				}
+			}
+			
+		
+	}
+		return true;
+}
 	
 }

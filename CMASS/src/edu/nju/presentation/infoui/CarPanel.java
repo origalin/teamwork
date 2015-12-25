@@ -19,9 +19,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Vector;
 
-import javax.swing.JButton;
+
+
+
+
+
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
 
@@ -29,11 +32,19 @@ import edu.nju.businesslogic.infobl.Car;
 import edu.nju.businesslogicservice.infologicservice.CarLogicService;
 import edu.nju.po.CarPO;
 import edu.nju.presentation.UiFactory;
+import edu.nju.presentation.widget.MyTable;
+import edu.nju.presentation.widget.SmallButton;
 import edu.nju.tools.Time;
 import edu.nju.vo.CarVO;
 
+import javax.swing.JButton;
+
+import com.sun.org.apache.xml.internal.security.Init;
+
+import java.awt.Dimension;
+
 public class CarPanel extends JPanel {
-	private JTable table;
+	private MyTable table;
 	DefaultTableModel model;
 	CarLogicService carBl =UiFactory.getCarLogicService();
 
@@ -43,26 +54,14 @@ public class CarPanel extends JPanel {
 	 */
 
 	public CarPanel(String institutionName) throws RemoteException {
+		setOpaque(false);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] { 0, 0 };
-		gridBagLayout.rowHeights = new int[] { 63, 0, 320, 0 };
+		gridBagLayout.rowHeights = new int[] { 0, 320, 0 };
 		gridBagLayout.columnWeights = new double[] { 1.0, Double.MIN_VALUE };
-		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 1.0,
+		gridBagLayout.rowWeights = new double[] { 0.0, 1.0,
 				Double.MIN_VALUE };
 		setLayout(gridBagLayout);
-
-		JPanel panel = new JPanel();
-		panel.setOpaque(false);
-		GridBagConstraints gbc_panel = new GridBagConstraints();
-		gbc_panel.insets = new Insets(0, 0, 5, 0);
-		gbc_panel.fill = GridBagConstraints.HORIZONTAL;
-		gbc_panel.gridx = 0;
-		gbc_panel.gridy = 0;
-		add(panel, gbc_panel);
-		
-		JLabel label = new JLabel("\u8F66\u8F86\u4FE1\u606F\u7BA1\u7406");
-		label.setFont(new Font("宋体", Font.PLAIN, 22));
-		panel.add(label);
 
 		JPanel panel_1 = new JPanel();
 		panel_1.setOpaque(false);
@@ -70,21 +69,21 @@ public class CarPanel extends JPanel {
 		gbc_panel_1.insets = new Insets(0, 0, 5, 0);
 		gbc_panel_1.fill = GridBagConstraints.BOTH;
 		gbc_panel_1.gridx = 0;
-		gbc_panel_1.gridy = 1;
+		gbc_panel_1.gridy = 0;
 		add(panel_1, gbc_panel_1);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
-		gbl_panel_1.columnWidths = new int[] { 0, 0, 0, 57, 64, 0, 0, 0, 0 };
+		gbl_panel_1.columnWidths = new int[] { 0, 0, 57, 64, 0, 0, 0, 0 };
 		gbl_panel_1.rowHeights = new int[] { 49, 0 };
-		gbl_panel_1.columnWeights = new double[] { 1.0, 0.0, 0.0, 0.0, 0.0,
-				0.0, 1.0, 0.0, Double.MIN_VALUE };
+		gbl_panel_1.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0,
+				1.0, 0.0, 0.0, Double.MIN_VALUE };
 		gbl_panel_1.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
 		panel_1.setLayout(gbl_panel_1);
 
-		JButton button = new JButton("\u65B0\u589E");
+		SmallButton button = new SmallButton("\u65B0\u589E");
 
 		GridBagConstraints gbc_button = new GridBagConstraints();
 		gbc_button.insets = new Insets(0, 0, 0, 5);
-		gbc_button.gridx = 1;
+		gbc_button.gridx = 0;
 		gbc_button.gridy = 0;
 		panel_1.add(button, gbc_button);
 
@@ -98,10 +97,10 @@ public class CarPanel extends JPanel {
 			}
 		});
 
-		JButton button_1 = new JButton("\u4FEE\u6539\r\n");
+		SmallButton button_1 = new SmallButton("\u4FEE\u6539\r\n");
 		GridBagConstraints gbc_button_1 = new GridBagConstraints();
 		gbc_button_1.insets = new Insets(0, 0, 0, 5);
-		gbc_button_1.gridx = 2;
+		gbc_button_1.gridx = 1;
 		gbc_button_1.gridy = 0;
 		panel_1.add(button_1, gbc_button_1);
 
@@ -113,10 +112,10 @@ public class CarPanel extends JPanel {
 			}
 		});
 
-		JButton button_2 = new JButton("\u5220\u9664");
+		SmallButton button_2 = new SmallButton("\u5220\u9664");
 		GridBagConstraints gbc_button_2 = new GridBagConstraints();
 		gbc_button_2.insets = new Insets(0, 0, 0, 5);
-		gbc_button_2.gridx = 3;
+		gbc_button_2.gridx = 2;
 		gbc_button_2.gridy = 0;
 		panel_1.add(button_2, gbc_button_2);
 
@@ -161,10 +160,10 @@ public class CarPanel extends JPanel {
 			}
 		});
 
-		JButton button_3 = new JButton("\u67E5\u8BE2");
+		SmallButton button_3 = new SmallButton("\u67E5\u8BE2");
 		GridBagConstraints gbc_button_3 = new GridBagConstraints();
 		gbc_button_3.insets = new Insets(0, 0, 0, 5);
-		gbc_button_3.gridx = 4;
+		gbc_button_3.gridx = 3;
 		gbc_button_3.gridy = 0;
 		panel_1.add(button_3, gbc_button_3);
 
@@ -181,19 +180,21 @@ public class CarPanel extends JPanel {
 			}
 		});
 
-		JButton button_4 = new JButton("\u4FDD\u5B58");
+		SmallButton button_4 = new SmallButton("\u4FDD\u5B58");
 		GridBagConstraints gbc_button_4 = new GridBagConstraints();
 		gbc_button_4.insets = new Insets(0, 0, 0, 5);
-		gbc_button_4.gridx = 6;
+		gbc_button_4.gridx = 5;
 		gbc_button_4.gridy = 0;
 		panel_1.add(button_4, gbc_button_4);
+		
+	
 
 		// 保存的监听
 
 		button_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd");
-			
+				if(check(table)){
 				table.setEnabled(false);
 				for (int i = 0; i < table.getRowCount(); i++) {
 					CarPO carPO;
@@ -206,7 +207,7 @@ public class CarPanel extends JPanel {
 							e1.printStackTrace();
 							JOptionPane.showMessageDialog(null, "日期格式错误，应为yyyy-MM-dd，请检查");
 						}
-//						System.out.println(date);
+
 				
 						carPO = new CarPO((String) table.getValueAt(i, 0),
 								(String) table.getValueAt(i, 1), (String) table
@@ -222,18 +223,40 @@ public class CarPanel extends JPanel {
 				}		
 				
 			}
+			}
 		});
-
+		SmallButton button_5 = new SmallButton("\u53D6\u6D88");
+		GridBagConstraints gbc_button_5 = new GridBagConstraints();
+		gbc_button_5.gridx = 6;
+		gbc_button_5.gridy = 0;
+		panel_1.add(button_5, gbc_button_5);
+		
+		button_5.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+			
+				initTable(table, institutionName);
+			}
+		});
+		
+		
+		
 		JScrollPane scrollPane = new JScrollPane();
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
 		gbc_scrollPane.gridx = 0;
-		gbc_scrollPane.gridy = 2;
+		gbc_scrollPane.gridy = 1;
 		add(scrollPane, gbc_scrollPane);
 		scrollPane.setOpaque(false);
 		scrollPane.getViewport().setOpaque(false);
+		scrollPane.setBorder(null);
+		scrollPane.getViewport().setBorder(null);
+		scrollPane.setViewportBorder(null);
 		
-		table = new JTable();
+		table = new MyTable();
+		table.setPreferredScrollableViewportSize(new Dimension(300, 300));
 		scrollPane.setViewportView(table);
 		table.setModel(new DefaultTableModel(new Object[][] {}, new String[] {
 				"\u8F66\u8F86\u4EE3\u53F7", "\u53D1\u52A8\u673A\u53F7",
@@ -243,14 +266,7 @@ public class CarPanel extends JPanel {
 		table.getColumnModel().getColumn(0).setPreferredWidth(149);
 		table.setEnabled(false);
 
-		model = (DefaultTableModel) table.getModel();
-
-		ArrayList<CarVO> carList = carBl.getCarList(institutionName);
-		for (CarVO vo : carList) {
-			model.addRow(new Object[] { vo.getCarID(), vo.getEngineID(),
-					vo.getPlateID(), vo.getUnderpanID(),
-					vo.getInstitutionName(), Time.toDaysTime(vo.getBuyTime()), String.valueOf(vo.getYears()) });
-		}
+		initTable(table, institutionName);
 	}
 
 	private void findInTable(String str) {
@@ -268,4 +284,42 @@ public class CarPanel extends JPanel {
 			}
 		}
 	}
+	
+	void initTable(MyTable table,String institutionName){
+		
+		table.setEnabled(false);
+		model=(DefaultTableModel)table.getModel();
+		int row=model.getRowCount();
+		for(int i=0;i<row;i++){
+			System.out.println(model.getRowCount());
+				model.removeRow(0);
+		}
+	
+
+		ArrayList<CarVO> carList = null;
+		try {
+			carList = carBl.getCarList(institutionName);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		for (CarVO vo : carList) {
+			model.addRow(new Object[] { vo.getCarID(), vo.getEngineID(),
+					vo.getPlateID(), vo.getUnderpanID(),
+					vo.getInstitutionName(), Time.toDaysTime(vo.getBuyTime()), String.valueOf(vo.getYears()) });
+		}
+	}
+	boolean check(MyTable table){
+		for (int row = 0; row < table.getRowCount();row++) {
+			for(int col=0;col<table.getColumnCount();col++){
+				if(((String)table.getValueAt(row, col)).equals("")){
+					JOptionPane.showMessageDialog(null,"信息不完整，请检查");
+					return false;
+				}
+			}
+			
+		
+	}
+		return true;
+}
 }
