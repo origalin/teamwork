@@ -416,13 +416,7 @@ public class financebl implements FinanceLogicService {
 		ArrayList<String> SendDoclist;
 		try {
 			SendDoclist = collectionbl.getSendDocsByID(courier_ID);
-			
-			if(SendDoclist.size()==0){
-				System.out.println("没有派件");
-			}else{
-				System.out.println(SendDoclist.size());
-			}
-			
+			if(SendDoclist!=null){
 			double money = 0;
 			for (String itemID : SendDoclist) {
 				SendDocPO po;
@@ -432,6 +426,10 @@ public class financebl implements FinanceLogicService {
 			String  GatheringDocID=financeDataService.getNewGatheringDocID()+"";
 			return new GatheringDocVO(GatheringDocID, new Date(), money,
 					courier_ID, SendDoclist, account);
+			}else{
+				 JOptionPane.showMessageDialog(null, "该快递员目前没有新的派件", "错误",JOptionPane.PLAIN_MESSAGE);  
+
+			}
 		} catch (RemoteException e) {
 			System.out.println("财务数据层查询失败");
 			e.printStackTrace();
@@ -576,13 +574,27 @@ public class financebl implements FinanceLogicService {
 			e.printStackTrace();
 		}
 		if (position == Post.快递员) {
-			return calculateCourierSalary(staffID);
+			try {
+				return calculateCourierSalary(staffID);
+			} catch (DatabaseNULLException e) {
+				// TODO Auto-generated catch block
+			    JOptionPane.showMessageDialog(null, "查找不到数据库", "错误",JOptionPane.PLAIN_MESSAGE);  
+				e.printStackTrace();
+				return -1;
+				
+			}
 		} else {
-			return calculateNormalSalary(staffID);
+			try {
+				return calculateNormalSalary(staffID);
+			} catch (DatabaseNULLException e) {
+				JOptionPane.showMessageDialog(null, "查找不到数据库", "错误",JOptionPane.PLAIN_MESSAGE); 
+				e.printStackTrace();
+				return -1;
+			}
 		}
 	}
 
-	public double calculateCourierSalary(String staffID) {
+	public double calculateCourierSalary(String staffID) throws DatabaseNULLException {
 		try {
 			double base = institution.getBase(staffID);
 			double bonus = institution.getBonus(staffID);
@@ -618,7 +630,7 @@ public class financebl implements FinanceLogicService {
 
 	}
 
-	public double calculateNormalSalary(String staffID) {
+	public double calculateNormalSalary(String staffID) throws DatabaseNULLException {
 		try {
 			double base = institution.getBase(staffID);
 			double bonus = institution.getBonus(staffID);
@@ -705,6 +717,9 @@ public class financebl implements FinanceLogicService {
 			po = institution.getSalary(staffID);
 		} catch (RemoteException e) {
 			System.out.println("与机构协作出错");		
+			e.printStackTrace();
+		} catch (DatabaseNULLException e) {
+			JOptionPane.showMessageDialog(null, "查找不到数据库", "错误",JOptionPane.PLAIN_MESSAGE); 
 			e.printStackTrace();
 		}
 		return po;

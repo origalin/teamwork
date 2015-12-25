@@ -14,6 +14,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.table.DefaultTableModel;
 
+import edu.nju.presentation.widget.MyTable;
 import edu.nju.vo.TransferDoc_TrainVO;
 
 import javax.swing.SwingConstants;
@@ -25,7 +26,7 @@ public class CheckTransferDoc_Train extends JPanel{
 	private JTextField train_num;
 	private JTextField watcherField;
 	private JTextField endPlace;
-	private JTable table;
+	private MyTable table;
 	private JTextField startPlace;
 	private JTextField transferID;
 	private JTextField date;
@@ -262,7 +263,7 @@ public class CheckTransferDoc_Train extends JPanel{
 			Object[]oneLine={itemID[i]};
 			tableInfo[i]=oneLine;
 		}
-		table = new JTable();
+		table = new MyTable();
 		table.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 		table.setModel(new DefaultTableModel(
 			tableInfo,

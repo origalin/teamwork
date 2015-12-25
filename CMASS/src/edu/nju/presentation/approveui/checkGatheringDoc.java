@@ -13,6 +13,7 @@ import java.util.Date;
 
 import javax.swing.table.DefaultTableModel;
 
+import edu.nju.presentation.widget.MyTable;
 import edu.nju.vo.GatheringDocVO;
 public class checkGatheringDoc extends JPanel{
 	private JTextField GatheringDocID;
@@ -163,8 +164,8 @@ public class checkGatheringDoc extends JPanel{
 		money.setText(vo.getMoney()+"");
 		courier_ID.setText(vo.getCourier_ID());
 	}
-	public JTable initializeTable(ArrayList<String> list){
-		JTable table=new JTable();
+	public MyTable initializeTable(ArrayList<String> list){
+		MyTable table=new MyTable();
 		Object[][] array=new Object[list.size()][];
 		for(int i=0;i<list.size();i++){
 			Object[] oneLine={list.get(i)};

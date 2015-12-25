@@ -1,6 +1,7 @@
 package edu.nju.presentation.approveui;
 import javax.swing.*;
 
+import edu.nju.presentation.widget.MyTable;
 import edu.nju.vo.OverDocVO;
 
 import java.awt.GridBagLayout;
@@ -14,7 +15,7 @@ public class checkOverDoc extends JPanel{
 	private JTextField date;
 	private JTextField OverDocID;
 	private JTextField courier;
-	private JTable table;
+	private MyTable table;
 	public checkOverDoc(OverDocVO vo) {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{48, 117, 0, 76, 0, 52, 0};
@@ -120,7 +121,7 @@ public class checkOverDoc extends JPanel{
 			Object[]oneLine={itemID[i],reciever[i]};
 			tableInfo[i]=oneLine;
 		}
-		table = new JTable();
+		table = new MyTable();
 		table.setModel(new DefaultTableModel(
 			tableInfo,
 			new String[] {

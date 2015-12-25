@@ -14,6 +14,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.table.DefaultTableModel;
 
+import edu.nju.presentation.widget.MyTable;
 import edu.nju.vo.TransferDocVO;
 import edu.nju.vo.TransferDoc_CarVO;
 import edu.nju.vo.TransferDoc_TrainVO;
@@ -27,7 +28,7 @@ public class CheckTransferDoc_Car extends JPanel{
 	private JTextField carIDField;
 	private JTextField watcherField;
 	private JTextField endPlace;
-	private JTable table;
+	private MyTable table;
 	private JTextField startPlace;
 	private JTextField TransferDocID;
 	private JTextField Date;
@@ -255,7 +256,7 @@ public class CheckTransferDoc_Car extends JPanel{
 			tableInfo[i]=oneLine;
 		}
 		
-		table = new JTable();
+		table = new MyTable();
 		table.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 		table.setModel(new DefaultTableModel(
 			tableInfo,

@@ -9,9 +9,12 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
 import edu.nju.businesslogic.approvebl.approvebl;
+import edu.nju.businesslogic.infobl.Institution;
+import edu.nju.businesslogic.systembl.SystemBl;
 import edu.nju.po.Doc;
 import edu.nju.po.GatheringDocPO;
 import edu.nju.po.InWareHouseDocPO;
+import edu.nju.po.OperationPO;
 import edu.nju.po.OutWareHouseDocPO;
 import edu.nju.po.OverDocPO;
 import edu.nju.po.PayDocPO;
@@ -39,6 +42,7 @@ import edu.nju.vo.YLoadDocVO;
 import edu.nju.vo.ZArrivalDocVO;
 import edu.nju.vo.ZLoadDocVO;
 import edu.nju.presentation.mainui.*;
+import edu.nju.presentation.widget.MyTable;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -64,8 +68,11 @@ public class checkMainUI extends JPanel{
 	ArrayList<YLoadDocPO> uncheckedYLoadDocList;
 	ArrayList<ZArrivalDocPO> uncheckedZArrivalDocList;
 	approvebl bl;
+	private Institution institution;
+	private String staffName;
+	private SystemBl systembl;
 	private String staffID;
-	private JTable table;
+	private MyTable table;
 	private JScrollPane scrollPane;
 	private JTextField textField;
 	/*
@@ -79,7 +86,15 @@ public class checkMainUI extends JPanel{
 	}
 	*/
 	public checkMainUI(String staffID) {
+		systembl=new SystemBl();
+		institution=new Institution();
 		this.staffID=staffID;
+		try {
+			this.staffName=institution.getStaffName(staffID);
+		} catch (RemoteException e3) {
+			// TODO Auto-generated catch block
+			e3.printStackTrace();
+		}
 		try {
 			bl=new approvebl();
 		} catch (RemoteException e2) {
@@ -637,8 +652,8 @@ public class checkMainUI extends JPanel{
 		}
 		return null;
 	}
-	public JTable initializeTable(ArrayList<String> uncheckedDocID){
-		table = new JTable();
+	public MyTable initializeTable(ArrayList<String> uncheckedDocID){
+		table = new MyTable();
 		Object[][] tableInfo=new Object[uncheckedDocID.size()][2];
 		for(int i=0;i<uncheckedDocID.size();i++){
 			Object[] oneLine={false,uncheckedDocID.get(i)};
@@ -731,6 +746,14 @@ public class checkMainUI extends JPanel{
 		table=initializeTable(getEmptyList());
 		scrollPane.setViewportView(table);
 		updateUI();
+		String description="审批单据";
+		OperationPO po=new OperationPO(new Date(), staffID, staffName, description);
+		try {
+			systembl.saveOperation(po);
+		} catch (RemoteException e1) {
+			System.out.println("保存失败");
+			e1.printStackTrace();
+		}
 		return checkedDocList;
 	}
 	
@@ -745,6 +768,14 @@ public class checkMainUI extends JPanel{
 		table=initializeTable(getEmptyList());
 		scrollPane.setViewportView(table);
 		updateUI();
+		String description="审批单据";
+		OperationPO po=new OperationPO(new Date(), staffID, staffName, description);
+		try {
+			systembl.saveOperation(po);
+		} catch (RemoteException e1) {
+			System.out.println("保存失败");
+			e1.printStackTrace();
+		}
 		return checkedDocList;
 	}
 	

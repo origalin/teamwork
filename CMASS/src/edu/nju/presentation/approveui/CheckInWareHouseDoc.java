@@ -21,11 +21,12 @@ import java.util.ArrayList;
 import javax.swing.SwingConstants;
 
 import edu.nju.po.InWareHouseDocLineItem;
+import edu.nju.presentation.widget.MyTable;
 import edu.nju.vo.InWareHouseDocVO;
 
 public class CheckInWareHouseDoc extends JPanel{
 	private JTextField InWareHouseDocID;
-	private JTable table;
+	private MyTable table;
 	private JScrollPane scrollPane;
 	private String[] columnNames={"快递编号","入库日期","目的地","区号","排号","架号","位号"};
 	public CheckInWareHouseDoc(InWareHouseDocVO vo) {
@@ -71,7 +72,7 @@ public class CheckInWareHouseDoc extends JPanel{
 	}
 	
 	public JTable initializeTable(ArrayList<InWareHouseDocLineItem> list){
-		JTable table=new JTable();
+		MyTable table=new MyTable();
 		Object[][] array=new Object[list.size()][];
 		for(int i=0;i<list.size();i++){
 			InWareHouseDocLineItem item=list.get(i);

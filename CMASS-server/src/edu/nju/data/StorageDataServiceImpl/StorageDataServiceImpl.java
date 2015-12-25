@@ -197,7 +197,8 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 
 	public static void main(String[] args) throws RemoteException {
 		StorageDataServiceImpl serviceImpl = new StorageDataServiceImpl();
-		serviceImpl.storageRealease("001000");;
+		ArrayList<OutWareHouseDocPO> list=serviceImpl.getOutWareHouseDoc_unchecked();
+//		serviceImpl.storageRealease("001000");
 		// serviceImpl.exportToExcel("001000");
 		// RecordPO recordPO=new RecordPO("0025033965", new Date(), "南京市",
 		// "航运区", "000005", "001000");
@@ -342,62 +343,7 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 		return null;
 	}
 
-	/*
-	 * (non-Javadoc) 为总经理返回未审批的入库单列表 未经测试
-	 * 
-	 * @see edu.nju.dataservice.storagedataservice.StorageDataService#
-	 * getInWarehouseDoc()
-	 */
-	@Override
-	public ArrayList<InWareHouseDocPO> getInWarehouseDoc() throws RemoteException {
-		ArrayList<InWareHouseDocPO> list = new ArrayList<InWareHouseDocPO>();
-		String sql = "SELECT ID,入库日期,仓库ID,快递编号,目的地,位置,区 FROM 入库单,入库items WHERE 已审批='0'&&入库单.ID=入库items.入库单编号 ORDER BY ID;";
-		SQL.databaseQuery(sql);
-		InWareHouseDocPO element = null;
-		String currinWareHouseDoc_ID = "";
-		String inWareHouseDoc_ID = "";
-
-		ArrayList<String> iDs = new ArrayList<String>();
-		ArrayList<Date> dates = new ArrayList<Date>();
-		ArrayList<String> storageIDs = new ArrayList<String>();
-		ArrayList<String> SendDocID = new ArrayList<String>();
-		ArrayList<String> destination = new ArrayList<String>();
-		ArrayList<String> location = new ArrayList<String>();
-		ArrayList<String> district = new ArrayList<String>();
-		try {
-			while (SQL.rs.next()) {
-				iDs.add(SQL.rs.getString("ID"));
-				dates.add(SQL.rs.getDate("入库日期"));
-				storageIDs.add(SQL.rs.getString("仓库ID"));
-				SendDocID.add(SQL.rs.getString("快递编号"));
-				destination.add(SQL.rs.getString("目的地"));
-				location.add(SQL.rs.getString("位置"));
-				district.add(SQL.rs.getString("区"));
-			}
-		} catch (SQLException e) {
-			System.out.println("未审批入库单读取错误");
-			e.printStackTrace();
-		}
-		int j = 0;
-		currinWareHouseDoc_ID = "";
-		String currStorage_ID = "";
-		for (int i = 0; i < storageIDs.size(); ++i, ++j) {
-			if (!iDs.get(i).equals(currinWareHouseDoc_ID)) {
-				if (j != 0)
-					list.add(element);
-				element = new InWareHouseDocPO(iDs.get(i), storageIDs.get(i), new ArrayList<InWareHouseDocLineItem>());
-				currinWareHouseDoc_ID = iDs.get(i);
-
-			}
-			InWareHouseDocLineItem lineItem = new InWareHouseDocLineItem(SendDocID.get(i), dates.get(i),
-					destination.get(i), district.get(i), location.get(i));
-			element.listAppend(lineItem);
-
-		}
-		if (element != null)
-			list.add(element);
-		return list;
-	}
+	
 
 	/**
 	 * 获得当前入库单编号
@@ -554,7 +500,64 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 		}
 		return;
 	}
+	/*
+	 * (non-Javadoc) 为总经理返回未审批的入库单列表 经测试
+	 * 
+	 * @see edu.nju.dataservice.storagedataservice.StorageDataService#
+	 * getInWarehouseDoc()
+	 */
+	@Override
+	public ArrayList<InWareHouseDocPO> getInWarehouseDoc() throws RemoteException {
+		ArrayList<InWareHouseDocPO> list = new ArrayList<InWareHouseDocPO>();
+		String sql = "SELECT ID,入库日期,仓库ID,快递编号,目的地,位置,区 FROM 入库单,入库items WHERE 已审批='0'&&入库单.ID=入库items.入库单编号 ORDER BY ID;";
+		SQL.databaseQuery(sql);
+		InWareHouseDocPO element = null;
+		String currinWareHouseDoc_ID = "";
+		String inWareHouseDoc_ID = "";
 
+		ArrayList<String> iDs = new ArrayList<String>();
+		ArrayList<Date> dates = new ArrayList<Date>();
+		ArrayList<String> storageIDs = new ArrayList<String>();
+		ArrayList<String> SendDocID = new ArrayList<String>();
+		ArrayList<String> destination = new ArrayList<String>();
+		ArrayList<String> location = new ArrayList<String>();
+		ArrayList<String> district = new ArrayList<String>();
+		try {
+			while (SQL.rs.next()) {
+				iDs.add(SQL.rs.getString("ID"));
+				dates.add(SQL.rs.getDate("入库日期"));
+				storageIDs.add(SQL.rs.getString("仓库ID"));
+				SendDocID.add(SQL.rs.getString("快递编号"));
+				destination.add(SQL.rs.getString("目的地"));
+				location.add(SQL.rs.getString("位置"));
+				district.add(SQL.rs.getString("区"));
+			}
+		} catch (SQLException e) {
+			System.out.println("未审批入库单读取错误");
+			e.printStackTrace();
+		}
+		int j = 0;
+		currinWareHouseDoc_ID = "";
+		String currStorage_ID = "";
+		for (int i = 0; i < storageIDs.size(); ++i, ++j) {
+			if (!iDs.get(i).equals(currinWareHouseDoc_ID)) {
+				if (j != 0)
+					list.add(element);
+				element = new InWareHouseDocPO(iDs.get(i), storageIDs.get(i), new ArrayList<InWareHouseDocLineItem>());
+				currinWareHouseDoc_ID = iDs.get(i);
+
+			}
+			InWareHouseDocLineItem lineItem = new InWareHouseDocLineItem(SendDocID.get(i), dates.get(i),
+					destination.get(i), district.get(i), location.get(i));
+			element.listAppend(lineItem);
+
+		}
+		if (element != null)
+			list.add(element);
+		
+		System.out.println("李芷牧sb： "+list.size());
+		return list;
+	}
 	/**
 	 * 等待李芷牧方可测试
 	 * 
@@ -610,6 +613,7 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 		}
 		if (element != null)
 			list.add(element);
+		System.out.println("lizhimusb"+list.size());
 		return list;
 	}
 

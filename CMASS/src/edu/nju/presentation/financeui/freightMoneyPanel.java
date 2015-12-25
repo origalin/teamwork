@@ -15,6 +15,7 @@ import edu.nju.po.InstitutionPO;
 import edu.nju.po.TransferDocPO;
 import edu.nju.po.YLoadDocPO;
 import edu.nju.po.ZLoadDocPO;
+import edu.nju.presentation.widget.MyTable;
 
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -25,7 +26,7 @@ public class freightMoneyPanel extends JPanel{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private JTable table;
+	private MyTable table;
 	JScrollPane scrollPane;
 	public freightMoneyPanel() {
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -42,7 +43,7 @@ public class freightMoneyPanel extends JPanel{
 		gbc_scrollPane.gridy = 0;
 		add(scrollPane, gbc_scrollPane);
 		
-		table = new JTable();
+		table = new MyTable();
 		scrollPane.setViewportView(table);
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
@@ -69,9 +70,9 @@ public class freightMoneyPanel extends JPanel{
 			}
 		});
 	}
-	public JTable initializeTable(ArrayList<TransferDocPO> transferDoc,	ArrayList<YLoadDocPO> YLoadDoc,ArrayList<ZLoadDocPO>ZLoadDoc)
+	public MyTable initializeTable(ArrayList<TransferDocPO> transferDoc,	ArrayList<YLoadDocPO> YLoadDoc,ArrayList<ZLoadDocPO>ZLoadDoc)
 	{
-		JTable table = new JTable();
+		MyTable table = new MyTable();
 		scrollPane.setViewportView(table);
 		Object[][]tableInfo=new Object[transferDoc.size()+YLoadDoc.size()+ZLoadDoc.size()][];
 		for(int i=0;i<transferDoc.size();i++){
@@ -109,7 +110,7 @@ public class freightMoneyPanel extends JPanel{
 	public JTable getTable() {
 		return table;
 	}
-	public void setTable(JTable table) {
+	public void setTable(MyTable table) {
 		this.table = table;
 	}
 	public JScrollPane getScrollPane() {

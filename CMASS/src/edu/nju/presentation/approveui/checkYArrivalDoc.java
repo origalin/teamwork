@@ -8,6 +8,7 @@ import java.awt.Font;
 
 import javax.swing.table.DefaultTableModel;
 
+import edu.nju.presentation.widget.MyTable;
 import edu.nju.vo.YArrivalDocVO;
 import edu.nju.vo.YDeliverDocVO;
 
@@ -16,7 +17,7 @@ public class checkYArrivalDoc extends JPanel{
 	private JTextField date;
 	private JTextField transferID;
 	private JTextField startPlace;
-	private JTable table;
+	private MyTable table;
 	private JTextField YArrivalID;
 	public checkYArrivalDoc(YArrivalDocVO vo) {
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -147,7 +148,7 @@ public class checkYArrivalDoc extends JPanel{
 			Object[]oneLine={itemAndState[i][0],itemAndState[i][1]};
 			tableInfo[i]=oneLine;
 		}
-		table = new JTable();
+		table = new MyTable();
 		table.setFont(new Font("SimSun", Font.PLAIN, 12));
 		scrollPane.setViewportView(table);
 		table.setModel(new DefaultTableModel(

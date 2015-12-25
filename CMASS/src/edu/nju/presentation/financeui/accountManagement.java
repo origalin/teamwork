@@ -8,21 +8,28 @@ import java.awt.Insets;
 import javax.swing.table.DefaultTableModel;
 
 import edu.nju.businesslogic.financebl.financebl;
+import edu.nju.businesslogic.infobl.Institution;
+import edu.nju.businesslogic.systembl.SystemBl;
+import edu.nju.po.OperationPO;
 import edu.nju.presentation.approveui.checkMainUI;
+import edu.nju.presentation.widget.MyTable;
 import edu.nju.vo.AccountVO;
 
 import java.awt.Font;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 public class accountManagement extends JPanel{
 	financebl bl;
+	SystemBl systembl;
+	Institution institution;
 	private JTextField textField;
-	private JTable table;
+	private MyTable table;
 	private JPanel thisPanel=this;
 	private String staffID;
-	
+	private String staffName;
 	private String newAccountName;
 	/*
 	public static void main(String[]args){
@@ -35,7 +42,16 @@ public class accountManagement extends JPanel{
 	}
 	*/
 	public accountManagement(String staffID) {
+		institution=new Institution();
+		systembl=new SystemBl();
 		this.staffID=staffID;
+		System.out.println("id is" +staffID);
+		try {
+			this.staffName=institution.getStaffName(staffID);
+		} catch (RemoteException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
 		try {
 			bl=new financebl();
 		} catch (RemoteException e1) {
@@ -80,6 +96,7 @@ public class accountManagement extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource()==button){
 					
+					
 					if(!textField.getText().equals("")){
 					String newAccountName=textField.getText().trim();
 					//首先更新表格
@@ -87,6 +104,14 @@ public class accountManagement extends JPanel{
 					((DefaultTableModel) table.getModel()).addRow(rowValues);
 					textField.setText("");
 					bl.addAccountPO(newAccountName);
+					String description="新增账户";
+					OperationPO po=new OperationPO(new Date(), staffID, staffName, description);
+					try {
+						systembl.saveOperation(po);
+					} catch (RemoteException e1) {
+						System.out.println("保存失败");
+						e1.printStackTrace();
+					}
 					}else{
 					    JOptionPane.showMessageDialog(null, "请输入新加账户名", "错误",JOptionPane.PLAIN_MESSAGE);  
 					}
@@ -139,6 +164,14 @@ public class accountManagement extends JPanel{
 						bl.modifyAccountPO((String) (table.getModel()).getValueAt(selectedRow, 0), newAccountName);
 						 ((DefaultTableModel) table.getModel()).setValueAt(newAccountName, selectedRow, 0);
 						 textField.setText("");
+							String description="修改账户";
+							OperationPO po=new OperationPO(new Date(), staffID, staffName, description);
+							try {
+								systembl.saveOperation(po);
+							} catch (RemoteException e1) {
+								System.out.println("保存失败");
+								e1.printStackTrace();
+							}
 						}else{
 							JOptionPane.showMessageDialog(thisPanel,"尚未输入新账户名称","错误",JOptionPane.ERROR_MESSAGE);
 						}
@@ -158,6 +191,14 @@ public class accountManagement extends JPanel{
 	                {
 	                	bl.deleteAccountPO((String) (table.getModel()).getValueAt(selectedRow, 0));
 	                    ((DefaultTableModel) table.getModel()).removeRow(selectedRow); 
+	                	String description="删除账户";
+						OperationPO po=new OperationPO(new Date(), staffID, staffName, description);
+						try {
+							systembl.saveOperation(po);
+						} catch (RemoteException e1) {
+							System.out.println("保存失败");
+							e1.printStackTrace();
+						}
 	                }else{
 	                	JOptionPane.showMessageDialog(thisPanel,"尚未选择账户","错误",JOptionPane.ERROR_MESSAGE);
 	                }
@@ -235,7 +276,7 @@ public class accountManagement extends JPanel{
 		
 	}
 	public JTable initializeTable(ArrayList<AccountVO> accountList){
-		table = new JTable();
+		table = new MyTable();
 		Object[][] tableInfo=new Object[accountList.size()][2];
 		for(int i=0;i<accountList.size();i++){
 			Object[] oneLine={accountList.get(i).getName(),accountList.get(i).getBalance()};

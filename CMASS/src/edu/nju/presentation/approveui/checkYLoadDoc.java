@@ -7,6 +7,7 @@ import java.awt.Insets;
 
 import javax.swing.table.DefaultTableModel;
 
+import edu.nju.presentation.widget.MyTable;
 import edu.nju.vo.YLoadDocVO;
 
 import java.awt.Font;
@@ -32,7 +33,7 @@ public class checkYLoadDoc extends JPanel{
 	private JTextField YLoadID;
 	private JPanel panel_8;
 	private JScrollPane scrollPane;
-	private JTable table;
+	private MyTable table;
 	public checkYLoadDoc(YLoadDocVO vo) {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 122, 76, 0, 0, 0, 0};
@@ -262,7 +263,7 @@ public class checkYLoadDoc extends JPanel{
 			Object[]oneLine={itemID[i]};
 			tableInfo[i]=oneLine;
 		}
-		table = new JTable();
+		table = new MyTable();
 		table.setModel(new DefaultTableModel(
 			tableInfo,
 			new String[] {

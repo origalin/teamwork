@@ -21,6 +21,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
 
+import edu.nju.presentation.widget.MyTable;
 import edu.nju.vo.OutWareHouseDocLineItem;
 import edu.nju.vo.OutWareHouseDocVO;
 
@@ -107,8 +108,8 @@ public class CheckWareHouseDoc extends JPanel{
 	}
 	
 	
-	public JTable initializeTable(ArrayList<OutWareHouseDocLineItem> arrayList){
-		JTable table=new JTable();
+	public MyTable initializeTable(ArrayList<OutWareHouseDocLineItem> arrayList){
+		MyTable table=new MyTable();
 		Object[][] array=new Object[arrayList.size()][];
 		for(int i=0;i<arrayList.size();i++){
 			Object[] oneLine={arrayList.get(i).getSendDocID(),arrayList.get(i).getDestination()};

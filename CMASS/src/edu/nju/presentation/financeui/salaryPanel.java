@@ -14,10 +14,11 @@ import javax.swing.JButton;
 import edu.nju.businesslogic.financebl.financebl;
 import edu.nju.po.InstitutionPO;
 import edu.nju.po.StaffPO;
+import edu.nju.presentation.widget.MyTable;
 
 public class salaryPanel extends JPanel{
 	financebl bl;
-	private JTable table;
+	private MyTable table;
 	private JScrollPane scrollPane;
 	public salaryPanel() {
 		try {
@@ -40,7 +41,7 @@ public class salaryPanel extends JPanel{
 		gbc_scrollPane.gridy = 0;
 		add(scrollPane, gbc_scrollPane);
 		
-		table = new JTable();
+		table = new MyTable();
 		scrollPane.setViewportView(table);
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
@@ -69,8 +70,8 @@ public class salaryPanel extends JPanel{
 		
 		
 	}
-	public JTable initializeTable(ArrayList<StaffPO> staffList){
-		JTable table = new JTable();
+	public MyTable initializeTable(ArrayList<StaffPO> staffList){
+		MyTable table = new MyTable();
 		scrollPane.setViewportView(table);
 		Object[][]tableInfo=new Object[staffList.size()][];
 		for(int i=0;i<staffList.size();i++){
@@ -100,7 +101,7 @@ public class salaryPanel extends JPanel{
 	public JTable getTable() {
 		return table;
 	}
-	public void setTable(JTable table) {
+	public void setTable(MyTable table) {
 		this.table = table;
 	}
 	public JScrollPane getScrollPane() {

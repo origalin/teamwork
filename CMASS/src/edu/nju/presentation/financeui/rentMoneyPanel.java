@@ -6,6 +6,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
 
 import edu.nju.po.InstitutionPO;
+import edu.nju.presentation.widget.MyTable;
 import edu.nju.vo.AccountVO;
 
 import java.awt.Dimension;
@@ -15,7 +16,7 @@ import java.awt.Insets;
 import java.util.ArrayList;
 
 public class rentMoneyPanel extends JPanel{
-	private JTable table;
+	private MyTable table;
 	private JScrollPane scrollPane;
 	public rentMoneyPanel() {
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -32,7 +33,7 @@ public class rentMoneyPanel extends JPanel{
 		gbc_scrollPane.gridy = 0;
 		add(scrollPane, gbc_scrollPane);
 		
-		table = new JTable();
+		table = new MyTable();
 		scrollPane.setViewportView(table);
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
@@ -59,8 +60,8 @@ public class rentMoneyPanel extends JPanel{
 			}
 		});
 	}
-	public JTable initializeTable(ArrayList<InstitutionPO> institutionList){
-		JTable table = new JTable();
+	public MyTable initializeTable(ArrayList<InstitutionPO> institutionList){
+		MyTable table = new MyTable();
 		scrollPane.setViewportView(table);
 		Object[][] tableInfo=new Object[institutionList.size()][3];
 		for(int i=0;i<institutionList.size();i++){
@@ -87,7 +88,7 @@ public class rentMoneyPanel extends JPanel{
 	public JTable getTable() {
 		return table;
 	}
-	public void setTable(JTable table) {
+	public void setTable(MyTable table) {
 		this.table = table;
 	}
 	public JScrollPane getScrollPane() {

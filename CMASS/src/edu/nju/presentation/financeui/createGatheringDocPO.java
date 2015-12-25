@@ -9,16 +9,23 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.swing.table.DefaultTableModel;
 
 import edu.nju.businesslogic.financebl.financebl;
+import edu.nju.businesslogic.infobl.Institution;
+import edu.nju.businesslogic.systembl.SystemBl;
 import edu.nju.po.GatheringDocPO;
+import edu.nju.po.OperationPO;
 import edu.nju.presentation.approveui.checkGatheringDoc;
 import edu.nju.presentation.mainui.CheckDialog;
 import edu.nju.vo.AccountVO;
 import edu.nju.vo.GatheringDocVO;
 public class createGatheringDocPO extends JPanel{
+		private SystemBl systembl;
+		private String staffName;
+		private Institution institution;
 		private String staffID;
 		private financebl bl;
 		private JTextField courier_ID;
@@ -36,7 +43,15 @@ public class createGatheringDocPO extends JPanel{
 		}
  */
 		public createGatheringDocPO(String staffID) {
+			systembl=new SystemBl();
+			institution=new Institution();
 			this.staffID=staffID;
+			try {
+				this.staffName=institution.getStaffName(staffID);
+			} catch (RemoteException e2) {
+				// TODO Auto-generated catch block
+				e2.printStackTrace();
+			}
 			try {
 				bl=new financebl();
 			} catch (RemoteException e1) {
@@ -119,6 +134,14 @@ public class createGatheringDocPO extends JPanel{
 		            		bl.setSendDocList(courierID);
 		            		bl.createGatheringDoc(GatheringDocVO);
 		            		bl.addMoney(GatheringDocPO.getAccount(), GatheringDocPO.getMoney());
+		            		String description="新建收款单";
+		            		OperationPO po=new OperationPO(new Date(), staffID, staffName, description);
+		            		try {
+		            			systembl.saveOperation(po);
+		            		} catch (RemoteException e1) {
+		            			System.out.println("保存失败");
+		            			e1.printStackTrace();
+		            		}
 		            	}
 		            });
 					}else{

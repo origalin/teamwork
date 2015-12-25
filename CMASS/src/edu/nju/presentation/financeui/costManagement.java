@@ -4,8 +4,10 @@ import javax.swing.table.DefaultTableModel;
 
 import edu.nju.businesslogic.financebl.financebl;
 import edu.nju.businesslogic.infobl.Institution;
+import edu.nju.businesslogic.systembl.SystemBl;
 import edu.nju.businesslogicservice.infologicservice.InstitutionLogicService;
 import edu.nju.po.InstitutionPO;
+import edu.nju.po.OperationPO;
 import edu.nju.po.PayDocPO;
 import edu.nju.po.PayType;
 import edu.nju.po.SalaryPO;
@@ -27,6 +29,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Date;
 public class costManagement extends JPanel{
 	/*
 	public static void main(String args[]){
@@ -54,10 +57,12 @@ public class costManagement extends JPanel{
 	private JTextField back;
 	private GridBagConstraints gbc_panel ;
 	private Institution institution;
+	private SystemBl systembl;
 	public costManagement(String staffID) {
 		this.staffID=staffID;
 		
 		try {
+			systembl=new SystemBl();
 			institution=new Institution();
 			this.staffName=institution.getStaffName(staffID);
 			bl=new financebl();
@@ -242,6 +247,7 @@ public class costManagement extends JPanel{
 			            		panel.removeAll();
 			            		updateUI();
 			            		institutionList=null;
+			            		createRecord();
 			            	}
 			            });
 					}else{
@@ -289,6 +295,7 @@ public class costManagement extends JPanel{
 		            		ZLoadDoc=null;
 		            		YLoadDoc=null;
 		            		transferDoc=null;
+		            		createRecord();
 		            	}
 		            });
 					}else{
@@ -331,6 +338,7 @@ public class costManagement extends JPanel{
 		            		panel.removeAll();
 		            		updateUI();
 		            		staffList=null;
+		            		createRecord();
 		            	}
 		            });
 					}else{
@@ -350,6 +358,14 @@ public class costManagement extends JPanel{
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			    JOptionPane.showMessageDialog(null, "工资已被重置.", null,JOptionPane.PLAIN_MESSAGE);  
+			    String description="重置工资";
+				OperationPO po=new OperationPO(new Date(), staffID, staffName, description);
+				try {
+					systembl.saveOperation(po);
+				} catch (RemoteException e1) {
+					System.out.println("保存失败");
+					e1.printStackTrace();
+				}
 				bl.resetSalary();
 			}
 		});
@@ -362,7 +378,15 @@ public class costManagement extends JPanel{
 		JButton button_3 = new JButton("\u91CD\u7F6E\u79DF\u91D1");
 		button_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				 JOptionPane.showMessageDialog(null, "租金已被重置.", null,JOptionPane.PLAIN_MESSAGE);  
+				 JOptionPane.showMessageDialog(null, "租金已被重置.", null,JOptionPane.PLAIN_MESSAGE); 
+				 String description="重置租金";
+					OperationPO po=new OperationPO(new Date(), staffID, staffName, description);
+					try {
+						systembl.saveOperation(po);
+					} catch (RemoteException e1) {
+						System.out.println("保存失败");
+						e1.printStackTrace();
+					}
 				bl.resetRent();
 			}
 		});
@@ -410,6 +434,17 @@ public class costManagement extends JPanel{
 			return PayType.FREIGHT;
 		}else{
 			return PayType.SALARY;
+		}
+	}
+	
+	public void createRecord(){
+		String description="新建付款单";
+		OperationPO po=new OperationPO(new Date(), staffID, staffName, description);
+		try {
+			systembl.saveOperation(po);
+		} catch (RemoteException e1) {
+			System.out.println("保存失败");
+			e1.printStackTrace();
 		}
 	}
 

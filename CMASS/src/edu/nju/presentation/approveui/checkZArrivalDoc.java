@@ -8,6 +8,7 @@ import java.awt.Font;
 
 import javax.swing.table.DefaultTableModel;
 
+import edu.nju.presentation.widget.MyTable;
 import edu.nju.vo.ZArrivalDocVO;
 
 import java.awt.FlowLayout;
@@ -17,7 +18,7 @@ public class checkZArrivalDoc extends JPanel{
 	private JLabel label_2;
 	private JTextField transferID;
 	private JLabel label_3;
-	private JTable table;
+	private MyTable table;
 	private JScrollPane scrollPane;
 	private JLabel label_4;
 	private JTextField ZArrivalID;
@@ -158,7 +159,7 @@ public class checkZArrivalDoc extends JPanel{
 			Object[]oneLine={itemAndState[i][0],itemAndState[i][1]};
 			tableInfo[i]=oneLine;
 		}
-		table = new JTable();
+		table = new MyTable();
 		scrollPane.setViewportView(table);
 		table.setModel(new DefaultTableModel(
 			tableInfo,

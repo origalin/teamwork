@@ -19,6 +19,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.table.DefaultTableModel;
 
+import edu.nju.presentation.widget.MyTable;
 import edu.nju.vo.ZLoadDocVO;
 
 import java.awt.Font;
@@ -33,7 +34,7 @@ public class CheckZLoadDoc extends JPanel{
 	private JTextField date;
 	private JTextField carTransportID;
 	private JTextField money;
-	private JTable table;
+	private MyTable table;
 	public CheckZLoadDoc(ZLoadDocVO vo) {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{439, 0};
@@ -289,7 +290,7 @@ public class CheckZLoadDoc extends JPanel{
 			Object[]oneLine={itemID[i]};
 			tableInfo[i]=oneLine;
 		}
-		table = new JTable();
+		table = new MyTable();
 		table.setModel(new DefaultTableModel(
 			tableInfo,
 			new String[] {

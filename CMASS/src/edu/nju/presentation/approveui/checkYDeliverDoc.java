@@ -8,6 +8,7 @@ import java.awt.Font;
 
 import javax.swing.table.DefaultTableModel;
 
+import edu.nju.presentation.widget.MyTable;
 import edu.nju.vo.YDeliverDocVO;
 
 import java.awt.FlowLayout;
@@ -22,7 +23,7 @@ public class checkYDeliverDoc extends JPanel{
 	private JPanel panel_2;
 	private JPanel panel_3;
 	private JScrollPane scrollPane;
-	private JTable table;
+	private MyTable table;
 	public checkYDeliverDoc(YDeliverDocVO vo) {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 3, 11, 0, 0, 0, 0};
@@ -124,7 +125,7 @@ public class checkYDeliverDoc extends JPanel{
 		gbc_scrollPane.gridy = 3;
 		add(scrollPane, gbc_scrollPane);
 		
-		table = new JTable();
+		table = new MyTable();
 		String[]itemIDs=vo.getItemIDs();
 		Object[][]tableInfo=new Object[itemIDs.length][1];
 		for(int i=0;i<itemIDs.length;i++){
