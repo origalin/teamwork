@@ -30,7 +30,7 @@ import edu.nju.presentation.mainui.CheckDialog;
 import edu.nju.vo.YLoadDocVO;
 
 import javax.swing.ListSelectionModel;
-import javax.swing.JComboBox;
+import edu.nju.presentation.widget.MyComboBox;
 import java.awt.Dimension;
 
 @SuppressWarnings("serial")
@@ -44,7 +44,7 @@ public class YLoadDocPanel extends JPanel{
 	String[] itemIDs;
 	YLoadDoc yLoadDoc;
 	YLoadDocVO vo;
-	private JComboBox<String> driverBox;
+	private MyComboBox driverBox;
 	String[][] driverNameAndIDs;
 	String[] drivers;
 	private JTable table;
@@ -99,7 +99,7 @@ public class YLoadDocPanel extends JPanel{
 		for(int i = 0;i<driverNameAndIDs.length;i++) {
 			drivers[i] = driverNameAndIDs[i][1];
 		}
-		driverBox = new JComboBox<String>();
+		driverBox = new MyComboBox();
 		driverBox.setOpaque(false);
 		driverBox.setModel(new DefaultComboBoxModel<String>(drivers));
 		panel_8.add(driverBox);

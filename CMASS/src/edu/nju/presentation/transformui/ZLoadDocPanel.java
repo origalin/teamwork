@@ -29,7 +29,7 @@ import edu.nju.presentation.mainui.CheckDialog;
 import edu.nju.vo.YLoadDocVO;
 import edu.nju.vo.ZLoadDocVO;
 
-import javax.swing.JComboBox;
+import edu.nju.presentation.widget.MyComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.Dimension;
 
@@ -48,8 +48,8 @@ public class ZLoadDocPanel extends JPanel{
 	String carID,watcher,driver,target;
 	String[] itemIDs;
 	ZLoadDocVO vo;
-	private JComboBox<String> targetBox;
-	private JComboBox<String> driverBox;
+	private MyComboBox targetBox;
+	private MyComboBox driverBox;
 	public ZLoadDocPanel(String staffID) {
 		this.staffID = staffID;
 		try {
@@ -89,7 +89,7 @@ public class ZLoadDocPanel extends JPanel{
 		panel_8.add(label_2);
 		
 		
-		targetBox = new JComboBox<String>();
+		targetBox = new MyComboBox();
 		targetBox.setOpaque(false);
 		targetBox.setModel(new DefaultComboBoxModel<>(subBusinessHall));
 		panel_8.add(targetBox);
@@ -115,7 +115,7 @@ public class ZLoadDocPanel extends JPanel{
 		for(int i = 0;i<driverNameAndIDs.length;i++) {
 			drivers[i] = driverNameAndIDs[i][1];
 		}
-		driverBox = new JComboBox<String>();
+		driverBox = new MyComboBox();
 		driverBox.setModel(new DefaultComboBoxModel<String>(drivers));
 		panel_8.add(driverBox);
 		

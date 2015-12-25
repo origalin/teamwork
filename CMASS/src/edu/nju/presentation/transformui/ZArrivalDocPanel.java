@@ -30,7 +30,7 @@ import edu.nju.presentation.approveui.checkZArrivalDoc;
 import edu.nju.presentation.mainui.CheckDialog;
 import edu.nju.vo.ZArrivalDocVO;
 
-import javax.swing.JComboBox;
+import edu.nju.presentation.widget.MyComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
@@ -43,7 +43,7 @@ public class ZArrivalDocPanel extends JPanel {
 	private JTextField transferDocIDField;
 	private JTextField itemIDField;
 	private JTable table;
-	JComboBox docTypeBox;
+	MyComboBox docTypeBox;
 	String institutionID, staffID;
 	ZArrivalDoc zArrivalDoc;
 	ZArrivalDocVO vo;
@@ -202,7 +202,7 @@ public class ZArrivalDocPanel extends JPanel {
 		gbc_label_3.gridy = 1;
 		panel_1.add(label_3, gbc_label_3);
 
-		JComboBox comboBox = new JComboBox();
+		MyComboBox comboBox = new MyComboBox();
 		comboBox.setOpaque(false);
 		comboBox.setModel(new DefaultComboBoxModel(new String[] { "\u635F\u574F", "\u4E22\u5931" }));
 		GridBagConstraints gbc_comboBox = new GridBagConstraints();

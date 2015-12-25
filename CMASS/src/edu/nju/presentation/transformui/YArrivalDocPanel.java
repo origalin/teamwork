@@ -36,7 +36,7 @@ import edu.nju.vo.YArrivalDocVO;
 import edu.nju.vo.YDeliverDocVO;
 import edu.nju.vo.ZArrivalDocVO;
 
-import javax.swing.JComboBox;
+import edu.nju.presentation.widget.MyComboBox;
 import javax.swing.DefaultCellEditor;
 import javax.swing.DefaultComboBoxModel;
 
@@ -197,7 +197,7 @@ public class YArrivalDocPanel extends JPanel{
 		gbc_label_3.gridy = 1;
 		panel_1.add(label_3, gbc_label_3);
 		
-		JComboBox<String> comboBox = new JComboBox<String>();
+		MyComboBox comboBox = new MyComboBox();
 		comboBox.setOpaque(false);
 		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"\u635F\u574F", "\u4E22\u5931"}));
 		GridBagConstraints gbc_comboBox = new GridBagConstraints();
@@ -256,7 +256,7 @@ public class YArrivalDocPanel extends JPanel{
 		});
 		scrollPane_1.setViewportView(table_1);
 		
-		JComboBox<String> courierBox = new JComboBox<String>();
+		MyComboBox courierBox = new MyComboBox();
 		courierBox.setModel(new DefaultComboBoxModel<String>(courierName));
 		TableColumnModel tcm = table_1.getColumnModel();
 		tcm.getColumn(2).setCellEditor(new DefaultCellEditor(courierBox));
