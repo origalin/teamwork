@@ -140,6 +140,10 @@ public class TransferDocPanel_Car extends JPanel {
 		panel_1.setLayout(gbl_panel_1);
 
 		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setOpaque(false);
+		scrollPane.getViewport().setOpaque(false);
+		scrollPane.setViewportBorder(null);
+		scrollPane.setBorder(null);
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.gridwidth = 3;
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;

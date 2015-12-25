@@ -48,6 +48,9 @@ import java.awt.Toolkit;
 import java.rmi.RemoteException;
 import java.text.ParseException;
 import java.awt.Font;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.LineBorder;
+import java.awt.Color;
 
 @SuppressWarnings("serial")
 public class LoginFrame extends JFrame {

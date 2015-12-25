@@ -22,6 +22,7 @@ import edu.nju.businesslogicservice.collectionlogicservice.CollectionLogicServic
 import edu.nju.presentation.approveui.CheckSendDoc;
 import edu.nju.presentation.mainui.CheckDialog;
 import edu.nju.presentation.widget.BigButton;
+import edu.nju.presentation.widget.MyTextField;
 import edu.nju.presentation.widget.SmallButton;
 import edu.nju.vo.SendDocVO;
 
@@ -36,26 +37,26 @@ public class CollertionPanel extends JPanel{
 	String institutionID;
 	String staffID;
 	CollectionLogicService collection;
-	private JTextField sNameField;
-	private JTextField sMobilePhoneField;
-	private JTextField sAddressField;
-	private JTextField rNameField;
-	private JTextField rMobilePhoneField;
-	private JTextField rAddressField;
-	private JTextField ItemkindField;
-	private JTextField priceField;
-	private JTextField timeField;
-	private JTextField ScityField;
-	private JTextField RcityField;
-	private JTextField ItemNumField;
-	private JTextField WeightField;
-	private JTextField LengthField;
-	private JTextField WidethField;
-	private JTextField HeighthField;
-	private JTextField rTelePhoneField;
-	private JTextField rUnitField;
-	private JTextField sTelePhoneField;
-	private JTextField sUnitField;
+	private MyTextField sNameField;
+	private MyTextField sMobilePhoneField;
+	private MyTextField sAddressField;
+	private MyTextField rNameField;
+	private MyTextField rMobilePhoneField;
+	private MyTextField rAddressField;
+	private MyTextField ItemkindField;
+	private MyTextField priceField;
+	private MyTextField timeField;
+	private MyTextField ScityField;
+	private MyTextField RcityField;
+	private MyTextField ItemNumField;
+	private MyTextField WeightField;
+	private MyTextField LengthField;
+	private MyTextField WidethField;
+	private MyTextField HeighthField;
+	private MyTextField rTelePhoneField;
+	private MyTextField rUnitField;
+	private MyTextField sTelePhoneField;
+	private MyTextField sUnitField;
 	public CollertionPanel(String staffID) {
 		this.staffID = staffID;
 		sendType = -1;
@@ -97,7 +98,7 @@ public class CollertionPanel extends JPanel{
 		JLabel label_1 = new JLabel("\u59D3\u540D");
 		panel_1.add(label_1);
 		
-		sNameField = new JTextField();
+		sNameField = new MyTextField();
 		panel_1.add(sNameField);
 		sNameField.setColumns(10);
 		
@@ -108,7 +109,7 @@ public class CollertionPanel extends JPanel{
 		JLabel label_3 = new JLabel("\u624B\u673A");
 		panel_1.add(label_3);
 		
-		sMobilePhoneField = new JTextField();
+		sMobilePhoneField = new MyTextField();
 		panel_1.add(sMobilePhoneField);
 		sMobilePhoneField.setColumns(20);
 		
@@ -125,14 +126,14 @@ public class CollertionPanel extends JPanel{
 		JLabel label_2 = new JLabel("\u7535\u8BDD");
 		panel_14.add(label_2);
 		
-		sTelePhoneField = new JTextField();
+		sTelePhoneField = new MyTextField();
 		sTelePhoneField.setColumns(20);
 		panel_14.add(sTelePhoneField);
 		
 		JLabel label_19 = new JLabel("\u5355\u4F4D");
 		panel_14.add(label_19);
 		
-		sUnitField = new JTextField();
+		sUnitField = new MyTextField();
 		sUnitField.setColumns(10);
 		panel_14.add(sUnitField);
 		
@@ -149,14 +150,14 @@ public class CollertionPanel extends JPanel{
 		JLabel label_4 = new JLabel("\u5730\u5740");
 		panel_2.add(label_4);
 		
-		ScityField = new JTextField();
+		ScityField = new MyTextField();
 		panel_2.add(ScityField);
 		ScityField.setColumns(10);
 		
 		JLabel label_20 = new JLabel("\u5E02");
 		panel_2.add(label_20);
 		
-		sAddressField = new JTextField();
+		sAddressField = new MyTextField();
 		panel_2.add(sAddressField);
 		sAddressField.setColumns(40);
 		
@@ -182,7 +183,7 @@ public class CollertionPanel extends JPanel{
 		JLabel label_5 = new JLabel("\u59D3\u540D");
 		panel_4.add(label_5);
 		
-		rNameField = new JTextField();
+		rNameField = new MyTextField();
 		rNameField.setColumns(10);
 		panel_4.add(rNameField);
 		
@@ -193,7 +194,7 @@ public class CollertionPanel extends JPanel{
 		JLabel label_6 = new JLabel("\u624B\u673A");
 		panel_4.add(label_6);
 		
-		rMobilePhoneField = new JTextField();
+		rMobilePhoneField = new MyTextField();
 		rMobilePhoneField.setColumns(20);
 		panel_4.add(rMobilePhoneField);
 		
@@ -210,14 +211,14 @@ public class CollertionPanel extends JPanel{
 		JLabel label_7 = new JLabel("\u7535\u8BDD");
 		panel_8.add(label_7);
 		
-		rTelePhoneField = new JTextField();
+		rTelePhoneField = new MyTextField();
 		rTelePhoneField.setColumns(20);
 		panel_8.add(rTelePhoneField);
 		
 		JLabel label_11 = new JLabel("\u5355\u4F4D");
 		panel_8.add(label_11);
 		
-		rUnitField = new JTextField();
+		rUnitField = new MyTextField();
 		rUnitField.setColumns(10);
 		panel_8.add(rUnitField);
 		
@@ -234,14 +235,14 @@ public class CollertionPanel extends JPanel{
 		JLabel label_9 = new JLabel("\u5730\u5740");
 		panel_5.add(label_9);
 		
-		RcityField = new JTextField();
+		RcityField = new MyTextField();
 		panel_5.add(RcityField);
 		RcityField.setColumns(10);
 		
 		JLabel label_21 = new JLabel("\u5E02");
 		panel_5.add(label_21);
 		
-		rAddressField = new JTextField();
+		rAddressField = new MyTextField();
 		rAddressField.setColumns(40);
 		panel_5.add(rAddressField);
 		
@@ -258,7 +259,7 @@ public class CollertionPanel extends JPanel{
 		JLabel label_10 = new JLabel("\u539F\u4EF6\u6570");
 		panel_6.add(label_10);
 		
-		ItemNumField = new JTextField();
+		ItemNumField = new MyTextField();
 		ItemNumField.setColumns(5);
 		panel_6.add(ItemNumField);
 		
@@ -269,28 +270,28 @@ public class CollertionPanel extends JPanel{
 		JLabel lblkg = new JLabel("\u91CD\u91CF(kg)");
 		panel_6.add(lblkg);
 		
-		WeightField = new JTextField();
+		WeightField = new MyTextField();
 		WeightField.setColumns(5);
 		panel_6.add(WeightField);
 		
 		JLabel lblcm = new JLabel("\u4F53\u79EF(cm)");
 		panel_6.add(lblcm);
 		
-		LengthField = new JTextField();
+		LengthField = new MyTextField();
 		LengthField.setColumns(5);
 		panel_6.add(LengthField);
 		
 		JLabel label_13 = new JLabel("*");
 		panel_6.add(label_13);
 		
-		WidethField = new JTextField();
+		WidethField = new MyTextField();
 		WidethField.setColumns(5);
 		panel_6.add(WidethField);
 		
 		JLabel label_14 = new JLabel("*");
 		panel_6.add(label_14);
 		
-		HeighthField = new JTextField();
+		HeighthField = new MyTextField();
 		HeighthField.setColumns(5);
 		panel_6.add(HeighthField);
 		
@@ -424,7 +425,7 @@ public class CollertionPanel extends JPanel{
 		JLabel label_17 = new JLabel("\u79CD\u7C7B");
 		panel_7.add(label_17);
 		
-		ItemkindField = new JTextField();
+		ItemkindField = new MyTextField();
 		panel_7.add(ItemkindField);
 		ItemkindField.setColumns(10);
 		
@@ -437,14 +438,14 @@ public class CollertionPanel extends JPanel{
 		JLabel label_18 = new JLabel("\u4EF7\u683C(\u5143)");
 		panel_13.add(label_18);
 		
-		priceField = new JTextField();
+		priceField = new MyTextField();
 		priceField.setColumns(5);
 		panel_13.add(priceField);
 		
 		JLabel lblday = new JLabel("\u65F6\u95F4\u9884\u4F30(day)");
 		panel_13.add(lblday);
 		
-		timeField = new JTextField();
+		timeField = new MyTextField();
 		timeField.setColumns(5);
 		panel_13.add(timeField);
 		

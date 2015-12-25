@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 import edu.nju.businesslogic.logispicsquerybl.Logisticsquerybl;
 import edu.nju.businesslogicservice.logispicsquerylogicservice.LogispicsQueryLogicService;
 import edu.nju.presentation.UiFactory;
+import edu.nju.presentation.widget.SmallButton;
 import edu.nju.vo.PositionVO;
 
 import java.awt.GridBagLayout;
@@ -43,7 +44,7 @@ public class QueryFrame extends JFrame{
 		setLocation(500, 200);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{29, 387, 71, 28, 0};
-		gridBagLayout.rowHeights = new int[]{22, 26, 0, 0, 0};
+		gridBagLayout.rowHeights = new int[]{22, 26, 0, 30, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
 		getContentPane().setLayout(gridBagLayout);
@@ -51,8 +52,7 @@ public class QueryFrame extends JFrame{
 		textField = new JTextField();
 		
 		GridBagConstraints gbc_textField = new GridBagConstraints();
-		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField.anchor = GridBagConstraints.NORTH;
+		gbc_textField.fill = GridBagConstraints.BOTH;
 		gbc_textField.insets = new Insets(0, 0, 5, 5);
 		gbc_textField.gridx = 1;
 		gbc_textField.gridy = 1;
@@ -80,7 +80,7 @@ public class QueryFrame extends JFrame{
 			}
 		});
 		
-		JButton button = new JButton("\u67E5\u8BE2\u4E00\u4E0B");
+		JButton button = new SmallButton("\u67E5\u8BE2\u4E00\u4E0B");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(textField.getText().equals(""))
