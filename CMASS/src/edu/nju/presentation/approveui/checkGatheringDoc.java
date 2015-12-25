@@ -34,6 +34,7 @@ public class checkGatheringDoc extends JPanel{
 	}
 	*/
 	public checkGatheringDoc(GatheringDocVO vo) {
+		setOpaque(false);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 69, 164, 0, 62, 0, 48, 0};
 		gridBagLayout.rowHeights = new int[]{42, 0, 19, 42, 127, 0};
@@ -143,6 +144,8 @@ public class checkGatheringDoc extends JPanel{
 		account.setColumns(10);
 		
 		scrollPane = new JScrollPane();
+		scrollPane.setOpaque(false);
+		scrollPane.getViewport().setOpaque(false);
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
