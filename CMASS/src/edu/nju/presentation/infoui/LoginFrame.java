@@ -83,7 +83,7 @@ public class LoginFrame extends JFrame {
 		gridBagLayout.columnWidths = new int[]{30, 44, 273, 42, 0};
 		gridBagLayout.rowHeights = new int[]{20, 40, 40, 50, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
 		getContentPane().setLayout(gridBagLayout);
 		JLabel label = new JLabel("\u5DE5\u53F7");
 		label.setFont(new Font("黑体", Font.PLAIN, 15));
@@ -117,7 +117,7 @@ public class LoginFrame extends JFrame {
 		getContentPane().add(password, gbc_password);
 		confirm = new SmallButton("确认");
 		GridBagConstraints gbc_confirm = new GridBagConstraints();
-		gbc_confirm.anchor = GridBagConstraints.SOUTHEAST;
+		gbc_confirm.anchor = GridBagConstraints.NORTHEAST;
 		gbc_confirm.insets = new Insets(0, 30, 0, -60);
 		gbc_confirm.gridx = 1;
 		gbc_confirm.gridy = 3;
@@ -134,7 +134,7 @@ public class LoginFrame extends JFrame {
 		getRootPane().setDefaultButton(confirm);
 		query = new SmallButton("快递查询");
 		GridBagConstraints gbc_query = new GridBagConstraints();
-		gbc_query.anchor = GridBagConstraints.SOUTHWEST;
+		gbc_query.anchor = GridBagConstraints.NORTHWEST;
 		gbc_query.insets = new Insets(0, 90, 0, -25);
 		gbc_query.gridx = 2;
 		gbc_query.gridy = 3;
