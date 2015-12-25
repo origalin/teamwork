@@ -98,7 +98,7 @@ public class ZArrivalDocPanel extends JPanel {
 		flowLayout_6.setAlignment(FlowLayout.LEFT);
 		
 		
-		docTypeBox = new JComboBox<>();
+		docTypeBox = new MyComboBox();
 		docTypeBox.setModel(new DefaultComboBoxModel(
 				new String[] { "\u4E2D\u8F6C\u5355\u7F16\u53F7", "\u8425\u4E1A\u5385\u88C5\u8F66\u5355\u7F16\u53F7" }));
 		panel_6.add(docTypeBox);
