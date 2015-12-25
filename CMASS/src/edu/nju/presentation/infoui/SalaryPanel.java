@@ -253,7 +253,13 @@ public class SalaryPanel extends JPanel {
 					
 					textField_8 = new MyTextField();
 					try {
-						textField_8.setText(String.valueOf(driverLogicService.getDriverCommision(textField.getText())));
+						try {
+							textField_8.setText(String.valueOf(driverLogicService.getDriverCommision(textField.getText())));
+						} catch (DatabaseNULLException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+							JOptionPane.showMessageDialog(null, "不能查找到该信息，请检查");
+						}
 					} catch (RemoteException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();

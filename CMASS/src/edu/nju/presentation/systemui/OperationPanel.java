@@ -143,7 +143,7 @@ model=(DefaultTableModel)table.getModel();
 		} catch (ParseException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
-			JOptionPane.showMessageDialog(null, "日期格式错误，应为yyyy-MM-dd，请检查");
+			JOptionPane.showMessageDialog(null, "日期格式错误，应为yyyy-MM-dd hh:mm:ss，请检查");
 		}
 		Date endTime = null;
 		try {
@@ -151,7 +151,7 @@ model=(DefaultTableModel)table.getModel();
 		} catch (ParseException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
-			JOptionPane.showMessageDialog(null, "日期格式错误，应为yyyy-MM-dd，请检查");
+			JOptionPane.showMessageDialog(null, "日期格式错误，应为yyyy-MM-dd hh:mm:ss，请检查");
 		}
 		ArrayList<OperationVO> operationList = null;
 		try {
@@ -203,7 +203,7 @@ model=(DefaultTableModel)table.getModel();
 		} catch (ParseException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
-			JOptionPane.showMessageDialog(null, "日期格式错误，应为yyyy-MM-dd，请检查");
+			JOptionPane.showMessageDialog(null, "日期格式错误，应为yyyy-MM-dd hh:mm:ss，请检查");
 		}
 		Date endTime = null;
 		try {
@@ -211,7 +211,7 @@ model=(DefaultTableModel)table.getModel();
 		} catch (ParseException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
-			JOptionPane.showMessageDialog(null, "日期格式错误，应为yyyy-MM-dd，请检查");
+			JOptionPane.showMessageDialog(null, "日期格式错误，应为yyyy-MM-dd hh:mm:ss，请检查");
 		}
 		ArrayList<OperationVO> operationList = null;
 		try {

@@ -1,5 +1,7 @@
 package edu.nju.presentation.infoui;
 
+import javafx.beans.binding.When;
+
 import javax.swing.JPanel;
 
 import java.awt.GridBagLayout;
@@ -12,10 +14,14 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+
+
+
 
 
 
@@ -29,7 +35,8 @@ import edu.nju.presentation.widget.SmallButton;
 
 public class DistancePanel extends JPanel {
 	private MyTextField txtkm;
-	DistanceLogicService distanceBl=UiFactory.getDistanceLogicService();
+	DefaultComboBoxModel<String> model;
+	DistanceLogicService distanceLogicService=UiFactory.getDistanceLogicService();
 	/**
 	 * Create the panel.
 	 */
@@ -64,8 +71,9 @@ public class DistancePanel extends JPanel {
 		gbc_label_1.gridy = 1;
 		panel_1.add(label_1, gbc_label_1);
 		
+	
 		MyComboBox comboBox = new MyComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"\u5317\u4EAC", "\u4E0A\u6D77", "\u5E7F\u5DDE", "\u6DF1\u5733", "\u5357\u4EAC"}));
+	initComboBox(comboBox);
 		GridBagConstraints gbc_comboBox = new GridBagConstraints();
 		gbc_comboBox.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
@@ -81,7 +89,7 @@ public class DistancePanel extends JPanel {
 		panel_1.add(label_2, gbc_label_2);
 		
 		MyComboBox comboBox_1 = new MyComboBox();
-		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"\u5317\u4EAC", "\u4E0A\u6D77", "\u5E7F\u5DDE", "\u6DF1\u5733", "\u5357\u4EAC"}));
+	initComboBox(comboBox_1);
 		GridBagConstraints gbc_comboBox_1 = new GridBagConstraints();
 		gbc_comboBox_1.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBox_1.fill = GridBagConstraints.HORIZONTAL;
@@ -101,9 +109,9 @@ public class DistancePanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				double distance = 0;
 				try {
-					distance = distanceBl.getDistance((String)comboBox.getSelectedItem(), (String)comboBox_1.getSelectedItem());
+					distance = distanceLogicService.getDistance((String)comboBox.getSelectedItem(), (String)comboBox_1.getSelectedItem());
 				} catch (RemoteException e1) {
-					// TODO Auto-generated catch block
+					JOptionPane.showMessageDialog(null, "网络连接出错，请检查");
 					e1.printStackTrace();
 				}
 				txtkm.setText(String.valueOf(distance));
@@ -127,10 +135,12 @@ public class DistancePanel extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+			
 				DistanceAdd dialog = new DistanceAdd();
 				dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 				dialog.setVisible(true);
+				
+				//TODO 动态修改ComboBox
 			}
 		});
 		
@@ -194,15 +204,15 @@ public class DistancePanel extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+			
 			try{
 				DistancePO po=new DistancePO((String)comboBox.getSelectedItem(),(String)comboBox_1.getSelectedItem(),Double.valueOf(txtkm.getText()));
-				distanceBl.changeDistance(po);
+				distanceLogicService.changeDistance(po);
 			}catch(NumberFormatException e1){
 				System.out.println("不是double");
 				JOptionPane.showMessageDialog(null, "输入距离信息格式错误");  
 			} catch (RemoteException e1) {
-					// TODO Auto-generated catch block
+				JOptionPane.showMessageDialog(null, "网络连接出错，请检查");
 					e1.printStackTrace();
 				}
 				txtkm.setEditable(false);
@@ -222,9 +232,9 @@ public class DistancePanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				double distance = 0;
 				try {
-					distance = distanceBl.getDistance((String)comboBox.getSelectedItem(), (String)comboBox_1.getSelectedItem());
+					distance = distanceLogicService.getDistance((String)comboBox.getSelectedItem(), (String)comboBox_1.getSelectedItem());
 				} catch (RemoteException e1) {
-					// TODO Auto-generated catch block
+					JOptionPane.showMessageDialog(null, "网络连接出错，请检查");
 					e1.printStackTrace();
 				}
 				txtkm.setText(String.valueOf(distance));
@@ -235,4 +245,20 @@ public class DistancePanel extends JPanel {
 
 	}
 
+	void initComboBox(MyComboBox comboBox){
+		ArrayList<String> cityList=new ArrayList<String>();
+		try {
+			cityList = distanceLogicService.getCityList();
+		} catch (RemoteException e) {
+		
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "网络连接错误，请检查");
+		}
+		model=(DefaultComboBoxModel<String>) comboBox.getModel();
+		for(String city:cityList){
+				model.addElement(city);
+		}
+	
+	}
+	
 }

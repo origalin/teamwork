@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import edu.nju.businesslogicservice.infologicservice.DriverLogicService;
 import edu.nju.dataFactory.DataFactory;
 import edu.nju.dataservice.infodataservice.DriverDataService;
+import edu.nju.exception.DatabaseNULLException;
 import edu.nju.po.CarPO;
 import edu.nju.po.DriverPO;
 import edu.nju.vo.CarVO;
@@ -60,7 +61,7 @@ public class Driver implements DriverLogicService{
 
 
 	@Override
-	public void saveDriverSalary(String id) throws RemoteException {
+	public void saveDriverSalary(String id) throws RemoteException, DatabaseNULLException {
 		// TODO Auto-generated method stub
 		DriverPO po=driverDataService.getDriver(id);
 		po.setPaid(true);
@@ -70,7 +71,7 @@ public class Driver implements DriverLogicService{
 
 
 	@Override
-	public double getDriverCommision(String driverID) throws RemoteException {
+	public double getDriverCommision(String driverID) throws RemoteException, DatabaseNULLException {
 		// TODO Auto-generated method stub
 		return driverDataService.getDriver(driverID).getMoney();
 	}
@@ -110,7 +111,7 @@ ArrayList<String>idList=new ArrayList<String>();
 
 
 	@Override
-	public DriverPO getDriver(String driverID) throws RemoteException {
+	public DriverPO getDriver(String driverID) throws RemoteException, DatabaseNULLException {
 		return driverDataService.getDriver(driverID);
 	}
 

@@ -1,55 +1,37 @@
 package edu.nju.presentation.infoui;
 
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-
-import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTree;
 import javax.swing.border.EmptyBorder;
-
 import java.awt.GridBagLayout;
-
 import javax.swing.JLabel;
-
 import java.awt.GridBagConstraints;
-
-import javax.swing.JTextField;
-
 import edu.nju.businesslogic.infobl.Distance;
 import edu.nju.businesslogicservice.infologicservice.DistanceLogicService;
-import edu.nju.po.CarPO;
 import edu.nju.po.DistancePO;
 import edu.nju.presentation.widget.MyTable;
-import edu.nju.tools.Time;
-import edu.nju.vo.CarVO;
-
+import edu.nju.presentation.widget.MyTextField;
+import edu.nju.presentation.widget.SmallButton;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
-import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Date;
-
 import javax.swing.JScrollPane;
-import javax.swing.JTabbedPane;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-
 import java.awt.Dimension;
 
 public class DistanceAdd extends JDialog {
 	DistanceLogicService distanceLogicService=new Distance();
 	private final JPanel contentPanel = new JPanel();
-	private JTextField textField;
-	private JButton button;
-	private JButton button_1;
+	private MyTextField textField;
+	private SmallButton button;
+	private SmallButton button_1;
 	private JScrollPane scrollPane;
-	private JTable table;
-	private JButton button_2;
+	private MyTable table;
+	private SmallButton button_2;
 	private JLabel label_1;
 	DefaultTableModel model;
 
@@ -79,7 +61,7 @@ public class DistanceAdd extends JDialog {
 			contentPanel.add(label, gbc_label);
 		}
 		{
-			textField = new JTextField();
+			textField = new MyTextField();
 			GridBagConstraints gbc_textField = new GridBagConstraints();
 			gbc_textField.insets = new Insets(0, 0, 5, 5);
 			gbc_textField.fill = GridBagConstraints.HORIZONTAL;
@@ -89,7 +71,7 @@ public class DistanceAdd extends JDialog {
 			textField.setColumns(10);
 		}
 		{
-			button_2 = new JButton("\u70B9\u51FB\u65B0\u589E");
+			button_2 = new SmallButton("\u70B9\u51FB\u65B0\u589E");
 			GridBagConstraints gbc_button_2 = new GridBagConstraints();
 			gbc_button_2.insets = new Insets(0, 0, 5, 5);
 			gbc_button_2.gridx = 3;
@@ -99,8 +81,13 @@ public class DistanceAdd extends JDialog {
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					// TODO Auto-generated method stub
-					add(textField.getText(),table);
+					
+					if(textField.getText().equals("")){
+						JOptionPane.showMessageDialog(null,"信息填写不完整，请检查");
+					}else{
+							add(textField.getText(),table);
+					}
+				
 				}
 			});
 		}
@@ -125,7 +112,7 @@ public class DistanceAdd extends JDialog {
 			gbc_scrollPane.gridy = 2;
 			contentPanel.add(scrollPane, gbc_scrollPane);
 			{
-				table = new JTable();
+				table = new MyTable();
 				table.setPreferredScrollableViewportSize(new Dimension(50, 100));
 				table.setModel(new DefaultTableModel(
 					new Object[][] {
@@ -139,32 +126,39 @@ public class DistanceAdd extends JDialog {
 			}
 		}
 		{
-			button = new JButton("\u786E\u8BA4");
+			button = new SmallButton("\u786E\u8BA4");
 			button.addActionListener(new ActionListener() {
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
 				
-				
+				if(textField.getText().equals("")){
+					JOptionPane.showMessageDialog(null,"信息填写不完整，请检查");
+				}else{
 					
 					
 					if(check(table)){
 						table.setEnabled(false);
 						for (int i = 0; i < table.getRowCount(); i++) {
 							DistancePO po=new DistancePO((String) table.getValueAt(i, 0),
-									(String) table.getValueAt(i, 1), (double) table
-									.getValueAt(i, 2));
+									(String) table.getValueAt(i, 1),Double.valueOf((String)table
+									.getValueAt(i, 2)));
 							try {
 								distanceLogicService.addDistance(po);
 							} catch (RemoteException e1) {
-								// TODO Auto-generated catch block
+							
 								e1.printStackTrace();
 								JOptionPane.showMessageDialog(null, "网络连接出错，请检查");
 							}		
-						}					
+						}		
+						dispose();
+						//TODO 这里如何动态将comboBox内容修改
+						
+						
+						
 					}
 					
-					setVisible(false);
+				}
 					
 					
 				}
@@ -177,13 +171,12 @@ public class DistanceAdd extends JDialog {
 			contentPanel.add(button, gbc_button);
 		}
 		{
-			button_1 = new JButton("\u53D6\u6D88");
+			button_1 = new SmallButton("\u53D6\u6D88");
 			button_1.addActionListener(new ActionListener() {
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					// TODO Auto-generated method stub
-					setVisible(false);
+				dispose();
 				}
 			});
 			GridBagConstraints gbc_button_1 = new GridBagConstraints();
@@ -193,8 +186,8 @@ public class DistanceAdd extends JDialog {
 			contentPanel.add(button_1, gbc_button_1);
 		}	
 	}
-	void add(String str,JTable table){
-		table.setEnabled(false);
+	void add(String str,MyTable table){
+		
 		model=(DefaultTableModel)table.getModel();
 		int row=model.getRowCount();
 		for(int i=0;i<row;i++){
@@ -210,13 +203,13 @@ public class DistanceAdd extends JDialog {
 			JOptionPane.showMessageDialog(null, "网络连接出错，请检查");
 		}
 		for (String city : citys) {
-			model.addRow(new Object[] { textField.getText(),city,0 });
+			model.addRow(new Object[] { textField.getText(),city,"0"});
 		}
 	}
 	
-	boolean check(JTable table2){
+	boolean check(MyTable table2){
 		for (int row = 0; row < table2.getRowCount();row++) {
-				if(((String)table2.getValueAt(row, 2)).equals("0")){
+				if((String.valueOf(table2.getValueAt(row, 2))).equals("0")){
 					JOptionPane.showMessageDialog(null,"信息不完整，请检查");
 					return false;
 				}

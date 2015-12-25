@@ -132,8 +132,9 @@ public class DriverPanel extends JPanel {
 						beginLimit=df.parse( (String) table.getValueAt(row, 7));
 						endLimit=df.parse( (String) table.getValueAt(row, 8));
 					} catch (ParseException e) {
-						// TODO Auto-generated catch block
+					
 						e.printStackTrace();
+						JOptionPane.showMessageDialog(null, "日期格式错误，应为yyyy-MM-dd，请检查");
 					}
 					
 					DriverPO po = new DriverPO((String) table.getValueAt(row, 0),
@@ -146,7 +147,7 @@ public class DriverPanel extends JPanel {
 						try {
 							driverLogicService.deleteDriver(po);
 						} catch (RemoteException e) {
-							// TODO Auto-generated catch block
+							
 							e.printStackTrace();
 							JOptionPane.showMessageDialog(null, "网络连接出错，请检查");
 						}
@@ -294,7 +295,7 @@ public class DriverPanel extends JPanel {
 		try {
 			driverList = driverLogicService.getDriveVOList(institutionName);
 		} catch (RemoteException e1) {
-			// TODO Auto-generated catch block
+		
 			e1.printStackTrace();
 			JOptionPane.showMessageDialog(null, "网络连接出错，请检查");
 		}
