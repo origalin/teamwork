@@ -469,12 +469,13 @@ public class checkMainUI extends JPanel{
 		gbc_scrollPane.gridx = 1;
 		gbc_scrollPane.gridy = 3;
 		add(scrollPane, gbc_scrollPane);
-		
+		/*
 		ArrayList<String> tempList=new ArrayList<String>();
 		for(int i=0;i<10;i++){
 			tempList.add(null);
 		}
 		scrollPane.setViewportView(initializeTable(tempList));
+		
 		/*
 		table = new JTable();
 		scrollPane.setViewportView(table);
