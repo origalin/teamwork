@@ -261,24 +261,17 @@ public class ZArrivalDocPanel extends JPanel {
 	private void intializeWithFromDoc() {
 		
 			Doc po ;
-			try{
-				switch ((String)docTypeBox.getSelectedItem()) {
-				case "中转单编号":
-					docType = 0;
-					po = transferDoc.geTransferDocPOByID(transferDocIDField.getText());
-					break;
-				case "营业厅装车单编号":
-					docType = 1;
-					po = yLoadDoc.getYloadDocPOByID(transferDocIDField.getText());
-					break;
-				default:
-					break;
-				}
-			}catch(DatabaseNULLException e){
-				warning("null");
-			} catch (RemoteException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			switch ((String)docTypeBox.getSelectedItem()) {
+			case "中转单编号":
+				docType = 0;
+				
+				break;
+			case "营业厅装车单编号":
+				docType = 1;
+				
+				break;
+			default:
+				break;
 			}
 			
 			
@@ -326,7 +319,7 @@ public class ZArrivalDocPanel extends JPanel {
 			str = new String[tableModel.getRowCount()][2];
 			for (int i = 0; i < tableModel.getRowCount(); i++) {
 				str[i][0] = (String) tableModel.getValueAt(i, 0);
-				str[i][0] = (String) tableModel.getValueAt(i, 1);
+				str[i][1] = (String) tableModel.getValueAt(i, 1);
 				
 				
 				

@@ -64,7 +64,7 @@ public class Collectionbl implements CollectionLogicService{
 		saveSendDocPO(po);
 		changeSequence();
 		appendCourierMoney();
-		logisticsquerybl.createPosition(po.getID(),institution.getCity(institutionID)+institution.getInstitutionName(staffID)+"已揽件",po.getrCity()+po.getrAddress());
+		logisticsquerybl.createPosition(po.getID(),institution.getInstitutionName(staffID)+"已揽件",po.getrCity()+po.getrAddress());
 		systemBl.saveOperation(new OperationPO(new Date(), staffID, institution.getStaffName(staffID), "创建寄件单"));
 	}
 

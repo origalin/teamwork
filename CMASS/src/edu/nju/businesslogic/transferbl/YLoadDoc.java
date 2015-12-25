@@ -79,7 +79,7 @@ public class YLoadDoc implements YLoadDocService{
 	public YLoadDocVO createYLoadDocVO(String carID, 
 			String watcher,String driver, String[] itemIDs) throws RemoteException {
 		// TODO 自动生成的方法存根
-		po = new YLoadDocPO("00"+getYloadSequence(), new Date(), getTranceID(), institution.getTransferCenterID(institutionID), carID, watcher, driver,institutionID, itemIDs, priceCalc());
+		po = new YLoadDocPO("00"+getYloadSequence(), new Date(), getTranceID(), institution.getName(institution.getTransferCenterID(institutionID)), carID, watcher, driver,institutionID, itemIDs, priceCalc());
 		return new YLoadDocVO(po);
 	}
 

@@ -53,7 +53,7 @@ public class ZArrivalDoc implements ZArrivalDocService{
 		saveZArrivalDocPO(po);
 		changeZArrivalSequence();
 		for(int i = 0;i < po.getItemAndState().length;i++) {
-			logisticsquerybl.changePosition(po.getItemAndState()[i][0], "快递已到达"+institution.getCity(institutionID)+institution.getInstitutionName(staffID));	
+			logisticsquerybl.changePosition(po.getItemAndState()[i][0], "快递已到达"+institution.getInstitutionName(staffID));	
 		}
 		systemBl.saveOperation(new OperationPO(new Date(), staffID, institution.getStaffName(staffID), "生成中转中心到达单"));
 	}
@@ -96,7 +96,7 @@ public class ZArrivalDoc implements ZArrivalDocService{
 		String[][] itemAndState = new String[transferDocPO.getItemIDs().length][2];
 		for(int i = 0;i<transferDocPO.getItemIDs().length;i++) {
 			itemAndState[i][0] = transferDocPO.getItemIDs()[i];
-			itemAndState[i][1] = "0";
+			itemAndState[i][1] = "完好";
 		}
 		for(int i = 0;i<changeStates.length;i++) {
 			for(int j = 0;j<transferDocPO.getItemIDs().length;j++) {
@@ -115,7 +115,7 @@ public class ZArrivalDoc implements ZArrivalDocService{
 		String[][] itemAndState = new String[yLoadDocPO.getItemIDs().length][2];
 		for(int i = 0;i<yLoadDocPO.getItemIDs().length;i++) {
 			itemAndState[i][0] = yLoadDocPO.getItemIDs()[i];
-			itemAndState[i][1] = "0";
+			itemAndState[i][1] = "完好";
 		}
 		for(int i = 0;i<changeStates.length;i++) {
 			for(int j = 0;j<yLoadDocPO.getItemIDs().length;j++) {
