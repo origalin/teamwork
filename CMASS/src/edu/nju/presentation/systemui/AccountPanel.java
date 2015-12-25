@@ -13,7 +13,7 @@ import java.rmi.RemoteException;
 import javax.swing.ComboBoxEditor;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
+
 
 
 import javax.swing.DefaultComboBoxModel;
@@ -23,11 +23,12 @@ import edu.nju.businesslogicservice.systemlogicservice.SystemLogicService;
 import edu.nju.exception.DatabaseNULLException;
 import edu.nju.presentation.UiFactory;
 import edu.nju.presentation.widget.MyComboBox;
+import edu.nju.presentation.widget.MyTextField;
 import edu.nju.presentation.widget.SmallButton;
 
 public class AccountPanel extends JPanel {
-	private JTextField textField;
-	private JTextField textField_1;
+	private MyTextField textField;
+	private MyTextField textField_1;
 	SystemLogicService systemLogicService=UiFactory.getSystemLogicService();
 	/**
 	 * Create the panel.
@@ -64,7 +65,7 @@ public class AccountPanel extends JPanel {
 		gbc_label_1.gridy = 1;
 		panel_1.add(label_1, gbc_label_1);
 		
-		textField = new JTextField();
+		textField = new MyTextField();
 		GridBagConstraints gbc_textField = new GridBagConstraints();
 		gbc_textField.insets = new Insets(0, 0, 5, 5);
 		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
@@ -89,7 +90,7 @@ public class AccountPanel extends JPanel {
 		gbc_label_3.gridy = 2;
 		panel_1.add(label_3, gbc_label_3);
 		
-		textField_1 = new JTextField();
+		textField_1 = new MyTextField();
 		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
 		gbc_textField_1.insets = new Insets(0, 0, 5, 5);
 		gbc_textField_1.fill = GridBagConstraints.HORIZONTAL;

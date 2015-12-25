@@ -27,12 +27,14 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.border.TitledBorder;
 import javax.swing.ListSelectionModel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextField;
+
+
 
 import edu.nju.businesslogic.systembl.SystemBl;
 import edu.nju.businesslogicservice.systemlogicservice.SystemLogicService;
 import edu.nju.presentation.UiFactory;
 import edu.nju.presentation.widget.MyTable;
+import edu.nju.presentation.widget.MyTextField;
 import edu.nju.presentation.widget.SmallButton;
 import edu.nju.tools.Time;
 import edu.nju.vo.CarVO;
@@ -40,8 +42,8 @@ import edu.nju.vo.OperationVO;
 
 public class OperationPanel extends JPanel {
 	private MyTable table;
-	private JTextField textField;
-	private JTextField textField_1;	
+	private MyTextField textField;
+	private MyTextField textField_1;	
 	DefaultTableModel model;
 	JScrollPane scrollPane = new JScrollPane();
 	SystemLogicService systemBl=UiFactory.getSystemLogicService();
@@ -85,7 +87,7 @@ public class OperationPanel extends JPanel {
 		gbc_label.gridy = 0;
 		panel_1.add(label, gbc_label);
 		
-		textField = new JTextField();
+		textField = new MyTextField();
 		textField.setText("2015-1-1 00:00:00\r\n");
 		GridBagConstraints gbc_textField = new GridBagConstraints();
 		gbc_textField.insets = new Insets(0, 0, 0, 5);
@@ -103,7 +105,7 @@ public class OperationPanel extends JPanel {
 		gbc_label_1.gridy = 0;
 		panel_1.add(label_1, gbc_label_1);
 		
-		textField_1 = new JTextField();
+		textField_1 = new MyTextField();
 		textField_1.setText("2016-1-1 00:00:00\r\n");
 		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
 		gbc_textField_1.insets = new Insets(0, 0, 0, 5);
