@@ -107,73 +107,8 @@ public class InstitutionPanel extends JPanel {
 		}
 		
 		//tree的监听
-		DefaultTreeCellRenderer render=new DefaultTreeCellRenderer();
-		tree.setCellRenderer(render);
-		tree.addTreeSelectionListener(new TreeSelectionListener() {
-			ArrayList<StaffVO> staffVOs=new ArrayList<StaffVO>();
-			@Override
-			public void valueChanged(TreeSelectionEvent arg0) {
-				
-				model=(DefaultTableModel)table.getModel();
-				int row=model.getRowCount();
-				for(int i=0;i<row;i++){
-					System.out.println(model.getRowCount());
-						model.removeRow(0);
-				}
-				
-				  DefaultMutableTreeNode note = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
-		
-				try {
-				 staffVOs=institutionLogicService.getStaffVOList(note.toString());
-				} catch (RemoteException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				model = (DefaultTableModel) table.getModel();
-				for (StaffVO vo:staffVOs) {
-					model.addRow(new Object[] { vo.getStaffID(),vo.getName(),vo.getSex(),vo.getIdenity(),vo.getTel(),String.valueOf(vo.getPost())});
-				}
-				updateUI();
-				
-			}
-		});
-		
-		tree.setModel(new DefaultTreeModel(
-			new DefaultMutableTreeNode("总部") {
-				{
-					DefaultMutableTreeNode node_1;
-					DefaultMutableTreeNode node_2;
-					DefaultMutableTreeNode node_3;
-					DefaultMutableTreeNode node_4;
-					node_1 = new DefaultMutableTreeNode("中转中心");
-					node_3=new DefaultMutableTreeNode("仓库");
-					node_4=new DefaultMutableTreeNode("营业厅");
-					for(InstitutionVO vo:institutionList){
-						if(vo.getParentInstitution().equals("0")){
-							node_2=new DefaultMutableTreeNode(vo.getName());
-							
-						
-							
-							node_2.add(node_3);
-							node_2.add(node_4);
-							for(InstitutionVO vo1:institutionList){
-								if(vo1.getParentInstitution().equals(vo.getId())&&vo1.getId().toString().length()==6){
-									node_3.add(new DefaultMutableTreeNode(vo1.getName()));
-								}else if(vo1.getParentInstitution().equals(vo.getId())&&vo1.getId().toString().length()==7){
-									node_4.add(new DefaultMutableTreeNode(vo1.getName()));
-								}
-							}
-							node_1.add(node_2);				
-						}
-					}
-					add(node_1);
-				}}
-		));
-		
-		
-		
-		
-		
+		treeListener(tree);
+	
 		scrollPane_1.setViewportView(tree);
 		
 		JPanel panel_1 = new JPanel();
@@ -307,11 +242,7 @@ public class InstitutionPanel extends JPanel {
 				
 				table.setEnabled(false);
 				StaffPO po = null;
-				
-				boolean flag=false;
-		
-				
-				
+
 				for (int row = 0; row < table.getRowCount();row++) {
 					if(((String) table.getValueAt(row, 0)).equals("")||
 							((String) table.getValueAt(row,1)).equals("")||((String) table
@@ -468,6 +399,13 @@ public class InstitutionPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				table.setEnabled(false);
+				model=(DefaultTableModel)table.getModel();
+				int row=model.getRowCount();
+				for(int i=0;i<row;i++){
+					System.out.println(model.getRowCount());
+						model.removeRow(0);
+				}
+					treeListener(tree);	
 			}
 		});
 		
@@ -506,6 +444,7 @@ public class InstitutionPanel extends JPanel {
 		courierBox.setModel(new DefaultComboBoxModel<String>(post));
 		TableColumnModel tcm = table.getColumnModel();
 		tcm.getColumn(5).setCellEditor(new DefaultCellEditor(courierBox));
+		
 		ArrayList<StaffVO> staffList=new ArrayList<StaffVO>();
 		for (StaffVO vo:staffList) {
 			model.addRow(new Object[] { vo.getStaffID(),vo.getName(),vo.getSex(),vo.getIdenity(),vo.getTel(),String.valueOf(vo.getPost())});
@@ -578,7 +517,70 @@ public class InstitutionPanel extends JPanel {
 	}
 	}
 	
-	
+	void treeListener(JTree tree){
+		DefaultTreeCellRenderer render=new DefaultTreeCellRenderer();
+		tree.setCellRenderer(render);
+		tree.addTreeSelectionListener(new TreeSelectionListener() {
+			ArrayList<StaffVO> staffVOs=new ArrayList<StaffVO>();
+			@Override
+			public void valueChanged(TreeSelectionEvent arg0) {
+				
+				model=(DefaultTableModel)table.getModel();
+				int row=model.getRowCount();
+				for(int i=0;i<row;i++){
+					System.out.println(model.getRowCount());
+						model.removeRow(0);
+				}
+				
+				  DefaultMutableTreeNode note = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
+		
+				try {
+				 staffVOs=institutionLogicService.getStaffVOList(note.toString());
+				} catch (RemoteException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				model = (DefaultTableModel) table.getModel();
+				for (StaffVO vo:staffVOs) {
+					model.addRow(new Object[] { vo.getStaffID(),vo.getName(),vo.getSex(),vo.getIdenity(),vo.getTel(),String.valueOf(vo.getPost())});
+				}
+				updateUI();
+				
+			}
+		});
+		
+		tree.setModel(new DefaultTreeModel(
+			new DefaultMutableTreeNode("总部") {
+				{
+					DefaultMutableTreeNode node_1;
+					DefaultMutableTreeNode node_2;
+					DefaultMutableTreeNode node_3;
+					DefaultMutableTreeNode node_4;
+					node_1 = new DefaultMutableTreeNode("中转中心");
+					node_3=new DefaultMutableTreeNode("仓库");
+					node_4=new DefaultMutableTreeNode("营业厅");
+					for(InstitutionVO vo:institutionList){
+						if(vo.getParentInstitution().equals("0")){
+							node_2=new DefaultMutableTreeNode(vo.getName());
+							
+						
+							
+							node_2.add(node_3);
+							node_2.add(node_4);
+							for(InstitutionVO vo1:institutionList){
+								if(vo1.getParentInstitution().equals(vo.getId())&&vo1.getId().toString().length()==6){
+									node_3.add(new DefaultMutableTreeNode(vo1.getName()));
+								}else if(vo1.getParentInstitution().equals(vo.getId())&&vo1.getId().toString().length()==7){
+									node_4.add(new DefaultMutableTreeNode(vo1.getName()));
+								}
+							}
+							node_1.add(node_2);				
+						}
+					}
+					add(node_1);
+				}}
+		));
+	}
 	
 	
 }
