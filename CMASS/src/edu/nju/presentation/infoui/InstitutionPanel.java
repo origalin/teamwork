@@ -11,7 +11,6 @@ import java.awt.GridBagLayout;
 
 import javax.swing.DefaultCellEditor;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollBar;
@@ -42,7 +41,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import javax.swing.JTable;
+
+
+
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 import javax.swing.JScrollPane;
@@ -54,13 +55,15 @@ import edu.nju.po.InstitutionPO;
 import edu.nju.po.Post;
 import edu.nju.po.StaffPO;
 import edu.nju.presentation.UiFactory;
+import edu.nju.presentation.widget.MyComboBox;
+import edu.nju.presentation.widget.MyTable;
 import edu.nju.tools.Time;
 import edu.nju.vo.CarVO;
 import edu.nju.vo.InstitutionVO;
 import edu.nju.vo.StaffVO;
 
 public class InstitutionPanel extends JPanel {
-	private JTable table;
+	private MyTable table;
 	DefaultTableModel model;
 	private JTree tree ;
 	ArrayList<InstitutionVO> institutionList = null;
@@ -420,7 +423,7 @@ public class InstitutionPanel extends JPanel {
 		gbc_scrollPane.gridy = 2;
 		panel_1.add(scrollPane, gbc_scrollPane);
 		
-		table = new JTable();
+		table = new MyTable();
 		
 		
 		
@@ -439,7 +442,7 @@ public class InstitutionPanel extends JPanel {
 		table.setEnabled(false);
 
 		model = (DefaultTableModel) table.getModel();
-		JComboBox<String> courierBox = new JComboBox<String>();
+		MyComboBox courierBox = new MyComboBox();
 		String[] post={"总经理","高级财务","会计","中转中心业务员","仓库管理人员","营业厅业务员","快递员","管理员"};
 		courierBox.setModel(new DefaultComboBoxModel<String>(post));
 		TableColumnModel tcm = table.getColumnModel();
