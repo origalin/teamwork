@@ -1,6 +1,7 @@
 package edu.nju.businesslogic.infobl;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import edu.nju.businesslogicservice.infologicservice.DistanceLogicService;
 import edu.nju.dataFactory.DataFactory;
@@ -34,6 +35,14 @@ public class Distance implements DistanceLogicService{
 	public void addDistance(DistancePO po) throws RemoteException {
 		// TODO Auto-generated method stub
 		distanceDataService.addDistance(po);
+	}
+
+
+
+
+	@Override
+	public ArrayList<String> getCityList() throws RemoteException {
+		return distanceDataService.getCityList();
 	}
 
 }

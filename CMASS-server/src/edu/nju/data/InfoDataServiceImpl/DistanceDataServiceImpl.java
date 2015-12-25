@@ -3,6 +3,8 @@ package edu.nju.data.InfoDataServiceImpl;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
+import java.util.ArrayList;
+
 import edu.nju.data.database.SQL;
 import edu.nju.dataservice.infodataservice.DistanceDataService;
 import edu.nju.po.DistancePO;
@@ -92,6 +94,42 @@ public class DistanceDataServiceImpl extends UnicastRemoteObject implements Dist
 		String sql = "INSERT INTO DISTANCE (city1,city2,distance)VALUES('"+po.getCity1()+"','"+po.getCity2()+"','"+po.getDistance()+"');";
 		SQL.databaseUpdate(sql);
 		SQL.closeDatabase();
+	}
+
+
+	@Override
+	public ArrayList<String> getCityList() throws RemoteException {
+		ArrayList<String>cityList=new ArrayList<String>();
+		String sql = "SELECT city1,city2,distance FROM DISTANCE;";
+		SQL.databaseQuery(sql);
+		try {
+			while (SQL.rs.next()) {
+			if(!cityList.contains(SQL.rs.getString("city1"))){
+				cityList.add(SQL.rs.getString("city1"));
+			}
+			}
+		} catch (SQLException e) {
+			System.out.println("获取错误");
+			e.printStackTrace();
+		}
+		String sql1 = "SELECT city1,city2,distance FROM DISTANCE;";
+		SQL.databaseQuery(sql1);
+			try {
+				while (SQL.rs.next()) {
+					if(!cityList.contains(SQL.rs.getString("city2"))){
+						cityList.add(SQL.rs.getString("city2"));
+					}
+				}
+			} catch (SQLException e) {
+				System.out.println("获取错误");
+				e.printStackTrace();
+			} 	
+		SQL.closeDatabase();
+
+		
+		
+		
+		return cityList;
 	}
 	
 	

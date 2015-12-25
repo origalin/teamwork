@@ -3,6 +3,7 @@ package edu.nju.dataservice.infodataservice;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import edu.nju.po.DistancePO;
 
@@ -12,5 +13,8 @@ public interface DistanceDataService extends Remote{
 	
 	public void changeDistance(DistancePO po)throws RemoteException;
 	public void addDistance(DistancePO po)throws RemoteException;
+
+
+	public ArrayList<String> getCityList()throws RemoteException;
 	
 }
