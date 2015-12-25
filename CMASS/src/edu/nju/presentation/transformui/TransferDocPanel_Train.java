@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
+import edu.nju.presentation.widget.MyTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.table.DefaultTableModel;
@@ -31,11 +31,11 @@ import java.awt.Dimension;
 
 @SuppressWarnings("serial")
 public class TransferDocPanel_Train extends JPanel {
-	private JTextField carNumField;
-	private JTextField watcherField;
-	private JTextField targetField;
-	private JTextField itemIDField;
-	private JTextField carrriageField;
+	private MyTextField carNumField;
+	private MyTextField watcherField;
+	private MyTextField targetField;
+	private MyTextField itemIDField;
+	private MyTextField carrriageField;
 	private TransferDoc transferDoc;
 	private String city, carNum, watcher, carriage;
 	private String[] itemIDs;
@@ -90,7 +90,7 @@ public class TransferDocPanel_Train extends JPanel {
 		JLabel label_10 = new JLabel("\u5230\u8FBE\u5730  ");
 		panel_6.add(label_10);
 
-		targetField = new JTextField();
+		targetField = new MyTextField();
 		panel_6.add(targetField);
 		targetField.setColumns(20);
 
@@ -107,21 +107,21 @@ public class TransferDocPanel_Train extends JPanel {
 		JLabel label_11 = new JLabel("\u8F66\u6B21\u53F7  ");
 		panel_8.add(label_11);
 
-		carNumField = new JTextField();
+		carNumField = new MyTextField();
 		panel_8.add(carNumField);
 		carNumField.setColumns(5);
 
 		JLabel label_2 = new JLabel("\u8F66\u53A2\u53F7");
 		panel_8.add(label_2);
 
-		carrriageField = new JTextField();
+		carrriageField = new MyTextField();
 		panel_8.add(carrriageField);
 		carrriageField.setColumns(5);
 
 		JLabel lblNewLabel = new JLabel("\u76D1\u88C5\u5458");
 		panel_8.add(lblNewLabel);
 
-		watcherField = new JTextField();
+		watcherField = new MyTextField();
 		panel_8.add(watcherField);
 		watcherField.setColumns(5);
 
@@ -177,7 +177,7 @@ public class TransferDocPanel_Train extends JPanel {
 		gbc_label_1.gridy = 1;
 		panel_1.add(label_1, gbc_label_1);
 
-		itemIDField = new JTextField();
+		itemIDField = new MyTextField();
 		itemIDField.setColumns(25);
 		GridBagConstraints gbc_itemIDField = new GridBagConstraints();
 		gbc_itemIDField.insets = new Insets(0, 0, 5, 5);

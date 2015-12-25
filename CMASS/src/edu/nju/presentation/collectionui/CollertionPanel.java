@@ -28,6 +28,9 @@ import edu.nju.vo.SendDocVO;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
 
 public class CollertionPanel extends JPanel{
 	String sName,rName,scity,rcity,sAddress,rAddress,sTelePhone,rTelePhone,sMobilePhone,rMobilePhone,itemKind,sUnit,rUnit;
@@ -72,17 +75,41 @@ public class CollertionPanel extends JPanel{
 		ButtonGroup buttonGroup = new ButtonGroup();
 		
 		ButtonGroup buttonGroup2 = new ButtonGroup();
-		setLayout(new BorderLayout(0, 0));
+		GridBagLayout gridBagLayout = new GridBagLayout();
+		gridBagLayout.columnWidths = new int[]{213, 30, 0};
+		gridBagLayout.rowHeights = new int[]{560, 0};
+		gridBagLayout.columnWeights = new double[]{1.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+		setLayout(gridBagLayout);
+		
+		
+		setOpaque(false);
 		
 		JPanel panel_11 = new JPanel();
 		panel_11.setOpaque(false);
 		panel_11.setBorder(null);
-		add(panel_11, BorderLayout.NORTH);
-		panel_11.setLayout(new GridLayout(14, 0, 0, 0));
+		GridBagConstraints gbc_panel_11 = new GridBagConstraints();
+		gbc_panel_11.insets = new Insets(0, 0, 0, 5);
+		gbc_panel_11.anchor = GridBagConstraints.NORTH;
+		gbc_panel_11.fill = GridBagConstraints.HORIZONTAL;
+		gbc_panel_11.gridx = 0;
+		gbc_panel_11.gridy = 0;
+		add(panel_11, gbc_panel_11);
+		GridBagLayout gbl_panel_11 = new GridBagLayout();
+		gbl_panel_11.columnWidths = new int[]{471, 0};
+		gbl_panel_11.rowHeights = new int[]{40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 0};
+		gbl_panel_11.columnWeights = new double[]{1.0, Double.MIN_VALUE};
+		gbl_panel_11.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		panel_11.setLayout(gbl_panel_11);
 		
 		JPanel panel = new JPanel();
 		panel.setOpaque(false);
-		panel_11.add(panel);
+		GridBagConstraints gbc_panel = new GridBagConstraints();
+		gbc_panel.fill = GridBagConstraints.BOTH;
+		gbc_panel.insets = new Insets(0, 0, 5, 0);
+		gbc_panel.gridx = 0;
+		gbc_panel.gridy = 0;
+		panel_11.add(panel, gbc_panel);
 		FlowLayout flowLayout = (FlowLayout) panel.getLayout();
 		flowLayout.setAlignment(FlowLayout.LEFT);
 		
@@ -91,7 +118,12 @@ public class CollertionPanel extends JPanel{
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setOpaque(false);
-		panel_11.add(panel_1);
+		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
+		gbc_panel_1.fill = GridBagConstraints.BOTH;
+		gbc_panel_1.insets = new Insets(0, 0, 5, 0);
+		gbc_panel_1.gridx = 0;
+		gbc_panel_1.gridy = 1;
+		panel_11.add(panel_1, gbc_panel_1);
 		FlowLayout flowLayout_1 = (FlowLayout) panel_1.getLayout();
 		flowLayout_1.setAlignment(FlowLayout.LEFT);
 		
@@ -121,7 +153,12 @@ public class CollertionPanel extends JPanel{
 		panel_14.setOpaque(false);
 		FlowLayout flowLayout_11 = (FlowLayout) panel_14.getLayout();
 		flowLayout_11.setAlignment(FlowLayout.LEFT);
-		panel_11.add(panel_14);
+		GridBagConstraints gbc_panel_14 = new GridBagConstraints();
+		gbc_panel_14.fill = GridBagConstraints.BOTH;
+		gbc_panel_14.insets = new Insets(0, 0, 5, 0);
+		gbc_panel_14.gridx = 0;
+		gbc_panel_14.gridy = 2;
+		panel_11.add(panel_14, gbc_panel_14);
 		
 		JLabel label_2 = new JLabel("\u7535\u8BDD");
 		panel_14.add(label_2);
@@ -143,7 +180,12 @@ public class CollertionPanel extends JPanel{
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setOpaque(false);
-		panel_11.add(panel_2);
+		GridBagConstraints gbc_panel_2 = new GridBagConstraints();
+		gbc_panel_2.fill = GridBagConstraints.BOTH;
+		gbc_panel_2.insets = new Insets(0, 0, 5, 0);
+		gbc_panel_2.gridx = 0;
+		gbc_panel_2.gridy = 3;
+		panel_11.add(panel_2, gbc_panel_2);
 		FlowLayout flowLayout_2 = (FlowLayout) panel_2.getLayout();
 		flowLayout_2.setAlignment(FlowLayout.LEFT);
 		
@@ -167,7 +209,12 @@ public class CollertionPanel extends JPanel{
 		
 		JPanel panel_3 = new JPanel();
 		panel_3.setOpaque(false);
-		panel_11.add(panel_3);
+		GridBagConstraints gbc_panel_3 = new GridBagConstraints();
+		gbc_panel_3.fill = GridBagConstraints.BOTH;
+		gbc_panel_3.insets = new Insets(0, 0, 5, 0);
+		gbc_panel_3.gridx = 0;
+		gbc_panel_3.gridy = 4;
+		panel_11.add(panel_3, gbc_panel_3);
 		FlowLayout flowLayout_3 = (FlowLayout) panel_3.getLayout();
 		flowLayout_3.setAlignment(FlowLayout.LEFT);
 		
@@ -176,7 +223,12 @@ public class CollertionPanel extends JPanel{
 		
 		JPanel panel_4 = new JPanel();
 		panel_4.setOpaque(false);
-		panel_11.add(panel_4);
+		GridBagConstraints gbc_panel_4 = new GridBagConstraints();
+		gbc_panel_4.fill = GridBagConstraints.BOTH;
+		gbc_panel_4.insets = new Insets(0, 0, 5, 0);
+		gbc_panel_4.gridx = 0;
+		gbc_panel_4.gridy = 5;
+		panel_11.add(panel_4, gbc_panel_4);
 		FlowLayout flowLayout_4 = (FlowLayout) panel_4.getLayout();
 		flowLayout_4.setAlignment(FlowLayout.LEFT);
 		
@@ -206,7 +258,12 @@ public class CollertionPanel extends JPanel{
 		panel_8.setOpaque(false);
 		FlowLayout flowLayout_7 = (FlowLayout) panel_8.getLayout();
 		flowLayout_7.setAlignment(FlowLayout.LEFT);
-		panel_11.add(panel_8);
+		GridBagConstraints gbc_panel_8 = new GridBagConstraints();
+		gbc_panel_8.fill = GridBagConstraints.BOTH;
+		gbc_panel_8.insets = new Insets(0, 0, 5, 0);
+		gbc_panel_8.gridx = 0;
+		gbc_panel_8.gridy = 6;
+		panel_11.add(panel_8, gbc_panel_8);
 		
 		JLabel label_7 = new JLabel("\u7535\u8BDD");
 		panel_8.add(label_7);
@@ -228,7 +285,12 @@ public class CollertionPanel extends JPanel{
 		
 		JPanel panel_5 = new JPanel();
 		panel_5.setOpaque(false);
-		panel_11.add(panel_5);
+		GridBagConstraints gbc_panel_5 = new GridBagConstraints();
+		gbc_panel_5.fill = GridBagConstraints.BOTH;
+		gbc_panel_5.insets = new Insets(0, 0, 5, 0);
+		gbc_panel_5.gridx = 0;
+		gbc_panel_5.gridy = 7;
+		panel_11.add(panel_5, gbc_panel_5);
 		FlowLayout flowLayout_5 = (FlowLayout) panel_5.getLayout();
 		flowLayout_5.setAlignment(FlowLayout.LEFT);
 		
@@ -254,7 +316,12 @@ public class CollertionPanel extends JPanel{
 		panel_6.setOpaque(false);
 		FlowLayout flowLayout_6 = (FlowLayout) panel_6.getLayout();
 		flowLayout_6.setAlignment(FlowLayout.LEFT);
-		panel_11.add(panel_6);
+		GridBagConstraints gbc_panel_6 = new GridBagConstraints();
+		gbc_panel_6.fill = GridBagConstraints.BOTH;
+		gbc_panel_6.insets = new Insets(0, 0, 5, 0);
+		gbc_panel_6.gridx = 0;
+		gbc_panel_6.gridy = 8;
+		panel_11.add(panel_6, gbc_panel_6);
 		
 		JLabel label_10 = new JLabel("\u539F\u4EF6\u6570");
 		panel_6.add(label_10);
@@ -301,7 +368,12 @@ public class CollertionPanel extends JPanel{
 		
 		JPanel panel_9 = new JPanel();
 		panel_9.setOpaque(false);
-		panel_11.add(panel_9);
+		GridBagConstraints gbc_panel_9 = new GridBagConstraints();
+		gbc_panel_9.fill = GridBagConstraints.BOTH;
+		gbc_panel_9.insets = new Insets(0, 0, 5, 0);
+		gbc_panel_9.gridx = 0;
+		gbc_panel_9.gridy = 9;
+		panel_11.add(panel_9, gbc_panel_9);
 		FlowLayout flowLayout_8 = (FlowLayout) panel_9.getLayout();
 		flowLayout_8.setAlignment(FlowLayout.LEFT);
 		
@@ -366,7 +438,12 @@ public class CollertionPanel extends JPanel{
 		
 		JPanel panel_10 = new JPanel();
 		panel_10.setOpaque(false);
-		panel_11.add(panel_10);
+		GridBagConstraints gbc_panel_10 = new GridBagConstraints();
+		gbc_panel_10.fill = GridBagConstraints.BOTH;
+		gbc_panel_10.insets = new Insets(0, 0, 5, 0);
+		gbc_panel_10.gridx = 0;
+		gbc_panel_10.gridy = 10;
+		panel_11.add(panel_10, gbc_panel_10);
 		FlowLayout flowLayout_9 = (FlowLayout) panel_10.getLayout();
 		flowLayout_9.setAlignment(FlowLayout.LEFT);
 		
@@ -418,7 +495,12 @@ public class CollertionPanel extends JPanel{
 		
 		JPanel panel_7 = new JPanel();
 		panel_7.setOpaque(false);
-		panel_11.add(panel_7);
+		GridBagConstraints gbc_panel_7 = new GridBagConstraints();
+		gbc_panel_7.fill = GridBagConstraints.BOTH;
+		gbc_panel_7.insets = new Insets(0, 0, 5, 0);
+		gbc_panel_7.gridx = 0;
+		gbc_panel_7.gridy = 11;
+		panel_11.add(panel_7, gbc_panel_7);
 		FlowLayout flowLayout_10 = (FlowLayout) panel_7.getLayout();
 		flowLayout_10.setAlignment(FlowLayout.LEFT);
 		
@@ -433,12 +515,18 @@ public class CollertionPanel extends JPanel{
 		panel_13.setOpaque(false);
 		FlowLayout flowLayout_13 = (FlowLayout) panel_13.getLayout();
 		flowLayout_13.setAlignment(FlowLayout.LEFT);
-		panel_11.add(panel_13);
+		GridBagConstraints gbc_panel_13 = new GridBagConstraints();
+		gbc_panel_13.fill = GridBagConstraints.BOTH;
+		gbc_panel_13.insets = new Insets(0, 0, 5, 0);
+		gbc_panel_13.gridx = 0;
+		gbc_panel_13.gridy = 12;
+		panel_11.add(panel_13, gbc_panel_13);
 		
 		JLabel label_18 = new JLabel("\u4EF7\u683C(\u5143)");
 		panel_13.add(label_18);
 		
 		priceField = new MyTextField();
+		priceField.setEditable(false);
 		priceField.setColumns(5);
 		panel_13.add(priceField);
 		
@@ -446,6 +534,7 @@ public class CollertionPanel extends JPanel{
 		panel_13.add(lblday);
 		
 		timeField = new MyTextField();
+		timeField.setEditable(false);
 		timeField.setColumns(5);
 		panel_13.add(timeField);
 		
@@ -453,7 +542,11 @@ public class CollertionPanel extends JPanel{
 		panel_12.setOpaque(false);
 		FlowLayout flowLayout_12 = (FlowLayout) panel_12.getLayout();
 		flowLayout_12.setAlignment(FlowLayout.RIGHT);
-		panel_11.add(panel_12);
+		GridBagConstraints gbc_panel_12 = new GridBagConstraints();
+		gbc_panel_12.fill = GridBagConstraints.BOTH;
+		gbc_panel_12.gridx = 0;
+		gbc_panel_12.gridy = 13;
+		panel_11.add(panel_12, gbc_panel_12);
 		
 		JButton createButton = new SmallButton("\u8BA2\u5355\u751F\u6210");
 		createButton.addActionListener(new ActionListener() {
@@ -480,9 +573,6 @@ public class CollertionPanel extends JPanel{
 		
 		
 		panel_12.add(createButton);
-		
-		
-		setOpaque(false);
 	}
 	public void estimate() {
 		intialize();

@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
+import edu.nju.presentation.widget.MyTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.table.DefaultTableModel;
@@ -35,9 +35,9 @@ import java.awt.Dimension;
 
 @SuppressWarnings("serial")
 public class ZLoadDocPanel extends JPanel{
-	private JTextField carIDField;
-	private JTextField watcherField;
-	private JTextField itemIDField;
+	private MyTextField carIDField;
+	private MyTextField watcherField;
+	private MyTextField itemIDField;
 	private JTable table;
 	String institutionID,staffID;
 	ZLoadDoc zLoadDoc;
@@ -81,7 +81,7 @@ public class ZLoadDocPanel extends JPanel{
 		JLabel label_11 = new JLabel("\u8F66\u8F86\u4EE3\u53F7");
 		panel_8.add(label_11);
 		
-		carIDField = new JTextField();
+		carIDField = new MyTextField();
 		panel_8.add(carIDField);
 		carIDField.setColumns(10);
 		
@@ -97,7 +97,7 @@ public class ZLoadDocPanel extends JPanel{
 		JLabel lblNewLabel = new JLabel("\u76D1\u88C5\u5458");
 		panel_8.add(lblNewLabel);
 		
-		watcherField = new JTextField();
+		watcherField = new MyTextField();
 		panel_8.add(watcherField);
 		watcherField.setColumns(10);
 		
@@ -170,7 +170,7 @@ public class ZLoadDocPanel extends JPanel{
 		gbc_label_1.gridy = 1;
 		panel_1.add(label_1, gbc_label_1);
 		
-		itemIDField = new JTextField();
+		itemIDField = new MyTextField();
 		itemIDField.setColumns(30);
 		GridBagConstraints gbc_itemIDField = new GridBagConstraints();
 		gbc_itemIDField.anchor = GridBagConstraints.NORTH;

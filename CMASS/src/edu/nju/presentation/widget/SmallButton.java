@@ -35,7 +35,7 @@ public class SmallButton extends JButton{
 			@Override
 			public void mousePressed(MouseEvent e) {
 				// TODO Auto-generated method stub
-				setBackground(new Color(0, 200, 221));
+				setBackground(new Color(119, 196, 211));
 				setForeground(new Color(234, 234, 234));
 			}
 			

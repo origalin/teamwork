@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
+import edu.nju.presentation.widget.MyTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.table.DefaultTableModel;
@@ -40,8 +40,8 @@ import java.awt.Dimension;
 
 @SuppressWarnings("serial")
 public class ZArrivalDocPanel extends JPanel {
-	private JTextField transferDocIDField;
-	private JTextField itemIDField;
+	private MyTextField transferDocIDField;
+	private MyTextField itemIDField;
 	private JTable table;
 	MyComboBox docTypeBox;
 	String institutionID, staffID;
@@ -113,7 +113,7 @@ public class ZArrivalDocPanel extends JPanel {
 		gbc_panel_2.gridy = 1;
 		panel_11.add(panel_2, gbc_panel_2);
 
-		transferDocIDField = new JTextField();
+		transferDocIDField = new MyTextField();
 		panel_2.add(transferDocIDField);
 		transferDocIDField.setColumns(20);
 
@@ -184,7 +184,7 @@ public class ZArrivalDocPanel extends JPanel {
 		gbc_label_2.gridy = 1;
 		panel_1.add(label_2, gbc_label_2);
 
-		itemIDField = new JTextField();
+		itemIDField = new MyTextField();
 		itemIDField.setColumns(15);
 		GridBagConstraints gbc_itemIDField = new GridBagConstraints();
 		gbc_itemIDField.fill = GridBagConstraints.HORIZONTAL;

@@ -11,7 +11,7 @@ public class MyTable extends JTable{
 		setRowHeight(30);
 		setGridColor(Color.LIGHT_GRAY);
 		
-		setForeground(new Color(58, 140,187));
+		
 		
 	}
 	
@@ -20,6 +20,6 @@ public class MyTable extends JTable{
 		super(arg0, arg1);
 		setRowHeight(30);
 		setGridColor(Color.LIGHT_GRAY);
-		setBackground(new Color(234, 234, 234));
+//		setBackground(new Color(234, 234, 234));
 	}
 }
