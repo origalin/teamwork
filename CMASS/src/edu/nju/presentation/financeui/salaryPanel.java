@@ -9,8 +9,6 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
-import javax.swing.JButton;
-
 import edu.nju.businesslogic.financebl.financebl;
 import edu.nju.po.InstitutionPO;
 import edu.nju.po.StaffPO;

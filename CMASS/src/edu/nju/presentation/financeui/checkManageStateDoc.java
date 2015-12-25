@@ -13,6 +13,7 @@ import edu.nju.po.PayType;
 import edu.nju.presentation.approveui.checkGatheringDoc;
 import edu.nju.presentation.approveui.checkPayDoc;
 import edu.nju.presentation.mainui.CheckDialog;
+import edu.nju.presentation.widget.SmallButton;
 import edu.nju.vo.GatheringDocVO;
 import edu.nju.vo.PayDocVO;
 
@@ -118,7 +119,7 @@ public class checkManageStateDoc extends JPanel{
 		scrollPane.setViewportView(initializeTable(tempPayDocList));
 		*/
 		
-		JButton checkButton = new JButton("\u67E5\u8BE2");
+		SmallButton checkButton = new SmallButton("\u67E5\u8BE2");
 		checkButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String startDate=textField.getText().trim();

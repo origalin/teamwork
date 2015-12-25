@@ -43,6 +43,7 @@ import edu.nju.vo.ZArrivalDocVO;
 import edu.nju.vo.ZLoadDocVO;
 import edu.nju.presentation.mainui.*;
 import edu.nju.presentation.widget.MyTable;
+import edu.nju.presentation.widget.SmallButton;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -125,7 +126,7 @@ public class checkMainUI extends JPanel{
 		gbc_comboBox.gridy = 1;
 		add(comboBox, gbc_comboBox);
 		
-		JButton button_1 = new JButton("\u663E\u793A\u672A\u5BA1\u6279\u5355\u636E");
+		SmallButton button_1 = new SmallButton("\u663E\u793A\u672A\u5BA1\u6279\u5355\u636E");
 		button_1.addMouseListener(new MouseAdapter() {
 
 			@Override
@@ -502,7 +503,7 @@ public class checkMainUI extends JPanel{
 			}
 		});
 		*/
-		JButton button = new JButton("\u786E\u8BA4");
+		SmallButton button = new SmallButton("\u786E\u8BA4");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource()==button){

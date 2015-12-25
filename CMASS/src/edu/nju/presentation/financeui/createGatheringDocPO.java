@@ -20,6 +20,7 @@ import edu.nju.po.GatheringDocPO;
 import edu.nju.po.OperationPO;
 import edu.nju.presentation.approveui.checkGatheringDoc;
 import edu.nju.presentation.mainui.CheckDialog;
+import edu.nju.presentation.widget.SmallButton;
 import edu.nju.vo.AccountVO;
 import edu.nju.vo.GatheringDocVO;
 public class createGatheringDocPO extends JPanel{
@@ -29,7 +30,7 @@ public class createGatheringDocPO extends JPanel{
 		private String staffID;
 		private financebl bl;
 		private JTextField courier_ID;
-		private JButton button;
+		private SmallButton button;
 		private JComboBox comboBox;
 		private ArrayList<AccountVO>accountList;
 		/*
@@ -116,7 +117,7 @@ public class createGatheringDocPO extends JPanel{
 			gbc_comboBox.gridy = 1;
 			add(comboBox, gbc_comboBox);
 			
-			button = new JButton("\u786E\u5B9A");
+			button = new SmallButton("\u786E\u5B9A");
 			button.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					String courierID=courier_ID.getText().trim();

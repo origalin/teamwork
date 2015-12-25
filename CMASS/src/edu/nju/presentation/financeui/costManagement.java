@@ -18,6 +18,7 @@ import edu.nju.po.ZLoadDocPO;
 import edu.nju.presentation.approveui.checkMainUI;
 import edu.nju.presentation.approveui.checkPayDoc;
 import edu.nju.presentation.mainui.CheckDialog;
+import edu.nju.presentation.widget.SmallButton;
 import edu.nju.vo.AccountVO;
 import edu.nju.vo.PayDocVO;
 
@@ -41,6 +42,7 @@ public class costManagement extends JPanel{
 		frame.setVisible(true);
 	}
 */
+	
 	private ArrayList<StaffPO>staffList;
 	private String staffName;
 	private String staffID;
@@ -116,7 +118,7 @@ public class costManagement extends JPanel{
 		}
 		
 		
-		JButton button = new JButton("\u83B7\u53D6\u5217\u8868");
+		SmallButton button = new SmallButton("\u83B7\u53D6\u5217\u8868");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String payAccount=(String) accountComboBox.getSelectedItem();
@@ -208,7 +210,7 @@ public class costManagement extends JPanel{
 		add(back, gbc_back);
 		back.setColumns(10);
 		
-		JButton button_1 = new JButton("\u65B0\u5EFA\u4ED8\u6B3E\u5355");
+		SmallButton button_1 = new SmallButton("\u65B0\u5EFA\u4ED8\u6B3E\u5355");
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String type=(String) comboBox.getSelectedItem();
@@ -354,7 +356,7 @@ public class costManagement extends JPanel{
 		gbc_button_1.gridy = 5;
 		add(button_1, gbc_button_1);
 		
-		JButton button_2 = new JButton("\u91CD\u7F6E\u5DE5\u8D44");
+		SmallButton button_2 = new SmallButton("\u91CD\u7F6E\u5DE5\u8D44");
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			    JOptionPane.showMessageDialog(null, "工资已被重置.", null,JOptionPane.PLAIN_MESSAGE);  
@@ -375,7 +377,7 @@ public class costManagement extends JPanel{
 		gbc_button_2.gridy = 6;
 		add(button_2, gbc_button_2);
 		
-		JButton button_3 = new JButton("\u91CD\u7F6E\u79DF\u91D1");
+		SmallButton button_3 = new SmallButton("\u91CD\u7F6E\u79DF\u91D1");
 		button_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				 JOptionPane.showMessageDialog(null, "租金已被重置.", null,JOptionPane.PLAIN_MESSAGE); 

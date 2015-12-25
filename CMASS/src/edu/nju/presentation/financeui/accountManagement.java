@@ -13,6 +13,7 @@ import edu.nju.businesslogic.systembl.SystemBl;
 import edu.nju.po.OperationPO;
 import edu.nju.presentation.approveui.checkMainUI;
 import edu.nju.presentation.widget.MyTable;
+import edu.nju.presentation.widget.SmallButton;
 import edu.nju.vo.AccountVO;
 
 import java.awt.Font;
@@ -91,7 +92,7 @@ public class accountManagement extends JPanel{
 		add(textField, gbc_textField);
 		textField.setColumns(10);
 		//增加按钮
-		JButton button = new JButton("\u589E\u52A0");
+		SmallButton button = new SmallButton("\u589E\u52A0");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource()==button){
@@ -125,7 +126,7 @@ public class accountManagement extends JPanel{
 			}
 		});
 		//查询按钮
-		JButton button_3 = new JButton("\u67E5\u770B");
+		SmallButton button_3 = new SmallButton("\u67E5\u770B");
 		button_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource()==button_3){
@@ -153,7 +154,7 @@ public class accountManagement extends JPanel{
 		gbc_button.gridy = 4;
 		add(button, gbc_button);
 		//修改按钮
-		JButton button_2 = new JButton("\u4FEE\u6539");
+		SmallButton button_2 = new SmallButton("\u4FEE\u6539");
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource()==button_2){
@@ -182,7 +183,7 @@ public class accountManagement extends JPanel{
 			}
 		});
 		//删除按钮
-		JButton button_1 = new JButton("\u5220\u9664");
+		SmallButton button_1 = new SmallButton("\u5220\u9664");
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource()==button_1){
@@ -263,7 +264,7 @@ public class accountManagement extends JPanel{
 		}
 		scrollPane.setViewportView(initializeTable(list));
 		
-		JButton button_4 = new JButton("\u786E\u5B9A");
+		SmallButton button_4 = new SmallButton("\u786E\u5B9A");
 		button_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
