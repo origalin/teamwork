@@ -14,7 +14,7 @@ import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
 
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
+
 
 
 
@@ -24,14 +24,15 @@ import edu.nju.exception.DatabaseNULLException;
 import edu.nju.po.DriverPO;
 import edu.nju.po.SalaryPO;
 import edu.nju.presentation.UiFactory;
+import edu.nju.presentation.widget.MyTextField;
 import edu.nju.presentation.widget.SmallButton;
 
 public class SalaryPanel extends JPanel {
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField;
-	private JTextField textField_8 ;
+	private MyTextField textField_1;
+	private MyTextField textField_2;
+	private MyTextField textField_3;
+	private MyTextField textField;
+	private MyTextField textField_8 ;
 	
 	JPanel panel_4;
 	InstitutionLogicService institutionLogicService=UiFactory.getInstitutionLogicService();
@@ -72,7 +73,7 @@ public class SalaryPanel extends JPanel {
 		gbc_label_1.gridy = 1;
 		panel_3.add(label_1, gbc_label_1);
 		
-		textField = new JTextField();
+		textField = new MyTextField();
 		textField.setColumns(10);
 		GridBagConstraints gbc_textField = new GridBagConstraints();
 		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
@@ -250,7 +251,7 @@ public class SalaryPanel extends JPanel {
 					panel_5.add(label_8, gbc_label_8);
 					
 					
-					textField_8 = new JTextField();
+					textField_8 = new MyTextField();
 					try {
 						textField_8.setText(String.valueOf(driverLogicService.getDriverCommision(textField.getText())));
 					} catch (RemoteException e1) {
@@ -330,7 +331,7 @@ public class SalaryPanel extends JPanel {
 					gbc_label_3.gridy = 0;
 					panel_1.add(label_3, gbc_label_3);
 					
-					textField_1 = new JTextField();
+					textField_1 = new MyTextField();
 			
 						try {
 							textField_1.setText(String.valueOf(institutionLogicService.getBase(textField.getText())));
@@ -377,7 +378,7 @@ public class SalaryPanel extends JPanel {
 					gbc_label_4.gridy = 1;
 					panel_1.add(label_4, gbc_label_4);
 					
-					textField_2 = new JTextField();
+					textField_2 = new MyTextField();
 					try {
 						try {
 							textField_2.setText(String.valueOf(institutionLogicService.getBonus(textField.getText())));
@@ -422,7 +423,7 @@ public class SalaryPanel extends JPanel {
 					gbc_label_5.gridy = 2;
 					panel_1.add(label_5, gbc_label_5);
 					
-					textField_3 = new JTextField();
+					textField_3 = new MyTextField();
 					try {
 						try {
 							textField_3.setText(String.valueOf(institutionLogicService.getPercentage(textField.getText())));

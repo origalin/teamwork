@@ -16,17 +16,19 @@ import java.rmi.RemoteException;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
+
+
 
 import edu.nju.businesslogic.infobl.Distance;
 import edu.nju.businesslogicservice.infologicservice.DistanceLogicService;
 import edu.nju.po.DistancePO;
 import edu.nju.presentation.UiFactory;
 import edu.nju.presentation.widget.MyComboBox;
+import edu.nju.presentation.widget.MyTextField;
 import edu.nju.presentation.widget.SmallButton;
 
 public class DistancePanel extends JPanel {
-	private JTextField txtkm;
+	private MyTextField txtkm;
 	DistanceLogicService distanceBl=UiFactory.getDistanceLogicService();
 	/**
 	 * Create the panel.
@@ -139,7 +141,7 @@ public class DistancePanel extends JPanel {
 		gbc_label_3.gridy = 3;
 		panel_1.add(label_3, gbc_label_3);
 		
-		txtkm = new JTextField();
+		txtkm = new MyTextField();
 		txtkm.setText("100/km");
 		GridBagConstraints gbc_txtkm = new GridBagConstraints();
 		gbc_txtkm.gridwidth = 3;
