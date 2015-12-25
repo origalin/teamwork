@@ -5,6 +5,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Date;
 
+import edu.nju.exception.DatabaseNULLException;
 import edu.nju.po.AccountPO;
 import edu.nju.po.OperationPO;
 import edu.nju.po.StaffPO;
@@ -14,7 +15,7 @@ public interface SystemDataService extends Remote{
 	public ArrayList<OperationPO>  findOperationLog(Date beginTime,Date endTime)throws RemoteException;
 	public void saveOperationLog(OperationPO po)throws RemoteException;
 	
-	public String[] getPasswordAndPower(String id)throws RemoteException;
+	public String[] getPasswordAndPower(String id)throws RemoteException, DatabaseNULLException;
 
 	public void changePasswordAndPower(String[] str)throws RemoteException;
 

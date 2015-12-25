@@ -15,7 +15,8 @@ import java.rmi.RemoteException;
 
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import javax.swing.JButton;
+
+
 
 import edu.nju.businesslogicservice.infologicservice.DriverLogicService;
 import edu.nju.businesslogicservice.infologicservice.InstitutionLogicService;
@@ -23,6 +24,7 @@ import edu.nju.exception.DatabaseNULLException;
 import edu.nju.po.DriverPO;
 import edu.nju.po.SalaryPO;
 import edu.nju.presentation.UiFactory;
+import edu.nju.presentation.widget.SmallButton;
 
 public class SalaryPanel extends JPanel {
 	private JTextField textField_1;
@@ -39,26 +41,16 @@ public class SalaryPanel extends JPanel {
 	 * Create the panel.
 	 */
 	public SalaryPanel() {
+		setOpaque(false);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{474, 0};
 		gridBagLayout.rowHeights = new int[]{40, 0, 122, 35, 0};
 		gridBagLayout.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
-		JPanel panel = new JPanel();
-		GridBagConstraints gbc_panel = new GridBagConstraints();
-		gbc_panel.fill = GridBagConstraints.HORIZONTAL;
-		gbc_panel.insets = new Insets(0, 0, 5, 0);
-		gbc_panel.gridx = 0;
-		gbc_panel.gridy = 0;
-		add(panel, gbc_panel);
-		
-		JLabel label = new JLabel("\u5DE5\u8D44\u7BA1\u7406");
-		label.setFont(new Font("宋体", Font.PLAIN, 25));
-		panel.add(label);
-		
 		JPanel panel_3 = new JPanel();
+		panel_3.setOpaque(false);
 		GridBagConstraints gbc_panel_3 = new GridBagConstraints();
 		gbc_panel_3.insets = new Insets(0, 0, 5, 0);
 		gbc_panel_3.fill = GridBagConstraints.BOTH;
@@ -66,9 +58,9 @@ public class SalaryPanel extends JPanel {
 		gbc_panel_3.gridy = 1;
 		add(panel_3, gbc_panel_3);
 		GridBagLayout gbl_panel_3 = new GridBagLayout();
-		gbl_panel_3.columnWidths = new int[]{0, 159, 146, 0, 0};
+		gbl_panel_3.columnWidths = new int[]{0, 0, 159, 106, 0, 0, 0, 0, 0, 0};
 		gbl_panel_3.rowHeights = new int[]{0, 0, 0};
-		gbl_panel_3.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_3.columnWeights = new double[]{0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gbl_panel_3.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
 		panel_3.setLayout(gbl_panel_3);
 		
@@ -76,7 +68,7 @@ public class SalaryPanel extends JPanel {
 		GridBagConstraints gbc_label_1 = new GridBagConstraints();
 		gbc_label_1.anchor = GridBagConstraints.EAST;
 		gbc_label_1.insets = new Insets(0, 0, 0, 5);
-		gbc_label_1.gridx = 1;
+		gbc_label_1.gridx = 2;
 		gbc_label_1.gridy = 1;
 		panel_3.add(label_1, gbc_label_1);
 		
@@ -85,17 +77,19 @@ public class SalaryPanel extends JPanel {
 		GridBagConstraints gbc_textField = new GridBagConstraints();
 		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField.insets = new Insets(0, 0, 0, 5);
-		gbc_textField.gridx = 2;
+		gbc_textField.gridx = 3;
 		gbc_textField.gridy = 1;
 		panel_3.add(textField, gbc_textField);
 		
-		JButton button_2 = new JButton("\u70B9\u51FB\u67E5\u8BE2");
+		SmallButton button_2 = new SmallButton("\u70B9\u51FB\u67E5\u8BE2");
 		GridBagConstraints gbc_button_2 = new GridBagConstraints();
-		gbc_button_2.gridx = 3;
+		gbc_button_2.insets = new Insets(0, 0, 0, 5);
+		gbc_button_2.gridx = 6;
 		gbc_button_2.gridy = 1;
 		panel_3.add(button_2, gbc_button_2);
 		
 		 panel_4 = new JPanel();
+		 panel_4.setOpaque(false);
 		GridBagConstraints gbc_panel_4 = new GridBagConstraints();
 		gbc_panel_4.insets = new Insets(0, 0, 5, 0);
 		gbc_panel_4.fill = GridBagConstraints.BOTH;
@@ -108,19 +102,20 @@ public class SalaryPanel extends JPanel {
 		
 		
 		JPanel panel_2 = new JPanel();
+		panel_2.setOpaque(false);
 		GridBagConstraints gbc_panel_2 = new GridBagConstraints();
 		gbc_panel_2.fill = GridBagConstraints.BOTH;
 		gbc_panel_2.gridx = 0;
 		gbc_panel_2.gridy = 3;
 		add(panel_2, gbc_panel_2);
 		GridBagLayout gbl_panel_2 = new GridBagLayout();
-		gbl_panel_2.columnWidths = new int[]{119, 81, 0, 81, 0};
+		gbl_panel_2.columnWidths = new int[]{78, 81, 0, 0, 81, 0, 0, 0, 0};
 		gbl_panel_2.rowHeights = new int[]{23, 0};
-		gbl_panel_2.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_2.columnWeights = new double[]{0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gbl_panel_2.rowWeights = new double[]{0.0, Double.MIN_VALUE};
 		panel_2.setLayout(gbl_panel_2);
 		
-		JButton button = new JButton("\u786E\u8BA4\u4FEE\u6539");
+		SmallButton button = new SmallButton("\u786E\u8BA4\u4FEE\u6539");
 		GridBagConstraints gbc_button = new GridBagConstraints();
 		gbc_button.anchor = GridBagConstraints.NORTHWEST;
 		gbc_button.insets = new Insets(0, 0, 0, 5);
@@ -153,7 +148,7 @@ public class SalaryPanel extends JPanel {
 							po = institutionLogicService.getSalary(textField.getText());
 						} catch (DatabaseNULLException e1) {
 							// TODO Auto-generated catch block
-							JOptionPane.showMessageDialog(null, "不能查询到此类信息");
+							JOptionPane.showMessageDialog(null, "查询不到该信息，请检查");
 						}
 					} catch (RemoteException e1) {
 						// TODO Auto-generated catch block
@@ -185,10 +180,11 @@ public class SalaryPanel extends JPanel {
 			}
 		});
 		
-		JButton button_1 = new JButton("\u53D6\u6D88\u4FDD\u5B58");
+		SmallButton button_1 = new SmallButton("\u53D6\u6D88\u4FDD\u5B58");
 		GridBagConstraints gbc_button_1 = new GridBagConstraints();
+		gbc_button_1.insets = new Insets(0, 0, 0, 5);
 		gbc_button_1.anchor = GridBagConstraints.NORTHWEST;
-		gbc_button_1.gridx = 3;
+		gbc_button_1.gridx = 4;
 		gbc_button_1.gridy = 0;
 		panel_2.add(button_1, gbc_button_1);
 		
@@ -231,6 +227,7 @@ public class SalaryPanel extends JPanel {
 					
 					//司机界面
 					JPanel panel_5 = new JPanel();
+					panel_5.setOpaque(false);
 					GridBagConstraints gbc_panel_5 = new GridBagConstraints();
 					gbc_panel_5.insets = new Insets(0, 0, 5, 0);
 					gbc_panel_5.fill = GridBagConstraints.BOTH;
@@ -270,7 +267,7 @@ public class SalaryPanel extends JPanel {
 					textField_8.setEditable(false);
 					
 					
-					JButton button_8 = new JButton("\u70B9\u51FB\u4FEE\u6539");
+					SmallButton button_8 = new SmallButton("\u70B9\u51FB\u4FEE\u6539");
 					GridBagConstraints gbc_button_8 = new GridBagConstraints();
 					gbc_button_8.insets = new Insets(0, 0, 5, 5);
 					gbc_button_8.gridx = 4;
@@ -303,6 +300,7 @@ public class SalaryPanel extends JPanel {
 					
 					//其他人界面
 					JPanel panel_1 = new JPanel();
+					panel_1.setOpaque(false);
 					GridBagConstraints gbc_panel_1 = new GridBagConstraints();
 					gbc_panel_1.insets = new Insets(0, 0, 5, 0);
 					gbc_panel_1.fill = GridBagConstraints.BOTH;
@@ -339,7 +337,7 @@ public class SalaryPanel extends JPanel {
 						} catch (DatabaseNULLException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
-							JOptionPane.showMessageDialog(null, "不能查询到此类信息");
+							JOptionPane.showMessageDialog(null, "查询不到该信息，请检查");
 						}
 					 catch (RemoteException e1) {
 						// TODO Auto-generated catch block
@@ -355,7 +353,7 @@ public class SalaryPanel extends JPanel {
 					textField_1.setEditable(false);
 					
 					
-					JButton button_3 = new JButton("\u70B9\u51FB\u4FEE\u6539");
+					SmallButton button_3 = new SmallButton("\u70B9\u51FB\u4FEE\u6539");
 					GridBagConstraints gbc_button_3 = new GridBagConstraints();
 					gbc_button_3.insets = new Insets(0, 0, 5, 5);
 					gbc_button_3.gridx = 4;
@@ -386,7 +384,7 @@ public class SalaryPanel extends JPanel {
 						} catch (DatabaseNULLException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
-							JOptionPane.showMessageDialog(null, "不能查询到此类信息");
+						
 						}
 					} catch (RemoteException e1) {
 						// TODO Auto-generated catch block
@@ -401,7 +399,7 @@ public class SalaryPanel extends JPanel {
 					textField_2.setColumns(10);
 					textField_2.setEditable(false);
 					
-					JButton button_4 = new JButton("\u70B9\u51FB\u4FEE\u6539");
+					SmallButton button_4 = new SmallButton("\u70B9\u51FB\u4FEE\u6539");
 					GridBagConstraints gbc_button_4 = new GridBagConstraints();
 					gbc_button_4.insets = new Insets(0, 0, 5, 5);
 					gbc_button_4.gridx = 4;
@@ -431,7 +429,7 @@ public class SalaryPanel extends JPanel {
 						} catch (DatabaseNULLException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
-							JOptionPane.showMessageDialog(null, "不能查询到此类信息");
+						
 						}
 					} catch (RemoteException e1) {
 						// TODO Auto-generated catch block
@@ -446,7 +444,7 @@ public class SalaryPanel extends JPanel {
 					textField_3.setColumns(10);
 					textField_3.setEditable(false);
 					
-					JButton button_5 = new JButton("\u70B9\u51FB\u4FEE\u6539");
+					SmallButton button_5 = new SmallButton("\u70B9\u51FB\u4FEE\u6539");
 					GridBagConstraints gbc_button_5 = new GridBagConstraints();
 					gbc_button_5.insets = new Insets(0, 0, 5, 5);
 					gbc_button_5.gridx = 4;

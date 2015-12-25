@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import edu.nju.exception.DatabaseNULLException;
 import edu.nju.po.AccountPO;
 import edu.nju.po.HistoryTimePO;
 import edu.nju.po.OperationPO;
@@ -19,7 +20,7 @@ public interface SystemLogicService {
 	public ArrayList<OperationVO> getOperationVOList(Date beginTime,Date endTime) throws RemoteException;//获取操作记录VOList
 	public void saveOperation(OperationPO po) throws RemoteException;
 	
-	public String[] getPasswordAndPower(String id)throws RemoteException;
+	public String[] getPasswordAndPower(String id)throws RemoteException, DatabaseNULLException;
 	public void changePasswordAndPower(String[] str)throws RemoteException;
 	
 }

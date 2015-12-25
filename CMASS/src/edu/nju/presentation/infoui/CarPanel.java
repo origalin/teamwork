@@ -122,14 +122,7 @@ public class CarPanel extends JPanel {
 		// 删除当前行的监听
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent Event) {
-//				if(table.getSelectedRow()==-1){
-				String str = JOptionPane.showInputDialog(null, "Find:", "Find",
-						JOptionPane.QUESTION_MESSAGE);
-				
-				if (str != null) {
-					findInTable(str);
-				}
-//				}
+				JOptionPane.showConfirmDialog(null,"确认删除当前行吗");
 				int row = table.getSelectedRow();
 				if (row >= 0) {
 					Date date = null;
@@ -147,12 +140,13 @@ public class CarPanel extends JPanel {
 									.getValueAt(row, 2), (String) table
 									.getValueAt(row, 3), (String) table
 									.getValueAt(row, 4),date, year);
-					
+				
 						try {
 							carBl.deleteCar(carPO);
 						} catch (RemoteException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
+							JOptionPane.showMessageDialog(null, "网络连接出错，请检查");
 						}
 					model.removeRow(row);
 				}
@@ -171,7 +165,7 @@ public class CarPanel extends JPanel {
 
 		button_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String str = JOptionPane.showInputDialog(null, "Find:", "Find",
+				String str = JOptionPane.showInputDialog(null, "请输入关键字:", "Find",
 						JOptionPane.QUESTION_MESSAGE);
 				System.out.println("S");
 				if (str != null) {
@@ -219,6 +213,7 @@ public class CarPanel extends JPanel {
 							} catch (RemoteException e1) {
 								// TODO Auto-generated catch block
 								e1.printStackTrace();
+								JOptionPane.showMessageDialog(null, "网络连接出错，请检查");
 							}
 				}		
 				
@@ -302,6 +297,7 @@ public class CarPanel extends JPanel {
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "网络连接出错，请检查");
 		}
 		for (CarVO vo : carList) {
 			model.addRow(new Object[] { vo.getCarID(), vo.getEngineID(),

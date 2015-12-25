@@ -117,12 +117,8 @@ public class DriverPanel extends JPanel {
 		// 删除当前行的监听
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent Event) {
-				String str = JOptionPane.showInputDialog(null, "Find:", "Find",
-						JOptionPane.QUESTION_MESSAGE);
-				
-				if (str != null) {
-					findInTable(str);
-				}
+				JOptionPane.showConfirmDialog(null,"确认删除当前行吗");
+		
 
 				int row = table.getSelectedRow();
 				if (row >= 0) {
@@ -152,6 +148,7 @@ public class DriverPanel extends JPanel {
 						} catch (RemoteException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
+							JOptionPane.showMessageDialog(null, "网络连接出错，请检查");
 						}
 					model.removeRow(row);
 				}
@@ -163,7 +160,7 @@ public class DriverPanel extends JPanel {
 		SmallButton button_3 = new SmallButton("\u67E5\u8BE2");
 		button_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String str = JOptionPane.showInputDialog(null, "Find:", "Find",
+				String str = JOptionPane.showInputDialog(null, "请输入关键字:", "Find",
 						JOptionPane.QUESTION_MESSAGE);
 				if (str != null) {
 					findInTable(str);
@@ -233,6 +230,7 @@ public class DriverPanel extends JPanel {
 										driverLogicService.saveDriver(po);
 									} catch (RemoteException e1) {
 										e1.printStackTrace();
+										JOptionPane.showMessageDialog(null, "网络连接出错，请检查");
 									}
 						}		
 						
@@ -298,6 +296,7 @@ public class DriverPanel extends JPanel {
 		} catch (RemoteException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
+			JOptionPane.showMessageDialog(null, "网络连接出错，请检查");
 		}
 		for (DriverVO vo : driverList) {
 			model.addRow(new Object[] {vo.getDriverID(),vo.getName(),vo.getSex(),Time.toDaysTime(vo.getBirthday()),vo.getIdentity(),vo.getTel(),vo.getInstitution(),Time.toDaysTime(vo.getBeginLimit()),Time.toDaysTime(vo.getEndLimit())});

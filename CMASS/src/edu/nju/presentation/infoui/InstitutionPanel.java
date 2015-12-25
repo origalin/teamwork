@@ -29,7 +29,6 @@ import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreePath;
-import javax.swing.JButton;
 import javax.swing.JTabbedPane;
 
 import java.awt.Font;
@@ -40,6 +39,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+
 
 
 
@@ -58,10 +58,12 @@ import edu.nju.po.StaffPO;
 import edu.nju.presentation.UiFactory;
 import edu.nju.presentation.widget.MyComboBox;
 import edu.nju.presentation.widget.MyTable;
+import edu.nju.presentation.widget.SmallButton;
 import edu.nju.tools.Time;
 import edu.nju.vo.CarVO;
 import edu.nju.vo.InstitutionVO;
 import edu.nju.vo.StaffVO;
+import java.awt.Dimension;
 
 public class InstitutionPanel extends JPanel {
 	private MyTable table;
@@ -76,34 +78,22 @@ public class InstitutionPanel extends JPanel {
 		setOpaque(false);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{147, 527, 0};
-		gridBagLayout.rowHeights = new int[]{56, 501, 0};
+		gridBagLayout.rowHeights = new int[]{501, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{1.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
-		
-		JPanel panel_3 = new JPanel();
-		GridBagConstraints gbc_panel_3 = new GridBagConstraints();
-		gbc_panel_3.gridwidth = 2;
-		gbc_panel_3.insets = new Insets(0, 0, 5, 0);
-		gbc_panel_3.fill = GridBagConstraints.HORIZONTAL;
-		gbc_panel_3.gridx = 0;
-		gbc_panel_3.gridy = 0;
-		add(panel_3, gbc_panel_3);
-		panel_3.setOpaque(false);
-		JLabel label = new JLabel("\u4EBA\u5458\u4E0E\u673A\u6784\u7BA1\u7406");
-		label.setFont(new Font("ËÎÌו", Font.PLAIN, 23));
-		panel_3.add(label);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
 		GridBagConstraints gbc_scrollPane_1 = new GridBagConstraints();
 		gbc_scrollPane_1.insets = new Insets(0, 0, 0, 5);
 		gbc_scrollPane_1.fill = GridBagConstraints.BOTH;
 		gbc_scrollPane_1.gridx = 0;
-		gbc_scrollPane_1.gridy = 1;
+		gbc_scrollPane_1.gridy = 0;
 		add(scrollPane_1, gbc_scrollPane_1);
 		scrollPane_1.setOpaque(false);
 		scrollPane_1.getViewport().setOpaque(false);
 		tree = new JTree();
+		tree.setMaximumSize(new Dimension(30, 30));
 	
 		try {
 			institutionList = institutionLogicService.getInstitutionVOList();
@@ -118,10 +108,11 @@ public class InstitutionPanel extends JPanel {
 		scrollPane_1.setViewportView(tree);
 		
 		JPanel panel_1 = new JPanel();
+		panel_1.setOpaque(false);
 		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
 		gbc_panel_1.fill = GridBagConstraints.BOTH;
 		gbc_panel_1.gridx = 1;
-		gbc_panel_1.gridy = 1;
+		gbc_panel_1.gridy = 0;
 		add(panel_1, gbc_panel_1);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
 		gbl_panel_1.columnWidths = new int[]{66, 85, 81, 0, 154, 0};
@@ -130,7 +121,7 @@ public class InstitutionPanel extends JPanel {
 		gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 1.0, Double.MIN_VALUE};
 		panel_1.setLayout(gbl_panel_1);
 		
-		JButton btnNewButton = new JButton("\u589E\u52A0\u673A\u6784");
+		SmallButton btnNewButton = new SmallButton("\u589E\u52A0\u673A\u6784");
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
 		gbc_btnNewButton.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnNewButton.anchor = GridBagConstraints.NORTH;
@@ -150,7 +141,7 @@ public class InstitutionPanel extends JPanel {
 		});
 		
 		
-		JButton button = new JButton("\u5220\u9664\u673A\u6784");
+		SmallButton button = new SmallButton("\u5220\u9664\u673A\u6784");
 		GridBagConstraints gbc_button = new GridBagConstraints();
 		gbc_button.anchor = GridBagConstraints.NORTH;
 		gbc_button.insets = new Insets(0, 0, 5, 5);
@@ -192,7 +183,7 @@ public class InstitutionPanel extends JPanel {
 				}
 		});
 		
-		JButton button_1 = new JButton("\u4FEE\u6539\u673A\u6784");
+		SmallButton button_1 = new SmallButton("\u4FEE\u6539\u673A\u6784");
 		GridBagConstraints gbc_button_1 = new GridBagConstraints();
 		gbc_button_1.anchor = GridBagConstraints.NORTH;
 		gbc_button_1.insets = new Insets(0, 0, 5, 5);
@@ -210,7 +201,7 @@ public class InstitutionPanel extends JPanel {
 			}
 		});
 		
-		JButton button_7 = new JButton("\u67E5\u8BE2\u673A\u6784");
+		SmallButton button_7 = new SmallButton("\u67E5\u8BE2\u673A\u6784");
 		GridBagConstraints gbc_button_7 = new GridBagConstraints();
 		gbc_button_7.insets = new Insets(0, 0, 5, 5);
 		gbc_button_7.gridx = 3;
@@ -231,7 +222,7 @@ public class InstitutionPanel extends JPanel {
 			}
 		});
 	
-		JButton button_8 = new JButton("\u4FDD\u5B58");
+		SmallButton button_8 = new SmallButton("\u4FDD\u5B58");
 		GridBagConstraints gbc_button_8 = new GridBagConstraints();
 		gbc_button_8.anchor = GridBagConstraints.EAST;
 		gbc_button_8.insets = new Insets(0, 0, 5, 0);
@@ -273,7 +264,7 @@ public class InstitutionPanel extends JPanel {
 			}
 		});
 		
-		JButton button_3 = new JButton("\u65B0\u589E\u4EBA\u5458");
+		SmallButton button_3 = new SmallButton("\u65B0\u589E\u4EBA\u5458");
 		GridBagConstraints gbc_button_3 = new GridBagConstraints();
 		gbc_button_3.fill = GridBagConstraints.HORIZONTAL;
 		gbc_button_3.insets = new Insets(0, 0, 5, 5);
@@ -294,7 +285,7 @@ public class InstitutionPanel extends JPanel {
 			}
 		});
 		
-		JButton button_4 = new JButton("\u5220\u9664\u4EBA\u5458");
+		SmallButton button_4 = new SmallButton("\u5220\u9664\u4EBA\u5458");
 		GridBagConstraints gbc_button_4 = new GridBagConstraints();
 		gbc_button_4.insets = new Insets(0, 0, 5, 5);
 		gbc_button_4.gridx = 1;
@@ -345,7 +336,7 @@ public class InstitutionPanel extends JPanel {
 			
 		});
 		
-		JButton button_5 = new JButton("\u4FEE\u6539\u4EBA\u5458");
+		SmallButton button_5 = new SmallButton("\u4FEE\u6539\u4EBA\u5458");
 		GridBagConstraints gbc_button_5 = new GridBagConstraints();
 		gbc_button_5.insets = new Insets(0, 0, 5, 5);
 		gbc_button_5.gridx = 2;
@@ -362,7 +353,7 @@ public class InstitutionPanel extends JPanel {
 			}
 		});
 		
-		JButton button_2 = new JButton("\u67E5\u8BE2\u4EBA\u5458");
+		SmallButton button_2 = new SmallButton("\u67E5\u8BE2\u4EBA\u5458");
 		GridBagConstraints gbc_button_2 = new GridBagConstraints();
 		gbc_button_2.anchor = GridBagConstraints.NORTH;
 		gbc_button_2.insets = new Insets(0, 0, 5, 5);
@@ -385,7 +376,7 @@ public class InstitutionPanel extends JPanel {
 			}
 		});
 		
-		JButton button_6 = new JButton("\u53D6\u6D88");
+		SmallButton button_6 = new SmallButton("\u53D6\u6D88");
 		GridBagConstraints gbc_button_6 = new GridBagConstraints();
 		gbc_button_6.anchor = GridBagConstraints.EAST;
 		gbc_button_6.insets = new Insets(0, 0, 5, 0);
@@ -410,6 +401,9 @@ public class InstitutionPanel extends JPanel {
 		});
 		
 		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setMaximumSize(new Dimension(200, 200));
+		scrollPane.setOpaque(false);
+		scrollPane.getViewport().setOpaque(false);
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane.setToolTipText("");
@@ -421,6 +415,7 @@ public class InstitutionPanel extends JPanel {
 		panel_1.add(scrollPane, gbc_scrollPane);
 		
 		table = new MyTable();
+		table.setPreferredScrollableViewportSize(new Dimension(300, 300));
 		
 		
 		

@@ -13,8 +13,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
 
-import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
@@ -24,6 +22,8 @@ import edu.nju.businesslogic.infobl.Distance;
 import edu.nju.businesslogicservice.infologicservice.DistanceLogicService;
 import edu.nju.po.DistancePO;
 import edu.nju.presentation.UiFactory;
+import edu.nju.presentation.widget.MyComboBox;
+import edu.nju.presentation.widget.SmallButton;
 
 public class DistancePanel extends JPanel {
 	private JTextField txtkm;
@@ -32,26 +32,16 @@ public class DistancePanel extends JPanel {
 	 * Create the panel.
 	 */
 	public DistancePanel() {
+		setOpaque(false);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0};
-		gridBagLayout.rowHeights = new int[]{124, 196, 90, 0};
+		gridBagLayout.rowHeights = new int[]{55, 196, 90, 0};
 		gridBagLayout.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{1.0, 1.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 1.0, 1.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
-		JPanel panel = new JPanel();
-		GridBagConstraints gbc_panel = new GridBagConstraints();
-		gbc_panel.insets = new Insets(0, 0, 5, 0);
-		gbc_panel.fill = GridBagConstraints.HORIZONTAL;
-		gbc_panel.gridx = 0;
-		gbc_panel.gridy = 0;
-		add(panel, gbc_panel);
-		
-		JLabel label = new JLabel("\u57CE\u5E02\u8BBE\u7F6E");
-		label.setFont(new Font("ËÎÌו", Font.PLAIN, 25));
-		panel.add(label);
-		
 		JPanel panel_1 = new JPanel();
+		panel_1.setOpaque(false);
 		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
 		gbc_panel_1.insets = new Insets(0, 0, 5, 0);
 		gbc_panel_1.fill = GridBagConstraints.BOTH;
@@ -72,7 +62,7 @@ public class DistancePanel extends JPanel {
 		gbc_label_1.gridy = 1;
 		panel_1.add(label_1, gbc_label_1);
 		
-		JComboBox comboBox = new JComboBox();
+		MyComboBox comboBox = new MyComboBox();
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"\u5317\u4EAC", "\u4E0A\u6D77", "\u5E7F\u5DDE", "\u6DF1\u5733", "\u5357\u4EAC"}));
 		GridBagConstraints gbc_comboBox = new GridBagConstraints();
 		gbc_comboBox.insets = new Insets(0, 0, 5, 5);
@@ -88,7 +78,7 @@ public class DistancePanel extends JPanel {
 		gbc_label_2.gridy = 1;
 		panel_1.add(label_2, gbc_label_2);
 		
-		JComboBox comboBox_1 = new JComboBox();
+		MyComboBox comboBox_1 = new MyComboBox();
 		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"\u5317\u4EAC", "\u4E0A\u6D77", "\u5E7F\u5DDE", "\u6DF1\u5733", "\u5357\u4EAC"}));
 		GridBagConstraints gbc_comboBox_1 = new GridBagConstraints();
 		gbc_comboBox_1.insets = new Insets(0, 0, 5, 5);
@@ -97,7 +87,7 @@ public class DistancePanel extends JPanel {
 		gbc_comboBox_1.gridy = 1;
 		panel_1.add(comboBox_1, gbc_comboBox_1);
 		
-		JButton button_2 = new JButton("\u70B9\u51FB\u67E5\u8BE2");
+		SmallButton button_2 = new SmallButton("\u70B9\u51FB\u67E5\u8BE2");
 		GridBagConstraints gbc_button_2 = new GridBagConstraints();
 		gbc_button_2.insets = new Insets(0, 0, 5, 5);
 		gbc_button_2.gridx = 7;
@@ -121,7 +111,7 @@ public class DistancePanel extends JPanel {
 		});
 
 		
-		JButton btnNewButton = new JButton("\u65B0\u589E\u57CE\u5E02\r\n");
+		SmallButton btnNewButton = new SmallButton("\u65B0\u589E\u57CE\u5E02\r\n");
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
 		gbc_btnNewButton.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnNewButton.insets = new Insets(0, 0, 5, 5);
@@ -161,7 +151,7 @@ public class DistancePanel extends JPanel {
 		txtkm.setColumns(10);
 	
 		
-		JButton button_3 = new JButton("\u70B9\u51FB\u4FEE\u6539");
+		SmallButton button_3 = new SmallButton("\u70B9\u51FB\u4FEE\u6539");
 		GridBagConstraints gbc_button_3 = new GridBagConstraints();
 		gbc_button_3.fill = GridBagConstraints.HORIZONTAL;
 		gbc_button_3.gridwidth = 2;
@@ -178,6 +168,7 @@ public class DistancePanel extends JPanel {
 		});
 		
 		JPanel panel_2 = new JPanel();
+		panel_2.setOpaque(false);
 		GridBagConstraints gbc_panel_2 = new GridBagConstraints();
 		gbc_panel_2.fill = GridBagConstraints.VERTICAL;
 		gbc_panel_2.gridx = 0;
@@ -190,7 +181,7 @@ public class DistancePanel extends JPanel {
 		gbl_panel_2.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel_2.setLayout(gbl_panel_2);
 		
-		JButton button = new JButton("\u786E\u8BA4");
+		SmallButton button = new SmallButton("\u786E\u8BA4");
 		GridBagConstraints gbc_button = new GridBagConstraints();
 		gbc_button.insets = new Insets(0, 0, 5, 5);
 		gbc_button.gridx = 0;
@@ -218,7 +209,7 @@ public class DistancePanel extends JPanel {
 		});
 	
 		
-		JButton button_1 = new JButton("\u53D6\u6D88");
+		SmallButton button_1 = new SmallButton("\u53D6\u6D88");
 		GridBagConstraints gbc_button_1 = new GridBagConstraints();
 		gbc_button_1.insets = new Insets(0, 0, 5, 0);
 		gbc_button_1.gridx = 1;

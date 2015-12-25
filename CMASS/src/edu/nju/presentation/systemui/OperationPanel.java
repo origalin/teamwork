@@ -21,24 +21,25 @@ import java.util.Date;
 
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.JTabbedPane;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.border.TitledBorder;
 import javax.swing.ListSelectionModel;
-import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 import edu.nju.businesslogic.systembl.SystemBl;
 import edu.nju.businesslogicservice.systemlogicservice.SystemLogicService;
 import edu.nju.presentation.UiFactory;
+import edu.nju.presentation.widget.MyTable;
+import edu.nju.presentation.widget.SmallButton;
 import edu.nju.tools.Time;
 import edu.nju.vo.CarVO;
 import edu.nju.vo.OperationVO;
 
 public class OperationPanel extends JPanel {
-	private JTable table;
+	private MyTable table;
 	private JTextField textField;
 	private JTextField textField_1;	
 	DefaultTableModel model;
@@ -52,42 +53,24 @@ public class OperationPanel extends JPanel {
 	 * @throws RemoteException 
 	 */
 	public OperationPanel() throws ParseException, RemoteException {
+		setOpaque(false);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{220, 0};
-		gridBagLayout.rowHeights = new int[]{43, 89, 209, 0};
+		gridBagLayout.rowHeights = new int[]{89, 209, 0};
 		gridBagLayout.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{1.0, 1.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{1.0, 1.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
-		JPanel panel = new JPanel();
-		GridBagConstraints gbc_panel = new GridBagConstraints();
-		gbc_panel.insets = new Insets(0, 0, 5, 0);
-		gbc_panel.fill = GridBagConstraints.BOTH;
-		gbc_panel.gridx = 0;
-		gbc_panel.gridy = 0;
-		add(panel, gbc_panel);
-		GridBagLayout gbl_panel = new GridBagLayout();
-		gbl_panel.columnWidths = new int[]{504, 0};
-		gbl_panel.rowHeights = new int[]{73, 0};
-		gbl_panel.columnWeights = new double[]{0.0, Double.MIN_VALUE};
-		gbl_panel.rowWeights = new double[]{0.0, Double.MIN_VALUE};
-		panel.setLayout(gbl_panel);
-		
-		JLabel lblNewLabel = new JLabel("\u7CFB\u7EDF\u65E5\u5FD7\r\n");
-		lblNewLabel.setFont(new Font("宋体", Font.PLAIN, 17));
-		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
-		gbc_lblNewLabel.gridx = 0;
-		gbc_lblNewLabel.gridy = 0;
-		panel.add(lblNewLabel, gbc_lblNewLabel);
-		
 		JPanel panel_1 = new JPanel();
+		panel_1.setOpaque(false);
 		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
 		gbc_panel_1.insets = new Insets(0, 0, 5, 0);
 		gbc_panel_1.fill = GridBagConstraints.BOTH;
 		gbc_panel_1.gridx = 0;
-		gbc_panel_1.gridy = 1;
+		gbc_panel_1.gridy = 0;
 		add(panel_1, gbc_panel_1);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
+		
 		gbl_panel_1.columnWidths = new int[]{56, 155, 71, 123, 40, 0, 0, 0};
 		gbl_panel_1.rowHeights = new int[]{44, 0};
 		gbl_panel_1.columnWeights = new double[]{0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
@@ -130,7 +113,7 @@ public class OperationPanel extends JPanel {
 		panel_1.add(textField_1, gbc_textField_1);
 		textField_1.setColumns(10);
 		
-		JButton button = new JButton("\u5F00\u59CB\u67E5\u8BE2");
+		SmallButton button = new SmallButton("\u5F00\u59CB\u67E5\u8BE2");
 		GridBagConstraints gbc_button = new GridBagConstraints();
 		gbc_button.insets = new Insets(0, 0, 0, 5);
 		gbc_button.gridx = 5;
@@ -158,6 +141,7 @@ model=(DefaultTableModel)table.getModel();
 		} catch (ParseException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
+			JOptionPane.showMessageDialog(null, "日期格式错误，应为yyyy-MM-dd，请检查");
 		}
 		Date endTime = null;
 		try {
@@ -165,6 +149,7 @@ model=(DefaultTableModel)table.getModel();
 		} catch (ParseException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
+			JOptionPane.showMessageDialog(null, "日期格式错误，应为yyyy-MM-dd，请检查");
 		}
 		ArrayList<OperationVO> operationList = null;
 		try {
@@ -172,6 +157,7 @@ model=(DefaultTableModel)table.getModel();
 		} catch (RemoteException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
+			JOptionPane.showMessageDialog(null, "网络连接出错，请检查");
 		}
 		for (OperationVO vo : operationList) {
 			model.addRow(new Object[] { Time.toSecondTime(vo.getDate()),vo.getStaffID(),vo.getStaffName(),vo.getDescribration()
@@ -184,10 +170,12 @@ model=(DefaultTableModel)table.getModel();
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
 		gbc_scrollPane.gridx = 0;
-		gbc_scrollPane.gridy = 2;
+		gbc_scrollPane.gridy = 1;
 		add(scrollPane, gbc_scrollPane);
+		scrollPane.setOpaque(false);
+		scrollPane.getViewport().setOpaque(false);
 		
-		table = new JTable();
+		table = new MyTable();
 		scrollPane.setViewportView(table);
 		table.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		table.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
@@ -213,6 +201,7 @@ model=(DefaultTableModel)table.getModel();
 		} catch (ParseException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
+			JOptionPane.showMessageDialog(null, "日期格式错误，应为yyyy-MM-dd，请检查");
 		}
 		Date endTime = null;
 		try {
@@ -220,6 +209,7 @@ model=(DefaultTableModel)table.getModel();
 		} catch (ParseException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
+			JOptionPane.showMessageDialog(null, "日期格式错误，应为yyyy-MM-dd，请检查");
 		}
 		ArrayList<OperationVO> operationList = null;
 		try {
@@ -227,6 +217,7 @@ model=(DefaultTableModel)table.getModel();
 		} catch (RemoteException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
+			JOptionPane.showMessageDialog(null, "网络连接出错，请检查");
 		}
 		for (OperationVO vo : operationList) {
 			model.addRow(new Object[] { Time.toSecondTime(vo.getDate()),vo.getStaffID(),vo.getStaffName(),vo.getDescribration()

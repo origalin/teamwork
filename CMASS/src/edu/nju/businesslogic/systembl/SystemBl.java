@@ -18,6 +18,7 @@ import edu.nju.businesslogicservice.systemlogicservice.SystemLogicService;
 import edu.nju.dataFactory.DataFactory;
 import edu.nju.dataservice.logisticsqueryDataService.LogisticsDataService;
 import edu.nju.dataservice.systemdataservice.SystemDataService;
+import edu.nju.exception.DatabaseNULLException;
 import edu.nju.po.AccountPO;
 import edu.nju.po.CarPO;
 import edu.nju.po.OperationPO;
@@ -54,7 +55,7 @@ public class SystemBl implements SystemLogicService{
 		
 	}
 	@Override
-	public String[] getPasswordAndPower(String id) throws RemoteException {
+	public String[] getPasswordAndPower(String id) throws RemoteException, DatabaseNULLException {
 		// TODO Auto-generated method stub
 		String[] str;
 		str=systemDataService.getPasswordAndPower(id);

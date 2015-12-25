@@ -9,6 +9,7 @@ import java.util.Date;
 
 import edu.nju.data.database.SQL;
 import edu.nju.dataservice.systemdataservice.SystemDataService;
+import edu.nju.exception.DatabaseNULLException;
 import edu.nju.po.AccountPO;
 import edu.nju.po.DriverPO;
 import edu.nju.po.OperationPO;
@@ -50,7 +51,7 @@ public class SystemDataServiceImpl extends UnicastRemoteObject implements System
 	}
 
 	@Override
-	public String[] getPasswordAndPower(String id) throws RemoteException {
+	public String[] getPasswordAndPower(String id) throws RemoteException, DatabaseNULLException{
 		// TODO Auto-generated method stub
 		String result[]={"",""};
 		String sql = "SELECT password,power FROM PASSWORD WHERE id='"+id+"';";
@@ -65,6 +66,8 @@ public class SystemDataServiceImpl extends UnicastRemoteObject implements System
 			e.printStackTrace();
 		}
 		SQL.closeDatabase();
+		if(result[0].equals(""))
+			throw new DatabaseNULLException();
 		return result;
 	}
 

@@ -15,6 +15,7 @@ import edu.nju.businesslogic.infobl.Institution;
 import edu.nju.businesslogicservice.infologicservice.InstitutionLogicService;
 import edu.nju.businesslogicservice.systemlogicservice.SystemLogicService;
 import edu.nju.dataFactory.DataFactory;
+import edu.nju.exception.DatabaseNULLException;
 import edu.nju.po.Post;
 import edu.nju.presentation.UiFactory;
 import edu.nju.presentation.approveui.checkMainUI;
@@ -160,7 +161,13 @@ public class LoginFrame extends JFrame {
 		String namestr = null;
 		String str[] = null;
 		try {
-			str = systemLogicService.getPasswordAndPower(account);
+			try {
+				str = systemLogicService.getPasswordAndPower(account);
+			} catch (DatabaseNULLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				JOptionPane.showMessageDialog(null,"用户名不存在");
+			}
 			institutionstr = institution.getInstitutionID(account)+" "+institution.getInstitutionName(account);
 			namestr = account+" "+institution.getStaffName(account);
 		} catch (RemoteException  e) {
