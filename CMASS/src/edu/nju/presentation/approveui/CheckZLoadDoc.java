@@ -315,7 +315,7 @@ public class CheckZLoadDoc extends JPanel{
 		money.setText(vo.getPrice());
 		watcherField.setText(vo.getWatcher());
 		//transferCenterField.setText(vo.get);
-		
-
+		transferCenterField.setText(vo.getTransferCenterID());
+		carID.setText(vo.getCarID());
 	}
 }
