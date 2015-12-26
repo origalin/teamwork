@@ -13,6 +13,7 @@ import edu.nju.po.PayType;
 import edu.nju.presentation.approveui.checkGatheringDoc;
 import edu.nju.presentation.approveui.checkPayDoc;
 import edu.nju.presentation.mainui.CheckDialog;
+import edu.nju.presentation.widget.MyTextField;
 import edu.nju.presentation.widget.SmallButton;
 import edu.nju.vo.GatheringDocVO;
 import edu.nju.vo.PayDocVO;
@@ -41,8 +42,8 @@ public class checkManageStateDoc extends JPanel{
 	ArrayList<GatheringDocVO> GatheringDocVOList=new ArrayList<GatheringDocVO>();
 	financebl bl;
 	private String staffID;
-	private JTextField textField;
-	private JTextField textField_1;
+	private MyTextField textField;
+	private MyTextField textField_1;
 	private JTable PayDocTable;
 	private JTable GatheringDocTable;
 	private JScrollPane scrollPane;
@@ -85,7 +86,7 @@ public class checkManageStateDoc extends JPanel{
 		gbc_label_2.gridy = 2;
 		add(label_2, gbc_label_2);
 		
-		textField = new JTextField();
+		textField = new MyTextField();
 		GridBagConstraints gbc_textField = new GridBagConstraints();
 		gbc_textField.insets = new Insets(0, 0, 5, 5);
 		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
@@ -102,7 +103,7 @@ public class checkManageStateDoc extends JPanel{
 		gbc_label_3.gridy = 2;
 		add(label_3, gbc_label_3);
 		
-		textField_1 = new JTextField();
+		textField_1 = new MyTextField();
 		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
 		gbc_textField_1.gridwidth = 2;
 		gbc_textField_1.insets = new Insets(0, 0, 5, 5);

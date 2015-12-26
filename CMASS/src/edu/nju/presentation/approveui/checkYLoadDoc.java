@@ -8,18 +8,19 @@ import java.awt.Insets;
 import javax.swing.table.DefaultTableModel;
 
 import edu.nju.presentation.widget.MyTable;
+import edu.nju.presentation.widget.MyTextField;
 import edu.nju.vo.YLoadDocVO;
 
 import java.awt.Font;
 import java.awt.FlowLayout;
 public class checkYLoadDoc extends JPanel{
-	private JTextField date;
-	private JTextField BusinessHallID;
-	private JTextField carTransportID;
-	private JTextField car_ID;
-	private JTextField endPlace;
-	private JTextField Driver;
-	private JTextField money;
+	private MyTextField date;
+	private MyTextField BusinessHallID;
+	private MyTextField carTransportID;
+	private MyTextField car_ID;
+	private MyTextField endPlace;
+	private MyTextField Driver;
+	private MyTextField money;
 	private JLabel label_6;
 	private JLabel label_7;
 	private JPanel panel;
@@ -30,7 +31,7 @@ public class checkYLoadDoc extends JPanel{
 	private JPanel panel_5;
 	private JPanel panel_6;
 	private JPanel panel_7;
-	private JTextField YLoadID;
+	private MyTextField YLoadID;
 	private JPanel panel_8;
 	private JScrollPane scrollPane;
 	private MyTable table;
@@ -74,7 +75,7 @@ public class checkYLoadDoc extends JPanel{
 		gbc_panel_7.gridy = 1;
 		add(panel_7, gbc_panel_7);
 		
-		YLoadID = new JTextField();
+		YLoadID = new MyTextField();
 		YLoadID.setEditable(false);
 		panel_7.add(YLoadID);
 		YLoadID.setColumns(15);
@@ -98,7 +99,7 @@ public class checkYLoadDoc extends JPanel{
 		gbc_panel_8.gridy = 1;
 		add(panel_8, gbc_panel_8);
 		
-		Driver = new JTextField();
+		Driver = new MyTextField();
 		panel_8.add(Driver);
 		Driver.setEditable(false);
 		Driver.setColumns(10);
@@ -122,7 +123,7 @@ public class checkYLoadDoc extends JPanel{
 		gbc_panel_1.gridy = 2;
 		add(panel_1, gbc_panel_1);
 		
-		date = new JTextField();
+		date = new MyTextField();
 		panel_1.add(date);
 		date.setEditable(false);
 		date.setColumns(15);
@@ -146,7 +147,7 @@ public class checkYLoadDoc extends JPanel{
 		gbc_panel_3.gridy = 2;
 		add(panel_3, gbc_panel_3);
 		
-		BusinessHallID = new JTextField();
+		BusinessHallID = new MyTextField();
 		panel_3.add(BusinessHallID);
 		BusinessHallID.setEditable(false);
 		BusinessHallID.setColumns(10);
@@ -170,7 +171,7 @@ public class checkYLoadDoc extends JPanel{
 		gbc_panel_2.gridy = 3;
 		add(panel_2, gbc_panel_2);
 		
-		carTransportID = new JTextField();
+		carTransportID = new MyTextField();
 		panel_2.add(carTransportID);
 		carTransportID.setEditable(false);
 		carTransportID.setColumns(10);
@@ -194,7 +195,7 @@ public class checkYLoadDoc extends JPanel{
 		gbc_panel_4.gridy = 3;
 		add(panel_4, gbc_panel_4);
 		
-		car_ID = new JTextField();
+		car_ID = new MyTextField();
 		panel_4.add(car_ID);
 		car_ID.setEditable(false);
 		car_ID.setColumns(10);
@@ -218,7 +219,7 @@ public class checkYLoadDoc extends JPanel{
 		gbc_panel_5.gridy = 4;
 		add(panel_5, gbc_panel_5);
 		
-		endPlace = new JTextField();
+		endPlace = new MyTextField();
 		panel_5.add(endPlace);
 		endPlace.setEditable(false);
 		endPlace.setColumns(10);
@@ -242,7 +243,7 @@ public class checkYLoadDoc extends JPanel{
 		gbc_panel_6.gridy = 4;
 		add(panel_6, gbc_panel_6);
 		
-		money = new JTextField();
+		money = new MyTextField();
 		panel_6.add(money);
 		money.setEditable(false);
 		money.setColumns(10);

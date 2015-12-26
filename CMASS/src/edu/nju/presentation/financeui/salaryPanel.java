@@ -34,6 +34,8 @@ public class salaryPanel extends JPanel{
 		setLayout(gridBagLayout);
 		
 		scrollPane = new JScrollPane();
+		scrollPane.setOpaque(false);
+		scrollPane.getViewport().setOpaque(false);
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
 		gbc_scrollPane.gridx = 0;
@@ -74,6 +76,7 @@ public class salaryPanel extends JPanel{
 	public MyTable initializeTable(ArrayList<StaffPO> staffList){
 		MyTable table = new MyTable();
 		scrollPane.setViewportView(table);
+		scrollPane.getViewport().setOpaque(false);
 		Object[][]tableInfo=new Object[staffList.size()][];
 		for(int i=0;i<staffList.size();i++){
 			String staffID=staffList.get(i).getStaffID();
@@ -110,5 +113,12 @@ public class salaryPanel extends JPanel{
 	}
 	public void setScrollPane(JScrollPane scrollPane) {
 		this.scrollPane = scrollPane;
+	}
+	public void chooseAll(){
+		for (int i=0; i<table.getRowCount(); i++)
+        {
+            table.setValueAt(true, i, 0);
+        }
+		
 	}
 }

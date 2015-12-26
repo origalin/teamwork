@@ -2,6 +2,7 @@ package edu.nju.presentation.approveui;
 import javax.swing.*;
 
 import edu.nju.presentation.widget.MyTable;
+import edu.nju.presentation.widget.MyTextField;
 import edu.nju.vo.OverDocVO;
 
 import java.awt.GridBagLayout;
@@ -12,9 +13,9 @@ import java.awt.FlowLayout;
 
 import javax.swing.table.DefaultTableModel;
 public class checkOverDoc extends JPanel{
-	private JTextField date;
-	private JTextField OverDocID;
-	private JTextField courier;
+	private MyTextField date;
+	private MyTextField OverDocID;
+	private MyTextField courier;
 	private MyTable table;
 	public checkOverDoc(OverDocVO vo) {
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -57,7 +58,7 @@ public class checkOverDoc extends JPanel{
 		add(panel_1, gbc_panel_1);
 		
 
-		OverDocID = new JTextField();
+		OverDocID = new MyTextField();
 		panel_1.add(OverDocID);
 		OverDocID.setEditable(false);
 		OverDocID.setColumns(20);
@@ -77,7 +78,7 @@ public class checkOverDoc extends JPanel{
 		panel_2.add(label_1);
 		label_1.setFont(new Font("ºÚÌå", Font.BOLD, 15));
 		
-		date = new JTextField();
+		date = new MyTextField();
 		panel_2.add(date);
 		date.setEditable(false);
 		date.setColumns(20);
@@ -100,7 +101,7 @@ public class checkOverDoc extends JPanel{
 		gbc_panel_3.gridy = 2;
 		add(panel_3, gbc_panel_3);
 		
-		courier = new JTextField();
+		courier = new MyTextField();
 		panel_3.add(courier);
 		courier.setEditable(false);
 		courier.setColumns(10);

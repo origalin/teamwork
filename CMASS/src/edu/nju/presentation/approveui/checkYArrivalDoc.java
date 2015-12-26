@@ -9,16 +9,17 @@ import java.awt.Font;
 import javax.swing.table.DefaultTableModel;
 
 import edu.nju.presentation.widget.MyTable;
+import edu.nju.presentation.widget.MyTextField;
 import edu.nju.vo.YArrivalDocVO;
 import edu.nju.vo.YDeliverDocVO;
 
 import java.awt.FlowLayout;
 public class checkYArrivalDoc extends JPanel{
-	private JTextField date;
-	private JTextField transferID;
-	private JTextField startPlace;
+	private MyTextField date;
+	private MyTextField transferID;
+	private MyTextField startPlace;
 	private MyTable table;
-	private JTextField YArrivalID;
+	private MyTextField YArrivalID;
 	public checkYArrivalDoc(YArrivalDocVO vo) {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 13, 123, 51, 0, 0};
@@ -60,7 +61,7 @@ public class checkYArrivalDoc extends JPanel{
 		gbc_panel_2.gridy = 1;
 		add(panel_2, gbc_panel_2);
 		
-		YArrivalID = new JTextField();
+		YArrivalID = new MyTextField();
 		panel_2.add(YArrivalID);
 		YArrivalID.setEditable(false);
 		YArrivalID.setColumns(10);
@@ -84,7 +85,7 @@ public class checkYArrivalDoc extends JPanel{
 		gbc_panel_1.gridy = 2;
 		add(panel_1, gbc_panel_1);
 		
-		date = new JTextField();
+		date = new MyTextField();
 		panel_1.add(date);
 		date.setEditable(false);
 		date.setColumns(10);
@@ -97,7 +98,7 @@ public class checkYArrivalDoc extends JPanel{
 		gbc_label_1.gridy = 2;
 		add(label_1, gbc_label_1);
 		
-		transferID = new JTextField();
+		transferID = new MyTextField();
 		transferID.setEditable(false);
 		GridBagConstraints gbc_transferID = new GridBagConstraints();
 		gbc_transferID.insets = new Insets(0, 0, 5, 5);
@@ -126,7 +127,7 @@ public class checkYArrivalDoc extends JPanel{
 		gbc_panel_3.gridy = 3;
 		add(panel_3, gbc_panel_3);
 		
-		startPlace = new JTextField();
+		startPlace = new MyTextField();
 		panel_3.add(startPlace);
 		startPlace.setEditable(false);
 		startPlace.setColumns(15);

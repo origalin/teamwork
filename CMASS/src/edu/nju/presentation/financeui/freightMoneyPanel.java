@@ -77,6 +77,7 @@ public class freightMoneyPanel extends JPanel{
 	{
 		MyTable table = new MyTable();
 		scrollPane.setViewportView(table);
+		scrollPane.getViewport().setOpaque(false);
 		Object[][]tableInfo=new Object[transferDoc.size()+YLoadDoc.size()+ZLoadDoc.size()][];
 		for(int i=0;i<transferDoc.size();i++){
 			Object[]oneLine={false,"TransferDoc",transferDoc.get(i).getID(),transferDoc.get(i).getPrice()};
@@ -121,6 +122,13 @@ public class freightMoneyPanel extends JPanel{
 	}
 	public void setScrollPane(JScrollPane scrollPane) {
 		this.scrollPane = scrollPane;
+	}
+	public void chooseAll(){
+		for (int i=0; i<table.getRowCount(); i++)
+        {
+            table.setValueAt(true, i, 0);
+        }
+		
 	}
 	
 }

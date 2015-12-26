@@ -9,12 +9,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.table.DefaultTableModel;
 
 import edu.nju.presentation.widget.MyTable;
+import edu.nju.presentation.widget.MyTextField;
 import edu.nju.vo.TransferDoc_TrainVO;
 
 import javax.swing.SwingConstants;
@@ -23,16 +23,16 @@ import java.awt.Font;
 
 @SuppressWarnings("serial")
 public class CheckTransferDoc_Train extends JPanel{
-	private JTextField train_num;
-	private JTextField watcherField;
-	private JTextField endPlace;
+	private MyTextField train_num;
+	private MyTextField watcherField;
+	private MyTextField endPlace;
 	private MyTable table;
-	private JTextField startPlace;
-	private JTextField transferID;
-	private JTextField date;
-	private JTextField textField_3;
-	private JTextField train_corridge;
-	private JTextField tranceID;
+	private MyTextField startPlace;
+	private MyTextField transferID;
+	private MyTextField date;
+	private MyTextField textField_3;
+	private MyTextField train_corridge;
+	private MyTextField tranceID;
 	public CheckTransferDoc_Train(TransferDoc_TrainVO vo) {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{418, 0};
@@ -87,7 +87,7 @@ public class CheckTransferDoc_Train extends JPanel{
 				gbc_panel_1.gridy = 1;
 				train_trance.add(panel_1, gbc_panel_1);
 				
-				transferID = new JTextField();
+				transferID = new MyTextField();
 				transferID.setEditable(false);
 				panel_1.add(transferID);
 				transferID.setColumns(20);
@@ -110,7 +110,7 @@ public class CheckTransferDoc_Train extends JPanel{
 				gbc_panel_2.gridy = 1;
 				train_trance.add(panel_2, gbc_panel_2);
 				
-				date = new JTextField();
+				date = new MyTextField();
 				date.setEditable(false);
 				panel_2.add(date);
 				date.setColumns(20);
@@ -134,7 +134,7 @@ public class CheckTransferDoc_Train extends JPanel{
 				FlowLayout flowLayout_6 = (FlowLayout) panel_6.getLayout();
 				flowLayout_6.setAlignment(FlowLayout.LEFT);
 				
-				startPlace = new JTextField();
+				startPlace = new MyTextField();
 				startPlace.setEditable(false);
 				panel_6.add(startPlace);
 				startPlace.setColumns(10);
@@ -143,7 +143,7 @@ public class CheckTransferDoc_Train extends JPanel{
 				label_10.setFont(new Font("ºÚÌå", Font.BOLD, 15));
 				panel_6.add(label_10);
 				
-				endPlace = new JTextField();
+				endPlace = new MyTextField();
 				endPlace.setEditable(false);
 				panel_6.add(endPlace);
 				endPlace.setColumns(10);
@@ -166,7 +166,7 @@ public class CheckTransferDoc_Train extends JPanel{
 		gbc_panel_4.gridy = 2;
 		train_trance.add(panel_4, gbc_panel_4);
 		
-		tranceID = new JTextField();
+		tranceID = new MyTextField();
 		tranceID.setEditable(false);
 		panel_4.add(tranceID);
 		tranceID.setColumns(10);
@@ -190,7 +190,7 @@ public class CheckTransferDoc_Train extends JPanel{
 		FlowLayout flowLayout_7 = (FlowLayout) panel_8.getLayout();
 		flowLayout_7.setAlignment(FlowLayout.LEFT);
 		
-		train_num = new JTextField();
+		train_num = new MyTextField();
 		train_num.setEditable(false);
 		panel_8.add(train_num);
 		train_num.setColumns(10);
@@ -199,7 +199,7 @@ public class CheckTransferDoc_Train extends JPanel{
 		lblNewLabel.setFont(new Font("ºÚÌå", Font.BOLD, 15));
 		panel_8.add(lblNewLabel);
 		
-		watcherField = new JTextField();
+		watcherField = new MyTextField();
 		watcherField.setEditable(false);
 		panel_8.add(watcherField);
 		watcherField.setColumns(10);
@@ -222,7 +222,7 @@ public class CheckTransferDoc_Train extends JPanel{
 		gbc_panel_3.gridy = 3;
 		train_trance.add(panel_3, gbc_panel_3);
 		
-		train_corridge = new JTextField();
+		train_corridge = new MyTextField();
 		train_corridge.setEditable(false);
 		panel_3.add(train_corridge);
 		train_corridge.setColumns(10);
@@ -231,7 +231,7 @@ public class CheckTransferDoc_Train extends JPanel{
 		label_5.setFont(new Font("ºÚÌå", Font.BOLD, 15));
 		panel_3.add(label_5);
 		
-		textField_3 = new JTextField();
+		textField_3 = new MyTextField();
 		textField_3.setEditable(false);
 		panel_3.add(textField_3);
 		textField_3.setColumns(10);

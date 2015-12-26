@@ -9,12 +9,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.table.DefaultTableModel;
 
 import edu.nju.presentation.widget.MyTable;
+import edu.nju.presentation.widget.MyTextField;
 import edu.nju.vo.TransferDocVO;
 import edu.nju.vo.TransferDoc_CarVO;
 import edu.nju.vo.TransferDoc_TrainVO;
@@ -25,15 +25,15 @@ import java.awt.Font;
 
 @SuppressWarnings("serial")
 public class CheckTransferDoc_Car extends JPanel{
-	private JTextField carIDField;
-	private JTextField watcherField;
-	private JTextField endPlace;
+	private MyTextField carIDField;
+	private MyTextField watcherField;
+	private MyTextField endPlace;
 	private MyTable table;
-	private JTextField startPlace;
-	private JTextField TransferDocID;
-	private JTextField Date;
-	private JTextField Money;
-	private JTextField carTransportID;
+	private MyTextField startPlace;
+	private MyTextField TransferDocID;
+	private MyTextField Date;
+	private MyTextField Money;
+	private MyTextField carTransportID;
 	public CheckTransferDoc_Car(TransferDocVO vo) {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{418, 0};
@@ -88,7 +88,7 @@ public class CheckTransferDoc_Car extends JPanel{
 				gbc_panel_1.gridy = 1;
 				panel_11.add(panel_1, gbc_panel_1);
 				
-				TransferDocID = new JTextField();
+				TransferDocID = new MyTextField();
 				TransferDocID.setEditable(false);
 				panel_1.add(TransferDocID);
 				TransferDocID.setColumns(20);
@@ -111,7 +111,7 @@ public class CheckTransferDoc_Car extends JPanel{
 				gbc_panel_2.gridy = 1;
 				panel_11.add(panel_2, gbc_panel_2);
 				
-				Date = new JTextField();
+				Date = new MyTextField();
 				Date.setEditable(false);
 				panel_2.add(Date);
 				Date.setColumns(20);
@@ -135,7 +135,7 @@ public class CheckTransferDoc_Car extends JPanel{
 				FlowLayout flowLayout_6 = (FlowLayout) panel_6.getLayout();
 				flowLayout_6.setAlignment(FlowLayout.LEFT);
 				
-				startPlace = new JTextField();
+				startPlace = new MyTextField();
 				startPlace.setEditable(false);
 				panel_6.add(startPlace);
 				startPlace.setColumns(10);
@@ -144,7 +144,7 @@ public class CheckTransferDoc_Car extends JPanel{
 				label_10.setFont(new Font("ºÚÌå", Font.BOLD, 15));
 				panel_6.add(label_10);
 				
-				endPlace = new JTextField();
+				endPlace = new MyTextField();
 				endPlace.setEditable(false);
 				panel_6.add(endPlace);
 				endPlace.setColumns(10);
@@ -167,7 +167,7 @@ public class CheckTransferDoc_Car extends JPanel{
 		gbc_panel_4.gridy = 2;
 		panel_11.add(panel_4, gbc_panel_4);
 		
-		carTransportID = new JTextField();
+		carTransportID = new MyTextField();
 		carTransportID.setEditable(false);
 		panel_4.add(carTransportID);
 		carTransportID.setColumns(10);
@@ -191,7 +191,7 @@ public class CheckTransferDoc_Car extends JPanel{
 		FlowLayout flowLayout_7 = (FlowLayout) panel_8.getLayout();
 		flowLayout_7.setAlignment(FlowLayout.LEFT);
 		
-		carIDField = new JTextField();
+		carIDField = new MyTextField();
 		carIDField.setEditable(false);
 		panel_8.add(carIDField);
 		carIDField.setColumns(10);
@@ -200,7 +200,7 @@ public class CheckTransferDoc_Car extends JPanel{
 		lblNewLabel.setFont(new Font("ºÚÌå", Font.BOLD, 15));
 		panel_8.add(lblNewLabel);
 		
-		watcherField = new JTextField();
+		watcherField = new MyTextField();
 		watcherField.setEditable(false);
 		panel_8.add(watcherField);
 		watcherField.setColumns(10);
@@ -223,7 +223,7 @@ public class CheckTransferDoc_Car extends JPanel{
 		gbc_panel_3.gridy = 3;
 		panel_11.add(panel_3, gbc_panel_3);
 		
-		Money = new JTextField();
+		Money = new MyTextField();
 		Money.setEditable(false);
 		panel_3.add(Money);
 		Money.setColumns(10);

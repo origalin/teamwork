@@ -9,19 +9,20 @@ import java.awt.Font;
 import javax.swing.table.DefaultTableModel;
 
 import edu.nju.presentation.widget.MyTable;
+import edu.nju.presentation.widget.MyTextField;
 import edu.nju.vo.ZArrivalDocVO;
 
 import java.awt.FlowLayout;
 public class checkZArrivalDoc extends JPanel{
-	private JTextField date;
-	private JTextField startPlace;
+	private MyTextField date;
+	private MyTextField startPlace;
 	private JLabel label_2;
-	private JTextField transferID;
+	private MyTextField transferID;
 	private JLabel label_3;
 	private MyTable table;
 	private JScrollPane scrollPane;
 	private JLabel label_4;
-	private JTextField ZArrivalID;
+	private MyTextField ZArrivalID;
 	private JPanel panel;
 	private JPanel panel_1;
 	private JPanel panel_2;
@@ -66,7 +67,7 @@ public class checkZArrivalDoc extends JPanel{
 		gbc_panel_2.gridy = 1;
 		add(panel_2, gbc_panel_2);
 		
-		ZArrivalID = new JTextField();
+		ZArrivalID = new MyTextField();
 		panel_2.add(ZArrivalID);
 		ZArrivalID.setEditable(false);
 		ZArrivalID.setColumns(15);
@@ -90,7 +91,7 @@ public class checkZArrivalDoc extends JPanel{
 		gbc_panel.gridy = 1;
 		add(panel, gbc_panel);
 		
-		transferID = new JTextField();
+		transferID = new MyTextField();
 		panel.add(transferID);
 		transferID.setEditable(false);
 		transferID.setColumns(20);
@@ -114,7 +115,7 @@ public class checkZArrivalDoc extends JPanel{
 		gbc_panel_1.gridy = 2;
 		add(panel_1, gbc_panel_1);
 		
-		date = new JTextField();
+		date = new MyTextField();
 		panel_1.add(date);
 		date.setEditable(false);
 		date.setColumns(15);
@@ -138,7 +139,7 @@ public class checkZArrivalDoc extends JPanel{
 		gbc_panel_4.gridy = 2;
 		add(panel_4, gbc_panel_4);
 		
-		startPlace = new JTextField();
+		startPlace = new MyTextField();
 		panel_4.add(startPlace);
 		startPlace.setEditable(false);
 		startPlace.setColumns(10);

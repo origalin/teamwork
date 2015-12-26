@@ -2,6 +2,7 @@ package edu.nju.presentation.approveui;
 import javax.swing.*;
 
 import edu.nju.po.PayType;
+import edu.nju.presentation.widget.MyTextField;
 import edu.nju.vo.PayDocVO;
 
 import java.awt.GridBagLayout;
@@ -11,13 +12,13 @@ import java.awt.Font;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 public class checkPayDoc extends JPanel{
-	private JTextField PayDocDate;
-	private JTextField Type;
-	private JTextField Payer;
-	private JTextField Money;
-	private JTextField account;
-	private JTextField PayDocID;
-	private JTextField back;
+	private MyTextField PayDocDate;
+	private MyTextField Type;
+	private MyTextField Payer;
+	private MyTextField Money;
+	private MyTextField account;
+	private MyTextField PayDocID;
+	private MyTextField back;
 	public checkPayDoc(PayDocVO vo) {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 54, 70, 65, 0, 109, 0};
@@ -41,7 +42,7 @@ public class checkPayDoc extends JPanel{
 		gbc_label_5.gridy = 1;
 		add(label_5, gbc_label_5);
 		
-		PayDocID = new JTextField();
+		PayDocID = new MyTextField();
 		PayDocID.setEditable(false);
 		GridBagConstraints gbc_PayDocID = new GridBagConstraints();
 		gbc_PayDocID.insets = new Insets(0, 0, 5, 5);
@@ -59,7 +60,7 @@ public class checkPayDoc extends JPanel{
 		gbc_label_1.gridy = 1;
 		add(label_1, gbc_label_1);
 		
-		Type= new JTextField();
+		Type= new MyTextField();
 		Type.setEditable(false);
 		GridBagConstraints gbc_PayType = new GridBagConstraints();
 		gbc_PayType.insets = new Insets(0, 0, 5, 0);
@@ -84,7 +85,7 @@ public class checkPayDoc extends JPanel{
 		gbc_lbll.gridy = 4;
 		add(lbll, gbc_lbll);
 		
-		PayDocDate = new JTextField();
+		PayDocDate = new MyTextField();
 		PayDocDate.setEditable(false);
 		GridBagConstraints gbc_PayDocDate = new GridBagConstraints();
 		gbc_PayDocDate.insets = new Insets(0, 0, 5, 5);
@@ -103,7 +104,7 @@ public class checkPayDoc extends JPanel{
 		gbc_label_3.gridy = 4;
 		add(label_3, gbc_label_3);
 		
-		Money = new JTextField();
+		Money = new MyTextField();
 		Money.setEditable(false);
 		GridBagConstraints gbc_Money = new GridBagConstraints();
 		gbc_Money.insets = new Insets(0, 0, 5, 0);
@@ -121,7 +122,7 @@ public class checkPayDoc extends JPanel{
 		gbc_label_2.gridy = 6;
 		add(label_2, gbc_label_2);
 		
-		Payer = new JTextField();
+		Payer = new MyTextField();
 		Payer.setEditable(false);
 		GridBagConstraints gbc_Payer = new GridBagConstraints();
 		gbc_Payer.insets = new Insets(0, 0, 5, 5);
@@ -140,7 +141,7 @@ public class checkPayDoc extends JPanel{
 		gbc_label_4.gridy = 6;
 		add(label_4, gbc_label_4);
 		
-		account = new JTextField();
+		account = new MyTextField();
 		account.setEditable(false);
 		GridBagConstraints gbc_account = new GridBagConstraints();
 		gbc_account.insets = new Insets(0, 0, 5, 0);
@@ -158,7 +159,7 @@ public class checkPayDoc extends JPanel{
 		gbc_label_6.gridy = 8;
 		add(label_6, gbc_label_6);
 		
-		back = new JTextField();
+		back = new MyTextField();
 		back.setEditable(false);
 		GridBagConstraints gbc_back = new GridBagConstraints();
 		gbc_back.insets = new Insets(0, 0, 0, 5);

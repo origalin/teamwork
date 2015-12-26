@@ -18,6 +18,8 @@ import edu.nju.po.ZLoadDocPO;
 import edu.nju.presentation.approveui.checkMainUI;
 import edu.nju.presentation.approveui.checkPayDoc;
 import edu.nju.presentation.mainui.CheckDialog;
+import edu.nju.presentation.widget.MyTable;
+import edu.nju.presentation.widget.MyTextField;
 import edu.nju.presentation.widget.SmallButton;
 import edu.nju.vo.AccountVO;
 import edu.nju.vo.PayDocVO;
@@ -56,7 +58,7 @@ public class costManagement extends JPanel{
 	private JPanel thisPanel=this;
 	private JPanel panel;
 	private JComboBox comboBox;
-	private JTextField back;
+	private MyTextField back;
 	private GridBagConstraints gbc_panel ;
 	private Institution institution;
 	private SystemBl systembl;
@@ -175,6 +177,35 @@ public class costManagement extends JPanel{
 		gbc_button.gridy = 2;
 		add(button, gbc_button);
 		
+		SmallButton button_4 = new SmallButton("\u5168\u9009");
+		button_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				SmallButton button_4 = new SmallButton("\u5168\u9009");
+				button_4.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						String type=(String) comboBox.getSelectedItem();
+						switch(type){
+						case "租金":
+							((rentMoneyPanel) panel).chooseAll();
+							break;
+						case"工资":
+							
+							((salaryPanel) panel).chooseAll();
+							break;
+						case"运费":
+							((salaryPanel) panel).chooseAll();
+							break;
+						}
+					}
+			});
+			}
+		});
+		GridBagConstraints gbc_button_4 = new GridBagConstraints();
+		gbc_button_4.insets = new Insets(0, 0, 5, 5);
+		gbc_button_4.gridx = 5;
+		gbc_button_4.gridy = 2;
+		add(button_4, gbc_button_4);
+		
 		JLabel label_2 = new JLabel("\u4ED8\u6B3E\u8D26\u53F7");
 		label_2.setFont(new Font("宋体", Font.PLAIN, 12));
 		GridBagConstraints gbc_label_2 = new GridBagConstraints();
@@ -201,7 +232,7 @@ public class costManagement extends JPanel{
 		gbc_label_4.gridy = 3;
 		add(label_4, gbc_label_4);
 		
-		back = new JTextField();
+		back = new MyTextField();
 		GridBagConstraints gbc_back = new GridBagConstraints();
 		gbc_back.insets = new Insets(0, 0, 5, 5);
 		gbc_back.fill = GridBagConstraints.HORIZONTAL;
@@ -448,6 +479,13 @@ public class costManagement extends JPanel{
 			System.out.println("保存失败");
 			e1.printStackTrace();
 		}
+	}
+	
+	public void chooseAll(MyTable table){
+		for (int i=0; i<table.getRowCount(); i++)
+        {
+            table.setValueAt(true, i, 0);
+        }
 	}
 
 }

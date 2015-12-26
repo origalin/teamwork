@@ -4,6 +4,7 @@ import javax.swing.*;
 import org.omg.CosNaming.NamingContextExtPackage.StringNameHelper;
 
 import edu.nju.businesslogic.financebl.financebl;
+import edu.nju.presentation.widget.MyTextField;
 
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
@@ -22,9 +23,9 @@ public class checkCostIncomDocPO extends JPanel{
 	}
 	*/
 	financebl bl;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private MyTextField textField;
+	private MyTextField textField_1;
+	private MyTextField textField_2;
 	private String staffID;
 	public checkCostIncomDocPO(String staffID) {
 		setOpaque(false);
@@ -50,14 +51,14 @@ public class checkCostIncomDocPO extends JPanel{
 		add(label, gbc_label);
 		
 		JLabel label_1 = new JLabel("\u603B\u6536\u5165");
-		label_1.setFont(new Font("黑体", Font.BOLD, 12));
+		label_1.setFont(new Font("宋体", Font.PLAIN, 12));
 		GridBagConstraints gbc_label_1 = new GridBagConstraints();
 		gbc_label_1.insets = new Insets(0, 0, 5, 5);
 		gbc_label_1.gridx = 3;
 		gbc_label_1.gridy = 3;
 		add(label_1, gbc_label_1);
 		
-		textField = new JTextField();
+		textField = new MyTextField();
 		textField.setText(bl.getTotalIncome()+"");
 		textField.setEditable(false);
 		GridBagConstraints gbc_textField = new GridBagConstraints();
@@ -76,14 +77,14 @@ public class checkCostIncomDocPO extends JPanel{
 		add(lblNewLabel_1, gbc_lblNewLabel_1);
 		
 		JLabel lblNewLabel = new JLabel("\u603B\u652F\u51FA");
-		lblNewLabel.setFont(new Font("黑体", Font.BOLD, 12));
+		lblNewLabel.setFont(new Font("宋体", Font.PLAIN, 12));
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
 		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel.gridx = 3;
 		gbc_lblNewLabel.gridy = 5;
 		add(lblNewLabel, gbc_lblNewLabel);
 		
-		textField_1 = new JTextField();
+		textField_1 = new MyTextField();
 		textField_1.setText(bl.getTotalPayment()+"");
 		textField_1.setEditable(false);
 		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
@@ -102,14 +103,14 @@ public class checkCostIncomDocPO extends JPanel{
 		add(lblNewLabel_3, gbc_lblNewLabel_3);
 		
 		JLabel label_2 = new JLabel("\u603B\u5229\u6DA6");
-		label_2.setFont(new Font("黑体", Font.BOLD, 12));
+		label_2.setFont(new Font("宋体", Font.PLAIN, 12));
 		GridBagConstraints gbc_label_2 = new GridBagConstraints();
 		gbc_label_2.insets = new Insets(0, 0, 0, 5);
 		gbc_label_2.gridx = 3;
 		gbc_label_2.gridy = 7;
 		add(label_2, gbc_label_2);
 		
-		textField_2 = new JTextField();
+		textField_2 = new MyTextField();
 		double profit=bl.getTotalIncome()-bl.getTotalPayment();
 		textField_2.setText(profit+"");
 		textField_2.setEditable(false);

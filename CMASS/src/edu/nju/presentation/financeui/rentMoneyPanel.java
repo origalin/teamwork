@@ -38,6 +38,8 @@ public class rentMoneyPanel extends JPanel{
 		
 		table = new MyTable();
 		scrollPane.setViewportView(table);
+		scrollPane.setOpaque(false);
+		scrollPane.getViewport().setOpaque(false);
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
 				{Boolean.FALSE, null, null},
@@ -66,6 +68,7 @@ public class rentMoneyPanel extends JPanel{
 	public MyTable initializeTable(ArrayList<InstitutionPO> institutionList){
 		MyTable table = new MyTable();
 		scrollPane.setViewportView(table);
+		scrollPane.getViewport().setOpaque(false);
 		Object[][] tableInfo=new Object[institutionList.size()][3];
 		for(int i=0;i<institutionList.size();i++){
 			Object[] oneLine={false,institutionList.get(i).getName(),institutionList.get(i).getRent()};
@@ -88,7 +91,7 @@ public class rentMoneyPanel extends JPanel{
 		this.table=table;
 		return table;
 	}
-	public JTable getTable() {
+	public MyTable getTable() {
 		return table;
 	}
 	public void setTable(MyTable table) {
@@ -99,6 +102,13 @@ public class rentMoneyPanel extends JPanel{
 	}
 	public void setScrollPane(JScrollPane scrollPane) {
 		this.scrollPane = scrollPane;
+	}
+	public void chooseAll(){
+		for (int i=0; i<table.getRowCount(); i++)
+        {
+            table.setValueAt(true, i, 0);
+        }
+	
 	}
 	
 

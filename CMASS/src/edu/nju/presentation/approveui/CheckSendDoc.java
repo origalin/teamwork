@@ -6,36 +6,37 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 
+import edu.nju.presentation.widget.MyTextField;
 import edu.nju.vo.SendDocVO;
 
 import java.awt.Font;
 
 @SuppressWarnings("serial")
 public class CheckSendDoc extends JPanel{
-	private JTextField sNameField;
-	private JTextField sTelePhoneField;
-	private JTextField rNameField;
-	private JTextField rTelephoneField;
-	private JTextField rAddressField;
-	private JTextField itemNumField;
-	private JTextField weightField;
-	private JTextField sMobilePhoneField;
-	private JTextField sAddressField;
-	private JTextField rMobilePhoneField;
-	private JTextField lengthField;
-	private JTextField widethField;
-	private JTextField heightField;
-	private JTextField packField;
-	private JTextField sendTypeField;
-	private JTextField IDField;
-	private JTextField dateField;
-	private JTextField kindField;
-	private JTextField timeField;
-	private JTextField priceField;
-	private JTextField sUnitField;
-	private JTextField rUnitField;
-	private JTextField scityField;
-	private JTextField rcityField;
+	private MyTextField sNameField;
+	private MyTextField sTelePhoneField;
+	private MyTextField rNameField;
+	private MyTextField rTelephoneField;
+	private MyTextField rAddressField;
+	private MyTextField itemNumField;
+	private MyTextField weightField;
+	private MyTextField sMobilePhoneField;
+	private MyTextField sAddressField;
+	private MyTextField rMobilePhoneField;
+	private MyTextField lengthField;
+	private MyTextField widethField;
+	private MyTextField heightField;
+	private MyTextField packField;
+	private MyTextField sendTypeField;
+	private MyTextField IDField;
+	private MyTextField dateField;
+	private MyTextField kindField;
+	private MyTextField timeField;
+	private MyTextField priceField;
+	private MyTextField sUnitField;
+	private MyTextField rUnitField;
+	private MyTextField scityField;
+	private MyTextField rcityField;
 	public CheckSendDoc(SendDocVO vo) {
 		setBorder(null);
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -71,7 +72,7 @@ public class CheckSendDoc extends JPanel{
 		label_19.setFont(new Font("黑体", Font.BOLD, 15));
 		panel_14.add(label_19);
 		
-		IDField = new JTextField();
+		IDField = new MyTextField();
 		IDField.setEnabled(false);
 		IDField.setEditable(false);
 		panel_14.add(IDField);
@@ -90,7 +91,7 @@ public class CheckSendDoc extends JPanel{
 		label_20.setFont(new Font("黑体", Font.BOLD, 15));
 		panel_15.add(label_20);
 		
-		dateField = new JTextField();
+		dateField = new MyTextField();
 		dateField.setEnabled(false);
 		panel_15.add(dateField);
 		dateField.setColumns(10);
@@ -122,7 +123,7 @@ public class CheckSendDoc extends JPanel{
 		label_1.setFont(new Font("黑体", Font.BOLD, 15));
 		panel_1.add(label_1);
 		
-		sNameField = new JTextField();
+		sNameField = new MyTextField();
 		sNameField.setEnabled(false);
 		sNameField.setColumns(10);
 		panel_1.add(sNameField);
@@ -131,7 +132,7 @@ public class CheckSendDoc extends JPanel{
 		label_3.setFont(new Font("黑体", Font.BOLD, 15));
 		panel_1.add(label_3);
 		
-		sTelePhoneField = new JTextField();
+		sTelePhoneField = new MyTextField();
 		sTelePhoneField.setEnabled(false);
 		sTelePhoneField.setColumns(20);
 		panel_1.add(sTelePhoneField);
@@ -149,7 +150,7 @@ public class CheckSendDoc extends JPanel{
 		label_2.setFont(new Font("黑体", Font.BOLD, 15));
 		panel_11.add(label_2);
 		
-		sMobilePhoneField = new JTextField();
+		sMobilePhoneField = new MyTextField();
 		sMobilePhoneField.setEnabled(false);
 		sMobilePhoneField.setColumns(20);
 		panel_11.add(sMobilePhoneField);
@@ -167,7 +168,7 @@ public class CheckSendDoc extends JPanel{
 		label_25.setFont(new Font("黑体", Font.BOLD, 15));
 		panel_2.add(label_25);
 		
-		scityField = new JTextField();
+		scityField = new MyTextField();
 		scityField.setEditable(false);
 		panel_2.add(scityField);
 		scityField.setColumns(10);
@@ -176,7 +177,7 @@ public class CheckSendDoc extends JPanel{
 		label_4.setFont(new Font("黑体", Font.BOLD, 15));
 		panel_2.add(label_4);
 		
-		sAddressField = new JTextField();
+		sAddressField = new MyTextField();
 		sAddressField.setEnabled(false);
 		panel_2.add(sAddressField);
 		sAddressField.setColumns(30);
@@ -194,7 +195,7 @@ public class CheckSendDoc extends JPanel{
 		label_23.setFont(new Font("黑体", Font.BOLD, 15));
 		panel_17.add(label_23);
 		
-		sUnitField = new JTextField();
+		sUnitField = new MyTextField();
 		sUnitField.setEditable(false);
 		sUnitField.setColumns(20);
 		panel_17.add(sUnitField);
@@ -226,7 +227,7 @@ public class CheckSendDoc extends JPanel{
 		label_6.setFont(new Font("黑体", Font.BOLD, 15));
 		panel_4.add(label_6);
 		
-		rNameField = new JTextField();
+		rNameField = new MyTextField();
 		rNameField.setEnabled(false);
 		rNameField.setColumns(10);
 		panel_4.add(rNameField);
@@ -235,7 +236,7 @@ public class CheckSendDoc extends JPanel{
 		label_8.setFont(new Font("黑体", Font.BOLD, 15));
 		panel_4.add(label_8);
 		
-		rTelephoneField = new JTextField();
+		rTelephoneField = new MyTextField();
 		rTelephoneField.setEnabled(false);
 		rTelephoneField.setColumns(20);
 		panel_4.add(rTelephoneField);
@@ -253,7 +254,7 @@ public class CheckSendDoc extends JPanel{
 		label_7.setFont(new Font("黑体", Font.BOLD, 15));
 		panel_12.add(label_7);
 		
-		rMobilePhoneField = new JTextField();
+		rMobilePhoneField = new MyTextField();
 		rMobilePhoneField.setEnabled(false);
 		rMobilePhoneField.setColumns(20);
 		panel_12.add(rMobilePhoneField);
@@ -271,7 +272,7 @@ public class CheckSendDoc extends JPanel{
 		label_26.setFont(new Font("黑体", Font.BOLD, 15));
 		panel_5.add(label_26);
 		
-		rcityField = new JTextField();
+		rcityField = new MyTextField();
 		rcityField.setEditable(false);
 		panel_5.add(rcityField);
 		rcityField.setColumns(10);
@@ -280,7 +281,7 @@ public class CheckSendDoc extends JPanel{
 		label_9.setFont(new Font("黑体", Font.BOLD, 15));
 		panel_5.add(label_9);
 		
-		rAddressField = new JTextField();
+		rAddressField = new MyTextField();
 		rAddressField.setEnabled(false);
 		rAddressField.setColumns(30);
 		panel_5.add(rAddressField);
@@ -298,7 +299,7 @@ public class CheckSendDoc extends JPanel{
 		label_24.setFont(new Font("黑体", Font.BOLD, 15));
 		panel_18.add(label_24);
 		
-		rUnitField = new JTextField();
+		rUnitField = new MyTextField();
 		rUnitField.setEditable(false);
 		rUnitField.setColumns(20);
 		panel_18.add(rUnitField);
@@ -316,7 +317,7 @@ public class CheckSendDoc extends JPanel{
 		label_11.setFont(new Font("黑体", Font.BOLD, 15));
 		panel_7.add(label_11);
 		
-		itemNumField = new JTextField();
+		itemNumField = new MyTextField();
 		itemNumField.setEnabled(false);
 		itemNumField.setColumns(5);
 		panel_7.add(itemNumField);
@@ -325,7 +326,7 @@ public class CheckSendDoc extends JPanel{
 		label_12.setFont(new Font("黑体", Font.BOLD, 15));
 		panel_7.add(label_12);
 		
-		weightField = new JTextField();
+		weightField = new MyTextField();
 		weightField.setEnabled(false);
 		weightField.setColumns(5);
 		panel_7.add(weightField);
@@ -343,7 +344,7 @@ public class CheckSendDoc extends JPanel{
 		label_13.setFont(new Font("黑体", Font.BOLD, 15));
 		panel_13.add(label_13);
 		
-		lengthField = new JTextField();
+		lengthField = new MyTextField();
 		lengthField.setEnabled(false);
 		lengthField.setColumns(5);
 		panel_13.add(lengthField);
@@ -351,7 +352,7 @@ public class CheckSendDoc extends JPanel{
 		JLabel label_14 = new JLabel("*");
 		panel_13.add(label_14);
 		
-		widethField = new JTextField();
+		widethField = new MyTextField();
 		widethField.setEnabled(false);
 		widethField.setColumns(5);
 		panel_13.add(widethField);
@@ -359,7 +360,7 @@ public class CheckSendDoc extends JPanel{
 		JLabel label_15 = new JLabel("*");
 		panel_13.add(label_15);
 		
-		heightField = new JTextField();
+		heightField = new MyTextField();
 		heightField.setEnabled(false);
 		heightField.setColumns(5);
 		panel_13.add(heightField);
@@ -377,7 +378,7 @@ public class CheckSendDoc extends JPanel{
 		label_16.setFont(new Font("黑体", Font.BOLD, 15));
 		panel_8.add(label_16);
 		
-		packField = new JTextField();
+		packField = new MyTextField();
 		packField.setEnabled(false);
 		panel_8.add(packField);
 		packField.setColumns(10);
@@ -386,7 +387,7 @@ public class CheckSendDoc extends JPanel{
 		label_10.setFont(new Font("黑体", Font.BOLD, 15));
 		panel_8.add(label_10);
 		
-		kindField = new JTextField();
+		kindField = new MyTextField();
 		kindField.setEnabled(false);
 		kindField.setColumns(10);
 		panel_8.add(kindField);
@@ -404,7 +405,7 @@ public class CheckSendDoc extends JPanel{
 		label_18.setFont(new Font("黑体", Font.BOLD, 15));
 		panel_6.add(label_18);
 		
-		timeField = new JTextField();
+		timeField = new MyTextField();
 		timeField.setEnabled(false);
 		panel_6.add(timeField);
 		timeField.setColumns(10);
@@ -422,7 +423,7 @@ public class CheckSendDoc extends JPanel{
 		label_17.setFont(new Font("黑体", Font.BOLD, 15));
 		panel_9.add(label_17);
 		
-		sendTypeField = new JTextField();
+		sendTypeField = new MyTextField();
 		sendTypeField.setEnabled(false);
 		panel_9.add(sendTypeField);
 		sendTypeField.setColumns(10);
@@ -440,7 +441,7 @@ public class CheckSendDoc extends JPanel{
 		label_21.setFont(new Font("黑体", Font.BOLD, 15));
 		panel_10.add(label_21);
 		
-		priceField = new JTextField();
+		priceField = new MyTextField();
 		priceField.setEnabled(false);
 		panel_10.add(priceField);
 		priceField.setColumns(10);

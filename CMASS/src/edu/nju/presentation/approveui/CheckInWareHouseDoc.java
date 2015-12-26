@@ -5,12 +5,11 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
 
-import javax.swing.JButton;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.UIManager;
@@ -22,10 +21,11 @@ import javax.swing.SwingConstants;
 
 import edu.nju.po.InWareHouseDocLineItem;
 import edu.nju.presentation.widget.MyTable;
+import edu.nju.presentation.widget.MyTextField;
 import edu.nju.vo.InWareHouseDocVO;
 
 public class CheckInWareHouseDoc extends JPanel{
-	private JTextField InWareHouseDocID;
+	private MyTextField InWareHouseDocID;
 	private MyTable table;
 	private JScrollPane scrollPane;
 	private String[] columnNames={"快递编号","入库日期","目的地","区号","排号","架号","位号"};
@@ -47,7 +47,7 @@ public class CheckInWareHouseDoc extends JPanel{
 		gbc_lblNewLabel.gridy = 1;
 		add(lblNewLabel, gbc_lblNewLabel);
 		
-		InWareHouseDocID = new JTextField();
+		InWareHouseDocID = new MyTextField();
 		InWareHouseDocID.setEditable(false);
 		GridBagConstraints gbc_InWareHouseDocID = new GridBagConstraints();
 		gbc_InWareHouseDocID.fill = GridBagConstraints.HORIZONTAL;
@@ -58,6 +58,8 @@ public class CheckInWareHouseDoc extends JPanel{
 		InWareHouseDocID.setColumns(10);
 		
 		scrollPane = new JScrollPane();
+		scrollPane.setOpaque(false);
+		scrollPane.getViewport().setOpaque(false);
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.insets = new Insets(0, 0, 5, 0);
 		gbc_scrollPane.gridwidth = 5;

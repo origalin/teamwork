@@ -9,15 +9,16 @@ import java.awt.Font;
 import javax.swing.table.DefaultTableModel;
 
 import edu.nju.presentation.widget.MyTable;
+import edu.nju.presentation.widget.MyTextField;
 import edu.nju.vo.YDeliverDocVO;
 
 import java.awt.FlowLayout;
 public class checkYDeliverDoc extends JPanel{
-	private JTextField date;
-	private JTextField courier;
+	private MyTextField date;
+	private MyTextField courier;
 	private JLabel label_1;
 	private JLabel label_2;
-	private JTextField YDeliverID;
+	private MyTextField YDeliverID;
 	private JPanel panel;
 	private JPanel panel_1;
 	private JPanel panel_2;
@@ -64,7 +65,7 @@ public class checkYDeliverDoc extends JPanel{
 		gbc_panel_1.gridy = 1;
 		add(panel_1, gbc_panel_1);
 		
-		YDeliverID = new JTextField();
+		YDeliverID = new MyTextField();
 		panel_1.add(YDeliverID);
 		YDeliverID.setEditable(false);
 		YDeliverID.setColumns(15);
@@ -87,7 +88,7 @@ public class checkYDeliverDoc extends JPanel{
 		gbc_panel_2.gridy = 1;
 		add(panel_2, gbc_panel_2);
 		
-		courier = new JTextField();
+		courier = new MyTextField();
 		panel_2.add(courier);
 		courier.setEditable(false);
 		courier.setColumns(10);
@@ -111,7 +112,7 @@ public class checkYDeliverDoc extends JPanel{
 		gbc_panel_3.gridy = 2;
 		add(panel_3, gbc_panel_3);
 		
-		date = new JTextField();
+		date = new MyTextField();
 		panel_3.add(date);
 		date.setEditable(false);
 		date.setColumns(15);

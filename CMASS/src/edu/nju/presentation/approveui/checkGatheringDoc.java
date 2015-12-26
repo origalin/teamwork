@@ -14,14 +14,15 @@ import java.util.Date;
 import javax.swing.table.DefaultTableModel;
 
 import edu.nju.presentation.widget.MyTable;
+import edu.nju.presentation.widget.MyTextField;
 import edu.nju.vo.GatheringDocVO;
 public class checkGatheringDoc extends JPanel{
-	private JTextField GatheringDocID;
-	private JTextField money;
-	private JTextField courier_ID;
+	private MyTextField GatheringDocID;
+	private MyTextField money;
+	private MyTextField courier_ID;
 	private JTable table;
-	private JTextField GatheringDocDate;
-	private JTextField account;
+	private MyTextField GatheringDocDate;
+	private MyTextField account;
 	private JScrollPane scrollPane;
 	/*
 	public static void main(String args[]){
@@ -58,7 +59,7 @@ public class checkGatheringDoc extends JPanel{
 		gbc_label_4.gridy = 1;
 		add(label_4, gbc_label_4);
 		
-		GatheringDocID = new JTextField();
+		GatheringDocID = new MyTextField();
 		GatheringDocID.setEditable(false);
 		GridBagConstraints gbc_GatheringDocID = new GridBagConstraints();
 		gbc_GatheringDocID.insets = new Insets(0, 0, 5, 5);
@@ -77,7 +78,7 @@ public class checkGatheringDoc extends JPanel{
 		gbc_label.gridy = 1;
 		add(label, gbc_label);
 		
-		courier_ID = new JTextField();
+		courier_ID = new MyTextField();
 		courier_ID.setEditable(false);
 		GridBagConstraints gbc_courier_ID = new GridBagConstraints();
 		gbc_courier_ID.insets = new Insets(0, 0, 5, 5);
@@ -96,7 +97,7 @@ public class checkGatheringDoc extends JPanel{
 		gbc_label_1.gridy = 2;
 		add(label_1, gbc_label_1);
 		
-		GatheringDocDate = new JTextField();
+		GatheringDocDate = new MyTextField();
 		GatheringDocDate.setEditable(false);
 		GridBagConstraints gbc_GatheringDocDate = new GridBagConstraints();
 		gbc_GatheringDocDate.insets = new Insets(0, 0, 5, 5);
@@ -115,7 +116,7 @@ public class checkGatheringDoc extends JPanel{
 		gbc_label_3.gridy = 2;
 		add(label_3, gbc_label_3);
 		
-		money = new JTextField();
+		money = new MyTextField();
 		money.setEditable(false);
 		GridBagConstraints gbc_money = new GridBagConstraints();
 		gbc_money.insets = new Insets(0, 0, 5, 5);
@@ -133,7 +134,7 @@ public class checkGatheringDoc extends JPanel{
 		gbc_lblNewLabel.gridy = 3;
 		add(lblNewLabel, gbc_lblNewLabel);
 		
-		account = new JTextField();
+		account = new MyTextField();
 		account.setEditable(false);
 		GridBagConstraints gbc_account = new GridBagConstraints();
 		gbc_account.insets = new Insets(0, 0, 5, 5);
@@ -191,27 +192,27 @@ public class checkGatheringDoc extends JPanel{
 		
 	}
 	
-	public JTextField getTextField_2() {
+	public MyTextField getTextField_2() {
 		return GatheringDocID;
 	}
 
-	public void setTextField_2(JTextField textField_2) {
+	public void setTextField_2(MyTextField textField_2) {
 		this.GatheringDocID = textField_2;
 	}
 
-	public JTextField getTextField_3() {
+	public MyTextField getTextField_3() {
 		return money;
 	}
 
-	public void setTextField_3(JTextField textField_3) {
+	public void setTextField_3(MyTextField textField_3) {
 		this.money = textField_3;
 	}
 
-	public JTextField getTextField_4() {
+	public MyTextField getTextField_4() {
 		return courier_ID;
 	}
 
-	public void setTextField_4(JTextField textField_4) {
+	public void setTextField_4(MyTextField textField_4) {
 		this.courier_ID = textField_4;
 	}
 
@@ -223,19 +224,19 @@ public class checkGatheringDoc extends JPanel{
 		this.table = table;
 	}
 
-	public JTextField getTextField() {
+	public MyTextField getTextField() {
 		return GatheringDocDate;
 	}
 
-	public void setTextField(JTextField textField) {
+	public void setTextField(MyTextField textField) {
 		this.GatheringDocDate = textField;
 	}
 
-	public JTextField getTextField_1() {
+	public MyTextField getTextField_1() {
 		return account;
 	}
 
-	public void setTextField_1(JTextField textField_1) {
+	public void setTextField_1(MyTextField textField_1) {
 		this.account = textField_1;
 	}
 	public JScrollPane getScrollPane() {

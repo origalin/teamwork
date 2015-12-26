@@ -7,33 +7,31 @@ import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.table.DefaultTableModel;
 
 import edu.nju.presentation.widget.MyTable;
+import edu.nju.presentation.widget.MyTextField;
 import edu.nju.vo.ZLoadDocVO;
 
 import java.awt.Font;
 
 public class CheckZLoadDoc extends JPanel{
-	private JTextField transferCenterField;
-	private JTextField carID;
-	private JTextField watcherField;
-	private JTextField Driver;
-	private JTextField endPlace;
-	private JTextField ZLoadID;
-	private JTextField date;
-	private JTextField carTransportID;
-	private JTextField money;
+	private MyTextField transferCenterField;
+	private MyTextField carID;
+	private MyTextField watcherField;
+	private MyTextField Driver;
+	private MyTextField endPlace;
+	private MyTextField ZLoadID;
+	private MyTextField date;
+	private MyTextField carTransportID;
+	private MyTextField money;
 	private MyTable table;
 	public CheckZLoadDoc(ZLoadDocVO vo) {
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -58,6 +56,7 @@ public class CheckZLoadDoc extends JPanel{
 		panel_11.setLayout(gbl_panel_11);
 		
 		JPanel panel = new JPanel();
+		panel.setOpaque(false);
 		GridBagConstraints gbc_panel = new GridBagConstraints();
 		gbc_panel.gridwidth = 4;
 		gbc_panel.fill = GridBagConstraints.VERTICAL;
@@ -82,6 +81,7 @@ public class CheckZLoadDoc extends JPanel{
 		panel_11.add(textField, gbc_textField);
 		
 		JPanel panel_1 = new JPanel();
+		panel_1.setOpaque(false);
 		FlowLayout flowLayout_5 = (FlowLayout) panel_1.getLayout();
 		flowLayout_5.setAlignment(FlowLayout.LEFT);
 		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
@@ -91,7 +91,7 @@ public class CheckZLoadDoc extends JPanel{
 		gbc_panel_1.gridy = 1;
 		panel_11.add(panel_1, gbc_panel_1);
 		
-		ZLoadID = new JTextField();
+		ZLoadID = new MyTextField();
 		ZLoadID.setEditable(false);
 		panel_1.add(ZLoadID);
 		ZLoadID.setColumns(20);
@@ -106,6 +106,7 @@ public class CheckZLoadDoc extends JPanel{
 		panel_11.add(label_3, gbc_label_3);
 		
 		JPanel panel_3 = new JPanel();
+		panel_3.setOpaque(false);
 		FlowLayout flowLayout_4 = (FlowLayout) panel_3.getLayout();
 		flowLayout_4.setAlignment(FlowLayout.LEFT);
 		GridBagConstraints gbc_panel_3 = new GridBagConstraints();
@@ -115,7 +116,7 @@ public class CheckZLoadDoc extends JPanel{
 		gbc_panel_3.gridy = 1;
 		panel_11.add(panel_3, gbc_panel_3);
 		
-		date = new JTextField();
+		date = new MyTextField();
 		date.setEditable(false);
 		panel_3.add(date);
 		date.setColumns(15);
@@ -130,6 +131,7 @@ public class CheckZLoadDoc extends JPanel{
 		panel_11.add(label_4, gbc_label_4);
 		
 		JPanel panel_2 = new JPanel();
+		panel_2.setOpaque(false);
 		GridBagConstraints gbc_panel_2 = new GridBagConstraints();
 		gbc_panel_2.fill = GridBagConstraints.BOTH;
 		gbc_panel_2.insets = new Insets(0, 0, 5, 5);
@@ -139,7 +141,7 @@ public class CheckZLoadDoc extends JPanel{
 		FlowLayout flowLayout_2 = (FlowLayout) panel_2.getLayout();
 		flowLayout_2.setAlignment(FlowLayout.LEFT);
 		
-		transferCenterField = new JTextField();
+		transferCenterField = new MyTextField();
 		transferCenterField.setEditable(false);
 		panel_2.add(transferCenterField);
 		transferCenterField.setColumns(38);
@@ -154,6 +156,7 @@ public class CheckZLoadDoc extends JPanel{
 		panel_11.add(label_5, gbc_label_5);
 		
 		JPanel panel_4 = new JPanel();
+		panel_4.setOpaque(false);
 		FlowLayout flowLayout_1 = (FlowLayout) panel_4.getLayout();
 		flowLayout_1.setAlignment(FlowLayout.LEFT);
 		GridBagConstraints gbc_panel_4 = new GridBagConstraints();
@@ -163,7 +166,7 @@ public class CheckZLoadDoc extends JPanel{
 		gbc_panel_4.gridy = 2;
 		panel_11.add(panel_4, gbc_panel_4);
 		
-		carTransportID = new JTextField();
+		carTransportID = new MyTextField();
 		carTransportID.setEditable(false);
 		panel_4.add(carTransportID);
 		carTransportID.setColumns(15);
@@ -178,6 +181,7 @@ public class CheckZLoadDoc extends JPanel{
 		panel_11.add(label_10, gbc_label_10);
 		
 		JPanel panel_6 = new JPanel();
+		panel_6.setOpaque(false);
 		GridBagConstraints gbc_panel_6 = new GridBagConstraints();
 		gbc_panel_6.fill = GridBagConstraints.BOTH;
 		gbc_panel_6.insets = new Insets(0, 0, 5, 5);
@@ -187,7 +191,7 @@ public class CheckZLoadDoc extends JPanel{
 		FlowLayout flowLayout_6 = (FlowLayout) panel_6.getLayout();
 		flowLayout_6.setAlignment(FlowLayout.LEFT);
 		
-		endPlace = new JTextField();
+		endPlace = new MyTextField();
 		endPlace.setEditable(false);
 		panel_6.add(endPlace);
 		endPlace.setColumns(20);
@@ -202,6 +206,7 @@ public class CheckZLoadDoc extends JPanel{
 		panel_11.add(label_6, gbc_label_6);
 		
 		JPanel panel_5 = new JPanel();
+		panel_5.setOpaque(false);
 		FlowLayout flowLayout_3 = (FlowLayout) panel_5.getLayout();
 		flowLayout_3.setAlignment(FlowLayout.LEFT);
 		GridBagConstraints gbc_panel_5 = new GridBagConstraints();
@@ -211,7 +216,7 @@ public class CheckZLoadDoc extends JPanel{
 		gbc_panel_5.gridy = 3;
 		panel_11.add(panel_5, gbc_panel_5);
 		
-		money = new JTextField();
+		money = new MyTextField();
 		money.setEditable(false);
 		panel_5.add(money);
 		money.setColumns(10);
@@ -226,6 +231,7 @@ public class CheckZLoadDoc extends JPanel{
 		panel_11.add(label_11, gbc_label_11);
 		
 		JPanel panel_8 = new JPanel();
+		panel_8.setOpaque(false);
 		GridBagConstraints gbc_panel_8 = new GridBagConstraints();
 		gbc_panel_8.fill = GridBagConstraints.BOTH;
 		gbc_panel_8.insets = new Insets(0, 0, 5, 5);
@@ -235,7 +241,7 @@ public class CheckZLoadDoc extends JPanel{
 		FlowLayout flowLayout_7 = (FlowLayout) panel_8.getLayout();
 		flowLayout_7.setAlignment(FlowLayout.LEFT);
 		
-		carID = new JTextField();
+		carID = new MyTextField();
 		carID.setEditable(false);
 		panel_8.add(carID);
 		carID.setColumns(10);
@@ -244,7 +250,7 @@ public class CheckZLoadDoc extends JPanel{
 		lblNewLabel.setFont(new Font("ºÚÌå", Font.BOLD, 15));
 		panel_8.add(lblNewLabel);
 		
-		watcherField = new JTextField();
+		watcherField = new MyTextField();
 		watcherField.setEditable(false);
 		panel_8.add(watcherField);
 		watcherField.setColumns(10);
@@ -259,6 +265,7 @@ public class CheckZLoadDoc extends JPanel{
 		label_12.setFont(new Font("ºÚÌå", Font.BOLD, 15));
 		
 		JPanel panel_7 = new JPanel();
+		panel_7.setOpaque(false);
 		FlowLayout flowLayout_8 = (FlowLayout) panel_7.getLayout();
 		flowLayout_8.setAlignment(FlowLayout.LEFT);
 		GridBagConstraints gbc_panel_7 = new GridBagConstraints();
@@ -268,12 +275,14 @@ public class CheckZLoadDoc extends JPanel{
 		gbc_panel_7.gridy = 4;
 		panel_11.add(panel_7, gbc_panel_7);
 		
-		Driver = new JTextField();
+		Driver = new MyTextField();
 		panel_7.add(Driver);
 		Driver.setEditable(false);
 		Driver.setColumns(10);
 		
 		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setOpaque(false);
+		scrollPane.getViewport().setOpaque(false);
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.insets = new Insets(0, 0, 0, 5);
 		gbc_scrollPane.gridwidth = 4;

@@ -13,6 +13,7 @@ import edu.nju.businesslogic.systembl.SystemBl;
 import edu.nju.po.OperationPO;
 import edu.nju.presentation.approveui.checkMainUI;
 import edu.nju.presentation.widget.MyTable;
+import edu.nju.presentation.widget.MyTextField;
 import edu.nju.presentation.widget.SmallButton;
 import edu.nju.vo.AccountVO;
 
@@ -26,7 +27,7 @@ public class accountManagement extends JPanel{
 	financebl bl;
 	SystemBl systembl;
 	Institution institution;
-	private JTextField textField;
+	private MyTextField textField;
 	private MyTable table;
 	private JPanel thisPanel=this;
 	private String staffID;
@@ -83,7 +84,7 @@ public class accountManagement extends JPanel{
 		gbc_label_1.gridy = 3;
 		add(label_1, gbc_label_1);
 		
-		textField = new JTextField();
+		textField = new MyTextField();
 		GridBagConstraints gbc_textField = new GridBagConstraints();
 		gbc_textField.gridwidth = 4;
 		gbc_textField.insets = new Insets(0, 0, 5, 5);

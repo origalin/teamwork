@@ -43,6 +43,7 @@ import edu.nju.vo.ZArrivalDocVO;
 import edu.nju.vo.ZLoadDocVO;
 import edu.nju.presentation.mainui.*;
 import edu.nju.presentation.widget.MyTable;
+import edu.nju.presentation.widget.MyTextField;
 import edu.nju.presentation.widget.SmallButton;
 
 import java.awt.event.ActionListener;
@@ -75,7 +76,7 @@ public class checkMainUI extends JPanel{
 	private String staffID;
 	private MyTable table;
 	private JScrollPane scrollPane;
-	private JTextField textField;
+	private MyTextField textField;
 	/*
 	public static void main(String args[]){
 		JFrame frame=new JFrame();
@@ -282,7 +283,7 @@ public class checkMainUI extends JPanel{
 		gbc_label_1.gridy = 2;
 		add(label_1, gbc_label_1);
 		
-		textField = new JTextField();
+		textField = new MyTextField();
 		
 		textField.addKeyListener(new KeyAdapter() {
 			@Override
@@ -467,6 +468,18 @@ public class checkMainUI extends JPanel{
 		scrollPane.setViewportView(table);
 		scrollPane.setOpaque(false);
 		scrollPane.getViewport().setOpaque(false);
+		
+		SmallButton btnNewButton = new SmallButton("\u5168\u9009");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				chooseAll();
+			}
+		});
+		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
+		gbc_btnNewButton.insets = new Insets(0, 0, 5, 0);
+		gbc_btnNewButton.gridx = 2;
+		gbc_btnNewButton.gridy = 2;
+		add(btnNewButton, gbc_btnNewButton);
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.insets = new Insets(0, 0, 5, 5);
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
@@ -795,6 +808,13 @@ public class checkMainUI extends JPanel{
 		JOptionPane.showMessageDialog(null, "您输入的单号不存在", "错误",JOptionPane.PLAIN_MESSAGE); 
 		textField.setText("");
 		return null;
+	}
+	
+	public void chooseAll(){
+		for (int i=0; i<table.getRowCount(); i++)
+        {
+            table.setValueAt(true, i, 0);
+        }
 	}
 
 }

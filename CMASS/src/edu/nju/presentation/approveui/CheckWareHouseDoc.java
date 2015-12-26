@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 
 import java.awt.GridBagConstraints;
 
-import javax.swing.JTextField;
+
 
 import java.awt.Insets;
 import java.text.SimpleDateFormat;
@@ -18,17 +18,17 @@ import java.util.Date;
 
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
-import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
 
 import edu.nju.presentation.widget.MyTable;
+import edu.nju.presentation.widget.MyTextField;
 import edu.nju.vo.OutWareHouseDocLineItem;
 import edu.nju.vo.OutWareHouseDocVO;
 
 public class CheckWareHouseDoc extends JPanel{
-	private JTextField OutWareHouseID;
-	private JTextField Date;
-	private JTextField type;
+	private MyTextField OutWareHouseID;
+	private MyTextField Date;
+	private MyTextField type;
 	private String[] columnNames={"快递编号","目的地"};
 	public CheckWareHouseDoc(OutWareHouseDocVO vo) {
 		
@@ -49,7 +49,7 @@ public class CheckWareHouseDoc extends JPanel{
 		gbc_label.gridy = 0;
 		add(label, gbc_label);
 		
-		OutWareHouseID = new JTextField();
+		OutWareHouseID = new MyTextField();
 		OutWareHouseID.setEditable(false);
 		GridBagConstraints gbc_OutWareHouseID = new GridBagConstraints();
 		gbc_OutWareHouseID.insets = new Insets(0, 0, 5, 5);
@@ -67,7 +67,7 @@ public class CheckWareHouseDoc extends JPanel{
 		gbc_label_1.gridy = 1;
 		add(label_1, gbc_label_1);
 		
-		Date = new JTextField();
+		Date = new MyTextField();
 		Date.setEditable(false);
 		GridBagConstraints gbc_Date = new GridBagConstraints();
 		gbc_Date.insets = new Insets(0, 0, 5, 5);
@@ -84,7 +84,7 @@ public class CheckWareHouseDoc extends JPanel{
 		gbc_label_2.gridy = 2;
 		add(label_2, gbc_label_2);
 		
-		type = new JTextField();
+		type = new MyTextField();
 		type.setEditable(false);
 		GridBagConstraints gbc_type = new GridBagConstraints();
 		gbc_type.insets = new Insets(0, 0, 5, 5);
