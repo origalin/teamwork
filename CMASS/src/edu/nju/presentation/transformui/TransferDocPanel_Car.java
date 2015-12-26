@@ -249,6 +249,7 @@ public class TransferDocPanel_Car extends JPanel {
 					public void actionPerformed(ActionEvent e) {
 						// TODO Auto-generated method stub
 						saveDoc();
+						clean();
 					}
 				});
 			} catch (RemoteException e1) {
@@ -305,6 +306,12 @@ public class TransferDocPanel_Car extends JPanel {
 
 		default:
 			break;
+		}
+	}
+	private void clean() {
+		int i = tableModel.getRowCount();
+		for(;i>0;i--) {
+			tableModel.removeRow(i-1);
 		}
 	}
 }

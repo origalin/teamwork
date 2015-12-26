@@ -222,6 +222,7 @@ public class YLoadDocPanel extends JPanel{
 					public void actionPerformed(ActionEvent e) {
 						// TODO Auto-generated method stub
 						saveDoc();
+						clean();
 					}
 				});
 			} catch (RemoteException e1) {
@@ -277,6 +278,12 @@ public class YLoadDocPanel extends JPanel{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			warning("net");
+		}
+	}
+	private void clean() {
+		int i = tableModel.getRowCount();
+		for(;i>0;i--) {
+			tableModel.removeRow(i-1);
 		}
 	}
 }

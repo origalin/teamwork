@@ -338,6 +338,7 @@ public class ZArrivalDocPanel extends JPanel {
 					public void actionPerformed(ActionEvent e) {
 						// TODO Auto-generated method stub
 						saveDoc();
+						clean();
 					}
 				});
 			} catch (RemoteException e) {
@@ -370,6 +371,12 @@ public class ZArrivalDocPanel extends JPanel {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			warning("net");
+		}
+	}
+	private void clean() {
+		int i = tableModel.getRowCount();
+		for(;i>0;i--) {
+			tableModel.removeRow(i-1);
 		}
 	}
 }
