@@ -52,6 +52,7 @@ import java.awt.Font;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
+import java.awt.Dimension;
 
 @SuppressWarnings("serial")
 public class LoginFrame extends JFrame {
@@ -94,6 +95,22 @@ public class LoginFrame extends JFrame {
 		gbc_label.gridy = 1;
 		getContentPane().add(label, gbc_label);
 		account = new JTextField(20);
+		account.addFocusListener(new FocusListener() {
+			
+			@Override
+			public void focusLost(FocusEvent e) {
+				// TODO Auto-generated method stub
+				account.setBorder(BorderFactory.createLineBorder(Color.lightGray, 2));
+			}
+			
+			@Override
+			public void focusGained(FocusEvent e) {
+				// TODO Auto-generated method stub
+				account.setBorder(BorderFactory.createLineBorder(new Color(96, 174, 219), 2));
+			}
+		});
+		account.setPreferredSize(new Dimension(166, 30));
+		account.setBorder(BorderFactory.createLineBorder(Color.lightGray, 2));
 		GridBagConstraints gbc_account = new GridBagConstraints();
 		gbc_account.anchor = GridBagConstraints.WEST;
 		gbc_account.insets = new Insets(0, 0, 5, 5);
@@ -109,6 +126,24 @@ public class LoginFrame extends JFrame {
 		gbc_label_1.gridy = 2;
 		getContentPane().add(label_1, gbc_label_1);
 		password = new JPasswordField(20);
+		password.addFocusListener(new FocusListener() {
+			
+			@Override
+			public void focusLost(FocusEvent e) {
+				// TODO Auto-generated method stub
+				password.setBorder(BorderFactory.createLineBorder(Color.lightGray, 2));
+			}
+			
+			@Override
+			public void focusGained(FocusEvent e) {
+				// TODO Auto-generated method stub
+				password.setBorder(BorderFactory.createLineBorder(new Color(96, 174, 219), 2));
+			}
+		});
+		password.setBackground(new Color(250, 250, 250));
+		account.setBackground(new Color(250, 250, 250));
+		password.setPreferredSize(new Dimension(166, 30));
+		password.setBorder(new LineBorder(Color.LIGHT_GRAY, 2));
 		GridBagConstraints gbc_password = new GridBagConstraints();
 		gbc_password.anchor = GridBagConstraints.WEST;
 		gbc_password.insets = new Insets(0, 0, 5, 5);
