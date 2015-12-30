@@ -211,7 +211,6 @@ public class StorageQuery extends JPanel {
 				String[] headers ={ "快递编号", "入库日期", "目的地", "区","排号", "架号", "位号" ,"仓库编号"};
 				List<storageItemVO> dataset=new ArrayList<storageItemVO>() ;
 				
-				
 				for(RecordPO temp:list)	    {	dataset.add(new storageItemVO(temp));}
 				for(RecordPO temp:list_1)	{	dataset.add(new storageItemVO(temp));}
 				for(RecordPO temp:list_2)	{	dataset.add(new storageItemVO(temp));}
