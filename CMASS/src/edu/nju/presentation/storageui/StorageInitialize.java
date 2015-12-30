@@ -4,7 +4,7 @@ import javax.swing.JPanel;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
-import javax.swing.JTextField;
+   
 import java.awt.Insets;
 import javax.swing.JButton;
 import javax.swing.border.TitledBorder;
@@ -13,6 +13,7 @@ import edu.nju.businesslogicservice.storagelogicservice.StorageInitializeService
 import edu.nju.po.InWareHouseDocLineItem;
 import edu.nju.po.RecordPO;
 import edu.nju.presentation.UiFactory;
+import edu.nju.presentation.widget.MyTextField;
 import edu.nju.tools.Time;
 
 import java.awt.event.ActionListener;
@@ -24,17 +25,17 @@ import java.awt.event.ActionEvent;
 public class StorageInitialize extends JPanel{
 	private String currStorageID;
 	private String currPersonID;
-	private JTextField textSendDoc_ID;
-	private JTextField textDestination;
-	private JTextField textDistrict;
-	private JTextField textShelf;
+	private MyTextField textSendDoc_ID;
+	private MyTextField textDestination;
+	private MyTextField textDistrict;
+	private MyTextField textShelf;
 	private JLabel lblNewLabel_4;
-	private JTextField textRow;
+	private MyTextField textRow;
 	private JLabel lblNewLabel_5;
-	private JTextField textPosition;
+	private MyTextField textPosition;
 	private JButton btnNewButton;
 	private JLabel lblNewLabel_6;
-	private JTextField textInWareDate;
+	private MyTextField textInWareDate;
 	private JButton button;
 	public StorageInitialize(String staffID){
 		this();
@@ -63,7 +64,7 @@ public class StorageInitialize extends JPanel{
 		gbc_lblNewLabel.gridy = 1;
 		add(lblNewLabel, gbc_lblNewLabel);
 		
-		textSendDoc_ID = new JTextField();
+		textSendDoc_ID = new MyTextField();
 		GridBagConstraints gbc_textSendDoc_ID = new GridBagConstraints();
 		gbc_textSendDoc_ID.gridwidth = 2;
 		gbc_textSendDoc_ID.insets = new Insets(0, 0, 5, 5);
@@ -80,7 +81,7 @@ public class StorageInitialize extends JPanel{
 		gbc_lblNewLabel_6.gridy = 2;
 		add(lblNewLabel_6, gbc_lblNewLabel_6);
 		
-		textInWareDate = new JTextField();
+		textInWareDate = new MyTextField();
 		GridBagConstraints gbc_textInWareDate = new GridBagConstraints();
 		gbc_textInWareDate.gridwidth = 2;
 		gbc_textInWareDate.insets = new Insets(0, 0, 5, 5);
@@ -97,7 +98,7 @@ public class StorageInitialize extends JPanel{
 		gbc_lblNewLabel_1.gridy = 3;
 		add(lblNewLabel_1, gbc_lblNewLabel_1);
 		
-		textDestination = new JTextField();
+		textDestination = new MyTextField();
 		GridBagConstraints gbc_textDestination = new GridBagConstraints();
 		gbc_textDestination.gridwidth = 2;
 		gbc_textDestination.insets = new Insets(0, 0, 5, 5);
@@ -114,7 +115,7 @@ public class StorageInitialize extends JPanel{
 		gbc_lblNewLabel_2.gridy = 4;
 		add(lblNewLabel_2, gbc_lblNewLabel_2);
 		
-		textDistrict = new JTextField();
+		textDistrict = new MyTextField();
 		GridBagConstraints gbc_textDistrict = new GridBagConstraints();
 		gbc_textDistrict.gridwidth = 2;
 		gbc_textDistrict.insets = new Insets(0, 0, 5, 5);
@@ -131,7 +132,7 @@ public class StorageInitialize extends JPanel{
 		gbc_lblNewLabel_4.gridy = 5;
 		add(lblNewLabel_4, gbc_lblNewLabel_4);
 		
-		textRow = new JTextField();
+		textRow = new MyTextField();
 		GridBagConstraints gbc_textRow = new GridBagConstraints();
 		gbc_textRow.gridwidth = 2;
 		gbc_textRow.insets = new Insets(0, 0, 5, 5);
@@ -148,7 +149,7 @@ public class StorageInitialize extends JPanel{
 		gbc_lblNewLabel_3.gridy = 6;
 		add(lblNewLabel_3, gbc_lblNewLabel_3);
 		
-		textShelf = new JTextField();
+		textShelf = new MyTextField();
 		GridBagConstraints gbc_textShelf = new GridBagConstraints();
 		gbc_textShelf.gridwidth = 2;
 		gbc_textShelf.insets = new Insets(0, 0, 5, 5);
@@ -165,7 +166,7 @@ public class StorageInitialize extends JPanel{
 		gbc_lblNewLabel_5.gridy = 7;
 		add(lblNewLabel_5, gbc_lblNewLabel_5);
 		
-		textPosition = new JTextField();
+		textPosition = new MyTextField();
 		GridBagConstraints gbc_textPosition = new GridBagConstraints();
 		gbc_textPosition.gridwidth = 2;
 		gbc_textPosition.insets = new Insets(0, 0, 5, 5);
