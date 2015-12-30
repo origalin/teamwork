@@ -210,16 +210,16 @@ public class StorageQuery extends JPanel {
 				ExportExcel<storageItemVO> ex = new ExportExcel<storageItemVO>();
 				String[] headers ={ "快递编号", "入库日期", "目的地", "区","排号", "架号", "位号" ,"仓库编号"};
 				List<storageItemVO> dataset=new ArrayList<storageItemVO>() ;
-				List<storageItemVO> dataset_1=new ArrayList<storageItemVO>() ;
-				List<storageItemVO> dataset_2=new ArrayList<storageItemVO>() ;
+				
 				
 				for(RecordPO temp:list)	    {	dataset.add(new storageItemVO(temp));}
-				for(RecordPO temp:list_1)	{	dataset_1.add(new storageItemVO(temp));}
-				for(RecordPO temp:list_2)	{	dataset_2.add(new storageItemVO(temp));}
+				for(RecordPO temp:list_1)	{	dataset.add(new storageItemVO(temp));}
+				for(RecordPO temp:list_2)	{	dataset.add(new storageItemVO(temp));}
 		
 				try {
-					OutputStream out = new FileOutputStream("D://b.xls");		
-					ex.exportExcel(headers, dataset, out);		
+					OutputStream out = new FileOutputStream("D://仓库库存清单.xls");		
+					ex.exportExcel(headers, dataset, out);	
+					
 					out.close();		
 					
 					System.out.println("excel导出成功！");

@@ -220,7 +220,7 @@ public class ExportExcel<T> {
 		font.setFontHeightInPoints((short) 12);
 		font.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
 	}
-	public static void main(String[] args) {
+	public static void main(String[] args) {}
 		// 测试学生
 //		ExportExcel<Student> ex = new ExportExcel<Student>();
 //		String[] headers = { "学号", "姓名", "年龄", "性别", "出生日期" };
@@ -246,27 +246,5 @@ public class ExportExcel<T> {
 //			e.printStackTrace();
 //		}
 		
-//		ExportExcel<RecordPO> ex = new ExportExcel<RecordPO>();
-//		String[] headers ={ "快递编号", "入库日期", "区", "排号", "架号", "位号" };
-//		List<RecordPO> dataset = new ArrayList<RecordPO>();
-//		dataset.add(new RecordPO("010000", new Date(), "jhuiqwrhiwq", "02", "03", "001000", false));
-//		dataset.add(new RecordPO("020000", new Date(), "jhuiqwrhiwq", "02", "03", "001000", false));
-//
-//		try {
-//			OutputStream out = new FileOutputStream("E://b.xls");
-//
-//			ex.exportExcel(headers, dataset, out);
-//
-//			out.close();
-//
-//			JOptionPane.showMessageDialog(null, "导出成功!");
-//			System.out.println("excel导出成功！");
-//		} catch (FileNotFoundException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-	}
+	
 }
