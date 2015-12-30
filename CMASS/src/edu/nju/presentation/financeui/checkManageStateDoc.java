@@ -10,13 +10,16 @@ import javax.swing.table.DefaultTableModel;
 import edu.nju.businesslogic.financebl.financebl;
 import edu.nju.po.PayDocPO;
 import edu.nju.po.PayType;
+import edu.nju.po.RecordPO;
 import edu.nju.presentation.approveui.checkGatheringDoc;
 import edu.nju.presentation.approveui.checkPayDoc;
+import edu.nju.presentation.export.ExportExcel;
 import edu.nju.presentation.mainui.CheckDialog;
 import edu.nju.presentation.widget.MyTextField;
 import edu.nju.presentation.widget.SmallButton;
 import edu.nju.vo.GatheringDocVO;
 import edu.nju.vo.PayDocVO;
+import edu.nju.vo.storageItemVO;
 
 import java.awt.Font;
 import java.awt.event.ActionListener;
@@ -26,7 +29,12 @@ import java.awt.event.MouseEvent;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.awt.Dimension;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 public class checkManageStateDoc extends JPanel{
 	/*
 	public static void main(String[]args){
@@ -48,6 +56,7 @@ public class checkManageStateDoc extends JPanel{
 	private JTable GatheringDocTable;
 	private JScrollPane scrollPane;
 	private JScrollPane scrollPane_1;
+	private SmallButton button;
 	public checkManageStateDoc(String staffID) {
 		setOpaque(false);
 		this.staffID=staffID;
@@ -166,6 +175,45 @@ public class checkManageStateDoc extends JPanel{
 		scrollPane = new JScrollPane();
 		scrollPane.setOpaque(false);
 		scrollPane.getViewport().setOpaque(false);
+		
+		button = new SmallButton("\u5BFC\u51FA");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				/*
+				 * ExportExcel<storageItemVO> ex = new ExportExcel<storageItemVO>();
+				String[] headers ={ "快递编号", "入库日期", "目的地", "区","排号", "架号", "位号" ,"仓库编号"};
+				List<storageItemVO> dataset=new ArrayList<storageItemVO>() ;
+				List<storageItemVO> dataset_1=new ArrayList<storageItemVO>() ;
+				List<storageItemVO> dataset_2=new ArrayList<storageItemVO>() ;
+				
+				for(RecordPO temp:list)	    {	dataset.add(new storageItemVO(temp));}
+				for(RecordPO temp:list_1)	{	dataset_1.add(new storageItemVO(temp));}
+				for(RecordPO temp:list_2)	{	dataset_2.add(new storageItemVO(temp));}
+		
+				try {
+					OutputStream out = new FileOutputStream("D://b.xls");		
+					ex.exportExcel(headers, dataset, out);		
+					out.close();		
+					
+					System.out.println("excel导出成功！");
+				} catch (FileNotFoundException exce) {
+					// TODO Auto-generated catch block
+					exce.printStackTrace();
+				} catch (IOException exce) {
+					// TODO Auto-generated catch block
+					exce.printStackTrace();
+				}
+			}
+				 */
+				ExportExcel<Double> ex=new ExportExcel<Double>();
+				
+			}
+		});
+		GridBagConstraints gbc_button = new GridBagConstraints();
+		gbc_button.insets = new Insets(0, 0, 5, 0);
+		gbc_button.gridx = 6;
+		gbc_button.gridy = 3;
+		add(button, gbc_button);
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.gridwidth = 2;
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
