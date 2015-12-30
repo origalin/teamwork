@@ -20,6 +20,7 @@ import edu.nju.po.GatheringDocPO;
 import edu.nju.po.OperationPO;
 import edu.nju.presentation.approveui.checkGatheringDoc;
 import edu.nju.presentation.mainui.CheckDialog;
+import edu.nju.presentation.widget.MyComboBox;
 import edu.nju.presentation.widget.MyTextField;
 import edu.nju.presentation.widget.SmallButton;
 import edu.nju.vo.AccountVO;
@@ -32,7 +33,7 @@ public class createGatheringDocPO extends JPanel{
 		private financebl bl;
 		private MyTextField courier_ID;
 		private SmallButton button;
-		private JComboBox comboBox;
+		private MyComboBox comboBox;
 		private ArrayList<AccountVO>accountList;
 		/*
 		public static void main(String[]args){
@@ -108,7 +109,7 @@ public class createGatheringDocPO extends JPanel{
 			gbc_label_1.gridy = 1;
 			add(label_1, gbc_label_1);
 			
-			comboBox = new JComboBox();
+			comboBox = new MyComboBox();
 			comboBox.setEditable(true);
 			comboBox.setModel(new DefaultComboBoxModel(accountName));
 			comboBox.setSelectedIndex(0);

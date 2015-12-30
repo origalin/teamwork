@@ -616,7 +616,14 @@ public class financebl implements FinanceLogicService {
 	}
 
 	public double calculateDriverSalary(String DriverID) throws RemoteException {
-		double oneTimeMoney = driver.getDriverCommision(DriverID);
+		double oneTimeMoney;
+		try {
+			oneTimeMoney = driver.getDriverCommision(DriverID);
+		} catch (DatabaseNULLException e1) {
+			System.out.println("与机构协作出错");
+			oneTimeMoney=-1;
+			e1.printStackTrace();
+		}
 		int time;
 		try {
 			time = YLoad.getDriverTime(DriverID)

@@ -42,6 +42,7 @@ import edu.nju.vo.YLoadDocVO;
 import edu.nju.vo.ZArrivalDocVO;
 import edu.nju.vo.ZLoadDocVO;
 import edu.nju.presentation.mainui.*;
+import edu.nju.presentation.widget.MyComboBox;
 import edu.nju.presentation.widget.MyTable;
 import edu.nju.presentation.widget.MyTextField;
 import edu.nju.presentation.widget.SmallButton;
@@ -118,7 +119,7 @@ public class checkMainUI extends JPanel{
 		gbc_label.gridy = 0;
 		add(label, gbc_label);
 		
-		JComboBox comboBox = new JComboBox();
+		MyComboBox comboBox = new MyComboBox();
 		
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"\u6536\u6B3E\u5355", "\u5165\u5E93\u5355", "\u4E2D\u8F6C\u5355", "\u51FA\u5E93\u5355", "\u4E2D\u8F6C\u4E2D\u5FC3\u88C5\u8F66\u5355", "\u8425\u4E1A\u5385\u88C5\u8F66\u5355", "\u6536\u4EF6\u5355", "\u4ED8\u6B3E\u5355", "\u8425\u4E1A\u5385\u5230\u8FBE\u5355", "\u5BC4\u4EF6\u5355", "\u4E2D\u8F6C\u4E2D\u5FC3\u5230\u8FBE\u5355", "\u6D3E\u4EF6\u5355"}));
 		GridBagConstraints gbc_comboBox = new GridBagConstraints();

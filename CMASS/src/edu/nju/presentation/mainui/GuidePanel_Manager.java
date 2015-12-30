@@ -30,6 +30,7 @@ public class GuidePanel_Manager extends JPanel{
 	checkMainUI checkMainUI;
 	ArrayList<BigButton> bigButtons=new ArrayList<BigButton>();
 	public GuidePanel_Manager(MainFrame frame,String staffID) {
+		setOpaque(false);
 		this.staffID = staffID;
 		this.frame = frame;
 		institutionPanel=new InstitutionPanel();

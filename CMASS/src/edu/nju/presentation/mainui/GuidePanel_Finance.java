@@ -30,6 +30,7 @@ public class GuidePanel_Finance extends JPanel{
 	costManagement costManagement;
 	ArrayList<BigButton> buttons=new ArrayList<BigButton>();
 	public GuidePanel_Finance(MainFrame frame,String staffID) {
+		setOpaque(false);
 		this.staffID = staffID;
 		this.frame = frame;
 		accountManagement=new accountManagement(staffID);

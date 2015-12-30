@@ -18,6 +18,7 @@ import edu.nju.po.ZLoadDocPO;
 import edu.nju.presentation.approveui.checkMainUI;
 import edu.nju.presentation.approveui.checkPayDoc;
 import edu.nju.presentation.mainui.CheckDialog;
+import edu.nju.presentation.widget.MyComboBox;
 import edu.nju.presentation.widget.MyTable;
 import edu.nju.presentation.widget.MyTextField;
 import edu.nju.presentation.widget.SmallButton;
@@ -53,11 +54,11 @@ public class costManagement extends JPanel{
 	private ArrayList<TransferDocPO> transferDoc;
 	private ArrayList<AccountVO>accountList;
 	private ArrayList<InstitutionPO> institutionList;
-	private JComboBox accountComboBox ;
+	private MyComboBox accountComboBox ;
 	private financebl bl;
 	private JPanel thisPanel=this;
 	private JPanel panel;
-	private JComboBox comboBox;
+	private MyComboBox comboBox;
 	private MyTextField back;
 	private GridBagConstraints gbc_panel ;
 	private Institution institution;
@@ -103,7 +104,7 @@ public class costManagement extends JPanel{
 		gbc_label.gridy = 2;
 		add(label, gbc_label);
 		
-		comboBox = new JComboBox();
+		comboBox = new MyComboBox();
 		comboBox.setEditable(true);
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"\u79DF\u91D1", "\u5DE5\u8D44", "\u8FD0\u8D39"}));
 		comboBox.setSelectedIndex(0);
@@ -180,9 +181,7 @@ public class costManagement extends JPanel{
 		SmallButton button_4 = new SmallButton("\u5168\u9009");
 		button_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				SmallButton button_4 = new SmallButton("\u5168\u9009");
-				button_4.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
+				
 						String type=(String) comboBox.getSelectedItem();
 						switch(type){
 						case "×â½ð":
@@ -193,13 +192,13 @@ public class costManagement extends JPanel{
 							((salaryPanel) panel).chooseAll();
 							break;
 						case"ÔË·Ñ":
-							((salaryPanel) panel).chooseAll();
+							((freightMoneyPanel) panel).chooseAll();
 							break;
 						}
-					}
+			}	
 			});
-			}
-		});
+			
+		
 		GridBagConstraints gbc_button_4 = new GridBagConstraints();
 		gbc_button_4.insets = new Insets(0, 0, 5, 5);
 		gbc_button_4.gridx = 5;
@@ -214,7 +213,7 @@ public class costManagement extends JPanel{
 		gbc_label_2.gridy = 3;
 		add(label_2, gbc_label_2);
 		
-		accountComboBox = new JComboBox();
+		accountComboBox = new MyComboBox();
 		accountComboBox.setEditable(true);
 		accountComboBox.setModel(new DefaultComboBoxModel(accountName));
 		accountComboBox.setSelectedIndex(0);
