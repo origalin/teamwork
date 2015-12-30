@@ -9,7 +9,9 @@ import edu.nju.businesslogicservice.storagelogicservice.StorageQueryService;
 import edu.nju.dataFactory.DataFactory;
 import edu.nju.po.RecordPO;
 import edu.nju.presentation.UiFactory;
+import edu.nju.presentation.export.ExportExcel;
 import edu.nju.presentation.widget.MyTable;
+import edu.nju.vo.storageItemVO;
 
 import java.awt.GridLayout;
 import java.awt.BorderLayout;
@@ -27,10 +29,17 @@ import java.awt.Color;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.util.PrimitiveIterator.OfDouble;
 import java.awt.event.ActionEvent;
 import javax.swing.ScrollPaneConstants;
@@ -38,6 +47,9 @@ import java.awt.Dimension;
 
 public class StorageQuery extends JPanel {
 	String[] columnNames = { "快递编号", "入库日期", "区", "排号", "架号", "位号" };
+	ArrayList<RecordPO> list;
+	ArrayList<RecordPO> list_1 ;
+	ArrayList<RecordPO> list_2 ;
 	private String currStorageID;
 	private String currPersonID;
 	private DefaultTableModel model;
@@ -192,6 +204,34 @@ public class StorageQuery extends JPanel {
 		// gbl_panel_3.setConstraints(label, gbc_query);
 
 		JButton export = new JButton("\u5BFC\u51FA");
+		export.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				ExportExcel<storageItemVO> ex = new ExportExcel<storageItemVO>();
+				String[] headers ={ "快递编号", "入库日期", "目的地", "区","排号", "架号", "位号" ,"仓库编号"};
+				List<storageItemVO> dataset=new ArrayList<storageItemVO>() ;
+				List<storageItemVO> dataset_1=new ArrayList<storageItemVO>() ;
+				List<storageItemVO> dataset_2=new ArrayList<storageItemVO>() ;
+				
+				for(RecordPO temp:list)	    {	dataset.add(new storageItemVO(temp));}
+				for(RecordPO temp:list_1)	{	dataset_1.add(new storageItemVO(temp));}
+				for(RecordPO temp:list_2)	{	dataset_2.add(new storageItemVO(temp));}
+		
+				try {
+					OutputStream out = new FileOutputStream("D://b.xls");		
+					ex.exportExcel(headers, dataset, out);		
+					out.close();		
+					
+					System.out.println("excel导出成功！");
+				} catch (FileNotFoundException exce) {
+					// TODO Auto-generated catch block
+					exce.printStackTrace();
+				} catch (IOException exce) {
+					// TODO Auto-generated catch block
+					exce.printStackTrace();
+				}
+			}
+		});
 		GridBagConstraints gbc_export = new GridBagConstraints();
 		gbc_export.insets = new Insets(0, 0, 0, 5);
 		gbc_export.gridx = 1;
@@ -201,7 +241,7 @@ public class StorageQuery extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				boolean normal1 = true, normal2 = true, normal3 = true;
 				StorageQueryService storageQueryService = UiFactory.getStorageQueryService();
-				ArrayList<RecordPO> list = new ArrayList<RecordPO>();
+				list = new ArrayList<RecordPO>();
 
 				try {
 					list = storageQueryService.getInWareHouseDocVO_Fly(currPersonID, currStorageID);
@@ -232,7 +272,7 @@ public class StorageQuery extends JPanel {
 					}
 				}
 
-				ArrayList<RecordPO> list_1 = null;
+				list_1 = null;
 				try {
 					list_1 = storageQueryService.getInWareHouseDocVO_Train(currPersonID, currStorageID);
 				} catch (RemoteException e1) {
@@ -265,7 +305,7 @@ public class StorageQuery extends JPanel {
 
 				if (normal3) {
 					int columns = 6;
-					ArrayList<RecordPO> list_2 = null;
+					list_2 = null;
 					try {
 						list_2 = storageQueryService.getInWareHouseDocVO_Car(currPersonID, currStorageID);
 					} catch (RemoteException e1) {
