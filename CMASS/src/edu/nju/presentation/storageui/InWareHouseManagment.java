@@ -9,8 +9,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JTextField;
+
+
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -22,6 +22,7 @@ import edu.nju.dataFactory.DataFactory;
 import edu.nju.exception.DatabaseNULLException;
 import edu.nju.presentation.UiFactory;
 import edu.nju.presentation.widget.MyTable;
+import edu.nju.presentation.widget.MyTextField;
 import edu.nju.tools.Time;
 import edu.nju.po.InWareHouseDocLineItem;
 import edu.nju.vo.InWareHouseDocVO;
@@ -44,15 +45,15 @@ import java.awt.Dimension;
 
 public class InWareHouseManagment extends JPanel {
 	InWareHouseDocVO inWareHouseDocVO;
-	JTable table;
+	MyTable table;
 	InWareHouseManagementService inWare;
 	TableModel model;
-	private JTextField textField_1;
+	private MyTextField textField_1;
 	private JScrollPane scrollPane;
 	private JButton btnNewButton;
 	private JPanel panel;
 	private JLabel lblNewLabel;
-	private JTextField textField;
+	private MyTextField textField;
 	private JButton btnNewButton_1;
 	private String currInstitution;
 	private String currPersonID;
@@ -120,7 +121,7 @@ public class InWareHouseManagment extends JPanel {
 		comboBox.addItem("×°³µµ¥±àºÅ");
 		panel.add(comboBox);
 
-		textField_1 = new JTextField();
+		textField_1 = new MyTextField();
 		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
 		gbc_textField_1.insets = new Insets(0, 0, 5, 5);
 		gbc_textField_1.fill = GridBagConstraints.HORIZONTAL;
@@ -137,7 +138,7 @@ public class InWareHouseManagment extends JPanel {
 		gbc_lblNewLabel.gridy = 0;
 		add(lblNewLabel, gbc_lblNewLabel);
 
-		textField = new JTextField();
+		textField = new MyTextField();
 		GridBagConstraints gbc_textField = new GridBagConstraints();
 		gbc_textField.insets = new Insets(0, 0, 5, 5);
 		gbc_textField.fill = GridBagConstraints.HORIZONTAL;

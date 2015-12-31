@@ -5,12 +5,15 @@ import org.omg.CosNaming.NamingContextExtPackage.StringNameHelper;
 
 import edu.nju.businesslogic.financebl.financebl;
 import edu.nju.presentation.widget.MyTextField;
+import edu.nju.presentation.widget.SmallButton;
 
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.Font;
 import java.rmi.RemoteException;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 public class checkCostIncomDocPO extends JPanel{
 	/*
 	public static void main(String[]args){
@@ -49,6 +52,17 @@ public class checkCostIncomDocPO extends JPanel{
 		gbc_label.gridx = 0;
 		gbc_label.gridy = 0;
 		add(label, gbc_label);
+		
+		SmallButton button = new SmallButton("\u5BFC\u51FA");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		GridBagConstraints gbc_button = new GridBagConstraints();
+		gbc_button.insets = new Insets(0, 0, 5, 5);
+		gbc_button.gridx = 0;
+		gbc_button.gridy = 1;
+		add(button, gbc_button);
 		
 		JLabel label_1 = new JLabel("\u603B\u6536\u5165");
 		label_1.setFont(new Font("ËÎÌו", Font.PLAIN, 12));

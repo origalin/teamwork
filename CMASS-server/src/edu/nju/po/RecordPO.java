@@ -134,6 +134,8 @@ public class RecordPO implements Serializable {
 				+ "]";
 	}
 	
-	
+	public boolean getIsCoordinate(){
+		return isCoordinate;
+	}
 	
 }

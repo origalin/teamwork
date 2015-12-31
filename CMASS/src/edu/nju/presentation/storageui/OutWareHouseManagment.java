@@ -9,7 +9,7 @@ import javax.swing.JScrollPane;
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
-import javax.swing.JTextField;
+
 import java.awt.BorderLayout;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.border.TitledBorder;
@@ -22,6 +22,7 @@ import edu.nju.exception.DatabaseNULLException;
 import edu.nju.po.InWareHouseDocLineItem;
 import edu.nju.presentation.UiFactory;
 import edu.nju.presentation.widget.MyTable;
+import edu.nju.presentation.widget.MyTextField;
 import edu.nju.tools.Time;
 import edu.nju.vo.OutWareHouseDocLineItem;
 import edu.nju.vo.OutWareHouseDocVO;
@@ -47,13 +48,13 @@ public class OutWareHouseManagment extends JPanel {
 	private OutWareHouseManagementService outWareHouseManagement;
 	private String currPersonID;
 	private String currInstitution;
-	private JTextField textField;
+	private MyTextField textField;
 	private JTable table;
 	private TableModel model;
-	private JTextField textField_1;
+	private MyTextField textField_1;
 	private OutWareHouseDocVO outWareHouseDocVO;
 	String[] columnNames = { "快递编号", "目的地" };
-	private JTextField textField_2;
+	private MyTextField textField_2;
 
 	public OutWareHouseManagment(String staffID) {
 		this();
@@ -120,7 +121,7 @@ public class OutWareHouseManagment extends JPanel {
 		comboBox.addItem("中转单编号");
 		comboBox.addItem("装车单编号");
 
-		textField = new JTextField();
+		textField = new MyTextField();
 		GridBagConstraints gbc_textField = new GridBagConstraints();
 		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField.insets = new Insets(0, 0, 5, 5);
@@ -217,7 +218,7 @@ public class OutWareHouseManagment extends JPanel {
 		gbc_lblNewLabel.gridy = 1;
 		add(lblNewLabel, gbc_lblNewLabel);
 
-		textField_1 = new JTextField();
+		textField_1 = new MyTextField();
 		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
 		gbc_textField_1.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField_1.insets = new Insets(0, 0, 5, 5);
@@ -233,7 +234,7 @@ public class OutWareHouseManagment extends JPanel {
 		gbc_lblNewLabel_1.gridy = 1;
 		add(lblNewLabel_1, gbc_lblNewLabel_1);
 
-		textField_2 = new JTextField();
+		textField_2 = new MyTextField();
 		GridBagConstraints gbc_textField_2 = new GridBagConstraints();
 		gbc_textField_2.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField_2.insets = new Insets(0, 0, 5, 0);
