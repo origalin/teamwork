@@ -137,6 +137,8 @@ public class InstitutionPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				InstitutionAdd addInstitution=new InstitutionAdd();
+				addInstitution.setVisible(true);
+		
 			}
 		});
 		
@@ -198,6 +200,7 @@ public class InstitutionPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				InstitutionAdd addInstitution=new InstitutionAdd();
+				addInstitution.setVisible(true);
 			}
 		});
 		
@@ -261,6 +264,8 @@ public class InstitutionPanel extends JPanel {
 				}		
 				
 			}
+				treeListener(tree);
+				
 			}
 		});
 		
@@ -552,13 +557,13 @@ public class InstitutionPanel extends JPanel {
 					DefaultMutableTreeNode node_3;
 					DefaultMutableTreeNode node_4;
 					node_1 = new DefaultMutableTreeNode("中转中心");
-					node_3=new DefaultMutableTreeNode("仓库");
-					node_4=new DefaultMutableTreeNode("营业厅");
+				
 					for(InstitutionVO vo:institutionList){
 						if(vo.getParentInstitution().equals("0")){
 							node_2=new DefaultMutableTreeNode(vo.getName());
 							
-						
+							node_3=new DefaultMutableTreeNode("仓库");
+							node_4=new DefaultMutableTreeNode("营业厅");
 							
 							node_2.add(node_3);
 							node_2.add(node_4);
@@ -588,6 +593,13 @@ public class InstitutionPanel extends JPanel {
 			
 		
 	}
+		for (int row = 0; row < table.getRowCount();row++) {
+			
+				if(((String)table.getValueAt(row, 0)).length()>11||((String)table.getValueAt(row, 3)).length()>18||((String)table.getValueAt(row, 4)).length()>11){
+					JOptionPane.showMessageDialog(null,"信息格式不符，请检查");
+					return false;
+				}
+			}
 		return true;
 }
 	
