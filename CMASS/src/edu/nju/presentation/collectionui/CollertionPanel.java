@@ -24,6 +24,7 @@ import edu.nju.presentation.mainui.CheckDialog;
 import edu.nju.presentation.widget.BigButton;
 import edu.nju.presentation.widget.MyTextField;
 import edu.nju.presentation.widget.SmallButton;
+import edu.nju.tools.WarningManager;
 import edu.nju.vo.SendDocVO;
 
 import java.awt.Color;
@@ -662,10 +663,12 @@ public class CollertionPanel extends JPanel{
 		
 		switch (type) {
 		case "net":
-			JOptionPane.showMessageDialog(this, "网络异常，请重启客户端！");
+			
+			WarningManager.warning("网络异常，请重启客户端！");
 			break;	
 		case "lost":
-			JOptionPane.showMessageDialog(this, "请检查信息完整性");
+			WarningManager.warning("请检查信息完整性");
+			//JOptionPane.showMessageDialog(this, "请检查信息完整性");
 			break;
 
 		default:
