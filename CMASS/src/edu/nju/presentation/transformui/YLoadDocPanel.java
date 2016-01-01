@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import edu.nju.presentation.widget.MyTextField;
-import javax.swing.JScrollPane;
+import edu.nju.presentation.widget.MyScrollPane;
 
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
@@ -19,7 +19,7 @@ import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
 
 import javax.swing.ScrollPaneConstants;
-import javax.swing.JTable;
+import edu.nju.presentation.widget.MyTable;
 import javax.swing.table.DefaultTableModel;
 
 import edu.nju.businesslogic.transferbl.YLoadDoc;
@@ -47,7 +47,7 @@ public class YLoadDocPanel extends JPanel{
 	private MyComboBox driverBox;
 	String[][] driverNameAndIDs;
 	String[] drivers;
-	private JTable table;
+	private MyTable table;
 
 	public YLoadDocPanel(String staffID) {
 		this.staffID = staffID;
@@ -120,7 +120,7 @@ public class YLoadDocPanel extends JPanel{
 		gbl_panel_1.rowWeights = new double[]{1.0, 0.0, Double.MIN_VALUE};
 		panel_1.setLayout(gbl_panel_1);
 		
-		table = new JTable();
+		table = new MyTable();
 		table.setRowHeight(30);
 		table.setPreferredScrollableViewportSize(new Dimension(450, 270));
 		table.setModel(new DefaultTableModel(
@@ -132,7 +132,7 @@ public class YLoadDocPanel extends JPanel{
 		));
 		tableModel = (DefaultTableModel) table.getModel();
 		
-		JScrollPane scrollPane = new JScrollPane();
+		MyScrollPane scrollPane = new MyScrollPane();
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.gridwidth = 3;
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;

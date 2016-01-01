@@ -13,7 +13,8 @@ public class MyTextField extends JTextField{
 	public MyTextField() {
 		// TODO Auto-generated constructor stub
 		super();
-		setBorder(BorderFactory.createLineBorder(Color.lightGray, 2));
+//		setBorder(BorderFactory.createLineBorder(Color.lightGray, 2));
+		setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.lightGray));
 		setBackground(new Color(250, 250, 250));
 		setPreferredSize(new Dimension(0, 30));;
 		addFocusListener(new FocusListener() {
@@ -21,13 +22,16 @@ public class MyTextField extends JTextField{
 			@Override
 			public void focusLost(FocusEvent e) {
 				// TODO Auto-generated method stub
-				setBorder(BorderFactory.createLineBorder(Color.lightGray, 2));
+				//setBorder(BorderFactory.createLineBorder(Color.lightGray, 2));
+				setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.lightGray));
 			}
 			
 			@Override
 			public void focusGained(FocusEvent e) {
 				// TODO Auto-generated method stub
-				setBorder(BorderFactory.createLineBorder(new Color(96, 174, 219), 2));
+//				setBorder(BorderFactory.createLineBorder(new Color(96, 174, 219), 2));
+				
+				setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, new Color(96, 174, 219)));
 			}
 		});
 	}

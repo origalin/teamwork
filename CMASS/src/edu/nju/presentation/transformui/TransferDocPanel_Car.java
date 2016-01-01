@@ -12,8 +12,8 @@ import edu.nju.presentation.widget.SmallButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
+import edu.nju.presentation.widget.MyScrollPane;
+import edu.nju.presentation.widget.MyTable;
 import edu.nju.presentation.widget.MyTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
@@ -42,7 +42,7 @@ public class TransferDocPanel_Car extends JPanel {
 	private int itemIDNum;
 	private TransferDoc_CarVO vo;
 	DefaultTableModel tableModel;
-	private JTable table;
+	private MyTable table;
 
 	public TransferDocPanel_Car(String staffID) {
 		this.staffID = staffID;
@@ -139,11 +139,10 @@ public class TransferDocPanel_Car extends JPanel {
 		gbl_panel_1.rowWeights = new double[] { 1.0, 0.0, 0.0, Double.MIN_VALUE };
 		panel_1.setLayout(gbl_panel_1);
 
-		JScrollPane scrollPane = new JScrollPane();
+		MyScrollPane scrollPane = new MyScrollPane();
 		scrollPane.setOpaque(false);
 		scrollPane.getViewport().setOpaque(false);
-		scrollPane.setViewportBorder(null);
-		scrollPane.setBorder(null);
+		
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.gridwidth = 3;
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
@@ -152,7 +151,7 @@ public class TransferDocPanel_Car extends JPanel {
 		gbc_scrollPane.gridy = 0;
 		panel_1.add(scrollPane, gbc_scrollPane);
 		
-		table = new JTable();
+		table = new MyTable();
 		table.setRowHeight(30);
 		table.setPreferredScrollableViewportSize(new Dimension(200, 200));
 		table.setModel(new DefaultTableModel(

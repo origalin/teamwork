@@ -8,12 +8,13 @@ import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
+import edu.nju.presentation.widget.MyScrollPane;
+import edu.nju.presentation.widget.MyTable;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.SwingConstants;
@@ -37,8 +38,8 @@ import java.awt.Color;
 
 @SuppressWarnings("serial")
 public class SendPanel extends JPanel{
-	private JTable toSendTable;
-	private JTable toOverTable;
+	private MyTable toSendTable;
+	private MyTable toOverTable;
 	String institutionID;
 	String staffID;
 	DefaultTableModel toSendModel;
@@ -60,12 +61,12 @@ public class SendPanel extends JPanel{
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{30, 100, 93, 87, 30, 0};
-		gridBagLayout.rowHeights = new int[]{35, 17, 0, 0, 20, 0, 0};
+		gridBagLayout.rowHeights = new int[]{0, 17, 0, 0, 20, 0, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 1.0, 1.0, 1.0, 0.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 1.0, 0.0, 0.0, 0.5, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
-		JScrollPane scrollPane = new JScrollPane();
+		MyScrollPane scrollPane = new MyScrollPane();
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.gridwidth = 3;
 		gbc_scrollPane.insets = new Insets(0, 0, 5, 5);
@@ -75,6 +76,7 @@ public class SendPanel extends JPanel{
 		add(scrollPane, gbc_scrollPane);
 		
 		toSendTable = new MyTable();
+		toSendTable.setShowVerticalLines(false);
 		toSendTable.setGridColor(Color.LIGHT_GRAY);
 		toSendTable.setRowHeight(30);
 		toSendTable.setPreferredScrollableViewportSize(new Dimension(200, 200));
@@ -130,7 +132,7 @@ public class SendPanel extends JPanel{
 		JLabel label = new JLabel("\u6536\u4EF6\u5355");
 		panel.add(label);
 		
-		JScrollPane scrollPane_1 = new JScrollPane();
+		MyScrollPane scrollPane_1 = new MyScrollPane();
 		GridBagConstraints gbc_scrollPane_1 = new GridBagConstraints();
 		gbc_scrollPane_1.gridwidth = 3;
 		gbc_scrollPane_1.insets = new Insets(0, 0, 5, 5);
@@ -189,6 +191,7 @@ public class SendPanel extends JPanel{
 		scrollPane_1.setOpaque(false);
 		scrollPane_1.getViewport().setOpaque(false);
 		setOpaque(false);
+		
 	}
 	private void  intialize() throws RemoteException {
 		int i = toSendModel.getRowCount();

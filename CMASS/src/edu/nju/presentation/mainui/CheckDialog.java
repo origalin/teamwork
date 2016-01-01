@@ -99,7 +99,7 @@ public class CheckDialog extends JDialog{
 			}
 		});
 		setVisible(true);
-		setVisible(true);
+		setModal(true);
 	}
 	public void setPreviewMode(JPanel panel) {
 		setTitle("‘§¿¿");

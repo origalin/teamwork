@@ -13,8 +13,8 @@ import edu.nju.presentation.widget.SmallButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
+import edu.nju.presentation.widget.MyScrollPane;
+import edu.nju.presentation.widget.MyTable;
 import edu.nju.presentation.widget.MyTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
@@ -42,7 +42,7 @@ import java.awt.Dimension;
 public class ZArrivalDocPanel extends JPanel {
 	private MyTextField transferDocIDField;
 	private MyTextField itemIDField;
-	private JTable table;
+	private MyTable table;
 	MyComboBox docTypeBox;
 	String institutionID, staffID;
 	ZArrivalDoc zArrivalDoc;
@@ -140,7 +140,7 @@ public class ZArrivalDocPanel extends JPanel {
 		gbl_panel_1.rowWeights = new double[] { 1.0, 0.0, Double.MIN_VALUE };
 		panel_1.setLayout(gbl_panel_1);
 
-		JScrollPane scrollPane = new JScrollPane();
+		MyScrollPane scrollPane = new MyScrollPane();
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
 		gbc_scrollPane.insets = new Insets(0, 0, 5, 0);
@@ -153,7 +153,7 @@ public class ZArrivalDocPanel extends JPanel {
 		
 		panel_14.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
-		table = new JTable();
+		table = new MyTable();
 		table.setRowHeight(30);
 		table.setPreferredScrollableViewportSize(new Dimension(200, 200));
 		table.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);

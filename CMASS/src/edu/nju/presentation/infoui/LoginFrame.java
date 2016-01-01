@@ -100,17 +100,17 @@ public class LoginFrame extends JFrame {
 			@Override
 			public void focusLost(FocusEvent e) {
 				// TODO Auto-generated method stub
-				account.setBorder(BorderFactory.createLineBorder(Color.lightGray, 2));
+				account.setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.lightGray));
 			}
 			
 			@Override
 			public void focusGained(FocusEvent e) {
 				// TODO Auto-generated method stub
-				account.setBorder(BorderFactory.createLineBorder(new Color(96, 174, 219), 2));
+				account.setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, new Color(96, 174, 219)));
 			}
 		});
 		account.setPreferredSize(new Dimension(166, 30));
-		account.setBorder(BorderFactory.createLineBorder(Color.lightGray, 2));
+		account.setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.lightGray));
 		GridBagConstraints gbc_account = new GridBagConstraints();
 		gbc_account.anchor = GridBagConstraints.WEST;
 		gbc_account.insets = new Insets(0, 0, 5, 5);
@@ -131,19 +131,19 @@ public class LoginFrame extends JFrame {
 			@Override
 			public void focusLost(FocusEvent e) {
 				// TODO Auto-generated method stub
-				password.setBorder(BorderFactory.createLineBorder(Color.lightGray, 2));
+				password.setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2,Color.lightGray));
 			}
 			
 			@Override
 			public void focusGained(FocusEvent e) {
 				// TODO Auto-generated method stub
-				password.setBorder(BorderFactory.createLineBorder(new Color(96, 174, 219), 2));
+				password.setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, new Color(96, 174, 219)));
 			}
 		});
 		password.setBackground(new Color(250, 250, 250));
 		account.setBackground(new Color(250, 250, 250));
 		password.setPreferredSize(new Dimension(166, 30));
-		password.setBorder(new LineBorder(Color.LIGHT_GRAY, 2));
+		password.setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.lightGray));
 		GridBagConstraints gbc_password = new GridBagConstraints();
 		gbc_password.anchor = GridBagConstraints.WEST;
 		gbc_password.insets = new Insets(0, 0, 5, 5);
