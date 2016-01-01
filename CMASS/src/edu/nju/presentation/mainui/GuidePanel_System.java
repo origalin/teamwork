@@ -16,7 +16,7 @@ import javax.swing.JButton;
 import edu.nju.presentation.collectionui.CollertionPanel;
 import edu.nju.presentation.systemui.AccountPanel;
 import edu.nju.presentation.systemui.OperationPanel;
-import edu.nju.presentation.transformui.SendPanel;
+import edu.nju.presentation.transferui.SendPanel;
 
 public class GuidePanel_System extends JPanel{
 	String institutionID;

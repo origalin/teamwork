@@ -37,9 +37,9 @@ import edu.nju.presentation.storageui.InWareHouseManagment;
 import edu.nju.presentation.storageui.OutWareHouseManagment;
 import edu.nju.presentation.storageui.StorageQuery;
 import edu.nju.presentation.systemui.OperationPanel;
-import edu.nju.presentation.transformui.SendPanel;
-import edu.nju.presentation.transformui.YLoadDocPanel;
-import edu.nju.presentation.transformui.ZArrivalDocPanel;
+import edu.nju.presentation.transferui.SendPanel;
+import edu.nju.presentation.transferui.YLoadDocPanel;
+import edu.nju.presentation.transferui.ZArrivalDocPanel;
 import edu.nju.presentation.widget.SmallButton;
 
 import java.awt.GridBagLayout;

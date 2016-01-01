@@ -1,4 +1,4 @@
-package edu.nju.presentation.transformui;
+package edu.nju.presentation.transferui;
 
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
@@ -9,6 +9,8 @@ import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
 
 import edu.nju.presentation.widget.SmallButton;
+import edu.nju.tools.WarningManager;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -275,13 +277,13 @@ public class ZLoadDocPanel extends JPanel{
 		
 		switch (type) {
 		case "net":
-			JOptionPane.showMessageDialog(this, "网络异常，请重启客户端！");
+			WarningManager.warning("网络异常，请重启客户端！");
 			break;	
 		case "lost":
-			JOptionPane.showMessageDialog(this, "请检查信息完整性");
+			WarningManager.warning("请检查信息完整性");
 			break;
 		case "null":
-			JOptionPane.showMessageDialog(this, "找不到单据");
+			WarningManager.warning("找不到单据");
 			break;
 
 		default:

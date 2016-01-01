@@ -20,11 +20,11 @@ import edu.nju.presentation.collectionui.CollertionPanel;
 import edu.nju.presentation.financeui.createGatheringDocPO;
 import edu.nju.presentation.infoui.CarPanel;
 import edu.nju.presentation.infoui.DriverPanel;
-import edu.nju.presentation.transformui.SendPanel;
-import edu.nju.presentation.transformui.YArrivalDocPanel;
-import edu.nju.presentation.transformui.YLoadDocPanel;
-import edu.nju.presentation.transformui.ZArrivalDocPanel;
-import edu.nju.presentation.transformui.ZLoadDocPanel;
+import edu.nju.presentation.transferui.SendPanel;
+import edu.nju.presentation.transferui.YArrivalDocPanel;
+import edu.nju.presentation.transferui.YLoadDocPanel;
+import edu.nju.presentation.transferui.ZArrivalDocPanel;
+import edu.nju.presentation.transferui.ZLoadDocPanel;
 import edu.nju.presentation.widget.BigButton;
 
 public class GuidePanel_BusinessHall extends JPanel{

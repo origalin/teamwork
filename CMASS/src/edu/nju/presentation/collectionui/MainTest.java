@@ -15,7 +15,7 @@ import edu.nju.exception.DatabaseNULLException;
 import edu.nju.po.CourierMoneyPO;
 import edu.nju.po.OverDocPO;
 import edu.nju.po.ZArrivalDocPO;
-import edu.nju.presentation.transformui.SendPanel;
+import edu.nju.presentation.transferui.SendPanel;
 
 public class MainTest {
 	public static void main(String[] args) {

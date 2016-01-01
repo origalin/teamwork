@@ -1,4 +1,4 @@
-package edu.nju.presentation.transformui;
+package edu.nju.presentation.transferui;
 
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
@@ -9,6 +9,8 @@ import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
 
 import edu.nju.presentation.widget.SmallButton;
+import edu.nju.tools.WarningManager;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -19,34 +21,32 @@ import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.table.DefaultTableModel;
 
+import org.omg.CORBA.INITIALIZE;
+
 import edu.nju.businesslogic.transferbl.TransferDoc;
 import edu.nju.exception.DatabaseNULLException;
 import edu.nju.presentation.approveui.CheckTransferDoc_Car;
-import edu.nju.presentation.approveui.CheckTransferDoc_Train;
 import edu.nju.presentation.approveui.checkOverDoc;
 import edu.nju.presentation.mainui.CheckDialog;
 import edu.nju.vo.TransferDoc_CarVO;
-import edu.nju.vo.TransferDoc_TrainVO;
 import java.awt.Dimension;
 
 @SuppressWarnings("serial")
-public class TransferDocPanel_Train extends JPanel {
+public class TransferDocPanel_Car extends JPanel {
+	private String institutionID, staffID;
 	private MyTextField carNumField;
 	private MyTextField watcherField;
 	private MyTextField targetField;
 	private MyTextField itemIDField;
-	private MyTextField carrriageField;
 	private TransferDoc transferDoc;
-	private String city, carNum, watcher, carriage;
+	private String city,carNum,watcher;
 	private String[] itemIDs;
 	private int itemIDNum;
-	private TransferDoc_TrainVO vo;
+	private TransferDoc_CarVO vo;
 	DefaultTableModel tableModel;
-	private String institutionID, staffID;
 	private MyTable table;
 
-	public TransferDocPanel_Train(String staffID) {
-		this.institutionID = institutionID;
+	public TransferDocPanel_Car(String staffID) {
 		this.staffID = staffID;
 		try {
 			transferDoc = new TransferDoc(staffID);
@@ -56,8 +56,8 @@ public class TransferDocPanel_Train extends JPanel {
 			warning("net");
 		}
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[] { 30, 215, 58, 30, 0 };
-		gridBagLayout.rowHeights = new int[] { 86, 0 };
+		gridBagLayout.columnWidths = new int[] { 30, 261, 73, 30, 0 };
+		gridBagLayout.rowHeights = new int[] { 248, 0 };
 		gridBagLayout.columnWeights = new double[] { 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
 		gridBagLayout.rowWeights = new double[] { 1.0, Double.MIN_VALUE };
 		setLayout(gridBagLayout);
@@ -71,10 +71,10 @@ public class TransferDocPanel_Train extends JPanel {
 		add(panel_11, gbc_panel_11);
 		panel_11.setBorder(null);
 		GridBagLayout gbl_panel_11 = new GridBagLayout();
-		gbl_panel_11.columnWidths = new int[] { 336, 0 };
-		gbl_panel_11.rowHeights = new int[] { 42, 42, 78, 0, 0 };
+		gbl_panel_11.columnWidths = new int[] { 114, 0 };
+		gbl_panel_11.rowHeights = new int[] { 42, 42, 42, 0, 0, 0, 0 };
 		gbl_panel_11.columnWeights = new double[] { 1.0, Double.MIN_VALUE };
-		gbl_panel_11.rowWeights = new double[] { 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
+		gbl_panel_11.rowWeights = new double[] { 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		panel_11.setLayout(gbl_panel_11);
 
 		JPanel panel_6 = new JPanel();
@@ -111,13 +111,6 @@ public class TransferDocPanel_Train extends JPanel {
 		panel_8.add(carNumField);
 		carNumField.setColumns(5);
 
-		JLabel label_2 = new JLabel("\u8F66\u53A2\u53F7");
-		panel_8.add(label_2);
-
-		carrriageField = new MyTextField();
-		panel_8.add(carrriageField);
-		carrriageField.setColumns(5);
-
 		JLabel lblNewLabel = new JLabel("\u76D1\u88C5\u5458");
 		panel_8.add(lblNewLabel);
 
@@ -131,7 +124,7 @@ public class TransferDocPanel_Train extends JPanel {
 		GridBagConstraints gbc_panel_12 = new GridBagConstraints();
 		gbc_panel_12.fill = GridBagConstraints.BOTH;
 		gbc_panel_12.gridx = 0;
-		gbc_panel_12.gridy = 3;
+		gbc_panel_12.gridy = 5;
 		panel_11.add(panel_12, gbc_panel_12);
 
 		JPanel panel_1 = new JPanel();
@@ -142,13 +135,16 @@ public class TransferDocPanel_Train extends JPanel {
 		gbc_panel_1.gridy = 0;
 		add(panel_1, gbc_panel_1);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
-		gbl_panel_1.columnWidths = new int[] { 0, 168, 0, 0 };
-		gbl_panel_1.rowHeights = new int[] { 56, 24, 27, 0 };
+		gbl_panel_1.columnWidths = new int[] { 0, 91, 0, 0 };
+		gbl_panel_1.rowHeights = new int[] { 79, 24, 27, 0 };
 		gbl_panel_1.columnWeights = new double[] { 0.0, 1.0, 0.0, Double.MIN_VALUE };
 		gbl_panel_1.rowWeights = new double[] { 1.0, 0.0, 0.0, Double.MIN_VALUE };
 		panel_1.setLayout(gbl_panel_1);
 
 		MyScrollPane scrollPane = new MyScrollPane();
+		scrollPane.setOpaque(false);
+		scrollPane.getViewport().setOpaque(false);
+		
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.gridwidth = 3;
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
@@ -167,25 +163,26 @@ public class TransferDocPanel_Train extends JPanel {
 				"\u5FEB\u4EF6\u5355\u53F7"
 			}
 		));
+		table.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 		scrollPane.setViewportView(table);
 		
-		JLabel label_1 = new JLabel("\u65B0\u589E\u5355\u53F7");
-		GridBagConstraints gbc_label_1 = new GridBagConstraints();
-		gbc_label_1.insets = new Insets(0, 0, 5, 5);
-		gbc_label_1.anchor = GridBagConstraints.EAST;
-		gbc_label_1.gridx = 0;
-		gbc_label_1.gridy = 1;
-		panel_1.add(label_1, gbc_label_1);
+		JLabel lblNewLabel_1 = new JLabel("\u65B0\u589E\u5355\u53F7");
+		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
+		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel_1.gridx = 0;
+		gbc_lblNewLabel_1.gridy = 1;
+		panel_1.add(lblNewLabel_1, gbc_lblNewLabel_1);
 
 		itemIDField = new MyTextField();
 		itemIDField.setColumns(25);
 		GridBagConstraints gbc_itemIDField = new GridBagConstraints();
+		gbc_itemIDField.anchor = GridBagConstraints.NORTH;
 		gbc_itemIDField.insets = new Insets(0, 0, 5, 5);
 		gbc_itemIDField.gridx = 1;
 		gbc_itemIDField.gridy = 1;
 		panel_1.add(itemIDField, gbc_itemIDField);
 		tableModel = (DefaultTableModel) table.getModel();
-
+		
 		setOpaque(false);
 		panel_1.setOpaque(false);
 		panel_11.setOpaque(false);
@@ -193,59 +190,62 @@ public class TransferDocPanel_Train extends JPanel {
 		panel_6.setOpaque(false);
 		panel_8.setOpaque(false);
 		scrollPane.setOpaque(false);
-		SmallButton addButton = new SmallButton("\u6DFB\u52A0");
-		addButton.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO 自动生成的方法存根
-				try {
-					transferDoc.checkHas(itemIDField.getText());
-					tableModel.addRow(new Object[] { itemIDField.getText() });
-					itemIDField.setText("");
-				} catch (RemoteException e1) {
-					// TODO Auto-generated catch block
-					warning("net");
-				} catch (DatabaseNULLException e1) {
-					// TODO Auto-generated catch block
-					warning("null");
-				}
-				
-			}
-		});
-		GridBagConstraints gbc_addButton = new GridBagConstraints();
-		gbc_addButton.insets = new Insets(0, 0, 5, 0);
-		gbc_addButton.gridx = 2;
-		gbc_addButton.gridy = 1;
-		panel_1.add(addButton, gbc_addButton);
 		
-				SmallButton createButton = new SmallButton("\u751F\u6210\u94C1\u8DEF\u4E2D\u8F6C\u5355");
-				GridBagConstraints gbc_createButton = new GridBagConstraints();
-				gbc_createButton.anchor = GridBagConstraints.EAST;
-				gbc_createButton.gridwidth = 2;
-				gbc_createButton.gridx = 1;
-				gbc_createButton.gridy = 2;
-				panel_1.add(createButton, gbc_createButton);
-				createButton.addActionListener(new ActionListener() {
+				SmallButton addButton = new SmallButton("\u6DFB\u52A0");
+				addButton.addActionListener(new ActionListener() {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						// TODO Auto-generated method stub
-						createTransferDoc();
+						// TODO 自动生成的方法存根
+						try {
+							transferDoc.checkHas(itemIDField.getText());
+							tableModel.addRow(new Object[] { itemIDField.getText() });
+							itemIDField.setText("");
+						} catch (RemoteException e1) {
+							// TODO Auto-generated catch block
+							warning("net");
+						} catch (DatabaseNULLException e1) {
+							// TODO Auto-generated catch block
+							warning("null");
+						}
+						
 					}
 				});
+				GridBagConstraints gbc_addButton = new GridBagConstraints();
+				gbc_addButton.insets = new Insets(0, 0, 5, 0);
+				gbc_addButton.anchor = GridBagConstraints.NORTH;
+				gbc_addButton.gridx = 2;
+				gbc_addButton.gridy = 1;
+				panel_1.add(addButton, gbc_addButton);
+				
+						SmallButton createButton = new SmallButton("\u751F\u6210\u9646\u8FD0\u4E2D\u8F6C\u5355");
+						GridBagConstraints gbc_createButton = new GridBagConstraints();
+						gbc_createButton.anchor = GridBagConstraints.EAST;
+						gbc_createButton.gridwidth = 2;
+						gbc_createButton.gridx = 1;
+						gbc_createButton.gridy = 2;
+						panel_1.add(createButton, gbc_createButton);
+						createButton.addActionListener(new ActionListener() {
+
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								// TODO Auto-generated method stub
+								createTransferDoc();
+							}
+						});
 		scrollPane.getViewport().setOpaque(false);
+
 	}
 
 	private void createTransferDoc() {
 		intialize();
 		if (creatable()) {
 			try {
-				vo = transferDoc.createTransferDocVO_Train(city, carNum, watcher, carriage, itemIDs);
+				vo = transferDoc.createTransferDocVO_Car(city,carNum,watcher, itemIDs);
 				CheckDialog cDialog = new CheckDialog();
-				cDialog.setPreviewMode(new CheckTransferDoc_Train(vo));
+				cDialog.setPreviewMode(new CheckTransferDoc_Car(vo));
 				cDialog.getConfirmButton().addActionListener(new ActionListener() {
-
+					
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						// TODO Auto-generated method stub
@@ -258,55 +258,51 @@ public class TransferDocPanel_Train extends JPanel {
 				e1.printStackTrace();
 				warning("net");
 			}
-
-		} else {
+			
+		}else {
 			warning("lost");
 		}
 
 	}
 
 	private boolean creatable() {
-		if (city.equals("") || carNum.equals("") || watcher.equals("") || carriage.equals("") || itemIDNum < 1) {
+		if(city.equals("")||carNum.equals("")||watcher.equals("")||itemIDNum<1){
 			return false;
-		} else {
+		}else {
 			return true;
 		}
 	}
-
 	private void intialize() {
 		this.city = targetField.getText();
 		this.carNum = carNumField.getText();
 		this.watcher = watcherField.getText();
-		this.carriage = carrriageField.getText();
 		this.itemIDs = new String[tableModel.getRowCount()];
 		itemIDNum = 0;
-		for (int i = 0; i < tableModel.getRowCount(); i++) {
-			this.itemIDs[i] = (String) tableModel.getValueAt(i, 0);
+		for(int i = 0;i<tableModel.getRowCount();i++) {
+			this.itemIDs[i] = (String) tableModel.getValueAt(i,0);
 			itemIDNum++;
 		}
 	}
-
 	private void saveDoc() {
 		try {
-			transferDoc.confirmsave_Train();
+			transferDoc.confirmSave();
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			warning("net");
 		}
 	}
-
 	private void warning(String type) {
 		
 		switch (type) {
 		case "net":
-			JOptionPane.showMessageDialog(this, "网络异常，请重启客户端！");
+			WarningManager.warning("网络异常，请重启客户端！");
 			break;	
 		case "lost":
-			JOptionPane.showMessageDialog(this, "请检查信息完整性");
+			WarningManager.warning("请检查信息完整性");
 			break;
 		case "null":
-			JOptionPane.showMessageDialog(this, "找不到单据");
+			WarningManager.warning("找不到单据");
 			break;
 
 		default:

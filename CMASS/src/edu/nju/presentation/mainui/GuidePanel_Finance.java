@@ -17,7 +17,7 @@ import edu.nju.presentation.financeui.accountManagement;
 import edu.nju.presentation.financeui.checkCostIncomDocPO;
 import edu.nju.presentation.financeui.checkManageStateDoc;
 import edu.nju.presentation.financeui.costManagement;
-import edu.nju.presentation.transformui.SendPanel;
+import edu.nju.presentation.transferui.SendPanel;
 import edu.nju.presentation.widget.BigButton;
 
 public class GuidePanel_Finance extends JPanel{

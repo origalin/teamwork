@@ -18,7 +18,7 @@ import edu.nju.presentation.storageui.OutWareHouseManagment;
 import edu.nju.presentation.storageui.StorageInitialize;
 import edu.nju.presentation.storageui.StorageModify;
 import edu.nju.presentation.storageui.StorageQuery;
-import edu.nju.presentation.transformui.SendPanel;
+import edu.nju.presentation.transferui.SendPanel;
 import edu.nju.presentation.widget.BigButton;
 
 import java.awt.CardLayout;

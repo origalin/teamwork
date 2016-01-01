@@ -1,4 +1,4 @@
-package edu.nju.presentation.transformui;
+package edu.nju.presentation.transferui;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -30,6 +30,7 @@ import edu.nju.presentation.financeui.accountManagement;
 import edu.nju.presentation.mainui.CheckDialog;
 import edu.nju.presentation.widget.MyTable;
 import edu.nju.presentation.widget.SmallButton;
+import edu.nju.tools.WarningManager;
 import edu.nju.vo.OverDocVO;
 import edu.nju.vo.SendDocVO;
 import edu.nju.vo.YDeliverDocVO;
@@ -222,7 +223,7 @@ public class SendPanel extends JPanel{
 	}
 	private void createOverTable() {
 		if(toSendModel.getRowCount()==0) {
-			JOptionPane.showMessageDialog(this, "您没有可派件");
+			WarningManager.warning("您没有可派快件");
 		}
 		for(int i = 0;i<toSendModel.getRowCount();i++) {
 			toOverModel.addRow(new Object[] {toSendModel.getValueAt(i, 0),toSendModel.getValueAt(i, 1)});
@@ -262,7 +263,7 @@ public class SendPanel extends JPanel{
 				warning();
 			}
 		}else {
-			JOptionPane.showMessageDialog(this, "没有可保存数据");
+			WarningManager.warning("没有可保存数据");
 		}
 		
 		
@@ -294,7 +295,7 @@ public class SendPanel extends JPanel{
 	}
 	public void warning() {
 	
-		JOptionPane.showMessageDialog(this, "网络异常，请重启客户端！");
+		WarningManager.warning("网络异常，请重启客户端！");
 		
 		
 	}

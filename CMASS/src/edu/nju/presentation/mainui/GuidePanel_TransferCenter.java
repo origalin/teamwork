@@ -13,12 +13,12 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 
 import edu.nju.presentation.collectionui.CollertionPanel;
-import edu.nju.presentation.transformui.SendPanel;
-import edu.nju.presentation.transformui.TransferDocPanel_Car;
-import edu.nju.presentation.transformui.TransferDocPanel_Plane;
-import edu.nju.presentation.transformui.TransferDocPanel_Train;
-import edu.nju.presentation.transformui.ZArrivalDocPanel;
-import edu.nju.presentation.transformui.ZLoadDocPanel;
+import edu.nju.presentation.transferui.SendPanel;
+import edu.nju.presentation.transferui.TransferDocPanel_Car;
+import edu.nju.presentation.transferui.TransferDocPanel_Plane;
+import edu.nju.presentation.transferui.TransferDocPanel_Train;
+import edu.nju.presentation.transferui.ZArrivalDocPanel;
+import edu.nju.presentation.transferui.ZLoadDocPanel;
 import edu.nju.presentation.widget.BigButton;
 
 public class GuidePanel_TransferCenter extends JPanel{

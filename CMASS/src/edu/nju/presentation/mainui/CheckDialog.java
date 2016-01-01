@@ -71,7 +71,7 @@ public class CheckDialog extends JDialog{
 		back.setSize(imageIcon.getIconWidth(),imageIcon.getIconHeight());
 		getLayeredPane().setLayout(null);
 		getLayeredPane().add(back, new Integer(Integer.MIN_VALUE));
-		setModal(true);
+		//setModal(true);
 		
 	}
 	public void setDocPanel(Component p){
@@ -86,6 +86,7 @@ public class CheckDialog extends JDialog{
 		return confirmButton;
 	}
 	public void setWarningMode(String s) {
+		setModal(true);
 		setTitle("Ã· æ£°");
 		
 		setSize(300, 160);

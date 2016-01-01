@@ -15,7 +15,7 @@ import edu.nju.presentation.collectionui.CollertionPanel;
 import edu.nju.presentation.infoui.DistancePanel;
 import edu.nju.presentation.infoui.InstitutionPanel;
 import edu.nju.presentation.infoui.SalaryPanel;
-import edu.nju.presentation.transformui.SendPanel;
+import edu.nju.presentation.transferui.SendPanel;
 import edu.nju.presentation.widget.BigButton;
 
 public class GuidePanel_Manager extends JPanel{

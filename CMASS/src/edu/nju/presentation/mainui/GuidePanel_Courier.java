@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 
 import edu.nju.presentation.collectionui.CollertionPanel;
-import edu.nju.presentation.transformui.SendPanel;
+import edu.nju.presentation.transferui.SendPanel;
 import edu.nju.presentation.widget.BigButton;
 
 import java.awt.Color;
