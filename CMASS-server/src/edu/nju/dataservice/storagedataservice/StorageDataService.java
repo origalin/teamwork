@@ -13,7 +13,7 @@ import edu.nju.po.TransferDocPO;
 import edu.nju.po.WareHousePO;
 
 public interface StorageDataService extends Remote {
-	void exportToExcel(String storageID) throws RemoteException;
+
 	public StorageLocation getValidLocation(String sID, String distriction) throws RemoteException;
 	public void storageModify(String to,String storageID,int quantity)throws RemoteException;
 	public void markPositionOccupied(ArrayList<StorageLocation> list) throws RemoteException;
@@ -24,9 +24,7 @@ public interface StorageDataService extends Remote {
 
 	public void saveOutWareHouseDoc(OutWareHouseDocPO out) throws RemoteException;
 
-	public void update(ArrayList<RecordPO> recordPO) throws RemoteException;
-
-	public void update(RecordPO recordPO) throws RemoteException;
+	
 
 	public ArrayList<RecordPO> getInWareHouseDocPO_Fly(String storageID) throws RemoteException;
 
@@ -34,7 +32,7 @@ public interface StorageDataService extends Remote {
 
 	public ArrayList<RecordPO> getInWareHouseDocPO_Car(String storageID) throws RemoteException;
 
-	ArrayList<RecordPO> getStorageItemList(int[] SendDocIDList) throws RemoteException;// 出库时生成出库单用
+	
 
 	void updateOutWareHouseDoc(OutWareHouseDocPO out) throws RemoteException;
 
@@ -47,15 +45,11 @@ public interface StorageDataService extends Remote {
 	public void addNewStorageItem(RecordPO recordPO) throws RemoteException;
 
 	
-	public void setAlarm(double p) throws RemoteException;
 
-	public void modify(double t) throws RemoteException;
-
-	public RecordPO find(int StorageItemID) throws RemoteException;
 
 	
 
-	public ArrayList<RecordPO> getOutWarehouseDoc() throws RemoteException;
+	
 
 	public ArrayList<InWareHouseDocPO> getInWarehouseDoc() throws RemoteException;
 

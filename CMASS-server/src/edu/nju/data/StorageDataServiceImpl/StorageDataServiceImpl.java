@@ -29,17 +29,8 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 
 	}
 
-	@Override
-	public void update(ArrayList<RecordPO> recordPO) throws RemoteException {
-		// TODO Auto-generated method stub
 
-	}
-
-	@Override
-	public void update(RecordPO recordPO) throws RemoteException {
-		// TODO Auto-generated method stub
-
-	}
+	
 
 	/**
 	 * 经过测试
@@ -158,11 +149,7 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 		// return list;
 	}
 
-	@Override
-	public ArrayList<RecordPO> getStorageItemList(int[] SendDocIDList) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 	/**
 	 * 已测试
@@ -293,17 +280,9 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 
 	}
 
-	@Override
-	public void setAlarm(double p) throws RemoteException {
-		// TODO Auto-generated method stub
+	
 
-	}
-
-	@Override
-	public void modify(double t) throws RemoteException {
-		// TODO Auto-generated method stub
-
-	}
+	
 
 	/**
 	 * 增加一张入库单
@@ -331,18 +310,9 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 	//
 	// }
 
-	@Override
-	public RecordPO find(int StorageItemID) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
-	@Override
-	public ArrayList<RecordPO> getOutWarehouseDoc() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
 	
 
 	/**
@@ -652,16 +622,7 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 
 	}
 
-	@Override
-	public void exportToExcel(String storageID) throws RemoteException {
-		String sql = "grant file on *.* to root@114.212.42.72;";
 
-		SQL.databaseQuery(sql);
-		sql = "select * from 仓库存储货物  into outfile  'D:/1212.xls'";
-		SQL.databaseQuery(sql);
-		SQL.closeDatabase();
-
-	}
 
 	@Override
 	public void storageRealease(String storageID) {
@@ -670,4 +631,13 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 		SQL.databaseUpdate(sql);
 		SQL.closeDatabase();
 	}
+
+
+
+
+
+
+
+
+
 }
