@@ -40,7 +40,7 @@ public interface StorageDataService extends Remote {
 
 	
 
-	public void clear() throws RemoteException;
+	public void clear(String storageID) throws RemoteException;
 
 	public void addNewStorageItem(RecordPO recordPO) throws RemoteException;
 

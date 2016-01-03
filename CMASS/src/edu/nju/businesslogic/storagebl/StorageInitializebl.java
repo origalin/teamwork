@@ -12,8 +12,9 @@ public class StorageInitializebl implements StorageInitializeService{
 
 	WareHousePO wareHousePO;
 	@Override
-	public void clear() {
-		// 对自己数据层依赖：清空库存信息
+	public void clear(String storageID) throws RemoteException {
+		StorageDataService storageDataService=DataFactory.getStorageImpl();
+		storageDataService.clear(storageID);
 		
 	}
 

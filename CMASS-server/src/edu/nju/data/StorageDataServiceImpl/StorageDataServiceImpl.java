@@ -28,10 +28,6 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 	public StorageDataServiceImpl() throws RemoteException {
 
 	}
-
-
-	
-
 	/**
 	 * 经过测试
 	 * 
@@ -253,8 +249,8 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 	 * @see edu.nju.dataservice.storagedataservice.StorageDataService#clear()
 	 */
 	@Override
-	public void clear() throws RemoteException {
-		String sql = "UPDATE 仓库存储货物 SET 被快递占用 ='0';";
+	public void clear(String storageID) throws RemoteException {
+		String sql = "UPDATE 仓库存储货物 SET 被快递占用 ='0',被入库单占用='0' WHERE 仓库ID="+storageID+";";
 		SQL.databaseUpdate(sql);
 		SQL.closeDatabase();
 		System.out.println("仓库已清空");
@@ -269,6 +265,7 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 	 */
 	@Override
 	public void addNewStorageItem(RecordPO recordPO) throws RemoteException {
+		System.out.println("lizhimusb");
 		String date = Time.toDaysTime(recordPO.getDate());
 		String distriction = recordPO.getDistrict();
 		String storageID = recordPO.getStorageID();
@@ -621,9 +618,6 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 		return;
 
 	}
-
-
-
 	@Override
 	public void storageRealease(String storageID) {
 		String sql = "UPDATE 仓库存储货物  SET 区='机动区'  WHERE 被入库单占用='0'&& 是否机动='1'&&被快递占用='0'&&仓库ID='" + storageID
@@ -631,13 +625,4 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 		SQL.databaseUpdate(sql);
 		SQL.closeDatabase();
 	}
-
-
-
-
-
-
-
-
-
 }

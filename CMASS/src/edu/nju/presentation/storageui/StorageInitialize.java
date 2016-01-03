@@ -3,6 +3,8 @@ package edu.nju.presentation.storageui;
 import javax.swing.JPanel;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.GridBagConstraints;
    
 import java.awt.Insets;
@@ -15,6 +17,7 @@ import edu.nju.po.RecordPO;
 import edu.nju.presentation.UiFactory;
 import edu.nju.presentation.widget.MyTextField;
 import edu.nju.tools.Time;
+import edu.nju.tools.WarningManager;
 
 import java.awt.event.ActionListener;
 import java.awt.font.TextLayout;
@@ -177,6 +180,18 @@ public class StorageInitialize extends JPanel{
 		textPosition.setColumns(10);
 		
 		button = new JButton("\u6E05\u96F6");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				StorageInitializeService storageInitialize=UiFactory.getStorageInitialize();
+				try {
+					storageInitialize.clear(currStorageID);
+					JOptionPane.showMessageDialog(null, "仓库已清空");
+				} catch (RemoteException e1) {
+					WarningManager.warning("远程连接异常，请重启客户端后重试");
+					e1.printStackTrace();
+				}
+			}
+		});
 		GridBagConstraints gbc_button = new GridBagConstraints();
 		gbc_button.insets = new Insets(0, 0, 5, 5);
 		gbc_button.gridx = 4;
@@ -191,6 +206,7 @@ public class StorageInitialize extends JPanel{
 				StorageInitializeService storageInitialize=UiFactory.getStorageInitialize();
 				try {
 					storageInitialize.addNewStorageItem(lineItem);
+					JOptionPane.showMessageDialog(null, "记录已添加成功");
 				} catch (RemoteException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
