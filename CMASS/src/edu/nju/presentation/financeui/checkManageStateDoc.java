@@ -181,13 +181,13 @@ public class checkManageStateDoc extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				//付款单部分
 				ExportExcel<PayDocVO> ex1=new ExportExcel<PayDocVO>();
-				String[] headers1={"付款单号","日期","钱","付款人","付款账号","付款类型","备注","是否被审批"};
+				String[] headers1={"付款单号","日期","钱","付款人","付款账号","付款类型","备注"};
 				List<PayDocVO> dataset1=new ArrayList<PayDocVO>();
 				for(int temp=0;temp<PayDocVOList.size();temp++){
 					dataset1.add(PayDocVOList.get(temp));
 				}
 				try {
-					OutputStream out = new FileOutputStream("D://项目报表导出");		
+					OutputStream out = new FileOutputStream("D://项目报表导出//经营情况表付款单.xls");		
 					ex1.exportExcel(headers1, dataset1, out);		
 					out.close();		
 					
@@ -201,13 +201,13 @@ public class checkManageStateDoc extends JPanel{
 				}
 				//收款单部分
 				ExportExcel<GatheringDocVO> ex2=new ExportExcel<GatheringDocVO>();
-				String[] headers2={"收款单号","日期","钱","快递员","寄件单编号列表","收款账号","是否被审批"};
+				String[] headers2={"收款单号","日期","钱","快递员","寄件单编号列表"};
 				List<GatheringDocVO> dataset2=new ArrayList<GatheringDocVO>();
 				for(int temp=0;temp<GatheringDocVOList.size();temp++){
 					dataset2.add(GatheringDocVOList.get(temp));
 				}
 				try {
-					OutputStream out = new FileOutputStream("D://项目报表导出");		
+					OutputStream out = new FileOutputStream("D://项目报表导出//经营情况表收款单.xls");		
 					ex2.exportExcel(headers2, dataset2, out);		
 					out.close();		
 					

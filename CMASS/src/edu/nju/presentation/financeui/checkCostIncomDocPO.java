@@ -70,7 +70,7 @@ public class checkCostIncomDocPO extends JPanel{
 				List<exCostIncomDocVO> dataset=new ArrayList<exCostIncomDocVO>();
 				dataset.add(new exCostIncomDocVO(Double.parseDouble(Payment.getText()), Double.parseDouble(Income.getText()), Double.parseDouble(Profit.getText())));
 				try {
-					OutputStream out = new FileOutputStream("D://项目报表导出");		
+					OutputStream out = new FileOutputStream("D://项目报表导出//成本收益表.xls");		
 					ex.exportExcel(headers, dataset, out);		
 					out.close();		
 					
