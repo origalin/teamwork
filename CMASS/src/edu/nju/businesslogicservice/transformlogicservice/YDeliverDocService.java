@@ -4,7 +4,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import edu.nju.exception.DatabaseNULLException;
-import edu.nju.po.SendDocPO;
+
 import edu.nju.po.YDeliverDocPO;
 import edu.nju.vo.YDeliverDocVO;
 

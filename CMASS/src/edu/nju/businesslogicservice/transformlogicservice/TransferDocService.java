@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import edu.nju.exception.DatabaseNULLException;
 import edu.nju.po.TransferDocPO;
-import edu.nju.presentation.transferui.TransferDocPanel_Car;
+
 import edu.nju.vo.TransferDocVO;
 import edu.nju.vo.TransferDoc_CarVO;
 import edu.nju.vo.TransferDoc_PlaneVO;
