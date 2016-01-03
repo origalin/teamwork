@@ -16,7 +16,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 
-import com.sun.xml.internal.ws.api.Component;
+
 
 import edu.nju.businesslogicservice.infologicservice.InstitutionLogicService;
 import edu.nju.po.Institutation;

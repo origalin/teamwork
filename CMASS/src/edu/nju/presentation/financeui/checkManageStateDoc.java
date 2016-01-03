@@ -179,6 +179,46 @@ public class checkManageStateDoc extends JPanel{
 		button = new SmallButton("\u5BFC\u51FA");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//付款单部分
+				ExportExcel<PayDocVO> ex1=new ExportExcel<PayDocVO>();
+				String[] headers1={"付款单号","日期","钱","付款人","付款账号","付款类型","备注","是否被审批"};
+				List<PayDocVO> dataset1=new ArrayList<PayDocVO>();
+				for(int temp=0;temp<PayDocVOList.size();temp++){
+					dataset1.add(PayDocVOList.get(temp));
+				}
+				try {
+					OutputStream out = new FileOutputStream("D://项目报表导出");		
+					ex1.exportExcel(headers1, dataset1, out);		
+					out.close();		
+					
+					System.out.println("excel导出成功！");
+				} catch (FileNotFoundException exce) {
+					// TODO Auto-generated catch block
+					exce.printStackTrace();
+				} catch (IOException exce) {
+					// TODO Auto-generated catch block
+					exce.printStackTrace();
+				}
+				//收款单部分
+				ExportExcel<GatheringDocVO> ex2=new ExportExcel<GatheringDocVO>();
+				String[] headers2={"收款单号","日期","钱","快递员","寄件单编号列表","收款账号","是否被审批"};
+				List<GatheringDocVO> dataset2=new ArrayList<GatheringDocVO>();
+				for(int temp=0;temp<GatheringDocVOList.size();temp++){
+					dataset2.add(GatheringDocVOList.get(temp));
+				}
+				try {
+					OutputStream out = new FileOutputStream("D://项目报表导出");		
+					ex2.exportExcel(headers2, dataset2, out);		
+					out.close();		
+					
+					System.out.println("excel导出成功！");
+				} catch (FileNotFoundException exce) {
+					// TODO Auto-generated catch block
+					exce.printStackTrace();
+				} catch (IOException exce) {
+					// TODO Auto-generated catch block
+					exce.printStackTrace();
+				}
 				/*
 				 * ExportExcel<storageItemVO> ex = new ExportExcel<storageItemVO>();
 				String[] headers ={ "快递编号", "入库日期", "目的地", "区","排号", "架号", "位号" ,"仓库编号"};
@@ -205,8 +245,7 @@ public class checkManageStateDoc extends JPanel{
 				}
 			}
 				 */
-				ExportExcel<Double> ex=new ExportExcel<Double>();
-				
+			
 			}
 		});
 		GridBagConstraints gbc_button = new GridBagConstraints();
