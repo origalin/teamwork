@@ -25,7 +25,7 @@ public interface InstitutionLogicService {
 	
 	public void deleteInstitution(String Institution)throws RemoteException;
 	public void deleteStaff(StaffPO po)throws RemoteException;
-	
+	public InstitutionPO getInstitutionPO(String institutionId)throws RemoteException;
 	//collection“¿¿µŒ“
 	
 	

@@ -9,12 +9,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
 
+import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+
+
+
+
+
+
 
 
 
@@ -22,50 +26,52 @@ import edu.nju.businesslogicservice.infologicservice.InstitutionLogicService;
 import edu.nju.po.Institutation;
 import edu.nju.po.InstitutionPO;
 import edu.nju.presentation.UiFactory;
+import edu.nju.presentation.widget.MyComboBox;
+import edu.nju.presentation.widget.MyTextField;
+import edu.nju.presentation.widget.SmallButton;
+import edu.nju.tools.WarningManager;
 
 public class InstitutionAdd extends JDialog{
-	private JTextField textField_1;
-	private JTextField textField_3;
-	private JTextField textField;
-	private JTextField textField_2;
+	private MyTextField textField_1;
+	private MyTextField textField_3;
+	private MyTextField textField;
+	private MyTextField textField_2;
 	InstitutionLogicService institutionLogicService=UiFactory.getInstitutionLogicService();
-
+	ImageIcon imageIcon = new ImageIcon("images/dback.png");
+	
 	/**
 	 * Create the panel.
 	 */
 	public InstitutionAdd() {
-		setBounds(0,0,500, 300);
+		JLabel back = new JLabel(imageIcon);
+		back.setSize(imageIcon.getIconWidth(),imageIcon.getIconHeight());
+		getLayeredPane().setLayout(null);
+		getLayeredPane().add(back, new Integer(Integer.MIN_VALUE));
+		((JPanel)getContentPane()).setOpaque(false);
+		
+		
+		setBounds(0,0,503, 242);
 		
 		setLocationRelativeTo(null);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0};
-		gridBagLayout.rowHeights = new int[]{77, 218, 0};
+		gridBagLayout.rowHeights = new int[]{218, 0};
 		gridBagLayout.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{1.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{1.0, Double.MIN_VALUE};
 		getContentPane().setLayout(gridBagLayout);
 		
-		JPanel panel = new JPanel();
-		GridBagConstraints gbc_panel = new GridBagConstraints();
-		gbc_panel.insets = new Insets(0, 0, 5, 0);
-		gbc_panel.fill = GridBagConstraints.HORIZONTAL;
-		gbc_panel.gridx = 0;
-		gbc_panel.gridy = 0;
-		getContentPane().add(panel, gbc_panel);
-		
-		JLabel label = new JLabel("\u65B0\u589E/\u4FEE\u6539\u673A\u6784\u4FE1\u606F");
-		panel.add(label);
-		
 		JPanel panel_1 = new JPanel();
+		panel_1.setOpaque(false);
 		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
 		gbc_panel_1.fill = GridBagConstraints.BOTH;
 		gbc_panel_1.gridx = 0;
-		gbc_panel_1.gridy = 1;
+		gbc_panel_1.gridy = 0;
 		getContentPane().add(panel_1, gbc_panel_1);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
 		gbl_panel_1.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
-		gbl_panel_1.rowHeights = new int[]{0, 0, 0, 0, 28, 0, 0};
+		gbl_panel_1.rowHeights = new int[]{0, 0, 0, 0, 28, 0, 0, 0};
 		gbl_panel_1.columnWeights = new double[]{0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
-		gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_1.rowWeights = new double[]{1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		panel_1.setLayout(gbl_panel_1);
 		
 		JLabel label_1 = new JLabel("\u673A\u6784\u7C7B\u578B");
@@ -76,7 +82,7 @@ public class InstitutionAdd extends JDialog{
 		gbc_label_1.gridy = 1;
 		panel_1.add(label_1, gbc_label_1);
 		
-		JComboBox comboBox = new JComboBox();
+		MyComboBox comboBox = new MyComboBox();
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"\u4E2D\u8F6C\u4E2D\u5FC3", "\u8425\u4E1A\u5385", "\u4ED3\u5E93"}));
 		GridBagConstraints gbc_comboBox = new GridBagConstraints();
 		gbc_comboBox.insets = new Insets(0, 0, 5, 5);
@@ -93,7 +99,7 @@ public class InstitutionAdd extends JDialog{
 		gbc_label_2.gridy = 1;
 		panel_1.add(label_2, gbc_label_2);
 		
-		textField_1 = new JTextField();
+		textField_1 = new MyTextField();
 		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
 		gbc_textField_1.insets = new Insets(0, 0, 5, 5);
 		gbc_textField_1.fill = GridBagConstraints.HORIZONTAL;
@@ -110,7 +116,7 @@ public class InstitutionAdd extends JDialog{
 		gbc_label_3.gridy = 2;
 		panel_1.add(label_3, gbc_label_3);
 		
-		JComboBox comboBox_1 = new JComboBox();
+		MyComboBox comboBox_1 = new MyComboBox();
 		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"\u5357\u4EAC", "\u4E0A\u6D77", "\u5317\u4EAC", "\u6DF1\u5733", "\u5E7F\u5DDE"}));
 		GridBagConstraints gbc_comboBox_1 = new GridBagConstraints();
 		gbc_comboBox_1.insets = new Insets(0, 0, 5, 5);
@@ -127,7 +133,7 @@ public class InstitutionAdd extends JDialog{
 		gbc_label_4.gridy = 2;
 		panel_1.add(label_4, gbc_label_4);
 		
-		textField_3 = new JTextField();
+		textField_3 = new MyTextField();
 		GridBagConstraints gbc_textField_3 = new GridBagConstraints();
 		gbc_textField_3.insets = new Insets(0, 0, 5, 5);
 		gbc_textField_3.fill = GridBagConstraints.HORIZONTAL;
@@ -144,7 +150,7 @@ public class InstitutionAdd extends JDialog{
 		gbc_label_5.gridy = 3;
 		panel_1.add(label_5, gbc_label_5);
 		
-		textField = new JTextField();
+		textField = new MyTextField();
 		GridBagConstraints gbc_textField = new GridBagConstraints();
 		gbc_textField.insets = new Insets(0, 0, 5, 5);
 		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
@@ -161,7 +167,7 @@ public class InstitutionAdd extends JDialog{
 		gbc_label_6.gridy = 3;
 		panel_1.add(label_6, gbc_label_6);
 		
-		textField_2 = new JTextField();
+		textField_2 = new MyTextField();
 		GridBagConstraints gbc_textField_2 = new GridBagConstraints();
 		gbc_textField_2.insets = new Insets(0, 0, 5, 5);
 		gbc_textField_2.fill = GridBagConstraints.HORIZONTAL;
@@ -170,10 +176,10 @@ public class InstitutionAdd extends JDialog{
 		panel_1.add(textField_2, gbc_textField_2);
 		textField_2.setColumns(10);
 		
-		JButton button = new JButton("\u786E\u8BA4\u4FEE\u6539");
+		SmallButton button = new SmallButton("\u786E\u8BA4");
 		GridBagConstraints gbc_button = new GridBagConstraints();
 		gbc_button.gridwidth = 2;
-		gbc_button.insets = new Insets(0, 0, 0, 5);
+		gbc_button.insets = new Insets(0, 0, 5, 5);
 		gbc_button.gridx = 1;
 		gbc_button.gridy = 5;
 		panel_1.add(button, gbc_button);
@@ -184,22 +190,26 @@ public class InstitutionAdd extends JDialog{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 			InstitutionPO po=null;
+			try{
 			po=new InstitutionPO(textField_1.getText(), Institutation.valueOf((String)comboBox.getSelectedItem()), textField_3.getText(),(String)comboBox_1.getSelectedItem(), textField.getText(),Double.valueOf( textField_2.getText()), false);
-			try {
-				institutionLogicService.saveInstitution(po);
-			} catch (RemoteException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
-			
+			catch(NumberFormatException e1){
+				WarningManager.warning("数据格式错误，请检查");
+			}
+			try {	institutionLogicService.saveInstitution(po);
+			} catch (RemoteException e) {
+				e.printStackTrace();
+				WarningManager.warning("网络连接错误，请检查");
+			}
+			dispose();
 			}
 		});
 		
 		
-		JButton button_1 = new JButton("\u53D6\u6D88\u4FDD\u5B58");
+		SmallButton button_1 = new SmallButton("\u53D6\u6D88");
 		GridBagConstraints gbc_button_1 = new GridBagConstraints();
 		gbc_button_1.gridwidth = 2;
-		gbc_button_1.insets = new Insets(0, 0, 0, 5);
+		gbc_button_1.insets = new Insets(0, 0, 5, 5);
 		gbc_button_1.gridx = 4;
 		gbc_button_1.gridy = 5;
 		panel_1.add(button_1, gbc_button_1);

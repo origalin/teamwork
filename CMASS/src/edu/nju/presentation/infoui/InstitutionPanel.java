@@ -45,6 +45,7 @@ import java.util.Date;
 
 
 
+
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 import javax.swing.JScrollPane;
@@ -60,9 +61,11 @@ import edu.nju.presentation.widget.MyComboBox;
 import edu.nju.presentation.widget.MyTable;
 import edu.nju.presentation.widget.SmallButton;
 import edu.nju.tools.Time;
+import edu.nju.tools.WarningManager;
 import edu.nju.vo.CarVO;
 import edu.nju.vo.InstitutionVO;
 import edu.nju.vo.StaffVO;
+
 import java.awt.Dimension;
 
 public class InstitutionPanel extends JPanel {
@@ -100,6 +103,7 @@ public class InstitutionPanel extends JPanel {
 		} catch (RemoteException e2) {
 			// TODO Auto-generated catch block
 			e2.printStackTrace();
+			WarningManager.warning("网络连接错误，请检查");
 		}
 		
 		//tree的监听
@@ -138,7 +142,6 @@ public class InstitutionPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				InstitutionAdd addInstitution=new InstitutionAdd();
 				addInstitution.setVisible(true);
-		
 			}
 		});
 		
@@ -174,6 +177,7 @@ public class InstitutionPanel extends JPanel {
 								} catch (RemoteException e1) {
 									// TODO Auto-generated catch block
 									e1.printStackTrace();
+									WarningManager.warning("网络连接错误，请检查");
 								}
 						      break;
 						     }
@@ -181,6 +185,7 @@ public class InstitutionPanel extends JPanel {
 						      System.exit(0);
 
 						     }
+				treeListener(tree);
 				
 				}
 		});
@@ -199,8 +204,8 @@ public class InstitutionPanel extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				InstitutionAdd addInstitution=new InstitutionAdd();
-				addInstitution.setVisible(true);
+				InstitutionChange cInstitution=new InstitutionChange();
+				cInstitution.setVisible(true);
 			}
 		});
 		
@@ -222,6 +227,8 @@ public class InstitutionPanel extends JPanel {
 				if (str != null) {
 					findInTree(tree,str);
 				}
+				InstitutionSearch s=new InstitutionSearch(str);
+				s.setVisible(true);
 			}
 		});
 	
@@ -254,12 +261,14 @@ public class InstitutionPanel extends JPanel {
 					} catch (RemoteException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
+						WarningManager.warning("网络连接错误，请检查");
 					}
 							try {
 								institutionLogicService.saveStaff(po);
 							} catch (RemoteException e1) {
 								// TODO Auto-generated catch block
 								e1.printStackTrace();
+								WarningManager.warning("网络连接错误，请检查");
 							}
 				}		
 				
@@ -323,6 +332,7 @@ public class InstitutionPanel extends JPanel {
 						} catch (RemoteException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
+							WarningManager.warning("网络连接错误，请检查");
 						}
 						
 			
@@ -331,6 +341,7 @@ public class InstitutionPanel extends JPanel {
 								} catch (RemoteException e1) {
 									// TODO Auto-generated catch block
 									e1.printStackTrace();
+									WarningManager.warning("网络连接错误，请检查");
 								}
 					
 						model.removeRow(row);
@@ -521,7 +532,7 @@ public class InstitutionPanel extends JPanel {
 		DefaultTreeCellRenderer render=new DefaultTreeCellRenderer();
 		tree.setCellRenderer(render);
 		tree.addTreeSelectionListener(new TreeSelectionListener() {
-			ArrayList<StaffVO> staffVOs=new ArrayList<StaffVO>();
+			ArrayList<StaffVO> staffVOs=null;
 			@Override
 			public void valueChanged(TreeSelectionEvent arg0) {
 				
@@ -539,6 +550,7 @@ public class InstitutionPanel extends JPanel {
 				} catch (RemoteException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
+					WarningManager.warning("网络连接错误，请检查");
 				}
 				model = (DefaultTableModel) table.getModel();
 				for (StaffVO vo:staffVOs) {
@@ -548,7 +560,13 @@ public class InstitutionPanel extends JPanel {
 				
 			}
 		});
-		
+		try {
+			institutionList = institutionLogicService.getInstitutionVOList();
+		} catch (RemoteException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+			WarningManager.warning("网络连接错误，请检查");
+		}
 		tree.setModel(new DefaultTreeModel(
 			new DefaultMutableTreeNode("总部") {
 				{
@@ -580,6 +598,7 @@ public class InstitutionPanel extends JPanel {
 					add(node_1);
 				}}
 		));
+		updateUI();
 	}
 	
 	boolean check(MyTable table){

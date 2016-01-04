@@ -31,26 +31,19 @@ import edu.nju.presentation.widget.MyTextField;
 import edu.nju.presentation.widget.SmallButton;
 import edu.nju.tools.WarningManager;
 
-public class InstitutionSearch extends JDialog{
+
+public class InstitutionChange extends JDialog{
 	private MyTextField textField_1;
 	private MyTextField textField_3;
 	private MyTextField textField;
 	private MyTextField textField_2;
 	InstitutionLogicService institutionLogicService=UiFactory.getInstitutionLogicService();
 	ImageIcon imageIcon = new ImageIcon("images/dback.png");
-	InstitutionPO po=null;
 	
 	/**
 	 * Create the panel.
 	 */
-	public InstitutionSearch(String institutionName) {
-		try {
-			po=institutionLogicService.getInstitutionPO(institutionLogicService.getID(institutionName));
-		} catch (RemoteException e2) {
-			// TODO Auto-generated catch block
-			e2.printStackTrace();WarningManager.warning("网络连接错误，请检查");
-		}
-		
+	public InstitutionChange() {
 		JLabel back = new JLabel(imageIcon);
 		back.setSize(imageIcon.getIconWidth(),imageIcon.getIconHeight());
 		getLayeredPane().setLayout(null);
@@ -58,7 +51,7 @@ public class InstitutionSearch extends JDialog{
 		((JPanel)getContentPane()).setOpaque(false);
 		
 		
-		setBounds(0,0,503, 242);
+		setBounds(0,0,703, 242);
 		
 		setLocationRelativeTo(null);
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -76,9 +69,9 @@ public class InstitutionSearch extends JDialog{
 		gbc_panel_1.gridy = 0;
 		getContentPane().add(panel_1, gbc_panel_1);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
-		gbl_panel_1.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
+		gbl_panel_1.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
 		gbl_panel_1.rowHeights = new int[]{0, 0, 0, 0, 28, 0, 0, 0};
-		gbl_panel_1.columnWeights = new double[]{0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_1.columnWeights = new double[]{0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
 		gbl_panel_1.rowWeights = new double[]{1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		panel_1.setLayout(gbl_panel_1);
 		
@@ -90,18 +83,14 @@ public class InstitutionSearch extends JDialog{
 		gbc_label_1.gridy = 1;
 		panel_1.add(label_1, gbc_label_1);
 		
-		MyTextField myTextField_1 = new MyTextField();
-		myTextField_1.setText(String.valueOf(po.getType()));
-		myTextField_1.setEditable(false);
-		myTextField_1.setText((String) null);
-		myTextField_1.setEditable(false);
-		myTextField_1.setColumns(10);
-		GridBagConstraints gbc_myTextField_1 = new GridBagConstraints();
-		gbc_myTextField_1.insets = new Insets(0, 0, 5, 5);
-		gbc_myTextField_1.fill = GridBagConstraints.HORIZONTAL;
-		gbc_myTextField_1.gridx = 2;
-		gbc_myTextField_1.gridy = 1;
-		panel_1.add(myTextField_1, gbc_myTextField_1);
+		MyComboBox comboBox = new MyComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"\u4E2D\u8F6C\u4E2D\u5FC3", "\u8425\u4E1A\u5385", "\u4ED3\u5E93"}));
+		GridBagConstraints gbc_comboBox = new GridBagConstraints();
+		gbc_comboBox.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBox.gridx = 2;
+		gbc_comboBox.gridy = 1;
+		panel_1.add(comboBox, gbc_comboBox);
 		
 		JLabel label_2 = new JLabel("\u673A\u6784\u7F16\u53F7");
 		GridBagConstraints gbc_label_2 = new GridBagConstraints();
@@ -112,8 +101,6 @@ public class InstitutionSearch extends JDialog{
 		panel_1.add(label_2, gbc_label_2);
 		
 		textField_1 = new MyTextField();
-		textField_1.setText(po.getId());
-		textField_1.setEditable(false);
 		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
 		gbc_textField_1.insets = new Insets(0, 0, 5, 5);
 		gbc_textField_1.fill = GridBagConstraints.HORIZONTAL;
@@ -121,6 +108,49 @@ public class InstitutionSearch extends JDialog{
 		gbc_textField_1.gridy = 1;
 		panel_1.add(textField_1, gbc_textField_1);
 		textField_1.setColumns(10);
+		
+		MyComboBox comboBox_1 = new MyComboBox();
+		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"\u5357\u4EAC", "\u4E0A\u6D77", "\u5317\u4EAC", "\u6DF1\u5733", "\u5E7F\u5DDE"}));
+		GridBagConstraints gbc_comboBox_1 = new GridBagConstraints();
+		gbc_comboBox_1.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBox_1.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBox_1.gridx = 2;
+		gbc_comboBox_1.gridy = 2;
+		panel_1.add(comboBox_1, gbc_comboBox_1);
+		
+		SmallButton button_2 = new SmallButton("\u70B9\u51FB\u67E5\u8BE2");
+		GridBagConstraints gbc_button_2 = new GridBagConstraints();
+		gbc_button_2.insets = new Insets(0, 0, 5, 5);
+		gbc_button_2.gridx = 6;
+		gbc_button_2.gridy = 1;
+		panel_1.add(button_2, gbc_button_2);
+		
+		button_2.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+		
+				InstitutionPO po=null;
+			
+					try {
+						po=institutionLogicService.getInstitutionPO(textField_1.getText());
+					} catch (RemoteException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();WarningManager.warning("网络连接错误，请检查");
+					}
+		
+			
+			comboBox.setSelectedItem(String.valueOf(po.getType()));comboBox.setEditable(false);
+			textField_3.setText(po.getName());textField_3.setEditable(false);
+			textField.setText(po.getParentInstitution());textField.setEditable(false);
+			textField_2.setText(String.valueOf(po.getRent()));textField_2.setEditable(false);
+			comboBox_1.setSelectedItem(String.valueOf(po.getCity()));comboBox_1.setEditable(false);
+			
+			
+			
+				}
+			
+		});
 		
 		JLabel label_3 = new JLabel("\u673A\u6784\u6240\u5728\u5730");
 		GridBagConstraints gbc_label_3 = new GridBagConstraints();
@@ -130,18 +160,7 @@ public class InstitutionSearch extends JDialog{
 		gbc_label_3.gridy = 2;
 		panel_1.add(label_3, gbc_label_3);
 		
-		MyTextField myTextField = new MyTextField();
-		myTextField.setText(String.valueOf(po.getCity()));
-		textField.setEditable(false);
-		myTextField.setText((String) null);
-		myTextField.setEditable(false);
-		myTextField.setColumns(10);
-		GridBagConstraints gbc_myTextField = new GridBagConstraints();
-		gbc_myTextField.insets = new Insets(0, 0, 5, 5);
-		gbc_myTextField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_myTextField.gridx = 2;
-		gbc_myTextField.gridy = 2;
-		panel_1.add(myTextField, gbc_myTextField);
+	
 		
 		JLabel label_4 = new JLabel("\u673A\u6784\u540D\u79F0");
 		GridBagConstraints gbc_label_4 = new GridBagConstraints();
@@ -152,8 +171,6 @@ public class InstitutionSearch extends JDialog{
 		panel_1.add(label_4, gbc_label_4);
 		
 		textField_3 = new MyTextField();
-		textField_3.setText(po.getName());
-		textField_3.setEditable(false);
 		GridBagConstraints gbc_textField_3 = new GridBagConstraints();
 		gbc_textField_3.insets = new Insets(0, 0, 5, 5);
 		gbc_textField_3.fill = GridBagConstraints.HORIZONTAL;
@@ -161,6 +178,26 @@ public class InstitutionSearch extends JDialog{
 		gbc_textField_3.gridy = 2;
 		panel_1.add(textField_3, gbc_textField_3);
 		textField_3.setColumns(10);
+		
+		SmallButton button_4 = new SmallButton("\u70B9\u51FB\u4FEE\u6539");
+		GridBagConstraints gbc_button_4 = new GridBagConstraints();
+		gbc_button_4.insets = new Insets(0, 0, 5, 5);
+		gbc_button_4.gridx = 6;
+		gbc_button_4.gridy = 2;
+		panel_1.add(button_4, gbc_button_4);
+		
+		button_4.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+				
+			textField_3.setEditable(true);
+				
+			}
+		});
+		
 		
 		JLabel label_5 = new JLabel("\u4E0A\u7EA7\u673A\u6784\u7F16\u53F7");
 		GridBagConstraints gbc_label_5 = new GridBagConstraints();
@@ -171,8 +208,6 @@ public class InstitutionSearch extends JDialog{
 		panel_1.add(label_5, gbc_label_5);
 		
 		textField = new MyTextField();
-		textField.setText(po.getParentInstitution());
-		textField.setEditable(false);
 		GridBagConstraints gbc_textField = new GridBagConstraints();
 		gbc_textField.insets = new Insets(0, 0, 5, 5);
 		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
@@ -190,8 +225,6 @@ public class InstitutionSearch extends JDialog{
 		panel_1.add(label_6, gbc_label_6);
 		
 		textField_2 = new MyTextField();
-		textField_2.setText(String.valueOf(po.getRent()));
-		textField_2.setEditable(false);
 		GridBagConstraints gbc_textField_2 = new GridBagConstraints();
 		gbc_textField_2.insets = new Insets(0, 0, 5, 5);
 		gbc_textField_2.fill = GridBagConstraints.HORIZONTAL;
@@ -200,11 +233,27 @@ public class InstitutionSearch extends JDialog{
 		panel_1.add(textField_2, gbc_textField_2);
 		textField_2.setColumns(10);
 		
+		SmallButton button_3 = new SmallButton("\u70B9\u51FB\u4FEE\u6539");
+		GridBagConstraints gbc_button_3 = new GridBagConstraints();
+		gbc_button_3.insets = new Insets(0, 0, 5, 5);
+		gbc_button_3.gridx = 6;
+		gbc_button_3.gridy = 3;
+		panel_1.add(button_3, gbc_button_3);
+		
+		button_3.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				textField_2.setEditable(true);
+			}
+		});
+		
 		SmallButton button = new SmallButton("\u786E\u8BA4");
 		GridBagConstraints gbc_button = new GridBagConstraints();
 		gbc_button.gridwidth = 2;
-		gbc_button.insets = new Insets(0, 0, 5, 0);
-		gbc_button.gridx = 5;
+		gbc_button.insets = new Insets(0, 0, 5, 5);
+		gbc_button.gridx = 1;
 		gbc_button.gridy = 5;
 		panel_1.add(button, gbc_button);
 		
@@ -213,8 +262,36 @@ public class InstitutionSearch extends JDialog{
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-		
+			InstitutionPO po=null;
+			try{
+			po=new InstitutionPO(textField_1.getText(), Institutation.valueOf((String)comboBox.getSelectedItem()), textField_3.getText(),(String)comboBox_1.getSelectedItem(), textField.getText(),Double.valueOf( textField_2.getText()), false);
+			}
+			catch(NumberFormatException e1){
+				WarningManager.warning("数据格式错误，请检查");
+			}
+			try {	institutionLogicService.saveInstitution(po);
+			} catch (RemoteException e) {
+				e.printStackTrace();
+				WarningManager.warning("网络连接错误，请检查");
+			}
 			dispose();
+			}
+		});
+		
+		
+		SmallButton button_1 = new SmallButton("\u53D6\u6D88");
+		GridBagConstraints gbc_button_1 = new GridBagConstraints();
+		gbc_button_1.gridwidth = 2;
+		gbc_button_1.insets = new Insets(0, 0, 5, 5);
+		gbc_button_1.gridx = 4;
+		gbc_button_1.gridy = 5;
+		panel_1.add(button_1, gbc_button_1);
+		
+		button_1.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
 			}
 		});
 

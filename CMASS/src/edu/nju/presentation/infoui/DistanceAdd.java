@@ -1,26 +1,35 @@
 package edu.nju.presentation.infoui;
 
 import java.awt.BorderLayout;
+
+import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
 import java.awt.GridBagLayout;
+
 import javax.swing.JLabel;
+
 import java.awt.GridBagConstraints;
+
 import edu.nju.businesslogic.infobl.Distance;
 import edu.nju.businesslogicservice.infologicservice.DistanceLogicService;
 import edu.nju.po.DistancePO;
 import edu.nju.presentation.widget.MyTable;
 import edu.nju.presentation.widget.MyTextField;
 import edu.nju.presentation.widget.SmallButton;
+
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
+
 import java.awt.Dimension;
 
 public class DistanceAdd extends JDialog {
@@ -34,15 +43,23 @@ public class DistanceAdd extends JDialog {
 	private SmallButton button_2;
 	private JLabel label_1;
 	DefaultTableModel model;
-
+	ImageIcon imageIcon = new ImageIcon("images/dback.png");
 
 	/**
 	 * Create the dialog.
 	 */
 	public DistanceAdd() {
-	
+		
+		JLabel back = new JLabel(imageIcon);
+		back.setSize(imageIcon.getIconWidth(),imageIcon.getIconHeight());
+		getLayeredPane().setLayout(null);
+		getLayeredPane().add(back, new Integer(Integer.MIN_VALUE));
+		((JPanel)getContentPane()).setOpaque(false);
+		contentPanel.setOpaque(false);
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
+		setLocationRelativeTo(null);
+	
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.SOUTH);
 		GridBagLayout gbl_contentPanel = new GridBagLayout();

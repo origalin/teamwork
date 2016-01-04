@@ -26,8 +26,10 @@ import java.util.Vector;
 
 
 
+
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
 
 
 
@@ -38,11 +40,13 @@ import edu.nju.presentation.UiFactory;
 import edu.nju.presentation.widget.MyScrollPane;
 import edu.nju.presentation.widget.MyTable;
 import edu.nju.presentation.widget.SmallButton;
+import edu.nju.tools.MyDialog;
 import edu.nju.tools.Time;
 import edu.nju.tools.WarningManager;
 import edu.nju.vo.CarVO;
 
 import javax.swing.JButton;
+
 
 
 
@@ -53,6 +57,9 @@ public class CarPanel extends JPanel {
 	private MyTable table;
 	DefaultTableModel model;
 	CarLogicService carBl =UiFactory.getCarLogicService();
+	MyDialog d=new MyDialog();
+	 String str="";
+	
 
 	/**
 	 * Create the panel.
@@ -171,13 +178,24 @@ public class CarPanel extends JPanel {
 		// ²éÑ¯µÄ¼àÌý
 
 		button_3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String str = JOptionPane.showInputDialog(null, "ÇëÊäÈë¹Ø¼ü×Ö:", "Find",
-						JOptionPane.QUESTION_MESSAGE);
-				System.out.println("S");
-				if (str != null) {
+			public void actionPerformed(ActionEvent e) {	
+				d.setVisible(true);
+				d.btnNewButton.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						// TODO Auto-generated method stub
+					
+						str=d.textField.getText();
+						if (str != null) {
 					findInTable(str);
 				}
+				d.dispose();			
+					}
+				});
+				System.out.println(str);
+				
+				
 			}
 		});
 

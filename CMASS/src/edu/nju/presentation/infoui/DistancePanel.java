@@ -25,6 +25,8 @@ import javax.swing.JOptionPane;
 
 
 
+
+
 import edu.nju.businesslogic.infobl.Distance;
 import edu.nju.businesslogicservice.infologicservice.DistanceLogicService;
 import edu.nju.po.DistancePO;
@@ -32,6 +34,7 @@ import edu.nju.presentation.UiFactory;
 import edu.nju.presentation.widget.MyComboBox;
 import edu.nju.presentation.widget.MyTextField;
 import edu.nju.presentation.widget.SmallButton;
+import edu.nju.tools.WarningManager;
 
 public class DistancePanel extends JPanel {
 	private MyTextField txtkm;
@@ -111,7 +114,7 @@ public class DistancePanel extends JPanel {
 				try {
 					distance = distanceLogicService.getDistance((String)comboBox.getSelectedItem(), (String)comboBox_1.getSelectedItem());
 				} catch (RemoteException e1) {
-					JOptionPane.showMessageDialog(null, "网络连接出错，请检查");
+					WarningManager.warning("网络连接错误，请检查");
 					e1.printStackTrace();
 				}
 				txtkm.setText(String.valueOf(distance));
@@ -210,9 +213,9 @@ public class DistancePanel extends JPanel {
 				distanceLogicService.changeDistance(po);
 			}catch(NumberFormatException e1){
 				System.out.println("不是double");
-				JOptionPane.showMessageDialog(null, "输入距离信息格式错误");  
+				WarningManager.warning("输入的距离格式错误，请检查");
 			} catch (RemoteException e1) {
-				JOptionPane.showMessageDialog(null, "网络连接出错，请检查");
+				WarningManager.warning("网络连接错误，请检查");
 					e1.printStackTrace();
 				}
 				txtkm.setEditable(false);
@@ -234,7 +237,7 @@ public class DistancePanel extends JPanel {
 				try {
 					distance = distanceLogicService.getDistance((String)comboBox.getSelectedItem(), (String)comboBox_1.getSelectedItem());
 				} catch (RemoteException e1) {
-					JOptionPane.showMessageDialog(null, "网络连接出错，请检查");
+					WarningManager.warning("网络连接错误，请检查");
 					e1.printStackTrace();
 				}
 				txtkm.setText(String.valueOf(distance));
@@ -250,9 +253,9 @@ public class DistancePanel extends JPanel {
 		try {
 			cityList = distanceLogicService.getCityList();
 		} catch (RemoteException e) {
-		
+			WarningManager.warning("网络连接错误，请检查");
 			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "网络连接错误，请检查");
+	
 		}
 		model=(DefaultComboBoxModel<String>) comboBox.getModel();
 		for(String city:cityList){

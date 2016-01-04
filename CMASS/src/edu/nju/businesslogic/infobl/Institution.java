@@ -27,7 +27,8 @@ public Institution() {
 		ArrayList<StaffPO> staffPOList=new ArrayList<StaffPO>();
 	
 		staffPOList=institutionDataService.getStaffList(getID(institutionName));
-	
+	if(staffPOList.equals(null))
+		return null;
 		for(StaffPO po:staffPOList){
 			staffVOList.add(new StaffVO(po.getStaffID(),po.getName(),po.getSex(),po.getIdenity(),po.getTel(),po.getInstitutation(),po.getPost()));
 		}
@@ -263,6 +264,13 @@ public Institution() {
 		 return null;
 		 
 	}
+	@Override
+	public InstitutionPO getInstitutionPO(String institutionId)
+			throws RemoteException {
+		return institutionDataService.getInstitution(institutionId);
+	}
+	
+	
 
 
 

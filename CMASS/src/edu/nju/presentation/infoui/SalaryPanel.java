@@ -145,6 +145,7 @@ public class SalaryPanel extends JPanel {
 				} catch (RemoteException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
+					WarningManager.warning("网络连接错误，请检查");
 				}			
 					textField_8.setEditable(false);	
 				}else{
@@ -159,7 +160,7 @@ public class SalaryPanel extends JPanel {
 						}
 					} catch (RemoteException e1) {
 						// TODO Auto-generated catch block
-						e1.printStackTrace();
+						WarningManager.warning("网络连接错误，请检查");	e1.printStackTrace();
 					}
 					try{
 					po.setBaseSalary(Double.valueOf(textField_1.getText()));
@@ -174,6 +175,7 @@ public class SalaryPanel extends JPanel {
 					} catch (RemoteException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
+						WarningManager.warning("网络连接错误，请检查");
 					}
 				textField_1.setEditable(false);
 				textField_2.setEditable(false);
@@ -280,6 +282,7 @@ public class SalaryPanel extends JPanel {
 									} catch (RemoteException e1) {
 										// TODO Auto-generated catch block
 										e1.printStackTrace();
+										WarningManager.warning("网络连接错误，请检查");
 									} catch (DatabaseNULLException e1) {
 										// TODO Auto-generated catch block
 									
@@ -365,7 +368,7 @@ public class SalaryPanel extends JPanel {
 						}
 					 catch (RemoteException e1) {
 						// TODO Auto-generated catch block
-						e1.printStackTrace();
+						e1.printStackTrace();WarningManager.warning("网络连接错误，请检查");
 					}
 					GridBagConstraints gbc_textField_1 = new GridBagConstraints();
 					gbc_textField_1.insets = new Insets(0, 0, 5, 5);
@@ -414,6 +417,7 @@ public class SalaryPanel extends JPanel {
 					} catch (RemoteException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
+						WarningManager.warning("网络连接错误，请检查");
 					}
 					GridBagConstraints gbc_textField_2 = new GridBagConstraints();
 					gbc_textField_2.insets = new Insets(0, 0, 5, 5);
@@ -460,6 +464,7 @@ public class SalaryPanel extends JPanel {
 					} catch (RemoteException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
+						WarningManager.warning("网络连接错误，请检查");
 					}
 					GridBagConstraints gbc_textField_3 = new GridBagConstraints();
 					gbc_textField_3.insets = new Insets(0, 0, 5, 5);

@@ -25,6 +25,7 @@ import edu.nju.presentation.UiFactory;
 import edu.nju.presentation.widget.MyComboBox;
 import edu.nju.presentation.widget.MyTextField;
 import edu.nju.presentation.widget.SmallButton;
+import edu.nju.tools.WarningManager;
 
 public class AccountPanel extends JPanel {
 	private MyTextField textField;
@@ -197,7 +198,8 @@ public class AccountPanel extends JPanel {
 				 catch (RemoteException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
-					JOptionPane.showMessageDialog(null, "网络连接出错，请检查");
+			
+					WarningManager.warning("网络连接出错，请检查");
 				}
 				textField_1.setText(str[0]);
 				comboBox.setSelectedItem(str[1]);
@@ -218,11 +220,13 @@ public class AccountPanel extends JPanel {
 					try {
 						str=systemLogicService.getPasswordAndPower(textField.getText());
 					} catch (DatabaseNULLException e1) {
-						JOptionPane.showMessageDialog(null, "所查找的信息不存在，请检查");
+						
+						WarningManager.warning("所查找的信息不存在，请检查");
 						e1.printStackTrace();
 					}
 				catch (RemoteException e1) {
-					JOptionPane.showMessageDialog(null, "网络连接出错，请检查");
+				
+					WarningManager.warning("网络连接出错，请检查");
 					e1.printStackTrace();
 				}
 				textField_1.setText(str[0]);

@@ -41,6 +41,7 @@ import edu.nju.presentation.transferui.SendPanel;
 import edu.nju.presentation.transferui.YLoadDocPanel;
 import edu.nju.presentation.transferui.ZArrivalDocPanel;
 import edu.nju.presentation.widget.SmallButton;
+import edu.nju.tools.WarningManager;
 
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
@@ -49,8 +50,10 @@ import java.awt.Toolkit;
 import java.rmi.RemoteException;
 import java.text.ParseException;
 import java.awt.Font;
+
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.LineBorder;
+
 import java.awt.Color;
 import java.awt.Dimension;
 
@@ -201,12 +204,12 @@ public class LoginFrame extends JFrame {
 			} catch (DatabaseNULLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-				JOptionPane.showMessageDialog(null,"用户名不存在");
+				JOptionPane.showMessageDialog(null,"用户名不存在，请检查");
 			}
 			institutionstr = institution.getInstitutionID(account)+" "+institution.getInstitutionName(account);
 			namestr = account+" "+institution.getStaffName(account);
 		} catch (RemoteException  e) {
-			e.printStackTrace();
+			e.printStackTrace();WarningManager.warning("网络连接错误，请检查");
 		}
 		
 		if(!str[0].equals(password)){
@@ -258,10 +261,11 @@ public class LoginFrame extends JFrame {
 				mainFrame.setFunctionPanel(new OperationPanel());
 			} catch (RemoteException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				e.printStackTrace();WarningManager.warning("网络连接错误，请检查");
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				WarningManager.warning("数据格式错误，请检查");
 			}
 			mainFrame.setGuidePanel(new GuidePanel_System(mainFrame, account));
 			

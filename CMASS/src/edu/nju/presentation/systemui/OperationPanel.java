@@ -31,6 +31,7 @@ import javax.swing.ListSelectionModel;
 
 
 
+
 import edu.nju.businesslogic.systembl.SystemBl;
 import edu.nju.businesslogicservice.systemlogicservice.SystemLogicService;
 import edu.nju.presentation.UiFactory;
@@ -39,6 +40,7 @@ import edu.nju.presentation.widget.MyTable;
 import edu.nju.presentation.widget.MyTextField;
 import edu.nju.presentation.widget.SmallButton;
 import edu.nju.tools.Time;
+import edu.nju.tools.WarningManager;
 import edu.nju.vo.CarVO;
 import edu.nju.vo.OperationVO;
 
@@ -145,7 +147,8 @@ model=(DefaultTableModel)table.getModel();
 		} catch (ParseException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
-			JOptionPane.showMessageDialog(null, "日期格式错误，应为yyyy-MM-dd hh:mm:ss，请检查");
+		
+			WarningManager.warning("日期格式错误，应为yyyy-MM-dd hh:mm:ss，请检查");
 		}
 		Date endTime = null;
 		try {
@@ -153,7 +156,8 @@ model=(DefaultTableModel)table.getModel();
 		} catch (ParseException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
-			JOptionPane.showMessageDialog(null, "日期格式错误，应为yyyy-MM-dd hh:mm:ss，请检查");
+
+			WarningManager.warning("日期格式错误，应为yyyy-MM-dd hh:mm:ss，请检查");
 		}
 		ArrayList<OperationVO> operationList = null;
 		try {
@@ -161,7 +165,8 @@ model=(DefaultTableModel)table.getModel();
 		} catch (RemoteException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
-			JOptionPane.showMessageDialog(null, "网络连接出错，请检查");
+			
+			WarningManager.warning( "网络连接出错，请检查");
 		}
 		for (OperationVO vo : operationList) {
 			model.addRow(new Object[] { Time.toSecondTime(vo.getDate()),vo.getStaffID(),vo.getStaffName(),vo.getDescribration()
@@ -205,7 +210,7 @@ model=(DefaultTableModel)table.getModel();
 		} catch (ParseException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
-			JOptionPane.showMessageDialog(null, "日期格式错误，应为yyyy-MM-dd hh:mm:ss，请检查");
+			WarningManager.warning("日期格式错误，应为yyyy-MM-dd hh:mm:ss，请检查");
 		}
 		Date endTime = null;
 		try {
@@ -213,7 +218,8 @@ model=(DefaultTableModel)table.getModel();
 		} catch (ParseException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
-			JOptionPane.showMessageDialog(null, "日期格式错误，应为yyyy-MM-dd hh:mm:ss，请检查");
+			
+			WarningManager.warning("日期格式错误，应为yyyy-MM-dd hh:mm:ss，请检查");
 		}
 		ArrayList<OperationVO> operationList = null;
 		try {
@@ -221,7 +227,8 @@ model=(DefaultTableModel)table.getModel();
 		} catch (RemoteException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
-			JOptionPane.showMessageDialog(null, "网络连接出错，请检查");
+			
+			WarningManager.warning("网络连接出错，请检查");
 		}
 		for (OperationVO vo : operationList) {
 			model.addRow(new Object[] { Time.toSecondTime(vo.getDate()),vo.getStaffID(),vo.getStaffName(),vo.getDescribration()
