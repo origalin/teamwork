@@ -110,7 +110,6 @@ public class costManagement extends JPanel{
 		comboBox.setSelectedIndex(0);
 		GridBagConstraints gbc_comboBox = new GridBagConstraints();
 		gbc_comboBox.insets = new Insets(0, 0, 5, 5);
-		gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBox.gridx = 3;
 		gbc_comboBox.gridy = 2;
 		add(comboBox, gbc_comboBox);
@@ -165,6 +164,7 @@ public class costManagement extends JPanel{
 						panel=new salaryPanel();
 						addPanel(panel);
 						staffList=bl.getUnpaidStaffList();
+						System.out.println(staffList.size());
 						((salaryPanel)panel).initializeTable(staffList);
 						updateUI();
 						break;
@@ -219,7 +219,6 @@ public class costManagement extends JPanel{
 		accountComboBox.setSelectedIndex(0);
 		GridBagConstraints gbc_accountComboBox = new GridBagConstraints();
 		gbc_accountComboBox.insets = new Insets(0, 0, 5, 5);
-		gbc_accountComboBox.fill = GridBagConstraints.HORIZONTAL;
 		gbc_accountComboBox.gridx = 3;
 		gbc_accountComboBox.gridy = 3;
 		add(accountComboBox, gbc_accountComboBox);
