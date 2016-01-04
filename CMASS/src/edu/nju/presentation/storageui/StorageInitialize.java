@@ -197,16 +197,22 @@ public class StorageInitialize extends JPanel{
 		btnNewButton = new SmallButton("\u65B0\u5EFA\u5E93\u5B58\u8BB0\u5F55");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				RecordPO lineItem=new RecordPO(textSendDoc_ID.getText(),Time.stringToDate(textInWareDate.getText()), textDestination.getText(),
-						textDistrict.getText(), textPosition.getText(), currStorageID);
-				StorageInitializeService storageInitialize=UiFactory.getStorageInitialize();
-				try {
-					storageInitialize.addNewStorageItem(lineItem);
-					JOptionPane.showMessageDialog(null, "记录已添加成功");
-				} catch (RemoteException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+				if(textSendDoc_ID.getText().equals("")||textInWareDate.getText().equals("")||textDestination.getText().equals("")||
+						textDistrict.getText().equals("")||textPosition.getText().equals("")||currStorageID.equals(""))
+					WarningManager.warning("请输入完整的信息");
+				else{
+					RecordPO lineItem=new RecordPO(textSendDoc_ID.getText(),Time.stringToDate(textInWareDate.getText()), textDestination.getText(),
+							textDistrict.getText(), textPosition.getText(), currStorageID);
+					StorageInitializeService storageInitialize=UiFactory.getStorageInitialize();
+					try {
+						storageInitialize.addNewStorageItem(lineItem);
+						JOptionPane.showMessageDialog(null, "记录已添加成功");
+					} catch (RemoteException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}
+				
 				
 			}
 		});

@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 import edu.nju.businesslogic.collectionbl.Collectionbl;
 import edu.nju.businesslogic.financebl.financebl;
-import edu.nju.businesslogic.storagebl.InWareHouseManagementbl;
 import edu.nju.businesslogic.storagebl.StorageTools;
 import edu.nju.businesslogic.transferbl.OverDoc;
 import edu.nju.businesslogic.transferbl.TransferDoc;
@@ -27,18 +26,6 @@ import edu.nju.po.YDeliverDocPO;
 import edu.nju.po.YLoadDocPO;
 import edu.nju.po.ZArrivalDocPO;
 import edu.nju.po.ZLoadDocPO;
-import edu.nju.vo.GatheringDocVO;
-import edu.nju.vo.InWareHouseDocVO;
-import edu.nju.vo.OutWareHouseDocVO;
-import edu.nju.vo.OverDocVO;
-import edu.nju.vo.PayDocVO;
-import edu.nju.vo.SendDocVO;
-import edu.nju.vo.TransferDocVO;
-import edu.nju.vo.YArrivalDocVO;
-import edu.nju.vo.YDeliverDocVO;
-import edu.nju.vo.YLoadDocVO;
-import edu.nju.vo.ZArrivalDocVO;
-import edu.nju.vo.ZLoadDocVO;
 
 public class approvebl implements ApproveLogicService{
 	/*
