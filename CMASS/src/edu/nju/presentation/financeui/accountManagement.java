@@ -269,16 +269,8 @@ public class accountManagement extends JPanel{
 		}
 		scrollPane.setViewportView(initializeTable(list));
 		
-		SmallButton button_4 = new SmallButton("\u786E\u5B9A");
-		button_4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		GridBagConstraints gbc_button_4 = new GridBagConstraints();
-		gbc_button_4.insets = new Insets(0, 0, 0, 5);
-		gbc_button_4.gridx = 3;
-		gbc_button_4.gridy = 6;
-		add(button_4, gbc_button_4);
+	
+
 		
 	}
 	public JTable initializeTable(ArrayList<AccountVO> accountList){

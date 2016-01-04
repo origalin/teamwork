@@ -29,7 +29,7 @@ public class DataFactory {
 	static SystemDataService systemDataService=null;
 	static TransferDataService transferDataService = null;
 	static CollectionDataService collectionDataService = null;
-	static String url="rmi://172.28.16.126:6600/";
+	static String url="rmi://172.28.58.234:6600/";
 	public DataFactory() {
 		// TODO Auto-generated constructor stub
 	}

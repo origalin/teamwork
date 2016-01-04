@@ -8,6 +8,8 @@ import java.awt.Insets;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
+import com.sun.media.sound.ModelAbstractChannelMixer;
+
 import edu.nju.businesslogic.approvebl.approvebl;
 import edu.nju.businesslogic.infobl.Institution;
 import edu.nju.businesslogic.systembl.SystemBl;
@@ -653,6 +655,15 @@ public class checkMainUI extends JPanel{
 					*/
 					 
 					}
+					
+					DefaultTableModel model=(DefaultTableModel)table.getModel();
+					int row=model.getRowCount();
+					for(int i=0;i<row;i++){
+						System.out.println(model.getRowCount());
+							model.removeRow(0);
+					}
+					
+					
 				}
 			}
 		});
