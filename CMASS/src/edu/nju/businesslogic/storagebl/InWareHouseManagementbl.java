@@ -68,7 +68,7 @@ public class InWareHouseManagementbl implements InWareHouseManagementService {
 		//= DataFactory.getStorageImpl();
 		// storageDataService.
 		if (transferDocPO == null) {
-			JOptionPane.showMessageDialog(null, "未找到该中转单");
+			WarningManager.warning( "未找到该中转单");
 			return null;
 		}
 
@@ -141,7 +141,7 @@ public class InWareHouseManagementbl implements InWareHouseManagementService {
 		// StorageDataService storageDataService = DataFactory.getStorageImpl();
 		// storageDataService.
 		if (yLoadDocPO == null) {
-			JOptionPane.showMessageDialog(null, "未找到该装车单");
+			WarningManager.warning( "未找到该装车单");
 			return null;
 		}
 		String[] itemsID = yLoadDocPO.getItemIDs();
