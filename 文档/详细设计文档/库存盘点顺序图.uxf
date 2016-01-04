@@ -98,9 +98,9 @@ ArrayList&lt;RecordPO&gt; getInWareHouseDocVO_Fly()</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>470</x>
+      <x>660</x>
       <y>50</y>
-      <w>100</w>
+      <w>130</w>
       <h>30</h>
     </coordinates>
     <panel_attributes>StorageDataService
@@ -110,7 +110,7 @@ bg=red</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>510</x>
+      <x>700</x>
       <y>110</y>
       <w>20</w>
       <h>270</h>
@@ -122,19 +122,19 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>290</x>
+      <x>350</x>
       <y>150</y>
-      <w>300</w>
+      <w>370</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 ArrayList&lt;RecordPO&gt; getInWareHouseDocVO_Fly()</panel_attributes>
-    <additional_attributes>220.0;20.0;70.0;20.0</additional_attributes>
+    <additional_attributes>350.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>510</x>
+      <x>700</x>
       <y>70</y>
       <w>30</w>
       <h>60</h>
@@ -147,12 +147,12 @@ ArrayList&lt;RecordPO&gt; getInWareHouseDocVO_Fly()</panel_attributes>
     <coordinates>
       <x>350</x>
       <y>320</y>
-      <w>180</w>
+      <w>370</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 </panel_attributes>
-    <additional_attributes>160.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>350.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -179,13 +179,13 @@ ArrayList&lt;RecordPO&gt; getInWareHouseDocVO_Fly()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>510</x>
+      <x>700</x>
       <y>370</y>
       <w>30</w>
-      <h>90</h>
+      <h>160</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;140.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -214,50 +214,50 @@ ArrayList&lt;RecordPO&gt; getInWareHouseDocVO_Car()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>280</x>
+      <x>350</x>
       <y>170</y>
-      <w>310</w>
+      <w>370</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 ArrayList&lt;RecordPO&gt; getInWareHouseDocVO_Train()</panel_attributes>
-    <additional_attributes>230.0;20.0;80.0;20.0</additional_attributes>
+    <additional_attributes>350.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>290</x>
+      <x>350</x>
       <y>190</y>
-      <w>300</w>
+      <w>370</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 ArrayList&lt;RecordPO&gt; getInWareHouseDocVO_Car()</panel_attributes>
-    <additional_attributes>220.0;20.0;70.0;20.0</additional_attributes>
+    <additional_attributes>350.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>350</x>
       <y>300</y>
-      <w>180</w>
+      <w>370</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 </panel_attributes>
-    <additional_attributes>160.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>350.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>350</x>
       <y>280</y>
-      <w>180</w>
+      <w>370</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 </panel_attributes>
-    <additional_attributes>160.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>350.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -288,8 +288,8 @@ ArrayList&lt;RecordPO&gt; getInWareHouseDocVO_Car()</panel_attributes>
     <coordinates>
       <x>30</x>
       <y>20</y>
-      <w>670</w>
-      <h>520</h>
+      <w>840</w>
+      <h>610</h>
     </coordinates>
     <panel_attributes>库存盘点顺序图</panel_attributes>
     <additional_attributes/>

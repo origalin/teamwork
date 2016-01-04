@@ -28,8 +28,7 @@ import edu.nju.vo.OutWareHouseDocVO;
 
 public class OutWareHouseManagementbl implements OutWareHouseManagementService {
 
-	OutWareHouseDocPO outWareHousePO;
-	TransferDocPO tran;
+	
 
 	@Override
 	public OutWareHouseDocVO getOutWareHouseDocVO_ZloadDoc(String ZloadDocID, String currInstitution)

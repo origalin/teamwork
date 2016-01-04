@@ -89,7 +89,7 @@ edu.nju.businesslogic.logispicsquerybl包
       <w>40</w>
       <h>190</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-&gt;
+    <panel_attributes>lt=.&gt;
 m1=1..*
 m2=1</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;170.0</additional_attributes>
@@ -111,12 +111,14 @@ m2=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>360</x>
+      <x>380</x>
       <y>380</y>
       <w>30</w>
       <h>190</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;170.0;10.0;10.0</additional_attributes>
+    <panel_attributes>lt=.&gt;
+m1=1
+m2=1</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;170.0</additional_attributes>
   </element>
 </diagram>
