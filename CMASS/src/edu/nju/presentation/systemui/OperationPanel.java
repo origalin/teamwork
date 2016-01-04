@@ -26,13 +26,15 @@ import javax.swing.JTabbedPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.border.TitledBorder;
 import javax.swing.ListSelectionModel;
-import javax.swing.JScrollPane;
+
+
 
 
 
 import edu.nju.businesslogic.systembl.SystemBl;
 import edu.nju.businesslogicservice.systemlogicservice.SystemLogicService;
 import edu.nju.presentation.UiFactory;
+import edu.nju.presentation.widget.MyScrollPane;
 import edu.nju.presentation.widget.MyTable;
 import edu.nju.presentation.widget.MyTextField;
 import edu.nju.presentation.widget.SmallButton;
@@ -45,7 +47,7 @@ public class OperationPanel extends JPanel {
 	private MyTextField textField;
 	private MyTextField textField_1;	
 	DefaultTableModel model;
-	JScrollPane scrollPane = new JScrollPane();
+	MyScrollPane scrollPane = new MyScrollPane();
 	SystemLogicService systemBl=UiFactory.getSystemLogicService();
 	
 

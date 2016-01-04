@@ -18,6 +18,7 @@ import javax.swing.JOptionPane;
 
 
 
+
 import edu.nju.businesslogicservice.infologicservice.DriverLogicService;
 import edu.nju.businesslogicservice.infologicservice.InstitutionLogicService;
 import edu.nju.exception.DatabaseNULLException;
@@ -26,6 +27,8 @@ import edu.nju.po.SalaryPO;
 import edu.nju.presentation.UiFactory;
 import edu.nju.presentation.widget.MyTextField;
 import edu.nju.presentation.widget.SmallButton;
+import edu.nju.tools.WarningManager;
+
 import java.awt.Dimension;
 
 public class SalaryPanel extends JPanel {
@@ -138,7 +141,7 @@ public class SalaryPanel extends JPanel {
 					driverLogicService.saveMoney(Double.valueOf(textField_8.getText()), textField.getText().toString());
 				} catch (NumberFormatException e1) {
 						System.out.println("不是double");
-						JOptionPane.showMessageDialog(null, "输入薪水信息格式错误");  
+						WarningManager.warning("输入薪水信息格式错误，请检查");
 				} catch (RemoteException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -151,7 +154,8 @@ public class SalaryPanel extends JPanel {
 							po = institutionLogicService.getSalary(textField.getText());
 						} catch (DatabaseNULLException e1) {
 							// TODO Auto-generated catch block
-							JOptionPane.showMessageDialog(null, "查询不到该信息，请检查");
+						
+							WarningManager.warning("不能查找到该信息，请检查");
 						}
 					} catch (RemoteException e1) {
 						// TODO Auto-generated catch block
@@ -163,7 +167,7 @@ public class SalaryPanel extends JPanel {
 					po.setPercentageSalary(Double.valueOf(textField_3.getText()));
 					}catch(NumberFormatException e1){
 						System.out.println("不是double");
-						JOptionPane.showMessageDialog(null, "输入距离信息格式错误");  
+						WarningManager.warning("输入距离信息格式错误");
 					}
 					try {
 						institutionLogicService.saveSalary(po);
@@ -278,7 +282,8 @@ public class SalaryPanel extends JPanel {
 										e1.printStackTrace();
 									} catch (DatabaseNULLException e1) {
 										// TODO Auto-generated catch block
-										JOptionPane.showMessageDialog(null, "不能查找到该信息，请检查");
+									
+										WarningManager.warning("不能查找到该信息，请检查");
 										e1.printStackTrace();
 									}
 									GridBagConstraints gbc_textField_8 = new GridBagConstraints();
@@ -356,7 +361,7 @@ public class SalaryPanel extends JPanel {
 						} catch (DatabaseNULLException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
-							JOptionPane.showMessageDialog(null, "查询不到该信息，请检查");
+							WarningManager.warning("不能查找到该信息，请检查");
 						}
 					 catch (RemoteException e1) {
 						// TODO Auto-generated catch block

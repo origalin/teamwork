@@ -24,20 +24,27 @@ import java.util.Vector;
 
 
 
+
+
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.JScrollPane;
+
+
 
 import edu.nju.businesslogic.infobl.Car;
 import edu.nju.businesslogicservice.infologicservice.CarLogicService;
 import edu.nju.po.CarPO;
 import edu.nju.presentation.UiFactory;
+import edu.nju.presentation.widget.MyScrollPane;
 import edu.nju.presentation.widget.MyTable;
 import edu.nju.presentation.widget.SmallButton;
 import edu.nju.tools.Time;
+import edu.nju.tools.WarningManager;
 import edu.nju.vo.CarVO;
 
 import javax.swing.JButton;
+
+
 
 
 import java.awt.Dimension;
@@ -121,6 +128,7 @@ public class CarPanel extends JPanel {
 		// 删除当前行的监听
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent Event) {
+				
 				JOptionPane.showConfirmDialog(null,"确认删除当前行吗");
 				int row = table.getSelectedRow();
 				if (row >= 0) {
@@ -145,7 +153,7 @@ public class CarPanel extends JPanel {
 						} catch (RemoteException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
-							JOptionPane.showMessageDialog(null, "网络连接出错，请检查");
+							WarningManager.warning("网络连接出错，请检查");
 						}
 					model.removeRow(row);
 				}
@@ -187,7 +195,9 @@ public class CarPanel extends JPanel {
 		button_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd");
+			
 				if(check(table)){
+				
 				table.setEnabled(false);
 				for (int i = 0; i < table.getRowCount(); i++) {
 					CarPO carPO;
@@ -195,13 +205,17 @@ public class CarPanel extends JPanel {
 						int year=0;
 						try {
 							date=df.parse( (String) table.getValueAt(i, 5));
-							year=Integer.valueOf( (String) table.getValueAt(i, 6));
 						} catch (ParseException e1) {
 							e1.printStackTrace();
-							JOptionPane.showMessageDialog(null, "日期格式错误，应为yyyy-MM-dd，请检查");
+							WarningManager.warning("日期格式错误，应为yyyy-MM-dd，请检查");
+						}	
+						try{
+						year=Integer.valueOf( (String) table.getValueAt(i, 6));
+						}catch(NumberFormatException e1){
+							e1.printStackTrace();
+							WarningManager.warning("输入的服役时间有误，请检查");
 						}
-
-				
+				System.out.println(year);
 						carPO = new CarPO((String) table.getValueAt(i, 0),
 								(String) table.getValueAt(i, 1), (String) table
 										.getValueAt(i, 2), (String) table
@@ -212,7 +226,8 @@ public class CarPanel extends JPanel {
 							} catch (RemoteException e1) {
 								// TODO Auto-generated catch block
 								e1.printStackTrace();
-								JOptionPane.showMessageDialog(null, "网络连接出错，请检查");
+						
+								WarningManager.warning("网络连接出错，请检查");
 							}
 				}		
 				
@@ -237,7 +252,7 @@ public class CarPanel extends JPanel {
 		
 		
 		
-		JScrollPane scrollPane = new JScrollPane();
+		MyScrollPane scrollPane = new MyScrollPane();
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
 		gbc_scrollPane.gridx = 0;
@@ -296,7 +311,8 @@ public class CarPanel extends JPanel {
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "网络连接出错，请检查");
+		
+			WarningManager.warning("网络连接出错，请检查");
 		}
 		for (CarVO vo : carList) {
 			model.addRow(new Object[] { vo.getCarID(), vo.getEngineID(),
@@ -305,16 +321,28 @@ public class CarPanel extends JPanel {
 		}
 	}
 	boolean check(MyTable table){
+	
 		for (int row = 0; row < table.getRowCount();row++) {
 			for(int col=0;col<table.getColumnCount();col++){
-				if(((String)table.getValueAt(row, col)).equals("")){
-					JOptionPane.showMessageDialog(null,"信息不完整，请检查");
+				if(((String)table.getValueAt(row, col)).equals(""))
+				{
+					
+					WarningManager.warning("信息不完整，请检查");
 					return false;
 				}
 			}
 			
 		
 	}
+	
+		for (int i = 0; i < table.getRowCount(); i++) {
+		if(((String) table.getValueAt(i, 0)).length()!=10){
+		WarningManager.warning("车辆代号格式不符，请检查");
+			return false;
+				
+		}
+		}
+		
 		return true;
-}
+	}
 }

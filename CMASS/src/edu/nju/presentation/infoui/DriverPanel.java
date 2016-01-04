@@ -16,6 +16,7 @@ import java.awt.Font;
 
 
 
+
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
@@ -29,6 +30,7 @@ import edu.nju.presentation.UiFactory;
 import edu.nju.presentation.widget.MyTable;
 import edu.nju.presentation.widget.SmallButton;
 import edu.nju.tools.Time;
+import edu.nju.tools.WarningManager;
 import edu.nju.vo.CarVO;
 import edu.nju.vo.DriverVO;
 
@@ -41,6 +43,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import javax.swing.JButton;
+
 import java.awt.Dimension;
 
 public class DriverPanel extends JPanel {
@@ -118,6 +121,7 @@ public class DriverPanel extends JPanel {
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent Event) {
 				JOptionPane.showConfirmDialog(null,"确认删除当前行吗");
+			
 		
 
 				int row = table.getSelectedRow();
@@ -134,7 +138,8 @@ public class DriverPanel extends JPanel {
 					} catch (ParseException e) {
 					
 						e.printStackTrace();
-						JOptionPane.showMessageDialog(null, "日期格式错误，应为yyyy-MM-dd，请检查");
+					
+						WarningManager.warning("日期格式错误，应为yyyy-MM-dd，请检查");
 					}
 					
 					DriverPO po = new DriverPO((String) table.getValueAt(row, 0),
@@ -149,7 +154,8 @@ public class DriverPanel extends JPanel {
 						} catch (RemoteException e) {
 							
 							e.printStackTrace();
-							JOptionPane.showMessageDialog(null, "网络连接出错，请检查");
+					
+							WarningManager.warning("网络连接出错，请检查");
 						}
 					model.removeRow(row);
 				}
@@ -218,7 +224,7 @@ public class DriverPanel extends JPanel {
 								
 								} catch (ParseException e1) {
 									e1.printStackTrace();
-									JOptionPane.showMessageDialog(null, "日期格式错误，应为yyyy-MM-dd，请检查");
+									WarningManager.warning("日期格式错误，应为yyyy-MM-dd，请检查");
 								}
 
 							DriverPO po= new DriverPO((String) table.getValueAt(i, 0),
@@ -231,7 +237,8 @@ public class DriverPanel extends JPanel {
 										driverLogicService.saveDriver(po);
 									} catch (RemoteException e1) {
 										e1.printStackTrace();
-										JOptionPane.showMessageDialog(null, "网络连接出错，请检查");
+									
+										WarningManager.warning("网络连接出错，请检查");
 									}
 						}		
 						
@@ -297,7 +304,8 @@ public class DriverPanel extends JPanel {
 		} catch (RemoteException e1) {
 		
 			e1.printStackTrace();
-			JOptionPane.showMessageDialog(null, "网络连接出错，请检查");
+	
+			WarningManager.warning("网络连接出错，请检查");
 		}
 		for (DriverVO vo : driverList) {
 			model.addRow(new Object[] {vo.getDriverID(),vo.getName(),vo.getSex(),Time.toDaysTime(vo.getBirthday()),vo.getIdentity(),vo.getTel(),vo.getInstitution(),Time.toDaysTime(vo.getBeginLimit()),Time.toDaysTime(vo.getEndLimit())});
@@ -308,11 +316,22 @@ public class DriverPanel extends JPanel {
 		for (int row = 0; row < table.getRowCount();row++) {
 			for(int col=0;col<table.getColumnCount();col++){
 				if(((String)table.getValueAt(row, col)).equals("")){
-					JOptionPane.showMessageDialog(null,"信息不完整，请检查");
+					WarningManager.warning("信息不完整，请检查");
 					return false;
 				}
 			}	
 	}
+		for (int i = 0; i < table.getRowCount(); i++) {
+			
+		if(((String) table.getValueAt(i, 0)).length()!=10||
+					((String) table.getValueAt(i,4)).length()!=18|| ((String) table
+							.getValueAt(i, 5)).length()!=11){
+			WarningManager.warning("输入的信息格式有误，请检查");
+			return false;
+		}
+			
+	}		
+	
 		return true;
 }
 }
