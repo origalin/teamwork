@@ -14,6 +14,7 @@ import com.sun.org.apache.xalan.internal.xsltc.compiler.Template;
 
 import edu.nju.data.database.SQL;
 import edu.nju.dataservice.storagedataservice.StorageDataService;
+import edu.nju.exception.NoSpace;
 import edu.nju.po.InWareHouseDocLineItem;
 import edu.nju.po.InWareHouseDocPO;
 import edu.nju.po.OutRecord;
@@ -178,9 +179,11 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 
 	}
 
-	public static void main(String[] args) throws RemoteException {
-		StorageDataServiceImpl serviceImpl = new StorageDataServiceImpl();
-		ArrayList<OutWareHouseDocPO> list=serviceImpl.getOutWareHouseDoc_unchecked();
+	public static void main(String[] args) throws RemoteException, NoSpace {
+		StorageDataServiceImpl serviceImpl=new StorageDataServiceImpl();
+		serviceImpl.getValidLocation("001000", "航运区");
+//		StorageDataServiceImpl serviceImpl = new StorageDataServiceImpl();
+//		ArrayList<OutWareHouseDocPO> list=serviceImpl.getOutWareHouseDoc_unchecked();
 //		serviceImpl.storageRealease("001000");
 		// serviceImpl.exportToExcel("001000");
 		// RecordPO recordPO=new RecordPO("0025033965", new Date(), "南京市",
@@ -369,7 +372,7 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 	}
 
 	@Override
-	public StorageLocation getValidLocation(String sID, String distriction) throws RemoteException {
+	public StorageLocation getValidLocation(String sID, String distriction) throws RemoteException, NoSpace {
 		int i = -1;
 		String sql = "SELECT * FROM 仓库存储货物 WHERE 仓库ID='" + sID + "'&&区='" + distriction + "'&&(被快递占用='1'||被入库单占用='1');";
 		SQL.databaseQuery(sql);
@@ -380,36 +383,41 @@ public class StorageDataServiceImpl extends UnicastRemoteObject implements Stora
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-
+System.out.println("sID="+sID+";distriction="+distriction);
 		if (i >= 200)
-			JOptionPane.showMessageDialog(null, distriction + " 库存告警，请立即进行库区调整");
+			//JOptionPane.showMessageDialog(null, distriction + " 库存告警，请立即进行库区调整");
+			throw new NoSpace();
+		else{
+			StorageLocation storageLocation = null;
+			String location = null;
+			sql = "SELECT 位置 FROM 仓库存储货物 WHERE 被快递占用=0" + "&&仓库ID='" + sID + "'&&被入库单占用!=1&&区='" + distriction
+					+ "'LIMIT 1;";
+			SQL.databaseQuery(sql);
+			try {
+				if (SQL.rs.next()) {
+					location = SQL.rs.getString("位置");
 
-		System.out.println("sID:" + sID + ";distriction:" + distriction);
-		StorageLocation storageLocation = null;
-		String location = null;
-		sql = "SELECT 位置 FROM 仓库存储货物 WHERE 被快递占用='" + '0' + "'&&仓库ID='" + sID + "'&&被入库单占用!=1&&区='" + distriction
-				+ "'LIMIT 1;";
-		SQL.databaseQuery(sql);
-		try {
-			if (SQL.rs.next()) {
-				location = SQL.rs.getString("位置");
+					storageLocation = new StorageLocation(sID, location);
 
-				storageLocation = new StorageLocation(sID, location);
+				}
 
+				else {
+					System.out.println("没有位置");
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
+			sql = "UPDATE 仓库存储货物 SET 被入库单占用=1 WHERE 仓库ID='" + sID + "' && 位置='" + location + "';";
+			SQL.databaseUpdate(sql);
+			SQL.closeDatabase();
 
-			else {
-				System.out.println("没有位置");
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return storageLocation;
 		}
-		sql = "UPDATE 仓库存储货物 SET 被入库单占用=1 WHERE 仓库ID='" + sID + "' && 位置='" + location + "';";
-		SQL.databaseUpdate(sql);
-		SQL.closeDatabase();
+		
 
-		return storageLocation;
+		
+		
 	}
 
 	/**
