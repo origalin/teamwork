@@ -29,8 +29,17 @@ public class ConcreteFactory implements AbstractFactory {
 	static CollectionDataService collectionDataService = null;
 	static String url="rmi://127.0.0.1:6600/";
 	
-	public ConcreteFactory() {
+	
+	private static ConcreteFactory factory=null;
+	private ConcreteFactory() {
 		super();
+	}
+	
+	public static ConcreteFactory getInstance(){
+		if(factory==null)
+			factory=new ConcreteFactory();
+		return factory;
+		
 	}
 
 	public StorageDataService getStorageImpl() {
