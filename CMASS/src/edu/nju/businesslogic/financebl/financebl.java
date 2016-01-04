@@ -600,7 +600,7 @@ public class financebl implements FinanceLogicService {
 			double bonus = institution.getBonus(staffID);
 			double commision = institution.getPercentage(staffID);
 			double totalMoney;
-			totalMoney = bl.getCourierMoney(staffID);
+			totalMoney = this.getCourierMoney(staffID);
 			return base + bonus + commision * totalMoney;
 		} catch (RemoteException e) {
 			System.out.println("财务数据层查询失败");
