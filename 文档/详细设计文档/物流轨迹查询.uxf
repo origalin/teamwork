@@ -74,14 +74,14 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>150</x>
+      <x>140</x>
       <y>160</y>
-      <w>240</w>
+      <w>260</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-PositionVO historyQuery(int SendDocID)</panel_attributes>
-    <additional_attributes>200.0;20.0;30.0;20.0</additional_attributes>
+PositionVO historyQuery(String SendDocID)</panel_attributes>
+    <additional_attributes>210.0;20.0;40.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>

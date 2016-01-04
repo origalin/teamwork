@@ -91,7 +91,7 @@ bg=red</panel_attributes>
       <w>150</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>TransferDocServicebg
+    <panel_attributes>TransferDoc
 bg=red</panel_attributes>
     <additional_attributes/>
   </element>
@@ -146,44 +146,20 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>270</x>
-      <y>310</y>
-      <w>350</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-
-ArrayList&lt;RecordPO&gt; getStorageItemList(int[] SendDocIDList)</panel_attributes>
-    <additional_attributes>250.0;20.0;90.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>350</x>
+      <x>340</x>
       <y>350</y>
-      <w>190</w>
+      <w>210</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-long getOutWareHouseDocID()</panel_attributes>
-    <additional_attributes>170.0;20.0;10.0;20.0</additional_attributes>
+Strin getCurrOutWareHouseDocID()</panel_attributes>
+    <additional_attributes>180.0;20.0;20.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>350</x>
       <y>170</y>
-      <w>190</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>lt=.&gt;
-</panel_attributes>
-    <additional_attributes>170.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>350</x>
-      <y>330</y>
       <w>190</w>
       <h>40</h>
     </coordinates>
@@ -282,78 +258,6 @@ bg=red</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
   </element>
   <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>520</x>
-      <y>490</y>
-      <w>20</w>
-      <h>140</h>
-    </coordinates>
-    <panel_attributes>
-bg=red</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>470</x>
-      <y>430</y>
-      <w>150</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>OutWareHouseDocPO
-bg=red</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>630</x>
-      <y>500</y>
-      <w>150</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>OutRecord
-bg=red</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>690</x>
-      <y>530</y>
-      <w>20</w>
-      <h>90</h>
-    </coordinates>
-    <panel_attributes>
-bg=red</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>530</x>
-      <y>490</y>
-      <w>120</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-
-CreateMessage()</panel_attributes>
-    <additional_attributes>100.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>320</x>
-      <y>480</y>
-      <w>250</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-
-TransferPO getTransferPO(int TransferID)</panel_attributes>
-    <additional_attributes>200.0;20.0;40.0;20.0</additional_attributes>
-  </element>
-  <element>
     <id>Relation</id>
     <coordinates>
       <x>520</x>
@@ -363,6 +267,18 @@ TransferPO getTransferPO(int TransferID)</panel_attributes>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>350</x>
+      <y>480</y>
+      <w>190</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+&lt;&lt;create&gt;&gt;</panel_attributes>
+    <additional_attributes>170.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -379,6 +295,54 @@ TransferPO getTransferPO(int TransferID)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
+      <x>530</x>
+      <y>490</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+CreateMessage()</panel_attributes>
+    <additional_attributes>100.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>520</x>
+      <y>490</y>
+      <w>20</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>690</x>
+      <y>530</y>
+      <w>20</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>630</x>
+      <y>500</y>
+      <w>150</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>OutWareHouseDocLineItem
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
       <x>350</x>
       <y>520</y>
       <w>190</w>
@@ -387,5 +351,17 @@ TransferPO getTransferPO(int TransferID)</panel_attributes>
     <panel_attributes>lt=.&gt;
 </panel_attributes>
     <additional_attributes>170.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>470</x>
+      <y>430</y>
+      <w>150</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>OutWareHouseDocVO
+bg=red</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>
