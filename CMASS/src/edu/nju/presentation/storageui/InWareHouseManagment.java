@@ -2,35 +2,27 @@ package edu.nju.presentation.storageui;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import java.awt.Insets;
 
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 
-
-import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 
-import edu.nju.businesslogic.storagebl.InWareHouseManagementbl;
 import edu.nju.businesslogicservice.storagelogicservice.InWareHouseManagementService;
-import edu.nju.dataFactory.DataFactory;
 import edu.nju.exception.DatabaseNULLException;
 import edu.nju.presentation.UiFactory;
+import edu.nju.presentation.widget.MyComboBox;
+import edu.nju.presentation.widget.MyScrollPane;
 import edu.nju.presentation.widget.MyTable;
 import edu.nju.presentation.widget.MyTextField;
+import edu.nju.presentation.widget.SmallButton;
 import edu.nju.tools.Time;
 import edu.nju.po.InWareHouseDocLineItem;
 import edu.nju.vo.InWareHouseDocVO;
 
-import javax.swing.UIManager;
-import java.awt.Color;
 import javax.swing.SwingConstants;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
 
 import java.awt.event.MouseAdapter;
@@ -39,8 +31,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
+
 import java.awt.Dimension;
 
 public class InWareHouseManagment extends JPanel {
@@ -49,15 +40,15 @@ public class InWareHouseManagment extends JPanel {
 	InWareHouseManagementService inWare;
 	TableModel model;
 	private MyTextField textField_1;
-	private JScrollPane scrollPane;
-	private JButton btnNewButton;
+	private MyScrollPane scrollPane;
+	private SmallButton btnNewButton;
 	private JPanel panel;
 	private JLabel lblNewLabel;
 	private MyTextField textField;
-	private JButton btnNewButton_1;
+	private SmallButton btnNewButton_1;
 	private String currInstitution;
 	private String currPersonID;
-	private JComboBox comboBox;
+	private MyComboBox comboBox;
 
 	// public static void main(String[] args) {
 	// InWareHouseManagment in = new InWareHouseManagment();
@@ -111,15 +102,24 @@ public class InWareHouseManagment extends JPanel {
 		panel = new JPanel();
 		GridBagConstraints gbc_panel = new GridBagConstraints();
 		gbc_panel.insets = new Insets(0, 0, 5, 5);
-		gbc_panel.fill = GridBagConstraints.BOTH;
 		gbc_panel.gridx = 0;
 		gbc_panel.gridy = 0;
 		add(panel, gbc_panel);
-
-		comboBox = new JComboBox();
-		comboBox.addItem("中转单编号");
-		comboBox.addItem("装车单编号");
-		panel.add(comboBox);
+		GridBagLayout gbl_panel = new GridBagLayout();
+		gbl_panel.columnWidths = new int[]{112, 0};
+		gbl_panel.rowHeights = new int[]{30, 0};
+		gbl_panel.columnWeights = new double[]{0.0, Double.MIN_VALUE};
+		gbl_panel.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+		panel.setLayout(gbl_panel);
+		
+				comboBox = new MyComboBox();
+				comboBox.addItem("中转单编号");
+				comboBox.addItem("装车单编号");
+				GridBagConstraints gbc_comboBox = new GridBagConstraints();
+				gbc_comboBox.anchor = GridBagConstraints.NORTHWEST;
+				gbc_comboBox.gridx = 0;
+				gbc_comboBox.gridy = 0;
+				panel.add(comboBox, gbc_comboBox);
 
 		textField_1 = new MyTextField();
 		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
@@ -147,7 +147,7 @@ public class InWareHouseManagment extends JPanel {
 		add(textField, gbc_textField);
 		textField.setColumns(10);
 
-		scrollPane = new JScrollPane();
+		scrollPane = new MyScrollPane();
 		scrollPane.getViewport().setOpaque(false);
 		scrollPane.setOpaque(false);
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
@@ -158,7 +158,7 @@ public class InWareHouseManagment extends JPanel {
 		gbc_scrollPane.gridy = 1;
 		add(scrollPane, gbc_scrollPane);
 		scrollPane.setViewportView(table);
-		btnNewButton = new JButton("\u786E\u8BA4");
+		btnNewButton = new SmallButton("\u786E\u8BA4");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -228,7 +228,7 @@ public class InWareHouseManagment extends JPanel {
 		gbc_btnNewButton.gridy = 2;
 		add(btnNewButton, gbc_btnNewButton);
 
-		btnNewButton_1 = new JButton("\u4FDD\u5B58");
+		btnNewButton_1 = new SmallButton("\u4FDD\u5B58");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String selectedItem = (String) comboBox.getSelectedItem();

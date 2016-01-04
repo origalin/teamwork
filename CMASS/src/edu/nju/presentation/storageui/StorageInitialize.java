@@ -8,21 +8,17 @@ import javax.swing.JOptionPane;
 import java.awt.GridBagConstraints;
    
 import java.awt.Insets;
-import javax.swing.JButton;
-import javax.swing.border.TitledBorder;
 
 import edu.nju.businesslogicservice.storagelogicservice.StorageInitializeService;
-import edu.nju.po.InWareHouseDocLineItem;
 import edu.nju.po.RecordPO;
 import edu.nju.presentation.UiFactory;
 import edu.nju.presentation.widget.MyTextField;
+import edu.nju.presentation.widget.SmallButton;
 import edu.nju.tools.Time;
 import edu.nju.tools.WarningManager;
 
 import java.awt.event.ActionListener;
-import java.awt.font.TextLayout;
 import java.rmi.RemoteException;
-import java.util.Date;
 import java.awt.event.ActionEvent;
 
 public class StorageInitialize extends JPanel{
@@ -36,10 +32,10 @@ public class StorageInitialize extends JPanel{
 	private MyTextField textRow;
 	private JLabel lblNewLabel_5;
 	private MyTextField textPosition;
-	private JButton btnNewButton;
+	private SmallButton btnNewButton;
 	private JLabel lblNewLabel_6;
 	private MyTextField textInWareDate;
-	private JButton button;
+	private SmallButton button;
 	public StorageInitialize(String staffID){
 		this();
 		this.currPersonID=staffID;
@@ -179,7 +175,7 @@ public class StorageInitialize extends JPanel{
 		add(textPosition, gbc_textPosition);
 		textPosition.setColumns(10);
 		
-		button = new JButton("\u6E05\u96F6");
+		button = new SmallButton("\u6E05\u96F6");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				StorageInitializeService storageInitialize=UiFactory.getStorageInitialize();
@@ -198,7 +194,7 @@ public class StorageInitialize extends JPanel{
 		gbc_button.gridy = 8;
 		add(button, gbc_button);
 		
-		btnNewButton = new JButton("\u65B0\u5EFA\u5E93\u5B58\u8BB0\u5F55");
+		btnNewButton = new SmallButton("\u65B0\u5EFA\u5E93\u5B58\u8BB0\u5F55");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				RecordPO lineItem=new RecordPO(textSendDoc_ID.getText(),Time.stringToDate(textInWareDate.getText()), textDestination.getText(),

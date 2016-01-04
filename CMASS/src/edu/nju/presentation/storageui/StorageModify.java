@@ -5,16 +5,16 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.GridLayout;
-import javax.swing.JLabel;
+
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import javax.swing.border.TitledBorder;
 
 import edu.nju.businesslogicservice.storagelogicservice.StorageModifyService;
 import edu.nju.presentation.UiFactory;
+import edu.nju.presentation.widget.MyComboBox;
+import edu.nju.presentation.widget.MyTextField;
+import edu.nju.presentation.widget.SmallButton;
 
-import javax.swing.JComboBox;
+
 import javax.swing.JFrame;
 
 import java.awt.event.ActionListener;
@@ -24,7 +24,7 @@ import java.awt.event.ActionEvent;
 public class StorageModify extends JPanel{
 	String currStorageID;
 	String currPersonID;
-	private JTextField textField;
+	private MyTextField textField;
 	
 //	public static void main(String[] args) {
 //		StorageModify storageModify=new StorageModify("001000");
@@ -61,7 +61,7 @@ public class StorageModify extends JPanel{
 		gbl_panel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel.setLayout(gbl_panel);
 		
-		JComboBox comboBox = new JComboBox();
+		MyComboBox comboBox = new MyComboBox();
 		comboBox.addItem("航运区");
 		comboBox.addItem("货运区");
 		comboBox.addItem("汽运区");
@@ -72,7 +72,7 @@ public class StorageModify extends JPanel{
 		gbc_comboBox.gridy = 2;
 		panel.add(comboBox, gbc_comboBox);
 		
-		textField = new JTextField();
+		textField = new MyTextField();
 		GridBagConstraints gbc_textField = new GridBagConstraints();
 		gbc_textField.insets = new Insets(0, 0, 5, 5);
 		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
@@ -81,14 +81,14 @@ public class StorageModify extends JPanel{
 		panel.add(textField, gbc_textField);
 		textField.setColumns(10);
 		
-		JButton button = new JButton("\u786E\u8BA4");
+		SmallButton button = new SmallButton("\u786E\u8BA4");
 		GridBagConstraints gbc_button = new GridBagConstraints();
 		gbc_button.insets = new Insets(0, 0, 5, 0);
 		gbc_button.gridx = 5;
 		gbc_button.gridy = 12;
 		panel.add(button, gbc_button);
 		
-		JButton button_1 = new JButton("\u91CA\u653E\u673A\u52A8\u533A\u7A7A\u95F4");
+		SmallButton button_1 = new SmallButton("\u91CA\u653E\u673A\u52A8\u533A\u7A7A\u95F4");
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				StorageModifyService storageModifyService=UiFactory.getStorageModifyService();

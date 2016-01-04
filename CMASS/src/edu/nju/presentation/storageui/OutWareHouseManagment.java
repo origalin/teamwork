@@ -5,7 +5,7 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Scrollbar;
 
-import javax.swing.JScrollPane;
+
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -21,20 +21,23 @@ import edu.nju.businesslogicservice.storagelogicservice.OutWareHouseManagementSe
 import edu.nju.exception.DatabaseNULLException;
 import edu.nju.po.InWareHouseDocLineItem;
 import edu.nju.presentation.UiFactory;
+import edu.nju.presentation.widget.MyComboBox;
+import edu.nju.presentation.widget.MyScrollPane;
 import edu.nju.presentation.widget.MyTable;
 import edu.nju.presentation.widget.MyTextField;
+import edu.nju.presentation.widget.SmallButton;
 import edu.nju.tools.Time;
 import edu.nju.vo.OutWareHouseDocLineItem;
 import edu.nju.vo.OutWareHouseDocVO;
 
 import javax.swing.UIManager;
-import javax.swing.JButton;
+
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import javax.swing.JComboBox;
+
 import javax.swing.JFrame;
 
 import java.awt.event.ActionListener;
@@ -116,7 +119,7 @@ public class OutWareHouseManagment extends JPanel {
 		add(panel, gbc_panel);
 		panel.setLayout(new GridLayout(1, 0, 0, 0));
 
-		JComboBox comboBox = new JComboBox();
+		MyComboBox comboBox = new MyComboBox();
 		panel.add(comboBox);
 		comboBox.addItem("中转单编号");
 		comboBox.addItem("装车单编号");
@@ -130,7 +133,7 @@ public class OutWareHouseManagment extends JPanel {
 		add(textField, gbc_textField);
 		textField.setColumns(10);
 
-		JComboBox comboBox_1 = new JComboBox();
+		MyComboBox comboBox_1 = new MyComboBox();
 		comboBox_1.addItem("航运");
 		comboBox_1.addItem("汽运");
 		comboBox_1.addItem("货运");
@@ -141,10 +144,10 @@ public class OutWareHouseManagment extends JPanel {
 		gbc_comboBox_1.gridy = 0;
 		add(comboBox_1, gbc_comboBox_1);
 
-		JScrollPane scrollPane_1 = new JScrollPane();
+		MyScrollPane scrollPane_1 = new MyScrollPane();
 		scrollPane_1.getViewport().setOpaque(false);
 
-		JButton button = new JButton("\u786E\u8BA4");
+		SmallButton button = new SmallButton("\u786E\u8BA4");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -254,7 +257,7 @@ public class OutWareHouseManagment extends JPanel {
 		// table = new JTable(data,columnNames);
 		scrollPane_1.setViewportView(table);
 
-		JButton btnNewButton = new JButton("\u751F\u6210\u51FA\u5E93\u5355");
+		SmallButton btnNewButton = new SmallButton("\u751F\u6210\u51FA\u5E93\u5355");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				boolean check = true;

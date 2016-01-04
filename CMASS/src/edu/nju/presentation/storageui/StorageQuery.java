@@ -3,33 +3,28 @@ package edu.nju.presentation.storageui;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 
-import org.omg.CORBA.PRIVATE_MEMBER;
+
 
 import edu.nju.businesslogicservice.storagelogicservice.StorageQueryService;
-import edu.nju.dataFactory.DataFactory;
+
 import edu.nju.po.RecordPO;
 import edu.nju.presentation.UiFactory;
 import edu.nju.presentation.export.ExportExcel;
+import edu.nju.presentation.widget.MyScrollPane;
 import edu.nju.presentation.widget.MyTable;
+import edu.nju.presentation.widget.SmallButton;
 import edu.nju.vo.storageItemVO;
 
 import java.awt.GridLayout;
-import java.awt.BorderLayout;
-import java.awt.CardLayout;
-import javax.swing.JScrollPane;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
-import javax.swing.JButton;
+
 import javax.swing.UIManager;
 import java.awt.Color;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
@@ -110,7 +105,7 @@ public class StorageQuery extends JPanel {
 		add(panel, gbc_panel);
 		panel.setLayout(new GridLayout(0, 1, 0, 0));
 
-		JScrollPane scrollPane = new JScrollPane();
+		MyScrollPane scrollPane = new MyScrollPane();
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		panel.add(scrollPane);
 
@@ -133,7 +128,7 @@ public class StorageQuery extends JPanel {
 		add(panel_1, gbc_panel_1);
 		panel_1.setLayout(new GridLayout(0, 1, 0, 0));
 
-		JScrollPane scrollPane_1 = new JScrollPane();
+		MyScrollPane scrollPane_1 = new MyScrollPane();
 		scrollPane_1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		panel_1.add(scrollPane_1);
 
@@ -156,7 +151,7 @@ public class StorageQuery extends JPanel {
 		add(panel_2, gbc_panel_2);
 		panel_2.setLayout(new GridLayout(0, 1, 0, 0));
 
-		JScrollPane scrollPane_2 = new JScrollPane();
+		MyScrollPane scrollPane_2 = new MyScrollPane();
 		scrollPane_2.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		panel_2.add(scrollPane_2);
 
@@ -183,7 +178,7 @@ public class StorageQuery extends JPanel {
 		gbl_panel_3.rowWeights = new double[] { 0.0, 0.0, Double.MIN_VALUE };
 		panel_3.setLayout(gbl_panel_3);
 
-		JButton query = new JButton("\u67E5\u8BE2");
+		SmallButton query = new SmallButton("\u67E5\u8BE2");
 		GridBagConstraints gbc_query = new GridBagConstraints();
 		gbc_query.insets = new Insets(0, 0, 5, 5);
 		gbc_query.gridx = 1;
@@ -203,7 +198,7 @@ public class StorageQuery extends JPanel {
 		// panel_3.add(label, gbc_query);
 		// gbl_panel_3.setConstraints(label, gbc_query);
 
-		JButton export = new JButton("\u5BFC\u51FA");
+		SmallButton export = new SmallButton("\u5BFC\u51FA");
 		export.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
