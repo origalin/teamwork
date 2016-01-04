@@ -4,8 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>304</x>
-      <y>416</y>
+      <x>296</x>
+      <y>424</y>
       <w>120</w>
       <h>40</h>
     </coordinates>
@@ -17,8 +17,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>184</x>
-      <y>352</y>
+      <x>176</x>
+      <y>360</y>
       <w>792</w>
       <h>312</h>
     </coordinates>
@@ -29,8 +29,8 @@ bussinesslogic.Transferbl包</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>504</x>
-      <y>776</y>
+      <x>496</x>
+      <y>880</y>
       <w>216</w>
       <h>48</h>
     </coordinates>
@@ -44,8 +44,8 @@ dataservice.Transferdataservice
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>256</x>
-      <y>232</y>
+      <x>248</x>
+      <y>240</y>
       <w>216</w>
       <h>48</h>
     </coordinates>
@@ -59,8 +59,8 @@ businesslogicservice.TransferDocServive
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>24</x>
-      <y>416</y>
+      <x>16</x>
+      <y>424</y>
       <w>120</w>
       <h>40</h>
     </coordinates>
@@ -72,8 +72,8 @@ businesslogicservice.TransferDocServive
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>360</x>
-      <y>272</y>
+      <x>352</x>
+      <y>280</y>
       <w>24</w>
       <h>160</h>
     </coordinates>
@@ -83,19 +83,19 @@ businesslogicservice.TransferDocServive
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>352</x>
-      <y>448</y>
+      <x>344</x>
+      <y>456</y>
       <w>272</w>
-      <h>344</h>
+      <h>440</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>320.0;410.0;10.0;10.0</additional_attributes>
+    <additional_attributes>320.0;530.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>136</x>
-      <y>424</y>
+      <x>128</x>
+      <y>432</y>
       <w>184</w>
       <h>56</h>
     </coordinates>
@@ -107,8 +107,8 @@ m2=n</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>24</x>
-      <y>360</y>
+      <x>16</x>
+      <y>368</y>
       <w>120</w>
       <h>40</h>
     </coordinates>
@@ -120,8 +120,8 @@ m2=n</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>136</x>
-      <y>376</y>
+      <x>128</x>
+      <y>384</y>
       <w>184</w>
       <h>64</h>
     </coordinates>
@@ -133,8 +133,8 @@ m2=n</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>816</x>
-      <y>296</y>
+      <x>808</x>
+      <y>304</y>
       <w>216</w>
       <h>48</h>
     </coordinates>
@@ -148,8 +148,8 @@ businesslogicservice.YDeliverDocServive
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>144</x>
-      <y>296</y>
+      <x>136</x>
+      <y>304</y>
       <w>216</w>
       <h>48</h>
     </coordinates>
@@ -163,8 +163,8 @@ businesslogicservice.YLoadDocServive
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>368</x>
-      <y>296</y>
+      <x>360</x>
+      <y>304</y>
       <w>216</w>
       <h>48</h>
     </coordinates>
@@ -178,8 +178,8 @@ businesslogicservice.ZLoadDocServive
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>592</x>
-      <y>296</y>
+      <x>584</x>
+      <y>304</y>
       <w>216</w>
       <h>48</h>
     </coordinates>
@@ -193,8 +193,8 @@ businesslogicservice.OverDocServive
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>496</x>
-      <y>232</y>
+      <x>488</x>
+      <y>240</y>
       <w>216</w>
       <h>48</h>
     </coordinates>
@@ -208,8 +208,8 @@ businesslogicservice.ZArrivalDocServive
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>728</x>
-      <y>232</y>
+      <x>720</x>
+      <y>240</y>
       <w>216</w>
       <h>48</h>
     </coordinates>
@@ -223,8 +223,8 @@ businesslogicservice.YArrivalDocServive
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>848</x>
-      <y>568</y>
+      <x>840</x>
+      <y>576</y>
       <w>120</w>
       <h>40</h>
     </coordinates>
@@ -236,8 +236,8 @@ businesslogicservice.YArrivalDocServive
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>200</x>
-      <y>568</y>
+      <x>192</x>
+      <y>576</y>
       <w>120</w>
       <h>40</h>
     </coordinates>
@@ -249,8 +249,8 @@ businesslogicservice.YArrivalDocServive
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>544</x>
-      <y>416</y>
+      <x>536</x>
+      <y>424</y>
       <w>120</w>
       <h>40</h>
     </coordinates>
@@ -262,8 +262,8 @@ businesslogicservice.YArrivalDocServive
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>448</x>
-      <y>568</y>
+      <x>440</x>
+      <y>576</y>
       <w>120</w>
       <h>40</h>
     </coordinates>
@@ -275,8 +275,8 @@ businesslogicservice.YArrivalDocServive
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>648</x>
-      <y>568</y>
+      <x>640</x>
+      <y>576</y>
       <w>120</w>
       <h>40</h>
     </coordinates>
@@ -288,8 +288,8 @@ businesslogicservice.YArrivalDocServive
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>776</x>
-      <y>416</y>
+      <x>768</x>
+      <y>424</y>
       <w>120</w>
       <h>40</h>
     </coordinates>
@@ -301,107 +301,74 @@ businesslogicservice.YArrivalDocServive
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>592</x>
-      <y>448</y>
-      <w>32</w>
-      <h>344</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>20.0;410.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>600</x>
-      <y>448</y>
-      <w>256</w>
-      <h>344</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>10.0;410.0;300.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>600</x>
-      <y>600</y>
-      <w>320</w>
-      <h>192</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>10.0;220.0;380.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>600</x>
-      <y>600</y>
-      <w>120</w>
-      <h>192</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>10.0;220.0;130.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>496</x>
-      <y>600</y>
-      <w>128</w>
-      <h>192</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>140.0;220.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>248</x>
-      <y>600</y>
-      <w>376</w>
-      <h>192</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>450.0;220.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>248</x>
-      <y>336</y>
-      <w>24</w>
-      <h>248</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;290.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>496</x>
-      <y>336</y>
-      <w>24</w>
-      <h>248</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;290.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
       <x>584</x>
-      <y>272</y>
-      <w>24</w>
-      <h>160</h>
+      <y>456</y>
+      <w>32</w>
+      <h>440</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;180.0</additional_attributes>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>20.0;530.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>696</x>
-      <y>336</y>
+      <x>592</x>
+      <y>456</y>
+      <w>256</w>
+      <h>440</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;530.0;300.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>592</x>
+      <y>608</y>
+      <w>320</w>
+      <h>288</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;340.0;380.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>592</x>
+      <y>608</y>
+      <w>120</w>
+      <h>288</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;340.0;130.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>488</x>
+      <y>608</y>
+      <w>128</w>
+      <h>288</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>140.0;340.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>240</x>
+      <y>608</y>
+      <w>376</w>
+      <h>288</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>450.0;340.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>240</x>
+      <y>344</y>
       <w>24</w>
       <h>248</h>
     </coordinates>
@@ -411,8 +378,19 @@ businesslogicservice.YArrivalDocServive
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>808</x>
-      <y>272</y>
+      <x>488</x>
+      <y>344</y>
+      <w>24</w>
+      <h>248</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;290.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>576</x>
+      <y>280</y>
       <w>24</w>
       <h>160</h>
     </coordinates>
@@ -422,8 +400,30 @@ businesslogicservice.YArrivalDocServive
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>912</x>
-      <y>336</y>
+      <x>688</x>
+      <y>344</y>
+      <w>24</w>
+      <h>248</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;290.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>800</x>
+      <y>280</y>
+      <w>24</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;180.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>904</x>
+      <y>344</y>
       <w>24</w>
       <h>248</h>
     </coordinates>
@@ -433,8 +433,8 @@ businesslogicservice.YArrivalDocServive
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1008</x>
-      <y>536</y>
+      <x>1000</x>
+      <y>544</y>
       <w>120</w>
       <h>40</h>
     </coordinates>
@@ -446,8 +446,8 @@ businesslogicservice.YArrivalDocServive
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1008</x>
-      <y>440</y>
+      <x>1000</x>
+      <y>448</y>
       <w>120</w>
       <h>40</h>
     </coordinates>
@@ -459,8 +459,8 @@ businesslogicservice.YArrivalDocServive
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>768</x>
-      <y>696</y>
+      <x>760</x>
+      <y>704</y>
       <w>120</w>
       <h>40</h>
     </coordinates>
@@ -472,8 +472,8 @@ businesslogicservice.YArrivalDocServive
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1008</x>
-      <y>384</y>
+      <x>1000</x>
+      <y>392</y>
       <w>120</w>
       <h>40</h>
     </coordinates>
@@ -485,8 +485,8 @@ businesslogicservice.YArrivalDocServive
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1008</x>
-      <y>592</y>
+      <x>1000</x>
+      <y>600</y>
       <w>120</w>
       <h>40</h>
     </coordinates>
@@ -498,8 +498,8 @@ businesslogicservice.YArrivalDocServive
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>904</x>
-      <y>696</y>
+      <x>896</x>
+      <y>704</y>
       <w>120</w>
       <h>40</h>
     </coordinates>
@@ -511,8 +511,8 @@ businesslogicservice.YArrivalDocServive
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>360</x>
-      <y>752</y>
+      <x>352</x>
+      <y>760</y>
       <w>120</w>
       <h>40</h>
     </coordinates>
@@ -524,8 +524,8 @@ businesslogicservice.YArrivalDocServive
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>744</x>
-      <y>752</y>
+      <x>736</x>
+      <y>760</y>
       <w>120</w>
       <h>40</h>
     </coordinates>
@@ -537,8 +537,8 @@ businesslogicservice.YArrivalDocServive
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>320</x>
-      <y>688</y>
+      <x>312</x>
+      <y>696</y>
       <w>120</w>
       <h>40</h>
     </coordinates>
@@ -550,8 +550,8 @@ businesslogicservice.YArrivalDocServive
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>24</x>
-      <y>544</y>
+      <x>16</x>
+      <y>552</y>
       <w>120</w>
       <h>40</h>
     </coordinates>
@@ -563,8 +563,8 @@ businesslogicservice.YArrivalDocServive
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>472</x>
-      <y>688</y>
+      <x>464</x>
+      <y>696</y>
       <w>120</w>
       <h>40</h>
     </coordinates>
@@ -576,8 +576,8 @@ businesslogicservice.YArrivalDocServive
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>24</x>
-      <y>600</y>
+      <x>16</x>
+      <y>608</y>
       <w>120</w>
       <h>40</h>
     </coordinates>
@@ -589,8 +589,8 @@ businesslogicservice.YArrivalDocServive
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>136</x>
-      <y>552</y>
+      <x>128</x>
+      <y>560</y>
       <w>80</w>
       <h>40</h>
     </coordinates>
@@ -602,8 +602,8 @@ m2=n</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>136</x>
-      <y>600</y>
+      <x>128</x>
+      <y>608</y>
       <w>80</w>
       <h>40</h>
     </coordinates>
@@ -615,8 +615,8 @@ m2=n</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>888</x>
-      <y>400</y>
+      <x>880</x>
+      <y>408</y>
       <w>136</w>
       <h>40</h>
     </coordinates>
@@ -628,8 +628,8 @@ m2=n</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>888</x>
-      <y>448</y>
+      <x>880</x>
+      <y>456</y>
       <w>136</w>
       <h>40</h>
     </coordinates>
@@ -641,8 +641,8 @@ m2=n</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>960</x>
-      <y>552</y>
+      <x>952</x>
+      <y>560</y>
       <w>64</w>
       <h>40</h>
     </coordinates>
@@ -654,8 +654,8 @@ m2=n</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>960</x>
-      <y>600</y>
+      <x>952</x>
+      <y>608</y>
       <w>64</w>
       <h>40</h>
     </coordinates>
@@ -667,8 +667,8 @@ m2=n</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>760</x>
-      <y>600</y>
+      <x>752</x>
+      <y>608</y>
       <w>216</w>
       <h>112</h>
     </coordinates>
@@ -680,8 +680,8 @@ m2=n</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>640</x>
-      <y>600</y>
+      <x>632</x>
+      <y>608</y>
       <w>200</w>
       <h>112</h>
     </coordinates>
@@ -693,8 +693,8 @@ m2=n</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>520</x>
-      <y>600</y>
+      <x>512</x>
+      <y>608</y>
       <w>56</w>
       <h>104</h>
     </coordinates>
@@ -706,8 +706,8 @@ m2=n</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>368</x>
-      <y>600</y>
+      <x>360</x>
+      <y>608</y>
       <w>96</w>
       <h>104</h>
     </coordinates>
@@ -719,8 +719,8 @@ m2=n</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>424</x>
-      <y>448</y>
+      <x>416</x>
+      <y>456</y>
       <w>136</w>
       <h>320</h>
     </coordinates>
@@ -732,8 +732,8 @@ m2=n</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>656</x>
-      <y>448</y>
+      <x>648</x>
+      <y>456</y>
       <w>120</w>
       <h>320</h>
     </coordinates>
@@ -745,8 +745,8 @@ m2=n</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>560</x>
-      <y>448</y>
+      <x>552</x>
+      <y>456</y>
       <w>232</w>
       <h>136</h>
     </coordinates>
@@ -756,8 +756,8 @@ m2=n</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>416</x>
-      <y>424</y>
+      <x>408</x>
+      <y>432</y>
       <w>144</w>
       <h>24</h>
     </coordinates>
@@ -767,8 +767,8 @@ m2=n</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>96</x>
-      <y>744</y>
+      <x>16</x>
+      <y>712</y>
       <w>120</w>
       <h>40</h>
     </coordinates>
@@ -780,45 +780,82 @@ m2=n</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>200</x>
-      <y>600</y>
-      <w>40</w>
-      <h>160</h>
+      <x>960</x>
+      <y>664</y>
+      <w>200</w>
+      <h>88</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>10.0;180.0;30.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>208</x>
-      <y>600</y>
-      <w>256</w>
-      <h>160</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>10.0;180.0;300.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>272</x>
-      <y>448</y>
-      <w>104</w>
-      <h>376</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>10.0;450.0;110.0;10.0</additional_attributes>
+    <additional_attributes>230.0;90.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>192</x>
-      <y>808</y>
+      <x>1104</x>
+      <y>736</y>
       <w>120</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>storageTools
+    <panel_attributes>institution
+--
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>128</x>
+      <y>664</y>
+      <w>64</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;60.0;60.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>96</x>
+      <y>824</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>system
+--
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>200</x>
+      <y>664</y>
+      <w>40</w>
+      <h>176</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;200.0;30.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>264</x>
+      <y>664</y>
+      <w>48</w>
+      <h>176</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>40.0;200.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>256</x>
+      <y>824</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>distance
 --
 --</panel_attributes>
     <additional_attributes/>
