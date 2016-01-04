@@ -17,24 +17,36 @@ import edu.nju.data.StorageDataServiceImpl.StorageLocation;
 import edu.nju.dataFactory.DataFactory;
 import edu.nju.dataservice.storagedataservice.StorageDataService;
 import edu.nju.exception.DatabaseNULLException;
+import edu.nju.exception.NoSpace;
 import edu.nju.po.InWareHouseDocLineItem;
 import edu.nju.po.InWareHouseDocPO;
 import edu.nju.po.OperationPO;
 import edu.nju.po.TransferDocPO;
 import edu.nju.po.YLoadDocPO;
+import edu.nju.tools.WarningManager;
 import edu.nju.vo.InWareHouseDocVO;
 
+/**
+ * @author 健
+ *
+ */
 public class InWareHouseManagementbl implements InWareHouseManagementService {
 
-	
-
+    /* 
+	 * 	 * @see edu.nju.businesslogicservice.storagelogicservice.
+	 * InWareHouseManagementService#getInWareHouseDocVO_Transfer
+	 * (java.lang.String, java.lang.String)
+	 */
 	@Override
-	public InWareHouseDocVO getInWareHouseDocVO_Transfer(String TransferDocID, String currInstitutionID) throws DatabaseNULLException {
+	public final InWareHouseDocVO getInWareHouseDocVO_Transfer
+	(final String TransferDocID, final String currInstitutionID)
+			throws DatabaseNULLException {
 		// 对运输模块有依赖，TransferDocPO getTransferPO(int TransferID)
 		// 根据单号确定特快还是经济
 		// 对数据层依赖：获取该次入库单的编号 获得对仓库的引用
 
-		StorageDataService storageDataService = DataFactory.getStorageImpl();
+		StorageDataService storageDataService
+		= DataFactory.getStorageImpl();
 		TransferDoc transferDoc = null;
 		try {
 			transferDoc = new TransferDoc();
@@ -42,16 +54,18 @@ public class InWareHouseManagementbl implements InWareHouseManagementService {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		
+
 		TransferDocPO transferDocPO = null;
 		try {
-			transferDocPO = transferDoc.geTransferDocPOByID(TransferDocID);
+			transferDocPO 
+			= transferDoc.geTransferDocPOByID(TransferDocID);
 		} catch (RemoteException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		// System.out.println(transferDocPO);
-		// StorageDataService storageDataService = DataFactory.getStorageImpl();
+		// StorageDataService storageDataService
+		//= DataFactory.getStorageImpl();
 		// storageDataService.
 		if (transferDocPO == null) {
 			JOptionPane.showMessageDialog(null, "未找到该中转单");
@@ -60,25 +74,33 @@ public class InWareHouseManagementbl implements InWareHouseManagementService {
 
 		String[] itemsID = transferDocPO.getItemIDs();
 		StorageLocation storageLocation = null;
-		ArrayList<InWareHouseDocLineItem> list = new ArrayList<InWareHouseDocLineItem>();
+		ArrayList<InWareHouseDocLineItem> list 
+		= new ArrayList<InWareHouseDocLineItem>();
 		for (String temp : itemsID) {
 			String district = "";
-			if (temp.charAt(0) == '0')
+			if (temp.charAt(0) == '0') {
 				district = "航运区";
-			else if (temp.charAt(0) == '1')
+			} else if (temp.charAt(0) == '1') {
 				district = "货运区";
-			else
+			} else {
 				district = "汽运区";
+			}
 
 			try {
-				storageLocation = storageDataService.getValidLocation(currInstitutionID, district);
-				System.out.println("currInstitution=" + currInstitutionID + ";district:" + district);
+				storageLocation =
+						storageDataService.getValidLocation(currInstitutionID, district);
+				System.out.println
+				("currInstitution=" + currInstitutionID + ";district:" + district);
 			} catch (RemoteException e) {
 				System.out.println("获取有效位置出错");
 				e.printStackTrace();
+			} catch (NoSpace e) {
+				WarningManager.warning("库存告警，请进行调整");
+				e.printStackTrace();
 			}
 
-			InWareHouseDocLineItem lineItem = new InWareHouseDocLineItem(temp, new Date(), district,
+			InWareHouseDocLineItem lineItem 
+			= new InWareHouseDocLineItem(temp, new Date(), district,
 					storageLocation.getLocation());
 			list.add(lineItem);
 		}
@@ -91,13 +113,20 @@ public class InWareHouseManagementbl implements InWareHouseManagementService {
 			e.printStackTrace();
 		}
 
-		InWareHouseDocVO inWareHouseDocVO = new InWareHouseDocVO(currInWareID, currInstitutionID, list);
+		InWareHouseDocVO inWareHouseDocVO 
+		= new InWareHouseDocVO(currInWareID, currInstitutionID, list);
 
 		return inWareHouseDocVO;
 	}
 
+	/* (non-Javadoc)
+	 * @see edu.nju.businesslogicservice.
+	 * storagelogicservice.InWareHouseManagementService#getInWareHouseDocVO_YloadDoc
+	 * (java.lang.String, java.lang.String)
+	 */
 	@Override
-	public InWareHouseDocVO getInWareHouseDocVO_YloadDoc(String YloadDocID, String currInstitutionID) throws DatabaseNULLException, RemoteException {
+	public final InWareHouseDocVO getInWareHouseDocVO_YloadDoc
+	(final String YloadDocID, final String currInstitutionID) throws DatabaseNULLException, RemoteException {
 		StorageDataService storageDataService = DataFactory.getStorageImpl();
 		YLoadDoc yLoadDoc  = new YLoadDoc();
 
@@ -117,25 +146,32 @@ public class InWareHouseManagementbl implements InWareHouseManagementService {
 		}
 		String[] itemsID = yLoadDocPO.getItemIDs();
 		StorageLocation storageLocation = null;
-		ArrayList<InWareHouseDocLineItem> list = new ArrayList<InWareHouseDocLineItem>();
+		ArrayList<InWareHouseDocLineItem> list 
+		= new ArrayList<InWareHouseDocLineItem>();
 		for (String temp : itemsID) {
 			String district = "";
-			if (temp.charAt(0) == '0')
+			if (temp.charAt(0) == '0') {
 				district = "航运区";
-			else if (temp.charAt(0) == '1')
+			} else if (temp.charAt(0) == '1') {
 				district = "货运区";
-			else
+			} else {
 				district = "汽运区";
+			}
 
 			try {
-				storageLocation = storageDataService.getValidLocation(currInstitutionID, district);
+				storageLocation 
+				= storageDataService.getValidLocation(currInstitutionID, district);
 				// System.out.println("currInstitution="+currInstitutionID+";district:"+district);
 			} catch (RemoteException e) {
 				System.out.println("获取有效位置出错");
 				e.printStackTrace();
+			} catch (NoSpace e) {
+				
+				e.printStackTrace();
 			}
 
-			InWareHouseDocLineItem lineItem = new InWareHouseDocLineItem(temp, new Date(), district,
+			InWareHouseDocLineItem lineItem 
+			= new InWareHouseDocLineItem(temp, new Date(), district,
 					storageLocation.getLocation());
 			list.add(lineItem);
 		}
@@ -148,14 +184,19 @@ public class InWareHouseManagementbl implements InWareHouseManagementService {
 			e.printStackTrace();
 		}
 
-		InWareHouseDocVO inWareHouseDocVO = new InWareHouseDocVO(currInWareID, currInstitutionID, list);
+		InWareHouseDocVO inWareHouseDocVO 
+		= new InWareHouseDocVO(currInWareID, currInstitutionID, list);
 
 		return inWareHouseDocVO;
 
 	}
 
+	/* (non-Javadoc)
+	 * @see edu.nju.businesslogicservice.storagelogicservice.InWareHouseManagementService#updateInWareHouseDoc(edu.nju.vo.InWareHouseDocVO, java.lang.String)
+	 */
 	@Override
-	public void updateInWareHouseDoc(InWareHouseDocVO in,String currPersonID) {
+	public final void updateInWareHouseDoc
+	(final InWareHouseDocVO in,final String currPersonID) {
 		// 对数据层依赖：void updateInWareHouseDoc(InWareHouseDocPO out)
 
 		StorageDataService storageDataService = DataFactory.getStorageImpl();
@@ -176,14 +217,22 @@ public class InWareHouseManagementbl implements InWareHouseManagementService {
 
 	}
 
-	public String getAddressDatail(String ItemID) {
-		// 依赖运输层
+	/**
+	 * @param ItemID
+	 * @return
+	 */
+	public final String getAddressDatail(final String ItemID) {
 		return null;
 	}
-	
-	public void saveInWareHouseDoc(InWareHouseDocPO in) throws RemoteException{
-		StorageDataService storageDataService=DataFactory.getStorageImpl();
-		
+
+	/**
+	 * @param in
+	 * @throws RemoteException
+	 */
+	public final void saveInWareHouseDoc(final InWareHouseDocPO in) 
+			throws RemoteException{
+		StorageDataService storageDataService
+		=DataFactory.getStorageImpl();
 		storageDataService.saveInWareHouseDoc(in);
 	}
 

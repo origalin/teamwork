@@ -3,6 +3,7 @@ package edu.nju.businesslogicservice.storagelogicservice;
 import java.rmi.RemoteException;
 
 import edu.nju.exception.DatabaseNULLException;
+import edu.nju.exception.NoSpace;
 import edu.nju.vo.InWareHouseDocVO;
 
 public interface InWareHouseManagementService {
