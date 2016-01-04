@@ -29,7 +29,7 @@ public class DataFactory {
 	static SystemDataService systemDataService=null;
 	static TransferDataService transferDataService = null;
 	static CollectionDataService collectionDataService = null;
-
+	static String url="rmi://172.28.16.126:6600/";
 	public DataFactory() {
 		// TODO Auto-generated constructor stub
 	}
@@ -38,7 +38,7 @@ public class DataFactory {
 
 		try {
 			if (storageDataService == null)
-				storageDataService = (StorageDataService) Naming.lookup("rmi://127.0.0.1:6600/storageDataService");
+				storageDataService = (StorageDataService) Naming.lookup(url+"storageDataService");
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -51,7 +51,7 @@ public class DataFactory {
 		try {
 			if (logisticsDataService == null)
 				logisticsDataService = (LogisticsDataService) Naming
-						.lookup("rmi://127.0.0.1:6600/LogisticsDataService");
+						.lookup(url+"LogisticsDataService");
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -64,7 +64,7 @@ public class DataFactory {
 		try {
 			if (carDataService == null)
 				carDataService = (CarDataService) Naming
-						.lookup("rmi://127.0.0.1:6600/CarDataService");
+						.lookup(url+"CarDataService");
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -77,7 +77,7 @@ public class DataFactory {
 		try {
 			if (driverDataService == null)
 				driverDataService = (DriverDataService) Naming
-						.lookup("rmi://127.0.0.1:6600/DriverDataService");
+						.lookup(url+"DriverDataService");
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -90,7 +90,7 @@ public class DataFactory {
 		try {
 			if (distanceDataService == null)
 				distanceDataService = (DistanceDataService) Naming
-						.lookup("rmi://127.0.0.1:6600/DistanceDataService");
+						.lookup(url+"DistanceDataService");
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -103,7 +103,7 @@ public class DataFactory {
 		try {
 			if (institutionDataService == null)
 				institutionDataService= (InstitutionDataService) Naming
-						.lookup("rmi://127.0.0.1:6600/InstitutionDataService");
+						.lookup(url+"InstitutionDataService");
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -116,7 +116,7 @@ public class DataFactory {
 		try {
 			if (systemDataService == null)
 				systemDataService = (SystemDataService) Naming
-						.lookup("rmi://127.0.0.1:6600/SystemDataService");
+						.lookup(url+"SystemDataService");
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -129,7 +129,7 @@ public class DataFactory {
 		try {
 			if (transferDataService == null)
 				transferDataService = (TransferDataService) Naming
-						.lookup("rmi://127.0.0.1:6600/transferDataService");
+						.lookup(url+"transferDataService");
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -142,7 +142,7 @@ public class DataFactory {
 		try {
 			if (collectionDataService == null)
 				collectionDataService = (CollectionDataService) Naming
-						.lookup("rmi://127.0.0.1:6600/collectionDataService");
+						.lookup(url+"collectionDataService");
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -153,7 +153,7 @@ public class DataFactory {
 	public  static FinanceDataService getFinanceDataService(){
 		try{
 			if(financeDataService==null){
-				financeDataService=(FinanceDataService)Naming.lookup("rmi://127.0.0.1:6600/FinanceDataService");
+				financeDataService=(FinanceDataService)Naming.lookup(url+"FinanceDataService");
 				System.out.println("连接应该没有问题");
 			}
 		}catch(MalformedURLException|RemoteException|NotBoundException e){
