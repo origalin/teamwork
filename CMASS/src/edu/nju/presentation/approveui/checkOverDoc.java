@@ -1,6 +1,7 @@
 package edu.nju.presentation.approveui;
 import javax.swing.*;
 
+import edu.nju.presentation.widget.MyScrollPane;
 import edu.nju.presentation.widget.MyTable;
 import edu.nju.presentation.widget.MyTextField;
 import edu.nju.vo.OverDocVO;
@@ -27,6 +28,7 @@ public class checkOverDoc extends JPanel{
 		setLayout(gridBagLayout);
 		
 		JPanel panel = new JPanel();
+		panel.setOpaque(false);
 		GridBagConstraints gbc_panel = new GridBagConstraints();
 		gbc_panel.gridwidth = 5;
 		gbc_panel.insets = new Insets(0, 0, 5, 0);
@@ -48,6 +50,7 @@ public class checkOverDoc extends JPanel{
 		label_4.setFont(new Font("ºÚÌå", Font.BOLD, 15));
 		
 		JPanel panel_1 = new JPanel();
+		panel_1.setOpaque(false);
 		FlowLayout flowLayout_1 = (FlowLayout) panel_1.getLayout();
 		flowLayout_1.setAlignment(FlowLayout.LEFT);
 		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
@@ -64,6 +67,7 @@ public class checkOverDoc extends JPanel{
 		OverDocID.setColumns(20);
 		
 		JPanel panel_2 = new JPanel();
+		panel_2.setOpaque(false);
 		FlowLayout flowLayout = (FlowLayout) panel_2.getLayout();
 		flowLayout.setAlignment(FlowLayout.LEFT);
 		GridBagConstraints gbc_panel_2 = new GridBagConstraints();
@@ -92,6 +96,7 @@ public class checkOverDoc extends JPanel{
 		label_2.setFont(new Font("ºÚÌå", Font.BOLD, 15));
 		
 		JPanel panel_3 = new JPanel();
+		panel_3.setOpaque(false);
 		FlowLayout flowLayout_2 = (FlowLayout) panel_3.getLayout();
 		flowLayout_2.setAlignment(FlowLayout.LEFT);
 		GridBagConstraints gbc_panel_3 = new GridBagConstraints();
@@ -106,7 +111,7 @@ public class checkOverDoc extends JPanel{
 		courier.setEditable(false);
 		courier.setColumns(10);
 		
-		JScrollPane scrollPane = new JScrollPane();
+		MyScrollPane scrollPane = new MyScrollPane();
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.gridwidth = 4;
 		gbc_scrollPane.insets = new Insets(0, 0, 0, 5);

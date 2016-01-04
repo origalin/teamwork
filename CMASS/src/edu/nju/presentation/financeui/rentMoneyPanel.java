@@ -3,9 +3,11 @@ package edu.nju.presentation.financeui;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.JScrollPane;
+
+
 
 import edu.nju.po.InstitutionPO;
+import edu.nju.presentation.widget.MyScrollPane;
 import edu.nju.presentation.widget.MyTable;
 import edu.nju.vo.AccountVO;
 
@@ -17,7 +19,7 @@ import java.util.ArrayList;
 
 public class rentMoneyPanel extends JPanel{
 	private MyTable table;
-	private JScrollPane scrollPane;
+	private MyScrollPane scrollPane;
 	public rentMoneyPanel() {
 		setOpaque(false);
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -27,7 +29,7 @@ public class rentMoneyPanel extends JPanel{
 		gridBagLayout.rowWeights = new double[]{1.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
-		scrollPane = new JScrollPane();
+		scrollPane = new MyScrollPane();
 		scrollPane.setOpaque(false);
 		scrollPane.getViewport().setOpaque(false);
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
@@ -97,10 +99,10 @@ public class rentMoneyPanel extends JPanel{
 	public void setTable(MyTable table) {
 		this.table = table;
 	}
-	public JScrollPane getScrollPane() {
+	public MyScrollPane getScrollPane() {
 		return scrollPane;
 	}
-	public void setScrollPane(JScrollPane scrollPane) {
+	public void setScrollPane(MyScrollPane scrollPane) {
 		this.scrollPane = scrollPane;
 	}
 	public void chooseAll(){

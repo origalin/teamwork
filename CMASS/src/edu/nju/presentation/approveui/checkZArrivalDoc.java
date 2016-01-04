@@ -8,6 +8,7 @@ import java.awt.Font;
 
 import javax.swing.table.DefaultTableModel;
 
+import edu.nju.presentation.widget.MyScrollPane;
 import edu.nju.presentation.widget.MyTable;
 import edu.nju.presentation.widget.MyTextField;
 import edu.nju.vo.ZArrivalDocVO;
@@ -20,7 +21,7 @@ public class checkZArrivalDoc extends JPanel{
 	private MyTextField transferID;
 	private JLabel label_3;
 	private MyTable table;
-	private JScrollPane scrollPane;
+	private MyScrollPane scrollPane;
 	private JLabel label_4;
 	private MyTextField ZArrivalID;
 	private JPanel panel;
@@ -37,6 +38,7 @@ public class checkZArrivalDoc extends JPanel{
 		setLayout(gridBagLayout);
 		
 		panel_5 = new JPanel();
+		panel_5.setOpaque(false);
 		GridBagConstraints gbc_panel_5 = new GridBagConstraints();
 		gbc_panel_5.gridwidth = 6;
 		gbc_panel_5.insets = new Insets(0, 0, 5, 0);
@@ -58,6 +60,7 @@ public class checkZArrivalDoc extends JPanel{
 		add(label_4, gbc_label_4);
 		
 		panel_2 = new JPanel();
+		panel_2.setOpaque(false);
 		FlowLayout flowLayout = (FlowLayout) panel_2.getLayout();
 		flowLayout.setAlignment(FlowLayout.LEFT);
 		GridBagConstraints gbc_panel_2 = new GridBagConstraints();
@@ -82,6 +85,7 @@ public class checkZArrivalDoc extends JPanel{
 		add(label_2, gbc_label_2);
 		
 		panel = new JPanel();
+		panel.setOpaque(false);
 		FlowLayout flowLayout_2 = (FlowLayout) panel.getLayout();
 		flowLayout_2.setAlignment(FlowLayout.LEFT);
 		GridBagConstraints gbc_panel = new GridBagConstraints();
@@ -106,6 +110,7 @@ public class checkZArrivalDoc extends JPanel{
 		add(label, gbc_label);
 		
 		panel_1 = new JPanel();
+		panel_1.setOpaque(false);
 		FlowLayout flowLayout_1 = (FlowLayout) panel_1.getLayout();
 		flowLayout_1.setAlignment(FlowLayout.LEFT);
 		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
@@ -130,6 +135,7 @@ public class checkZArrivalDoc extends JPanel{
 		add(label_1, gbc_label_1);
 		
 		panel_4 = new JPanel();
+		panel_4.setOpaque(false);
 		FlowLayout flowLayout_4 = (FlowLayout) panel_4.getLayout();
 		flowLayout_4.setAlignment(FlowLayout.LEFT);
 		GridBagConstraints gbc_panel_4 = new GridBagConstraints();
@@ -144,7 +150,7 @@ public class checkZArrivalDoc extends JPanel{
 		startPlace.setEditable(false);
 		startPlace.setColumns(10);
 		
-		scrollPane = new JScrollPane();
+		scrollPane = new MyScrollPane();
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.gridwidth = 4;

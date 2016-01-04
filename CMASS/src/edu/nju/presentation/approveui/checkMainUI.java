@@ -10,6 +10,8 @@ import javax.swing.table.TableModel;
 
 
 
+
+
 import edu.nju.businesslogic.approvebl.approvebl;
 import edu.nju.businesslogic.infobl.Institution;
 import edu.nju.businesslogic.systembl.SystemBl;
@@ -28,6 +30,7 @@ import edu.nju.po.YLoadDocPO;
 import edu.nju.po.ZArrivalDocPO;
 import edu.nju.po.ZLoadDocPO;
 import edu.nju.presentation.mainui.CheckDialog;
+import edu.nju.tools.WarningManager;
 import edu.nju.vo.GatheringDocVO;
 import edu.nju.vo.InWareHouseDocVO;
 import edu.nju.vo.OutWareHouseDocVO;
@@ -45,6 +48,7 @@ import edu.nju.vo.ZArrivalDocVO;
 import edu.nju.vo.ZLoadDocVO;
 import edu.nju.presentation.mainui.*;
 import edu.nju.presentation.widget.MyComboBox;
+import edu.nju.presentation.widget.MyScrollPane;
 import edu.nju.presentation.widget.MyTable;
 import edu.nju.presentation.widget.MyTextField;
 import edu.nju.presentation.widget.SmallButton;
@@ -78,7 +82,7 @@ public class checkMainUI extends JPanel{
 	private SystemBl systembl;
 	private String staffID;
 	private MyTable table;
-	private JScrollPane scrollPane;
+	private MyScrollPane scrollPane;
 	private MyTextField textField;
 	/*
 	public static void main(String args[]){
@@ -467,7 +471,7 @@ public class checkMainUI extends JPanel{
 		textField.setColumns(10);
 		
 		
-		scrollPane = new JScrollPane();
+		scrollPane = new MyScrollPane();
 		scrollPane.setViewportView(table);
 		scrollPane.setOpaque(false);
 		scrollPane.getViewport().setOpaque(false);
@@ -817,7 +821,7 @@ public class checkMainUI extends JPanel{
 				return Doc;
 			}
 		}
-		JOptionPane.showMessageDialog(null, "您输入的单号不存在", "错误",JOptionPane.PLAIN_MESSAGE); 
+		WarningManager.warning("您输入的单号不存在"); 
 		textField.setText("");
 		return null;
 	}

@@ -7,12 +7,12 @@ import java.awt.Insets;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.table.DefaultTableModel;
 
+import edu.nju.presentation.widget.MyScrollPane;
 import edu.nju.presentation.widget.MyTable;
 import edu.nju.presentation.widget.MyTextField;
 import edu.nju.vo.TransferDocVO;
@@ -43,6 +43,7 @@ public class CheckTransferDoc_Car extends JPanel{
 		setLayout(gridBagLayout);
 		
 		JPanel panel_11 = new JPanel();
+		panel_11.setOpaque(false);
 		GridBagConstraints gbc_panel_11 = new GridBagConstraints();
 		gbc_panel_11.fill = GridBagConstraints.BOTH;
 		gbc_panel_11.gridx = 0;
@@ -57,6 +58,7 @@ public class CheckTransferDoc_Car extends JPanel{
 		panel_11.setLayout(gbl_panel_11);
 				
 				JPanel panel = new JPanel();
+				panel.setOpaque(false);
 				GridBagConstraints gbc_panel = new GridBagConstraints();
 				gbc_panel.gridwidth = 4;
 				gbc_panel.fill = GridBagConstraints.BOTH;
@@ -80,6 +82,7 @@ public class CheckTransferDoc_Car extends JPanel{
 				label_3.setFont(new Font("黑体", Font.BOLD, 15));
 				
 				JPanel panel_1 = new JPanel();
+				panel_1.setOpaque(false);
 				GridBagConstraints gbc_panel_1 = new GridBagConstraints();
 				gbc_panel_1.anchor = GridBagConstraints.WEST;
 				gbc_panel_1.insets = new Insets(0, 0, 5, 5);
@@ -103,6 +106,7 @@ public class CheckTransferDoc_Car extends JPanel{
 				label_4.setFont(new Font("黑体", Font.BOLD, 15));
 				
 				JPanel panel_2 = new JPanel();
+				panel_2.setOpaque(false);
 				GridBagConstraints gbc_panel_2 = new GridBagConstraints();
 				gbc_panel_2.anchor = GridBagConstraints.WEST;
 				gbc_panel_2.insets = new Insets(0, 0, 5, 0);
@@ -126,6 +130,7 @@ public class CheckTransferDoc_Car extends JPanel{
 		
 				
 				JPanel panel_6 = new JPanel();
+				panel_6.setOpaque(false);
 				GridBagConstraints gbc_panel_6 = new GridBagConstraints();
 				gbc_panel_6.fill = GridBagConstraints.BOTH;
 				gbc_panel_6.insets = new Insets(0, 0, 5, 5);
@@ -159,6 +164,7 @@ public class CheckTransferDoc_Car extends JPanel{
 		label_6.setFont(new Font("黑体", Font.BOLD, 15));
 		
 		JPanel panel_4 = new JPanel();
+		panel_4.setOpaque(false);
 		GridBagConstraints gbc_panel_4 = new GridBagConstraints();
 		gbc_panel_4.anchor = GridBagConstraints.WEST;
 		gbc_panel_4.insets = new Insets(0, 0, 5, 0);
@@ -182,6 +188,7 @@ public class CheckTransferDoc_Car extends JPanel{
 		panel_11.add(label_11, gbc_label_11);
 		
 		JPanel panel_8 = new JPanel();
+		panel_8.setOpaque(false);
 		GridBagConstraints gbc_panel_8 = new GridBagConstraints();
 		gbc_panel_8.fill = GridBagConstraints.BOTH;
 		gbc_panel_8.insets = new Insets(0, 0, 5, 5);
@@ -215,6 +222,7 @@ public class CheckTransferDoc_Car extends JPanel{
 		label_5.setFont(new Font("黑体", Font.BOLD, 15));
 		
 		JPanel panel_3 = new JPanel();
+		panel_3.setOpaque(false);
 		GridBagConstraints gbc_panel_3 = new GridBagConstraints();
 		gbc_panel_3.anchor = GridBagConstraints.WEST;
 		gbc_panel_3.insets = new Insets(0, 0, 5, 0);
@@ -228,7 +236,7 @@ public class CheckTransferDoc_Car extends JPanel{
 		panel_3.add(Money);
 		Money.setColumns(10);
 		
-		JScrollPane scrollPane = new JScrollPane();
+		MyScrollPane scrollPane = new MyScrollPane();
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.gridwidth = 4;
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
@@ -239,6 +247,7 @@ public class CheckTransferDoc_Car extends JPanel{
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		
 		JPanel panel_13 = new JPanel();
+		panel_13.setOpaque(false);
 		scrollPane.setColumnHeaderView(panel_13);
 		
 		JLabel label_1 = new JLabel("\u8FD0\u5355\u53F7");
@@ -246,6 +255,7 @@ public class CheckTransferDoc_Car extends JPanel{
 		panel_13.add(label_1);
 		
 		JPanel panel_14 = new JPanel();
+		panel_14.setOpaque(false);
 		scrollPane.setViewportView(panel_14);
 		panel_14.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		

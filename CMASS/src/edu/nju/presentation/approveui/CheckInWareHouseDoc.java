@@ -6,9 +6,9 @@ import java.awt.GridLayout;
 import java.awt.Insets;
 
 
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import javax.swing.SwingConstants;
 
 import edu.nju.po.InWareHouseDocLineItem;
+import edu.nju.presentation.widget.MyScrollPane;
 import edu.nju.presentation.widget.MyTable;
 import edu.nju.presentation.widget.MyTextField;
 import edu.nju.vo.InWareHouseDocVO;
@@ -27,7 +28,7 @@ import edu.nju.vo.InWareHouseDocVO;
 public class CheckInWareHouseDoc extends JPanel{
 	private MyTextField InWareHouseDocID;
 	private MyTable table;
-	private JScrollPane scrollPane;
+	private MyScrollPane scrollPane;
 	private String[] columnNames={"快递编号","入库日期","目的地","区号","排号","架号","位号"};
 	public CheckInWareHouseDoc(InWareHouseDocVO vo) {
 		
@@ -57,7 +58,7 @@ public class CheckInWareHouseDoc extends JPanel{
 		add(InWareHouseDocID, gbc_InWareHouseDocID);
 		InWareHouseDocID.setColumns(10);
 		
-		scrollPane = new JScrollPane();
+		scrollPane = new MyScrollPane();
 		scrollPane.setOpaque(false);
 		scrollPane.getViewport().setOpaque(false);
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();

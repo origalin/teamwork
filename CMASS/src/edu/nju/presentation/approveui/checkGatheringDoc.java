@@ -13,6 +13,7 @@ import java.util.Date;
 
 import javax.swing.table.DefaultTableModel;
 
+import edu.nju.presentation.widget.MyScrollPane;
 import edu.nju.presentation.widget.MyTable;
 import edu.nju.presentation.widget.MyTextField;
 import edu.nju.vo.GatheringDocVO;
@@ -23,7 +24,7 @@ public class checkGatheringDoc extends JPanel{
 	private JTable table;
 	private MyTextField GatheringDocDate;
 	private MyTextField account;
-	private JScrollPane scrollPane;
+	private MyScrollPane scrollPane;
 	/*
 	public static void main(String args[]){
 		JFrame frame=new JFrame();
@@ -144,7 +145,7 @@ public class checkGatheringDoc extends JPanel{
 		add(account, gbc_account);
 		account.setColumns(10);
 		
-		scrollPane = new JScrollPane();
+		scrollPane = new MyScrollPane();
 		scrollPane.setOpaque(false);
 		scrollPane.getViewport().setOpaque(false);
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -239,10 +240,10 @@ public class checkGatheringDoc extends JPanel{
 	public void setTextField_1(MyTextField textField_1) {
 		this.account = textField_1;
 	}
-	public JScrollPane getScrollPane() {
+	public MyScrollPane getScrollPane() {
 		return scrollPane;
 	}
-	public void setScrollPane(JScrollPane scrollPane) {
+	public void setScrollPane(MyScrollPane scrollPane) {
 		this.scrollPane = scrollPane;
 	}
 

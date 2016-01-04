@@ -9,12 +9,14 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 
-import javax.swing.JScrollPane;
+
+
 
 import edu.nju.po.InstitutionPO;
 import edu.nju.po.TransferDocPO;
 import edu.nju.po.YLoadDocPO;
 import edu.nju.po.ZLoadDocPO;
+import edu.nju.presentation.widget.MyScrollPane;
 import edu.nju.presentation.widget.MyTable;
 
 import java.awt.FlowLayout;
@@ -27,7 +29,7 @@ public class freightMoneyPanel extends JPanel{
 	 */
 	private static final long serialVersionUID = 1L;
 	private MyTable table;
-	JScrollPane scrollPane;
+	MyScrollPane scrollPane;
 	public freightMoneyPanel() {
 		setOpaque(false);
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -37,7 +39,7 @@ public class freightMoneyPanel extends JPanel{
 		gridBagLayout.rowWeights = new double[]{1.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
-		scrollPane = new JScrollPane();
+		scrollPane = new MyScrollPane();
 		scrollPane.setOpaque(false);
 		scrollPane.getViewport().setOpaque(false);
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
@@ -117,10 +119,10 @@ public class freightMoneyPanel extends JPanel{
 	public void setTable(MyTable table) {
 		this.table = table;
 	}
-	public JScrollPane getScrollPane() {
+	public MyScrollPane getScrollPane() {
 		return scrollPane;
 	}
-	public void setScrollPane(JScrollPane scrollPane) {
+	public void setScrollPane(MyScrollPane scrollPane) {
 		this.scrollPane = scrollPane;
 	}
 	public void chooseAll(){

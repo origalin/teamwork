@@ -23,6 +23,7 @@ import edu.nju.presentation.mainui.CheckDialog;
 import edu.nju.presentation.widget.MyComboBox;
 import edu.nju.presentation.widget.MyTextField;
 import edu.nju.presentation.widget.SmallButton;
+import edu.nju.tools.WarningManager;
 import edu.nju.vo.AccountVO;
 import edu.nju.vo.GatheringDocVO;
 public class createGatheringDocPO extends JPanel{
@@ -149,10 +150,10 @@ public class createGatheringDocPO extends JPanel{
 		            	}
 		            });
 					}else{
-						JOptionPane.showMessageDialog(null, "该快递员还没有进行新的派件", "错误",JOptionPane.PLAIN_MESSAGE);
+						WarningManager.warning("该快递员还没有进行新的派件");
 					}
 					}else{
-					    JOptionPane.showMessageDialog(null, "未输入快递员编号", "错误",JOptionPane.PLAIN_MESSAGE);  
+					    WarningManager.warning("未输入快递员编号");  
 					}
 		            
 					/*

@@ -12,9 +12,11 @@ import edu.nju.businesslogic.infobl.Institution;
 import edu.nju.businesslogic.systembl.SystemBl;
 import edu.nju.po.OperationPO;
 import edu.nju.presentation.approveui.checkMainUI;
+import edu.nju.presentation.widget.MyScrollPane;
 import edu.nju.presentation.widget.MyTable;
 import edu.nju.presentation.widget.MyTextField;
 import edu.nju.presentation.widget.SmallButton;
+import edu.nju.tools.WarningManager;
 import edu.nju.vo.AccountVO;
 
 import java.awt.Font;
@@ -116,7 +118,7 @@ public class accountManagement extends JPanel{
 						e1.printStackTrace();
 					}
 					}else{
-					    JOptionPane.showMessageDialog(null, "请输入新加账户名", "错误",JOptionPane.PLAIN_MESSAGE);  
+					    WarningManager.warning("请输入新加账户名");  
 					}
 					
 					/*
@@ -137,7 +139,7 @@ public class accountManagement extends JPanel{
 					if(lineNumber!=-1){
 						table.setRowSelectionInterval(lineNumber,lineNumber);
 					}else{
-						JOptionPane.showMessageDialog(thisPanel,"查询账户不存在","错误",JOptionPane.ERROR_MESSAGE);
+						WarningManager.warning("查询账户不存在");
 					}
 					textField.setText("");
 				}
@@ -176,10 +178,10 @@ public class accountManagement extends JPanel{
 								e1.printStackTrace();
 							}
 						}else{
-							JOptionPane.showMessageDialog(thisPanel,"尚未输入新账户名称","错误",JOptionPane.ERROR_MESSAGE);
+							WarningManager.warning("尚未输入新账户名称");
 						}
 					}else{
-						JOptionPane.showMessageDialog(thisPanel,"尚未选择账户","错误",JOptionPane.ERROR_MESSAGE);
+						WarningManager.warning("尚未输入新账户名称");
 					}
 				}
 			}
@@ -203,7 +205,7 @@ public class accountManagement extends JPanel{
 							e1.printStackTrace();
 						}
 	                }else{
-	                	JOptionPane.showMessageDialog(thisPanel,"尚未选择账户","错误",JOptionPane.ERROR_MESSAGE);
+	                	WarningManager.warning("尚未输入新账户名称");
 	                }
 				}
 			}
@@ -221,7 +223,7 @@ public class accountManagement extends JPanel{
 		gbc_button_2.gridy = 4;
 		add(button_2, gbc_button_2);
 		
-		JScrollPane scrollPane = new JScrollPane();
+		MyScrollPane scrollPane = new MyScrollPane();
 		scrollPane.setViewportView(table);
 		scrollPane.setOpaque(false);
 		scrollPane.getViewport().setOpaque(false);

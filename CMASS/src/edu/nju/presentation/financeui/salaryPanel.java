@@ -8,16 +8,17 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.JScrollPane;
+
 import edu.nju.businesslogic.financebl.financebl;
 import edu.nju.po.InstitutionPO;
 import edu.nju.po.StaffPO;
+import edu.nju.presentation.widget.MyScrollPane;
 import edu.nju.presentation.widget.MyTable;
 
 public class salaryPanel extends JPanel{
 	financebl bl;
 	private MyTable table;
-	private JScrollPane scrollPane;
+	private MyScrollPane scrollPane;
 	public salaryPanel() {
 		setOpaque(false);
 		try {
@@ -33,7 +34,7 @@ public class salaryPanel extends JPanel{
 		gridBagLayout.rowWeights = new double[]{1.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
-		scrollPane = new JScrollPane();
+		scrollPane = new MyScrollPane();
 		scrollPane.setOpaque(false);
 		scrollPane.getViewport().setOpaque(false);
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
@@ -108,10 +109,10 @@ public class salaryPanel extends JPanel{
 	public void setTable(MyTable table) {
 		this.table = table;
 	}
-	public JScrollPane getScrollPane() {
+	public MyScrollPane getScrollPane() {
 		return scrollPane;
 	}
-	public void setScrollPane(JScrollPane scrollPane) {
+	public void setScrollPane(MyScrollPane scrollPane) {
 		this.scrollPane = scrollPane;
 	}
 	public void chooseAll(){

@@ -15,6 +15,7 @@ import edu.nju.presentation.approveui.checkGatheringDoc;
 import edu.nju.presentation.approveui.checkPayDoc;
 import edu.nju.presentation.export.ExportExcel;
 import edu.nju.presentation.mainui.CheckDialog;
+import edu.nju.presentation.widget.MyScrollPane;
 import edu.nju.presentation.widget.MyTextField;
 import edu.nju.presentation.widget.SmallButton;
 import edu.nju.vo.GatheringDocVO;
@@ -54,8 +55,8 @@ public class checkManageStateDoc extends JPanel{
 	private MyTextField textField_1;
 	private JTable PayDocTable;
 	private JTable GatheringDocTable;
-	private JScrollPane scrollPane;
-	private JScrollPane scrollPane_1;
+	private MyScrollPane scrollPane;
+	private MyScrollPane scrollPane_1;
 	private SmallButton button;
 	public checkManageStateDoc(String staffID) {
 		setOpaque(false);
@@ -172,7 +173,7 @@ public class checkManageStateDoc extends JPanel{
 		gbc_checkButton.gridy = 2;
 		add(checkButton, gbc_checkButton);
 		
-		scrollPane = new JScrollPane();
+		scrollPane = new MyScrollPane();
 		scrollPane.setOpaque(false);
 		scrollPane.getViewport().setOpaque(false);
 		
@@ -273,7 +274,7 @@ public class checkManageStateDoc extends JPanel{
 			}
 		));
 		
-		scrollPane_1 = new JScrollPane();
+		scrollPane_1 = new MyScrollPane();
 		scrollPane_1.setOpaque(false);
 		scrollPane_1.getViewport().setOpaque(false);
 		GridBagConstraints gbc_scrollPane_1 = new GridBagConstraints();

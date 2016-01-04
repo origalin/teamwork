@@ -8,6 +8,7 @@ import java.awt.Font;
 
 import javax.swing.table.DefaultTableModel;
 
+import edu.nju.presentation.widget.MyScrollPane;
 import edu.nju.presentation.widget.MyTable;
 import edu.nju.presentation.widget.MyTextField;
 import edu.nju.vo.YDeliverDocVO;
@@ -23,7 +24,7 @@ public class checkYDeliverDoc extends JPanel{
 	private JPanel panel_1;
 	private JPanel panel_2;
 	private JPanel panel_3;
-	private JScrollPane scrollPane;
+	private MyScrollPane scrollPane;
 	private MyTable table;
 	public checkYDeliverDoc(YDeliverDocVO vo) {
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -34,6 +35,7 @@ public class checkYDeliverDoc extends JPanel{
 		setLayout(gridBagLayout);
 		
 		panel = new JPanel();
+		panel.setOpaque(false);
 		GridBagConstraints gbc_panel = new GridBagConstraints();
 		gbc_panel.gridwidth = 6;
 		gbc_panel.insets = new Insets(0, 0, 5, 0);
@@ -56,6 +58,7 @@ public class checkYDeliverDoc extends JPanel{
 		add(label_2, gbc_label_2);
 		
 		panel_1 = new JPanel();
+		panel_1.setOpaque(false);
 		FlowLayout flowLayout = (FlowLayout) panel_1.getLayout();
 		flowLayout.setAlignment(FlowLayout.LEFT);
 		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
@@ -79,6 +82,7 @@ public class checkYDeliverDoc extends JPanel{
 		add(label, gbc_label);
 		
 		panel_2 = new JPanel();
+		panel_2.setOpaque(false);
 		FlowLayout flowLayout_2 = (FlowLayout) panel_2.getLayout();
 		flowLayout_2.setAlignment(FlowLayout.LEFT);
 		GridBagConstraints gbc_panel_2 = new GridBagConstraints();
@@ -103,6 +107,7 @@ public class checkYDeliverDoc extends JPanel{
 		add(lblNewLabel, gbc_lblNewLabel);
 		
 		panel_3 = new JPanel();
+		panel_3.setOpaque(false);
 		FlowLayout flowLayout_1 = (FlowLayout) panel_3.getLayout();
 		flowLayout_1.setAlignment(FlowLayout.LEFT);
 		GridBagConstraints gbc_panel_3 = new GridBagConstraints();
@@ -117,7 +122,7 @@ public class checkYDeliverDoc extends JPanel{
 		date.setEditable(false);
 		date.setColumns(15);
 		
-		scrollPane = new JScrollPane();
+		scrollPane = new MyScrollPane();
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.gridwidth = 4;
 		gbc_scrollPane.insets = new Insets(0, 0, 0, 5);

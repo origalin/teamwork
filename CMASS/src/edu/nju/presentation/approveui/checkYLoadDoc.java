@@ -7,6 +7,7 @@ import java.awt.Insets;
 
 import javax.swing.table.DefaultTableModel;
 
+import edu.nju.presentation.widget.MyScrollPane;
 import edu.nju.presentation.widget.MyTable;
 import edu.nju.presentation.widget.MyTextField;
 import edu.nju.vo.YLoadDocVO;
@@ -33,7 +34,7 @@ public class checkYLoadDoc extends JPanel{
 	private JPanel panel_7;
 	private MyTextField YLoadID;
 	private JPanel panel_8;
-	private JScrollPane scrollPane;
+	private MyScrollPane scrollPane;
 	private MyTable table;
 	public checkYLoadDoc(YLoadDocVO vo) {
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -44,6 +45,7 @@ public class checkYLoadDoc extends JPanel{
 		setLayout(gridBagLayout);
 		
 		panel = new JPanel();
+		panel.setOpaque(false);
 		GridBagConstraints gbc_panel = new GridBagConstraints();
 		gbc_panel.gridwidth = 4;
 		gbc_panel.insets = new Insets(0, 0, 5, 5);
@@ -66,6 +68,7 @@ public class checkYLoadDoc extends JPanel{
 		add(label_7, gbc_label_7);
 		
 		panel_7 = new JPanel();
+		panel_7.setOpaque(false);
 		FlowLayout flowLayout = (FlowLayout) panel_7.getLayout();
 		flowLayout.setAlignment(FlowLayout.LEFT);
 		GridBagConstraints gbc_panel_7 = new GridBagConstraints();
@@ -90,6 +93,7 @@ public class checkYLoadDoc extends JPanel{
 		add(label_4, gbc_label_4);
 		
 		panel_8 = new JPanel();
+		panel_8.setOpaque(false);
 		FlowLayout flowLayout_4 = (FlowLayout) panel_8.getLayout();
 		flowLayout_4.setAlignment(FlowLayout.LEFT);
 		GridBagConstraints gbc_panel_8 = new GridBagConstraints();
@@ -114,6 +118,7 @@ public class checkYLoadDoc extends JPanel{
 		add(lblNewLabel, gbc_lblNewLabel);
 		
 		panel_1 = new JPanel();
+		panel_1.setOpaque(false);
 		FlowLayout flowLayout_1 = (FlowLayout) panel_1.getLayout();
 		flowLayout_1.setAlignment(FlowLayout.LEFT);
 		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
@@ -138,6 +143,7 @@ public class checkYLoadDoc extends JPanel{
 		add(label, gbc_label);
 		
 		panel_3 = new JPanel();
+		panel_3.setOpaque(false);
 		FlowLayout flowLayout_5 = (FlowLayout) panel_3.getLayout();
 		flowLayout_5.setAlignment(FlowLayout.LEFT);
 		GridBagConstraints gbc_panel_3 = new GridBagConstraints();
@@ -162,6 +168,7 @@ public class checkYLoadDoc extends JPanel{
 		add(label_1, gbc_label_1);
 		
 		panel_2 = new JPanel();
+		panel_2.setOpaque(false);
 		FlowLayout flowLayout_2 = (FlowLayout) panel_2.getLayout();
 		flowLayout_2.setAlignment(FlowLayout.LEFT);
 		GridBagConstraints gbc_panel_2 = new GridBagConstraints();
@@ -186,6 +193,7 @@ public class checkYLoadDoc extends JPanel{
 		add(label_2, gbc_label_2);
 		
 		panel_4 = new JPanel();
+		panel_4.setOpaque(false);
 		FlowLayout flowLayout_6 = (FlowLayout) panel_4.getLayout();
 		flowLayout_6.setAlignment(FlowLayout.LEFT);
 		GridBagConstraints gbc_panel_4 = new GridBagConstraints();
@@ -210,6 +218,7 @@ public class checkYLoadDoc extends JPanel{
 		add(label_3, gbc_label_3);
 		
 		panel_5 = new JPanel();
+		panel_5.setOpaque(false);
 		FlowLayout flowLayout_3 = (FlowLayout) panel_5.getLayout();
 		flowLayout_3.setAlignment(FlowLayout.LEFT);
 		GridBagConstraints gbc_panel_5 = new GridBagConstraints();
@@ -234,6 +243,7 @@ public class checkYLoadDoc extends JPanel{
 		add(label_5, gbc_label_5);
 		
 		panel_6 = new JPanel();
+		panel_6.setOpaque(false);
 		FlowLayout flowLayout_7 = (FlowLayout) panel_6.getLayout();
 		flowLayout_7.setAlignment(FlowLayout.LEFT);
 		GridBagConstraints gbc_panel_6 = new GridBagConstraints();
@@ -248,7 +258,7 @@ public class checkYLoadDoc extends JPanel{
 		money.setEditable(false);
 		money.setColumns(10);
 		
-		scrollPane = new JScrollPane();
+		scrollPane = new MyScrollPane();
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.gridwidth = 4;
 		gbc_scrollPane.insets = new Insets(0, 0, 5, 5);

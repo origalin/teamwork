@@ -47,6 +47,7 @@ public class CheckSendDoc extends JPanel{
 		setLayout(gridBagLayout);
 		
 		JPanel panel_16 = new JPanel();
+		panel_16.setOpaque(false);
 		GridBagConstraints gbc_panel_16 = new GridBagConstraints();
 		gbc_panel_16.gridwidth = 2;
 		gbc_panel_16.insets = new Insets(0, 0, 5, 0);
@@ -60,6 +61,7 @@ public class CheckSendDoc extends JPanel{
 		panel_16.add(label_22);
 		
 		JPanel panel_14 = new JPanel();
+		panel_14.setOpaque(false);
 		GridBagConstraints gbc_panel_14 = new GridBagConstraints();
 		gbc_panel_14.anchor = GridBagConstraints.WEST;
 		gbc_panel_14.insets = new Insets(0, 0, 5, 5);
@@ -79,6 +81,7 @@ public class CheckSendDoc extends JPanel{
 		IDField.setColumns(20);
 		
 		JPanel panel_15 = new JPanel();
+		panel_15.setOpaque(false);
 		GridBagConstraints gbc_panel_15 = new GridBagConstraints();
 		gbc_panel_15.anchor = GridBagConstraints.WEST;
 		gbc_panel_15.insets = new Insets(0, 0, 5, 0);
@@ -97,6 +100,7 @@ public class CheckSendDoc extends JPanel{
 		dateField.setColumns(10);
 		
 		JPanel panel = new JPanel();
+		panel.setOpaque(false);
 		panel.setBorder(null);
 		GridBagConstraints gbc_panel = new GridBagConstraints();
 		gbc_panel.anchor = GridBagConstraints.WEST;
@@ -111,6 +115,7 @@ public class CheckSendDoc extends JPanel{
 		panel.add(label);
 		
 		JPanel panel_1 = new JPanel();
+		panel_1.setOpaque(false);
 		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
 		gbc_panel_1.anchor = GridBagConstraints.WEST;
 		gbc_panel_1.insets = new Insets(0, 0, 5, 5);
@@ -138,6 +143,7 @@ public class CheckSendDoc extends JPanel{
 		panel_1.add(sTelePhoneField);
 		
 		JPanel panel_11 = new JPanel();
+		panel_11.setOpaque(false);
 		GridBagConstraints gbc_panel_11 = new GridBagConstraints();
 		gbc_panel_11.anchor = GridBagConstraints.WEST;
 		gbc_panel_11.insets = new Insets(0, 0, 5, 0);
@@ -156,6 +162,7 @@ public class CheckSendDoc extends JPanel{
 		panel_11.add(sMobilePhoneField);
 		
 		JPanel panel_2 = new JPanel();
+		panel_2.setOpaque(false);
 		GridBagConstraints gbc_panel_2 = new GridBagConstraints();
 		gbc_panel_2.anchor = GridBagConstraints.WEST;
 		gbc_panel_2.insets = new Insets(0, 0, 5, 5);
@@ -183,6 +190,7 @@ public class CheckSendDoc extends JPanel{
 		sAddressField.setColumns(30);
 		
 		JPanel panel_17 = new JPanel();
+		panel_17.setOpaque(false);
 		GridBagConstraints gbc_panel_17 = new GridBagConstraints();
 		gbc_panel_17.anchor = GridBagConstraints.WEST;
 		gbc_panel_17.insets = new Insets(0, 0, 5, 0);
@@ -201,6 +209,7 @@ public class CheckSendDoc extends JPanel{
 		panel_17.add(sUnitField);
 		
 		JPanel panel_3 = new JPanel();
+		panel_3.setOpaque(false);
 		panel_3.setBorder(null);
 		GridBagConstraints gbc_panel_3 = new GridBagConstraints();
 		gbc_panel_3.anchor = GridBagConstraints.WEST;
@@ -215,6 +224,7 @@ public class CheckSendDoc extends JPanel{
 		panel_3.add(label_5);
 		
 		JPanel panel_4 = new JPanel();
+		panel_4.setOpaque(false);
 		GridBagConstraints gbc_panel_4 = new GridBagConstraints();
 		gbc_panel_4.anchor = GridBagConstraints.WEST;
 		gbc_panel_4.insets = new Insets(0, 0, 5, 5);
@@ -242,6 +252,7 @@ public class CheckSendDoc extends JPanel{
 		panel_4.add(rTelephoneField);
 		
 		JPanel panel_12 = new JPanel();
+		panel_12.setOpaque(false);
 		GridBagConstraints gbc_panel_12 = new GridBagConstraints();
 		gbc_panel_12.anchor = GridBagConstraints.WEST;
 		gbc_panel_12.insets = new Insets(0, 0, 5, 0);
@@ -260,6 +271,7 @@ public class CheckSendDoc extends JPanel{
 		panel_12.add(rMobilePhoneField);
 		
 		JPanel panel_5 = new JPanel();
+		panel_5.setOpaque(false);
 		GridBagConstraints gbc_panel_5 = new GridBagConstraints();
 		gbc_panel_5.anchor = GridBagConstraints.WEST;
 		gbc_panel_5.insets = new Insets(0, 0, 5, 5);
@@ -287,6 +299,7 @@ public class CheckSendDoc extends JPanel{
 		panel_5.add(rAddressField);
 		
 		JPanel panel_18 = new JPanel();
+		panel_18.setOpaque(false);
 		GridBagConstraints gbc_panel_18 = new GridBagConstraints();
 		gbc_panel_18.anchor = GridBagConstraints.WEST;
 		gbc_panel_18.insets = new Insets(0, 0, 5, 0);
@@ -305,6 +318,7 @@ public class CheckSendDoc extends JPanel{
 		panel_18.add(rUnitField);
 		
 		JPanel panel_7 = new JPanel();
+		panel_7.setOpaque(false);
 		GridBagConstraints gbc_panel_7 = new GridBagConstraints();
 		gbc_panel_7.anchor = GridBagConstraints.WEST;
 		gbc_panel_7.insets = new Insets(0, 0, 5, 5);
@@ -332,6 +346,7 @@ public class CheckSendDoc extends JPanel{
 		panel_7.add(weightField);
 		
 		JPanel panel_13 = new JPanel();
+		panel_13.setOpaque(false);
 		GridBagConstraints gbc_panel_13 = new GridBagConstraints();
 		gbc_panel_13.anchor = GridBagConstraints.WEST;
 		gbc_panel_13.insets = new Insets(0, 0, 5, 0);
@@ -366,6 +381,7 @@ public class CheckSendDoc extends JPanel{
 		panel_13.add(heightField);
 		
 		JPanel panel_8 = new JPanel();
+		panel_8.setOpaque(false);
 		GridBagConstraints gbc_panel_8 = new GridBagConstraints();
 		gbc_panel_8.anchor = GridBagConstraints.WEST;
 		gbc_panel_8.insets = new Insets(0, 0, 5, 5);
@@ -393,6 +409,7 @@ public class CheckSendDoc extends JPanel{
 		panel_8.add(kindField);
 		
 		JPanel panel_6 = new JPanel();
+		panel_6.setOpaque(false);
 		GridBagConstraints gbc_panel_6 = new GridBagConstraints();
 		gbc_panel_6.anchor = GridBagConstraints.WEST;
 		gbc_panel_6.insets = new Insets(0, 0, 5, 0);
@@ -411,6 +428,7 @@ public class CheckSendDoc extends JPanel{
 		timeField.setColumns(10);
 		
 		JPanel panel_9 = new JPanel();
+		panel_9.setOpaque(false);
 		GridBagConstraints gbc_panel_9 = new GridBagConstraints();
 		gbc_panel_9.anchor = GridBagConstraints.WEST;
 		gbc_panel_9.insets = new Insets(0, 0, 5, 5);
@@ -429,6 +447,7 @@ public class CheckSendDoc extends JPanel{
 		sendTypeField.setColumns(10);
 		
 		JPanel panel_10 = new JPanel();
+		panel_10.setOpaque(false);
 		GridBagConstraints gbc_panel_10 = new GridBagConstraints();
 		gbc_panel_10.insets = new Insets(0, 0, 5, 0);
 		gbc_panel_10.anchor = GridBagConstraints.WEST;

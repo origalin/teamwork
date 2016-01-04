@@ -17,9 +17,9 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import javax.swing.JTable;
-import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 
+import edu.nju.presentation.widget.MyScrollPane;
 import edu.nju.presentation.widget.MyTable;
 import edu.nju.presentation.widget.MyTextField;
 import edu.nju.vo.OutWareHouseDocLineItem;
@@ -94,7 +94,7 @@ public class CheckWareHouseDoc extends JPanel{
 		add(type, gbc_type);
 		type.setColumns(10);
 		
-		JScrollPane scrollPane = new JScrollPane();
+		MyScrollPane scrollPane = new MyScrollPane();
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
 		gbc_scrollPane.gridx = 2;

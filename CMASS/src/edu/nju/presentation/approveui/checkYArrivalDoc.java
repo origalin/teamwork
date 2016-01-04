@@ -8,6 +8,7 @@ import java.awt.Font;
 
 import javax.swing.table.DefaultTableModel;
 
+import edu.nju.presentation.widget.MyScrollPane;
 import edu.nju.presentation.widget.MyTable;
 import edu.nju.presentation.widget.MyTextField;
 import edu.nju.vo.YArrivalDocVO;
@@ -52,6 +53,7 @@ public class checkYArrivalDoc extends JPanel{
 		add(label_4, gbc_label_4);
 		
 		JPanel panel_2 = new JPanel();
+		panel_2.setOpaque(false);
 		FlowLayout flowLayout_2 = (FlowLayout) panel_2.getLayout();
 		flowLayout_2.setAlignment(FlowLayout.LEFT);
 		GridBagConstraints gbc_panel_2 = new GridBagConstraints();
@@ -76,6 +78,7 @@ public class checkYArrivalDoc extends JPanel{
 		add(label, gbc_label);
 		
 		JPanel panel_1 = new JPanel();
+		panel_1.setOpaque(false);
 		FlowLayout flowLayout = (FlowLayout) panel_1.getLayout();
 		flowLayout.setAlignment(FlowLayout.LEFT);
 		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
@@ -118,6 +121,7 @@ public class checkYArrivalDoc extends JPanel{
 		add(lblNewLabel, gbc_lblNewLabel);
 		
 		JPanel panel_3 = new JPanel();
+		panel_3.setOpaque(false);
 		FlowLayout flowLayout_1 = (FlowLayout) panel_3.getLayout();
 		flowLayout_1.setAlignment(FlowLayout.LEFT);
 		GridBagConstraints gbc_panel_3 = new GridBagConstraints();
@@ -132,7 +136,7 @@ public class checkYArrivalDoc extends JPanel{
 		startPlace.setEditable(false);
 		startPlace.setColumns(15);
 		
-		JScrollPane scrollPane = new JScrollPane();
+		MyScrollPane scrollPane = new MyScrollPane();
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.gridheight = 2;

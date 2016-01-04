@@ -7,15 +7,16 @@ import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.table.DefaultTableModel;
 
+import edu.nju.presentation.widget.MyScrollPane;
 import edu.nju.presentation.widget.MyTable;
 import edu.nju.presentation.widget.MyTextField;
 import edu.nju.vo.ZLoadDocVO;
@@ -42,6 +43,7 @@ public class CheckZLoadDoc extends JPanel{
 		setLayout(gridBagLayout);
 		
 		JPanel panel_11 = new JPanel();
+		panel_11.setOpaque(false);
 		GridBagConstraints gbc_panel_11 = new GridBagConstraints();
 		gbc_panel_11.fill = GridBagConstraints.BOTH;
 		gbc_panel_11.gridx = 0;
@@ -56,6 +58,7 @@ public class CheckZLoadDoc extends JPanel{
 		panel_11.setLayout(gbl_panel_11);
 		
 		JPanel panel = new JPanel();
+		
 		panel.setOpaque(false);
 		GridBagConstraints gbc_panel = new GridBagConstraints();
 		gbc_panel.gridwidth = 4;
@@ -280,7 +283,7 @@ public class CheckZLoadDoc extends JPanel{
 		Driver.setEditable(false);
 		Driver.setColumns(10);
 		
-		JScrollPane scrollPane = new JScrollPane();
+		MyScrollPane scrollPane = new MyScrollPane();
 		scrollPane.setOpaque(false);
 		scrollPane.getViewport().setOpaque(false);
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();

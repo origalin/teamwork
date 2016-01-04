@@ -22,6 +22,7 @@ import edu.nju.presentation.widget.MyComboBox;
 import edu.nju.presentation.widget.MyTable;
 import edu.nju.presentation.widget.MyTextField;
 import edu.nju.presentation.widget.SmallButton;
+import edu.nju.tools.WarningManager;
 import edu.nju.vo.AccountVO;
 import edu.nju.vo.PayDocVO;
 
@@ -125,7 +126,7 @@ public class costManagement extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				String payAccount=(String) accountComboBox.getSelectedItem();
 				if(payAccount.equals("")){
-					JOptionPane.showMessageDialog(thisPanel,"尚未输入账户","错误",JOptionPane.ERROR_MESSAGE);
+					WarningManager.warning("尚未输入账户");
 				}else{
 					String type=(String) comboBox.getSelectedItem();
 					switch(type){
@@ -282,7 +283,8 @@ public class costManagement extends JPanel{
 			            	}
 			            });
 					}else{
-					    JOptionPane.showMessageDialog(null, "没有付款项", "错误",JOptionPane.PLAIN_MESSAGE);  
+					    
+					    WarningManager.warning("没有付款项");
 					}
 					break;
 				case"运费":
@@ -330,7 +332,7 @@ public class costManagement extends JPanel{
 		            	}
 		            });
 					}else{
-						JOptionPane.showMessageDialog(null, "没有付款项", "错误",JOptionPane.PLAIN_MESSAGE);
+						WarningManager.warning("没有付款项");
 					}
 					break;
 				case"工资":
@@ -373,7 +375,7 @@ public class costManagement extends JPanel{
 		            	}
 		            });
 					}else{
-						JOptionPane.showMessageDialog(null, "没有付款项", "错误",JOptionPane.PLAIN_MESSAGE);
+						WarningManager.warning("没有付款项");
 					}
 					break;
 				}
@@ -388,7 +390,8 @@ public class costManagement extends JPanel{
 		SmallButton button_2 = new SmallButton("\u91CD\u7F6E\u5DE5\u8D44");
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-			    JOptionPane.showMessageDialog(null, "工资已被重置.", null,JOptionPane.PLAIN_MESSAGE);  
+			    
+			    WarningManager.warning("工资已被重置.");
 			    String description="重置工资";
 				OperationPO po=new OperationPO(new Date(), staffID, staffName, description);
 				try {
@@ -409,7 +412,7 @@ public class costManagement extends JPanel{
 		SmallButton button_3 = new SmallButton("\u91CD\u7F6E\u79DF\u91D1");
 		button_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				 JOptionPane.showMessageDialog(null, "租金已被重置.", null,JOptionPane.PLAIN_MESSAGE); 
+				 WarningManager.warning( "租金已被重置.");
 				 String description="重置租金";
 					OperationPO po=new OperationPO(new Date(), staffID, staffName, description);
 					try {
