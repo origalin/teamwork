@@ -13,7 +13,7 @@ import edu.nju.presentation.UiFactory;
 import edu.nju.presentation.widget.MyComboBox;
 import edu.nju.presentation.widget.MyTextField;
 import edu.nju.presentation.widget.SmallButton;
-
+import edu.nju.tools.WarningManager;
 
 import javax.swing.JFrame;
 
@@ -94,9 +94,9 @@ public class StorageModify extends JPanel{
 				StorageModifyService storageModifyService=UiFactory.getStorageModifyService();
 				try {
 					storageModifyService.storageRealease(currStorageID);
-					JOptionPane.showMessageDialog(null, "机动区空间已释放");
+					WarningManager.warning( "机动区空间已释放");
 				} catch (RemoteException e1) {
-					JOptionPane.showMessageDialog(null, "网络连接失败，请检查网络连接后重启客户端");
+					WarningManager.warning( "网络连接失败，请检查网络连接后重启客户端");
 					e1.printStackTrace();
 				}
 			}
@@ -110,9 +110,9 @@ public class StorageModify extends JPanel{
 				StorageModifyService storageModifyService=UiFactory.getStorageModifyService();
 				try {
 					storageModifyService.storageModify((String)comboBox.getSelectedItem(),currPersonID,currStorageID,Integer.parseInt(textField.getText()));
-					JOptionPane.showMessageDialog(null, "调整成功");
+					WarningManager.warning( "调整成功");
 				} catch (RemoteException e1) {
-					JOptionPane.showMessageDialog(null, "远程连接异常，请检查网络之后重启客户端");
+					WarningManager.warning( "远程连接异常，请检查网络之后重启客户端");
 					e1.printStackTrace();
 				}
 				

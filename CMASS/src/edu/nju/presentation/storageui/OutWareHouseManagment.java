@@ -27,6 +27,7 @@ import edu.nju.presentation.widget.MyTable;
 import edu.nju.presentation.widget.MyTextField;
 import edu.nju.presentation.widget.SmallButton;
 import edu.nju.tools.Time;
+import edu.nju.tools.WarningManager;
 import edu.nju.vo.OutWareHouseDocLineItem;
 import edu.nju.vo.OutWareHouseDocVO;
 
@@ -152,7 +153,7 @@ public class OutWareHouseManagment extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 
 				if (textField.getText().equals(""))
-					JOptionPane.showMessageDialog(null, "请输入中转单号或装车单号");
+					WarningManager.warning( "请输入中转单号或装车单号");
 				else {
 					boolean normal = true;
 					String selectedItem = (String) comboBox.getSelectedItem();
@@ -168,7 +169,7 @@ public class OutWareHouseManagment extends JPanel {
 							e1.printStackTrace();
 							normal = false;
 						} catch (DatabaseNULLException e1) {
-							JOptionPane.showMessageDialog(null, "请输入合法有效的中转单号");
+							WarningManager.warning( "请输入合法有效的中转单号");
 							e1.printStackTrace();
 							normal = false;
 						}
@@ -181,7 +182,7 @@ public class OutWareHouseManagment extends JPanel {
 							e1.printStackTrace();
 							normal = false;
 						} catch (DatabaseNULLException e1) {
-							JOptionPane.showMessageDialog(null, "请输入合法有效的装车单号");
+							WarningManager.warning( "请输入合法有效的装车单号");
 							e1.printStackTrace();
 							normal = false;
 						}
@@ -285,7 +286,7 @@ public class OutWareHouseManagment extends JPanel {
 
 				for (OutWareHouseDocLineItem temp : lines) {
 					if (temp.getDestination() == null)
-						JOptionPane.showMessageDialog(null, "请输入完整的信息");
+						WarningManager.warning( "请输入完整的信息");
 				}
 				// check是否有某行目的地没有填写
 				if (check) {
@@ -293,9 +294,9 @@ public class OutWareHouseManagment extends JPanel {
 					outWareHouseManagement = UiFactory.getOutWareHouseManagementService();
 					outWareHouseManagement.updateOutWareHouseDoc(outWareHouseDocVO, currPersonID);
 					// 根据新的vo去更新调用逻辑层更新数据层
-					JOptionPane.showMessageDialog(null, "出库单已保存成功");
+					WarningManager.warning( "出库单已保存成功");
 				} else {
-					JOptionPane.showMessageDialog(null, "请输入完整的信息");
+					WarningManager.warning( "请输入完整的信息");
 				}
 
 			}

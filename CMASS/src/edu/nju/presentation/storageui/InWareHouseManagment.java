@@ -19,6 +19,7 @@ import edu.nju.presentation.widget.MyTable;
 import edu.nju.presentation.widget.MyTextField;
 import edu.nju.presentation.widget.SmallButton;
 import edu.nju.tools.Time;
+import edu.nju.tools.WarningManager;
 import edu.nju.po.InWareHouseDocLineItem;
 import edu.nju.vo.InWareHouseDocVO;
 
@@ -106,20 +107,20 @@ public class InWareHouseManagment extends JPanel {
 		gbc_panel.gridy = 0;
 		add(panel, gbc_panel);
 		GridBagLayout gbl_panel = new GridBagLayout();
-		gbl_panel.columnWidths = new int[]{112, 0};
-		gbl_panel.rowHeights = new int[]{30, 0};
-		gbl_panel.columnWeights = new double[]{0.0, Double.MIN_VALUE};
-		gbl_panel.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+		gbl_panel.columnWidths = new int[] { 112, 0 };
+		gbl_panel.rowHeights = new int[] { 30, 0 };
+		gbl_panel.columnWeights = new double[] { 0.0, Double.MIN_VALUE };
+		gbl_panel.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
 		panel.setLayout(gbl_panel);
-		
-				comboBox = new MyComboBox();
-				comboBox.addItem("中转单编号");
-				comboBox.addItem("装车单编号");
-				GridBagConstraints gbc_comboBox = new GridBagConstraints();
-				gbc_comboBox.anchor = GridBagConstraints.NORTHWEST;
-				gbc_comboBox.gridx = 0;
-				gbc_comboBox.gridy = 0;
-				panel.add(comboBox, gbc_comboBox);
+
+		comboBox = new MyComboBox();
+		comboBox.addItem("中转单编号");
+		comboBox.addItem("装车单编号");
+		GridBagConstraints gbc_comboBox = new GridBagConstraints();
+		gbc_comboBox.anchor = GridBagConstraints.NORTHWEST;
+		gbc_comboBox.gridx = 0;
+		gbc_comboBox.gridy = 0;
+		panel.add(comboBox, gbc_comboBox);
 
 		textField_1 = new MyTextField();
 		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
@@ -161,9 +162,10 @@ public class InWareHouseManagment extends JPanel {
 		btnNewButton = new SmallButton("\u786E\u8BA4");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				if (textField_1.getText().equals(""))
-					JOptionPane.showMessageDialog(null, "请输入中转单号或装车单号");
+					WarningManager.warning("请输入合法有效的中转单号或装车单号");
+				// JOptionPane.showMessageDialog(null, "请输入中转单号或装车单号");
 				else {
 					boolean normal = true;
 					String selectedItem = (String) comboBox.getSelectedItem();
@@ -173,7 +175,9 @@ public class InWareHouseManagment extends JPanel {
 							inWareHouseDocVO = inWare.getInWareHouseDocVO_Transfer(textField_1.getText(),
 									currInstitution);
 						} catch (DatabaseNULLException e1) {
-							JOptionPane.showMessageDialog(null, "请输入合法有效的中转单号");
+							WarningManager.warning("请输入合法有效的中转单号");
+							// JOptionPane.showMessageDialog(null,
+							// "请输入合法有效的中转单号");
 							e1.printStackTrace();
 							normal = false;
 						}
@@ -182,7 +186,9 @@ public class InWareHouseManagment extends JPanel {
 							inWareHouseDocVO = inWare.getInWareHouseDocVO_YloadDoc(textField_1.getText(),
 									currInstitution);
 						} catch (DatabaseNULLException e1) {
-							JOptionPane.showMessageDialog(null, "请输入合法有效的装车单号");
+							WarningManager.warning("请输入合法有效的装车单号");
+							// JOptionPane.showMessageDialog(null,
+							// "请输入合法有效的装车单号");
 							e1.printStackTrace();
 							normal = false;
 						} catch (RemoteException e1) {
@@ -257,11 +263,11 @@ public class InWareHouseManagment extends JPanel {
 					inWareHouseDocVO.setList(line);
 					inWare = UiFactory.getInWareHouseManagementService();
 					inWare.updateInWareHouseDoc(inWareHouseDocVO, currPersonID);
-
-					JOptionPane.showMessageDialog(null, "入库单已保存成功");
+					WarningManager.warning("入库单已保存成功");
+					// JOptionPane.showMessageDialog(null, "入库单已保存成功");
 				} else
-					JOptionPane.showMessageDialog(null, "请输入完整的信息");
-
+					// JOptionPane.showMessageDialog(null, "请输入完整的信息");
+					WarningManager.warning("请输入完整的信息");
 			}
 		});
 		GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();

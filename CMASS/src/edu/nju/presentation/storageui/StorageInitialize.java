@@ -181,7 +181,7 @@ public class StorageInitialize extends JPanel{
 				StorageInitializeService storageInitialize=UiFactory.getStorageInitialize();
 				try {
 					storageInitialize.clear(currStorageID);
-					JOptionPane.showMessageDialog(null, "仓库已清空");
+					WarningManager.warning( "仓库已清空");
 				} catch (RemoteException e1) {
 					WarningManager.warning("远程连接异常，请重启客户端后重试");
 					e1.printStackTrace();
@@ -206,7 +206,7 @@ public class StorageInitialize extends JPanel{
 					StorageInitializeService storageInitialize=UiFactory.getStorageInitialize();
 					try {
 						storageInitialize.addNewStorageItem(lineItem);
-						JOptionPane.showMessageDialog(null, "记录已添加成功");
+						WarningManager.warning( "记录已添加成功");
 					} catch (RemoteException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();

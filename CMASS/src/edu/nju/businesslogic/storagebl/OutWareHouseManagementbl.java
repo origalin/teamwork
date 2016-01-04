@@ -22,6 +22,7 @@ import edu.nju.po.OperationPO;
 import edu.nju.po.OutWareHouseDocPO;
 import edu.nju.po.TransferDocPO;
 import edu.nju.po.ZLoadDocPO;
+import edu.nju.tools.WarningManager;
 import edu.nju.vo.InWareHouseDocVO;
 import edu.nju.vo.OutWareHouseDocLineItem;
 import edu.nju.vo.OutWareHouseDocVO;
@@ -63,7 +64,7 @@ public class OutWareHouseManagementbl implements OutWareHouseManagementService {
 			TransferDocPO transferDocPO = transferDoc.geTransferDocPOByID(sourceID);
 
 			if (transferDocPO == null) {
-				JOptionPane.showMessageDialog(null, "未找到该中转单");
+				WarningManager.warning( "未找到该中转单");
 				return null;// 失败直接返回null
 			}
 
@@ -73,7 +74,7 @@ public class OutWareHouseManagementbl implements OutWareHouseManagementService {
 			ZLoadDocPO zLoadDocPO = zLoadDoc.getZLoadDocPO(sourceID);
 
 			if (zLoadDocPO == null) {
-				JOptionPane.showMessageDialog(null, "未找到该装车单");
+				WarningManager.warning( "未找到该装车单");
 				return null;// 失败直接返回null
 			}
 			itemsID = zLoadDocPO.getItemIDs();
@@ -116,7 +117,7 @@ public class OutWareHouseManagementbl implements OutWareHouseManagementService {
 //			System.out.println(po);
 			storageDataService.updateOutWareHouseDoc(po);
 		} catch (RemoteException e) {
-			JOptionPane.showMessageDialog(null, "更新出库单时与服务器连接异常");
+			WarningManager.warning( "更新出库单时与服务器连接异常");
 			e.printStackTrace();
 		}
 		

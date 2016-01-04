@@ -16,6 +16,7 @@ import edu.nju.dataservice.storagedataservice.StorageDataService;
 import edu.nju.po.OperationPO;
 import edu.nju.po.RecordPO;
 import edu.nju.po.WareHousePO;
+import edu.nju.tools.WarningManager;
 
 public class StorageQuerybl implements StorageQueryService{
 
@@ -30,7 +31,7 @@ public class StorageQuerybl implements StorageQueryService{
 			e.printStackTrace();
 		}
 		if(list.isEmpty())
-			JOptionPane.showMessageDialog(null, "航运区为空");
+			WarningManager.warning( "航运区为空");
 		
 		InstitutionLogicService institutionLogicService=new Institution();
 		String staffName=institutionLogicService.getStaffName(currPersonID);
@@ -51,7 +52,7 @@ public class StorageQuerybl implements StorageQueryService{
 			e.printStackTrace();
 		}
 		if(list.isEmpty())
-			JOptionPane.showMessageDialog(null, "货运区为空");
+			WarningManager.warning( "货运区为空");
 		
 		InstitutionLogicService institutionLogicService=new Institution();
 		String staffName=institutionLogicService.getStaffName(currPersonID);
@@ -72,7 +73,7 @@ public class StorageQuerybl implements StorageQueryService{
 			e.printStackTrace();
 		}
 		if(list.isEmpty())
-			JOptionPane.showMessageDialog(null, "汽运区为空");
+			WarningManager.warning( "汽运区为空");
 		
 
 		InstitutionLogicService institutionLogicService=new Institution();

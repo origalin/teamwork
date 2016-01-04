@@ -166,7 +166,7 @@ public class InWareHouseManagementbl implements InWareHouseManagementService {
 				System.out.println("获取有效位置出错");
 				e.printStackTrace();
 			} catch (NoSpace e) {
-				
+				WarningManager.warning("库存告警，请进行调整");
 				e.printStackTrace();
 			}
 

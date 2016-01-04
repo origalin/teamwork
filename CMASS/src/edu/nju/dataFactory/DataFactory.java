@@ -17,6 +17,7 @@ import edu.nju.dataservice.logisticsqueryDataService.LogisticsDataService;
 import edu.nju.dataservice.storagedataservice.StorageDataService;
 import edu.nju.dataservice.systemdataservice.SystemDataService;
 import edu.nju.dataservice.transferdataservice.TransferDataService;
+import edu.nju.tools.WarningManager;
 
 public class DataFactory {
 	static FinanceDataService financeDataService=null;
@@ -29,7 +30,7 @@ public class DataFactory {
 	static SystemDataService systemDataService=null;
 	static TransferDataService transferDataService = null;
 	static CollectionDataService collectionDataService = null;
-	static String url="rmi://172.28.16.126:6600/";
+	static String url="rmi://127.0.0.1:6600/";
 	public DataFactory() {
 		// TODO Auto-generated constructor stub
 	}
