@@ -26,7 +26,7 @@ import edu.nju.vo.InWareHouseDocVO;
 
 public class InWareHouseManagementbl implements InWareHouseManagementService {
 
-	InWareHouseDocPO inWareHouseDocPO;
+	
 
 	@Override
 	public InWareHouseDocVO getInWareHouseDocVO_Transfer(String TransferDocID, String currInstitutionID) throws DatabaseNULLException {

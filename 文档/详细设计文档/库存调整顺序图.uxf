@@ -74,14 +74,14 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>120</x>
+      <x>110</x>
       <y>250</y>
-      <w>200</w>
+      <w>220</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-setPercent(double p)</panel_attributes>
-    <additional_attributes>180.0;20.0;10.0;20.0</additional_attributes>
+void storageRealease(String storageID)</panel_attributes>
+    <additional_attributes>190.0;20.0;20.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -112,7 +112,7 @@ bg=red</panel_attributes>
     <coordinates>
       <x>470</x>
       <y>60</y>
-      <w>100</w>
+      <w>120</w>
       <h>30</h>
     </coordinates>
     <panel_attributes>StorageDateService
@@ -128,7 +128,7 @@ bg=red</panel_attributes>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-setPercent(double p)</panel_attributes>
+void storageRealease(String storageID)</panel_attributes>
     <additional_attributes>200.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
@@ -157,26 +157,26 @@ setPercent(double p)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>120</x>
+      <x>0</x>
       <y>130</y>
-      <w>200</w>
+      <w>440</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-setAlarm(double p)</panel_attributes>
-    <additional_attributes>180.0;20.0;10.0;20.0</additional_attributes>
+storageModify(String district,String currPersonID,String storageID,int quantity)</panel_attributes>
+    <additional_attributes>300.0;20.0;130.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>310</x>
+      <x>200</x>
       <y>150</y>
-      <w>220</w>
+      <w>440</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-setAlarm(double p)</panel_attributes>
-    <additional_attributes>200.0;20.0;10.0;20.0</additional_attributes>
+storageModify(String district,String currPersonID,String storageID,int quantity)</panel_attributes>
+    <additional_attributes>310.0;20.0;120.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>

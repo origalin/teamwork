@@ -10,7 +10,7 @@ import edu.nju.po.WareHousePO;
 
 public class StorageInitializebl implements StorageInitializeService{
 
-	WareHousePO wareHousePO;
+	
 	@Override
 	public void clear(String storageID) throws RemoteException {
 		StorageDataService storageDataService=DataFactory.getStorageImpl();
