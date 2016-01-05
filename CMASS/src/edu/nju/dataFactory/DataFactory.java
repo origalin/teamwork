@@ -1,9 +1,12 @@
 package edu.nju.dataFactory;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import java.util.Scanner;
 
 import edu.nju.data.StorageDataServiceImpl.StorageDataServiceImpl;
 import edu.nju.data.SystemDataServiceImpl.SystemDataServiceImpl;
@@ -30,9 +33,20 @@ public class DataFactory {
 	static SystemDataService systemDataService=null;
 	static TransferDataService transferDataService = null;
 	static CollectionDataService collectionDataService = null;
-	static String url="rmi://114.212.42.46:6600/";
+	static String url="";
 	public DataFactory() {
 		// TODO Auto-generated constructor stub
+	}
+	public static void init () {
+		try {
+			Scanner ipScanner = new Scanner(new File("ip.txt"));
+			url = ipScanner.nextLine();
+			ipScanner.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 	public static StorageDataService getStorageImpl() {
