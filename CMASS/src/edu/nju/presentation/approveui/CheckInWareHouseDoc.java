@@ -31,7 +31,7 @@ public class CheckInWareHouseDoc extends JPanel{
 	private MyScrollPane scrollPane;
 	private String[] columnNames={"快递编号","入库日期","目的地","区号","排号","架号","位号"};
 	public CheckInWareHouseDoc(InWareHouseDocVO vo) {
-		
+		setOpaque(false);
 		setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "\u5165\u5E93\u5355", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 114, 0, 0, 0, 0};

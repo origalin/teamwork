@@ -37,6 +37,7 @@ public class checkYLoadDoc extends JPanel{
 	private MyScrollPane scrollPane;
 	private MyTable table;
 	public checkYLoadDoc(YLoadDocVO vo) {
+		setOpaque(false);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 122, 76, 0, 0, 0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 39, 113, 0, 0};

@@ -34,6 +34,7 @@ public class CheckTransferDoc_Train extends JPanel{
 	private MyTextField train_corridge;
 	private MyTextField tranceID;
 	public CheckTransferDoc_Train(TransferDoc_TrainVO vo) {
+		setOpaque(false);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{418, 0};
 		gridBagLayout.rowHeights = new int[]{248, 0};

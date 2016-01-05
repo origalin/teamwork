@@ -31,7 +31,7 @@ public class CheckWareHouseDoc extends JPanel{
 	private MyTextField type;
 	private String[] columnNames={"快递编号","目的地"};
 	public CheckWareHouseDoc(OutWareHouseDocVO vo) {
-		
+		setOpaque(false);
 		
 		setBorder(new TitledBorder(null, "\u51FA\u5E93\u5355", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		GridBagLayout gridBagLayout = new GridBagLayout();

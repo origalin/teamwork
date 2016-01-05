@@ -19,6 +19,7 @@ public class checkOverDoc extends JPanel{
 	private MyTextField courier;
 	private MyTable table;
 	public checkOverDoc(OverDocVO vo) {
+		setOpaque(false);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{48, 117, 0, 76, 0, 52, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0};

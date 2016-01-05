@@ -35,6 +35,7 @@ public class CheckTransferDoc_Car extends JPanel{
 	private MyTextField Money;
 	private MyTextField carTransportID;
 	public CheckTransferDoc_Car(TransferDocVO vo) {
+		setOpaque(false);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{418, 0};
 		gridBagLayout.rowHeights = new int[]{248, 0};

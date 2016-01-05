@@ -22,6 +22,7 @@ public class checkYArrivalDoc extends JPanel{
 	private MyTable table;
 	private MyTextField YArrivalID;
 	public checkYArrivalDoc(YArrivalDocVO vo) {
+		setOpaque(false);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 13, 123, 51, 0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 85, 0, 0};

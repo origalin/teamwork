@@ -35,6 +35,7 @@ public class CheckZLoadDoc extends JPanel{
 	private MyTextField money;
 	private MyTable table;
 	public CheckZLoadDoc(ZLoadDocVO vo) {
+		setOpaque(false);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{439, 0};
 		gridBagLayout.rowHeights = new int[]{248, 0};

@@ -9,9 +9,9 @@ import edu.nju.presentation.infoui.*;
 
 public class Main {
 	public static void main(String args[]) {
-		
-		LoginFrame login = new LoginFrame();
 		DataFactory.init();
+		LoginFrame login = new LoginFrame();
+		
 	}
 	
 	   

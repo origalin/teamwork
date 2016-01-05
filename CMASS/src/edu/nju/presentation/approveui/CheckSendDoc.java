@@ -38,6 +38,7 @@ public class CheckSendDoc extends JPanel{
 	private MyTextField scityField;
 	private MyTextField rcityField;
 	public CheckSendDoc(SendDocVO vo) {
+		setOpaque(false);
 		setBorder(null);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] {281, 224, 0};

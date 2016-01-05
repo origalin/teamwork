@@ -30,6 +30,7 @@ public class checkZArrivalDoc extends JPanel{
 	private JPanel panel_4;
 	private JPanel panel_5;
 	public checkZArrivalDoc(ZArrivalDocVO vo) {
+		setOpaque(false);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, -30, 47, 88, 0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0};

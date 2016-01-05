@@ -20,6 +20,7 @@ public class checkPayDoc extends JPanel{
 	private MyTextField PayDocID;
 	private MyTextField back;
 	public checkPayDoc(PayDocVO vo) {
+		setOpaque(false);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 54, 70, 65, 0, 109, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0};

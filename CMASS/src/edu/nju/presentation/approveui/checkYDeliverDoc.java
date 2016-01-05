@@ -27,6 +27,7 @@ public class checkYDeliverDoc extends JPanel{
 	private MyScrollPane scrollPane;
 	private MyTable table;
 	public checkYDeliverDoc(YDeliverDocVO vo) {
+		setOpaque(false);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 3, 11, 0, 0, 0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0};
